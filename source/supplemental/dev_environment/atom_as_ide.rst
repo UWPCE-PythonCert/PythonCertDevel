@@ -26,8 +26,8 @@ Atom does all this and more, but some functionality requires you to select and i
 Which Version?
 ==============
 
-The latest version is the best version. Atom is regularly maintained, so that latest
-version will have the latest bug fixes and updates. Click the big red button_ to
+The latest version is the best version. Atom is regularly maintained, so the latest
+version will have the latest bug fixes and updates. On the Atom website, click the big red button_ to
 download, then run the executable to install.
 
 .. _button: https://atom.io/
@@ -53,6 +53,8 @@ everything you can do. You can also watch a Getting Started video_.
 .. _documentation: https://atom.io/docs
 .. _Manual: http://flight-manual.atom.io/
 .. _video: https://www.youtube.com/watch?v=U5POoGSrtGg
+
+In general, you can extend Atom by installing packages, and then accessing their functionality from the Packages drop-down menu. Keyboard shortcuts are specified in the packages menus if available.
 
 
 Useful Packages
@@ -90,11 +92,11 @@ taken back a tab.
 The Whitespace_ package ships with Atom and requires no setup. Under the Packages --> Whitespace menu,
 you will find tools to turn all tabs into spaces, all spaces into tabs, among other whitespace-related options.
 
-.. Whitespace: https://atom.io/packages/whitespace
+.. _Whitespace: https://atom.io/packages/whitespace
 
 Follow-Along
 ------------
 
-To use a Python debugger in Atom, you will need to install the python-debugger_ package.
+To use a Python debugger in Atom, you will need to install the python-debugger_ package. Once installed, turn on the debugger by going to Packages --> python-debugger --> Toggle.
 
 .. _python-debugger: https://atom.io/packages/python-debugger
