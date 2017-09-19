@@ -5,7 +5,7 @@ Turning Atom Into a Lightweight Python IDE
 **************************************************
 
 
-Atom calls itself "A hackable text editor for the 21st Century." It has a nice
+Atom is the self-proclaimed "hackable text editor for the 21st Century." It has a nice
 modern interface, and is highly customizable yet can also be used productively
 with minimal setup and configuration.
 
@@ -34,10 +34,11 @@ write your Python files in Atom, then run them in your Python command prompt.
 Extending the Editor
 ====================
 
-Atom has great documentation_ on how to hack and configure it. You can even watch a Getting
-Started video_.
+Atom has great documentation_ on how to hack and configure it. Read the Flight Manual_ for tons of information on
+everything you can do. You can also watch a Getting Started video_.
 
 .. _documentation: https://atom.io/docs
+.. _Manual: http://flight-manual.atom.io/
 .. _video: https://www.youtube.com/watch?v=U5POoGSrtGg
 
 
@@ -64,13 +65,12 @@ Code Linting
 White Space Management
 ----------------------
 
-Atom knows that you are writing Python and helps you out by dealing with spaces and tabs
+Atom knows when you are writing Python and helps you out by dealing with spaces and tabs
 in the same way. When in a Python file, if you type 4 spaces, then hit delete, you are
 taken back a tab.
 
 There are also some handy Whitespace tools built-in. Under the Packages --> Whitespace menu,
-you will find tools to turn all tabs into spaces, all spaces into tabs, among other whitespace-
-related options.
+you will find tools to turn all tabs into spaces, all spaces into tabs, among other whitespace-related options.
 
 
 Follow-Along
