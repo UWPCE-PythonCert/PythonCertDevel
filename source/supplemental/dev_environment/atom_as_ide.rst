@@ -63,9 +63,11 @@ Useful Packages
 Running Scripts
 ---------------
 
-To run scripts within Atom, you will need to install the Script_ package. The Scripts package supports a ton of languages, including Python.
+To run scripts within Atom, you will need to install the Script_ package. The Script package supports a ton of languages, including Python.
 
 .. _Script: https://atom.io/packages/script
+
+To run a Python script with the Script package....
 
 Autocompletion
 --------------
