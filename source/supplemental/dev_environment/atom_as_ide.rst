@@ -14,8 +14,10 @@ Which Version?
 ==============
 
 The latest version is the best version. Atom is regularly maintained, so that latest
-version will have the latest bug fixes and updates. Click the `big red button <https://atom.io/>`_to
+version will have the latest bug fixes and updates. Click the big red button_ to
 download, then run the executable to install.
+
+.. _button: https://atom.io/
 
 
 Basic Settings
