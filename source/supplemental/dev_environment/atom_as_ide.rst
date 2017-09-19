@@ -6,7 +6,7 @@ Turning Atom Into a Lightweight Python IDE
 
 
 Atom calls itself "A hackable text editor for the 21st Century." It has a nice
-modern interface, is highly customizable, but can also be used productively
+modern interface, and is highly customizable, yet can also be used productively
 with minimal setup and configuration.
 
 
@@ -14,7 +14,7 @@ Which Version?
 ==============
 
 The latest version is the best version. Atom is regularly maintained, so that latest
-version will have the latest bug fixes and updates. Just click the big red button to
+version will have the latest bug fixes and updates. Click the `big red button <https://atom.io/>`_to
 download, then run the executable to install.
 
 
