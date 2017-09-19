@@ -1,0 +1,139 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Setting Up A Development Environment For Python &#8212; PythonCert 4.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '4.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Turning Sublime Text Into a Lightweight Python IDE" href="sublime_as_ide.html" />
+    <link rel="prev" title="Making your text Editor work with git on Windows" href="../installing/git_editor_windows.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="setting-up-a-development-environment-for-python">
+<h1>Setting Up A Development Environment For Python<a class="headerlink" href="#setting-up-a-development-environment-for-python" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sublime_as_ide.html">Turning Sublime Text Into a Lightweight Python IDE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sublime_as_ide.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sublime_as_ide.html#which-version">Which Version?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sublime_as_ide.html#basic-settings">Basic Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sublime_as_ide.html#extending-the-editor">Extending the Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sublime_as_ide.html#useful-plugins">Useful Plugins</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="command_line.html">Command line basics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html#windows">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html#linux-and-os-x">Linux and OS-X</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="shell.html">Shell Customizations for Python Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shell.html#what-was-that-name-again">What was that name, again?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell.html#where-am-i-what-am-i-doing">Where am I, what am I doing?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell.html#but-wait-there-s-more">But wait, there’s more.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shell.html#wrap-up">Wrap-Up</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ipython.html">iPython Interpreter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windows_bash.html">Using Windows Bash for Python Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="windows_bash.html#installing-the-system">Installing the System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows_bash.html#installing-running-python">Installing / running Python</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="git_overview.html">git Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="git_overview.html#learning-resources">Learning Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_overview.html#a-graphical-tutorial">A Graphical Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="virtualenv.html">Working with Virtualenv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="virtualenv.html#reasons-why">Reasons Why</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualenv.html#using-virtualenv">Using Virtualenv</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../installing/git_editor_windows.html" title="previous chapter">Making your text Editor work with git on Windows</a></li>
+      <li>Next: <a href="sublime_as_ide.html" title="next chapter">Turning Sublime Text Into a Lightweight Python IDE</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/supplemental/dev_environment/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Christopher Barker, Cris Ewing, Maria McKinley, Rick Riehle.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/supplemental/dev_environment/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
