@@ -35,10 +35,10 @@ Extending the Editor
 ====================
 
 Atom has great documentation_ on how to hack and configure it. You can even watch a Getting
-Started_ video.
+Started video_.
 
 .. _documentation: https://atom.io/docs
-.. _Getting Started: https://www.youtube.com/watch?v=U5POoGSrtGg
+.. _video: https://www.youtube.com/watch?v=U5POoGSrtGg
 
 
 Useful Packages
