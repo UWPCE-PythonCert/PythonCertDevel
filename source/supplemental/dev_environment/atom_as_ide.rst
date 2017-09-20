@@ -27,10 +27,21 @@ Which Version?
 ==============
 
 The latest version is the best version. Atom is regularly maintained, so the latest
-version will have the latest bug fixes and updates. On the Atom website, click the big red button_ to
-download, then run the executable to install.
+version will have the latest bug fixes and updates.
 
-.. _button: https://atom.io/
+
+Installation
+============
+
+Go to the Atom website_.
+
+.. _website: https://atom.io/
+
+Windows: on the main page, click the big red button to
+download the installer, then run the installer.
+
+Other platforms: on the main page, below the big red button, click Other Platforms and find
+the installer for your operating system.
 
 If you already have Atom installed, but want to check for a newer version, go to
 Help --> Check for Update.
@@ -39,13 +50,16 @@ Help --> Check for Update.
 Basic Settings
 ==============
 
-Atom can be used out of the box with no setup as a simple text editor. It automatically
+Atom can be used out of the box with no setup as a text editor. It automatically
 recognizes file types and helpfully highlights text accordingly. To use in this manner,
 write your Python files in Atom, then run them in your Python command prompt.
 
 
 Extending the Editor
 ====================
+
+When you first open Atom, a Welcome Guide appears. This provides some quick and helpful info on
+how to open projects, install packages, and customize your themes and styling.
 
 Atom has great documentation_ on how to hack and configure it. Read the Flight Manual_ for tons of information on
 everything you can do. You can also watch a Getting Started video_.
@@ -54,7 +68,13 @@ everything you can do. You can also watch a Getting Started video_.
 .. _Manual: http://flight-manual.atom.io/
 .. _video: https://www.youtube.com/watch?v=U5POoGSrtGg
 
-In general, you can extend Atom by installing packages, and then accessing their functionality from the Packages drop-down menu. Keyboard shortcuts are specified in the packages menus if available.
+In general, you can extend Atom by installing packages, and then accessing their functionality from the Packages
+drop-down menu. Access the Install Packages page from the Welcome Guide page. If the Welcome Guide is not open,
+you can open it via Help --> Welcome Guide.
+
+Keyboard shortcuts are specified in the packages menus if available.
+
+The Useful Packages presented below are mostly one option of many.
 
 
 Useful Packages
@@ -63,11 +83,10 @@ Useful Packages
 Running Scripts
 ---------------
 
-To run scripts within Atom, you will need to install the Script_ package. The Script package supports a ton of languages, including Python.
+To run scripts within Atom, you will need to install the Script_ package. The Script package supports a ton of languages,
+including Python!
 
 .. _Script: https://atom.io/packages/script
-
-To run a Python script with the Script package....
 
 Autocompletion
 --------------
@@ -96,9 +115,10 @@ you will find tools to turn all tabs into spaces, all spaces into tabs, among ot
 
 .. _Whitespace: https://atom.io/packages/whitespace
 
-Follow-Along
-------------
+Debugging
+---------
 
-To use a Python debugger in Atom, you will need to install the python-debugger_ package. Once installed, turn on the debugger by going to Packages --> python-debugger --> Toggle.
+To use a Python debugger in Atom, you will need to install the python-debugger_ package. Once installed, turn on the
+debugger by going to Packages --> python-debugger --> Toggle.
 
 .. _python-debugger: https://atom.io/packages/python-debugger
