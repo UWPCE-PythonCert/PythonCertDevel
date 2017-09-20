@@ -24,6 +24,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Setting up Python via Vagrant/VM" href="vagrant.html" />
+    <link rel="prev" title="Setting up Windows for Python" href="python_for_windows.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -45,7 +47,8 @@
 <h2>Debian and Related Distros (Ubuntu, Linux Mint)<a class="headerlink" href="#debian-and-related-distros-ubuntu-linux-mint" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="python">
 <h3>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
-<p>Debian distros already have the stable python2 and python3 releases preinstalled [<a class="reference external" href="DebianWiki">1</a>]. Try the following commands:</p>
+<p>Debian distros already have the stable python2 and python3 releases preinstalled (<a class="reference external" href="https://wiki.debian.org/Python">Debian Wiki</a>).</p>
+<p>Try the following commands:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ python2
 Python <span class="m">2</span>.7.9 <span class="o">(</span>default, April <span class="m">2</span> <span class="m">2015</span>, <span class="m">15</span>:33:32<span class="o">)</span>
 <span class="o">[</span>GCC <span class="m">4</span>.9.2 on linux2<span class="o">]</span>
@@ -78,7 +81,7 @@ $ <span class="nb">source</span> ~/.bashrc
 
 $ <span class="c1"># after the change</span>
 $ python
-Python <span class="m">3</span>.4.3 <span class="o">(</span>default, March <span class="m">26</span> <span class="m">2015</span>, <span class="m">15</span>:33:32<span class="o">)</span>
+Python <span class="m">3</span>.5.2 <span class="o">(</span>default, March <span class="m">26</span> <span class="m">2015</span>, <span class="m">15</span>:33:32<span class="o">)</span>
 <span class="o">[</span>GCC <span class="m">4</span>.9.2 on linux<span class="o">]</span>
 &gt;&gt;&gt;
 </pre></div>
@@ -95,13 +98,6 @@ $ sudo apt-get install python3.5
 <div class="section" id="terminal">
 <h3>Terminal<a class="headerlink" href="#terminal" title="Permalink to this headline">¶</a></h3>
 <p>Every Linux box has a terminal emulator – find and use it.</p>
-</div>
-<div class="section" id="git">
-<h3>git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h3>
-<p>Git is likely to be there on your system already, but if not:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install git
-</pre></div>
-</div>
 </div>
 <div class="section" id="pip">
 <h3>pip<a class="headerlink" href="#pip" title="Permalink to this headline">¶</a></h3>
@@ -149,6 +145,13 @@ object?   -&gt; Details about &#39;object&#39;, use &#39;object??&#39; for extra
 </pre></div>
 </div>
 </div>
+<div class="section" id="git">
+<h3>git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h3>
+<p>Git is likely to be there on your system already, but if not:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install git
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="fedora-and-red-hat-related-distros-centos">
 <h2>Fedora and Red Hat Related Distros (CentOS)<a class="headerlink" href="#fedora-and-red-hat-related-distros-centos" title="Permalink to this headline">¶</a></h2>
@@ -156,8 +159,8 @@ object?   -&gt; Details about &#39;object&#39;, use &#39;object??&#39; for extra
 <p class="first admonition-title">Warning</p>
 <p class="last">CentOS is probably the most popular distro of these related flavors. However, getting Python3 on it can be a pain. You have been warned</p>
 </div>
-<div class="section" id="id2">
-<h3>Python<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>Python<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Fedora distros already have the stable python2 and python3 releases preinstalled <a class="reference external" href="FedoraWiki">[2]</a>. However, CentOS, the most popular distro only has the stable python2 release. Try the following commands:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>centos@ip-172-31-21-5 ~<span class="o">]</span>$ python2
 Python <span class="m">2</span>.7.5 <span class="o">(</span>default, Jun <span class="m">17</span> <span class="m">2014</span>, <span class="m">18</span>:11:42<span class="o">)</span>
@@ -189,19 +192,19 @@ $ sudo yum install rh-python35
 </pre></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h3>Terminal<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>Terminal<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>Every Linux box has a terminal emulator – find and use it.</p>
 </div>
-<div class="section" id="id5">
-<h3>git<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>git<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>Git is likely to be there on your system already, but if not:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo yum install git
 </pre></div>
 </div>
 </div>
-<div class="section" id="id6">
-<h3>pip<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>pip<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal"><span class="pre">pip</span></code> is the Python package installer.</p>
 <p>Many python packages are also available directly from your distro – but you’ll get the latest and greatest if you use <code class="docutils literal"><span class="pre">pip</span></code> to install it instead.</p>
 <p>In CentOS, if you used the above technique to install Python3, then it comes with pip. Try:</p>
@@ -210,8 +213,8 @@ pip <span class="m">8</span>.1.2 from /opt/rh/rh-python35/root/usr/lib/python3.5
 </pre></div>
 </div>
 </div>
-<div class="section" id="id7">
-<h3>Using pip:<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>Using pip:<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>To use pip to install a package, you invoke it with this command:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">the_name_of_the_package</span>
 </pre></div>
@@ -227,8 +230,8 @@ pip <span class="m">8</span>.1.2 from /opt/rh/rh-python35/root/usr/lib/python3.5
 </div>
 <p>calls python, and tells it to run the <code class="docutils literal"><span class="pre">pip</span></code> module. It is exactly the same as calling pip directly, except that you are assured that you are getting the version of pip connected the version of python that you are running.</p>
 </div>
-<div class="section" id="id8">
-<h3>iPython<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>iPython<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>One we are going to use in class is <code class="docutils literal"><span class="pre">iPython</span></code>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo pip install ipython[all]
 </pre></div>
@@ -248,15 +251,13 @@ pip <span class="m">8</span>.1.2 from /opt/rh/rh-python35/root/usr/lib/python3.5
 <div class="section" id="footnotes">
 <h4>Footnotes:<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h4>
 </div>
-<div class="section" id="debian-wiki">
-<h4>Debian Wiki<a class="headerlink" href="#debian-wiki" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><a class="reference external" href="https://wiki.debian.org/Python">https://wiki.debian.org/Python</a></div></blockquote>
+<div class="section" id="id8">
+<h4>Debian Wiki<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://wiki.debian.org/Python">https://wiki.debian.org/Python</a></p>
 </div>
 <div class="section" id="fedora-wiki">
 <h4>Fedora Wiki<a class="headerlink" href="#fedora-wiki" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><a class="reference external" href="https://fedoraproject.org/wiki/Packaging:Python">https://fedoraproject.org/wiki/Packaging:Python</a></div></blockquote>
+<p><a class="reference external" href="https://fedoraproject.org/wiki/Packaging:Python">https://fedoraproject.org/wiki/Packaging:Python</a></p>
 </div>
 </div>
 </div>
@@ -274,21 +275,21 @@ pip <span class="m">8</span>.1.2 from /opt/rh/rh-python35/root/usr/lib/python3.5
 <li><a class="reference internal" href="#debian-and-related-distros-ubuntu-linux-mint">Debian and Related Distros (Ubuntu, Linux Mint)</a><ul>
 <li><a class="reference internal" href="#python">Python</a></li>
 <li><a class="reference internal" href="#terminal">Terminal</a></li>
-<li><a class="reference internal" href="#git">git</a></li>
 <li><a class="reference internal" href="#pip">pip</a></li>
 <li><a class="reference internal" href="#using-pip">Using pip:</a></li>
 <li><a class="reference internal" href="#ipython">iPython</a></li>
+<li><a class="reference internal" href="#git">git</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#fedora-and-red-hat-related-distros-centos">Fedora and Red Hat Related Distros (CentOS)</a><ul>
-<li><a class="reference internal" href="#id2">Python</a></li>
-<li><a class="reference internal" href="#id4">Terminal</a></li>
-<li><a class="reference internal" href="#id5">git</a></li>
-<li><a class="reference internal" href="#id6">pip</a></li>
-<li><a class="reference internal" href="#id7">Using pip:</a></li>
-<li><a class="reference internal" href="#id8">iPython</a><ul>
+<li><a class="reference internal" href="#id1">Python</a></li>
+<li><a class="reference internal" href="#id3">Terminal</a></li>
+<li><a class="reference internal" href="#id4">git</a></li>
+<li><a class="reference internal" href="#id5">pip</a></li>
+<li><a class="reference internal" href="#id6">Using pip:</a></li>
+<li><a class="reference internal" href="#id7">iPython</a><ul>
 <li><a class="reference internal" href="#footnotes">Footnotes:</a></li>
-<li><a class="reference internal" href="#debian-wiki">Debian Wiki</a></li>
+<li><a class="reference internal" href="#id8">Debian Wiki</a></li>
 <li><a class="reference internal" href="#fedora-wiki">Fedora Wiki</a></li>
 </ul>
 </li>
@@ -301,6 +302,10 @@ pip <span class="m">8</span>.1.2 from /opt/rh/rh-python35/root/usr/lib/python3.5
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Installing Python and core tools</a><ul>
+      <li>Previous: <a href="python_for_windows.html" title="previous chapter">Setting up Windows for Python</a></li>
+      <li>Next: <a href="vagrant.html" title="next chapter">Setting up Python via Vagrant/VM</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>

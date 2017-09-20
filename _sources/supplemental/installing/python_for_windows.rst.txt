@@ -1,10 +1,9 @@
 .. _python_for_windows:
 
-*****************************
+#############################
 Setting up Windows for Python
-*****************************
+#############################
 
-==================
 Getting The Tools
 ==================
 
@@ -17,11 +16,11 @@ There are a number of python distributions available -- many designed for easier
 - Enthought Canopy
 - Python(x,y)
 
-But for core use, the installer from python.org is the way to go, and that is what we will be using in this program.
+But for basic use, the installer from python.org is the way to go, and that is what we will be using in this program.
 
 https://www.python.org/downloads/
 
-You want the installer for Python 3.5.2 -- probably 64 bit, though if you have a 32 bit sytem, you can get that. There is essentially no difference for the purposes of this course.
+You want the installer for Python 3.6.2 -- 64 bit, though if you have a 32 bit sytem, you can get that. There is essentially no difference for the purposes of this course.
 
 Double click and install.
 
@@ -37,7 +36,9 @@ When you install Git Bash, you are installing git (and a git gui) as well, thus 
 
 https://git-for-windows.github.io/
 
-This is actually your best bet for running Python also -- If you use the Git Bash shell, you can use the same commands as Linux and OS-X users. Regardless of which shell you choose, you will need to add Python to your environment. It is possible that this was done during the installation of python. If you type 'which python' into your terminal, and get back the answer '/c/python34/python', then you are good to go, otherwise, follow the instructions here:
+You can use this git with the DOS box or Powershell as well.
+
+This is also a good bet for running Python also -- If you use the Git Bash shell, you can use the same commands as Linux and OS-X users. Regardless of which shell you choose, you will need to add Python to your environment. It is possible that this was done during the installation of python. If you type 'which python' into your terminal, and get back the answer '/c/python34/python', then you are good to go, otherwise, follow the instructions here:
 
 http://www.computerhope.com/issues/ch000549.htm
 
@@ -50,6 +51,19 @@ and
 ``C:\Python35\Scripts``
 
 to ``PATH``
+
+Once you have done that, you should be able to type ``python`` at the command prompt, and get something like:
+
+::
+
+  Python 3.6.2 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06)
+  [GCC 4.2.1 (Windows build 7584) (dot 3)] on win64
+  Type "help", "copyright", "credits" or "license" for more information.
+  >>>
+
+This is the Python interpreter.
+
+Type ``ctrl+Z`` to get out (or ``exit()``)
 
 
 git
@@ -98,23 +112,73 @@ calls python, and tells it to run the ``pip`` module. It is exactly the same as 
 iPython
 --------
 
-One extra package we are going to use in class is ``iPython``::
+One extra package we are going to use from the beginning in the program is ``iPython``::
 
   $ python -m pip install ipython[all]
+
+(It will install a LOT -- if it fails, try leaving the ``[all]`` off)
 
 You should now be able to run ``iPython`` from the git bash shell::
 
     $ ipython
-	Python 3.5.2 (v2.7.8:ee879c0ffa11, Jun 29 2014, 21:07:35)
-	Type "copyright", "credits" or "license" for more information.
-
-	IPython 2.0.0 -- An enhanced Interactive Python.
-	?         -> Introduction and overview of IPython's features.
-	%quickref -> Quick reference.
-	help      -> Python's own help system.
-	object?   -> Details about 'object', use 'object??' for extra details.
-
-(or from the DOS box or PowerShell prompt)
+    Python 3.6.2 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06)
+    Type 'copyright', 'credits' or 'license' for more information
+    IPython 6.1.0 -- An enhanced Interactive Python. Type '?' for help.
+    (or from the DOS box or PowerShell prompt)
 
 We will use this as our default python interpreter.
+
+
+Testing it out
+--------------
+
+To be ready for the program, you need to have:
+ - python
+ - pip
+ - iPython
+ - git
+
+All available from the command line.
+
+To try it out, you should be able to run all of these commands, and get something like the following results:
+
+(recall that you can get out of the python or iPython command lines with ``ctrl+Z``)
+
+For Python:
+
+::
+
+  MacBook-Pro:PythonCertDevel Chris$ python
+  Python 3.6.2 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06)
+  [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+  Type "help", "copyright", "credits" or "license" for more information.
+  >>> ^D
+
+For iPython:
+
+::
+
+  MacBook-Pro:PythonCertDevel Chris$ ipython
+  Python 3.6.2 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06)
+  Type 'copyright', 'credits' or 'license' for more information
+  IPython 6.1.0 -- An enhanced Interactive Python. Type '?' for help.
+
+  In [1]:
+
+  Do you really want to exit ([y]/n)? y
+
+For pip:
+
+::
+
+  MacBook-Pro:PythonCertDevel Chris$ python -m pip --version
+  pip 9.0.1 from /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages (python 3.6)
+
+For git:
+
+::
+
+  MacBook-Pro:PythonCertDevel Chris$ git --version
+  git version 2.11.0 (Apple Git-81)
+
 

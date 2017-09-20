@@ -8,5 +8,6 @@ Installing Python and core tools
     python_for_mac
     python_for_windows
     python_for_linux
+    vagrant
 
     git_editor_windows

@@ -20,48 +20,54 @@ So we recommend installing a new version.
 
 .. rst-class:: left
 
-If you use ``macports`` or ``homebrew`` to manage \*nix software on your machine, feel free to use those for ``python``, ``git``, etc, as well. If not, then read on.
+If you use ``macports`` or ``homebrew`` to manage \*nix software on your machine, feel free to use those for ``python``, ``git``, etc, as well. But make sure you have python 3.6.*
+
+If not, then read on.
+
+Terminal
+---------
+
+You will need a command line terminal. The built-in "terminal" application works fine. Find it in::
+
+  /Applications/Utilities/Terminal
+
+Drag it to the dock to easy access.
 
 Python
 ------
 
 While OS-X does provide python out of the box -- it tends not to have the
 latest version, and you really don't want to mess with the system
-installation. So I recommend installing an independent installation from
+installation. So we recommend installing an independent installation from
 ``python.org``:
 
-Download the Python 3.5.2 installer from Python.org:
+Download the latest realease of Python (currently 3.6.2) installer from Python.org:
 
 https://www.python.org/downloads/
 
-Double click the installer and follow the prompts -- the defaults are your best bet.  Simple as that.
+Double click the installer and follow the prompts -- the defaults are your best bet. Simple as that.
 
-Oddly, this does NOT install a ``python`` command, but rather a ``python3`` command. If you want to be able to simply type ``python`` and get python3, then you can add a symlink to the install::
+Oddly, this does NOT install a ``python`` command, but rather a ``python3`` command. If you want to be able to simply type ``python`` and get python3, then you can add a symlink to the install. Type this at a terminal prompt:
 
-  $ cd /Library/Frameworks/Python.framework/Versions/3.5/bin
-  $ ln -s python3.5 python
+.. code-block:: bash
 
-(or an alias in your shell -- an Unix geeks here?)
+  $ cd /Library/Frameworks/Python.framework/Versions/3.6/bin
+  $ ln -s python3.6 python
 
-Once you have done that, you should be able to type ``python`` at the command prompt, and get::
+(or an add an alias in your shell -- an Unix geeks here?)
 
-  $ python
-  Python 3.5.2 (v3.5.2:4def2a2901a5, Jun 26 2016, 10:47:25)
+Once you have done that, you should be able to type ``python`` at the command prompt, and get something like:
+
+.. code-block:: bash
+
+  Python 3.6.2 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06)
   [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
   Type "help", "copyright", "credits" or "license" for more information.
   >>>
 
+This is the Python interpreter.
 
-Terminal
----------
-
-The built-in "terminal" application works fine. Find it in:
-
-::
-
-  /Applications/Utilities/Terminal
-
-Drag it to the dock to easy access.
+Type ``ctrl+D`` to get out (or ``exit()``)
 
 
 pip
@@ -99,26 +105,27 @@ calls python, and tells it to run the ``pip`` module. It is exactly the same as 
 iPython
 --------
 
-One package we are going to use in class is ``iPython``. YOu can install it with ``pip`` like so::
+One package we are going to use in the program from the begining is ``iPython``. You can install it with ``pip`` like so::
 
   $ python3 -m pip install ipython[all]
 
-You should now be able to run ``iPython``::
+(it will install a LOT...).
 
-    $ ipython
-    Python 3.5.2 (v3.5.2:4def2a2901a5, Jun 26 2016, 10:47:25)
-    Type "copyright", "credits" or "license" for more information.
+You should now be able to run ``iPython``:
 
-    IPython 5.1.0 -- An enhanced Interactive Python.
-    ?         -> Introduction and overview of IPython's features.
-    %quickref -> Quick reference.
-    help      -> Python's own help system.
-    object?   -> Details about 'object', use 'object??' for extra details.
+.. code-block:: ipython
+
+  Python 3.6.2 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06)
+  Type 'copyright', 'credits' or 'license' for more information
+  IPython 6.1.0 -- An enhanced Interactive Python. Type '?' for help.
+
+  In [1]:
+
 
 git
 ----
 
-git is a source code version control system. It is not strickly related to Python, but it (or a similar system) is a critical tool for software development in general, and it is very widely used in the Python community. We will be using it, along with the gitHub service, in the program to hand in assignments and support code review.
+git is a source code version control system. It is not strictly related to Python, but it (or a similar system) is a critical tool for software development in general, and it is very widely used in the Python community. We will be using it, along with the gitHub service, in the program to hand in assignments and support code review.
 
 You need a git client -- the gitHub GUI client may be nice -- I honestly don't know, but we will be using the command line client in class.
 
@@ -132,13 +139,13 @@ Is a big download and install, but has everything you need out of the box.
 
 NOTE: if you get a warning like:
 
-"... can't be opend because it is from an untrusted developer"
+"... can't be opened because it is from an untrusted developer"
 
 you'll need to go to  system preferences:
 
   "Security and Privacy"
 
-  Then check the box saying "Open Anyway". Or maybe check the box saying you can install untrused pacakges -- depends on the OS-X version.
+  Then check the box saying "Open Anyway". Or maybe check the box saying you can install untrusted packages -- depends on the OS-X version.
 
 This one:
 
@@ -157,7 +164,73 @@ After either of these is installed, the ``git`` command should work:
 .. code-block:: bash
 
   $ git --version
-  git version 1.9.5 (Apple Git-50.3)
+  git version 2.11.0 (Apple Git-81)
+
+Testing it out
+--------------
+
+To be ready for the program, you need to have:
+ - python
+ - pip
+ - iPython
+ - git
+
+All available from the command line.
+
+To try it out, you should be able to run all of these commands, and get something like the following results:
+
+(recall that you can get out of the python or iPython command lines with ``ctrl+D``)
+
+For Python:
+
+.. code-block:: bash
+
+  MacBook-Pro:PythonCertDevel Chris$ python
+  Python 3.6.2 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06)
+  [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+  Type "help", "copyright", "credits" or "license" for more information.
+  >>> ^D
+
+For iPython:
+
+.. code-block:: bash
+
+  MacBook-Pro:PythonCertDevel Chris$ ipython
+  Python 3.6.2 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06)
+  Type 'copyright', 'credits' or 'license' for more information
+  IPython 6.1.0 -- An enhanced Interactive Python. Type '?' for help.
+
+  In [1]:
+
+  Do you really want to exit ([y]/n)? y
+
+For pip:
+
+.. code-block:: bash
+
+  MacBook-Pro:PythonCertDevel Chris$ python -m pip --version
+  pip 9.0.1 from /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages (python 3.6)
+
+For git:
+
+.. code-block:: bash
+
+  MacBook-Pro:PythonCertDevel Chris$ git --version
+  git version 2.11.0 (Apple Git-81)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

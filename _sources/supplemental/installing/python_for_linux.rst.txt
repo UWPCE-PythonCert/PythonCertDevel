@@ -12,7 +12,9 @@ Debian and Related Distros (Ubuntu, Linux Mint)
 Python
 -------
 
-Debian distros already have the stable python2 and python3 releases preinstalled [`1 <Debian Wiki>`_]. Try the following commands:
+Debian distros already have the stable python2 and python3 releases preinstalled (`Debian Wiki <https://wiki.debian.org/Python>`_).
+
+Try the following commands:
 
 .. code-block:: bash
 
@@ -54,7 +56,7 @@ If you want to make ``python3.5`` the default version then add the line ``alias 
 
   $ # after the change
   $ python
-  Python 3.4.3 (default, March 26 2015, 15:33:32)
+  Python 3.5.2 (default, March 26 2015, 15:33:32)
   [GCC 4.9.2 on linux]
   >>>
 
@@ -75,14 +77,6 @@ Terminal
 Every Linux box has a terminal emulator -- find and use it.
 
 
-git
-----
-
-Git is likely to be there on your system already, but if not:
-
-.. code-block:: bash
-
-    $ sudo apt-get install git
 
 pip
 ---
@@ -137,7 +131,14 @@ You should now be able to run ``iPython``::
   help      -> Python's own help system.
   object?   -> Details about 'object', use 'object??' for extra details.
 
+git
+----
 
+Git is likely to be there on your system already, but if not:
+
+.. code-block:: bash
+
+    $ sudo apt-get install git
 
 ==================================================
 Fedora and Red Hat Related Distros (CentOS)
@@ -264,13 +265,15 @@ You should now be able to run ``iPython``::
 
 
 Footnotes:
-===========
+==========
 
 Debian Wiki
-=============
-	https://wiki.debian.org/Python
+===========
+
+https://wiki.debian.org/Python
 
 Fedora Wiki
 =============
-	https://fedoraproject.org/wiki/Packaging:Python
+
+https://fedoraproject.org/wiki/Packaging:Python
 

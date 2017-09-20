@@ -1,8 +1,8 @@
 .. _language_topics:
 
-*******************************
-Specific Python Language Topics
-*******************************
+**********************
+Python Language Topics
+**********************
 
 The Python Glossary:
 ====================
@@ -52,6 +52,15 @@ Raymond Hettinger's PyCon2015 talk: "Super Considered Super"
 
 https://youtu.be/EiOglTERPEo
 
+and the original blog post:
+
+`Super Considered Super <https://rhettinger.wordpress.com/2011/05/26/super-considered-super/>`_
+
+Which was in response to this original post:
+
+`Super Considered Harmful <https://fuhm.net/super-harmful/>`_
+
+
 Concurrency
 ===========
 
@@ -68,6 +77,8 @@ Threading and GUI programming:
 
 https://www.blog.pythonlibrary.org/2013/06/27/wxpython-how-to-communicate-with-your-gui-via-sockets/
 
+Understanding the GLobal Interpeter Lock:
+`"Groc the GIL:"<https://opensource.com/article/17/4/grok-gil>`_
 
 Asynchronous Programming
 ------------------------
@@ -103,7 +114,17 @@ Python Concurrency From the Ground Up: LIVE!
 
 http://pyvideo.org/pycon-us-2015/python-concurrency-from-the-ground-up-live.html
 
+logging
+-------
 
+`A guide to logging in Python<https://opensource.com/article/17/9/python-logging>`_
+
+Corners of Python
+=================
+
+This is a nice collection of little bits of Python that may be surprising:
+
+`WTF Python?<https://github.com/satwikkansal/wtfpython>`_
 
 
 
