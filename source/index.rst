@@ -76,8 +76,8 @@ Exercises
     exercises/string_formatting.rst
     exercises/trapezoid.rst
 
-Homework
-========
+Class Schedule
+==============
 
 .. toctree::
     :maxdepth: 1
@@ -98,10 +98,6 @@ Supplemental Materials
     :maxdepth: 1
 
     supplemental/HowToRunAPythonFile
-    supplemental/python_for_linux
-    supplemental/python_for_mac
-    supplemental/python_for_windows
-    supplemental/Vagrant
 
 .. toctree::
     :maxdepth: 2

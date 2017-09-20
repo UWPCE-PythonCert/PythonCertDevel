@@ -1,5 +1,5 @@
-Homework Session01
-==================
+Session01
+=========
 
 Tasks and reading by next week
 
