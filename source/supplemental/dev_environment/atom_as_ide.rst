@@ -37,11 +37,9 @@ Go to the Atom website_.
 
 .. _website: https://atom.io/
 
-Windows: on the main page, click the big red button to
-download the installer, then run the installer.
+On the main page, click the big red button to download the installer, then run the installer.
 
-Other platforms: on the main page, below the big red button, click Other Platforms and find
-the installer for your operating system.
+If it is not offering the correct platform: on the main page, below the big red button, click Other Platforms and find the installer for your operating system.
 
 If you already have Atom installed, but want to check for a newer version, go to
 ``Help`` -> ``Check for Update``.
@@ -95,11 +93,11 @@ you can open it via ``Help`` -> ``Welcome Guide``.
 
 Keyboard shortcuts are specified in the packages menus if available.
 
-The Useful Packages presented below are mostly one option of many.
+The Useful Packages presented below are only a few options of many.
 
 
 Useful Packages
-==============
+===============
 
 Running Scripts
 ---------------
