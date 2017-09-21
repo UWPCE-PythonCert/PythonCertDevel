@@ -1,23 +1,17 @@
-Session01
-=========
+#########
+Session 1
+#########
 
-Tasks and reading by next week
+Intro to the class
 
+Pre-class prep
+==============
 
-Task 1
-------
+Get your Environment set up!
 
-Make sure you have a working development environment.
+**Install Python**
 
-**Linux:** ::ref:`python_for_linux`
-
-**OS-X:** ::ref:`python_for_mac`
-
-**Windows:** ::ref:`python_for_windows`
-
-
-Task 2
-------
+:ref:`installing_python`
 
 **Set Up a Great Dev Environment**
 
@@ -29,61 +23,27 @@ Command Line (::ref:`shell_customization`) for good development support.
 Make sure you've got your editor set up productively -- at the very very
 least, make sure it does Python indentation and syntax coloring well.
 
-.. nextslide::
-
-**Advanced Editor Setup:**
-
-If you are using SublimeText, here are some notes to make it super-nifty:
-
-::ref:`sublime_as_ide`
-
-At the end, your editor should support tab completion and pep8 and pyflakes
-linting.
-
-If you are not using SublimeText, look for plugins that accomplish the same
-goals for your own editor.  If none are available, please consider a change of
-editor.
+:ref:`setting_up_dev_environment`
 
 
-Task 3
-------
+In-class Activities
+===================
 
-**Python Pushups**
+Introduction to the class and each-other.
 
-To get a bit of exercise solving some puzzles with Python, work on the Python
-exercises at "Coding Bat": http://codingbat.com/python
+Setting up the class git repo
 
-There are 8 sets of puzzles. Do as many as you can, but try to at least
-get all the "Warmups" done.
+Quickie Python Introduction
+
+A few exercises: :ref:`python_pushups`
 
 
-Task 4
-------
+Post-class Activites
+====================
 
-**Explore Errors**
+Finish the Excercises
 
-* Create a new directory in your working dir for the class::
-
-  $ mkdir session01
-  $ cd session01
-
-* Add a new file to it called ``break_me.py``
-
-* In the ``break_me.py`` file write four simple Python functions:
-
-  * Each function, when called, should cause an exception to happen
-
-  * Each function should result in one of the four common exceptions from our
-    lecture.
-
-  * for review: ``NameError``, ``TypeError``, ``SyntaxError``, ``AttributeError``
-
-(hint -- the interpreter will quit when it hits a Exception -- so you can comment out all but the one you are testing at the moment)
-
-  * Use the Python standard library reference on `Built In Exceptions`_ as a
-    reference
-
-.. _Built In Exceptions: https://docs.python.org/3/library/exceptions.html
+Finish getting your environment set up
 
 
 Reading, etc.

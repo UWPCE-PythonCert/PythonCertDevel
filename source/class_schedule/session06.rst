@@ -1,5 +1,5 @@
-Homework Session06
-==================
+Session 6
+=========
 
 .. rst-class:: left
 

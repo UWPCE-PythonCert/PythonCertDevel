@@ -173,13 +173,15 @@ If not, we recommend ``SublimeText``:
 
 http://www.sublimetext.com/
 
-(Use version 3, even though it's "beta")
+Use version 3.
 
 http://uwpce-pythoncert.github.io/PythonResources/DevEnvironment/sublime_as_ide.html
 
 "Atom" is another good open source option.
 
-And, of course, vi or Emacs on Linux, if you are familiar with those.
+https://atom.io/
+
+And, of course, vim or Emacs on Linux, if you are familiar with those.
 
 Why No IDE?
 -----------
@@ -193,10 +195,12 @@ Setting up IDEs to work with different projects can be challenging and time-cons
 Particularly when you are first learning, you don't want too much done for you.
 
 
-Why No IDE?
------------
+Why Not an IDE?
+---------------
 
-That said... go get the educational edition of PyCharm:
+That said ...
+
+You may want to go get the educational edition of PyCharm:
 
 https://www.jetbrains.com/pycharm-edu/
 

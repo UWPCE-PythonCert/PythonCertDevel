@@ -20,7 +20,7 @@ But for basic use, the installer from python.org is the way to go, and that is w
 
 https://www.python.org/downloads/
 
-You want the installer for Python 3.6.2 -- 64 bit, though if you have a 32 bit sytem, you can get that. There is essentially no difference for the purposes of this course.
+You want the installer for Python 3.x -- probably 64 bit, though if you have a 32 bit system, you can get that. There is essentially no difference for the purposes of this course.
 
 Double click and install.
 
@@ -32,7 +32,7 @@ If you are confident in your use of the "DOS Box" or "powershell", command lines
 
 From now on, if you hear the terms 'bash', 'shell' or 'terminal', know that this is the application that is being referred to.
 
-When you install Git Bash, you are installing git (and a git gui) as well, thus killing two birds with one stone, metaphorically speaking.
+When you install Git Bash, you are installing git (and a git gui) as well, thus killing two birds with one stone!
 
 https://git-for-windows.github.io/
 

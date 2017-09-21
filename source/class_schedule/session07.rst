@@ -1,5 +1,5 @@
-Homework Session07
-==================
+Session 7
+=========
 
 The Art of Subclassing
 ----------------------

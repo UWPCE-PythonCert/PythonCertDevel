@@ -1,3 +1,6 @@
+.. _installing_python:
+
+
 ================================
 Installing Python and core tools
 ================================
