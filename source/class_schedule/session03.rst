@@ -1,5 +1,5 @@
-Homework Session03
-==================
+Session 3
+=========
 
 Task 1
 ------

@@ -1,3 +1,5 @@
+.. _setting_up_dev_environment:
+
 ===============================================
 Setting Up A Development Environment For Python
 ===============================================

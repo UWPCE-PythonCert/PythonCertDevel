@@ -17,7 +17,9 @@ Class Schedule
     class_schedule/session05
     class_schedule/session06
     class_schedule/session07
+    class_schedule/session08
     class_schedule/session09
+    class_schedule/session10
 
 Modules
 =======
