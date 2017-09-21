@@ -68,6 +68,27 @@ everything you can do. You can also watch a Getting Started video_.
 .. _Manual: http://flight-manual.atom.io/
 .. _video: https://www.youtube.com/watch?v=U5POoGSrtGg
 
+Atom has a configuration file which you can modify called config.cson.
+Access it via File --> Config...
+
+.. code-block:: markdown
+
+  "*":
+    core:
+      themes: [
+        "atom-dark-ui"
+        "solarized-light-syntax"
+      ]
+    editor:
+      fontSize: 19
+    "exception-reporting":
+      userId: "6e2a9c3f-7ddb-7deb-b5f7-b58f2f87ac0d"
+    "tree-view":
+      hideVcsIgnoredFiles: true
+
+Here you can quickly change the theme or font size. Some packages will require you to add configs
+or make adjustments here. Read the documentation carefully when installing packages.
+
 In general, you can extend Atom by installing packages, and then accessing their functionality from the Packages
 drop-down menu. Access the Install Packages page from the Welcome Guide page. If the Welcome Guide is not open,
 you can open it via Help --> Welcome Guide.
@@ -99,9 +120,11 @@ and so on. Autocomplete_ ships with Atom and requires no setup.
 Code Linting
 ------------
 
-To get code linting functionality in Atom, you will need to install the atom-lint_ package.
+To get code linting functionality in Atom, you will need to install a linting package
+of which there are many to choose from. linter-pylint works well, and requires minimal
+setup.
 
-.. _atom-lint: https://atom.io/packages/atom-lint
+.. _atom-lint: https://atom.io/packages/linter-pylint
 
 White Space Management
 ----------------------
