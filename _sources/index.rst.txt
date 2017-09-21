@@ -4,6 +4,23 @@
 Welcome to the Python Certificate Program
 #########################################
 
+Class Schedule
+==============
+
+.. toctree::
+    :maxdepth: 1
+
+    class_schedule/session01
+    class_schedule/session02
+    class_schedule/session03
+    class_schedule/session04
+    class_schedule/session05
+    class_schedule/session06
+    class_schedule/session07
+    class_schedule/session08
+    class_schedule/session09
+    class_schedule/session10
+
 Modules
 =======
 
@@ -55,6 +72,7 @@ Exercises
 .. toctree::
     :maxdepth: 1
 
+    exercises/python_pushups.rst
     exercises/args_kwargs_lab.rst
     exercises/circle_class.rst
     exercises/dict_lab.rst
@@ -76,20 +94,6 @@ Exercises
     exercises/string_formatting.rst
     exercises/trapezoid.rst
 
-Class Schedule
-==============
-
-.. toctree::
-    :maxdepth: 1
-
-    homework/session01
-    homework/session02
-    homework/session03
-    homework/session04
-    homework/session05
-    homework/session06
-    homework/session07
-    homework/session09
 
 Supplemental Materials
 ======================

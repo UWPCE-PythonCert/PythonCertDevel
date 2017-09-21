@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>How to run a python file &#8212; PythonCert 4.0 documentation</title>
+    <title>Setting up Python via Vagrant/VM &#8212; PythonCert 4.0 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -24,8 +24,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Installing Python and core tools" href="installing/index.html" />
-    <link rel="prev" title="Trapezoidal Rule" href="../exercises/trapezoid.html" />
+    <link rel="prev" title="Setting up Python on Windows" href="python_for_windows.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -41,38 +40,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="how-to-run-a-python-file">
-<h1>How to run a python file<a class="headerlink" href="#how-to-run-a-python-file" title="Permalink to this headline">¶</a></h1>
-<p>A file with python code in it is a ‘module’ or ‘script’</p>
-<p>(more on the distinction later on…)</p>
-<p>It should be named with the <code class="docutils literal"><span class="pre">.py</span></code> extension: <code class="docutils literal"><span class="pre">some_name.py</span></code></p>
-<p>To run it, you have a couple options:</p>
-<ol class="arabic simple">
-<li>call python on the command line, and pass in your module name</li>
-</ol>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python the_name_of_the_script.py
-</pre></div>
-</div>
-<ol class="arabic" start="2">
-<li><p class="first">On *nix (linux, OS-X, Windows bash), you can make the file “executable”:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">the_file</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
-<p>And make sur it has a “shebang” line at the top:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
-</pre></div>
-</div>
-<p>Then you can run it directly:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">the_file</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">run <code class="docutils literal"><span class="pre">iPython</span></code>, and run it from within iPython with the <code class="docutils literal"><span class="pre">run</span></code> command</p>
-</li>
-</ol>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">run</span> <span class="n">the_file</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
+  <div class="section" id="setting-up-python-via-vagrant-vm">
+<span id="vagrant"></span><h1>Setting up Python via Vagrant/VM<a class="headerlink" href="#setting-up-python-via-vagrant-vm" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -84,15 +53,14 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../exercises/trapezoid.html" title="previous chapter">Trapezoidal Rule</a></li>
-      <li>Next: <a href="installing/index.html" title="next chapter">Installing Python and core tools</a></li>
+      <li>Previous: <a href="python_for_windows.html" title="previous chapter">Setting up Python on Windows</a></li>
   </ul></li>
 </ul>
 </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/supplemental/HowToRunAPythonFile.rst.txt"
+      <li><a href="../_sources/supplemental/Vagrant.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -118,7 +86,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
-      <a href="../_sources/supplemental/HowToRunAPythonFile.rst.txt"
+      <a href="../_sources/supplemental/Vagrant.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
