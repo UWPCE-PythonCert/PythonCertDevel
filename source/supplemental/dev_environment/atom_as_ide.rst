@@ -121,10 +121,10 @@ Code Linting
 ------------
 
 To get code linting functionality in Atom, you will need to install a linting package
-of which there are many to choose from. linter-pylint works well, and requires minimal
+of which there are many to choose from. linter-pylint_ works well, and requires minimal
 setup.
 
-.. _atom-lint: https://atom.io/packages/linter-pylint
+.. _linter-pylint: https://atom.io/packages/linter-pylint
 
 White Space Management
 ----------------------
