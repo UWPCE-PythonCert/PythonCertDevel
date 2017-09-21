@@ -21,7 +21,7 @@ But for core use, the installer from python.org is the way to go:
 
 https://www.python.org/downloads/
 
-You want the installer for Python 3.x -- probably 64 bit, though if you have a 32 bit sytem, you can get that. There is essentially no difference for the purposes of this course.
+You want the installer for Python 3.x -- probably 64 bit, though if you have a 32 bit system, you can get that. There is essentially no difference for the purposes of this course.
 
 Double click and install.
 
@@ -32,7 +32,7 @@ Terminal
 If you are confident in your use of the "DOS Box" or "powershell", feel free to use one of those. However, your life may be easier if you install "Git Bash", as then you can follow unix-style terminal instructions exactly, and do not have to translate. Also, your instructors are more experienced with Bash.
 From now on, if you hear the terms 'bash', 'shell' or 'terminal', know that this is the application that is being referred to.
 
-When you install Git Bash, you are installing git (and a git gui) as well, thus killing two birds with one stone, metaphorically speaking.
+When you install Git Bash, you are installing git (and a git gui) as well, thus killing two birds with one stone!
 
 https://git-for-windows.github.io/
 
@@ -42,11 +42,11 @@ http://www.computerhope.com/issues/ch000549.htm
 
 Based on the subversion of Python you will want to add something like:
 
-``C:\Python34``
+``C:\Python36``
 
 and
 
-``C:\Python34\Scripts``
+``C:\Python36\Scripts``
 
 to ``PATH``
 
@@ -83,17 +83,12 @@ One extra package we are going to use in class is ``iPython``::
 You should now be able to run ``iPython`` from the git bash shell::
 
     $ ipython
-	Python 2.7.8 (v2.7.8:ee879c0ffa11, Jun 29 2014, 21:07:35)
-	Type "copyright", "credits" or "license" for more information.
+    Python 3.6.2 (v3.6.2:69c0db5, Mar 21 2017, 18:41:36) [MSC v.1900 64 bit (AMD64)]
 
-	IPython 2.0.0 -- An enhanced Interactive Python.
-	?         -> Introduction and overview of IPython's features.
-	%quickref -> Quick reference.
-	help      -> Python's own help system.
-	object?   -> Details about 'object', use 'object??' for extra details.
+    Type 'copyright', 'credits' or 'license' for more information
+    IPython 6.1.0 -- An enhanced Interactive Python. Type '?' for help.
+
 
 (or from the DOS box or PowerShell prompt)
 
 We will use this as our default python interpreter.
-
-
