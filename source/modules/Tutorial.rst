@@ -105,7 +105,7 @@ If this is *NOT* what you got then something went wrong. Some things to check:
 
  - Did you save the file?
  - Is your command prompt "in" the same directory as the file?
-   - you can check this by typing ``ls`` on *nix, and ``dir`` on Windows, to see what files are in the dir that the command prompt is in.
+   - you can check this by typing ``ls`` on \*nix, and ``dir`` on Windows, to see what files are in the dir that the command prompt is in.
  - Did you type *exactly* the same line as above?
 
 What did you just do?
@@ -255,7 +255,39 @@ names can (and generally should) be long and descriptive, and can contain letter
   rectangle_height = 23
   rectangle_area = rectangle_width * rectangle_height
 
+Comments
+--------
 
+Try running this code:
+
+.. code-block:: python
+
+    print("this")
+    # print ("that")
+    print("the other")
+
+What does it print?
+
+"that" didn't print because the "#" symbol (the hash) tells python not to run any code after it on that line.
+
+How about this?
+
+.. code-block:: python
+
+    print("this")
+    print ("that")  I think we need this line too
+    print("the other")
+
+And this?
+
+.. code-block:: python
+
+    # Here we are printing useless stuff:
+    print("this")
+    print ("that")  # I think we need this line too
+    print("the other")
+
+comments can come after running code on a line.
 
 
 
