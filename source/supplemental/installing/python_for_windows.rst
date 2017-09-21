@@ -44,11 +44,11 @@ http://www.computerhope.com/issues/ch000549.htm
 
 You will want to add:
 
-``C:\Python35``
+``C:\Python36``
 
 and
 
-``C:\Python35\Scripts``
+``C:\Python36\Scripts``
 
 to ``PATH``
 
