@@ -44,7 +44,7 @@ Other platforms: on the main page, below the big red button, click Other Platfor
 the installer for your operating system.
 
 If you already have Atom installed, but want to check for a newer version, go to
-Help --> Check for Update.
+``Help`` -> ``Check for Update``.
 
 
 Basic Settings
@@ -69,7 +69,7 @@ everything you can do. You can also watch a Getting Started video_.
 .. _video: https://www.youtube.com/watch?v=U5POoGSrtGg
 
 Atom has a configuration file which you can modify called config.cson.
-Access it via File --> Config...
+Access it via ``File`` -> ``Config...``
 
 .. code-block:: markdown
 
@@ -91,7 +91,7 @@ or make adjustments here. Read the documentation carefully when installing packa
 
 In general, you can extend Atom by installing packages, and then accessing their functionality from the Packages
 drop-down menu. Access the Install Packages page from the Welcome Guide page. If the Welcome Guide is not open,
-you can open it via Help --> Welcome Guide.
+you can open it via ``Help`` -> ``Welcome Guide``.
 
 Keyboard shortcuts are specified in the packages menus if available.
 
@@ -133,7 +133,7 @@ Atom knows when you are writing Python and helps you out by dealing with spaces 
 in the same way. When in a Python file, if you type 4 spaces, then hit delete, you are
 taken back a tab.
 
-The Whitespace_ package ships with Atom and requires no setup. Under the Packages --> Whitespace menu,
+The Whitespace_ package ships with Atom and requires no setup. Under the ``Packages`` -> ``Whitespace`` menu,
 you will find tools to turn all tabs into spaces, all spaces into tabs, among other whitespace-related options.
 
 .. _Whitespace: https://atom.io/packages/whitespace
@@ -142,6 +142,6 @@ Debugging
 ---------
 
 To use a Python debugger in Atom, you will need to install the python-debugger_ package. Once installed, turn on the
-debugger by going to Packages --> python-debugger --> Toggle.
+debugger by going to ``Packages`` -> ``python-debugger`` -> ``Toggle``.
 
 .. _python-debugger: https://atom.io/packages/python-debugger
