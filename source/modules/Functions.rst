@@ -44,7 +44,7 @@ Functions can take more than a single argument.
     def add(x, y, z):
     	return x + y + z
 
-Functions can have defaults values for arguments so that the caller can neglect to specify certain arguments yet get reasonable defaults.
+Functions can have defaults values for arguments so that the caller can neglect to specify certain arguments and yet get reasonable defaults.
 
 .. code-block:: ipython
 
@@ -61,19 +61,41 @@ Functions can have defaults values for arguments so that the caller can neglect 
 	In [15]: add(3, 2, 1)
 	Out[15]: 6
 
+We snuck in an interesting and usefule feature of functions in Python: key word arguments which are often called kwargs for short. The second and third arguments to our function above have names. The first named or key word argument is ``y`` and the second is ``z``. This allows the caller to specify them by name rather than by position so that they can be called in any order.
 
+.. code-block:: ipython
+
+	In [16]: add(0, z=1, y=2)
+	Out[16]: 3
+
+Kwargs also allow the caller to skip unneeded arguments and rely on their defaults.
+
+.. code-block:: ipython
+
+	In [17]: add(0, z=1)
+	Out[17]: 1
+
+Note however, that positional arguments cannot be skipped. In this simple case we have only one positional argument ``x`` which Python will not permit us to ignore.
+
+.. code-block:: ipython
+
+    In [18]: add(y=2, z=3)
+    -------------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call     last)
+    <ipython-input-18-5b53a9942d6b> in <module>()
+    ----> 1 add(y=2, z=3)
+
+    TypeError: add() missing 1 required positional argument: 'x'
 
 
 Return Values
 -------------
-
 
 Arity and Function Signatures
 -----------------------------
 
 Scope
 -----
-
 
 Related Topics
 ==============
