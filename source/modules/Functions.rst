@@ -1,13 +1,41 @@
 Functions
 =========
 
-TODO: Wikipedia reference
+We have seen some of the building blocks of programs such as basic data structures, conditional flow control statements like ``if`` and looping constructs such as ``while`` and ``for``. We can do quite a lot with these constructs alone.
 
-Let's start with high shool math. As you will recall, functions take arguments and return a value. There is a strict mathematical definition, indeed the one that you will find in the Wikipedia reference. Let's take a look at that.
+.. code-block:: python
 
-....
+    def addOne(x):
+        return x + 1
 
-So functions take arguments and return a single value, and for a given set of arguments the same value is always returnd.
 
-Functions in Python start here, and indeed when programming according to the Functional Programming paradigm you deliberately avoid going much beyond this definition, yet Python functions
+.. code-block:: python
+
+    def fun(x, y=None):
+        if y is None:
+            do_something_different
+        go_on_here
+
+
+
+Arguments
+---------
+
+
+Return Values
+-------------
+
+
+Arity and Function Signatures
+-----------------------------
+
+
+
+Functions within Functions
+--------------------------
+
+Scope
+-----
+
+
 
