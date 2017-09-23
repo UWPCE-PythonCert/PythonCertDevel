@@ -59,6 +59,8 @@ Modules
 .. toctree::
     :maxdepth: 1
 
+    modules/Git
+    modules/GitWorkflow
     modules/Tutorial
     modules/PythonOverview
     modules/EnvironmentOverview
