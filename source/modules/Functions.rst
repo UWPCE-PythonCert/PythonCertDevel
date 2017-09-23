@@ -46,20 +46,20 @@ Functions can take more than a single argument.
 
 Functions can have defaults values for arguments so that the caller can neglect to specify certain arguments yet get reasonable defaults.
 
-.. code-block:: python
+.. code-block:: ipython
 
-In [12]: def add(x, y=0, z=0):
-    ...:     return x + y + z
-    ...:
+	In [12]: def add(x, y=0, z=0):
+	    ...:     return x + y + z
+	    ...:
 
-In [13]: add(3)
-Out[13]: 3
+	In [13]: add(3)
+	Out[13]: 3
 
-In [14]: add(3, 2)
-Out[14]: 5
+	In [14]: add(3, 2)
+	Out[14]: 5
 
-In [15]: add(3, 2, 1)
-Out[15]: 6
+	In [15]: add(3, 2, 1)
+	Out[15]: 6
 
 
 
