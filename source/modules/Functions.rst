@@ -7,16 +7,16 @@ Take a moment to think about what your programs will look like using only these 
 
 Using only the basic building blocks you start at the top of your program and work your way to the bottom. You likely create a few symbol definitions early on, perhaps set some of them based on command line inputs. From there you might have an ``if`` statement that conditionally executes some code block rather than some other code blok. Beyond that perhaps you iterate over a list with a ``for`` loop. Maybe you load data from a database into a list of tuples and iterate over those, printing to the console the interesting bits. At the end it might be nice to print 'Done!'
 
-Think about this in its general form. Where does execution begin and where does it end? What happens if you find yourself repeating the same code, the same series of statments, in several ``while`` or ``for`` loops. What happens if you need to change the code in one of the loops, say in response to a change in the fields returned from your database, yet forget to make a change the corresponding code in all of the loops?
-
-
-
-
-
 .. code-block:: python
 
+	print("Begin!")
+
+
 	''' docstring placeholder '''
-	pass
+	print("Done!")
+
+Think about this in its general form. Where does execution begin and where does it end? What happens if you find yourself repeating the same code, the same series of statments, in several ``while`` or ``for`` loops. What happens if you need to change the code in one of the loops, say in response to a change in the fields returned from your database, yet forget to make a change the corresponding code in all of the loops?
+
 
 .. code-block:: python
 
