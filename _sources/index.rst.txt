@@ -7,19 +7,51 @@ Welcome to the Python Certificate Program
 Class Schedule
 ==============
 
+Orientation
+-----------
 .. toctree::
     :maxdepth: 1
 
-    class_schedule/session01
-    class_schedule/session02
-    class_schedule/session03
-    class_schedule/session04
-    class_schedule/session05
-    class_schedule/session06
-    class_schedule/session07
-    class_schedule/session08
-    class_schedule/session09
-    class_schedule/session10
+    class_schedule/orientation
+
+
+First Quarter: Programming in Python
+------------------------------------
+
+.. toctree::
+    :maxdepth: 1
+
+    class_schedule/session_1_01
+    class_schedule/session_1_02
+    class_schedule/session_1_03
+    class_schedule/session_1_04
+    class_schedule/session_1_05
+    class_schedule/session_1_06
+    class_schedule/session_1_07
+    class_schedule/session_1_08
+    class_schedule/session_1_09
+    class_schedule/session_1_10
+
+Second Quarter: Advanced Programming in Python
+----------------------------------------------
+
+.. toctree::
+    :maxdepth: 1
+
+    class_schedule/session_2_01
+..    class_schedule/session_2_02
+..    class_schedule/session_2_02
+
+Third Quarter: Internet Programming with Python
+-----------------------------------------------
+
+.. toctree::
+    :maxdepth: 1
+
+    class_schedule/session_3_01
+..    class_schedule/session_3_02
+..    class_schedule/session_3_02
+
 
 Modules
 =======
