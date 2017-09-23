@@ -21,7 +21,7 @@ You can be successful in the program as long as you have the above. If you don't
 Platforms
 ---------
 
-Python is a very platform independent system, it can run on all major Operating systems, including even micro controllers. It is most commonly used in production on Windows, Linux or OS-X systems.
+Python is a very platform independent system, it can run on all major operating systems, including even micro controllers. It is most commonly used in production on Windows, Linux or OS-X systems.
 
 For this program, we feel it is best for users to work in an environment in which they are comfortable, and which they will ultimately need to do production work.
 
@@ -56,7 +56,7 @@ There are three basic elements to your environment when working with Python:
 * The Command Line
 * The Interpreter
 * The Editor
-* The source code revision control system
+* The source code version control system
 
 Some folks use an Integrated Development Environment (IDE), which combines some or all of these functions. For this class, we don't recommend using an IDE, because while it can makes some things easier, it also hides complication that is good to understand.
 
@@ -79,6 +79,8 @@ In order to be productive in this program, you need to be able to do the followi
 If you are not set up and comfortable with doing all that, read and follow these instructions:
 
 :ref:`installing_python`
+
+Then come back and follow the rest of this review.
 
 The Command Line (cli)
 ======================
@@ -109,13 +111,13 @@ Or, on Windows 10, look into the "bash shell for Windows" otherwise known as the
 OS-X
 ----
 
-OS-X comes out of teh box with a bash command line. YOu can access it by running the "terminal" application, which you can find under:
+OS-X comes out of the box with a bash command line. You can access it by running the "Terminal" application, which you can find under:
 
 Applications => Utilities => Terminal.app
 
 Drag and Drop it into the dock for easy access.
 
-The Terminal app can be interfagred with teh finder, makeing it easy to open it up with teh working dir set to a dir in teh finder:
+The Terminal app can be interfaced with the finder, making it easy to open it up with the working dir set to the current folder in the finder:
 
 See: `launch an OS-X terminal in a folder <https://lifehacker.com/launch-an-os-x-terminal-window-from-a-specific-folder-1466745514>`_
 
@@ -124,7 +126,7 @@ for how to set that up.
 Linux
 -----
 
-On Linux, the terminal is usually very accessible -- each Desktop system has a different way to access it -- figure out how on yours.
+On Linux, the terminal is usually very accessible -- each Desktop System has a different way to access it -- figure out how on your machine.
 
 The Python Interpreter
 ======================
