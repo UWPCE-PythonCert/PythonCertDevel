@@ -58,8 +58,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'PythonCert'
-copyright = '2017, Christopher Barker, Cris Ewing, Maria McKinley, Rick Riehle'
-author = 'Christopher Barker, Cris Ewing, Maria McKinley, Rick Riehle'
+copyright = '2017, Christopher Barker, Cris Ewing, Maria McKinley, Rick Riehle, Christy Heaton, Joseph Schilz'
+author = 'Christopher Barker, Cris Ewing, Maria McKinley, Rick Riehle, Christy Heaton, Joseph Schilz'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
