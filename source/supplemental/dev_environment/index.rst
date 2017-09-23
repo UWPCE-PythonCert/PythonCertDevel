@@ -11,17 +11,17 @@ Minimal Setup
 
 Although it is OK to use different tools, there are some requirements to successfully do the work the program requires:
 
-1) cPython version 3.6.*
-1) A way to edit python files (Programmers Text Editor)
-1) A way to run your code -- command line, IDE, etc.
-1) A way to use the "git" source code version control system
+#. cPython version 3.6.*
+#. A way to edit python files (Programmers Text Editor)
+#. A way to run your code -- command line, IDE, etc.
+#. A way to use the "git" source code version control system
 
 You can be successful in the program as long as you have the above. If you don't already have a setup that fulfills those requirements -- read on.
 
 Platforms
 ---------
 
-Python is a very platform independent system, it can run on all major Operating systems, including even micro controllers. It is most commonly used in production on Windows, Linux or OS-X systems.
+Python is a very platform independent system, it can run on all major operating systems, including even micro controllers. It is most commonly used in production on Windows, Linux or OS-X systems.
 
 For this program, we feel it is best for users to work in an environment in which they are comfortable, and which they will ultimately need to do production work.
 
@@ -56,12 +56,34 @@ There are three basic elements to your environment when working with Python:
 * The Command Line
 * The Interpreter
 * The Editor
-* The source code revision control system
+* The source code version control system
 
 Some folks use an Integrated Development Environment (IDE), which combines some or all of these functions. For this class, we don't recommend using an IDE, because while it can makes some things easier, it also hides complication that is good to understand.
 
+Minimal Requirements
+--------------------
+
+In order to be productive in this program, you need to be able to do the following:
+
+* Manipulate files and write and save python code in files.
+    You really, really want a "real" programmer's editor for this.
+
+* Run your code with Python 3.6
+
+* Run the iPython interactive interpreter
+
+* Install new packages with pip
+
+* Use the git source code management system (with gitHub)
+
+If you are not set up and comfortable with doing all that, read and follow these instructions:
+
+:ref:`installing_python`
+
+Then come back and follow the rest of this review.
+
 The Command Line (cli)
-----------------------
+======================
 
 Having some facility on the command line is important
 
@@ -73,7 +95,13 @@ We suggest running through the **cli** tutorial at "learn code the hard way":
 
 https://learnpythonthehardway.org/python3/appendixa.html
 
-**Windows:**
+Or, for Linux and OS-X users:
+
+`Linux command line for you and me! <https://lym.readthedocs.io/en/latest/>`_
+
+
+Windows:
+--------
 
 Most of the demos in class, etc, will be done using the "bash" command line shell on OS-X. This is identical to the bash shell on Linux.
 
@@ -81,10 +109,32 @@ Windows provides the "DOS" command line, which is OK, but pretty old and limited
 
 If you are comfortable with either of these -- go for it.
 
-If not, you can use the "git Bash" shell -- which is much like the bash shell on OS-X and Linux. Or, on Windows 10, look into the "bash shell for Windows" otherwise known as the "Linux subsystem for Windows" - - more info here: :ref:`windows_bash`
+If not, you can use the "git Bash" shell -- which is much like the bash shell on OS-X and Linux.
 
-The Interpreter
----------------
+Or, on Windows 10, look into the "bash shell for Windows" otherwise known as the "Linux subsystem for Windows" - - more info here: :ref:`windows_bash`
+
+OS-X
+----
+
+OS-X comes out of the box with a bash command line. You can access it by running the "Terminal" application, which you can find under:
+
+Applications => Utilities => Terminal.app
+
+Drag and Drop it into the dock for easy access.
+
+The Terminal app can be interfaced with the finder, making it easy to open it up with the working dir set to the current folder in the finder:
+
+See: `launch an OS-X terminal in a folder <https://lifehacker.com/launch-an-os-x-terminal-window-from-a-specific-folder-1466745514>`_
+
+for how to set that up.
+
+Linux
+-----
+
+On Linux, the terminal is usually very accessible -- each Desktop System has a different way to access it -- figure out how on your machine.
+
+The Python Interpreter
+======================
 
 Python comes with a built-in interpreter.
 
@@ -120,7 +170,15 @@ Try it out:
     one string plus another
     >>>
 
-.. nextslide:: Tools in the Interpreter
+To get out of the interpreter, you can type::
+
+  exit()
+
+Or hit `ctrl+D` on Linux and OS-X or `ctrl+Z` On Windows.
+
+
+Tools in the Interpreter
+------------------------
 
 When you are in an interpreter, there are a number of tools available to
 you.
@@ -141,7 +199,6 @@ There is a help system:
 
 You can type ``q`` to exit the help viewer.
 
-.. nextslide:: Tools in the Interpreter
 
 You can also use the ``dir`` builtin to find out about the attributes of a
 given object:
@@ -161,29 +218,29 @@ given object:
 
 This allows you quite a bit of latitude in exploring what Python is.
 
-.. nextslide:: Advanced Interpreters
+Advanced Interpreters
+---------------------
 
 In addition to the built-in interpreter, there are several more advanced
 interpreters available to you.
 
 We'll be using one in this course called ``iPython``
 
-More on this soon.
-
+Some information about iPython can be found here: :ref:`ipython_resources`
 
 The Editor
-----------
+==========
 
 Typing code in an interpreter is great for exploring.
 
-But for anything "real", you'll want to save the work you are doing in a more permanent
-fashion.
+But for anything "real", you'll want to save the work you are doing in a more permanent fashion.
 
 This is where an Editor fits in.
 
-.. nextslide:: Text Editors Only
+Text Editors Only
+-----------------
 
-Any good text editor will do.
+Any good programmers text editor will do.
 
 MS Word is **not** a text editor.
 
@@ -196,18 +253,15 @@ You need a real "programmers text editor"
 A text editor saves only what it shows you, with no special formatting
 characters hidden behind the scenes.
 
-.. nextslide:: Minimum Requirements
+Minimum Requirements
+--------------------
 
 At a minimum, your editor should have:
-
-.. rst-class:: build
 
 * Syntax Colorization
 * Automatic Indentation
 
 In addition, great features to add include:
-
-.. rst-class:: build
 
 * Tab completion
 * Code linting
@@ -219,13 +273,14 @@ If not, we recommend ``SublimeText``:
 
 http://www.sublimetext.com/
 
-Use version 3.
+:ref:`sublime_as_ide`
 
-http://uwpce-pythoncert.github.io/PythonResources/DevEnvironment/sublime_as_ide.html
 
 "Atom" is another good open source option.
 
 https://atom.io/
+
+:ref:`atom_as_ide`
 
 And, of course, vim or Emacs on Linux, if you are familiar with those.
 
@@ -252,7 +307,94 @@ https://www.jetbrains.com/pycharm-edu/
 
 Which is awesome.
 
+Here are a number of pages to help you get started:
 
+Version Control System
+========================
+
+While not strictly necessary to develop code, it is a very, very good idea to manage your code in a Version Control System:
+
+https://en.wikipedia.org/wiki/Version_control
+
+This is such a critical software development practice the we use it in the program for you to mange your projects and turn in assignments, so that you can gain familiarity with the practice.
+
+git
+---
+
+git (https://en.wikipedia.org/wiki/Git) is an open-source Version Control System that has become an industry standard -- very widely used in both commercial and open-source development.
+
+We will be using git and the Web Service gitHub for collaboration in this program.
+
+Make sure you are set up to use git on your machine. If you have using a command line client, you should be able to type::
+
+  git --version
+
+and get something like this as a response::
+
+  git version 2.11.0 (Apple Git-81)
+
+Am I ready to go?
+=================
+
+To see if you have python ready to start class, try the following:
+
+Create and run a Python "program":
+----------------------------------
+
+Create a file called ``install_test.py``, with the following content:
+
+.. code-block:: python
+
+    import sys
+    print("This is my first python program")
+
+    version = sys.version_info
+
+    if version.major == 3:
+        if version.minor != 6:
+            print("You should be running version 3.6")
+        else:
+            print("You are running python3.6 -- all good!")
+    else:
+        print("You need to run Python 3!")
+        print("This is version: {}.{}".format(version.major, version.minor))
+
+Run it with your version of python. It should result in::
+
+    This is my first python program
+    You are running python3.6 -- all good!
+
+If you get something else -- figure out why and fix it!
+
+Run git
+-------
+
+You should be able to run git on the command line:
+
+.. code-block:: bash
+
+    $ git --version
+    git version 2.11.0 (Apple Git-81)
+
+It should be version >= 2
+
+iPython
+-------
+
+``iPython`` is not critical, but it is very nice. You should be able to run it with::
+
+    $ ipython
+    Python 3.6.2 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06)
+    Type 'copyright', 'credits' or 'license' for more information
+    IPython 6.1.0 -- An enhanced Interactive Python. Type '?' for help.
+
+And get something like that.
+
+``ipython`` can be quit by typing ``quit``
+
+
+Specific Documentation
+======================
 
 .. toctree::
     :maxdepth: 2

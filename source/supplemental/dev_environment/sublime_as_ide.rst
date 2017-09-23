@@ -14,6 +14,8 @@ With Sublime Text, it's possible to turn your text editor into the functional
 equivalent of a Python IDE.  The best part is you don't have to install an IDE
 to do it.
 
+http://www.sublimetext.com/
+
 Requirements
 ============
 
