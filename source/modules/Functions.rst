@@ -44,7 +44,7 @@ Functions can take more than a single argument.
     def add(x, y, z):
     	return x + y + z
 
-Functions can have defaults values for arguments so that the caller can neglect to specify certain arguments and yet get reasonable defaults.
+Functions can have default values for arguments so that the caller can neglect to specify certain arguments and yet get reasonable defaults.
 
 .. code-block:: ipython
 
