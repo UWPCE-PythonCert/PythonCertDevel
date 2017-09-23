@@ -1,3 +1,5 @@
+.. _how_to_run_a_python_file:
+
 How to run a python file
 ========================
 
