@@ -11,11 +11,18 @@ Using only the basic building blocks you start at the top of your program and wo
 
 	print("Begin!")
 
+	if something:
+		do this
+	else:
+		do that
 
-	''' docstring placeholder '''
-	print("Done!")
+	for i in range(10):
+		print(i)
+
+    print("Done!")
 
 Think about this in its general form. Where does execution begin and where does it end? What happens if you find yourself repeating the same code, the same series of statments, in several ``while`` or ``for`` loops. What happens if you need to change the code in one of the loops, say in response to a change in the fields returned from your database, yet forget to make a change the corresponding code in all of the loops?
+
 
 
 .. code-block:: python
