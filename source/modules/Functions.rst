@@ -41,11 +41,6 @@ Return Values
 Arity and Function Signatures
 -----------------------------
 
-
-
-Functions within Functions
---------------------------
-
 Scope
 -----
 
