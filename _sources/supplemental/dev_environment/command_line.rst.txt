@@ -1,3 +1,5 @@
+.. _command_line_basics:
+
 ===================
 Command line basics
 ===================
