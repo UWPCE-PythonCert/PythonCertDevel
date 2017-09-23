@@ -1,3 +1,5 @@
+.. _git:
+
 Git
 ===
 
@@ -25,7 +27,12 @@ Why Version Control?
 
    :ref: https://uwpce-pythoncert.github.io/PythonCertDevel/supplemental/dev_environment/git_overview.html
 
-Setting up git
+   There other versioning systems, such as Mercurial and Subversion, but Git is the most popular. 
+
+   It is incredibly important to learn and understand versioning control to work as a developer today, so we will be incorporating Git into our work flow.
+
+
+Setting up Git
 --------------
 
 You should have git installed on your machine and accessible from the command line. There will be a little bit of setup for git that you should only have to do once.
@@ -88,7 +95,7 @@ With git, you work with *local* repositories and *remotes* that they are connect
       origin  https://github.com/UWPCE-PythonCert/IntroPython-2017.git (push)
 
    This shows that the local repo on my machine *originated* from the one in
-   the UWPCE-PythonCert gitHub account (it shows up twice, because I there is
+   the UWPCE-PythonCert gitHub account (it shows up twice, because there is
    a shortcut for both fetch from and push to this remote)
 
 .. rst-class:: build
@@ -122,11 +129,13 @@ There will be a folder called students at the top level, and everyone will creat
 
 So, everyone will commit to this repository, and everyone will have access to everyone's code.
 
-This will make it easier to collaborate.
+This will make it easier to collaborate. Weirdly enough, collaborating is important for developing code, both for class and in the *real world*.
 
 We will do a live demo of setting up a machine for working with this repository now.
 
 The first thing we have to do is on the Github website. We will create a fork of the class repository from the ``UWPCE-PythonCert`` account on GitHub into your personal account. Please create a gitHub account if you don't have one already.
+
+Note: You do not have to use your real name to set up your git account. 
 
 .. figure:: /_static/remotes_fork.png
    :width: 50%
@@ -140,5 +149,124 @@ The next step is to make a *clone* of your fork on your own computer, which mean
    :width: 50%
    :class: center
 
-We will now set up our individual folders and include a README in this folder.
+Since you are working on a repository that you do not own, you will need to make a git shortcut to the 
+original repository, so that you can get changes made by other contributors before you start working.
 
+You can add *remotes* at will, to connect your *local* repository or to other
+copies of it in different remote locations.
+
+.. rst-class:: build
+.. container::
+
+    This allows you to grab changes made to the repository in these other
+    locations.
+
+    For our class, we will add an *upstream* remote to our local copy that points to the original copy of the material in the ``UWPCE-PythonCert`` account, and we will call it, appropriately, "upstream"
+
+    .. code-block:: bash
+
+        $ git remote add upstream https://github.com/UWPCE-PythonCert/IntroPython2015.git
+
+        $ git remote -v
+        origin  https://github.com/PythonCHB/IntroPython2015.git (fetch)
+        origin  https://github.com/PythonCHB/IntroPython2015.git (push)
+        upstream    https://github.com/UWPCE-PythonCert/IntroPython2015.git (fetch)
+        upstream    https://github.com/UWPCE-PythonCert/IntroPython2015.git (push)
+
+This should leave you in a situation that looks like this:
+
+.. figure:: /_static/remotes_upstream.png
+    :width: 50%
+    :class: center
+
+To get the updates from your new remote, you'll need first to fetch everything:
+
+.. code-block:: bash
+
+    $ git fetch --all
+    Fetching origin
+    Fetching upstream
+    ...
+
+Then you can see the branches you have locally available:
+
+.. code-block:: bash
+
+  $ git branch -a
+  * master
+    remotes/origin/HEAD -> origin/master
+    remotes/origin/master
+    remotes/upstream/master
+
+Finally, you can fetch and then merge changes from the upstream master.
+
+Start by making sure you are on your own master branch:
+
+.. code-block:: bash
+
+    $ git checkout master
+
+This is **really really** important. Take the time to ensure you are where you think you are, iow, that your origin is your own github repository and that you are working on master from that remote. 
+You can use :bash:`git remote -v` and :bash:`git branch -a` to verify.
+
+Now, fetch the upstream master branch and merge it into your master.
+You can do this in one step with:
+
+.. code-block:: bash
+
+  $ git pull upstream master
+  Updating 3239de7..9ddbdbb
+  Fast-forward
+   Examples/README.rst              |  4 ++++
+  ...
+   create mode 100644 Examples/README.rst
+  ...
+
+
+Now all the changes from *upstream* are present in your local clone.
+You should do this pull everytime you start to work on code.
+
+In order to preserve the changes made by others in your fork on GitHub, you'll have to push:
+
+.. code-block:: bash
+
+    $ git status
+    On branch master
+    Your branch is ahead of 'origin/master' by 10 commits.
+      (use "git push" to publish your local commits)
+    $ git push origin master
+    Counting objects: 44, done.
+    ...
+    $
+
+(A simple ``git push`` will usually do the right thing)
+
+You are now set up to work with this repository, and the next steps will be similar every time you work on code.
+
+:ref:`git_workflow`
+
+Additional Notes:
+
+Because of the way we have set up the class, you will be able
+to see all work submitted to us from everyone in the class in
+the students directory on your machine. This is not a bad thing.
+And the files tend to be small.
+
+We encourage sharing of knowledge in this class. Helping your
+fellow students will also help you to better understand. Share
+your code, and get use to giving/receiving feedback on how to
+improve your code, if you are not already.
+
+Each repository will have a directory called .git that is normally 
+not seen. This direcotry is how git keeps track of everything. Leave it alone. :)
+
+Please do not set up a git repository inside another git 
+repository, this can lead to heartache. 
+
+Absolutely, do NOT set up a git repository in your home root directory.
+This will put everything in your home directory up on GitHub, and you do not want that.
+
+Setting up new repositories can be confusing because when you clone a git repository it creates
+the directory that will be the repository, but when you are creating a new
+repository, you need to first be IN the directory in which you want the 
+repository to rooted. Please ask if this does not make sense.
