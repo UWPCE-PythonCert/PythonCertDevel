@@ -1,5 +1,5 @@
-Homework Session09
-==================
+Session 9
+=========
 
 Properties, Class Methods, Static Methods: The Circle Exercise
 

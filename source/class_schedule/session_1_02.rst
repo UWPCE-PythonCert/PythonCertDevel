@@ -1,5 +1,5 @@
-Homework Session02
-==================
+Session 2
+=========
 
 Review and/or finish reading these class notes.
 

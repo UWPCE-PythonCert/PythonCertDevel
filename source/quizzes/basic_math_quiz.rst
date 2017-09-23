@@ -77,12 +77,12 @@ What is the result of the following expressions:
 ..  correct answer: d
 
 
--) ````
-  a) ````
-  b) ````
-  c) ````
-  d) ````
-..  correct answer:
+-)  (0.1 + 0.2) + 0.3 == 0.1 + (0.2 + 0.3)
+  a) ``0.6``
+  b) ``False``
+  c) ``True``
+  d) ``0.0``
+..  correct answer: b
 
 -) ````
   a) ````

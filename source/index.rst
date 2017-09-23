@@ -4,6 +4,55 @@
 Welcome to the Python Certificate Program
 #########################################
 
+Class Schedule
+==============
+
+Orientation
+-----------
+.. toctree::
+    :maxdepth: 1
+
+    class_schedule/orientation
+
+
+First Quarter: Programming in Python
+------------------------------------
+
+.. toctree::
+    :maxdepth: 1
+
+    class_schedule/session_1_01
+    class_schedule/session_1_02
+    class_schedule/session_1_03
+    class_schedule/session_1_04
+    class_schedule/session_1_05
+    class_schedule/session_1_06
+    class_schedule/session_1_07
+    class_schedule/session_1_08
+    class_schedule/session_1_09
+    class_schedule/session_1_10
+
+Second Quarter: Advanced Programming in Python
+----------------------------------------------
+
+.. toctree::
+    :maxdepth: 1
+
+    class_schedule/session_2_01
+..    class_schedule/session_2_02
+..    class_schedule/session_2_02
+
+Third Quarter: Internet Programming with Python
+-----------------------------------------------
+
+.. toctree::
+    :maxdepth: 1
+
+    class_schedule/session_3_01
+..    class_schedule/session_3_02
+..    class_schedule/session_3_02
+
+
 Modules
 =======
 
@@ -55,6 +104,7 @@ Exercises
 .. toctree::
     :maxdepth: 1
 
+    exercises/python_pushups.rst
     exercises/args_kwargs_lab.rst
     exercises/circle_class.rst
     exercises/dict_lab.rst
@@ -76,20 +126,6 @@ Exercises
     exercises/string_formatting.rst
     exercises/trapezoid.rst
 
-Class Schedule
-==============
-
-.. toctree::
-    :maxdepth: 1
-
-    homework/session01
-    homework/session02
-    homework/session03
-    homework/session04
-    homework/session05
-    homework/session06
-    homework/session07
-    homework/session09
 
 Supplemental Materials
 ======================

@@ -1,5 +1,5 @@
-Homework Session04
-==================
+Session 4
+=========
 
 Recommended Reading:
 ---------------------
