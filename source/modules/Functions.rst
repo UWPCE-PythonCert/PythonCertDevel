@@ -7,14 +7,14 @@ Take a moment to think about what your programs will look like using only these 
 
 Using only the basic building blocks you start at the top of your program and work your way to the bottom. You likely define a few variables early on. From there you might have an ``if`` statement that conditionally executes some code block rather than some other code block. Beyond that perhaps you iterate over a list with a ``for`` loop. Maybe you load data from a database into a list of tuples and iterate over those, printing to the console the interesting bits. At the end it might be nice to print 'Done!'
 
-Think about this in its general form. Where does execution begin and where does it end? What happens if you find yourself repeating the same code, the same series of statments, in several ``while`` or ``for`` loops. What happens if you need to change the code in one of the loops, say in response to a change in the fields returned from your database, yet forget to change the corresponding code in all of the loops?
+Think about this in its general form. Where does execution begin and where does it end? What happens if you find yourself repeating the same code, the same series of statements, in several ``while`` or ``for`` loops. What happens if you need to change the code in one of the loops, say in response to a change in the fields returned from your database, yet forget to change the corresponding code in all of the loops?
 
 Without a higher level construct to help organize our code it will be closer to a script than a program. Scripts are common in the automation of systems-level tasks, the type of programming used regularly by Systems Administrators and Devops Developers. To move beyond scripts we need functions.
 
 Basic Function Definition
 -------------------------
 
-The basice form of a function is a ``def`` statment, followd by the name of the function ``addOne`` followed by an argument list ``(x)`` and finally a colon, ``:``. All of this is typically on the first line of the function definition. Then within the function are all of the statements and expressions that do the work of the function ``result = x + 1`` and finally a return value ``return result``.
+The basic form of a function is a ``def`` statement, followed by the name of the function ``addOne`` followed by an argument list ``(x)`` and finally a colon, ``:``. All of this is typically on the first line of the function definition. Then within the function are all of the statements and expressions that do the work of the function ``result = x + 1`` and finally a return value ``return result``.
 
 .. code-block:: python
 
@@ -61,7 +61,7 @@ Functions can have default values for arguments so that the caller can neglect t
 	In [15]: add(3, 2, 1)
 	Out[15]: 6
 
-We snuck in an interesting and usefule feature of functions in Python: key word arguments which are often called kwargs for short. The second and third arguments to our function above have names. The first named or key word argument is ``y`` and the second is ``z``. Note that the act itself of giving default values to arguments turns them from standard positional arguments into key word arguments. This allows the caller to specify them by name rather than by position so that they can be called in any order. For instance, ``z`` can be specified before ``y``.
+We snuck in an interesting and useful feature of functions in Python: key word arguments which are often called kwargs for short. The second and third arguments to our function above have names. The first named or key word argument is ``y`` and the second is ``z``. Note that the act itself of giving default values to arguments turns them from standard positional arguments into key word arguments. This allows the caller to specify them by name rather than by position so that they can be called in any order. For instance, ``z`` can be specified before ``y``.
 
 .. code-block:: ipython
 
@@ -113,7 +113,7 @@ Interestingly, in Python functions can return more than a single value. They can
 	In [27]: type(myTwoValues)
 	Out[27]: tuple
 
-Note that the values are packeged into a tuple and thus returned as one object, each of which can be accessed accoding to their position in the tuple.
+Note that the values are packed into a tuple and thus returned as one object, each of which can be accessed according to their position in the tuple.
 
 .. code-block:: ipython
 
@@ -132,7 +132,7 @@ Note that the values are packeged into a tuple and thus returned as one object, 
 Scope
 -----
 
-Functions can carry variables that come into existance and go out of existance during the run of the function. This is known as scope. I could have as correctly said that these variables come into scope and go out of scope during the run of the function.
+Functions can carry variables that come into existence and go out of existence during the run of the function. This is known as scope. I could have as correctly said that these variables come into scope and go out of scope during the run of the function.
 
 .. code-block:: ipython
 
@@ -184,7 +184,7 @@ Python's scoping rules are such that any variables outside the function with the
 Summary
 -------
 
-Now think back to our thought experiment from when we started. How could the use of functions improve the way we construct programs? Perhaps most significantly we can now reduce code redundancy by factoring out repetitive code blocks as functions which can be called from wherever in our program they are needed. Moreove Where once we had to work strictly from the top of our program to the bottom we can now construct a series of functions that can be called from a main routine or from higher level functions making our program more readable.
+Now think back to our thought experiment from when we started. How could the use of functions improve the way we construct programs? Perhaps most significantly we can now reduce code redundancy by factoring out repetitive code blocks as functions which can be called from wherever in our program they are needed. Moreover Where once we had to work strictly from the top of our program to the bottom we can now construct a series of functions that can be called from a main routine or from higher level functions making our program more readable.
 
 Related Topics
 ==============
