@@ -61,7 +61,7 @@ Functions can have default values for arguments so that the caller can neglect t
 	In [15]: add(3, 2, 1)
 	Out[15]: 6
 
-We snuck in an interesting and usefule feature of functions in Python: key word arguments which are often called kwargs for short. The second and third arguments to our function above have names. The first named or key word argument is ``y`` and the second is ``z``. This allows the caller to specify them by name rather than by position so that they can be called in any order. For instance, ``z`` can be specified before ``y``.
+We snuck in an interesting and usefule feature of functions in Python: key word arguments which are often called kwargs for short. The second and third arguments to our function above have names. The first named or key word argument is ``y`` and the second is ``z``. Note that the act itself of giving default values to arguments turns them from standard positional arguments into key word arguments. This allows the caller to specify them by name rather than by position so that they can be called in any order. For instance, ``z`` can be specified before ``y``.
 
 .. code-block:: ipython
 
@@ -87,15 +87,55 @@ Note however, that positional arguments cannot be skipped. In this simple case w
 
     TypeError: add() missing 1 required positional argument: 'x'
 
-Functions can also take zero arguments and return nothing.
+Return Values
+-------------
 
-.. code-block:: ipython
+Functions can also take zero arguments and return nothing. Simply leave off the return statement and your function will return no value to its caller.
+
+.. code-block:: python
 
     def sayHello():
         print("Hello")
 
+Interestingly, in Python functions can return more than a single value. They can return two, three, four, or indeed an arbitrary number of values. Simply place commas between the values you plan to return.
+
+.. code-block:: ipython
+
+	In [24]: def giveMeTwoValues():
+	    ...:     return 1, "two"
+	    ...:
+
+	In [25]: myTwoValues = giveMeTwoValues()
+
+	In [26]: myTwoValues
+	Out[26]: (1, 'two')
+
+	In [27]: type(myTwoValues)
+	Out[27]: tuple
+
+Note that the values are packeged into a tuple and thus returned as one object, each of which can be accessed accoding to their position in the tuple.
+
+.. code-block:: ipython
+
+	In [28]: myTwoValues[0]
+	Out[28]: 1
+
+	In [29]: myTwoValues[1]
+	Out[29]: 'two'
+
+	In [30]: type(myTwoValues[0])
+	Out[30]: int
+
+	In [31]: type(myTwoValues[1])
+	Out[31]: str
+
 Scope
 -----
+
+Summary
+-------
+
+Now think back to our thought experiment from a few minutes ago. How could the use of functions improve the way we construct programs? Perhaps most significantly we can now reduce code redundancy by factoring out repetitive code blocks as functions which can be called from wherever in our program they are needed. Where once we had to work strictly from the top of our program to the bottom we can now construct a series of
 
 Related Topics
 ==============
