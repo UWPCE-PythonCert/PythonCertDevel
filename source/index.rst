@@ -59,38 +59,39 @@ Modules
 .. toctree::
     :maxdepth: 1
 
+    modules/AdvancedArgumentPassing
+    modules/BasicPythonSyntax
+    modules/Booleans
+    modules/Closures
+    modules/Composition
+    modules/Comprehensions
+    modules/ContextManagers
+    modules/Decorators
+    modules/DictionaryAsSwitch
+    modules/EnvironmentOverview
+    modules/FunctionalProgramming
+    modules/Functions
     modules/Git
     modules/GitWorkflow
-    modules/Tutorial
-    modules/PythonOverview
-    modules/EnvironmentOverview
     modules/IPythonIntroduction
-    modules/BasicPythonSyntax
-    modules/Py2vsPy3
-    modules/math
-    modules/Testing
-    modules/AdvancedArgumentPassing
-    modules/DictionaryAsSwitch
-    modules/ContextManagers
+    modules/IteratorsAndGenerators
+    modules/Lambda
+    modules/MapFilterReduce
+    modules/Math
+    modules/Methods
+    modules/Modules
+    modules/MultipleInheritance
     modules/ObjectOrientationOverview
-    modules/PythonClasses
-    modules/SubclassingAndInheritance
-
     modules/Properties
-    modules/StaticAndClassMethods
+    modules/Py2vsPy3
+    modules/PythonClasses
+    modules/PythonOverview
+    modules/Recursion
     modules/SpecialMethodsAndProtocols
-
-    modules/MultipleInheritance.rst
-    modules/Composition.rst
-
-    modules/MapFilterReduce.rst
-    modules/Comprehensions.rst
-    modules/Lambda.rst
-    modules/IteratorsAndGenerators.rst
-    modules/Closures.rst
-    modules/Recursion.rst
-
-    modules/Decorators
+    modules/StaticAndClassMethods
+    modules/SubclassingAndInheritance
+    modules/Testing
+    modules/Tutorial
 
 Quizzes
 =======
