@@ -132,10 +132,59 @@ Note that the values are packeged into a tuple and thus returned as one object, 
 Scope
 -----
 
+Functions can carry variables that come into existance and go out of existance during the run of the function. This is known as scope. I could have as correctly said that these variables come into scope and go out of scope during the run of the function.
+
+.. code-block:: ipython
+
+	In [1]: def my_func(x=1):
+	   ...:     a = "alpha"
+	   ...:     b = "beta"
+	   ...:     return a*x, b*x
+	   ...:
+
+	In [2]: my_func()
+	Out[2]: ('alpha', 'beta')
+
+	In [3]: my_func(2)
+	Out[3]: ('alphaalpha', 'betabeta')
+
+Variables that are defined within a function are called local variables, because they are local to the function. Note that once the function has completed executing its local variables no longer in scope.
+
+.. code-block:: ipython
+
+	In [4]: a
+	---------------------------------------------------------------------------
+	NameError                                 Traceback (most recent call last)
+	<ipython-input-4-3f786850e387> in <module>()
+	----> 1 a
+
+	NameError: name 'a' is not defined
+
+	In [5]: b
+	---------------------------------------------------------------------------
+	NameError                                 Traceback (most recent call last)
+	<ipython-input-5-89e6c98d9288> in <module>()
+	----> 1 b
+
+	NameError: name 'b' is not defined
+
+Python's scoping rules are such that any variables outside the function with the same names are masked by local variables. In other words, if ``a`` and ``b`` are defined outside the function they do not interfere with the variables inside the function.
+
+.. code-block:: ipython
+
+	In [6]: a = "apple"
+
+	In [7]: b = "banana"
+
+	In [8]: my_func(2)
+	Out[8]: ('alphaalpha', 'betabeta')
+
+``my_func`` still returns alphas and betas rather than apples and bananas.
+
 Summary
 -------
 
-Now think back to our thought experiment from a few minutes ago. How could the use of functions improve the way we construct programs? Perhaps most significantly we can now reduce code redundancy by factoring out repetitive code blocks as functions which can be called from wherever in our program they are needed. Where once we had to work strictly from the top of our program to the bottom we can now construct a series of
+Now think back to our thought experiment from when we started. How could the use of functions improve the way we construct programs? Perhaps most significantly we can now reduce code redundancy by factoring out repetitive code blocks as functions which can be called from wherever in our program they are needed. Moreove Where once we had to work strictly from the top of our program to the bottom we can now construct a series of functions that can be called from a main routine or from higher level functions making our program more readable.
 
 Related Topics
 ==============
