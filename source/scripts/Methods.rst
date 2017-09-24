@@ -1,6 +1,8 @@
 Methods
 =======
 
+With Rick Riehle                                                            ----------------                                                             
+
 TODO: Wikipedia reference
 
 It is worth refreshing on the topic of Functions before diving into Methods.

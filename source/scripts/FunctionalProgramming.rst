@@ -1,6 +1,9 @@
 Functional Programming
 ======================
 
+With Rick Riehle
+----------------
+
 Let's start with high shool math. As you will recall, functions take arguments and return a value. The strict definition can be found on Wikipedia_:
 
 .. _Wikipedia: https://en.wikipedia.org/wiki/Function_(mathematics)
