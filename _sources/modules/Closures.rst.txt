@@ -1,7 +1,12 @@
 Closures and function Currying
 ==============================
 
-Defining specialized functions on the fly
+Defining specialized functions on the fly.
+
+Functions within Functions
+--------------------------
+
+TODO: Preface this topic with basic scope rules, specifically that you can define functions within functions.  -- rriehle
 
 Closures
 --------

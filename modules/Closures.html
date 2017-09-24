@@ -24,8 +24,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Recursion" href="Recursion.html" />
-    <link rel="prev" title="Iterators and Generators" href="IteratorsAndGenerators.html" />
+    <link rel="next" title="Composition" href="Composition.html" />
+    <link rel="prev" title="Basic Python Syntax" href="BasicPythonSyntax.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -43,7 +43,11 @@
             
   <div class="section" id="closures-and-function-currying">
 <h1>Closures and function Currying<a class="headerlink" href="#closures-and-function-currying" title="Permalink to this headline">¶</a></h1>
-<p>Defining specialized functions on the fly</p>
+<p>Defining specialized functions on the fly.</p>
+<div class="section" id="functions-within-functions">
+<h2>Functions within Functions<a class="headerlink" href="#functions-within-functions" title="Permalink to this headline">¶</a></h2>
+<p>TODO: Preface this topic with basic scope rules, specifically that you can define functions within functions.  – rriehle</p>
+</div>
 <div class="section" id="closures">
 <h2>Closures<a class="headerlink" href="#closures" title="Permalink to this headline">¶</a></h2>
 <p>“Closures” and “Currying” are cool CS terms for what is really just defining functions on the fly.</p>
@@ -129,6 +133,7 @@ cube = partial(power, exponent=3)</p>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Closures and function Currying</a><ul>
+<li><a class="reference internal" href="#functions-within-functions">Functions within Functions</a></li>
 <li><a class="reference internal" href="#closures">Closures</a></li>
 <li><a class="reference internal" href="#functools-partial"><code class="docutils literal"><span class="pre">functools.partial</span></code></a></li>
 </ul>
@@ -138,8 +143,8 @@ cube = partial(power, exponent=3)</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="IteratorsAndGenerators.html" title="previous chapter">Iterators and Generators</a></li>
-      <li>Next: <a href="Recursion.html" title="next chapter">Recursion</a></li>
+      <li>Previous: <a href="BasicPythonSyntax.html" title="previous chapter">Basic Python Syntax</a></li>
+      <li>Next: <a href="Composition.html" title="next chapter">Composition</a></li>
   </ul></li>
 </ul>
 </div>
@@ -165,7 +170,7 @@ cube = partial(power, exponent=3)</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2017, Christopher Barker, Cris Ewing, Maria McKinley, Rick Riehle, Christy Heaton, Joseph Schilz.
+      &copy;2017, Christopher Barker, Cris Ewing, Christy Heaton, Maria McKinley, Rick Riehle, Joseph Schilz.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
