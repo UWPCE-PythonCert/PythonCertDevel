@@ -1,5 +1,6 @@
 Modules
 =======
 
-With Rick Riehle                                                            ----------------                                                             
+With Rick Riehle
+----------------
 

@@ -1,7 +1,8 @@
 Functions
 =========
 
-With Rick Riehle                                                            ---------------- 
+With Rick Riehle
+----------------
 
 We have seen some of the building blocks of programs such as basic data structures, conditional flow control statements like ``if`` and looping constructs such as ``while`` and ``for``. We can do quite a lot with these constructs alone.
 
@@ -63,7 +64,7 @@ Functions can have default values for arguments so that the caller can neglect t
 	In [15]: add(3, 2, 1)
 	Out[15]: 6
 
-We snuck in an interesting and useful feature of functions in Python: key word arguments which are often called kwargs for short. The second and third arguments to our function above have names. The first named or key word argument is ``y`` and the second is ``z``. Note that the act itself of giving default values to arguments turns them from standard positional arguments into key word arguments. This allows the caller to specify them by name rather than by position so that they can be called in any order. For instance, ``z`` can be specified before ``y``.
+We snuck in an interesting and useful feature of functions in Python: keyword arguments which are often called kwargs for short. The second and third arguments to our function above have names. The first named or keyword argument is ``y`` and the second is ``z``. Note that the act itself of giving default values to arguments turns them from standard positional arguments into keyword arguments. This allows the caller to specify them by name rather than by position so that they can be called in any order. For instance, ``z`` can be specified before ``y``.
 
 .. code-block:: ipython
 
