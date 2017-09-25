@@ -1,7 +1,11 @@
 .. _Vagrant:
 
-**********************************************
-Setting up Python via a Linux VM under Windows
-**********************************************
+********************************
+Setting up Python via a Linux VM
+********************************
 
-To be Filled out....
+The instructions and installation resources are maintained here:
+
+https://github.com/rriehle/uwpce-vagrant
+
+
