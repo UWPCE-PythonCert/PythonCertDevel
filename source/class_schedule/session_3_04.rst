@@ -1,5 +1,5 @@
 #########################################
-Advanced Programming in Python: Session 1
+Internet Programming in Python: Session 4
 #########################################
 
 Pre-class prep
