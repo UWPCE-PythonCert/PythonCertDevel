@@ -1,3 +1,5 @@
+.. _references:
+
 ####################################
 Resources for Specific Python Topics
 ####################################

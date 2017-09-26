@@ -173,7 +173,7 @@ A simple version of ``range()``
             else:
                 raise StopIteration
 
-(demo: :download:`iterator_1.py <../../Examples/Session09/iterator_1.py>`)
+.. (demo: :download:`iterator_1.py <../../Examples/Session09/iterator_1.py>`)
 
 What does ``for`` do?
 ----------------------
@@ -181,7 +181,7 @@ What does ``for`` do?
 Now that we know the iterator protocol, we can write something like a for loop:
 
 
-:download:`my_for.py <../../Examples/Session09/my_for.py>`
+.. :download:`my_for.py <../../Examples/Session09/my_for.py>`
 
 .. code-block:: python
 
@@ -311,7 +311,7 @@ More about iterators and generators:
 
 http://www.learningpython.com/2009/02/23/iterators-iterables-and-generators-oh-my/
 
-:download:`yield_example.py <../../Examples/Session09/yield_example.py>`
+.. :download:`yield_example.py <../../Examples/Session09/yield_example.py>`
 
 generator comprehension
 -----------------------

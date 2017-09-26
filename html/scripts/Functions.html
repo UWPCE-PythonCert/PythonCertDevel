@@ -24,6 +24,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Git" href="../modules/Git.html" />
+    <link rel="prev" title="Functional Programming" href="FunctionalProgramming.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -41,12 +43,14 @@
             
   <div class="section" id="functions">
 <h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
-<p>With Rick Riehle                                                            —————-</p>
+<div class="section" id="with-rick-riehle">
+<h2>With Rick Riehle<a class="headerlink" href="#with-rick-riehle" title="Permalink to this headline">¶</a></h2>
 <p>We have seen some of the building blocks of programs such as basic data structures, conditional flow control statements like <code class="docutils literal"><span class="pre">if</span></code> and looping constructs such as <code class="docutils literal"><span class="pre">while</span></code> and <code class="docutils literal"><span class="pre">for</span></code>. We can do quite a lot with these constructs alone.</p>
 <p>Take a moment to think about what your programs will look like using only these constructs. If you are relatively new to programming this should be easy. If you’ve been around for awhile, you may need to forget some of what you already know for this thought experiment to work.</p>
 <p>Using only the basic building blocks you start at the top of your program and work your way to the bottom. You likely define a few variables early on. From there you might have an <code class="docutils literal"><span class="pre">if</span></code> statement that conditionally executes some code block rather than some other code block. Beyond that perhaps you iterate over a list with a <code class="docutils literal"><span class="pre">for</span></code> loop. Maybe you load data from a database into a list of tuples and iterate over those, printing to the console the interesting bits. At the end it might be nice to print ‘Done!’</p>
 <p>Think about this in its general form. Where does execution begin and where does it end? What happens if you find yourself repeating the same code, the same series of statements, in several <code class="docutils literal"><span class="pre">while</span></code> or <code class="docutils literal"><span class="pre">for</span></code> loops. What happens if you need to change the code in one of the loops, say in response to a change in the fields returned from your database, yet forget to change the corresponding code in all of the loops?</p>
 <p>Without a higher level construct to help organize our code it will be closer to a script than a program. Scripts are common in the automation of systems-level tasks, the type of programming used regularly by Systems Administrators and Devops Developers. To move beyond scripts we need functions.</p>
+</div>
 <div class="section" id="basic-function-definition">
 <h2>Basic Function Definition<a class="headerlink" href="#basic-function-definition" title="Permalink to this headline">¶</a></h2>
 <p>The basic form of a function is a <code class="docutils literal"><span class="pre">def</span></code> statement, followed by the name of the function <code class="docutils literal"><span class="pre">addOne</span></code> followed by an argument list <code class="docutils literal"><span class="pre">(x)</span></code> and finally a colon, <code class="docutils literal"><span class="pre">:</span></code>. All of this is typically on the first line of the function definition. Then within the function are all of the statements and expressions that do the work of the function <code class="docutils literal"><span class="pre">result</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code> and finally a return value <code class="docutils literal"><span class="pre">return</span> <span class="pre">result</span></code>.</p>
@@ -87,7 +91,7 @@
 <span class="gh">Out[15]: </span><span class="go">6</span>
 </pre></div>
 </div>
-<p>We snuck in an interesting and useful feature of functions in Python: key word arguments which are often called kwargs for short. The second and third arguments to our function above have names. The first named or key word argument is <code class="docutils literal"><span class="pre">y</span></code> and the second is <code class="docutils literal"><span class="pre">z</span></code>. Note that the act itself of giving default values to arguments turns them from standard positional arguments into key word arguments. This allows the caller to specify them by name rather than by position so that they can be called in any order. For instance, <code class="docutils literal"><span class="pre">z</span></code> can be specified before <code class="docutils literal"><span class="pre">y</span></code>.</p>
+<p>We snuck in an interesting and useful feature of functions in Python: keyword arguments which are often called kwargs for short. The second and third arguments to our function above have names. The first named or keyword argument is <code class="docutils literal"><span class="pre">y</span></code> and the second is <code class="docutils literal"><span class="pre">z</span></code>. Note that the act itself of giving default values to arguments turns them from standard positional arguments into keyword arguments. This allows the caller to specify them by name rather than by position so that they can be called in any order. For instance, <code class="docutils literal"><span class="pre">z</span></code> can be specified before <code class="docutils literal"><span class="pre">y</span></code>.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">add</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gh">Out[16]: </span><span class="go">3</span>
 </pre></div>
@@ -160,7 +164,7 @@
 <span class="gh">Out[3]: </span><span class="go">(&#39;alphaalpha&#39;, &#39;betabeta&#39;)</span>
 </pre></div>
 </div>
-<p>Variables that are defined within a function are called local variables, because they are local to the function. Note that once the function has completed executing its local variables no longer in scope.</p>
+<p>Variables that are defined within a function are called local variables, because they are local to the function. Note that once the function has completed executing its local variables are no longer in scope.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">a</span>
 <span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
@@ -208,6 +212,7 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Functions</a><ul>
+<li><a class="reference internal" href="#with-rick-riehle">With Rick Riehle</a></li>
 <li><a class="reference internal" href="#basic-function-definition">Basic Function Definition</a></li>
 <li><a class="reference internal" href="#arguments">Arguments</a></li>
 <li><a class="reference internal" href="#return-values">Return Values</a></li>
@@ -221,6 +226,8 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="FunctionalProgramming.html" title="previous chapter">Functional Programming</a></li>
+      <li>Next: <a href="../modules/Git.html" title="next chapter">Git</a></li>
   </ul></li>
 </ul>
 </div>

@@ -1,7 +1,8 @@
 Methods
 =======
 
-With Rick Riehle                                                            ----------------                                                             
+With Rick Riehle
+----------------
 
 TODO: Wikipedia reference
 
