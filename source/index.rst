@@ -39,8 +39,15 @@ Second Quarter: Advanced Programming in Python
     :maxdepth: 1
 
     class_schedule/session_2_01
-..    class_schedule/session_2_02
-..    class_schedule/session_2_02
+    class_schedule/session_2_02
+    class_schedule/session_2_03
+    class_schedule/session_2_04
+    class_schedule/session_2_05
+    class_schedule/session_2_06
+    class_schedule/session_2_07
+    class_schedule/session_2_08
+    class_schedule/session_2_09
+    class_schedule/session_2_10
 
 Third Quarter: Internet Programming with Python
 -----------------------------------------------
@@ -49,8 +56,15 @@ Third Quarter: Internet Programming with Python
     :maxdepth: 1
 
     class_schedule/session_3_01
-..    class_schedule/session_3_02
-..    class_schedule/session_3_02
+    class_schedule/session_3_02
+    class_schedule/session_3_03
+    class_schedule/session_3_04
+    class_schedule/session_3_05
+    class_schedule/session_3_06
+    class_schedule/session_3_07
+    class_schedule/session_3_08
+    class_schedule/session_3_09
+    class_schedule/session_3_10
 
 
 Modules
@@ -61,7 +75,7 @@ Modules
 
     modules/AdvancedArgumentPassing
     modules/BasicPythonSyntax
-    modules/Booleans
+    scripts/Booleans
     modules/Closures
     modules/Composition
     modules/Comprehensions
@@ -69,8 +83,8 @@ Modules
     modules/Decorators
     modules/DictionaryAsSwitch
     modules/EnvironmentOverview
-    modules/FunctionalProgramming
-    modules/Functions
+    scripts/FunctionalProgramming
+    scripts/Functions
     modules/Git
     modules/GitWorkflow
     modules/IPythonIntroduction
@@ -78,8 +92,8 @@ Modules
     modules/Lambda
     modules/MapFilterReduce
     modules/Math
-    modules/Methods
-    modules/Modules
+    scripts/Methods
+    scripts/Modules
     modules/MultipleInheritance
     modules/ObjectOrientationOverview
     modules/Properties

@@ -148,6 +148,4 @@ If you want to do something special when a property is deleted, you can define a
 If you leave this out, the property can't be deleted, which is usually
 what you want.
 
-.. rst-class:: centered
-
-[demo: :download:`properties_example.py <../../Examples/Session08/properties_example.py>`]
+.. [demo: :download:`properties_example.py <../../Examples/Session08/properties_example.py>`]
