@@ -151,7 +151,7 @@ Functions can carry variables that come into existence and go out of existence d
 	In [3]: my_func(2)
 	Out[3]: ('alphaalpha', 'betabeta')
 
-Variables that are defined within a function are called local variables, because they are local to the function. Note that once the function has completed executing its local variables no longer in scope.
+Variables that are defined within a function are called local variables, because they are local to the function. Note that once the function has completed executing its local variables are no longer in scope.
 
 .. code-block:: ipython
 
