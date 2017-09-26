@@ -39,9 +39,10 @@ Getting started tutorials
   approach and in-browser work.
 
 * **Learn Python the Hard Way**
-  (http://learnpythonthehardway.org/book/): Solid
+  (https://learnpythonthehardway.org/python3/): Solid
   and gradual. This course offers a great foundation for folks who have never
-  programmed in any language before. (Only Python2, but not hard to adapt to 3)
+  programmed in any language before.
+
 
 Complete Books / Series
 .......................
@@ -76,8 +77,16 @@ Complete Books / Series
   about Python. Lots of practical examples. Also avaiable as a Kindle book:
   http://www.amazon.com/Python-101-Michael-Driscoll-ebook/dp/B00KQTFHNK
 
+Python Tutor
+............
+
+Python Tutor is a really nifty site that lets you write and run python code, and visualize what is going on as it runs. Really gives you idea what is going on under the hood,with the stack, etc.
+
+http://pythontutor.com/
+
+
 Next Steps
-----------------
+----------
 
 * **New Coder**
   (http://newcoder.io): Advertised as "Five lifejackets to throw to

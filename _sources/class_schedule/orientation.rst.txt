@@ -1,8 +1,10 @@
+.. _orientation:
+
 ###########
 Orientation
 ###########
 
-Getting your System set up for the class.
+Getting your system set up for the class.
 
 Pre-class prep
 ==============
