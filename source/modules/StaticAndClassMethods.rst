@@ -38,7 +38,7 @@ A *static method* is a method that doesn't get self:
 
 .. rst-class:: centered
 
-[demo: :download:`static_method.py <../../Examples/Session08/static_method.py>`]
+.. [demo: :download:`static_method.py <../../Examples/Session08/static_method.py>`]
 
 
 .. nextslide:: Why?
@@ -87,7 +87,7 @@ argument
 
 .. rst-class:: centered
 
-[demo: :download:`class_method.py <../../Examples/Session08/class_method.py>`]
+.. [demo: :download:`class_method.py <../../Examples/Session08/class_method.py>`]
 
 
 Why?
