@@ -185,8 +185,9 @@ epub_copyright = copyright
 # A list of files that should not be packed into the epub file.
 epub_exclude_files = ['search.html']
 
-# -- Hieroglyph Slide Configuration ------------
-#  Do we need this anymore??
+# # -- Hieroglyph Slide Configuration ------------
+# #  Do we need this anymore??
+# #    Not really -- but we'd need to clean out all the "nextslide", etc directives...
 
 extensions += [
     'hieroglyph',
