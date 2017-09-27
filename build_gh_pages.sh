@@ -9,7 +9,7 @@
 #  -- to be nicely served by gh-pages
 
 
-GHPAGESDIR=../PythonCertDevel.gh-pages/
+GHPAGESDIR=../PythonCertDevel.gh-pages
 
 # make sure gh-pages dir is there -- exit if not
 if [ ! -d $GHPAGESDIR ]; then
@@ -34,7 +34,7 @@ popd
 # make the docs
 make html
 # copy to other repo (on the gh-pages branch)
-cp -R build/html/* $GHPAGESDIR/
+cp -fR build/html $GHPAGESDIR
 
 pushd $GHPAGESDIR
 git add .  # in case there are new files added
