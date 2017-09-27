@@ -44,6 +44,6 @@ git pull -s ours --no-edit  # gotta pull before push.. yet maintain local update
 git push
 popd
 
-echo "Now go verify that you haven't screwed up the render on github.io"
+echo "Now verify the render on github.io at the following link:"
 echo "https://uwpce-pythoncert.github.io/PythonCertDevel/"
 
