@@ -34,11 +34,12 @@ popd
 # make the docs
 make html
 # copy to other repo (on the gh-pages branch)
-cp -R build/html/ $GHPAGESDIR/
+cp -R build/html/* $GHPAGESDIR/
 
 pushd $GHPAGESDIR
-git add . # in case there are new files added
+git add .  # in case there are new files added
 git commit -a -m "updating rendered materials"
+git branch -u origin/gh-pages
 git pull -s ours --no-edit
-git push --set-upstream origin gh-pages
+git push
 
