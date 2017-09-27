@@ -1,11 +1,27 @@
 .. _session_1_02:
 
-Session 2
-=========
+#########################
+Intro to Python Session 2
+#########################
 
-Review and/or finish reading these class notes.
+Pre-class prep
+==============
 
-Finish any labs from class....
+A few exercises: :ref:`python_pushups`
+
+In-class Activities
+===================
+
+A few exercises: :ref:`python_pushups`
+
+Post-class Activites
+====================
+
+Finish the Exercises
+
+Look at the next session for reading, etc:
+
+:ref:`_session_1_03`
 
 **Reading:**
 

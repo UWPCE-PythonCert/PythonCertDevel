@@ -1,8 +1,8 @@
 .. _session_1_01:
 
-#########
-Session 1
-#########
+#########################
+Intro to Python Session 1
+#########################
 
 Intro to the class
 
@@ -43,57 +43,7 @@ A few exercises: :ref:`python_pushups`
 Post-class Activites
 ====================
 
-Finish the Excercises
+Finish the Exercises
 
 Finish getting your environment set up
-
-
-Reading, etc.
--------------
-
-Every one of you has a different backgrond and learning style.
-
-So take a bit of time to figure out which resource works for you.
-
-:ref:`python_learning_resources` provides some options. Do look it over.
-
-But here are few to get you started this week:
-
-*Think Python:* Chapters 1–7 (http://greenteapress.com/thinkpython2/)
-
-*Dive Into Python:* Chapters 1–2 (http://www.diveintopython3.net/)
-
-*LPTHW:* ex. 1–10, 18-21 (http://learnpythonthehardway.org/book/)
-  **NOTE:** LPTHW is python 2 -- you will need to add parentheses to all yoru print calls!
-
-Or follow this excellent introductory tutorial:
-
-http://pyvideo.org/video/1850/a-hands-on-introduction-to-python-for-beginning-p
-
-(also python2 -- so same thing with the print function...)
-
-You should be comfortable with working with variables, numbers, strings, and basic functions.
-
-git
----
-
-We'll be covering the basics of git next week - enough to use for this class. Please read one of these so you'll have a head start:
-
-http://rogerdudler.github.io/git-guide/
-
-or
-
-https://try.github.io/levels/1/challenges/1
-
-
-Next Class
-----------
-
-Next week, we will:
-
- * get set up with git
- * Some more basic Python
- * More on Functions
- * Boolean Expressions
- * Code Structure, Modules, and Namespaces
 
