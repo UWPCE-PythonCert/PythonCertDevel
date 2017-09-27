@@ -39,7 +39,11 @@ cp -R build/html/* $GHPAGESDIR/
 pushd $GHPAGESDIR
 git add .  # in case there are new files added
 git commit -a -m "updating rendered materials"
-git branch -u origin/gh-pages
-git pull -s ours --no-edit
+git branch -u origin/gh-pages  # make sure we're tracking origin
+git pull -s ours --no-edit  # gotta pull before push.. yet maintain local updates
 git push
+popd
+
+echo "Now go verify that you haven't screwed up the render on github.io"
+echo "https://uwpce-pythoncert.github.io/PythonCertDevel/"
 
