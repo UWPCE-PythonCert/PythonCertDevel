@@ -15,12 +15,14 @@ There are a number of python distributions available -- many designed for easier
 - Anaconda
 - Enthought Canopy
 - Python(x,y)
+- etc....
 
 But for basic use, the installer from python.org is the way to go, and that is what we will be using in this program.
 
 https://www.python.org/downloads/
 
-You want the installer for Python 3.x -- probably 64 bit, though if you have a 32 bit system, you can get that. There is essentially no difference for the purposes of this course.
+You want the installer for Python 3.6 -- probably 64 bit, though if you have a 32 bit system, you can get that.
+There is essentially no difference for the purposes of this course.
 
 Double click and install.
 
@@ -30,7 +32,7 @@ Terminal
 
 If you are confident in your use of the "DOS Box" or "powershell", command lines, feel free to use one of those. However, your life may be easier if you install "Git Bash", as then you can follow unix-style terminal instructions exactly, and do not have to translate. Also, your instructors are more experienced with Bash.
 
-From now on, if you hear the terms 'bash', 'shell' or 'terminal', know that this is the application that is being referred to.
+From now on, if you hear the terms "bash", "shell" or "terminal", or "commandline" know that this is the application that is being referred to. WE will use those tems interchangably to mean ANY command line.
 
 When you install Git Bash, you are installing git (and a git gui) as well, thus killing two birds with one stone!
 

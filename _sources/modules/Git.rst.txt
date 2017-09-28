@@ -11,25 +11,27 @@ A "version control system"
 Why Version Control?
 --------------------
 
-.. figure:: /_static/phd101212s.gif
+.. figure:: ../_static/phd101212s.gif
+
    :class: fill
+
    :width: 45 %
 
-   "Piled Higher and Deeper" by Jorge Cham
+ "Piled Higher and Deeper" by Jorge Cham
 
-   www.phdcomics.com
+ www.phdcomics.com
 
-   A history of everything everyone does to 'your' code
+ A history of everything everyone does to 'your' code
 
-   A graph of "states" in which the code has existed
+ A graph of "states" in which the code has existed
 
-   That last one is a bit tricky, and is not necessary to understand right out of the gate. When you are ready, you can look at this supplement to gain a better understanding:
+ That last one is a bit tricky, and is not necessary to understand right out of the gate. When you are ready, you can look at this supplement to gain a better understanding:
 
-   :ref: https://uwpce-pythoncert.github.io/PythonCertDevel/supplemental/dev_environment/git_overview.html
+ :ref:`git_overview`
 
-   There other versioning systems, such as Mercurial and Subversion, but Git is the most popular. 
+ There other versioning systems, such as Mercurial and Subversion (and commercial offerings), but Git is the most popular.
 
-   It is incredibly important to learn and understand versioning control to work as a developer today, so we will be incorporating Git into our work flow.
+ It is incredibly important to learn and understand versioning control to work as a developer today, so we will be incorporating Git into our work flow.
 
 
 Setting up Git
@@ -135,7 +137,7 @@ We will do a live demo of setting up a machine for working with this repository 
 
 The first thing we have to do is on the Github website. We will create a fork of the class repository from the ``UWPCE-PythonCert`` account on GitHub into your personal account. Please create a gitHub account if you don't have one already.
 
-Note: You do not have to use your real name to set up your git account. 
+Note: You do not have to use your real name to set up your git account.
 
 .. figure:: /_static/remotes_fork.png
    :width: 50%
@@ -149,7 +151,7 @@ The next step is to make a *clone* of your fork on your own computer, which mean
    :width: 50%
    :class: center
 
-Since you are working on a repository that you do not own, you will need to make a git shortcut to the 
+Since you are working on a repository that you do not own, you will need to make a git shortcut to the
 original repository, so that you can get changes made by other contributors before you start working.
 
 You can add *remotes* at will, to connect your *local* repository or to other
@@ -206,7 +208,7 @@ Start by making sure you are on your own master branch:
 
     $ git checkout master
 
-This is **really really** important. Take the time to ensure you are where you think you are, iow, that your origin is your own github repository and that you are working on master from that remote. 
+This is **really really** important. Take the time to ensure you are where you think you are, iow, that your origin is your own github repository and that you are working on master from that remote.
 You can use :bash:`git remote -v` and :bash:`git branch -a` to verify.
 
 Now, fetch the upstream master branch and merge it into your master.
@@ -257,16 +259,16 @@ fellow students will also help you to better understand. Share
 your code, and get use to giving/receiving feedback on how to
 improve your code, if you are not already.
 
-Each repository will have a directory called .git that is normally 
+Each repository will have a directory called .git that is normally
 not seen. This direcotry is how git keeps track of everything. Leave it alone. :)
 
-Please do not set up a git repository inside another git 
-repository, this can lead to heartache. 
+Please do not set up a git repository inside another git
+repository, this can lead to heartache.
 
 Absolutely, do NOT set up a git repository in your home root directory.
 This will put everything in your home directory up on GitHub, and you do not want that.
 
 Setting up new repositories can be confusing because when you clone a git repository it creates
 the directory that will be the repository, but when you are creating a new
-repository, you need to first be IN the directory in which you want the 
+repository, you need to first be IN the directory in which you want the
 repository to rooted. Please ask if this does not make sense.
