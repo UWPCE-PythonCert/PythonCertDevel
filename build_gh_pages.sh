@@ -34,7 +34,7 @@ popd
 # make the docs
 make html
 # copy to other repo (on the gh-pages branch)
-cp -fR build/html $GHPAGESDIR
+cp -fR build/html/* $GHPAGESDIR
 
 pushd $GHPAGESDIR
 git add .  # in case there are new files added
