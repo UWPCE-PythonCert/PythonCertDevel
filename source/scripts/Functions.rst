@@ -184,6 +184,14 @@ Python's scoping rules are such that any variables outside the function with the
 
 ``my_func`` still returns alphas and betas rather than apples and bananas.
 
+While we are still on the topic of scope and which names are available when, let's take the example above and put it into an executable python file or a script.
+
+.. code-block:: python
+
+	''' TODO: assemble code above and insert here '''
+
+Look at the sturcutre of that code, it's physical layout. Notice how certain elements are indented under others. Notice that some are not indented at all, but rather sit along the left margin of the file. This is meaningful. The indented elements are only in scope within their enclosing blocks. Python is very explicit about this. Indentation is meaningful. When Python was first created this was on of its most controversial features. Other languages used syntatic elements such as parenthesis, brackets and semi-colons to indicate structure. Python dispensed with most of that and some people like it and some people don't. The purpose is so that as programmers, at a glance, we have clear visual clues as to what is related to what. Clues at to which symbols are in scope when. Python also has a rigorous style guide called PEP8 which we will refer to regularly during the class. Other languages also recognize how useful these visual clues can be and so now most code editors have auto-formatting features which follow conventions about how code should be laid out for whatever language you happen to be working in. One nice effect of all this is that as you sepnd more and more time with the language the details of its syntax tends to fade into the background which allows you as the programmer to pay more attention to the problem you are trying to solve. Just as with a written language such as English or Spanish: after awhile you hardly see the syntax and you focus on the words and their meaning. The conventions around paragraph indentation give you clues about whree one idea ends and another begins. So it is with computer code, particularly Python.
+
 Summary
 -------
 
