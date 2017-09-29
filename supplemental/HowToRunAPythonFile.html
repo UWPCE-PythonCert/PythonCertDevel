@@ -46,7 +46,7 @@
 <p>A file with python code in it is a ‘module’ or ‘script’</p>
 <p>(more on the distinction later on…)</p>
 <p>It should be named with the <code class="docutils literal"><span class="pre">.py</span></code> extension: <code class="docutils literal"><span class="pre">some_name.py</span></code></p>
-<p>To run it, you have a couple options:</p>
+<p>If you want to run the code directly (it is a script), you have a couple options:</p>
 <ol class="arabic simple">
 <li>call python on the command line, and pass in your module name</li>
 </ol>
@@ -67,11 +67,43 @@
 </pre></div>
 </div>
 </li>
+<li><p class="first">On Windows, the <cite>.py</cite> extensions can be associated with the python interpreter, so it can be run directly. This is clunkier than the *nix “shebang line” approach, so don’t recommend it – but it is an option.</p>
+</li>
 <li><p class="first">run <code class="docutils literal"><span class="pre">iPython</span></code>, and run it from within iPython with the <code class="docutils literal"><span class="pre">run</span></code> command</p>
 </li>
 </ol>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">run</span> <span class="n">the_file</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Various IDEs (PyCharm, IDLE, etc) have a way to run the module you are currently editing –if you use one of these tools, learn how to do that. MAke sure that it is using the Python that you want it to be.</li>
+</ol>
+<div class="section" id="making-sure-you-are-set-up-correctly">
+<h2>Making sure you are set up correctly<a class="headerlink" href="#making-sure-you-are-set-up-correctly" title="Permalink to this headline">¶</a></h2>
+<p>Create a file called <code class="docutils literal"><span class="pre">install_test.py</span></code>, with the following content:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;This is my first python program&quot;</span><span class="p">)</span>
+
+<span class="n">version</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span>
+
+<span class="k">if</span> <span class="n">version</span><span class="o">.</span><span class="n">major</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">version</span><span class="o">.</span><span class="n">minor</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;You should be running version 3.6&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;You are running python3.6 -- all good!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;You need to run Python 3!&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;This is version: {}.{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version</span><span class="o">.</span><span class="n">major</span><span class="p">,</span> <span class="n">version</span><span class="o">.</span><span class="n">minor</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Run it with your version of python by one (or more) of the above methods. It should result in:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>This is my first python program
+You are running python3.6 -- all good!
+</pre></div>
+</div>
+<p>If you get something else – figure out why and fix it!</p>
 </div>
 </div>
 
@@ -80,7 +112,15 @@
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">How to run a python file</a><ul>
+<li><a class="reference internal" href="#making-sure-you-are-set-up-correctly">Making sure you are set up correctly</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>

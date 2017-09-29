@@ -66,9 +66,8 @@ debugging, the editor will follow along with the debugger.</li>
 </div>
 <div class="section" id="which-version">
 <h2>Which Version?<a class="headerlink" href="#which-version" title="Permalink to this headline">¶</a></h2>
-<p>While Version 3 is still considered “beta”, it is the one everyone is putting
-their effort into, and some of the plugins I recommend are not available for
-version 2. So <em>USe Sublime Version 3</em></p>
+<p>Use version 3 – there is a recent update to build 3143, so make sure to get the latest.</p>
+<p><em>Use Sublime Version 3</em></p>
 </div>
 <div class="section" id="basic-settings">
 <h2>Basic Settings<a class="headerlink" href="#basic-settings" title="Permalink to this headline">¶</a></h2>
@@ -79,8 +78,11 @@ dict and list literals]</p>
 will most often work on settings at the user level.</p>
 <p>Open <code class="docutils literal"><span class="pre">Preferences</span></code> -&gt; <code class="docutils literal"><span class="pre">Settings</span> <span class="pre">-</span> <span class="pre">Default</span></code> to see all the default settings
 and choose which to override.</p>
-<p>Create your own set of preferences by opening <code class="docutils literal"><span class="pre">Preferences</span></code> -&gt; <code class="docutils literal"><span class="pre">Settings</span> <span class="pre">-</span>
-<span class="pre">User</span></code>. This will create an empty file, you can then copy the settings you want
+<p>On the Mac, you can find it under:</p>
+<p><code class="docutils literal"><span class="pre">Sublime</span> <span class="pre">Text</span></code> -&gt; <code class="docutils literal"><span class="pre">Preferences</span></code> -&gt; <code class="docutils literal"><span class="pre">Settings</span></code></p>
+<p>The preferences file is simply a JSON text file you edit like any other text file.</p>
+<p>Create your own set of preferences by opening the user preferences file.
+This will create an empty file, you can then copy the settings you want
 to override from the default set into your personal settings.</p>
 <p>Here’s a reasonable set of preliminary settings (theme, color scheme and font
 are quite personal, find ones that suit you.):</p>
@@ -145,45 +147,18 @@ plugin is highlighted.</p>
 <div class="section" id="useful-plugins">
 <h2>Useful Plugins<a class="headerlink" href="#useful-plugins" title="Permalink to this headline">¶</a></h2>
 <p>Here are the plugins I’ve installed to achieve the requirements above.</p>
-<div class="section" id="autocompletion">
-<h3>Autocompletion<a class="headerlink" href="#autocompletion" title="Permalink to this headline">¶</a></h3>
-<p>By default, Sublime Text will index symbols in open files and projects, but
-that doesn’t cover installed python packages that may be part of a non-standard
-run environment.</p>
-<p>There are two to choose from:</p>
-<ol class="arabic simple">
-<li><a class="reference external" href="https://sublime.wbond.net/packages/SublimeCodeIntel">SublimeCodeIntel</a> offers strong support for multiple languages through
-it’s own plugin system.  It is a bit heavy and requires building an index.</li>
-<li><a class="reference external" href="https://sublime.wbond.net/packages/Jedi%20-%20Python%20autocompletion">SublimeJedi</a> only supports Python, but is faster and keeps an index on its
-own.</li>
-</ol>
-<p>I’ve installed <code class="docutils literal"><span class="pre">SublimeJedi</span></code>, and used the following settings <em>per project</em> to
-ensure that all relevant code is found:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span>{
-    &quot;folders&quot;:
-    [
-        // ...
-    ],
-
-    &quot;settings&quot;: {
-        // ...
-        &quot;python_interpreter_path&quot;: &quot;/Users/cewing/pythons/python-2.7/bin/python&quot;,
-
-        &quot;python_package_paths&quot;: [
-            &quot;/path/to/project/buildout/parts/omelette&quot;
-        ]
-    }
-}
-</pre></div>
-</div>
-<p>The <code class="docutils literal"><span class="pre">python_interpreter_path</span></code> allows me to indicate which Python executable
-should be introspected for symbol definitions.</p>
-<p>The <code class="docutils literal"><span class="pre">python_package_paths</span></code> setting allows designating additional paths that
-will be searched for Python packages containing symbols.</p>
-<a class="reference internal image-reference" href="../../_images/tab_completion.png"><img alt="Tab completion provided by SublimeJedi" class="align-center" src="../../_images/tab_completion.png" style="width: 600px;" /></a>
-<p>Once configured, you should be able to use the <code class="docutils literal"><span class="pre">ctrl-shift-G</span></code> keyboard
-shortcut to jump directly to the definition of a symbol. You can also use
-<code class="docutils literal"><span class="pre">alt-shift-F</span></code> to find other usages of the same symbol elsewhere in your code.</p>
+<div class="section" id="anaconda">
+<h3>Anaconda<a class="headerlink" href="#anaconda" title="Permalink to this headline">¶</a></h3>
+<p>Not to be confused with the Scientific Python distribution – The Anaconda sublime plugin is a full featured package to turn Sublime into a pretty full IDE:</p>
+<p><a class="reference external" href="http://damnwidget.github.io/anaconda/">http://damnwidget.github.io/anaconda/</a></p>
+<p>There are nifty instructions on that page.</p>
+<p>By default, anaconda uses the python interpreter that is in your PATH environment variable, the most important configuration option is the python_interpreter option that allow the user to use a different python interpreter, for example, one that resides in a virtual environment:</p>
+<p>If you get the right python when you type “python” at a raw command line, then you are OK. But if not you may need to re-configure it.</p>
+<blockquote>
+<div><p>{“python_interpreter”: “~/.virtualenvs/myproject/bin/python”}</p>
+<p>Note: for detailed information about how to properly configure anaconda to get the maximum of it, follow the Configure Anaconda the Right Way section:</p>
+<p><a class="reference external" href="http://damnwidget.github.io/anaconda/anaconda_settings/">http://damnwidget.github.io/anaconda/anaconda_settings/</a></p>
+</div></blockquote>
 </div>
 <div class="section" id="code-linting">
 <h3>Code Linting<a class="headerlink" href="#code-linting" title="Permalink to this headline">¶</a></h3>
@@ -334,7 +309,7 @@ Text file move along with you.</p>
 <li><a class="reference internal" href="#basic-settings">Basic Settings</a></li>
 <li><a class="reference internal" href="#extending-the-editor">Extending the Editor</a></li>
 <li><a class="reference internal" href="#useful-plugins">Useful Plugins</a><ul>
-<li><a class="reference internal" href="#autocompletion">Autocompletion</a></li>
+<li><a class="reference internal" href="#anaconda">Anaconda</a></li>
 <li><a class="reference internal" href="#code-linting">Code Linting</a></li>
 <li><a class="reference internal" href="#white-space-management">White Space Management</a></li>
 <li><a class="reference internal" href="#follow-along">Follow-Along</a></li>

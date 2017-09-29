@@ -32,10 +32,9 @@ Here are *my* requirements for an 'IDE':
 
 Which Version?
 ==============
+Use version 3 -- there is a recent update to build 3143, so make sure to get the latest.
 
-While Version 3 is still considered "beta", it is the one everyone is putting
-their effort into, and some of the plugins I recommend are not available for
-version 2. So *USe Sublime Version 3*
+*Use Sublime Version 3*
 
 
 Basic Settings
@@ -54,8 +53,14 @@ will most often work on settings at the user level.
 Open ``Preferences`` -> ``Settings - Default`` to see all the default settings
 and choose which to override.
 
-Create your own set of preferences by opening ``Preferences`` -> ``Settings -
-User``. This will create an empty file, you can then copy the settings you want
+On the Mac, you can find it under:
+
+``Sublime Text`` -> ``Preferences`` -> ``Settings``
+
+The preferences file is simply a JSON text file you edit like any other text file.
+
+Create your own set of preferences by opening the user preferences file.
+This will create an empty file, you can then copy the settings you want
 to override from the default set into your personal settings.
 
 Here's a reasonable set of preliminary settings (theme, color scheme and font
@@ -141,58 +146,25 @@ Useful Plugins
 
 Here are the plugins I've installed to achieve the requirements above.
 
-Autocompletion
---------------
+Anaconda
+--------
 
-By default, Sublime Text will index symbols in open files and projects, but
-that doesn't cover installed python packages that may be part of a non-standard
-run environment.
+Not to be confused with the Scientific Python distribution -- The Anaconda sublime plugin is a full featured package to turn Sublime into a pretty full IDE:
 
-There are two to choose from:
+http://damnwidget.github.io/anaconda/
 
-1. `SublimeCodeIntel`_ offers strong support for multiple languages through
-   it's own plugin system.  It is a bit heavy and requires building an index.
-2. `SublimeJedi`_ only supports Python, but is faster and keeps an index on its
-   own.
+There are nifty instructions on that page.
 
-.. _SublimeCodeIntel: https://sublime.wbond.net/packages/SublimeCodeIntel
-.. _SublimeJedi: https://sublime.wbond.net/packages/Jedi%20-%20Python%20autocompletion
+By default, anaconda uses the python interpreter that is in your PATH environment variable, the most important configuration option is the python_interpreter option that allow the user to use a different python interpreter, for example, one that resides in a virtual environment:
 
-I've installed ``SublimeJedi``, and used the following settings *per project* to
-ensure that all relevant code is found:
+If you get the right python when you type "python" at a raw command line, then you are OK. But if not you may need to re-configure it.
 
-.. code-block:: json
+ {"python_interpreter": "~/.virtualenvs/myproject/bin/python"}
 
-    {
-        "folders":
-        [
-            // ...
-        ],
+ Note: for detailed information about how to properly configure anaconda to get the maximum of it, follow the Configure Anaconda the Right Way section:
 
-        "settings": {
-            // ...
-            "python_interpreter_path": "/Users/cewing/pythons/python-2.7/bin/python",
+ http://damnwidget.github.io/anaconda/anaconda_settings/
 
-            "python_package_paths": [
-                "/path/to/project/buildout/parts/omelette"
-            ]
-        }
-    }
-
-The ``python_interpreter_path`` allows me to indicate which Python executable
-should be introspected for symbol definitions.
-
-The ``python_package_paths`` setting allows designating additional paths that
-will be searched for Python packages containing symbols.
-
-.. image:: /_static/tab_completion.png
-    :width: 600px
-    :align: center
-    :alt: Tab completion provided by SublimeJedi
-
-Once configured, you should be able to use the ``ctrl-shift-G`` keyboard
-shortcut to jump directly to the definition of a symbol. You can also use
-``alt-shift-F`` to find other usages of the same symbol elsewhere in your code.
 
 Code Linting
 ------------
