@@ -27,7 +27,7 @@ Schedule the lightning talks:
 
 There is a class list in the class repo here:
 
-examples/session01/students.txt
+``examples/session01/students.txt``
 
 Let's write a script to generate a random talk schedule...
 
