@@ -7,7 +7,7 @@ Schedule Lightning talks
 Lightning Talks
 ----------------
 
-"Lightning Talks" are a tradition in open-source technical conferences (and maybe others?).  The idea is that people can do a nice, quick talk about a topic of their choice -- much lower pressure than a "real" talk -- but gives folks a chance to show off somethign they have worked on.
+"Lightning Talks" are a tradition in open-source technical conferences (and maybe others?).  The idea is that people can do a nice, quick talk about a topic of their choice -- much lower pressure than a "real" talk -- but gives folks a chance to show off something they have worked on.
 
 For this class, it's a chance to us to learn a bit about each-other and maybe something new about Python.
 

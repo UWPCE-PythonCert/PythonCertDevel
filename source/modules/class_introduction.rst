@@ -17,25 +17,13 @@ In which you are introduced to this class, your instructors, your environment an
 
 .. _xkcd.com/353: http://xkcd.com/353
 
-Your instructors
-----------------
 
-.. rst-class:: center medium
+Who are we?
+-----------
 
-| |instructor_1_name|
-| |instructor_1_email|
-|
-
-.. nextslide::
-
-.. rst-class:: center medium
-
-| |instructor_2_name|
-| |instructor_2_email|
-|
 
 Who are you?
--------------
+------------
 
 .. rst-class:: center medium
 
@@ -120,16 +108,6 @@ and learn from each other.
 What are good times for you?
 
 And what locations?
-
-Lightning Talks
-----------------
-
-**Lightning Talks:**
-
- * 5 minutes each (including setup) - no kidding!
- * Every student will give one
- * Purposes: introduce yourself, share interests, show Python applications
- * Any topic you like that is related to Python -- according to you!
 
 
 
