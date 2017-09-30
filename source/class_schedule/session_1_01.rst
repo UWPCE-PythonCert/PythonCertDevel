@@ -38,9 +38,9 @@ In-class Activities
 
     ../modules/class_introduction
 
-Setting up the class git repo
+    ../modules/Git
 
-Schedule Lightning talks
+    ../modules/lightning_talks
 
 Quickie Python Introduction
 
