@@ -4,7 +4,7 @@
 Python Pushups
 ##############
 
-These are a couple exorcises to kick you off with Python
+These are a couple exercises to kick you off with Python
 
 Task 1 Puzzles
 ==============
