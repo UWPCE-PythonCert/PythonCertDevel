@@ -11,6 +11,8 @@ Pre-class prep
 
 Get your Environment set up!
 
+If you were able to attend the pre-class orientation, you should be all set. if not, then do this:
+
 **Install Python**
 
 :ref:`installing_python`
@@ -31,9 +33,14 @@ least, make sure it does Python indentation and syntax coloring well.
 In-class Activities
 ===================
 
-Introduction to the class and each-other.
+.. toctree::
+    :maxdepth: 1
+
+    ../modules/class_introduction
 
 Setting up the class git repo
+
+Schedule Lightning talks
 
 Quickie Python Introduction
 
@@ -46,4 +53,6 @@ Post-class Activites
 Finish the Exercises
 
 Finish getting your environment set up
+
+Go through one or more of these tutorials:
 

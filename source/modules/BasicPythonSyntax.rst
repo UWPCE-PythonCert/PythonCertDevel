@@ -1,3 +1,5 @@
+.. _basic_python_syntax:
+
 Basic Python Syntax
 ===================
 
