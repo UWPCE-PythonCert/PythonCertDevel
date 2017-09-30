@@ -1,7 +1,8 @@
 .. _git:
 
-Git
-===
+############
+Intro to Git
+############
 
 What is Git?
 ------------
@@ -258,16 +259,15 @@ fellow students will also help you to better understand. Share
 your code, and get use to giving/receiving feedback on how to
 improve your code, if you are not already.
 
-Each repository will have a directory called .git that is normally
+Each repository will have a directory called ``.git`` that is normally
 not seen. This direcotry is how git keeps track of everything. Leave it alone. :)
 
-Please do not set up a git repository inside another git
-repository, this can lead to heartache.
+Please do not set up a git repository inside another git repository, this can lead to heartache.
 
 Absolutely, do NOT set up a git repository in your home root directory.
 This will put everything in your home directory up on GitHub, and you do not want that.
 
 Setting up new repositories can be confusing because when you clone a git repository it creates
 the directory that will be the repository, but when you are creating a new
-repository, you need to first be IN the directory in which you want the
-repository to rooted. Please ask if this does not make sense.
+repository, you need to first be **IN** the directory in which you want the
+repository to be rooted. Please ask if this does not make sense.
