@@ -42,7 +42,12 @@ In-class Activities
 
     ../modules/lightning_talks
 
-Quickie Python Introduction
+    ../modules/PythonOverview
+
+    ../modules/BasicPythonSyntax
+
+    ../modules/Py2vsPy3
+
 
 A few exercises: :ref:`python_pushups`
 
