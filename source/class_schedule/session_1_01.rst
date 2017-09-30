@@ -55,9 +55,8 @@ A few exercises: :ref:`python_pushups`
 Post-class Activites
 ====================
 
-Finish the Exercises
+Finish the Python Pushups excercises.
 
 Finish getting your environment set up
 
-Go through one or more of these tutorials:
 

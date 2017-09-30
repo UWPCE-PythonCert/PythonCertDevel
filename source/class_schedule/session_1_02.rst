@@ -7,7 +7,7 @@ Intro to Python Session 2
 Pre-class prep
 ==============
 
-A few exercises: :ref:`python_pushups`
+Go through one or more of these tutorials:
 
 In-class Activities
 ===================
