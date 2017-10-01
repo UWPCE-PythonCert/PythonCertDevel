@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Functions &#8212; PythonCert 4.0 documentation</title>
+    <title>More on Functions &#8212; PythonCert 4.0 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Git" href="Git.html" />
-    <link rel="prev" title="Functional Programming" href="FunctionalProgramming.html" />
+    <link rel="next" title="Documentation" href="Documentation.html" />
+    <link rel="prev" title="Advanced Argument Passing" href="AdvancedArgumentPassing.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -41,163 +41,175 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="functions">
-<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
-<p>We have seen some of the building blocks of programs such as basic data structures, conditional flow control statements like <code class="docutils literal"><span class="pre">if</span></code> and looping constructs such as <code class="docutils literal"><span class="pre">while</span></code> and <code class="docutils literal"><span class="pre">for</span></code>. We can do quite a lot with these constructs alone.</p>
-<p>Take a moment to think about what your programs will look like using only these constructs. If you are relatively new to programming this should be easy. If you’ve been around for awhile, you may need to forget some of what you already know for this thought experiment to work.</p>
-<p>Using only the basic building blocks you start at the top of your program and work your way to the bottom. You likely define a few variables early on. From there you might have an <code class="docutils literal"><span class="pre">if</span></code> statement that conditionally executes some code block rather than some other code block. Beyond that perhaps you iterate over a list with a <code class="docutils literal"><span class="pre">for</span></code> loop. Maybe you load data from a database into a list of tuples and iterate over those, printing to the console the interesting bits. At the end it might be nice to print ‘Done!’</p>
-<p>Think about this in its general form. Where does execution begin and where does it end? What happens if you find yourself repeating the same code, the same series of statements, in several <code class="docutils literal"><span class="pre">while</span></code> or <code class="docutils literal"><span class="pre">for</span></code> loops. What happens if you need to change the code in one of the loops, say in response to a change in the fields returned from your database, yet forget to change the corresponding code in all of the loops?</p>
-<p>Without a higher level construct to help organize our code it will be closer to a script than a program. Scripts are common in the automation of systems-level tasks, the type of programming used regularly by Systems Administrators and Devops Developers. To move beyond scripts we need functions.</p>
-<div class="section" id="basic-function-definition">
-<h2>Basic Function Definition<a class="headerlink" href="#basic-function-definition" title="Permalink to this headline">¶</a></h2>
-<p>The basic form of a function is a <code class="docutils literal"><span class="pre">def</span></code> statement, followed by the name of the function <code class="docutils literal"><span class="pre">addOne</span></code> followed by an argument list <code class="docutils literal"><span class="pre">(x)</span></code> and finally a colon, <code class="docutils literal"><span class="pre">:</span></code>. All of this is typically on the first line of the function definition. Then within the function are all of the statements and expressions that do the work of the function <code class="docutils literal"><span class="pre">result</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code> and finally a return value <code class="docutils literal"><span class="pre">return</span> <span class="pre">result</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">addOne</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">result</span>
+  <div class="section" id="more-on-functions">
+<span id="id1"></span><h1>More on Functions<a class="headerlink" href="#more-on-functions" title="Permalink to this headline">¶</a></h1>
+<p>From various tutorials, etc, you should have the basics of writing functions down.</p>
+<p>In particular, you know that functions can contain a chunk of code that can be wirtten once, and used multiple times from other parts of the code.</p>
+<p>You know that you can pass values into the function, and that it can return values to the “calling” code.</p>
+<p>Now we will dig a bit deeper down into the specifics of functions in Python:</p>
+<div class="section" id="variable-scope">
+<h2>Variable scope<a class="headerlink" href="#variable-scope" title="Permalink to this headline">¶</a></h2>
+<p>Defining a function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">z</span>
 </pre></div>
 </div>
-<p>In simple cases such as this all of the work of the function can be done on the return line which eliminates a name <code class="docutils literal"><span class="pre">result</span></code> and makes the function easier to read.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">addOne</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<p><cite>x</cite>, <cite>y</cite>, <cite>z</cite> are <em>local</em> names.</p>
+<p><cite>x</cite> and <cite>y</cite> because there are function <em>parameters</em></p>
+<p><cite>z</cite> because it was “bound” inside the function.</p>
+</div>
+<div class="section" id="local-vs-global">
+<h2>Local vs. Global<a class="headerlink" href="#local-vs-global" title="Permalink to this headline">¶</a></h2>
+<p>Names bound in Python have a <em>scope</em></p>
+<p>That <em>scope</em> determines where a symbol is visible, or what value it has in a
+given block.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="gp">In [15]: </span><span class="n">y</span> <span class="o">=</span> <span class="mi">33</span>
+<span class="gp">In [16]: </span><span class="n">z</span> <span class="o">=</span> <span class="mi">34</span>
+<span class="gp">In [17]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="gp">   ....:</span>
+<span class="gp">In [18]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">32 3 4</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="arguments">
-<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
-<p>Functions can take more than a single argument.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<p>x is global, y and z local to the function</p>
+<p>But, did the value of y and z change in the <em>global</em> scope?</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">y</span>
+<span class="gh">Out[19]: </span><span class="go">33</span>
+
+<span class="gp">In [20]: </span><span class="n">z</span>
+<span class="gh">Out[20]: </span><span class="go">34</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>
+<p>No – they did not. The “y” and “z” names <em>inside</em> the function are completely separate from the “y” and “z” outside the function.</p>
+<p>The ones outside the function are “global” names.</p>
+<p><strong>NOTE:</strong> “global” in python means global to the module (generally a single file), not global to an entire program. Which is really good, as you have little way of knowing what names are being used in packages you are using, but are not writing yourself!</p>
+<p>In general, you should use global bindings mostly for constants.</p>
+<p>The python convention is to designate global constants by typing the
+names we bind to them in ALL_CAPS:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">]</span>
+<span class="n">CONFIGURATION_KEY</span> <span class="o">=</span> <span class="s1">&#39;some secret value&#39;</span>
+<span class="o">...</span>
 </pre></div>
 </div>
-<p>Functions can have default values for arguments so that the caller can neglect to specify certain arguments and yet get reasonable defaults.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-<span class="go">    ...:     return x + y + z</span>
-<span class="go">    ...:</span>
+<p>This is just a convention, but it’s a good one to follow.</p>
+</div>
+<div class="section" id="global-gotcha">
+<h2>Global Gotcha<a class="headerlink" href="#global-gotcha" title="Permalink to this headline">¶</a></h2>
+<p>Take a look at this function definition:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [21]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
 
-<span class="gp">In [13]: </span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="gh">Out[13]: </span><span class="go">3</span>
-
-<span class="gp">In [14]: </span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gh">Out[14]: </span><span class="go">5</span>
-
-<span class="gp">In [15]: </span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="gh">Out[15]: </span><span class="go">6</span>
+<span class="gp">In [22]: </span><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+<span class="gp">   ....: </span>    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="gp">   ....: </span>    <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="gp">   ....:</span>
 </pre></div>
 </div>
-<p>We snuck in an interesting and useful feature of functions in Python: key word arguments which are often called kwargs for short. The second and third arguments to our function above have names. The first named or key word argument is <code class="docutils literal"><span class="pre">y</span></code> and the second is <code class="docutils literal"><span class="pre">z</span></code>. Note that the act itself of giving default values to arguments turns them from standard positional arguments into key word arguments. This allows the caller to specify them by name rather than by position so that they can be called in any order. For instance, <code class="docutils literal"><span class="pre">z</span></code> can be specified before <code class="docutils literal"><span class="pre">y</span></code>.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">add</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="gh">Out[16]: </span><span class="go">3</span>
-</pre></div>
-</div>
-<p>Kwargs also allow the caller to skip unneeded arguments and rely instead on their defaults.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [17]: </span><span class="n">add</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="gh">Out[17]: </span><span class="go">1</span>
-</pre></div>
-</div>
-<p>Note however, that positional arguments cannot be skipped. In this simple case we have only one positional argument <code class="docutils literal"><span class="pre">x</span></code> which Python will not permit us to ignore.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="n">add</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="gt">-------------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call     last)
-<span class="nn">&lt;ipython-input-18-5b53a9942d6b&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">add</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: add() missing 1 required positional argument: &#39;x&#39;
-</pre></div>
-</div>
-</div>
-<div class="section" id="return-values">
-<h2>Return Values<a class="headerlink" href="#return-values" title="Permalink to this headline">¶</a></h2>
-<p>Functions can also take zero arguments and return nothing. Simply leave off the return statement and your function will return no value to its caller.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sayHello</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Interestingly, in Python functions can return more than a single value. They can return two, three, four, or indeed an arbitrary number of values. Simply place commas between the values you plan to return.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [24]: </span><span class="k">def</span> <span class="nf">giveMeTwoValues</span><span class="p">():</span>
-<span class="go">    ...:     return 1, &quot;two&quot;</span>
-<span class="go">    ...:</span>
-
-<span class="gp">In [25]: </span><span class="n">myTwoValues</span> <span class="o">=</span> <span class="n">giveMeTwoValues</span><span class="p">()</span>
-
-<span class="gp">In [26]: </span><span class="n">myTwoValues</span>
-<span class="gh">Out[26]: </span><span class="go">(1, &#39;two&#39;)</span>
-
-<span class="gp">In [27]: </span><span class="nb">type</span><span class="p">(</span><span class="n">myTwoValues</span><span class="p">)</span>
-<span class="gh">Out[27]: </span><span class="go">tuple</span>
-</pre></div>
-</div>
-<p>Note that the values are packed into a tuple and thus returned as one object, each of which can be accessed according to their position in the tuple.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [28]: </span><span class="n">myTwoValues</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gh">Out[28]: </span><span class="go">1</span>
-
-<span class="gp">In [29]: </span><span class="n">myTwoValues</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="gh">Out[29]: </span><span class="go">&#39;two&#39;</span>
-
-<span class="gp">In [30]: </span><span class="nb">type</span><span class="p">(</span><span class="n">myTwoValues</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="gh">Out[30]: </span><span class="go">int</span>
-
-<span class="gp">In [31]: </span><span class="nb">type</span><span class="p">(</span><span class="n">myTwoValues</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="gh">Out[31]: </span><span class="go">str</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="scope">
-<h2>Scope<a class="headerlink" href="#scope" title="Permalink to this headline">¶</a></h2>
-<p>Functions can carry variables that come into existence and go out of existence during the run of the function. This is known as scope. I could have as correctly said that these variables come into scope and go out of scope during the run of the function.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-<span class="gp">   ...: </span>    <span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;alpha&quot;</span>
-<span class="gp">   ...: </span>    <span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;beta&quot;</span>
-<span class="gp">   ...: </span>    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">b</span><span class="o">*</span><span class="n">x</span>
-<span class="gp">   ...:</span>
-
-<span class="gp">In [2]: </span><span class="n">my_func</span><span class="p">()</span>
-<span class="gh">Out[2]: </span><span class="go">(&#39;alpha&#39;, &#39;beta&#39;)</span>
-
-<span class="gp">In [3]: </span><span class="n">my_func</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="gh">Out[3]: </span><span class="go">(&#39;alphaalpha&#39;, &#39;betabeta&#39;)</span>
-</pre></div>
-</div>
-<p>Variables that are defined within a function are called local variables, because they are local to the function. Note that once the function has completed executing its local variables no longer in scope.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">a</span>
+<p>What is going to happen when we call <code class="docutils literal"><span class="pre">f</span></code>?</p>
+<p>Try it and see:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [34]: </span><span class="n">f</span><span class="p">()</span>
 <span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-4-3f786850e387&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">a</span>
+<span class="ne">UnboundLocalError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-34-0ec059b9bfe1&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">f</span><span class="p">()</span>
 
-<span class="ne">NameError</span>: name &#39;a&#39; is not defined
+<span class="nn">&lt;ipython-input-33-4363b2b69f73&gt;</span> in <span class="ni">f</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
-<span class="gp">In [5]: </span><span class="n">b</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-5-89e6c98d9288&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">b</span>
-
-<span class="ne">NameError</span>: name &#39;b&#39; is not defined
+<span class="ne">UnboundLocalError</span>: local variable &#39;x&#39; referenced before assignment
 </pre></div>
 </div>
-<p>Python’s scoping rules are such that any variables outside the function with the same names are masked by local variables. In other words, if <code class="docutils literal"><span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">b</span></code> are defined outside the function they do not interfere with the variables inside the function.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;apple&quot;</span>
-
-<span class="gp">In [7]: </span><span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;banana&quot;</span>
-
-<span class="gp">In [8]: </span><span class="n">my_func</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="gh">Out[8]: </span><span class="go">(&#39;alphaalpha&#39;, &#39;betabeta&#39;)</span>
+<p>Because you are binding the symbol <code class="docutils literal"><span class="pre">x</span></code> locally, it becomes a local and masks
+the global value already bound.</p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>So far we’ve seen simple parameter lists:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">my_func</span></code> still returns alphas and betas rather than apples and bananas.</p>
+<p>These types of parameters are called <em>positional</em></p>
+<p>When you call a function, you <strong>must</strong> provide arguments for all <em>positional</em>
+parameters <em>in the order they are listed</em></p>
+<p>You can provide <em>default values</em> for parameters in a function definition:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [24]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="gp">   ....:</span>
+</pre></div>
 </div>
-<div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>Now think back to our thought experiment from when we started. How could the use of functions improve the way we construct programs? Perhaps most significantly we can now reduce code redundancy by factoring out repetitive code blocks as functions which can be called from wherever in our program they are needed. Moreover Where once we had to work strictly from the top of our program to the bottom we can now construct a series of functions that can be called from a main routine or from higher level functions making our program more readable.</p>
+<p>When parameters are given with default values, they become <em>optional</em></p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">fun</span><span class="p">()</span>
+<span class="go">1 2 3</span>
+</pre></div>
+</div>
+<p>You can provide arguments to a function call for <em>optional</em> parameters
+positionally:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="go">6 2 3</span>
+<span class="gp">In [27]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="go">6 7 3</span>
+<span class="gp">In [28]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="go">6 7 8</span>
+</pre></div>
+</div>
+<p>Or, you can use the parameter name as a <em>keyword</em> to indicate which you mean:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [29]: </span><span class="n">fun</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">1 4 3</span>
+</pre></div>
+</div>
+<p>Once you’ve provided a <em>keyword</em> argument in this way, you can no longer
+provide any <em>positional</em> arguments:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [30]: </span><span class="n">fun</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-30-4529e5befb95&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="n">fun</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="ne">SyntaxError</span>: non-keyword arg after keyword arg
+</pre></div>
 </div>
 </div>
-<div class="section" id="related-topics">
-<h1>Related Topics<a class="headerlink" href="#related-topics" title="Permalink to this headline">¶</a></h1>
-<p>Functions within Functions</p>
+<div class="section" id="recursion">
+<h2>Recursion<a class="headerlink" href="#recursion" title="Permalink to this headline">¶</a></h2>
+<p>You’ve seen functions that call other functions.</p>
+<p>If a function calls <em>itself</em>, we call that <strong>recursion</strong></p>
+<p>Like with other functions, a call within a call establishes a <em>call stack</em></p>
+<p>With recursion, if you are not careful, this stack can get <em>very</em> deep.</p>
+<p>Python has a maximum limit to how much it can recurse. This is intended to
+save your machine from running out of RAM.</p>
+</div>
+<div class="section" id="recursion-can-be-useful">
+<h2>Recursion can be Useful<a class="headerlink" href="#recursion-can-be-useful" title="Permalink to this headline">¶</a></h2>
+<p>Recursion is especially useful for a particular set of problems.</p>
+<p>For example, take the case of the <em>factorial</em> function.</p>
+<p>In mathematics, the <em>factorial</em> of an integer is the result of multiplying that integer by every integer smaller than itself down to 1.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>5! == 5 * 4 * 3 * 2 * 1
+</pre></div>
+</div>
+<p>We can use a recursive function nicely to model this mathematical function</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;compute the factorial of the input value, n&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is a typical structure for a recursive function:</p>
+<ol class="upperalpha simple">
+<li>It starts with a check to see if there if the recursive process is “done” – can it simply return a simple value.</li>
+<li>If not, then it does a computation using the same function of another value.</li>
+</ol>
+<p>It is critical at that that first step be there, or the function will never terminate.</p>
+<blockquote>
+<div>[demo]</div></blockquote>
+</div>
 </div>
 
 
@@ -208,22 +220,22 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Functions</a><ul>
-<li><a class="reference internal" href="#basic-function-definition">Basic Function Definition</a></li>
-<li><a class="reference internal" href="#arguments">Arguments</a></li>
-<li><a class="reference internal" href="#return-values">Return Values</a></li>
-<li><a class="reference internal" href="#scope">Scope</a></li>
-<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#">More on Functions</a><ul>
+<li><a class="reference internal" href="#variable-scope">Variable scope</a></li>
+<li><a class="reference internal" href="#local-vs-global">Local vs. Global</a></li>
+<li><a class="reference internal" href="#global-gotcha">Global Gotcha</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#recursion">Recursion</a></li>
+<li><a class="reference internal" href="#recursion-can-be-useful">Recursion can be Useful</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#related-topics">Related Topics</a></li>
 </ul>
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="FunctionalProgramming.html" title="previous chapter">Functional Programming</a></li>
-      <li>Next: <a href="Git.html" title="next chapter">Git</a></li>
+      <li>Previous: <a href="AdvancedArgumentPassing.html" title="previous chapter">Advanced Argument Passing</a></li>
+      <li>Next: <a href="Documentation.html" title="next chapter">Documentation</a></li>
   </ul></li>
 </ul>
 </div>

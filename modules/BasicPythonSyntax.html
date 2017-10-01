@@ -846,10 +846,58 @@ or in multiple parts of the program.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="lists">
+<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
+<p>A way to store a bunch of stuff in order</p>
+<p>Pretty much like an “array” or “vector” in other languages</p>
+<p>To make a list literal you use square brackets an commas between the items:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<span class="n">a_list_of_strings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;that&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;other&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>You can put any type of object in a list…</p>
+<p>Lists are a key python data type with lots of functionality that we will get into later.</p>
+</div>
+<div class="section" id="for-loops">
+<h2><code class="docutils literal"><span class="pre">for</span></code> loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes called a ‘determinate’ loop</p>
+<p>When you need to do something to all the objects in a sequence</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="gp">In [11]: </span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
+<span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="gp">   ....:</span>
+<span class="go">2</span>
+<span class="go">3</span>
+<span class="go">4</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="range-and-for">
+<h2><code class="docutils literal"><span class="pre">range()</span></code> and for<a class="headerlink" href="#range-and-for" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">range</span></code> builds sequences of numbers automatically</p>
+<p>Use it when you need to do something a set number of times</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="go">num_stars = 4</span>
+<span class="gp">In [31]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_stars</span><span class="p">):</span>
+<span class="go">    print(&#39;*&#39;, end=&#39; &#39;)</span>
+<span class="gp">   ....:</span>
+<span class="go">* * * *</span>
+</pre></div>
+</div>
+<p>NOTE: <code class="docutils literal"><span class="pre">range(n)</span></code> creates an “iterable” – something you can loop over
+– more on that later.</p>
+</div>
+<div class="section" id="intricacies">
+<h2>Intricacies<a class="headerlink" href="#intricacies" title="Permalink to this headline">¶</a></h2>
+<p>This is enough to get you started.</p>
+<p>Each of these have intricacies special to python</p>
+<p>We’ll get to those over the next couple of classes – or really, the rest of the program!</p>
+</div>
 <div class="section" id="enough-for-now">
 <h2>Enough For Now<a class="headerlink" href="#enough-for-now" title="Permalink to this headline">¶</a></h2>
 <p>That’s it for our basic intro to Python</p>
-<p>You now know enough Python to do some basic exercises in Python programming</p>
+<p>You now know enough Python to do some basic exercises in Python programming.</p>
 </div>
 </div>
 
@@ -894,6 +942,10 @@ or in multiple parts of the program.</p>
 <li><a class="reference internal" href="#functions-parameters">Functions: parameters</a></li>
 <li><a class="reference internal" href="#functions-arguments">Functions: arguments</a></li>
 <li><a class="reference internal" href="#making-a-decision">Making a Decision</a></li>
+<li><a class="reference internal" href="#lists">Lists</a></li>
+<li><a class="reference internal" href="#for-loops"><code class="docutils literal"><span class="pre">for</span></code> loops</a></li>
+<li><a class="reference internal" href="#range-and-for"><code class="docutils literal"><span class="pre">range()</span></code> and for</a></li>
+<li><a class="reference internal" href="#intricacies">Intricacies</a></li>
 <li><a class="reference internal" href="#enough-for-now">Enough For Now</a></li>
 </ul>
 </li>

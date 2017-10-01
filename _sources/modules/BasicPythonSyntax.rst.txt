@@ -1047,9 +1047,75 @@ What's the difference between these two?
     if b:
         print('b')
 
+Lists
+-----
+
+A way to store a bunch of stuff in order
+
+Pretty much like an "array" or "vector" in other languages
+
+To make a list literal you use square brackets an commas between the items:
+
+.. code-block:: python
+
+    a_list = [2,3,5,9]
+    a_list_of_strings = ['this', 'that', 'the', 'other']
+
+You can put any type of object in a list...
+
+Lists are a key python data type with lots of functionality that we will get into later.
+
+``for`` loops
+--------------
+
+Sometimes called a 'determinate' loop
+
+When you need to do something to all the objects in a sequence
+
+.. code-block:: ipython
+
+    In [10]: a_list = [2,3,4,5]
+
+    In [11]: for item in a_list:
+       ....:     print(item)
+       ....:
+    2
+    3
+    4
+    5
+
+
+``range()`` and for
+-------------------
+
+``range`` builds sequences of numbers automatically
+
+Use it when you need to do something a set number of times
+
+.. code-block:: ipython
+
+    num_stars = 4
+    In [31]: for i in range(num_stars):
+        print('*', end=' ')
+       ....:
+    * * * *
+
+NOTE: ``range(n)`` creates an "iterable" -- something you can loop over
+-- more on that later.
+
+Intricacies
+------------
+
+This is enough to get you started.
+
+Each of these have intricacies special to python
+
+We'll get to those over the next couple of classes -- or really, the rest of the program!
+
+
 Enough For Now
 --------------
 
 That's it for our basic intro to Python
 
-You now know enough Python to do some basic exercises in Python programming
+You now know enough Python to do some basic exercises in Python programming.

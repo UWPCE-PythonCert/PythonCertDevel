@@ -1,193 +1,239 @@
-Functions
-=========
+.. _more_on_functions:
 
-We have seen some of the building blocks of programs such as basic data structures, conditional flow control statements like ``if`` and looping constructs such as ``while`` and ``for``. We can do quite a lot with these constructs alone.
+More on Functions
+=================
 
-Take a moment to think about what your programs will look like using only these constructs. If you are relatively new to programming this should be easy. If you've been around for awhile, you may need to forget some of what you already know for this thought experiment to work.
+From various tutorials, etc, you should have the basics of writing functions down.
 
-Using only the basic building blocks you start at the top of your program and work your way to the bottom. You likely define a few variables early on. From there you might have an ``if`` statement that conditionally executes some code block rather than some other code block. Beyond that perhaps you iterate over a list with a ``for`` loop. Maybe you load data from a database into a list of tuples and iterate over those, printing to the console the interesting bits. At the end it might be nice to print 'Done!'
+In particular, you know that functions can contain a chunk of code that can be wirtten once, and used multiple times from other parts of the code.
 
-Think about this in its general form. Where does execution begin and where does it end? What happens if you find yourself repeating the same code, the same series of statements, in several ``while`` or ``for`` loops. What happens if you need to change the code in one of the loops, say in response to a change in the fields returned from your database, yet forget to change the corresponding code in all of the loops?
+You know that you can pass values into the function, and that it can return values to the "calling" code.
 
-Without a higher level construct to help organize our code it will be closer to a script than a program. Scripts are common in the automation of systems-level tasks, the type of programming used regularly by Systems Administrators and Devops Developers. To move beyond scripts we need functions.
+Now we will dig a bit deeper down into the specifics of functions in Python:
 
-Basic Function Definition
--------------------------
+Variable scope
+--------------
 
-The basic form of a function is a ``def`` statement, followed by the name of the function ``addOne`` followed by an argument list ``(x)`` and finally a colon, ``:``. All of this is typically on the first line of the function definition. Then within the function are all of the statements and expressions that do the work of the function ``result = x + 1`` and finally a return value ``return result``.
-
-.. code-block:: python
-
-    def addOne(x):
-    	result = x + 1
-        return result
-
-In simple cases such as this all of the work of the function can be done on the return line which eliminates a name ``result`` and makes the function easier to read.
+Defining a function:
 
 .. code-block:: python
 
-	def addOne(x):
-		return x + 1
+    def fun(x, y):
+        z = x + y
+        return z
 
-Arguments
----------
+`x`, `y`, `z` are *local* names.
 
-Functions can take more than a single argument.
+`x` and `y` because there are function *parameters*
+
+`z` because it was "bound" inside the function.
+
+
+Local vs. Global
+----------------
+
+Names bound in Python have a *scope*
+
+That *scope* determines where a symbol is visible, or what value it has in a
+given block.
+
+.. code-block:: ipython
+
+    In [14]: x = 32
+    In [15]: y = 33
+    In [16]: z = 34
+    In [17]: def fun(y, z):
+       ....:     print(x, y, z)
+       ....:
+    In [18]: fun(3, 4)
+    32 3 4
+
+
+x is global, y and z local to the function
+
+But, did the value of y and z change in the *global* scope?
+
+.. code-block:: ipython
+
+    In [19]: y
+    Out[19]: 33
+
+    In [20]: z
+    Out[20]: 34
+
+No -- they did not. The "y" and "z" names *inside* the function are completely separate from the "y" and "z" outside the function.
+
+The ones outside the function are "global" names.
+
+**NOTE:** "global" in python means global to the module (generally a single file), not global to an entire program. Which is really good, as you have little way of knowing what names are being used in packages you are using, but are not writing yourself!
+
+In general, you should use global bindings mostly for constants.
+
+The python convention is to designate global constants by typing the
+names we bind to them in ALL_CAPS:
 
 .. code-block:: python
 
-    def add(x, y):
-    	return x + y
+    INSTALLED_APPS = ['foo', 'bar', 'baz']
+    CONFIGURATION_KEY = 'some secret value'
+    ...
 
-.. code-block:: python
+This is just a convention, but it's a good one to follow.
 
-    def add(x, y, z):
-    	return x + y + z
 
-Functions can have default values for arguments so that the caller can neglect to specify certain arguments and yet get reasonable defaults.
-
-.. code-block:: ipython
-
-	In [12]: def add(x, y=0, z=0):
-	    ...:     return x + y + z
-	    ...:
-
-	In [13]: add(3)
-	Out[13]: 3
-
-	In [14]: add(3, 2)
-	Out[14]: 5
-
-	In [15]: add(3, 2, 1)
-	Out[15]: 6
-
-We snuck in an interesting and useful feature of functions in Python: key word arguments which are often called kwargs for short. The second and third arguments to our function above have names. The first named or key word argument is ``y`` and the second is ``z``. Note that the act itself of giving default values to arguments turns them from standard positional arguments into key word arguments. This allows the caller to specify them by name rather than by position so that they can be called in any order. For instance, ``z`` can be specified before ``y``.
-
-.. code-block:: ipython
-
-	In [16]: add(0, z=1, y=2)
-	Out[16]: 3
-
-Kwargs also allow the caller to skip unneeded arguments and rely instead on their defaults.
-
-.. code-block:: ipython
-
-	In [17]: add(0, z=1)
-	Out[17]: 1
-
-Note however, that positional arguments cannot be skipped. In this simple case we have only one positional argument ``x`` which Python will not permit us to ignore.
-
-.. code-block:: ipython
-
-    In [18]: add(y=2, z=3)
-    -------------------------------------------------------------------------------
-    TypeError                                 Traceback (most recent call     last)
-    <ipython-input-18-5b53a9942d6b> in <module>()
-    ----> 1 add(y=2, z=3)
-
-    TypeError: add() missing 1 required positional argument: 'x'
-
-Return Values
+Global Gotcha
 -------------
 
-Functions can also take zero arguments and return nothing. Simply leave off the return statement and your function will return no value to its caller.
+Take a look at this function definition:
+
+.. code-block:: ipython
+
+    In [21]: x = 3
+
+    In [22]: def f():
+       ....:     y = x
+       ....:     x = 5
+       ....:     print(x)
+       ....:     print(y)
+       ....:
+
+What is going to happen when we call ``f``?
+
+
+Try it and see:
+
+.. code-block:: ipython
+
+    In [34]: f()
+    ---------------------------------------------------------------------------
+    UnboundLocalError                         Traceback (most recent call last)
+    <ipython-input-34-0ec059b9bfe1> in <module>()
+    ----> 1 f()
+
+    <ipython-input-33-4363b2b69f73> in f()
+          1 def f():
+    ----> 2     y = x
+          3     x = 5
+          4     print(x)
+          5     print(y)
+
+    UnboundLocalError: local variable 'x' referenced before assignment
+
+Because you are binding the symbol ``x`` locally, it becomes a local and masks
+the global value already bound.
+
+
+Parameters
+----------
+
+So far we've seen simple parameter lists:
 
 .. code-block:: python
 
-    def sayHello():
-        print("Hello")
+    def fun(x, y, z):
+        print(x, y, z)
 
-Interestingly, in Python functions can return more than a single value. They can return two, three, four, or indeed an arbitrary number of values. Simply place commas between the values you plan to return.
+These types of parameters are called *positional*
 
-.. code-block:: ipython
+When you call a function, you **must** provide arguments for all *positional*
+parameters *in the order they are listed*
 
-	In [24]: def giveMeTwoValues():
-	    ...:     return 1, "two"
-	    ...:
-
-	In [25]: myTwoValues = giveMeTwoValues()
-
-	In [26]: myTwoValues
-	Out[26]: (1, 'two')
-
-	In [27]: type(myTwoValues)
-	Out[27]: tuple
-
-Note that the values are packed into a tuple and thus returned as one object, each of which can be accessed according to their position in the tuple.
+You can provide *default values* for parameters in a function definition:
 
 .. code-block:: ipython
 
-	In [28]: myTwoValues[0]
-	Out[28]: 1
+    In [24]: def fun(x=1, y=2, z=3):
+       ....:     print(x, y, z)
+       ....:
 
-	In [29]: myTwoValues[1]
-	Out[29]: 'two'
-
-	In [30]: type(myTwoValues[0])
-	Out[30]: int
-
-	In [31]: type(myTwoValues[1])
-	Out[31]: str
-
-Scope
------
-
-Functions can carry variables that come into existence and go out of existence during the run of the function. This is known as scope. I could have as correctly said that these variables come into scope and go out of scope during the run of the function.
+When parameters are given with default values, they become *optional*
 
 .. code-block:: ipython
 
-	In [1]: def my_func(x=1):
-	   ...:     a = "alpha"
-	   ...:     b = "beta"
-	   ...:     return a*x, b*x
-	   ...:
+    In [25]: fun()
+    1 2 3
 
-	In [2]: my_func()
-	Out[2]: ('alpha', 'beta')
-
-	In [3]: my_func(2)
-	Out[3]: ('alphaalpha', 'betabeta')
-
-Variables that are defined within a function are called local variables, because they are local to the function. Note that once the function has completed executing its local variables no longer in scope.
+You can provide arguments to a function call for *optional* parameters
+positionally:
 
 .. code-block:: ipython
 
-	In [4]: a
-	---------------------------------------------------------------------------
-	NameError                                 Traceback (most recent call last)
-	<ipython-input-4-3f786850e387> in <module>()
-	----> 1 a
+    In [26]: fun(6)
+    6 2 3
+    In [27]: fun(6, 7)
+    6 7 3
+    In [28]: fun(6, 7, 8)
+    6 7 8
 
-	NameError: name 'a' is not defined
-
-	In [5]: b
-	---------------------------------------------------------------------------
-	NameError                                 Traceback (most recent call last)
-	<ipython-input-5-89e6c98d9288> in <module>()
-	----> 1 b
-
-	NameError: name 'b' is not defined
-
-Python's scoping rules are such that any variables outside the function with the same names are masked by local variables. In other words, if ``a`` and ``b`` are defined outside the function they do not interfere with the variables inside the function.
+Or, you can use the parameter name as a *keyword* to indicate which you mean:
 
 .. code-block:: ipython
 
-	In [6]: a = "apple"
+    In [29]: fun(y=4, x=1)
+    1 4 3
 
-	In [7]: b = "banana"
+Once you've provided a *keyword* argument in this way, you can no longer
+provide any *positional* arguments:
 
-	In [8]: my_func(2)
-	Out[8]: ('alphaalpha', 'betabeta')
+.. code-block:: ipython
 
-``my_func`` still returns alphas and betas rather than apples and bananas.
+    In [30]: fun(x=5, 6)
+      File "<ipython-input-30-4529e5befb95>", line 1
+        fun(x=5, 6)
+    SyntaxError: non-keyword arg after keyword arg
 
-Summary
--------
+Recursion
+---------
 
-Now think back to our thought experiment from when we started. How could the use of functions improve the way we construct programs? Perhaps most significantly we can now reduce code redundancy by factoring out repetitive code blocks as functions which can be called from wherever in our program they are needed. Moreover Where once we had to work strictly from the top of our program to the bottom we can now construct a series of functions that can be called from a main routine or from higher level functions making our program more readable.
+You've seen functions that call other functions.
 
-Related Topics
-==============
+If a function calls *itself*, we call that **recursion**
 
-Functions within Functions
+Like with other functions, a call within a call establishes a *call stack*
+
+With recursion, if you are not careful, this stack can get *very* deep.
+
+Python has a maximum limit to how much it can recurse. This is intended to
+save your machine from running out of RAM.
+
+Recursion can be Useful
+-----------------------
+
+Recursion is especially useful for a particular set of problems.
+
+For example, take the case of the *factorial* function.
+
+In mathematics, the *factorial* of an integer is the result of multiplying that integer by every integer smaller than itself down to 1.
+
+::
+
+    5! == 5 * 4 * 3 * 2 * 1
+
+We can use a recursive function nicely to model this mathematical function
+
+.. code-block:: python
+
+  def fact(n):
+      """compute the factorial of the input value, n"""
+      if n == 0:
+          return 1
+      else:
+          return n * fact(n-1)
+
+This is a typical structure for a recursive function:
+
+A) It starts with a check to see if there if the recursive process is "done" -- can it simply return a simple value.
+
+B) If not, then it does a computation using the same function of another value.
+
+It is critical at that that first step be there, or the function will never terminate.
+
+
+
+
+
+    [demo]
+
+
+
 
