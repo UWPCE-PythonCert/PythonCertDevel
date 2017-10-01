@@ -11,6 +11,8 @@ Pre-class prep
 
 Get your Environment set up!
 
+If you were able to attend the pre-class orientation, you should be all set. if not, then do this:
+
 **Install Python**
 
 :ref:`installing_python`
@@ -31,11 +33,21 @@ least, make sure it does Python indentation and syntax coloring well.
 In-class Activities
 ===================
 
-Introduction to the class and each-other.
+.. toctree::
+    :maxdepth: 1
 
-Setting up the class git repo
+    ../modules/class_introduction
 
-Quickie Python Introduction
+    ../modules/Git
+
+    ../modules/lightning_talks
+
+    ../modules/PythonOverview
+
+    ../modules/BasicPythonSyntax
+
+    ../modules/Py2vsPy3
+
 
 A few exercises: :ref:`python_pushups`
 
@@ -43,7 +55,12 @@ A few exercises: :ref:`python_pushups`
 Post-class Activites
 ====================
 
-Finish the Exercises
+Read the rest of Basic Python Syntax intro, if we didn't have time in class:
+:ref:`basic_python_syntax`
 
-Finish getting your environment set up
+Finish the Python Pushups exercises: :ref:`python_pushups`
+
+Finish getting your environment set up.
+
+Do the prep for next class: :ref:`session_1_02`
 
