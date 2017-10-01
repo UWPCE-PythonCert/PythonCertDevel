@@ -104,9 +104,21 @@ Interestingly, in Python functions can return more than a single value. They can
 
 .. code-block:: ipython
 
-	In [24]: def giveMeTwoValues():
+	In [1]: def giveMeTwoValues():
 	    ...:     return 1, "two"
 	    ...:
+
+	In [2]: first, second = giveMeTwoValues()
+
+	In [3]: first
+	Out[3]: 1
+
+	In [4]: second
+	Out[4]: 'two'
+
+Give the return value a single namae and the objects will be packed into a tuple; each object in the tuple can be accessed according to its position.
+
+.. code-block:: ipython
 
 	In [25]: myTwoValues = giveMeTwoValues()
 
@@ -115,10 +127,6 @@ Interestingly, in Python functions can return more than a single value. They can
 
 	In [27]: type(myTwoValues)
 	Out[27]: tuple
-
-Note that the values are packed into a tuple and thus returned as one object, each of which can be accessed according to their position in the tuple.
-
-.. code-block:: ipython
 
 	In [28]: myTwoValues[0]
 	Out[28]: 1
