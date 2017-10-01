@@ -73,9 +73,11 @@ Modules
 .. toctree::
     :maxdepth: 1
 
-    modules/AdvancedArgumentPassing
     modules/BasicPythonSyntax
+    modules/Functions
+    modules/Documentation
     scripts/Booleans
+    modules/AdvancedArgumentPassing
     modules/Closures
     modules/Composition
     modules/Comprehensions
