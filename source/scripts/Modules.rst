@@ -1,3 +1,5 @@
+:orphan:
+
 Modules, Scope and Namespaces
 =============================
 

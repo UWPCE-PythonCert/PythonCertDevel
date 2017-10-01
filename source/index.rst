@@ -74,9 +74,12 @@ Modules
     :maxdepth: 1
 
     modules/BasicPythonSyntax
+    modules/Git
+    modules/GitWorkflow
     modules/Functions
     modules/Documentation
     scripts/Booleans
+    modules/Modules
     modules/AdvancedArgumentPassing
     modules/Closures
     modules/Composition
@@ -87,15 +90,12 @@ Modules
     modules/EnvironmentOverview
     scripts/FunctionalProgramming
     scripts/Functions
-    modules/Git
-    modules/GitWorkflow
     modules/IPythonIntroduction
     modules/IteratorsAndGenerators
     modules/Lambda
     modules/MapFilterReduce
     modules/Math
     scripts/Methods
-    scripts/Modules
     modules/MultipleInheritance
     modules/ObjectOrientationOverview
     modules/Properties
