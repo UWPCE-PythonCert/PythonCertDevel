@@ -6,17 +6,7 @@ Python Pushups
 
 These are a couple exercises to kick you off with Python
 
-Task 1 Puzzles
-==============
-
-To get a bit of exercise solving some puzzles with Python, work on the Python
-exercises at "Coding Bat": http://codingbat.com/python
-
-There are 8 sets of puzzles. Do as many as you can, but try to at least
-get all the "Warmups" done.
-
-
-Task 2: Explore Errors
+Task 1: Explore Errors
 ======================
 
 * Create a new directory in your working dir for the class::
@@ -39,3 +29,14 @@ Task 2: Explore Errors
   * Use the Python standard library reference on `Built In Exceptions <https://docs.python.org/3/library/exceptions.html>`_ as a
     reference
 
+
+Task 2: Puzzles
+===============
+
+To get a bit of exercise solving some puzzles with Python, work on the Python
+exercises at "Coding Bat": http://codingbat.com/python
+
+There are 8 sets of puzzles. Do as many as you can, but try to get to at least
+the "Warmups".
+
+We will go over these in class.
