@@ -1,15 +1,13 @@
+.. _basic_python_syntax:
+
 Basic Python Syntax
 ===================
 
+Values, Types, and Symbols
+
+Expressions and Statements
+
 (Follow along in the iPython interpreter...)
-
-.. rst-class:: center mlarge
-
-
-| Values, Types, and Symbols
-|
-| Expressions and Statements
-
 
 Values
 ------
@@ -498,13 +496,9 @@ object** using the ``is`` operator:
     In [76]: other_count is count
     Out[76]: False
 
-.. ifslides::
+[demo]
 
-    .. rst-class:: centered
-
-        [demo]
-
-**NOTE:** checking the id of an object, or using "is" to check if two objects are the same is rarely used except for debugging and understanding what's going on under the hood. They are not used regularly in production code.
+**NOTE:** Checking the id of an object, or using "is" to check if two objects are the same is rarely used except for debugging and understanding what's going on under the hood. They are not used regularly in production code.
 
 
 Equality
@@ -528,20 +522,18 @@ You can test for the equality of certain values with the ``==`` operator
 
 A string is never equal to a number!
 
-.. ifslides::
-
-    .. rst-class:: centered
-
-        [demo]
+[demo]
 
 Singletons
 ----------
 
-Python has three "singletons" -- value fro which there is only one instance:
+Python has three "singletons" -- a value for which there is only one instance:
 
   ``True``, ``False``, and ``None``
 
 To check if a name is bound to one of these, you use ``is``::
+
+.. code-block:: python
 
     a is True
 
@@ -585,8 +577,6 @@ Slicing and Subscription:
 Attribute Reference:
   ``obj.attribute``
 
-.. nextslide::
-
 Exponentiation:
   ``**``
 
@@ -600,8 +590,6 @@ Multiplication, Division, Modulus:
 
 Addition, Subtraction:
   ``+, -``
-
-.. nextslide::
 
 Bitwise operations:
   ``<<, >>,``
@@ -642,9 +630,6 @@ You define a ``string`` value by writing a string *literal*:
     In [4]: 'a string with an embedded "quote"'
     Out[4]: 'a string with an embedded "quote"'
 
-
-.. nextslide::
-
 .. code-block:: ipython
 
     In [5]: """a multi-line
@@ -659,9 +644,9 @@ You define a ``string`` value by writing a string *literal*:
     In [7]: r'a "raw" string, the \n comes through as a \n'
     Out[7]: 'a "raw" string, the \\n comes through as a \\n'
 
-Python3 strings are fully support Unicode, which means that it can suport literally all the languages in the world (and then some -- Klingon, anyone?)
+Python3 strings fully support Unicode, which means that it can support literally all the languages in the world (and then some -- Kligon, anyone? -- well `sort of. <http://www.personal.psu.edu/ejp10/blogs/gotunicode/2010/10/conscript-unicode-registry-csu.html>`_)
 
-Because Unicode is native, you can get very far without even thinking about it. Anything you can type in your editor will work fine.
+Because Unicode is native to python strings, you can get very far without even thinking about it. Anything you can type in your editor will work fine.
 
 
 Keywords
@@ -682,8 +667,6 @@ You *cannot* use these words as symbols.
     class     exec      in        raise
     continue  finally   is        return
     def       for       lambda    try
-
-.. nextslide::
 
 
 If you try to use any of the keywords as symbols, you will cause a
@@ -729,7 +712,6 @@ Try this:
      'xrange',
      'zip']
 
-.. nextslide::
 
 You are free to rebind these symbols:
 
@@ -776,9 +758,7 @@ There are several exceptions that you are likely to see a lot of:
 Functions
 ---------
 
-What is a function?
-
-.. rst-class:: build
+**What is a function?**
 
 A function is a self-contained chunk of code
 
@@ -787,13 +767,11 @@ or in multiple parts of the program.
 
 (DRY) -- "Don't Repeat Yourself"
 
-Or just to keep the code clean
+Or just to keep the code clean.
 
-Functions can take and return information
+Functions can take and return information.
 
-.. nextslide::
-
-The minimal Function has at least one statement
+The minimal Function has at least one statement.
 
 .. code-block:: python
 
@@ -820,9 +798,8 @@ Functions: ``def``
   * it creates a local name
   * it does *not* return a value
 
-.. nextslide::
 
-function defs must be executed before the functions can be called:
+Function defs must be executed before the functions can be called:
 
 .. code-block:: ipython
 
@@ -847,7 +824,7 @@ function defs must be executed before the functions can be called:
 Calling Functions
 -----------------
 
-You **call** a function using the function call operator (parens):
+You **call** a function using the function call operator (parentheses):
 
 .. code-block:: ipython
 
@@ -866,7 +843,7 @@ Calling a function is how you run the code in that function.
 Functions: Call Stack
 ---------------------
 
-functions call functions -- this makes an execution stack -- that is what a "trace back" is:
+Functions call functions -- this makes what is called an execution stack. That is what a "trace back", often referred to in Exceptions, is -- the function call stack.
 
 .. code-block:: ipython
 
@@ -884,6 +861,7 @@ functions call functions -- this makes an execution stack -- that is what a "tra
 
 You've defined three functions, one of which will *call* the other two.
 
+When an error occurs, you are presented with a "traceback" of the call stack:
 
 Functions: Tracebacks
 ---------------------
@@ -911,7 +889,11 @@ Functions: Tracebacks
 
     ZeroDivisionError: integer division or modulo by zero
 
-The error occurred in the ``doer`` function -- but the traceback shows you where that was called from. In a more complex system, this can be VERY useful -- learn to read tracebacks!
+The error occurred in the ``doer`` function -- but the traceback shows you where that was called from.
+
+Note that is listed in reverse order -- reverse of the order in which it was called.
+
+In a more complex system, this can be VERY useful -- learn to read tracebacks!
 
 
 Functions: ``return``
@@ -928,7 +910,7 @@ This is actually the simplest possible function:
 
 .. nextslide::
 
-if you don't explicilty put ``return``  there, Python will:
+if you don't explicitly put ``return``  there, Python will return ``None``:
 
 .. code-block:: ipython
 
@@ -942,8 +924,8 @@ if you don't explicilty put ``return``  there, Python will:
 
 note that the interpreter eats ``None`` -- you need to call ``print()`` to see it.
 
-
-.. nextslide::
+More on return
+--------------
 
 Only one return statement in a function will ever be executed.
 
@@ -964,8 +946,6 @@ This is useful when debugging!
     Out[15]: 'done'
 
 
-.. nextslide::
-
 However, functions *can* return multiple results:
 
 .. code-block:: ipython
@@ -976,8 +956,6 @@ However, functions *can* return multiple results:
     In [17]: fun()
     Out[17]: (1, 2, 3)
 
-
-.. nextslide::
 
 Remember multiple assignment?
 
@@ -1021,14 +999,16 @@ When you call a function, you pass values to the function parameters as
 
 The values you pass in are *bound* to the names inside the function and used.
 
-The name used outside the object is separete from the name used inside teh function:
+The name used outside the object is separate from the name used inside the function.
 
-The ``if`` Statement
----------------------
+Making a Decision
+------------------
+
+**"Conditionals"**
 
 In order to do anything interesting at all, you need to be able to make a decision.
 
-.. nextslide::
+``if`` and ``elif`` (else if) allow you to make decisions:
 
 .. code-block:: ipython
 
@@ -1051,6 +1031,21 @@ In order to do anything interesting at all, you need to be able to make a decisi
 
 There is more to it than that, but this will get you started.
 
+
+What's the difference between these two?
+
+.. code-block:: python
+
+    if a:
+        print('a')
+    elif b:
+        print('b')
+
+    ## versus...
+    if a:
+        print('a')
+    if b:
+        print('b')
 
 Enough For Now
 --------------

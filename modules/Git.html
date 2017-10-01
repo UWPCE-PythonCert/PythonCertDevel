@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Git &#8212; PythonCert 4.0 documentation</title>
+    <title>Intro to Git &#8212; PythonCert 4.0 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Git Workflow" href="GitWorkflow.html" />
-    <link rel="prev" title="Functions" href="../scripts/Functions.html" />
+    <link rel="next" title="Schedule Lightning talks" href="lightning_talks.html" />
+    <link rel="prev" title="Introductions" href="class_introduction.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -41,8 +41,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="git">
-<span id="id1"></span><h1>Git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="intro-to-git">
+<span id="git"></span><h1>Intro to Git<a class="headerlink" href="#intro-to-git" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="what-is-git">
 <h2>What is Git?<a class="headerlink" href="#what-is-git" title="Permalink to this headline">¶</a></h2>
 <p>A “version control system”</p>
@@ -175,7 +175,7 @@ Fetching upstream
 </pre></div>
 </div>
 <p>This is <strong>really really</strong> important. Take the time to ensure you are where you think you are, iow, that your origin is your own github repository and that you are working on master from that remote.
-You can use <a href="#id2"><span class="problematic" id="id3">:bash:`git remote -v`</span></a> and <a href="#id4"><span class="problematic" id="id5">:bash:`git branch -a`</span></a> to verify.</p>
+You can use <a href="#id1"><span class="problematic" id="id2">:bash:`git remote -v`</span></a> and <a href="#id3"><span class="problematic" id="id4">:bash:`git branch -a`</span></a> to verify.</p>
 <p>Now, fetch the upstream master branch and merge it into your master.
 You can do this in one step with:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ git pull upstream master
@@ -212,16 +212,15 @@ And the files tend to be small.</p>
 fellow students will also help you to better understand. Share
 your code, and get use to giving/receiving feedback on how to
 improve your code, if you are not already.</p>
-<p>Each repository will have a directory called .git that is normally
+<p>Each repository will have a directory called <code class="docutils literal"><span class="pre">.git</span></code> that is normally
 not seen. This direcotry is how git keeps track of everything. Leave it alone. :)</p>
-<p>Please do not set up a git repository inside another git
-repository, this can lead to heartache.</p>
+<p>Please do not set up a git repository inside another git repository, this can lead to heartache.</p>
 <p>Absolutely, do NOT set up a git repository in your home root directory.
 This will put everything in your home directory up on GitHub, and you do not want that.</p>
 <p>Setting up new repositories can be confusing because when you clone a git repository it creates
 the directory that will be the repository, but when you are creating a new
-repository, you need to first be IN the directory in which you want the
-repository to rooted. Please ask if this does not make sense.</p>
+repository, you need to first be <strong>IN</strong> the directory in which you want the
+repository to be rooted. Please ask if this does not make sense.</p>
 </div>
 </div>
 
@@ -233,7 +232,7 @@ repository to rooted. Please ask if this does not make sense.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Git</a><ul>
+<li><a class="reference internal" href="#">Intro to Git</a><ul>
 <li><a class="reference internal" href="#what-is-git">What is Git?</a></li>
 <li><a class="reference internal" href="#why-version-control">Why Version Control?</a></li>
 <li><a class="reference internal" href="#setting-up-git">Setting up Git</a></li>
@@ -247,8 +246,10 @@ repository to rooted. Please ask if this does not make sense.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../scripts/Functions.html" title="previous chapter">Functions</a></li>
-      <li>Next: <a href="GitWorkflow.html" title="next chapter">Git Workflow</a></li>
+  <li><a href="../class_schedule/session_1_01.html">Intro to Python Session 1</a><ul>
+      <li>Previous: <a href="class_introduction.html" title="previous chapter">Introductions</a></li>
+      <li>Next: <a href="lightning_talks.html" title="next chapter">Schedule Lightning talks</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>

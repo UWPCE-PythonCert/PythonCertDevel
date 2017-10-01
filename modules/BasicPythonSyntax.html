@@ -24,8 +24,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Booleans" href="../scripts/Booleans.html" />
-    <link rel="prev" title="Advanced Argument Passing" href="AdvancedArgumentPassing.html" />
+    <link rel="next" title="Python 2 verses Python 3" href="Py2vsPy3.html" />
+    <link rel="prev" title="Python Overview" href="PythonOverview.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -42,13 +42,10 @@
           <div class="body" role="main">
             
   <div class="section" id="basic-python-syntax">
-<h1>Basic Python Syntax<a class="headerlink" href="#basic-python-syntax" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Basic Python Syntax<a class="headerlink" href="#basic-python-syntax" title="Permalink to this headline">¶</a></h1>
+<p>Values, Types, and Symbols</p>
+<p>Expressions and Statements</p>
 <p>(Follow along in the iPython interpreter…)</p>
-<div class="center mlarge line-block">
-<div class="line">Values, Types, and Symbols</div>
-<div class="line"><br /></div>
-<div class="line">Expressions and Statements</div>
-</div>
 <div class="section" id="values">
 <h2>Values<a class="headerlink" href="#values" title="Permalink to this headline">¶</a></h2>
 <p>All of programming is really about manipulating values.</p>
@@ -420,7 +417,8 @@ object</strong> using the <code class="docutils literal"><span class="pre">is</s
 <span class="gh">Out[76]: </span><span class="go">False</span>
 </pre></div>
 </div>
-<p><strong>NOTE:</strong> checking the id of an object, or using “is” to check if two objects are the same is rarely used except for debugging and understanding what’s going on under the hood. They are not used regularly in production code.</p>
+<p>[demo]</p>
+<p><strong>NOTE:</strong> Checking the id of an object, or using “is” to check if two objects are the same is rarely used except for debugging and understanding what’s going on under the hood. They are not used regularly in production code.</p>
 </div>
 <div class="section" id="equality">
 <h2>Equality<a class="headerlink" href="#equality" title="Permalink to this headline">¶</a></h2>
@@ -439,20 +437,22 @@ object</strong> using the <code class="docutils literal"><span class="pre">is</s
 </pre></div>
 </div>
 <p>A string is never equal to a number!</p>
+<p>[demo]</p>
 </div>
 <div class="section" id="singletons">
 <h2>Singletons<a class="headerlink" href="#singletons" title="Permalink to this headline">¶</a></h2>
-<p>Python has three “singletons” – value fro which there is only one instance:</p>
+<p>Python has three “singletons” – a value for which there is only one instance:</p>
 <blockquote>
 <div><code class="docutils literal"><span class="pre">True</span></code>, <code class="docutils literal"><span class="pre">False</span></code>, and <code class="docutils literal"><span class="pre">None</span></code></div></blockquote>
 <p>To check if a name is bound to one of these, you use <code class="docutils literal"><span class="pre">is</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="ow">is</span> <span class="kc">True</span>
-
-<span class="n">b</span> <span class="ow">is</span> <span class="kc">False</span>
-
-<span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">python</span>
 </pre></div>
 </div>
+<blockquote>
+<div><p>a is True</p>
+<p>b is False</p>
+<p>x is None</p>
+</div></blockquote>
 <p>Note that in contrast to english – “is” is asking a question, not making an assertion – <code class="docutils literal"><span class="pre">a</span> <span class="pre">is</span> <span class="pre">True</span></code> means “is a the True value?”</p>
 </div>
 <div class="section" id="operator-precedence">
@@ -481,8 +481,6 @@ object</strong> using the <code class="docutils literal"><span class="pre">is</s
 </dd>
 <dt>Attribute Reference:</dt>
 <dd><code class="docutils literal"><span class="pre">obj.attribute</span></code></dd>
-</dl>
-<dl class="docutils">
 <dt>Exponentiation:</dt>
 <dd><code class="docutils literal"><span class="pre">**</span></code></dd>
 <dt>Bitwise NOT, Unary Signing:</dt>
@@ -493,8 +491,6 @@ object</strong> using the <code class="docutils literal"><span class="pre">is</s
 <dd><code class="docutils literal"><span class="pre">*,</span> <span class="pre">/,</span> <span class="pre">%</span></code></dd>
 <dt>Addition, Subtraction:</dt>
 <dd><code class="docutils literal"><span class="pre">+,</span> <span class="pre">-</span></code></dd>
-</dl>
-<dl class="docutils">
 <dt>Bitwise operations:</dt>
 <dd><p class="first"><code class="docutils literal"><span class="pre">&lt;&lt;,</span> <span class="pre">&gt;&gt;,</span></code></p>
 <p class="last"><code class="docutils literal"><span class="pre">&amp;,</span> <span class="pre">^,</span> <span class="pre">|</span></code></p>
@@ -539,8 +535,8 @@ object</strong> using the <code class="docutils literal"><span class="pre">is</s
 <span class="gh">Out[7]: </span><span class="go">&#39;a &quot;raw&quot; string, the \\n comes through as a \\n&#39;</span>
 </pre></div>
 </div>
-<p>Python3 strings are fully support Unicode, which means that it can suport literally all the languages in the world (and then some – Klingon, anyone?)</p>
-<p>Because Unicode is native, you can get very far without even thinking about it. Anything you can type in your editor will work fine.</p>
+<p>Python3 strings fully support Unicode, which means that it can support literally all the languages in the world (and then some – Kligon, anyone? – well <a class="reference external" href="http://www.personal.psu.edu/ejp10/blogs/gotunicode/2010/10/conscript-unicode-registry-csu.html">sort of.</a>)</p>
+<p>Because Unicode is native to python strings, you can get very far without even thinking about it. Anything you can type in your editor will work fine.</p>
 </div>
 <div class="section" id="keywords">
 <h2>Keywords<a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h2>
@@ -625,14 +621,14 @@ type of object than you expect)</li>
 </div>
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
-<p>What is a function?</p>
-<p class="build">A function is a self-contained chunk of code</p>
+<p><strong>What is a function?</strong></p>
+<p>A function is a self-contained chunk of code</p>
 <p>You use them when you need the same code to run multiple times,
 or in multiple parts of the program.</p>
 <p>(DRY) – “Don’t Repeat Yourself”</p>
-<p>Or just to keep the code clean</p>
-<p>Functions can take and return information</p>
-<p>The minimal Function has at least one statement</p>
+<p>Or just to keep the code clean.</p>
+<p>Functions can take and return information.</p>
+<p>The minimal Function has at least one statement.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a_name</span><span class="p">():</span>
     <span class="n">a_statement</span>
 </pre></div>
@@ -654,7 +650,7 @@ or in multiple parts of the program.</p>
 <li>it does <em>not</em> return a value</li>
 </ul>
 </div></blockquote>
-<p>function defs must be executed before the functions can be called:</p>
+<p>Function defs must be executed before the functions can be called:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">unbound</span><span class="p">()</span>
 <span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
@@ -675,7 +671,7 @@ or in multiple parts of the program.</p>
 </div>
 <div class="section" id="calling-functions">
 <h2>Calling Functions<a class="headerlink" href="#calling-functions" title="Permalink to this headline">¶</a></h2>
-<p>You <strong>call</strong> a function using the function call operator (parens):</p>
+<p>You <strong>call</strong> a function using the function call operator (parentheses):</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="nb">type</span><span class="p">(</span><span class="n">simple</span><span class="p">)</span>
 <span class="gh">Out[2]: </span><span class="go">function</span>
 
@@ -690,7 +686,7 @@ or in multiple parts of the program.</p>
 </div>
 <div class="section" id="functions-call-stack">
 <h2>Functions: Call Stack<a class="headerlink" href="#functions-call-stack" title="Permalink to this headline">¶</a></h2>
-<p>functions call functions – this makes an execution stack – that is what a “trace back” is:</p>
+<p>Functions call functions – this makes what is called an execution stack. That is what a “trace back”, often referred to in Exceptions, is – the function call stack.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="k">def</span> <span class="nf">exceptional</span><span class="p">():</span>
 <span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am exceptional!&quot;</span><span class="p">)</span>
 <span class="gp">   ...: </span>    <span class="k">print</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
@@ -705,6 +701,7 @@ or in multiple parts of the program.</p>
 </pre></div>
 </div>
 <p>You’ve defined three functions, one of which will <em>call</em> the other two.</p>
+<p>When an error occurs, you are presented with a “traceback” of the call stack:</p>
 </div>
 <div class="section" id="functions-tracebacks">
 <h2>Functions: Tracebacks<a class="headerlink" href="#functions-tracebacks" title="Permalink to this headline">¶</a></h2>
@@ -730,7 +727,9 @@ or in multiple parts of the program.</p>
 <span class="ne">ZeroDivisionError</span>: integer division or modulo by zero
 </pre></div>
 </div>
-<p>The error occurred in the <code class="docutils literal"><span class="pre">doer</span></code> function – but the traceback shows you where that was called from. In a more complex system, this can be VERY useful – learn to read tracebacks!</p>
+<p>The error occurred in the <code class="docutils literal"><span class="pre">doer</span></code> function – but the traceback shows you where that was called from.</p>
+<p>Note that is listed in reverse order – reverse of the order in which it was called.</p>
+<p>In a more complex system, this can be VERY useful – learn to read tracebacks!</p>
 </div>
 <div class="section" id="functions-return">
 <h2>Functions: <code class="docutils literal"><span class="pre">return</span></code><a class="headerlink" href="#functions-return" title="Permalink to this headline">¶</a></h2>
@@ -740,7 +739,7 @@ or in multiple parts of the program.</p>
     <span class="k">return</span> <span class="bp">None</span>
 </pre></div>
 </div>
-<p>if you don’t explicilty put <code class="docutils literal"><span class="pre">return</span></code>  there, Python will:</p>
+<p>if you don’t explicitly put <code class="docutils literal"><span class="pre">return</span></code>  there, Python will return <code class="docutils literal"><span class="pre">None</span></code>:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">():</span>
 <span class="gp">   ...: </span>    <span class="k">pass</span>
 <span class="gp">   ...:</span>
@@ -751,6 +750,9 @@ or in multiple parts of the program.</p>
 </pre></div>
 </div>
 <p>note that the interpreter eats <code class="docutils literal"><span class="pre">None</span></code> – you need to call <code class="docutils literal"><span class="pre">print()</span></code> to see it.</p>
+</div>
+<div class="section" id="more-on-return">
+<h2>More on return<a class="headerlink" href="#more-on-return" title="Permalink to this headline">¶</a></h2>
 <p>Only one return statement in a function will ever be executed.</p>
 <p>Ever.</p>
 <p>Anything after a executed return statement will never get run.</p>
@@ -804,11 +806,13 @@ or in multiple parts of the program.</p>
 </pre></div>
 </div>
 <p>The values you pass in are <em>bound</em> to the names inside the function and used.</p>
-<p>The name used outside the object is separete from the name used inside teh function:</p>
+<p>The name used outside the object is separate from the name used inside the function.</p>
 </div>
-<div class="section" id="the-if-statement">
-<h2>The <code class="docutils literal"><span class="pre">if</span></code> Statement<a class="headerlink" href="#the-if-statement" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="making-a-decision">
+<h2>Making a Decision<a class="headerlink" href="#making-a-decision" title="Permalink to this headline">¶</a></h2>
+<p><strong>“Conditionals”</strong></p>
 <p>In order to do anything interesting at all, you need to be able to make a decision.</p>
+<p><code class="docutils literal"><span class="pre">if</span></code> and <code class="docutils literal"><span class="pre">elif</span></code> (else if) allow you to make decisions:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
 <span class="gp">   ....: </span>        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;that&#39;s the value I&#39;m looking for!&quot;</span><span class="p">)</span>
@@ -828,6 +832,19 @@ or in multiple parts of the program.</p>
 </pre></div>
 </div>
 <p>There is more to it than that, but this will get you started.</p>
+<p>What’s the difference between these two?</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">b</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="c1">## versus...</span>
+<span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">b</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="enough-for-now">
 <h2>Enough For Now<a class="headerlink" href="#enough-for-now" title="Permalink to this headline">¶</a></h2>
@@ -873,9 +890,10 @@ or in multiple parts of the program.</p>
 <li><a class="reference internal" href="#functions-call-stack">Functions: Call Stack</a></li>
 <li><a class="reference internal" href="#functions-tracebacks">Functions: Tracebacks</a></li>
 <li><a class="reference internal" href="#functions-return">Functions: <code class="docutils literal"><span class="pre">return</span></code></a></li>
+<li><a class="reference internal" href="#more-on-return">More on return</a></li>
 <li><a class="reference internal" href="#functions-parameters">Functions: parameters</a></li>
 <li><a class="reference internal" href="#functions-arguments">Functions: arguments</a></li>
-<li><a class="reference internal" href="#the-if-statement">The <code class="docutils literal"><span class="pre">if</span></code> Statement</a></li>
+<li><a class="reference internal" href="#making-a-decision">Making a Decision</a></li>
 <li><a class="reference internal" href="#enough-for-now">Enough For Now</a></li>
 </ul>
 </li>
@@ -884,8 +902,10 @@ or in multiple parts of the program.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="AdvancedArgumentPassing.html" title="previous chapter">Advanced Argument Passing</a></li>
-      <li>Next: <a href="../scripts/Booleans.html" title="next chapter">Booleans</a></li>
+  <li><a href="../class_schedule/session_1_01.html">Intro to Python Session 1</a><ul>
+      <li>Previous: <a href="PythonOverview.html" title="previous chapter">Python Overview</a></li>
+      <li>Next: <a href="Py2vsPy3.html" title="next chapter">Python 2 verses Python 3</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>

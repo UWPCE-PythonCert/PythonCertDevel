@@ -26,12 +26,11 @@ Write a function that draws a grid like the following::
     |         |         |
     + - - - - + - - - - +
 
-hints
+Hints
 -----
 
-.. rst-class:: center medium
 
-    A couple features to get you started...
+A couple features to get you started...
 
 printing
 --------
@@ -53,7 +52,8 @@ The output of these statements is ``'+ -'``.
 
 (that end parameter defaults to a newline...)
 
-.. nextslide:: no arguments...
+no arguments
+------------
 
 A print function with no arguments ends the current line and goes to the next line:
 
@@ -61,6 +61,7 @@ A print function with no arguments ends the current line and goes to the next li
 
     print()
 
+simply prints and empty line.
 
 Simple string manipulation:
 ---------------------------
@@ -85,7 +86,8 @@ Particularly useful if they have been assigned names:
 
 Note that you can string any number of operations together in an expression.
 
-.. nextslide:: multiplication of strings
+Multiplication of strings
+-------------------------
 
 You can also multiply strings:
 
@@ -109,21 +111,19 @@ Note that there are better ways to build up complex strings -- we'll get to that
 
 Now you've got what you need to print that grid...
 
+** give it a try! **
+
 Part 2
 =======
 
-.. rst-class:: center medium
-
-    Making it more general
+Making it more general
 
 Make it a function
 ------------------
 
-One of the points of writing functions is so you can write code that does similar things, but customized to input parameters. So what if we want to be able to print that grid at an arbitrary size?
+One of the points of writing functions is so you can write code that does similar things, but customized by the values of input parameters. So what if we want to be able to print that grid at an arbitrary size?
 
-Write a function ``print_grid(n)`` that takes one integer argument
-and prints a grid just like before, BUT the size of the
-grid is given by the argument.
+Write a function ``print_grid(n)`` that takes one integer argument and prints a grid just like before, *BUT* the size of the grid is given by the argument.
 
 For example, ``print_grid(11)`` prints the grid in the above picture.
 
@@ -135,7 +135,6 @@ For example, ``print_grid(11)`` prints the grid in the above picture.
   |   |   |
   + - + - +
 
-.. nextslide::
 
 ``print_grid(15)`` prints a larger grid::
 
@@ -157,9 +156,9 @@ For example, ``print_grid(11)`` prints the grid in the above picture.
     |               |               |
     + - - - - - - - + - - - - - - - +
 
-.. nextslide::
 
 This problem is underspecified.  Do something reasonable.
+
 
 Part 3:
 =======
@@ -167,11 +166,11 @@ Part 3:
 Even more general...
 
 A function with two parameters
--------------------------------
+------------------------------
 
 Write a function that draws a similar grid with a specified number of rows and columns, and each cell a given size.
 
-for example,  ``print_grid2(3,4)`` results in::
+For example,  ``print_grid2(3,4)`` results in::
 
     + - - - - + - - - - + - - - - +
     |         |         |         |
@@ -190,7 +189,7 @@ for example,  ``print_grid2(3,4)`` results in::
     |         |         |         |
     + - - - - + - - - - + - - - - +
 
-.. nextslide::
+(three rows, three columns, and each grid cell four "units" in size)
 
 What to do about rounding? -- you decide.
 
@@ -218,5 +217,5 @@ Another example: ``print_grid2(5,3)``::
     |       |       |       |       |       |
     + - - - + - - - + - - - + - - - + - - - +
 
-
+Have fun!
 
