@@ -93,7 +93,7 @@ Note however, that positional arguments cannot be skipped. In this simple case w
 Return Values
 -------------
 
-Functions can also take zero arguments and return nothing. Simply leave off the return statement and your function will return no value to its caller.
+Functions can also take zero arguments and return nothing. Simply leave off the return statement and your function will return no value, or ``None``, to its caller.
 
 .. code-block:: python
 
