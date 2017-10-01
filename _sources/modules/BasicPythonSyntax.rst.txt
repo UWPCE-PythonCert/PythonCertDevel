@@ -3,15 +3,11 @@
 Basic Python Syntax
 ===================
 
+Values, Types, and Symbols
+
+Expressions and Statements
+
 (Follow along in the iPython interpreter...)
-
-.. rst-class:: center mlarge
-
-
-| Values, Types, and Symbols
-|
-| Expressions and Statements
-
 
 Values
 ------
@@ -1005,10 +1001,14 @@ The values you pass in are *bound* to the names inside the function and used.
 
 The name used outside the object is separate from the name used inside the function.
 
-The ``if`` Statement
----------------------
+Making a Decision
+------------------
+
+**"Conditionals"**
 
 In order to do anything interesting at all, you need to be able to make a decision.
+
+``if`` and ``elif`` (else if) allow you to make decisions:
 
 .. code-block:: ipython
 
@@ -1031,6 +1031,21 @@ In order to do anything interesting at all, you need to be able to make a decisi
 
 There is more to it than that, but this will get you started.
 
+
+What's the difference between these two?
+
+.. code-block:: python
+
+    if a:
+        print('a')
+    elif b:
+        print('b')
+
+    ## versus...
+    if a:
+        print('a')
+    if b:
+        print('b')
 
 Enough For Now
 --------------

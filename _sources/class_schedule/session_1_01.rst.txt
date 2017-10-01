@@ -55,8 +55,12 @@ A few exercises: :ref:`python_pushups`
 Post-class Activites
 ====================
 
-Finish the Python Pushups excercises.
+Read the rest of Basic Python Syntax intro, if we didn't have time in class:
+:ref:`basic_python_syntax`
 
-Finish getting your environment set up
+Finish the Python Pushups exercises: :ref:`python_pushups`
 
+Finish getting your environment set up.
+
+Do the prep for next class: :ref:`session_1_02`
 

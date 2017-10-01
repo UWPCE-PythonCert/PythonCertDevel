@@ -43,12 +43,9 @@
             
   <div class="section" id="basic-python-syntax">
 <span id="id1"></span><h1>Basic Python Syntax<a class="headerlink" href="#basic-python-syntax" title="Permalink to this headline">¶</a></h1>
+<p>Values, Types, and Symbols</p>
+<p>Expressions and Statements</p>
 <p>(Follow along in the iPython interpreter…)</p>
-<div class="center mlarge line-block">
-<div class="line">Values, Types, and Symbols</div>
-<div class="line"><br /></div>
-<div class="line">Expressions and Statements</div>
-</div>
 <div class="section" id="values">
 <h2>Values<a class="headerlink" href="#values" title="Permalink to this headline">¶</a></h2>
 <p>All of programming is really about manipulating values.</p>
@@ -811,9 +808,11 @@ or in multiple parts of the program.</p>
 <p>The values you pass in are <em>bound</em> to the names inside the function and used.</p>
 <p>The name used outside the object is separate from the name used inside the function.</p>
 </div>
-<div class="section" id="the-if-statement">
-<h2>The <code class="docutils literal"><span class="pre">if</span></code> Statement<a class="headerlink" href="#the-if-statement" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="making-a-decision">
+<h2>Making a Decision<a class="headerlink" href="#making-a-decision" title="Permalink to this headline">¶</a></h2>
+<p><strong>“Conditionals”</strong></p>
 <p>In order to do anything interesting at all, you need to be able to make a decision.</p>
+<p><code class="docutils literal"><span class="pre">if</span></code> and <code class="docutils literal"><span class="pre">elif</span></code> (else if) allow you to make decisions:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
 <span class="gp">   ....: </span>        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;that&#39;s the value I&#39;m looking for!&quot;</span><span class="p">)</span>
@@ -833,6 +832,19 @@ or in multiple parts of the program.</p>
 </pre></div>
 </div>
 <p>There is more to it than that, but this will get you started.</p>
+<p>What’s the difference between these two?</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">b</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="c1">## versus...</span>
+<span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">b</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="enough-for-now">
 <h2>Enough For Now<a class="headerlink" href="#enough-for-now" title="Permalink to this headline">¶</a></h2>
@@ -881,7 +893,7 @@ or in multiple parts of the program.</p>
 <li><a class="reference internal" href="#more-on-return">More on return</a></li>
 <li><a class="reference internal" href="#functions-parameters">Functions: parameters</a></li>
 <li><a class="reference internal" href="#functions-arguments">Functions: arguments</a></li>
-<li><a class="reference internal" href="#the-if-statement">The <code class="docutils literal"><span class="pre">if</span></code> Statement</a></li>
+<li><a class="reference internal" href="#making-a-decision">Making a Decision</a></li>
 <li><a class="reference internal" href="#enough-for-now">Enough For Now</a></li>
 </ul>
 </li>

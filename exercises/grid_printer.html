@@ -64,8 +64,8 @@
 </div>
 </div>
 <div class="section" id="hints">
-<h3>hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h3>
-<p class="center medium">A couple features to get you started…</p>
+<h3>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h3>
+<p>A couple features to get you started…</p>
 </div>
 <div class="section" id="printing">
 <h3>printing<a class="headerlink" href="#printing" title="Permalink to this headline">¶</a></h3>
@@ -80,10 +80,14 @@
 </div>
 <p>The output of these statements is <code class="docutils literal"><span class="pre">'+</span> <span class="pre">-'</span></code>.</p>
 <p>(that end parameter defaults to a newline…)</p>
+</div>
+<div class="section" id="no-arguments">
+<h3>no arguments<a class="headerlink" href="#no-arguments" title="Permalink to this headline">¶</a></h3>
 <p>A print function with no arguments ends the current line and goes to the next line:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>simply prints and empty line.</p>
 </div>
 <div class="section" id="simple-string-manipulation">
 <h3>Simple string manipulation:<a class="headerlink" href="#simple-string-manipulation" title="Permalink to this headline">¶</a></h3>
@@ -102,6 +106,9 @@
 </pre></div>
 </div>
 <p>Note that you can string any number of operations together in an expression.</p>
+</div>
+<div class="section" id="multiplication-of-strings">
+<h3>Multiplication of strings<a class="headerlink" href="#multiplication-of-strings" title="Permalink to this headline">¶</a></h3>
 <p>You can also multiply strings:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [24]: </span><span class="s1">&#39;+&#39;</span> <span class="o">*</span> <span class="mi">10</span>
 <span class="gh">Out[24]: </span><span class="go">&#39;++++++++++&#39;</span>
@@ -118,17 +125,16 @@
 </div>
 <p>Note that there are better ways to build up complex strings – we’ll get to that later.</p>
 <p>Now you’ve got what you need to print that grid…</p>
+<p>** give it a try! **</p>
 </div>
 </div>
 <div class="section" id="part-2">
 <h2>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h2>
-<p class="center medium">Making it more general</p>
+<p>Making it more general</p>
 <div class="section" id="make-it-a-function">
 <h3>Make it a function<a class="headerlink" href="#make-it-a-function" title="Permalink to this headline">¶</a></h3>
-<p>One of the points of writing functions is so you can write code that does similar things, but customized to input parameters. So what if we want to be able to print that grid at an arbitrary size?</p>
-<p>Write a function <code class="docutils literal"><span class="pre">print_grid(n)</span></code> that takes one integer argument
-and prints a grid just like before, BUT the size of the
-grid is given by the argument.</p>
+<p>One of the points of writing functions is so you can write code that does similar things, but customized by the values of input parameters. So what if we want to be able to print that grid at an arbitrary size?</p>
+<p>Write a function <code class="docutils literal"><span class="pre">print_grid(n)</span></code> that takes one integer argument and prints a grid just like before, <em>BUT</em> the size of the grid is given by the argument.</p>
 <p>For example, <code class="docutils literal"><span class="pre">print_grid(11)</span></code> prints the grid in the above picture.</p>
 <p><code class="docutils literal"><span class="pre">print_grid(3)</span></code> would print a smaller grid:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="o">-</span> <span class="o">+</span> <span class="o">-</span> <span class="o">+</span>
@@ -167,7 +173,7 @@ grid is given by the argument.</p>
 <div class="section" id="a-function-with-two-parameters">
 <h3>A function with two parameters<a class="headerlink" href="#a-function-with-two-parameters" title="Permalink to this headline">¶</a></h3>
 <p>Write a function that draws a similar grid with a specified number of rows and columns, and each cell a given size.</p>
-<p>for example,  <code class="docutils literal"><span class="pre">print_grid2(3,4)</span></code> results in:</p>
+<p>For example,  <code class="docutils literal"><span class="pre">print_grid2(3,4)</span></code> results in:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span>
 <span class="o">|</span>         <span class="o">|</span>         <span class="o">|</span>         <span class="o">|</span>
 <span class="o">|</span>         <span class="o">|</span>         <span class="o">|</span>         <span class="o">|</span>
@@ -186,6 +192,7 @@ grid is given by the argument.</p>
 <span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span>
 </pre></div>
 </div>
+<p>(three rows, three columns, and each grid cell four “units” in size)</p>
 <p>What to do about rounding? – you decide.</p>
 <p>Another example: <code class="docutils literal"><span class="pre">print_grid2(5,3)</span></code>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span>
@@ -211,6 +218,7 @@ grid is given by the argument.</p>
 <span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">+</span>
 </pre></div>
 </div>
+<p>Have fun!</p>
 </div>
 </div>
 </div>
@@ -226,9 +234,11 @@ grid is given by the argument.</p>
 <li><a class="reference internal" href="#">Grid Printer Exercise</a><ul>
 <li><a class="reference internal" href="#printing-a-grid">Printing a Grid</a><ul>
 <li><a class="reference internal" href="#goal">Goal:</a></li>
-<li><a class="reference internal" href="#hints">hints</a></li>
+<li><a class="reference internal" href="#hints">Hints</a></li>
 <li><a class="reference internal" href="#printing">printing</a></li>
+<li><a class="reference internal" href="#no-arguments">no arguments</a></li>
 <li><a class="reference internal" href="#simple-string-manipulation">Simple string manipulation:</a></li>
+<li><a class="reference internal" href="#multiplication-of-strings">Multiplication of strings</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#part-2">Part 2</a><ul>
