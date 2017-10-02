@@ -44,7 +44,7 @@ In-class Activities
 
     ../modules/PythonOverview
 
-    ../modules/BasicPythonSyntax
+    ../modules/BasicPython
 
     ../modules/Py2vsPy3
 

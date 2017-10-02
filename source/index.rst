@@ -78,7 +78,7 @@ Modules
     modules/GitWorkflow
     modules/Functions
     modules/Documentation
-    scripts/Booleans
+    modules/Booleans
     modules/Modules
     modules/AdvancedArgumentPassing
     modules/Closures

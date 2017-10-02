@@ -14,24 +14,19 @@ Why Version Control?
 
 .. figure:: ../_static/phd101212s.gif
 
-   :class: fill
-   :width: 45 %
+   "Piled Higher and Deeper" by Jorge Cham: www.phdcomics.com
 
- "Piled Higher and Deeper" by Jorge Cham
+A history of everything everyone does to 'your' code
 
- www.phdcomics.com
+A graph of "states" in which the code has existed
 
- A history of everything everyone does to 'your' code
+That last one is a bit tricky, and is not necessary to understand right out of the gate. When you are ready, you can look at this supplement to gain a better understanding:
 
- A graph of "states" in which the code has existed
+:ref:`git_overview`
 
- That last one is a bit tricky, and is not necessary to understand right out of the gate. When you are ready, you can look at this supplement to gain a better understanding:
+There other versioning systems, such as Mercurial and Subversion (and commercial offerings), but Git is the most popular.
 
- :ref:`git_overview`
-
- There other versioning systems, such as Mercurial and Subversion (and commercial offerings), but Git is the most popular.
-
- It is incredibly important to learn and understand versioning control to work as a developer today, so we will be incorporating Git into our work flow.
+It is incredibly important to learn and understand versioning control to work as a developer today, so we will be incorporating Git into our work flow.
 
 
 Setting up Git

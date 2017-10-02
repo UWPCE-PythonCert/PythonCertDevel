@@ -35,6 +35,14 @@ Python Basics
 
 If you are comfortable with the materials in a tutorial, it's time for some more in-depth discussion. Here are a few options to get you started this week:
 
+Finish Reading: :ref:`basic_python_syntax`
+
+Read: :ref:`more_on_functions`
+
+Read: :ref:`documentation`
+
+If that is too fast, then here are some good options for another look:
+
 *Think Python:* Chapters 1–6 (http://greenteapress.com/thinkpython2/html/index.html)
 
 *Dive Into Python:* Chapters 1–2 (http://www.diveintopython3.net/)
@@ -42,8 +50,11 @@ If you are comfortable with the materials in a tutorial, it's time for some more
 *LPTHW:* ex. 1–10, 18-21 (https://learnpythonthehardway.org/python3/)
 (note: LPTHW used to be totally free --now it looks like you may only get a sneak peak -- darn! -- but the first few "chapters" are available)
 
+**GOAL**
+
 You should be comfortable with working with variables, numbers, strings,
 and basic functions before we start class next week.
+
 
 git
 ---
@@ -72,8 +83,9 @@ Exercises:
 
 Lecture: :ref:`more_on_functions`
 
-:ref:`exercise_fibonacci`
+Read: :ref:`documentation`
 
+:ref:`exercise_fibonacci`
 
 Post-class Activities
 =====================
