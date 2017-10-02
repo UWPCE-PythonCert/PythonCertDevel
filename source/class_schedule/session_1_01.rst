@@ -4,7 +4,7 @@
 Intro to Python Session 1
 #########################
 
-Intro to the class
+**Intro to the class and Python**
 
 Pre-class prep
 ==============
@@ -44,7 +44,7 @@ In-class Activities
 
     ../modules/PythonOverview
 
-    ../modules/BasicPythonSyntax
+    ../modules/BasicPython
 
     ../modules/Py2vsPy3
 

@@ -1,11 +1,24 @@
 .. _session_1_06:
 
-Session 6
-=========
+#########################
+Intro to Python Session 6
+#########################
 
-.. rst-class:: left
+Pre-class prep
+==============
 
-  Finish up the exercises
+In-class Activities
+===================
+
+
+Post-class Activities
+=====================
+
+Finish the exercises
+
+Look at the next session for reading, etc:
+
+:ref:`session_1_07`
 
   Write a complete set of unit tests for your mailroom program.
 

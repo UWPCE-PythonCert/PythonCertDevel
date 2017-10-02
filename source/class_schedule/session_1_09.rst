@@ -1,7 +1,24 @@
 .. _session_1_09:
 
-Session 9
-=========
+#########################
+Intro to Python Session 9
+#########################
+
+Pre-class prep
+==============
+
+In-class Activities
+===================
+
+Post-class Activities
+=====================
+
+Finish the exercises
+
+Look at the next session for reading, etc:
+
+:ref:`session_1_10`
+
 
 Properties, Class Methods, Static Methods: The Circle Exercise
 

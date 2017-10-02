@@ -105,16 +105,15 @@ When you are done, push your changes and make a pull request.
 Adding dicts...
 ---------------
 
-
-For the next week (after Session04)
+For the next week
 
 You should have been able to do all that with the basic data types:
 
 numbers, strings, lists and tuples.
 
-But once you've learned about dictionaries (Session04) you may be able to re-write it a bit more simply and efficiently.
+But once you've learned about dictionaries, you may be able to re-write it a bit more simply and efficiently.
 
- * Update mailroom from last week to:
+ * Update your mailroom program to:
 
   - Use dicts where appropriate
   - Write a full set of letters to everyone to individual files on disk
