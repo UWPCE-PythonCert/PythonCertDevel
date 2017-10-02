@@ -73,10 +73,16 @@ Modules
 .. toctree::
     :maxdepth: 1
 
-    modules/BasicPythonSyntax
+    modules/BasicPython
+    modules/Git
+    modules/GitWorkflow
     modules/Functions
     modules/Documentation
-    scripts/Booleans
+    modules/Booleans
+    modules/Modules
+    scripts/Sequences
+    modules/Iteration
+    modules/Strings
     modules/AdvancedArgumentPassing
     modules/Closures
     modules/Composition
@@ -87,15 +93,12 @@ Modules
     modules/EnvironmentOverview
     scripts/FunctionalProgramming
     scripts/Functions
-    modules/Git
-    modules/GitWorkflow
     modules/IPythonIntroduction
     modules/IteratorsAndGenerators
     modules/Lambda
     modules/MapFilterReduce
     modules/Math
     scripts/Methods
-    scripts/Modules
     modules/MultipleInheritance
     modules/ObjectOrientationOverview
     modules/Properties
