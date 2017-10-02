@@ -1,8 +1,12 @@
+:orphan:
+
 .. _sequences:
 
-#########
-Sequences
-#########
+################
+Python Sequences
+################
+
+With Chris Barker...
 
 .. rst-class:: center large
 
@@ -10,14 +14,28 @@ Ordered collections of objects
 
 
 What is a Sequence?
--------------------
+===================
+
+A sequence is an ordered collection of objects.
+
+They are analogous to what are often called "arrays" or "lists" in other programming languages.
+
+But in Python, there are number of types that all fit this description, each with special customization. But any object that has the behavior expeted of a sequence can be treated the same way in Python:
 
 Remember Duck Typing?
 
-A *sequence* can be considered as anything that supports
-*at least* these operations:
+If it looks like a duck and quacks like a duck...
 
-.. rst-class:: build
+OR: If it looks and acts like a sequence -- it **is** a sequence.
+
+Technically, if it satisfies the "Sequence Protocol", it is a sequence.
+
+Python is all about these protocols -- we will see more of them.
+
+The Sequence Protocol
+---------------------
+
+A *sequence* can be considered as anything that supports *at least* these operations:
 
 * Indexing
 * Slicing
@@ -26,11 +44,12 @@ A *sequence* can be considered as anything that supports
 * Length
 * Iteration
 
+I'll get into all of those as we go along.
 
 Sequence Types
 --------------
 
-There are eight builtin types in Python that are *sequences*:
+There are eight built in types in Python that are *sequences*:
 
 * string
 * list
@@ -41,19 +60,24 @@ There are eight builtin types in Python that are *sequences*:
 * array.array
 * range object (almost)
 
-For this class, you won't see much beyond string, lists, and tuples --
+For this class, you won't see much beyond strings, lists, and tuples --
 the rest are pretty special purpose.
 
-But what we learn today applies to all sequences (with minor caveats)
+But what we learn in this lesson applies to all sequences (with minor caveats)
 
+I'll use lists, strings and tuples in the examples.
+
+So let's take a look at the key parts of the sequence protocol:
 
 Indexing
---------
+========
 
 Items in a sequence may be looked up by *index* using the indexing
 operator: ``[]``
 
 Indexing in Python always starts at zero.
+
+Here is an example with a string -- a string is a sequence of characters.
 
 .. code-block:: ipython
 
@@ -63,8 +87,9 @@ Indexing in Python always starts at zero.
     In [100]: s[5]
     Out[100]: 'i'
 
+Note that the first character is indexed with zero -- I sometimes call that the "zeroth" item in the sequence.
 
-.. nextslide::
+Zero indexing may seem odd at first (if you are not already a programming geek), but it turns out to make a lot of things easier. More on that later.
 
 You can use negative indexes to count from the end:
 
@@ -81,7 +106,6 @@ You can use negative indexes to count from the end:
     In [5]: a_list[-4]
     Out[5]: 56
 
-.. nextslide::
 
 Indexing beyond the end of a sequence causes an IndexError:
 
@@ -98,15 +122,23 @@ Indexing beyond the end of a sequence causes an IndexError:
 
     IndexError: list index out of range
 
+Pretty straight forward so far...
+
 Slicing
 -------
+
+Slicing is a real "power tool" of python -- it can allow very short code.
 
 Slicing a sequence creates a new sequence with a range of objects from the
 original sequence.
 
 It also uses the indexing operator (``[]``), but with a twist.
 
-``sequence[start:finish]`` returns all sequence[i] for which start <= i < finish:
+``sequence[start:finish]`` returns all `sequence[i]` for which `start <= i < finish`
+
+That's a fancy way to say that it's all the items from start to finish -- including start, but NOT including finish.
+
+This also may be a bit unintuitive -- but it's very practical.
 
 .. code-block:: ipython
 
@@ -120,7 +152,12 @@ It also uses the indexing operator (``[]``), but with a twist.
     In [125]: s[2:7]
     Out[125]: 'bunch'
 
-.. nextslide:: Helpful Hint
+Helpful Hint
+------------
+
+It can really help if you think about slicing this way:
+
+(write this out!)
 
 Think of the indexes as pointing to the spaces between the items::
 
@@ -128,9 +165,10 @@ Think of the indexes as pointing to the spaces between the items::
      |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
      0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
 
+Slicing
+-------
 
-
-.. nextslide:: Slicing
+Python has some other slicing shortcuts...
 
 You do not have to provide both ``start`` and ``finish``:
 
@@ -154,6 +192,7 @@ You can combine this with the negative index to get the end of a sequence:
     In [6]: s[-4:]
     Out[6]: '.txt'
 
+**That** is a real-world example I use all the time.
 
 Why start from zero?
 --------------------
@@ -176,10 +215,10 @@ Why is the last item in the slice **not** included?
 
 There are very many fewer "off by one" errors as a result.
 
+More on Slicing
+---------------
 
-.. nextslide:: Slicing
-
-Slicing takes a third argument, ``step`` which controls which items are
+Slicing takes a third argument: ``step`` which controls which items are
 returned:
 
 .. code-block:: ipython
@@ -199,16 +238,21 @@ returned:
     In [22]: a_tuple[::-1]
     Out[22]: (19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
 
-.. nextslide:: Slicing vs. Indexing
+very cool -- a negative step reverses the results!
 
+Slicing vs. Indexing
+--------------------
 
 Though they share an operator, slicing and indexing have a few important
 differences:
 
-Indexing will always return one object, slicing will return a sequence of
-objects.
+* Indexing will always return one single object (a scalar), whereas slicing will return a sequence of objects.
 
-Indexing past the end of a sequence will raise an error, slicing will not:
+So if you start with, say, a list of numbers, indexing will return a single number.  Slicing, on the other hand, will return list of numbers -- even is that list only has one number in it -- or zero!
+
+Note that strings are a bit of an exception -- there is no character type in Python -- so a single character is a string -- a sequence of length-1.
+
+* Indexing past the end of a sequence will raise an error, slicing will not:
 
 .. code-block:: ipython
 
@@ -221,11 +265,10 @@ Indexing past the end of a sequence will raise an error, slicing will not:
     In [132]: s[20:30]
     Out[132]: ''
 
-
 (demo)
 
 Membership
-----------
+==========
 
 All sequences support the ``in`` and ``not in`` membership operators:
 
@@ -260,7 +303,7 @@ This does not work for sub-sequences of other types (can you think of why?):
 
 
 Concatenation
--------------
+=============
 
 Using ``+`` or ``*`` on sequences will *concatenate* them:
 
@@ -273,7 +316,8 @@ Using ``+`` or ``*`` on sequences will *concatenate* them:
     In [21]: (l1+l2) * 2
     Out[21]: [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8]
 
-.. nextslide:: Multiplying and Slicing
+Multiplying and Slicing
+-----------------------
 
 You can apply this concatenation to slices as well, leading to some nicely
 concise code:
@@ -296,7 +340,7 @@ This non-pythonic solution can also be expressed like so:
         return str[:3] * 3
 
 Length
-------
+======
 
 All sequences have a length.  You can get it with the ``len`` builtin:
 
@@ -318,23 +362,26 @@ Remember: Sequences are 0-indexed, so the last index is ``len(s)-1``:
     ----> 1 s[count]
     IndexError: string index out of range
 
-Even better: use ``s[-1]``
+Better to use ``s[-1]``
 
 
 Miscellaneous
--------------
+=============
 
-There are a more operations supported by all sequences
+There are a bunch more operations supported by most sequences
 
-.. nextslide:: Min and Max
+Min and Max
+-----------
 
 All sequences also support the ``min`` and ``max`` builtins:
 
 .. code-block:: ipython
 
     In [42]: all_letters = "thequickbrownfoxjumpedoverthelazydog"
+
     In [43]: min(all_letters)
     Out[43]: 'a'
+
     In [44]: max(all_letters)
     Out[44]: 'z'
 
@@ -342,9 +389,21 @@ Why are those the answers you get? (hint: ``ord('a')``)
 
 Of course this works with numbers, too!
 
-.. nextslide:: Index
+.. code-block:: ipython
 
-All sequences also support the ``index`` method, which returns the index of the first occurence of an item in the sequence:
+    In [1]: seq = [4,2,8,3,5,8,5,7]
+
+    In [2]: min(seq)
+    Out[2]: 2
+
+    In [3]: max(seq)
+    Out[3]: 8
+
+
+Index
+-----
+
+All sequences also support the ``index`` method, which returns the index of the first occurrence of an item in the sequence:
 
 .. code-block:: ipython
 
@@ -363,7 +422,8 @@ This causes a ``ValueError`` if the item is not in the sequence:
 
     ValueError: substring not found
 
-.. nextslide:: Count
+Count
+-----
 
 A sequence can also be queried for the number of times a particular item
 appears:
@@ -384,33 +444,20 @@ This does not raise an error if the item you seek is not present:
 
 
 Iteration
----------
+=========
 
-.. rst-class:: center mlarge
+All sequences are "iterables"
 
-    All sequences are "iterables" --
+You can iterate over a sequence with ``for``:
 
-    More on this in a while.
+.. code-block:: python
 
-Slicing LAB
-===========
+    for element in sequence:
+        do_something(element)
 
-.. rst-class:: center medium
+Which is what we mean when we say a sequence is an "iterable".
 
-  Let's practice Slicing!
-
-  :ref:`exercise_slicing`
-
-
-Lightning Talks
-----------------
-
-|
-| Beatrice He
-|
-|
-| Bradley Baumel
-|
+There are some complexities about that -- but more on that in another lecture.
 
 
 Lists, Tuples...
@@ -423,7 +470,7 @@ The *primary* sequence types.
 Lists
 -----
 
-Lists can be constructed using list Literals (``[]``):
+Lists can be constructed using list literals (``[]``):
 
 .. code-block:: ipython
 
@@ -445,9 +492,10 @@ Or by using the ``list`` type object as a constructor:
     In [8]: list('abc')
     Out[8]: ['a', 'b', 'c']
 
-It will take any "iterable"
+It will take any "iterable" (which means any sequence automatically -- remember that all sequences are iterable?)
 
-.. nextslide:: List Elements
+List Elements
+-------------
 
 The elements contained in a list need not be of a single type.
 
@@ -468,6 +516,21 @@ multiple names (or no name)
     In [14]: a[2] is b[2]
     Out[14]: True
 
+Notice that even with a "literal" -- the elements don't need to be literals as well -- they can be names.
+
+They can even be function calls:
+
+.. code-block:: ipython
+
+    In [4]: def fun(n):
+       ...:     return n * 2
+       ...:
+
+    In [5]: l = [3, 'four', fun(3), fun(9)]
+
+    In [6]: l
+    Out[6]: [3, 'four', 6, 18]
+
 
 Tuples
 ------
@@ -485,7 +548,8 @@ Tuples can be constructed using tuple literals (``()``):
     In [18]: (1,)
     Out[18]: (1,)
 
-.. nextslide:: Tuples and Commas...
+Tuples and Commas...
+--------------------
 
 Tuples don't NEED parentheses...
 
@@ -500,7 +564,6 @@ Tuples don't NEED parentheses...
     In [165]: type(t)
     Out[165]: tuple
 
-.. nextslide:: Tuples and Commas...
 
 But they *do* need commas...!
 
@@ -513,7 +576,38 @@ But they *do* need commas...!
     In [160]: type(t)
     Out[160]: tuple
 
-.. nextslide:: Converting to Tuple
+This is a Python "gotcha" -- some folks on my team recently had a wierd bug that two of them could not figure out. They were getting a type error -- something like:
+
+TypeError: unsupported operand type(s) for /: 'tuple' and 'float'
+
+Which made no sense -- there were no tuples involved -- in this case, the value was being pulled from an list -- and it WAS a float. They even put type checking code in there, and it was, indeed, a float.
+
+After poking at the code a bit, I suddenly spotted an extra comma -- BINGO! that was it.
+
+The code was more involved, and thus harder to see, but it was pretty much like this:
+
+.. code-block:: python
+
+    In [16]: l = [3, 4, 5, 6]
+
+    In [17]: x = l[3],
+
+then a bit further down, x was used:
+
+.. code-block:: python
+
+    In [18]: y = x / 2.0
+    ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+    <ipython-input-18-5289811a13ac> in <module>()
+    ----> 1 y = x / 2.0
+
+    TypeError: unsupported operand type(s) for /: 'tuple' and 'float'
+
+Would you have seen that?
+
+Converting something to a Tuple
+-------------------------------
 
 You can also use the ``tuple`` type object to convert any iterable(sequence) into a tuple:
 
@@ -527,7 +621,8 @@ You can also use the ``tuple`` type object to convert any iterable(sequence) int
     Out[22]: ('g', 'a', 'r', 'b', 'a', 'n', 'z', 'o')
 
 
-.. nextslide:: Tuple Elements
+Tuple Elements
+--------------
 
 The elements contained in a tuple need not be of a single type.
 
@@ -547,17 +642,20 @@ multiple names (or no name)
        ....:
     False False True
 
-.. nextslide:: Lists vs. Tuples
+Look familiar from lists??
+
+Lists vs. Tuples
+----------------
 
 .. rst-class:: center large
 
     So Why Have Both?
 
-
 Mutability
 ==========
 
 .. image:: /_static/transmogrifier.jpg
+   :align: center
    :width: 35%
    :alt: Presto change-o
 
@@ -569,7 +667,7 @@ image from flickr by `illuminaut`_, (CC by-nc-sa)
 
 
 Mutability in Python
---------------------
+====================
 
 All objects in Python fall into one of two camps:
 
@@ -582,7 +680,8 @@ Objects which are immutable may not be changed.
 
 Ever.
 
-.. nextslide:: The Types We Know
+The Types We Know
+-----------------
 
 ========= ===========
 Immutable Mutable
@@ -593,8 +692,12 @@ Float
 Tuple
 ========= ===========
 
+This may make it look like the Mutables are rare -- but in fact, most "container types", and most custom objects are mutable.
 
-.. nextslide:: Lists Are Mutable
+Immutable types are the exception
+
+Lists Are Mutable
+-----------------
 
 Try this out:
 
@@ -610,7 +713,7 @@ Try this out:
 
 .. nextslide:: Tuples Are Not
 
-And repeat the exercise with a Tuple:
+We repeat the exercise with a Tuple:
 
 .. code-block:: ipython
 
@@ -626,7 +729,8 @@ And repeat the exercise with a Tuple:
     TypeError: 'tuple' object does not support item assignment
 
 
-.. nextslide:: Watch When Binding
+Watch Out when Name Binding
+---------------------------
 
 This property means you need to be aware of what you are doing with your lists:
 
@@ -644,9 +748,10 @@ whatever condition caused it to be updated.
 
 What is the result of this code?
 
-.. nextslide:: Perhaps Not What You Expect
+Perhaps Not What You Expect
+---------------------------
 
-Our ``altered`` list has been updated:
+Our ``altered`` list has been updated as we'd expect:
 
 .. code-block:: ipython
 
@@ -662,8 +767,16 @@ But so has the ``original`` list:
 
 Why?
 
+Let's look at that code again.
 
-.. nextslide:: Other Gotchas
+What does the line: ``altered = original`` do?
+
+It binds the name: "altered" to the same object that "original" is bound to.
+
+That is, there is only one list, even though is is referred to by two names. So when you mutate (or change) that list from *either* name, the changes show up when you refer to it by the other name.
+
+Other Gotchas
+-------------
 
 Easy container setup, or deadly trap?
 
@@ -684,7 +797,8 @@ Easy container setup, or deadly trap?
 
 So, what is going to be in ``bins`` now?
 
-.. nextslide:: There is Only **One** Bin
+There is Only **One** Bin
+-------------------------
 
 .. code-block:: ipython
 
@@ -701,7 +815,8 @@ We multiplied a sequence containing a single *mutable* object.
 We got a list containing five references to a single *mutable* object.
 
 
-.. nextslide:: Mutable Default Argument
+Mutable Default Argument
+------------------------
 
 Watch out especially for passing mutable objects as default values for function parameters:
 
@@ -717,14 +832,43 @@ Watch out especially for passing mutable objects as default values for function 
     In [73]: accumulator(7)
     Out[73]: [0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 5, 6]
 
+What is going on here???
+
+It turns out that that code: ``list=[]`` is evaluated *when the function is defined* -- **not** when the function is called.
+
+So the name "list" in the local scope of that function always refers to the same list. So every time the function is called, more is added to that same list.
+
+The moral of the story here is:
+
+**Do not use mutable objects for default arguments!**
+
+It turns out that this early evaluation can be useful -- but for now, just remember not to use mutables as default arguments.
+
+By the way --this is how you *should* write that code:
+
+.. code-block:: ipython
+
+    In [21]: def accumulator(count, list=None):
+        ...:     if list is None:
+        ...:         list = []
+        ...:     for i in range(count):
+        ...:         list.append(i)
+        ...:     return list
+
+    In [22]: accumulator(5)
+    Out[22]: [0, 1, 2, 3, 4]
+
+    In [23]: accumulator(7)
+    Out[23]: [0, 1, 2, 3, 4, 5, 6]
+
+This will assure that a new list will be created if one is not passed-in.
+
 
 Mutable Sequence Methods
 ========================
 
-.. rst-class:: left
-
 In addition to all the methods supported by sequences we've seen above, mutable sequences (the List), have a number of other methods that are
-used to change the list.
+used to change it in place.
 
 You can find all these in the Standard Library Documentation:
 
@@ -764,7 +908,8 @@ Growing the List
     Out[80]: ['beans', 'spam', 'eggs', 'ham', 'sushi', 'bread', 'water']
 
 
-.. nextslide:: More on Extend
+More on Extend
+--------------
 
 You can pass any sequence to ``.extend()``:
 
@@ -777,6 +922,8 @@ You can pass any sequence to ``.extend()``:
     Out[87]:
     ['beans', 'spam', 'eggs', 'ham', 'sushi', 'bread', 'water',
      's', 'p', 'a', 'g', 'h', 'e', 't', 't', 'i']
+
+So be careful -- a string is a single object --but also a sequence of charactors.
 
 
 Shrinking the List
@@ -840,7 +987,8 @@ If you provide *no* arguments to the slice, it makes a copy of the entire list:
     Out[234]: False
 
 
-.. nextslide:: Shallow Copies
+Shallow Copies
+--------------
 
 The copy of a list made this way is a *shallow copy*.
 
@@ -864,7 +1012,8 @@ The list is itself a new object, but the objects it contains are not.
     Out[258]: ['spam', ['eggs']]
 
 
-.. nextslide:: Copies Solve Problems
+Copies can Solve Problems
+-------------------------
 
 Consider this common pattern:
 
@@ -876,7 +1025,8 @@ Consider this common pattern:
 
 This looks benign enough, but changing a list while you are iterating over it can be the cause of some pernicious bugs.
 
-.. nextslide:: The Problem
+The Problem
+-----------
 
 For example:
 
@@ -893,7 +1043,8 @@ For example:
 
 Was that what you expected?
 
-.. nextslide:: The Solution
+The Solution
+------------
 
 Iterate over a copy, and mutate the original:
 
@@ -908,25 +1059,8 @@ Iterate over a copy, and mutate the original:
     Out[35]: []
 
 
-.. nextslide:: Just Say It, Already
-
-Okay, so we've done this a bunch already, but let's state it out loud.
-
-You can iterate over a sequence.
-
-.. code-block:: python
-
-    for element in sequence:
-        do_something(element)
-
-which is what we mean when we say a sequence is an "iterable".
-
-Again, we'll touch more on this in a short while, but first a few more words about Lists and Tuples.
-
-
 Miscellaneous List Methods
---------------------------
-
+==========================
 
 These methods change a list in place and are not available on immutable sequence types.
 
@@ -950,7 +1084,8 @@ These methods change a list in place and are not available on immutable sequence
 Because these methods mutate the list in place, they have a return value of ``None``
 
 
-.. nextslide:: Custom Sorting
+Custom Sorting
+--------------
 
 ``.sort()`` can take an optional ``key`` parameter.
 
@@ -966,11 +1101,8 @@ It should be a function that takes one parameter (list items one at a time) and 
     Out[139]: ['spam', 'eggs', 'ham']
 
 
-
 List Performance
 ----------------
-
-.. rst-class:: build
 
 * indexing is fast and constant time: O(1)
 * ``x in l`` is proportional to n: O(n)
@@ -984,11 +1116,15 @@ List Performance
   * ``pop(0)``, ``insert(0, v)``
   * But, reversing is fast. ``Also, collections.deque``
 
- http://wiki.python.org/moin/TimeComplexity
+what the heck does this O() thing mean?  That is known as "big O" notation for time complexity.  What it does is provide an indication of how much more time an operation will take depending on how many items the operation is acting on.
+
+Check out the Python wiki entry on Time Complexity for more info:
+
+http://wiki.python.org/moin/TimeComplexity
 
 
 Choosing Lists or Tuples
-------------------------
+========================
 
 Here are a few guidelines on when to choose a list or a tuple:
 
@@ -996,13 +1132,13 @@ Here are a few guidelines on when to choose a list or a tuple:
 
 * If it needs to be immutable: tuple
 
-  * (safety when passing to a function)
+  * safety when passing to a function (and key in a dict)
 
 Otherwise ... taste and convention
 
 
 Convention
------------
+----------
 
 
 Lists are Collections (homogeneous):
@@ -1016,8 +1152,6 @@ tuples are mixed types:
 
 Other Considerations
 --------------------
-
-.. rst-class:: build
 
 * Do the same operation to each element?
 
@@ -1045,38 +1179,6 @@ More Documentation
 
 For more information, read the list docs:
 
-https://docs.python.org/3.5/library/stdtypes.html#mutable-sequence-types
+https://docs.python.org/3.6/library/stdtypes.html#mutable-sequence-types
 
 (actually any mutable sequence....)
-
-One Last Trick
----------------
-
-.. rst-class:: left
-
-For some of the exercises, you'll need to interact with a user at the
-command line.
-
-There's a nice built in function to do this - ``input``:
-
-.. code-block:: ipython
-
-    In [85]: fred = input('type something-->')
-    type something-->I've typed something
-
-    In [86]: print(fred)
-    I've typed something
-
-This will display a prompt to the user, allowing them to input text and
-allowing you to bind that input to a symbol.
-
-LAB
-====
-
-List Lab
----------
-
-Let's play a bit with Python lists...
-
-:ref:`exercise_list_lab`
-

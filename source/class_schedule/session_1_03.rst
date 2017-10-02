@@ -47,6 +47,13 @@ Experiment with ``locals`` by adding this statement one of the functions we wrot
 
     print(locals())
 
+Sequences
+---------
+
+:ref:`exercise_slicing`
+
+:ref:`exercise_list_lab`
+
 
 Strings
 -------

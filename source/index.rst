@@ -80,7 +80,7 @@ Modules
     modules/Documentation
     modules/Booleans
     modules/Modules
-    modules/Sequences
+    scripts/Sequences
     modules/Iteration
     modules/Strings
     modules/AdvancedArgumentPassing
