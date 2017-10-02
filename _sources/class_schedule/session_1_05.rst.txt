@@ -1,10 +1,25 @@
 .. _session_1_05:
 
-Session 5
-=========
+#########################
+Intro to Python Session 5
+#########################
 
-Catch up!
----------
+Pre-class prep
+==============
+
+In-class Activities
+===================
+
+
+Post-class Activities
+=====================
+
+Finish the exercises
+
+Look at the next session for reading, etc:
+
+:ref:`session_1_05`
+
 
 * Finish the LABs from today
   - Exceptions lab
