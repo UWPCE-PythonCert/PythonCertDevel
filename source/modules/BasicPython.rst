@@ -1,7 +1,7 @@
 .. _basic_python_syntax:
 
-Basic Python Syntax
-===================
+Basic Python
+============
 
 Values, Types, and Symbols
 
@@ -1047,9 +1047,101 @@ What's the difference between these two?
     if b:
         print('b')
 
+Lists
+-----
+
+A way to store a bunch of stuff in order
+
+Pretty much like an "array" or "vector" in other languages
+
+To make a list literal you use square brackets an commas between the items:
+
+.. code-block:: python
+
+    a_list = [2,3,5,9]
+    a_list_of_strings = ['this', 'that', 'the', 'other']
+
+You can put any type of object in a list...
+
+Lists are a key python data type with lots of functionality that we will get into later.
+
+``for`` loops
+--------------
+
+Sometimes called a 'determinate' loop
+
+When you need to do something to all the objects in a sequence
+
+.. code-block:: ipython
+
+    In [10]: a_list = [2,3,4,5]
+
+    In [11]: for item in a_list:
+       ....:     print(item)
+       ....:
+    2
+    3
+    4
+    5
+
+
+``range()`` and for
+-------------------
+
+``range`` builds sequences of numbers automatically
+
+Use it when you need to do something a set number of times
+
+.. code-block:: ipython
+
+    num_stars = 4
+    In [31]: for i in range(num_stars):
+        print('*', end=' ')
+       ....:
+    * * * *
+
+NOTE: ``range(n)`` creates an "iterable" -- something you can loop over
+-- more on that later.
+
+``assert``
+----------
+
+Writing ``tests`` that demonstrate that your program works is an important part of learning to program.
+
+The python ``assert`` statement is useful in writing simple tests
+for your code.
+
+.. code-block:: ipython
+
+    In [1]: def add(n1, n2):
+       ...:     return n1 + n2
+       ...:
+
+    In [2]: assert add(3, 4) == 7
+
+    In [3]: assert add(3, 4) == 10
+
+    ---------------------------------------------------------------------
+    AssertionError                     Traceback (most recent call last)
+    <ipython-input-3-6731d4ac4476> in <module>()
+    ----> 1 assert add(3, 4) == 10
+
+    AssertionError:
+
+
+Intricacies
+------------
+
+This is enough to get you started.
+
+Each of these have intricacies special to python
+
+We'll get to those over the next couple of classes -- or really, the rest of the program!
+
+
 Enough For Now
 --------------
 
 That's it for our basic intro to Python
 
-You now know enough Python to do some basic exercises in Python programming
+You now know enough Python to do some basic exercises in Python programming.
