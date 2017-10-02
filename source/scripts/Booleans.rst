@@ -71,10 +71,10 @@ There are a lot of expressions that evaluate to ``True`` in Python. Any non-zero
 	*  zero of any numeric type, for example, 0, 0L, 0.0, 0j
 	*  any empty sequence, for example, '', (), []
 	*  any empty dictionary or set, for example, {}
-	*  any object for which __bool__() returns False
-	*  any object for which __len__() returns 0
+	*  any object for which ``__bool__()`` returns False
+	*  any object for which ``__len__()`` returns 0
 
-You may not regognize __bool__() and __len__. They are Python special methods. Special methods are sometimes called dunders because their names begin and end with double underscores. The Python interpreter invokes them for you, in the background so to speak, when it needs too. Don't worry about it for now, more on dunders later.
+You may not regognize ``__bool__()`` and ``__len__()``. They are Python special methods. Special methods are sometimes called dunders because their names begin and end with double underscores. The Python interpreter invokes them for you, in the background so to speak, when it needs too. Don't worry about it for now, more on dunders later.
 
 Boolean Operations
 ------------------
