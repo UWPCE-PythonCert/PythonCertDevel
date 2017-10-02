@@ -79,6 +79,43 @@ You may not regognize __bool__() and __len__. They are Python special methods. S
 Boolean Operations
 ------------------
 
-There are three boolean operators in Python: ``or``, ``and`` and ``not``. In the case of the first two they enable you to write compound boolean expressions whereas ``not`` negates the boolean value of any expression.
+There are three boolean operators in Python: ``or``, ``and`` and ``not``. In the case of the first two they enable you to write compound boolean expressions whereas ``not`` negates the boolean value of any expression. To demonstrate, let's set up a couple of functions. One will evaluate to ``True`` and the other will evaluate to ``False``.
 
+.. code-block:: ipython
 
+	In [1]: def truthy():
+	   ...:     """ This function might do any number of things....
+	   ...:     query databases, make calculations, etc., but ultimatly it does this: """
+	   ...:     return True
+	   ...:
+
+	In [2]: def falsy():
+	   ...:     return False
+	   ...:
+
+	In [3]: truthy()
+	Out[3]: True
+
+	In [4]: falsy()
+	Out[4]: False
+
+Now let's use them in expressions to see how ```and```, ```or``` and ```not``` work.
+
+.. code-block:: ipython
+
+	In [5]: (truthy() and falsy())  # Both must be true for the whole expression to be true
+	Out[5]: False
+
+	In [6]: (truthy() or falsy())  # Either must be true for the whole expression to be true
+	Out[6]: True
+
+	In [7]: (not (truthy() and falsy()))  # The negation of the inner expression
+	Out[7]: True
+
+	In [8]: (not (truthy() or falsy()))  # Again, the negation of the inner expression
+	Out[8]: False
+
+Summary
+-------
+
+As you can see, booleans form the basis of much of the way we control the flow of our programs, particularly when we expand the notion of True and False to include truthy and falsy.
