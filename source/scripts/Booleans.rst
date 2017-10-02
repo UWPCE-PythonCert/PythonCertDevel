@@ -64,7 +64,7 @@ By now you are likely notcing a pattern, but to make it yet more obvious....
 	In [8]: bool(0)
 	Out[8]: False
 
-There are a lot of expressions that evaluate to ``True`` in Python. Any non-zero value is considered ``True``. Any expression that evaluates to zero is ``False``. Indeed it may be easier to think about what evaluates to ``False`` and is therefore considered falsy, than it is to think about what is true and therefore truthy. Here for instance is a fairly inclusive list of things that are considered falsy.
+There are a lot of expressions that evaluate to ``True`` in Python. Any non-zero value is considered ``True``. Any expression that evaluates to zero is ``False``. Indeed it may be easier to think about what evaluates to ``False`` and is therefore considered falsy, than it is to think about what is true and therefore truthy. Here is a fairly inclusive list of things that are considered falsy.
 
 	*  None
 	*  False
