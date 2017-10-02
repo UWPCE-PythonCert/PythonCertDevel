@@ -73,7 +73,7 @@ Modules
 .. toctree::
     :maxdepth: 1
 
-    modules/BasicPythonSyntax
+    modules/BasicPython
     modules/Git
     modules/GitWorkflow
     modules/Functions

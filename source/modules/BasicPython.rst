@@ -1,7 +1,7 @@
 .. _basic_python_syntax:
 
-Basic Python Syntax
-===================
+Basic Python
+============
 
 Values, Types, and Symbols
 
@@ -1102,6 +1102,32 @@ Use it when you need to do something a set number of times
 
 NOTE: ``range(n)`` creates an "iterable" -- something you can loop over
 -- more on that later.
+
+``assert``
+----------
+
+Writing ``tests`` that demonstrate that your program works is an important part of learning to program.
+
+The python ``assert`` statement is useful in writing simple tests
+for your code.
+
+.. code-block:: ipython
+
+    In [1]: def add(n1, n2):
+       ...:     return n1 + n2
+       ...:
+
+    In [2]: assert add(3, 4) == 7
+
+    In [3]: assert add(3, 4) == 10
+
+    ---------------------------------------------------------------------
+    AssertionError                     Traceback (most recent call last)
+    <ipython-input-3-6731d4ac4476> in <module>()
+    ----> 1 assert add(3, 4) == 10
+
+    AssertionError:
+
 
 Intricacies
 ------------
