@@ -1,11 +1,8 @@
-Booleans
-========
+.. _booleans:
 
-With Rick Riehle
-----------------
-
+###################
 Boolean Expressions
-===================
+###################
 
 Truthiness
 ----------
@@ -18,8 +15,6 @@ What is true or false in Python?
 
 *  http://mail.python.org/pipermail/python-dev/2002-April/022107.html
 
-
-.. nextslide::
 
 Determining Truthiness:
 
@@ -37,7 +32,7 @@ What is False?
 
 * **Nothing:**
 
-    - Zero of any numeric type: ``0, 0L, 0.0, 0j``.
+    - Zero of any numeric type: ``0, 0.0, 0j``.
     - Any empty sequence, for example, ``"", (), []``.
     - Any empty mapping, for example, ``{}`` .
     - Instances of user-defined classes, if the class defines a ``__nonzero__()`` or ``__len__()`` method, when that method returns the integer zero or bool value ``False``.
@@ -46,8 +41,6 @@ What is False?
 
 What is True?
 -------------
-
-.. rst-class:: center large
 
 Everything Else
 
@@ -72,11 +65,8 @@ Which means that this is redundant, and not Pythonic:
 
 Instead, use what Python gives you:
 
-.. code-block:: python
-
     if xx:
         do_something()
-
 
 ``and``, ``or`` and ``not``
 ---------------------------
@@ -114,7 +104,8 @@ of its operand:
     In [40]: not False
     Out[40]: True
 
-.. nextslide:: Shortcutting
+Shortcutting
+------------
 
 Because of the return value of these keywords, you can write concise
 statements:
@@ -133,8 +124,8 @@ statements:
     not x                return True,
                          else return False
 
-
-.. nextslide:: Chaining
+Chaining
+--------
 
 .. code-block:: python
 
@@ -144,15 +135,12 @@ statements:
 
 The first value that defines the result is returned
 
-.. ifslides::
-
-    .. rst-class:: centered large
 
     (demo)
 
 
-Ternary Expressions
--------------------
+Conditional Expressions
+-----------------------
 
 This is a fairly common idiom:
 
@@ -166,6 +154,8 @@ This is a fairly common idiom:
 In other languages, this can be compressed with a "ternary operator"::
 
     result = a > b ? x : y;
+
+(this is the syntax from the C family)
 
 In python, the same is accomplished with the ternary expression:
 
@@ -200,8 +190,6 @@ Here's a better solution:
         return not (weekday == True and vacation == False)
 
 
-.. nextslide::
-
 And here's an even better one:
 
 .. code-block:: python
@@ -210,7 +198,8 @@ And here's an even better one:
         return (not weekday) or vacation
 
 
-.. nextslide:: bools are integers?
+bools are integers?
+-------------------
 
 In python, the boolean types are subclasses of integer:
 
@@ -229,24 +218,7 @@ And you can even do math with them (though it's a bit odd to do so):
     In [6]: 3 + True
     Out[6]: 4
 
-.. ifslides::
-
-    .. rst-class:: center
-
-    (demo)
-
-LAB: Booleans
-=============
-
-.. rst-class:: left
-
-    Working with Booleans, Ternary Expressions, etc:
-
-    Re-write a couple CodingBat exercises, returning the direct boolean results, and/or using ternary expressions.
-
-    Experiment with ``locals`` by adding this statement one of the functions you wrote today::
-
-        print(locals())
+(demo)
 
 
 

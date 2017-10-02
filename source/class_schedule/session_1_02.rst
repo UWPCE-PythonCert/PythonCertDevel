@@ -4,6 +4,8 @@
 Intro to Python Session 2
 #########################
 
+**Basic Python and Functions**
+
 Pre-class prep
 ==============
 
@@ -41,6 +43,9 @@ Read: :ref:`more_on_functions`
 
 Read: :ref:`documentation`
 
+Supplimental Reading
+--------------------
+
 If that is too fast, then here are some good options for another look:
 
 *Think Python:* Chapters 1–6 (http://greenteapress.com/thinkpython2/html/index.html)
@@ -48,6 +53,7 @@ If that is too fast, then here are some good options for another look:
 *Dive Into Python:* Chapters 1–2 (http://www.diveintopython3.net/)
 
 *LPTHW:* ex. 1–10, 18-21 (https://learnpythonthehardway.org/python3/)
+
 (note: LPTHW used to be totally free --now it looks like you may only get a sneak peak -- darn! -- but the first few "chapters" are available)
 
 **GOAL**
@@ -81,11 +87,8 @@ Exercises:
 
 :ref:`exercise_fizz_buzz`
 
-Lecture: :ref:`more_on_functions`
-
-Read: :ref:`documentation`
-
 :ref:`exercise_fibonacci`
+
 
 Post-class Activities
 =====================

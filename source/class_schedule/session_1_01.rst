@@ -4,7 +4,7 @@
 Intro to Python Session 1
 #########################
 
-Intro to the class
+**Intro to the class and Python**
 
 Pre-class prep
 ==============

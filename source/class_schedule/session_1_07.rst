@@ -1,7 +1,24 @@
 .. _session_1_07:
 
-Session 7
-=========
+#########################
+Intro to Python Session 7
+#########################
+
+Pre-class prep
+==============
+
+In-class Activities
+===================
+
+
+Post-class Activities
+=====================
+
+Finish the exercises
+
+Look at the next session for reading, etc:
+
+:ref:`session_1_08`
 
 The Art of Subclassing
 ----------------------

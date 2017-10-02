@@ -1,5 +1,12 @@
 .. _session_1_10:
 
-Session 10
-==========
+##########################
+Intro to Python Session 10
+##########################
+
+Pre-class prep
+==============
+
+In-class Activities
+===================
 

@@ -80,6 +80,9 @@ Modules
     modules/Documentation
     modules/Booleans
     modules/Modules
+    modules/Sequences
+    modules/Iteration
+    modules/Strings
     modules/AdvancedArgumentPassing
     modules/Closures
     modules/Composition
