@@ -93,7 +93,7 @@ Note however, that positional arguments cannot be skipped. In this simple case w
 Return Values
 -------------
 
-Functions can also take zero arguments and return nothing. Simply leave off the return statement and your function will return no value to its caller.
+Functions can also take zero arguments and return nothing. Simply leave off the return statement and your function will return no value, or ``None``, to its caller.
 
 .. code-block:: python
 
@@ -104,9 +104,21 @@ Interestingly, in Python functions can return more than a single value. They can
 
 .. code-block:: ipython
 
-	In [24]: def giveMeTwoValues():
+	In [1]: def giveMeTwoValues():
 	    ...:     return 1, "two"
 	    ...:
+
+	In [2]: first, second = giveMeTwoValues()
+
+	In [3]: first
+	Out[3]: 1
+
+	In [4]: second
+	Out[4]: 'two'
+
+Give the return value a single namae and the objects will be packed into a tuple; each object in the tuple can be accessed according to its position.
+
+.. code-block:: ipython
 
 	In [25]: myTwoValues = giveMeTwoValues()
 
@@ -115,10 +127,6 @@ Interestingly, in Python functions can return more than a single value. They can
 
 	In [27]: type(myTwoValues)
 	Out[27]: tuple
-
-Note that the values are packed into a tuple and thus returned as one object, each of which can be accessed according to their position in the tuple.
-
-.. code-block:: ipython
 
 	In [28]: myTwoValues[0]
 	Out[28]: 1
@@ -184,13 +192,24 @@ Python's scoping rules are such that any variables outside the function with the
 
 ``my_func`` still returns alphas and betas rather than apples and bananas.
 
+While we are still on the topic of scope and which names are available when, let's take the example above and put it into an executable python file or a script.
+
+.. code-block:: python
+
+	def my_func(x=1):
+	    a = "alpha"
+	    b = "beta"
+	    return a*x, b*x
+
+	a = "apple"
+
+	b = "banana"
+
+Look at the sturcutre of that code, it's physical layout. Notice how certain elements are indented under others. Notice that some are not indented at all, but rather sit along the left margin of the file. This is meaningful. The indented elements are only in scope within their enclosing blocks. Python is very explicit about this: indentation is meaningful. When Python was first created this was on of its most controversial features. Other languages used syntatic elements such as parenthesis, brackets and semi-colons to indicate structure including things like scope. Python dispensed with most of that and some people like it and some people don't. The purpose is so that as programmers, at a glance, we have clear visual clues as to what is related to what. Clues at to which symbols are in scope and when. Python also has a rigorous style guide called PEP8 which we will refer to regularly during the class. Other languages also recognize how useful these visual clues can be and so now most code editors have auto-formatting features which follow conventions, conventions like PEP8, about how code should be laid out for whatever language you happen to be working in. One nice effect of all this is that as you sepnd more and more time with the language the details of its syntax tends to fade into the background which allows you as the programmer to pay more attention to the problem you are trying to solve. Just as with a written language such as English or Spanish: after awhile you hardly see the syntax and you focus on the words and their meaning. The conventions around paragraph indentation give you clues about where one idea ends and another begins. So it is with computer code, particularly Python.
+
+Python3 has two keywords for controling scope: ``global`` and ``nonlocal``. In a sense they are for breaking the scoping rules and conventions we've talked about. Don't worry about them for now. Know they're there, and know that you can use them as a lazy way to get out of a tight spot. We will probably talk about them down the road, perhaps when we start defining functions within functinos.
+
 Summary
 -------
 
 Now think back to our thought experiment from when we started. How could the use of functions improve the way we construct programs? Perhaps most significantly we can now reduce code redundancy by factoring out repetitive code blocks as functions which can be called from wherever in our program they are needed. Moreover Where once we had to work strictly from the top of our program to the bottom we can now construct a series of functions that can be called from a main routine or from higher level functions making our program more readable.
-
-Related Topics
-==============
-
-Functions within Functions
-
