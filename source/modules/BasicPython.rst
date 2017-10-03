@@ -660,13 +660,14 @@ You *cannot* use these words as symbols.
 
 ::
 
-    and       del       from      not       while
-    as        elif      global    or        with
-    assert    else      if        pass      yield
-    break     except    import    print
-    class     exec      in        raise
-    continue  finally   is        return
-    def       for       lambda    try
+    False     class	  finally      is          return
+    None      continue    for          lambda      try
+    True      def         from         nonlocal    while
+    and       del         global       not         with
+    as        elif        if           or          yield
+    assert    else        import       pass
+    break     except      in           raise
+
 
 
 If you try to use any of the keywords as symbols, you will cause a
@@ -787,7 +788,7 @@ Pass Statement does nothing (Note the indentation!)
     def minimal():
         pass
 
-This, or course, is not useful -- you will generally have multiple statements in a function -- and they will do something.
+This, of course, is not useful -- you will generally have multiple statements in a function -- and they will do something.
 
 Functions: ``def``
 ------------------
