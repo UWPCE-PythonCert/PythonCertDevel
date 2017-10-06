@@ -6,7 +6,7 @@ With Rick Riehle
 
 Let's start with high shool math. As you will recall, functions take arguments and return a value. The strict definition can be found on Wikipedia_:
 
-.. _Wikipedia: https://en.wikipedia.org/wiki/Function_(mathematics)
+https://en.wikipedia.org/wiki/Function_(mathematics)
 
 Function
   In mathematics, a function is a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output.

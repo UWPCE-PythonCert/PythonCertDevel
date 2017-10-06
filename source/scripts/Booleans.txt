@@ -6,22 +6,22 @@ With Rick Riehle
 
 In a certain sense there isn't much to talk about with regard to booleans. Everybody knows what the word boolean means: true of false, yes or no. When programming we're using them all the time to accomplish flow control, sometimes explicitly, often implicitly. Among Python's key or reserved words are ``True`` and ``False``.  You can test for these values explicitly when making flow control decisions.
 
->>> if (3 + 3 == 6) is True:
+if (3 + 3 == 6) is True:
 	print("something")
 
 Yet as often you will not need nor will you use the explicit comparison with True, because the expression within the parenthesis evaluates to True.
 
->>> if (3 + 3 == 6):
+if (3 + 3 == 6):
 	print("something")
 
 Do we even need the comparison within the expression?
 
->>> if (3 + 3):
+if (3 + 3):
 	print("something")
 
 Perhaps not, but what is really going on here. What if we change the expression as follows?
 
->>> if (3 - 3):
+if (3 - 3):
 	print("something")
 
 Wait, did we get "something". Why not?
@@ -31,18 +31,18 @@ Truthy & falsy
 
 We have taken up an idea in the programming world... truthy. We think Stephen Colbert coined the term. Truthiness, truthy and falsy. Odd sounding terms if you haven't heard them before. They sound somewhat iffy or floaty, as if Truth were hard to pin down. When we're using it in the Python world we are thinking about what Python considers equivalents of true and false. One way to test is to use the built-in function ``bool()``.
 
->>> bool(3+3)
+bool(3+3)
 True
 
->>> bool(3-3)
+bool(3-3)
 False
 
 By now you are likely noticing a pattern -- something verses nothing. Something is truthy and nothing is falsy. To make it perfectly obvious....
 
->>> bool(6)
+bool(6)
 True
 
->>> bool(0)
+bool(0)
 False
 
 There are a lot of expressions that evaluate to ``True`` in Python. Any non-zero value is considered ``True``. Any expression that evaluates to zero is ``False``. Indeed it may be easier to think about what evaluates to ``False`` and is therefore considered falsy, than it is to think about what is true and therefore truthy. Here is a fairly inclusive list of things that are considered falsy.
@@ -62,30 +62,30 @@ Boolean Operations
 
 There are three boolean operators in Python: ``or``, ``and`` and ``not``. The first two enable compound boolean expressions whereas ``not`` simply negates the boolean value of any expression. To demonstrate, let's set up a couple of functions. One will evaluate to ``True`` and the other will evaluate to ``False``.
 
->>> def truthy():
+def truthy():
 	return True
 
->>> def falsy():
+def falsy():
 	return False
 
->>> truthy()
+truthy()
 True
 
->>> falsy()
+falsy()
 False
 
 Now let's use them in expressions to see how ```and```, ```or``` and ```not``` work.
 
->>> (truthy() and falsy())  # Both must be true for the whole expression to be true
+(truthy() and falsy())  # Both must be true for the whole expression to be true
 False
 
->>> (truthy() or falsy())  # Either must be true for the whole expression to be true
+(truthy() or falsy())  # Either must be true for the whole expression to be true
 True
 
->>> (not (truthy() and falsy()))  # The negation of the inner expression
+(not (truthy() and falsy()))  # The negation of the inner expression
 True
 
->>> (not (truthy() or falsy()))  # Again, the negation of the inner expression
+(not (truthy() or falsy()))  # Again, the negation of the inner expression
 False
 
 Summary
