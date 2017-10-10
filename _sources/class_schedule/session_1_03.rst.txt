@@ -1,8 +1,7 @@
 .. _session_1_03:
 
-#########################
 Intro to Python Session 3
-#########################
+=========================
 
 **Booleans, Sequences, Iteration, and Strings**
 

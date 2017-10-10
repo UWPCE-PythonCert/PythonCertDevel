@@ -66,7 +66,7 @@ By now you are likely noticing a pattern, but to make it yet more obvious....
 	In [8]: bool(0)
 	Out[8]: False
 
-There are a lot of expressions that evaluate to ``True`` in Python. Any non-zero value is considered ``True``. Any expression that evaluates to zero is ``False``. Indeed it may be easier to think about what evaluates to ``False`` and is therefore considered falsy, than it is to think about what is true and therefore truthy. Here for instance is a fairly inclusive list of things that are considered falsy.
+There are a lot of expressions that evaluate to ``True`` in Python. Any non-zero value is considered ``True``. Any expression that evaluates to zero is ``False``. Indeed it may be easier to think about what evaluates to ``False`` and is therefore considered falsy, than it is to think about what is true and therefore truthy. Here is a fairly inclusive list of things that are considered falsy.
 
 	*  None
 	*  False
@@ -81,7 +81,7 @@ You may not recognize ``__bool__()`` and ``__len__()``. They are Python special 
 Boolean Operations
 ------------------
 
-There are three boolean operators in Python: ``or``, ``and`` and ``not``. In the case of the first two they enable you to write compound boolean expressions whereas ``not`` negates the boolean value of any expression. To demonstrate, let's set up a couple of functions. One will evaluate to ``True`` and the other will evaluate to ``False``.
+There are three boolean operators in Python: ``or``, ``and`` and ``not``. The first two enable compound boolean expressions whereas ``not`` simply negates the boolean value of any expression. To demonstrate, let's set up a couple of functions. One will evaluate to ``True`` and the other will evaluate to ``False``.
 
 .. code-block:: ipython
 
@@ -120,4 +120,5 @@ Now let's use them in expressions to see how ```and```, ```or``` and ```not``` w
 Summary
 -------
 
-As you can see, booleans form the basis of much of the way we control the flow of our programs, particularly when we expand the notion of True and False to include truthy and falsy.
+As you can see, booleans form the basis of much of the way we control the flow of our programs, particularly when we expand the notion of True and False to include truthy and falsy. I'd suggest you spend a little time in the interpreter with the ``bool()`` function. Try calling it on different sorts of expressions, or on the return values from functions, and see what you get. And remember that you can use it during debugging whenever you're not clear on whether something is Truthy or falsy.
+

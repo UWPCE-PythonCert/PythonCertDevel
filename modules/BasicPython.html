@@ -105,8 +105,9 @@
 <span class="gh">Out[5]: </span><span class="go">7</span>
 </pre></div>
 </div>
-<p>Statements:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="c1"># statements do not return a value, may contain an expression</span>
+<p>Statements:
+but statements carry out an action, but do not evaluate to a value, that is you can’t assign to them (or put them in a lamda, or…)</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="c1"># statements carry out an action, do not evaluate a value, may contain an expression</span>
 
 <span class="gp">In [7]: </span><span class="n">line_count</span> <span class="o">=</span> <span class="mi">42</span>
 
@@ -543,13 +544,13 @@ object</strong> using the <code class="docutils literal"><span class="pre">is</s
 <p>Python defines a number of <strong>keywords</strong></p>
 <p>These are language constructs.</p>
 <p>You <em>cannot</em> use these words as symbols.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ow">and</span>       <span class="k">del</span>       <span class="kn">from</span>      <span class="nn">not</span>       <span class="k">while</span>
-<span class="k">as</span>        <span class="k">elif</span>      <span class="k">global</span>    <span class="ow">or</span>        <span class="k">with</span>
-<span class="k">assert</span>    <span class="k">else</span>      <span class="k">if</span>        <span class="k">pass</span>      <span class="k">yield</span>
-<span class="k">break</span>     <span class="k">except</span>    <span class="kn">import</span>    <span class="nn">print</span>
-<span class="k">class</span>     <span class="nc">exec</span>      <span class="ow">in</span>        <span class="k">raise</span>
-<span class="k">continue</span>  <span class="k">finally</span>   <span class="ow">is</span>        <span class="k">return</span>
-<span class="k">def</span>       <span class="nf">for</span>       <span class="k">lambda</span>    <span class="k">try</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kc">False</span>     <span class="k">class</span>       <span class="nc">finally</span>      <span class="ow">is</span>          <span class="k">return</span>
+<span class="kc">None</span>      <span class="k">continue</span>    <span class="k">for</span>          <span class="k">lambda</span>      <span class="k">try</span>
+<span class="kc">True</span>      <span class="k">def</span>         <span class="nf">from</span>         <span class="k">nonlocal</span>    <span class="k">while</span>
+<span class="ow">and</span>       <span class="k">del</span>         <span class="k">global</span>       <span class="ow">not</span>         <span class="k">with</span>
+<span class="k">as</span>        <span class="k">elif</span>        <span class="k">if</span>           <span class="ow">or</span>          <span class="k">yield</span>
+<span class="k">assert</span>    <span class="k">else</span>        <span class="kn">import</span>       <span class="nn">pass</span>
+<span class="k">break</span>     <span class="k">except</span>      <span class="ow">in</span>           <span class="k">raise</span>
 </pre></div>
 </div>
 <p>If you try to use any of the keywords as symbols, you will cause a
@@ -638,7 +639,7 @@ or in multiple parts of the program.</p>
     <span class="k">pass</span>
 </pre></div>
 </div>
-<p>This, or course, is not useful – you will generally have multiple statements in a function – and they will do something.</p>
+<p>This, of course, is not useful – you will generally have multiple statements in a function – and they will do something.</p>
 </div>
 <div class="section" id="functions-def">
 <h2>Functions: <code class="docutils literal"><span class="pre">def</span></code><a class="headerlink" href="#functions-def" title="Permalink to this headline">¶</a></h2>

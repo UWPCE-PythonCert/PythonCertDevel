@@ -90,7 +90,7 @@
 <span class="gh">Out[8]: </span><span class="go">False</span>
 </pre></div>
 </div>
-<p>There are a lot of expressions that evaluate to <code class="docutils literal"><span class="pre">True</span></code> in Python. Any non-zero value is considered <code class="docutils literal"><span class="pre">True</span></code>. Any expression that evaluates to zero is <code class="docutils literal"><span class="pre">False</span></code>. Indeed it may be easier to think about what evaluates to <code class="docutils literal"><span class="pre">False</span></code> and is therefore considered falsy, than it is to think about what is true and therefore truthy. Here for instance is a fairly inclusive list of things that are considered falsy.</p>
+<p>There are a lot of expressions that evaluate to <code class="docutils literal"><span class="pre">True</span></code> in Python. Any non-zero value is considered <code class="docutils literal"><span class="pre">True</span></code>. Any expression that evaluates to zero is <code class="docutils literal"><span class="pre">False</span></code>. Indeed it may be easier to think about what evaluates to <code class="docutils literal"><span class="pre">False</span></code> and is therefore considered falsy, than it is to think about what is true and therefore truthy. Here is a fairly inclusive list of things that are considered falsy.</p>
 <blockquote>
 <div><ul class="simple">
 <li>None</li>
@@ -106,7 +106,7 @@
 </div>
 <div class="section" id="boolean-operations">
 <h2>Boolean Operations<a class="headerlink" href="#boolean-operations" title="Permalink to this headline">¶</a></h2>
-<p>There are three boolean operators in Python: <code class="docutils literal"><span class="pre">or</span></code>, <code class="docutils literal"><span class="pre">and</span></code> and <code class="docutils literal"><span class="pre">not</span></code>. In the case of the first two they enable you to write compound boolean expressions whereas <code class="docutils literal"><span class="pre">not</span></code> negates the boolean value of any expression. To demonstrate, let’s set up a couple of functions. One will evaluate to <code class="docutils literal"><span class="pre">True</span></code> and the other will evaluate to <code class="docutils literal"><span class="pre">False</span></code>.</p>
+<p>There are three boolean operators in Python: <code class="docutils literal"><span class="pre">or</span></code>, <code class="docutils literal"><span class="pre">and</span></code> and <code class="docutils literal"><span class="pre">not</span></code>. The first two enable compound boolean expressions whereas <code class="docutils literal"><span class="pre">not</span></code> simply negates the boolean value of any expression. To demonstrate, let’s set up a couple of functions. One will evaluate to <code class="docutils literal"><span class="pre">True</span></code> and the other will evaluate to <code class="docutils literal"><span class="pre">False</span></code>.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="k">def</span> <span class="nf">truthy</span><span class="p">():</span>
 <span class="gp">   ...: </span>    <span class="sd">&quot;&quot;&quot; This function might do any number of things....</span>
 <span class="gp">   ...: </span><span class="sd">    query databases, make calculations, etc., but ultimately it does this: &quot;&quot;&quot;</span>
@@ -141,7 +141,7 @@
 </div>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>As you can see, booleans form the basis of much of the way we control the flow of our programs, particularly when we expand the notion of True and False to include truthy and falsy.</p>
+<p>As you can see, booleans form the basis of much of the way we control the flow of our programs, particularly when we expand the notion of True and False to include truthy and falsy. I’d suggest you spend a little time in the interpreter with the <code class="docutils literal"><span class="pre">bool()</span></code> function. Try calling it on different sorts of expressions, or on the return values from functions, and see what you get. And remember that you can use it during debugging whenever you’re not clear on whether something is Truthy or falsy.</p>
 </div>
 </div>
 
