@@ -255,7 +255,7 @@ your code, and get use to giving/receiving feedback on how to
 improve your code, if you are not already.
 
 Each repository will have a directory called ``.git`` that is normally
-not seen. This direcotry is how git keeps track of everything. Leave it alone. :)
+not seen. This directory is how git keeps track of everything. Leave it alone. :)
 
 Please do not set up a git repository inside another git repository, this can lead to heartache.
 
@@ -266,3 +266,11 @@ Setting up new repositories can be confusing because when you clone a git reposi
 the directory that will be the repository, but when you are creating a new
 repository, you need to first be **IN** the directory in which you want the
 repository to be rooted. Please ask if this does not make sense.
+
+Additional Resources:
+
+git tutorial:
+https://try.github.io/levels/1/challenges/1
+
+basic git commands:
+https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html

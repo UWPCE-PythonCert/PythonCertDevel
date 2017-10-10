@@ -79,6 +79,8 @@ For the most part, you just need to be a bit careful with the rare cases where p
 Other py2/py3 differences
 -------------------------
 
+The most drastic difference (improvement!) is better Unicode support, and better bytes/Unicode separation.
+
 Most of the other differences are essentially implementation details, like getting iterators instead of sequences -- we'll talk about that more when it comes up in class.
 
 There are also a few syntax differences with more advanced topics: Exceptions, ``super()``, etc.
