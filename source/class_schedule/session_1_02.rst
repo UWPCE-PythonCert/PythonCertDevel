@@ -1,8 +1,7 @@
 .. _session_1_02:
 
-#########################
 Intro to Python Session 2
-#########################
+=========================
 
 **Basic Python and Functions**
 
