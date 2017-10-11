@@ -1,7 +1,8 @@
 .. _session_1_01:
 
+#########################
 Intro to Python Session 1
-=========================
+#########################
 
 **Intro to the class and Python**
 

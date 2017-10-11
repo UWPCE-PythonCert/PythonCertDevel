@@ -1,11 +1,11 @@
 .. _session_1_04:
 
+#########################
 Intro to Python Session 4
-=========================
+#########################
 
 Pre-class prep
 ==============
-
 
 
 Recommended Reading:
