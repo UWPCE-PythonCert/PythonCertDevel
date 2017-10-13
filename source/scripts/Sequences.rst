@@ -6,8 +6,6 @@
 Python Sequences
 ################
 
-With Chris Barker...
-
 .. rst-class:: center large
 
 Ordered collections of objects
@@ -265,7 +263,7 @@ Note that strings are a bit of an exception -- there is no character type in Pyt
     In [132]: s[20:30]
     Out[132]: ''
 
-(demo)
+(try it yourself....)
 
 Membership
 ==========
