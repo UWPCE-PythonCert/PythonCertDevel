@@ -1,12 +1,17 @@
 .. _session_1_02:
 
+#########################
 Intro to Python Session 2
-=========================
+#########################
 
 **Basic Python and Functions**
 
+-------------------------
+
 Pre-class prep
 ==============
+
+-------------------------
 
 Dev environment
 ---------------
@@ -73,9 +78,13 @@ or
 
 https://try.github.io/
 
+-------------------------
 
 In-class Activities
 ===================
+
+-------------------------
+
 
 Review :ref:`python_pushups`
 
@@ -88,9 +97,12 @@ Exercises:
 
 :ref:`exercise_fibonacci`
 
+-------------------------
 
 Post-class Activities
 =====================
+
+-------------------------
 
 Finish the Exercises
 

@@ -1,12 +1,17 @@
 .. _session_1_03:
 
+#########################
 Intro to Python Session 3
-=========================
+#########################
 
 **Booleans, Sequences, Iteration, and Strings**
 
+-------------------------
+
 Pre-class prep
 ==============
+
+-------------------------
 
 Read: :ref:`booleans`
 
@@ -29,8 +34,12 @@ Dive Into Python: chapters 3, 4
 (http://www.diveintopython3.net/strings.html)
 
 
+-------------------------
+
 In-class Activities
 ===================
+
+-------------------------
 
 Working with Booleans, Conditional Expressions, etc
 ---------------------------------------------------
@@ -67,8 +76,12 @@ You've got the basics of the languge down --enough to write the first full "prog
 
 :ref:`exercise_mailroom`
 
+-------------------------
+
 Post-class Activites
 ====================
+
+-------------------------
 
 Finish the mailroom project.
 
