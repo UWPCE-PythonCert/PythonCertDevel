@@ -65,7 +65,7 @@ Strings
 Mailroom
 --------
 
-You've got the basics of the language down -- enough to write the first full "program":
+You've now got the basics of the language down -- enough to write the first full "program":
 
 :ref:`exercise_mailroom`
 
@@ -73,8 +73,9 @@ You've got the basics of the language down -- enough to write the first full "pr
 Post-class Activites
 ====================
 
-
 Finish the mailroom project.
+
+And the other exercises
 
 Look at the next session for reading, etc:
 

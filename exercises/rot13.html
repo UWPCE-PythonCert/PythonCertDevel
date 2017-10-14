@@ -195,9 +195,12 @@
 <li class="toctree-l1"><a class="reference internal" href="roman.html">Roman/Arabic Numeral Converter</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ROT13</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#goal">Goal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#rot13-encryption">ROT13 encryption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-task">The task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#hints">Hints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rot13-encryption">ROT13 encryption</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-task">The task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ordinals">ordinals…</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hints">Hints</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="slicing.html">Slicing Lab</a></li>
@@ -281,23 +284,26 @@
 <span id="exercise-rot13"></span><h1>ROT13<a class="headerlink" href="#rot13" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="goal">
 <h2>Goal<a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h2>
-<p>Get used to working with the number values (oridinals) for characters</p>
-<p>Get a bit of practice with string methods and string processing</p>
+<p>Get used to working with the number values (ordinals) for characters.</p>
+<p>Get a bit of practice with string methods and string processing.</p>
 </div>
 <div class="section" id="rot13-encryption">
 <h2>ROT13 encryption<a class="headerlink" href="#rot13-encryption" title="Permalink to this headline">¶</a></h2>
 <p>The ROT13 encryption scheme is a simple substitution cypher where each letter
 in a text is replace by the letter 13 away from it (imagine the alphabet as a
 circle, so it wraps around).</p>
-</div>
 <div class="section" id="the-task">
-<h2>The task<a class="headerlink" href="#the-task" title="Permalink to this headline">¶</a></h2>
+<h3>The task<a class="headerlink" href="#the-task" title="Permalink to this headline">¶</a></h3>
 <p>Add a python module named <code class="docutils literal"><span class="pre">rot13.py</span></code> to the session03 dir in your student dir. This module should provide at least one function called <code class="docutils literal"><span class="pre">rot13</span></code> that takes any amount of text and returns that same text encrypted by ROT13.</p>
 <p>This function should preserve whitespace, punctuation and capitalization.</p>
 <p>Your module should include an <code class="docutils literal"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__':</span></code> block with tests (asserts) that demonstrate that your <code class="docutils literal"><span class="pre">rot13</span></code> function and any helper functions you add work properly.</p>
 </div>
+<div class="section" id="ordinals">
+<h3>ordinals…<a class="headerlink" href="#ordinals" title="Permalink to this headline">¶</a></h3>
+<p>“Ordinals” are the numerical values associated with characters. Python stringsl are native unicode, so teh number values of any character</p>
+</div>
 <div class="section" id="hints">
-<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h2>
+<h3>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h3>
 <p>Note that the alphabet has 26 letters, so if you “rotate” by 13 letters twice, you will be back were you started. So if you call your function twice on a string, you should get the same string back.</p>
 <p><code class="docutils literal"><span class="pre">rot13(rot13(something))</span> <span class="pre">==</span> <span class="pre">something</span></code></p>
 <p>There is a “short-cut” available that will help you accomplish this task. Some
@@ -309,6 +315,7 @@ early and often and include commit messages that are descriptive and concise.</p
 and issue a pull request.</p>
 <p>Try decrypting this:</p>
 <p>“Zntargvp sebz bhgfvqr arne pbeare”</p>
+</div>
 </div>
 </div>
 
