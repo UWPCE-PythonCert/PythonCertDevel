@@ -7,6 +7,12 @@ Intro to Python Session 4
 Pre-class prep
 ==============
 
+Read:
+-----
+
+:ref:`dicts_and_sets`
+
+:ref:`files`
 
 Recommended Reading:
 ---------------------
@@ -18,31 +24,27 @@ Recommended Reading:
 http://www.diveintopython3.net/native-datatypes.html#dictionaries
 
 
--------------------------
 
 In-class Activities
 ===================
 
--------------------------
-
-
  * Review mailroom
+
  * :ref:`exercise_dict_lab`
+
  * :ref:`exercise_file_lab`
+
  * :ref:`exercise_trigrams`
+
  * update mailroom with dicts :ref:`exercise_mailroom_plus`
 
-
--------------------------
 
 Post-class Activites
 ====================
 
--------------------------
-
-
-Finish the excercises
+Finish the exercises
 
 Look at the next session for reading, etc:
 
 :ref:`session_1_05`
+

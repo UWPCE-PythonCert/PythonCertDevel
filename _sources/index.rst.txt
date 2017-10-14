@@ -83,13 +83,15 @@ Modules
     scripts/Sequences
     modules/Iteration
     modules/Strings
+    modules/DictsAndSets
+    modules/Files
+    modules/Comprehensions
     modules/AdvancedArgumentPassing
+    modules/DictionaryAsSwitch
     modules/Closures
     modules/Composition
-    modules/Comprehensions
     modules/ContextManagers
     modules/Decorators
-    modules/DictionaryAsSwitch
     modules/EnvironmentOverview
     scripts/FunctionalProgramming
     scripts/Functions

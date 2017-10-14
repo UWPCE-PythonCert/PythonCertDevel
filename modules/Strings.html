@@ -145,20 +145,27 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#string-methods">String Methods</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#string-manipulations">String Manipulations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#splitting-and-joining-strings">Splitting and Joining Strings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#case-switching">Case Switching</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#testing">Testing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#string-literals">String Literals</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#raw-strings">Raw Strings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ordinal-values">Ordinal values</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#building-strings">Building Strings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-strings-from-data">Building Strings from data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#old-and-new-string-formatting">Old and New string formatting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#string-formatting">String Formatting</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#multiple-placeholders">Multiple placeholders:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#named-placeholders">Named placeholders:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#complex-formatting">Complex Formatting</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#string-formatting-lab">String Formatting LAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#literal-string-interpolation">Literal String Interpolation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#f-string-basics">f-string basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#f-string-use">f-string use</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-on-f-strings">More on f-strings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-resources-for-f-strings">Other resources for f-strings</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="AdvancedArgumentPassing.html">Advanced Argument Passing</a></li>
@@ -296,7 +303,7 @@
 <div>Fun with Strings</div></blockquote>
 <div class="section" id="id2">
 <h2>Strings<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>A “String” is a computerese work=d for a piece of text – a “string” of charactors.</p>
+<p>A “String” is a computerese word for a piece of text – a “string” of charactors.</p>
 <div class="section" id="creating-strings">
 <h3>Creating strings:<a class="headerlink" href="#creating-strings" title="Permalink to this headline">¶</a></h3>
 <p>A string literal creates a string type</p>
@@ -306,6 +313,8 @@
 <span class="s1">&#39;So is this&#39;</span>
 
 <span class="sd">&quot;&quot;&quot;and this also&quot;&quot;&quot;</span>
+
+<span class="sd">&#39;&#39;&#39;and even this&#39;&#39;&#39;</span>
 </pre></div>
 </div>
 <p>You can also use <code class="docutils literal"><span class="pre">str()</span></code></p>
@@ -313,15 +322,15 @@
 <span class="gh">Out[256]: </span><span class="go">&#39;34&#39;</span>
 </pre></div>
 </div>
-<p>And strings can be read from files, and other sources of I/O.</p>
+<p>And strings can be read from files or other sources of I/O.</p>
 </div>
 </div>
 <div class="section" id="string-methods">
 <h2>String Methods<a class="headerlink" href="#string-methods" title="Permalink to this headline">¶</a></h2>
 <p>String objects have a lot of methods.</p>
 <p>Here are just a few:</p>
-<div class="section" id="string-manipulations">
-<h3>String Manipulations<a class="headerlink" href="#string-manipulations" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="splitting-and-joining-strings">
+<h3>Splitting and Joining Strings<a class="headerlink" href="#splitting-and-joining-strings" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal"><span class="pre">split</span></code> and <code class="docutils literal"><span class="pre">join</span></code>:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [167]: </span><span class="n">csv</span> <span class="o">=</span> <span class="s2">&quot;comma, separated, values&quot;</span>
 <span class="gp">In [168]: </span><span class="n">csv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>
@@ -331,6 +340,23 @@
 <span class="gh">Out[170]: </span><span class="go">&#39;comma|separated|values&#39;</span>
 </pre></div>
 </div>
+<p>It may seem odd at first that <code class="docutils literal"><span class="pre">.join()</span></code> is a string method, rather than, say, a method on lists. But, in fact it makes a lot of sense. Lists (and tuple, and other sequences) can hold any type of data – and “joining” arbitrary data types doesn’t make any sense.  Joining is strictly a string activity.</p>
+<p>And you need a string to join the parts with – so we need a string object in there somewhere anyway.</p>
+<p>Lastly, having join() be a string method means that it can join strings in ANY iterable object – not just the built-in sequence types.</p>
+<p>So it does make sense – but even if not that’s the way it is.</p>
+<p>So to be clear: if you have a bunch of strings in s a sequence and you want to put them together, you create a string with the character (or characters) you want to join them with, and call join() on that object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="c1"># comma separated:</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;these&quot;</span><span class="p">,</span> <span class="s2">&quot;are&quot;</span><span class="p">,</span> <span class="s2">&quot;some&quot;</span><span class="p">,</span> <span class="s2">&quot;strings&quot;</span><span class="p">])</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="s1">&#39;these,are,some,strings&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="c1"># you can concatenate by joining with the empty string:</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;these&quot;</span><span class="p">,</span> <span class="s2">&quot;are&quot;</span><span class="p">,</span> <span class="s2">&quot;some&quot;</span><span class="p">,</span> <span class="s2">&quot;strings&quot;</span><span class="p">])</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="s1">&#39;thesearesomestrings&#39;</span>
+</pre></div>
+</div>
+<p>In fact, joining is a fast operation – the best way to build up a large string is to collect the parts in a list, and then join() it.</p>
 </div>
 <div class="section" id="case-switching">
 <h3>Case Switching<a class="headerlink" href="#case-switching" title="Permalink to this headline">¶</a></h3>
@@ -377,8 +403,8 @@
 <p>for example – for tab-separated values:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;these</span><span class="se">\t</span><span class="s2">are</span><span class="se">\t</span><span class="s2">separated</span><span class="se">\t</span><span class="s2">by</span><span class="se">\t</span><span class="s2">tabs&quot;</span>
 
-<span class="gp">In [26]: </span><span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="go">these   are separated    by  tabs</span>
+<span class="gp">In [12]: </span><span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">these   are separated   by  tabs</span>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals">https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals</a>
@@ -387,7 +413,7 @@
 <div class="section" id="raw-strings">
 <h3>Raw Strings<a class="headerlink" href="#raw-strings" title="Permalink to this headline">¶</a></h3>
 <p>Add an <code class="docutils literal"><span class="pre">r</span></code> in front of the string literal:</p>
-<p>Escape Sequences Ignored</p>
+<p><strong>Escape Sequences Ignored</strong></p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [408]: </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;this</span><span class="se">\n</span><span class="s2">that&quot;</span><span class="p">)</span>
 <span class="go">this</span>
 <span class="go">that</span>
@@ -400,7 +426,8 @@
 <span class="go">SyntaxError: EOL while scanning string literal</span>
 </pre></div>
 </div>
-<p>(handy for regex, windows paths…)</p>
+<p>putting a backslash right before the end quote confuses the interpreter!</p>
+<p>This can be very handy for things like regular expressions that need embedded backslashes.</p>
 </div>
 <div class="section" id="ordinal-values">
 <h3>Ordinal values<a class="headerlink" href="#ordinal-values" title="Permalink to this headline">¶</a></h3>
@@ -409,6 +436,7 @@
 <li>“ASCII” values: 1-127</li>
 <li>Unicode values – 1 - 1,114,111 (!!!)</li>
 </ul>
+<p>Unicode supports a LOT of characters –every character in every language known to man – and then some :-)</p>
 <p>To get the value:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [109]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;Chris&#39;</span><span class="p">:</span>
 <span class="gp">   .....: </span>    <span class="k">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
@@ -418,15 +446,15 @@
 <span class="go">Chris</span>
 </pre></div>
 </div>
-<p>(these days, stick with ASCII, or use full Unicode: more on that in a few weeks)</p>
+<p>For the English language, stick with ASCII, otherwise use full Unicode: it’s easy with python3 – more on that in a few weeks.</p>
 </div>
-<div class="section" id="building-strings">
-<h3>Building Strings<a class="headerlink" href="#building-strings" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="building-strings-from-data">
+<h3>Building Strings from data<a class="headerlink" href="#building-strings-from-data" title="Permalink to this headline">¶</a></h3>
 <p>You can, but please don’t do this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="s1">&#39;Hello &#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;!&#39;</span>
 </pre></div>
 </div>
-<p>(I know – we did that in the grid_printing excercise)</p>
+<p>(I know – we did that in the grid_printing exercise)</p>
 <p>Do this instead:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="s1">&#39;Hello {}!&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
@@ -436,13 +464,16 @@
 </div>
 <div class="section" id="old-and-new-string-formatting">
 <h3>Old and New string formatting<a class="headerlink" href="#old-and-new-string-formatting" title="Permalink to this headline">¶</a></h3>
-<p>back in early python days, there was the string formatting operator: <code class="docutils literal"><span class="pre">%</span></code></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="s2">&quot; a string: </span><span class="si">%s</span><span class="s2"> and a number: </span><span class="si">%i</span><span class="s2"> &quot;</span><span class="o">%</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
+<p>Back in early python days, there was the string formatting operator: <code class="docutils literal"><span class="pre">%</span></code></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="s2">&quot;a string: </span><span class="si">%s</span><span class="s2"> and a number: </span><span class="si">%i</span><span class="s2"> &quot;</span><span class="o">%</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This is very similar to C-style string formatting (<cite>sprintf</cite>).</p>
 <p>It’s still around, and handy — but …</p>
 <p>The “new” <code class="docutils literal"><span class="pre">format()</span></code> method is more powerful and flexible, so we’ll focus on that in this class.</p>
+</div>
+<div class="section" id="string-formatting">
+<h3>String Formatting<a class="headerlink" href="#string-formatting" title="Permalink to this headline">¶</a></h3>
 <p>The string <code class="docutils literal"><span class="pre">format()</span></code> method:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [62]: </span><span class="s2">&quot;A decimal integer is: {:d}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span>
 <span class="gh">Out[62]: </span><span class="go">&#39;A decimal integer is: 34&#39;</span>
@@ -477,8 +508,8 @@
 </div>
 <div class="section" id="named-placeholders">
 <h3>Named placeholders:<a class="headerlink" href="#named-placeholders" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [69]: </span><span class="s2">&quot;Hello, {name}, whaddaya know?&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Joe&quot;</span><span class="p">)</span>
-<span class="gh">Out[69]: </span><span class="go">&#39;Hello, Joe, whaddaya know?&#39;</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [69]: </span><span class="s2">&quot;Hello, {name}, whadaya know?&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Joe&quot;</span><span class="p">)</span>
+<span class="gh">Out[69]: </span><span class="go">&#39;Hello, Joe, whadaya know?&#39;</span>
 </pre></div>
 </div>
 <p>You can use values more than once, and skip values:</p>
@@ -495,19 +526,118 @@
 <span class="gh">Out[82]: </span><span class="go">&#39;12 / 3 = 4.000000&#39;</span>
 </pre></div>
 </div>
-<p>So you can dynamically build a format string</p>
+<p>So you can dynamically build a format string, and then use it in multiple places in the code.</p>
 </div>
 <div class="section" id="complex-formatting">
 <h3>Complex Formatting<a class="headerlink" href="#complex-formatting" title="Permalink to this headline">¶</a></h3>
 <p>There is a complete syntax for specifying all sorts of options.</p>
 <p>It’s well worth your while to spend some time getting to know this
 <a class="reference external" href="https://docs.python.org/3/library/string.html#format-specification-mini-language">formatting language</a>. You can accomplish a great deal just with this.</p>
+<p>Here is a nice tutorial:</p>
+<p><a class="reference external" href="https://pyformat.info/">https://pyformat.info/</a></p>
 </div>
 </div>
-<div class="section" id="string-formatting-lab">
-<h2>String Formatting LAB<a class="headerlink" href="#string-formatting-lab" title="Permalink to this headline">¶</a></h2>
-<p>Let’s play with these a bit:</p>
-<p><a class="reference internal" href="../exercises/string_formatting.html#exercise-string-formatting"><span class="std std-ref">String Formatting Lab</span></a></p>
+<div class="section" id="literal-string-interpolation">
+<h2>Literal String Interpolation<a class="headerlink" href="#literal-string-interpolation" title="Permalink to this headline">¶</a></h2>
+<p>In Python 3.6, yet another string formatting method was introduced.</p>
+<p>Known at “f-strings”, or more formally, “Literal String Interpolation”, they provide a concise, readable way to include the value of Python expressions inside strings. In particular, they make it easy to include names in the current namespace without having to type them multiple times.</p>
+<p>For example:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [24]: </span><span class="n">first</span> <span class="o">=</span> <span class="s2">&quot;Chris&quot;</span>
+
+<span class="gp">In [25]: </span><span class="n">last</span> <span class="o">=</span> <span class="s2">&quot;Barker&quot;</span>
+
+<span class="gp">In [26]: </span><span class="n">f</span><span class="s2">&quot;My name is {first} {last}&quot;</span>
+<span class="gh">Out[26]: </span><span class="go">&#39;My name is Chris Barker&#39;</span>
+</pre></div>
+</div>
+<p>Note that they are called “f-strings” because they are created by putting and “f” before the string – “f” is for format.</p>
+<p>All the other ways to do this required a lot more typing:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [28]: </span><span class="s2">&quot;My name is {first} {last}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">first</span><span class="o">=</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="n">last</span><span class="p">)</span>
+<span class="gh">Out[28]: </span><span class="go">&#39;My name is Chris Barker&#39;</span>
+
+<span class="gp">In [29]: </span><span class="s2">&quot;My name is {} {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span>
+<span class="gh">Out[29]: </span><span class="go">&#39;My name is Chris Barker&#39;</span>
+
+<span class="gp">In [30]: </span><span class="s2">&quot;My name is </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span>
+<span class="gh">Out[30]: </span><span class="go">&#39;My name is Chris Barker&#39;</span>
+</pre></div>
+</div>
+<div class="section" id="f-string-basics">
+<h3>f-string basics<a class="headerlink" href="#f-string-basics" title="Permalink to this headline">¶</a></h3>
+<p>f-strings are actually pretty simple concept:</p>
+<p>You can interpolate the stringifcation of any expression into a string at run time. Variables are all evaluated at the current scope.</p>
+<p>The expression is put inside curly brackets: {}, the same as for the <code class="docutils literal"><span class="pre">.format</span></code> method.</p>
+<p>So what does that all mean?</p>
+<p>For this most simple example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="s2">&quot;some text: {str(expression)}&quot;</span>
+</pre></div>
+</div>
+<p><cite>expression</cite> is any valid python expression(remember that an expression is a combination of values ans operators and names that produces a value).</p>
+<p>The expression is evaluated, and then, if it is not a string, it is converted to one, so it’s really:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="s2">&quot;some text: {str(expression)}&quot;</span>
+</pre></div>
+</div>
+<p>Let’s see how that works in practice:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [32]: </span><span class="c1"># define a couple of names:</span>
+
+<span class="gp">In [33]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="gp">In [34]: </span><span class="n">y</span> <span class="o">=</span> <span class="mi">12</span>
+
+<span class="gp">In [35]: </span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;fred&quot;</span>
+
+<span class="gp">In [36]: </span><span class="c1"># a simple string:</span>
+
+<span class="gp">In [37]: </span><span class="n">f</span><span class="s2">&quot;some text: {name}&quot;</span>
+<span class="gh">Out[37]: </span><span class="go">&#39;some text: fred&#39;</span>
+
+<span class="gp">In [38]: </span><span class="c1"># if it&#39;s not a string, it will be turned into one:</span>
+
+<span class="gp">In [39]: </span><span class="n">f</span><span class="s2">&quot;some text: {x}&quot;</span>
+<span class="gh">Out[39]: </span><span class="go">&#39;some text: 5&#39;</span>
+
+<span class="gp">In [40]: </span><span class="c1"># but you can do a more complex expression as well:</span>
+
+<span class="gp">In [41]: </span><span class="n">f</span><span class="s2">&quot;some text: {x + y}&quot;</span>
+<span class="gh">Out[41]: </span><span class="go">&#39;some text: 17&#39;</span>
+
+<span class="gp">In [42]: </span><span class="c1"># and call methods:</span>
+
+<span class="gp">In [43]: </span><span class="n">f</span><span class="s2">&quot;some text: {name.capitalize()}&quot;</span>
+<span class="gh">Out[43]: </span><span class="go">&#39;some text: Fred&#39;</span>
+
+<span class="gp">In [45]: </span><span class="c1"># even boolean expressions:</span>
+
+<span class="gp">In [46]: </span><span class="n">f</span><span class="s2">&quot;some text: {name if x &lt; 5 else name2}&quot;</span>
+<span class="gh">Out[46]: </span><span class="go">&#39;some text: bob&#39;</span>
+</pre></div>
+</div>
+<p>You can put ANY expression in there – no matter how complex. But do be careful, if it’s too complex, it will just make the code harder to read!</p>
+<p>And it has to be an expression, not a statement – so you can’t put a for loop or anything like that in there.</p>
+<p>You can see how this can be a very powerful and quick way to get things done.</p>
+</div>
+<div class="section" id="f-string-use">
+<h3>f-string use<a class="headerlink" href="#f-string-use" title="Permalink to this headline">¶</a></h3>
+<p>F-strings are a very new Python feature. They will cause a syntax error in any Python version older than 3.6 – and 3.6 was first released on December 23, 2016 – less than a year from this writing.</p>
+<p>So there is not much out there in the wild, and I have yet to see it in production code.</p>
+<p>They are not currently used in any of the examples in this course.</p>
+<p>Nevertheless, they are a nifty feature that could be very useful, so feel free to use them where it makes you code cleaner and clearer.</p>
+</div>
+<div class="section" id="more-on-f-strings">
+<h3>More on f-strings<a class="headerlink" href="#more-on-f-strings" title="Permalink to this headline">¶</a></h3>
+<p>To read all about the justification and syntax, read PEP 498:</p>
+<p><a class="reference external" href="https://www.python.org/dev/peps/pep-0498/">https://www.python.org/dev/peps/pep-0498/</a></p>
+</div>
+<div class="section" id="other-resources-for-f-strings">
+<h3>Other resources for f-strings<a class="headerlink" href="#other-resources-for-f-strings" title="Permalink to this headline">¶</a></h3>
+<p>f-strings are quite new, but there are a few introductions out there:</p>
+<p>A short introduction:</p>
+<p><a class="reference external" href="https://cito.github.io/blog/f-strings/">https://cito.github.io/blog/f-strings/</a></p>
+<p>Another intro:</p>
+<p><a class="reference external" href="https://www.pydanny.com/python-f-strings-are-fun.html">https://www.pydanny.com/python-f-strings-are-fun.html</a></p>
+<p>One that gets into the technical details (bytecode! – for the real geeks):</p>
+<p><a class="reference external" href="https://hackernoon.com/a-closer-look-at-how-python-f-strings-work-f197736b3bdb">https://hackernoon.com/a-closer-look-at-how-python-f-strings-work-f197736b3bdb</a></p>
+</div>
 </div>
 </div>
 
