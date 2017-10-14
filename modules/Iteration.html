@@ -142,10 +142,19 @@
 <li class="toctree-l2"><a class="reference internal" href="#for-loops">For Loops</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#no-indexing-required">No Indexing Required</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#range-and-for-loops"><code class="docutils literal"><span class="pre">range</span></code> and <code class="docutils literal"><span class="pre">for</span></code> Loops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#no-namespace">No Namespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loop-control">Loop Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#else">else</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#while-loops">While Loops</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#while-vs-for"><code class="docutils literal"><span class="pre">while</span></code> vs. <code class="docutils literal"><span class="pre">for</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#terminating-a-while-loop">Terminating a while Loop</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#similarities">Similarities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pythonic-iteration">Pythonic Iteration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#another-handy-hint">Another handy hint:</a></li>
 </ul>
 </li>
 </ul>
@@ -287,7 +296,7 @@
 <h2>For Loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">¶</a></h2>
 <p>We’ve seen simple iteration over a sequence with <code class="docutils literal"><span class="pre">for</span> <span class="pre">...</span> <span class="pre">in</span></code>:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [170]: </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s2">&quot;a string&quot;</span><span class="p">:</span>
-<span class="gp">   .....: </span>        <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">   .....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="gp">   .....:</span>
 <span class="go">a</span>
 <span class="go">s</span>
@@ -300,7 +309,7 @@
 </div>
 <div class="section" id="no-indexing-required">
 <h3>No Indexing Required<a class="headerlink" href="#no-indexing-required" title="Permalink to this headline">¶</a></h3>
-<p>Contrast this with other languages, where you must build and use an <code class="docutils literal"><span class="pre">index</span></code>:</p>
+<p>Contrast this with other languages, where you must build and use an <code class="docutils literal"><span class="pre">index</span></code> to iterate through an array.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
     <span class="nx">alert</span><span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="s2">&quot;) &quot;</span> <span class="o">+</span> <span class="nx">value</span><span class="p">);</span>
@@ -339,6 +348,9 @@
 <span class="go">*</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="no-namespace">
+<h3>No Namespace<a class="headerlink" href="#no-namespace" title="Permalink to this headline">¶</a></h3>
 <p>Be alert that a loop does not create a local namespace:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [172]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="gp">In [173]: </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
@@ -348,6 +360,9 @@
 <span class="gh">Out[174]: </span><span class="go">2</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="loop-control">
+<h3>Loop Control<a class="headerlink" href="#loop-control" title="Permalink to this headline">¶</a></h3>
 <p>Sometimes you want to interrupt or alter the flow of control through a loop.</p>
 <p>Loops can be controlled in two ways, with <code class="docutils literal"><span class="pre">break</span></code> and <code class="docutils literal"><span class="pre">continue</span></code></p>
 <p>The <code class="docutils literal"><span class="pre">break</span></code> keyword will cause a loop to immediately terminate:</p>
@@ -371,7 +386,12 @@ allow iteration to continue:</p>
 <span class="go">   25 26 27 28 29 ... 41 42 43 44 45 46 47 48 49 50</span>
 </pre></div>
 </div>
+<p>Take some time to look at these examples carefully, and make sure you uderstand them. It’s probably a good idea to write a bit of code to experiment as well.</p>
+</div>
+<div class="section" id="else">
+<h3>else<a class="headerlink" href="#else" title="Permalink to this headline">¶</a></h3>
 <p>For loops can also take an optional <code class="docutils literal"><span class="pre">else</span></code> block.</p>
+<p>This is <strong>not</strong> a feature of most languages, but it can be handy.</p>
 <p>Executed only when the loop exits normally (not via break):</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [147]: </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
 <span class="gp">   .....: </span>    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
@@ -389,18 +409,34 @@ allow iteration to continue:</p>
 </pre></div>
 </div>
 <p>This is a really nice unique Python feature!</p>
+<p>If python didn’t have <code class="docutils literal"><span class="pre">else</span></code> on loops, you’d need to set a flag, somethign like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">it_did_break</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
+        <span class="n">it_did_break</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">it_did_break</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">if</span> <span class="n">it_did_break</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;finished&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>That’s klunkier, no?</p>
+<p>Make sure to try this a bit yourself too, to make sure you get it.</p>
 </div>
 </div>
 <div class="section" id="while-loops">
 <h2>While Loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">¶</a></h2>
-<p>While loops are different – they are not for iterating over a collection, but rather for repeating something an unknown number of times – and maybe even forever.</p>
+<p>While loops are different – they are not for iterating over a collection, but rather for repeating something an unknown number of times – and maybe even forever – or until the program terminates.</p>
 <p>The <code class="docutils literal"><span class="pre">while</span></code> keyword is for when you don’t know how many loops you need.</p>
-<p>It continues to execute the body until condition is not <code class="docutils literal"><span class="pre">True</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">a_condition</span><span class="p">:</span>
+<p>It continues to execute the body until condition is not “Truthy”:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">a_condition</span><span class="p">:</span>
    <span class="n">some_code</span>
    <span class="n">in_the_body</span>
 </pre></div>
 </div>
+<div class="section" id="while-vs-for">
+<h3><code class="docutils literal"><span class="pre">while</span></code> vs. <code class="docutils literal"><span class="pre">for</span></code><a class="headerlink" href="#while-vs-for" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal"><span class="pre">while</span></code>  is more general than <code class="docutils literal"><span class="pre">for</span></code></p>
 <p>– you can always express <code class="docutils literal"><span class="pre">for</span></code> as <code class="docutils literal"><span class="pre">while</span></code>, but not always vice-versa.</p>
 <p><code class="docutils literal"><span class="pre">while</span></code>  is more error-prone – requires some care to terminate</p>
@@ -411,6 +447,9 @@ allow iteration to continue:</p>
     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="terminating-a-while-loop">
+<h3>Terminating a while Loop<a class="headerlink" href="#terminating-a-while-loop" title="Permalink to this headline">¶</a></h3>
 <p>Use <code class="docutils literal"><span class="pre">break</span></code>:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [150]: </span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
 <span class="gp">   .....: </span>    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -441,6 +480,7 @@ allow iteration to continue:</p>
 <span class="go">0 0 2 3 4 6 8 8 8 9 12</span>
 </pre></div>
 </div>
+</div>
 <div class="section" id="similarities">
 <h3>Similarities<a class="headerlink" href="#similarities" title="Permalink to this headline">¶</a></h3>
 <p>Both <code class="docutils literal"><span class="pre">for</span></code> and <code class="docutils literal"><span class="pre">while</span></code> loops can use <code class="docutils literal"><span class="pre">break</span></code> and <code class="docutils literal"><span class="pre">continue</span></code> for
@@ -448,6 +488,16 @@ internal flow control.</p>
 <p>Both <code class="docutils literal"><span class="pre">for</span></code> and <code class="docutils literal"><span class="pre">while</span></code> loops can have an optional <code class="docutils literal"><span class="pre">else</span></code> block</p>
 <p>In both loops, the statements in the <code class="docutils literal"><span class="pre">else</span></code> block are only executed if the
 loop terminates normally (no <code class="docutils literal"><span class="pre">break</span></code>)</p>
+</div>
+</div>
+<div class="section" id="pythonic-iteration">
+<h2>Pythonic Iteration<a class="headerlink" href="#pythonic-iteration" title="Permalink to this headline">¶</a></h2>
+<p>I’ve already said it, but itbears repeating:</p>
+<p>for loops are for iterating over something (an “iterable”) – you almost never want to iterate over the indexes, and then access items with the index.</p>
+<p>use <code class="docutils literal"><span class="pre">enumerate</span></code> if you need the index.</p>
+<div class="section" id="another-handy-hint">
+<h3>Another handy hint:<a class="headerlink" href="#another-handy-hint" title="Permalink to this headline">¶</a></h3>
+<p>If you need to iterate over two sequences in parallel, you can use <code class="docutils literal"><span class="pre">zip()</span></code>:</p>
 </div>
 </div>
 </div>
