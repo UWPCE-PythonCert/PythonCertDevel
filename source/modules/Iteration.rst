@@ -165,8 +165,6 @@ If python didn't have ``else`` on loops, you'd need to set a flag, somethign lik
         if x == 11:
             it_did_break = True
             break
-        else:
-            it_did_break = False
     if it_did_break:
         print('finished')
 
@@ -288,3 +286,4 @@ If you need to iterate over two sequences in parallel, you can use ``zip()``:
     Chris Barker
     Fred Jones
     Nancy Baker
+
