@@ -1,13 +1,13 @@
 .. _exercise_rot13:
 
-*****
+#####
 ROT13
-*****
+#####
 
 Goal
 ----
 
-Get used to working with the number values for characters
+Get used to working with the number values (oridinals) for characters
 
 Get a bit of practice with string methods and string processing
 
@@ -29,10 +29,15 @@ This function should preserve whitespace, punctuation and capitalization.
 Your module should include an ``if __name__ == '__main__':`` block with tests (asserts) that demonstrate that your ``rot13`` function and any helper functions you add work properly.
 
 
-.. nextslide:: A bit more
+Hints
+-----
+
+Note that the alphabet has 26 letters, so if you "rotate" by 13 letters twice, you will be back were you started. So if you call your function twice on a string, you should get the same string back.
+
+``rot13(rot13(something)) == something``
 
 There is a "short-cut" available that will help you accomplish this task. Some
-spelunking in `the documentation for strings`_ should help you to find it. If
+spelunking in `the documentation for strings <https://docs.python.org/3/library/stdtypes.html#string-methods>`_ should help you to find it. If
 you do find it, using it is completely fair game.
 
 As usual, add your new file to your local clone right away.  Make commits
@@ -41,8 +46,7 @@ early and often and include commit messages that are descriptive and concise.
 When you are done, if you want me to review it, push your changes to github
 and issue a pull request.
 
-try decrypting this:
+Try decrypting this:
 
 "Zntargvp sebz bhgfvqr arne pbeare"
 
-.. _the documentation for strings: https://docs.python.org/3/library/stdtypes.html#string-methods
