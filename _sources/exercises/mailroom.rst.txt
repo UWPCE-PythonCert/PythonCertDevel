@@ -1,13 +1,13 @@
 .. _exercise_mailroom:
 
-********
+########
 Mailroom
-********
+########
 
 A complete program
 ==================
 
-Using basic data types and logic for a full program
+Using Python's basic data types and logic for a full program.
 
 Goal:
 -----
@@ -15,7 +15,7 @@ Goal:
 You work in the mail room at a local charity. Part of your job is to write
 incredibly boring, repetitive emails thanking your donors for their generous
 gifts. You are tired of doing this over an over again, so you've decided to
-let Python help you out of a jam.
+let Python help you out of a jam and do your work for you.
 
 The program
 -----------
@@ -24,10 +24,12 @@ Write a small command-line script called ``mailroom.py``. This script should be 
 
 * It should have a data structure that holds a list of your donors and a
   history of the amounts they have donated. This structure should be populated
-  at first with at least five donors, with between 1 and 3 donations each
+  at first with at least five donors, with between 1 and 3 donations each.
+
+  You can store that data structure in the global namespace.
 
 * The script should prompt the user (you) to choose from a menu of 3 actions:
-  'Send a Thank You' or 'Create a Report' or 'quit')
+  "Send a Thank You", "Create a Report" or "quit")
 
 Sending a Thank You
 -------------------
@@ -45,7 +47,7 @@ Sending a Thank You
     their generous donation. Print the email to the terminal and return to the
     original prompt.
 
-**It is fine to forget new donors once the script quits running.**
+**It is fine (for now) to forget new donors once the script quits running.**
 
 Creating a Report
 ------------------
@@ -103,7 +105,9 @@ When you are done, push your changes and make a pull request.
 .. _exercise_mailroom_plus:
 
 Adding dicts...
----------------
+===============
+
+**Wait to do this till after you've learned about dictionaries next week!**
 
 For the next week
 
@@ -132,26 +136,39 @@ Example:
   In [5]: "My name is {first_name} {last_name}".format(**d)
   Out[5]: 'My name is Chris Barker'
 
-Don't worry too much about the "**" -- we'll get into the details later, but for now, it means, more or less -- pass this whole dict in as a bunch of keyword arguments.
+Don't worry too much about the "**" -- we'll get into the details later, but for now, it means, more or less, -- pass this whole dict in as a bunch of keyword arguments.
 
 
 .. _exercise_mailroom_exeptions:
 
-Adding Exceptions
------------------
+Adding Exceptions and Testing
+=============================
 
-**After Session05:**
+**After Session05**
 
-* Exceptions:
+Once you once you've learned about Exception handling, testing, and comprehensions, you should be able to refactor your code to be more robust.
 
-Now that you've learned about Exception handling, you can update your code to handle errors better -- like when a user inputs bad data.
+Tests
+-----
 
-* Comprehensions:
+Add a full suite of unit tests.
+
+"full suite" means all the code is tested. In practice, it's very hard to test the user interaction, but you can test everything else. Make sure that there is as little untested code in the user interaction portion of the program -- hardly any logic.
+
+This is a big step -- you may find that your code is hard to test. If that's the case, it's a good sign that you *should* refactor your code.
+
+I like to say: "If it's hard to test, it's not well structured"
+
+Put in the tests **before** you make the other changes below - that's much of the point of tests -- you can know that you haven't broken anything when you refactor!
+
+
+Exceptions
+----------
+
+Now that you've learned about exception handling, you can update your code to handle errors better -- like when a user inputs bad data.
+
+Comprehensions
+--------------
 
 Can you use comprehensions to clean up your code a bit?
-
-* Tests
-
-Add some tests..
-
 
