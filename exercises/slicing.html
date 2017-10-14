@@ -95,22 +95,9 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_01.html">Intro to Python Session 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_01.html#pre-class-prep">Pre-class prep</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_01.html#in-class-activities">In-class Activities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_01.html#post-class-activites">Post-class Activites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_02.html">Intro to Python Session 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_02.html#pre-class-prep">Pre-class prep</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_02.html#in-class-activities">In-class Activities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_02.html#post-class-activities">Post-class Activities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_03.html">Intro to Python Session 3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_03.html#pre-class-prep">Pre-class prep</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_03.html#in-class-activities">In-class Activities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_03.html#post-class-activites">Post-class Activites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_03.html#session-3">Session 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_04.html">Intro to Python Session 4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_04.html#pre-class-prep">Pre-class prep</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_04.html#in-class-activities">In-class Activities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_04.html#post-class-activites">Post-class Activites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_05.html">Intro to Python Session 5</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_06.html">Intro to Python Session 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_07.html">Intro to Python Session 7</a></li>
@@ -153,13 +140,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../scripts/Sequences.html">Python Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Iteration.html">Iteration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Strings.html">Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/DictsAndSets.html">Dictionaries and Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Files.html">File Reading and Writing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Comprehensions.html">Comprehensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/AdvancedArgumentPassing.html">Advanced Argument Passing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/DictionaryAsSwitch.html">Dictionary as Switch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Closures.html">Closures and function Currying</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Composition.html">Composition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules/Comprehensions.html">Comprehensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/ContextManagers.html">Context Managers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Decorators.html">Decorators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules/DictionaryAsSwitch.html">Dictionary as Switch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/EnvironmentOverview.html">Introduction to the Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scripts/FunctionalProgramming.html">Functional Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions</a></li>
@@ -208,6 +197,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Slicing Lab</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#goal">Goal</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#tasks">Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tests">Tests:</a></li>
 </ul>
 </li>
 </ul>
@@ -295,16 +285,31 @@
 <p>Get the basics of sequence slicing down</p>
 <div class="section" id="tasks">
 <h3>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h3>
-<p>Write some functions that:</p>
+<p>Write some functions that take a sequence as an argument, and return a copy of that sequence:</p>
 <ul class="simple">
-<li>return a sequence with the first and last items exchanged.</li>
-<li>return a sequence with every other item removed</li>
-<li>return a sequence with the first and last 4 items removed, and every other item in between</li>
-<li>return a sequence reversed (just with slicing)</li>
-<li>return a sequence with the middle third, then last third, then the first third in the new order</li>
+<li>with the first and last items exchanged.</li>
+<li>with every other item removed</li>
+<li>with the first and last 4 items removed, and every other item in between</li>
+<li>with the elements reversed (just with slicing)</li>
+<li>with the middle third, then last third, then the first third in the new order</li>
 </ul>
-<p>NOTE:
-these should work with ANY sequence – but you can use strings to test, if you like.</p>
+<p><strong>NOTE:</strong> These should work with ANY sequence – but you can use strings to test, if you like.</p>
+<p>Your functions should look like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exchange_first_last</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a_new_sequence</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tests">
+<h3>Tests:<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a_string</span> <span class="o">=</span> <span class="s2">&quot;this is a string&quot;</span>
+<span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">exchange_first_last</span><span class="p">(</span><span class="n">a_string</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;ghis is a strint&quot;</span>
+<span class="k">assert</span> <span class="n">exchange_first_last</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Write a test or two like that for each of the above functions.</p>
 </div>
 </div>
 </div>

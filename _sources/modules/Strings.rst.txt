@@ -317,6 +317,11 @@ Here is a nice tutorial:
 
 https://pyformat.info/
 
+And a nice formatting cookbook:
+
+https://mkaz.tech/python-string-format.html
+
+
 Literal String Interpolation
 ============================
 

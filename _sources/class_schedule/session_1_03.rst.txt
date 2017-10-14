@@ -60,12 +60,12 @@ Strings
 -------
 :ref:`exercise_string_formatting`
 
-:ref:`exercise_rot13`
+(optional) :ref:`exercise_rot13`
 
 Mailroom
 --------
 
-You've got the basics of the languge down -- enough to write the first full "program":
+You've got the basics of the language down -- enough to write the first full "program":
 
 :ref:`exercise_mailroom`
 
