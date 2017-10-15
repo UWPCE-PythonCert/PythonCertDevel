@@ -5,15 +5,15 @@ ROT13
 #####
 
 Goal
-----
+====
 
-Get used to working with the number values (oridinals) for characters
+Get used to working with the number values (ordinals) for characters.
 
-Get a bit of practice with string methods and string processing
+Get a bit of practice with string methods and string processing.
 
 
 ROT13 encryption
------------------
+================
 
 The ROT13 encryption scheme is a simple substitution cypher where each letter
 in a text is replace by the letter 13 away from it (imagine the alphabet as a
@@ -28,6 +28,10 @@ This function should preserve whitespace, punctuation and capitalization.
 
 Your module should include an ``if __name__ == '__main__':`` block with tests (asserts) that demonstrate that your ``rot13`` function and any helper functions you add work properly.
 
+ordinals...
+-----------
+
+"Ordinals" are the numerical values associated with characters. Python stringsl are native unicode, so teh number values of any character
 
 Hints
 -----
