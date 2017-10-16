@@ -263,27 +263,77 @@ loop terminates normally (no ``break``)
 Pythonic Iteration
 ==================
 
-I've already said it, but itbears repeating:
+I've already said it, but it bears repeating:
 
 for loops are for iterating over something (an "iterable") -- you almost never want to iterate over the indexes, and then access items with the index.
 
-use ``enumerate`` if you need the index.
+nifty for loop tricks
+---------------------
 
-Another handy hint:
--------------------
+**tuple unpacking:**
 
-If you need to iterate over two sequences in parallel, you can use ``zip()``:
+remember this?
 
-.. code-block: ipython
+.. code-block:: python
 
-    In [7]: first_names = ["Chris", "Fred", "Nancy"]
+    x, y = 3, 4
 
-    In [8]: last_names = ["Barker", "Jones", "Baker"]
+You can do that in a for loop, also:
 
-    In [9]: for first, last in zip(first_names, last_names):
-       ...:     print(first, last)
+.. code-block:: ipython
+
+  In [4]: l = [(1, 2), (3, 4), (5, 6)]
+
+  In [5]: for i, j in l:
+              print("i:{}, j:{}".format(i, j))
+
+  i:1, j:2
+  i:3, j:4
+  i:5, j:6
+
+Looping through two iterables at once:
+--------------------------------------
+
+.. rst-class:: mlarge
+
+  ``zip``
+
+.. code-block:: ipython
+
+    In [10]: l1 = [1, 2, 3]
+
+    In [11]: l2 = [3, 4, 5]
+
+    In [12]: for i, j in zip(l1, l2):
+              print("i:{}, j:{}".format(i, j))
+
+    i:1, j:3
+    i:2, j:4
+    i:3, j:5
+
+Can be more than two:
+
+.. code-block:: python
+
+  for i, j, k, l in zip(l1, l2, l3, l4):
+
+
+Need the index and the item?
+----------------------------
+
+.. rst-class:: mlarge
+
+  ``enumerate``
+
+.. code-block:: ipython
+
+    In [2]: l = ['this', 'that', 'the other']
+
+    In [3]: for i, item in enumerate(l):
+       ...:     print("the {:d}th item is: {:s}".format(i, item))
        ...:
-    Chris Barker
-    Fred Jones
-    Nancy Baker
+    the 0th item is: this
+    the 1th item is: that
+    the 2th item is: the other
+
 

@@ -10,6 +10,7 @@ Pre-class prep
 In-class Activities
 ===================
 
+ * Update mailroom with Exceptions: :ref:`exercise_mailroom_exeptions:`
 
 Post-class Activities
 =====================
