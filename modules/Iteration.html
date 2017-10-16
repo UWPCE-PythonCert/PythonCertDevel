@@ -154,19 +154,23 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#pythonic-iteration">Pythonic Iteration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#another-handy-hint">Another handy hint:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nifty-for-loop-tricks">nifty for loop tricks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#looping-through-two-iterables-at-once">Looping through two iterables at once:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#need-the-index-and-the-item">Need the index and the item?</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Strings.html">Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DictsAndSets.html">Dictionaries and Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Files.html">File Reading and Writing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Comprehensions.html">Comprehensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AdvancedArgumentPassing.html">Advanced Argument Passing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DictionaryAsSwitch.html">Dictionary as Switch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Closures.html">Closures and function Currying</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Composition.html">Composition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Comprehensions.html">Comprehensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ContextManagers.html">Context Managers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Decorators.html">Decorators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DictionaryAsSwitch.html">Dictionary as Switch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="EnvironmentOverview.html">Introduction to the Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scripts/FunctionalProgramming.html">Functional Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions</a></li>
@@ -490,12 +494,60 @@ loop terminates normally (no <code class="docutils literal"><span class="pre">br
 </div>
 <div class="section" id="pythonic-iteration">
 <h2>Pythonic Iteration<a class="headerlink" href="#pythonic-iteration" title="Permalink to this headline">¶</a></h2>
-<p>I’ve already said it, but itbears repeating:</p>
+<p>I’ve already said it, but it bears repeating:</p>
 <p>for loops are for iterating over something (an “iterable”) – you almost never want to iterate over the indexes, and then access items with the index.</p>
-<p>use <code class="docutils literal"><span class="pre">enumerate</span></code> if you need the index.</p>
-<div class="section" id="another-handy-hint">
-<h3>Another handy hint:<a class="headerlink" href="#another-handy-hint" title="Permalink to this headline">¶</a></h3>
-<p>If you need to iterate over two sequences in parallel, you can use <code class="docutils literal"><span class="pre">zip()</span></code>:</p>
+<div class="section" id="nifty-for-loop-tricks">
+<h3>nifty for loop tricks<a class="headerlink" href="#nifty-for-loop-tricks" title="Permalink to this headline">¶</a></h3>
+<p><strong>tuple unpacking:</strong></p>
+<p>remember this?</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p>You can do that in a for loop, also:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
+
+<span class="gp">In [5]: </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+<span class="go">            print(&quot;i:{}, j:{}&quot;.format(i, j))</span>
+
+<span class="go">i:1, j:2</span>
+<span class="go">i:3, j:4</span>
+<span class="go">i:5, j:6</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="looping-through-two-iterables-at-once">
+<h3>Looping through two iterables at once:<a class="headerlink" href="#looping-through-two-iterables-at-once" title="Permalink to this headline">¶</a></h3>
+<p class="mlarge"><code class="docutils literal"><span class="pre">zip</span></code></p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="gp">In [11]: </span><span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="gp">In [12]: </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">):</span>
+<span class="go">          print(&quot;i:{}, j:{}&quot;.format(i, j))</span>
+
+<span class="go">i:1, j:3</span>
+<span class="go">i:2, j:4</span>
+<span class="go">i:3, j:5</span>
+</pre></div>
+</div>
+<p>Can be more than two:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">l3</span><span class="p">,</span> <span class="n">l4</span><span class="p">):</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="need-the-index-and-the-item">
+<h3>Need the index and the item?<a class="headerlink" href="#need-the-index-and-the-item" title="Permalink to this headline">¶</a></h3>
+<p class="mlarge"><code class="docutils literal"><span class="pre">enumerate</span></code></p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;that&#39;</span><span class="p">,</span> <span class="s1">&#39;the other&#39;</span><span class="p">]</span>
+
+<span class="gp">In [3]: </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
+<span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;the {:d}th item is: {:s}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">item</span><span class="p">))</span>
+<span class="gp">   ...:</span>
+<span class="go">the 0th item is: this</span>
+<span class="go">the 1th item is: that</span>
+<span class="go">the 2th item is: the other</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>

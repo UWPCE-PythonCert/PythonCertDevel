@@ -1098,6 +1098,7 @@ It should be a function that takes one parameter (list items one at a time) and 
     In [139]: food
     Out[139]: ['spam', 'eggs', 'ham']
 
+You end up with the list sorted by the third letter in each element.
 
 List Performance
 ----------------
@@ -1114,7 +1115,7 @@ List Performance
   * ``pop(0)``, ``insert(0, v)``
   * But, reversing is fast. ``Also, collections.deque``
 
-what the heck does this O() thing mean?  That is known as "big O" notation for time complexity.  What it does is provide an indication of how much more time an operation will take depending on how many items the operation is acting on.
+What the heck does this O() thing mean?  That is known as "big O" notation for time complexity.  What it does is provide an indication of how much more time an operation will take depending on how many items the operation is acting on.
 
 Check out the Python wiki entry on Time Complexity for more info:
 
@@ -1138,12 +1139,11 @@ Otherwise ... taste and convention
 Convention
 ----------
 
-
-Lists are Collections (homogeneous):
+Lists are Homogeneous Collections:
 -- contain values of the same type
 -- simplifies iterating, sorting, etc
 
-tuples are mixed types:
+Tuples are mixed types:
 -- Group multiple values into one logical thing
 -- Kind of like simple C structs.
 
@@ -1180,3 +1180,4 @@ For more information, read the list docs:
 https://docs.python.org/3.6/library/stdtypes.html#mutable-sequence-types
 
 (actually any mutable sequence....)
+

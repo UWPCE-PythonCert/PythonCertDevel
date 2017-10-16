@@ -42,7 +42,7 @@ Re-write a couple CodingBat exercises, returning the direct boolean results, and
 Variable Scope
 --------------
 
-Experiment with ``locals`` by adding this statement one of the functions we wrote last week::
+Experiment with ``locals`` by adding this statement one of the functions we wrote last week (or any other function you wrote):
 
 .. code-block:: python
 

@@ -146,6 +146,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#string-methods">String Methods</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#splitting-and-joining-strings">Splitting and Joining Strings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-up-a-long-string">Building up a long string.</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#case-switching">Case Switching</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#testing">Testing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#string-literals">String Literals</a></li>
@@ -358,7 +359,23 @@
 <span class="n">Out</span><span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="s1">&#39;thesearesomestrings&#39;</span>
 </pre></div>
 </div>
-<p>In fact, joining is a fast operation – the best way to build up a large string is to collect the parts in a list, and then join() it.</p>
+</div>
+<div class="section" id="building-up-a-long-string">
+<h3>Building up a long string.<a class="headerlink" href="#building-up-a-long-string" title="Permalink to this headline">¶</a></h3>
+<p>The obvious thing to do is something like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="k">for</span> <span class="n">piece</span> <span class="ow">in</span> <span class="n">list_of_stuff</span><span class="p">:</span>
+    <span class="n">msg</span> <span class="o">+=</span> <span class="n">piece</span>
+</pre></div>
+</div>
+<p>But: strings are immutable – python needs to create a new string each time you add a piece – not efficient:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">msg</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">piece</span> <span class="ow">in</span> <span class="n">list_of_stuff</span><span class="p">:</span>
+    <span class="n">msg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">piece</span><span class="p">)</span>
+<span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>appending to lists is efficient – and so is the join() method of strings.</p>
 </div>
 <div class="section" id="case-switching">
 <h3>Case Switching<a class="headerlink" href="#case-switching" title="Permalink to this headline">¶</a></h3>
