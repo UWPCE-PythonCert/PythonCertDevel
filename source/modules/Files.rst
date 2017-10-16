@@ -258,3 +258,58 @@ All the stuff in os.path and more:
     junkfile.txt
     ...
 
+And it has a really nifty way to join paths, by overloading the "division" operator:
+
+.. code-block:: ipython
+
+    In [49]: p = pathlib.Path.home()  # create a path to the user home dir.
+
+    In [50]: p
+    Out[50]: PosixPath('/Users/Chris')
+
+    In [51]: p / "a_dir" / "one_more" / "a_filename"
+    Out[51]: PosixPath('/Users/Chris/a_dir/one_more/a_filename')
+
+Kinda slick, eh?
+
+For the full docs:
+
+https://docs.python.org/3/library/pathlib.html
+
+The Path Protocol
+-----------------
+
+As of Python 3.6, there is now a protocol for making arbitrary objects act like paths:
+
+Read about it in PEP 519:
+
+https://www.python.org/dev/peps/pep-0519/
+
+This we added because most built-in file handling modules, as well as any number of third party packages that needed a path worked only with paths string paths.
+
+Even after ``pathlib`` was added to the standard library, you couldn't pass a ``Path`` object in where a path was needed --even the most common ones like ``open()``
+
+So you could use the nifty path manipulation stuff, but still needed to call ``str`` on it:
+
+.. code-block:: python
+
+    p = pathlib.Path.home() / a_filename.txt
+
+    f = open(str(p), 'r')
+
+Rather than add explicit support for ``Path`` objects, a new protocol was defined, and most of the standard library was updated to support the new protocol.
+
+This way third party path libraries could be used with the standard library as well.
+
+What this means to you
+----------------------
+
+Unless you are writing a path manipulation library, or a library that deals with paths other than with the stdlib packages (like ``open()``), All you need to know is that you can use ``Path`` objects most places you need a path.
+
+I expect we will see expanded use of pathlib as python 3.6 becomes widely used.
+
+
+
+
+
+
