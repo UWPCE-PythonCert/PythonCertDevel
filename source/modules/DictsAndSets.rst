@@ -449,3 +449,76 @@ immutable -- for use as a key in a dict
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     AttributeError: 'frozenset' object has no attribute 'add'
+
+A few added notes:
+==================
+
+The count() method
+------------------
+
+All Python sequences (including strings) have a ``count()`` method:
+
+.. code-block:: ipython
+
+    In [1]: s = "This is an arbitrary string"
+
+    In [2]: s.count('t')
+    Out[2]: 2
+
+What if you want a case-insensitive count?
+
+.. code-block:: ipython
+
+    In [3]: s.lower().count('t')
+    Out[3]: 3
+
+set.update()
+------------
+
+If you want to add a bunch of stuff to a set, you can use update:
+
+.. code-block:: ipython
+
+    In [1]: s = set()
+
+In [2]: s.update
+Out[2]: <function set.update>
+
+In [3]: s.update(['this', 'that'])
+
+In [4]: s
+Out[4]: {'that', 'this'}
+
+In [5]: s.update(['this', 'thatthing'])
+
+In [6]: s
+Out[6]: {'that', 'thatthing', 'this'}
+
+**NOTE:** It's VERY often the case that when you find yourself writing a trivial loop -- there is a way to do it with a built in method!
+
+
+
+Sorting stuff in dictionaries:
+-------------------------------
+
+dicts aren't sorted, so what if you want to do something in a sorted way?
+
+The "standard" way:
+
+.. code-block:: python
+
+  for key in sorted(d.keys()):
+      ...
+
+Another option:
+
+.. code-block:: python
+
+    collections.OrderedDict
+
+Also other nifty stuff in the ``collections`` module:
+
+https://docs.python.org/3.6/library/collections.html
+
+**NOTE:** In Python 3.6, dicts were optimized in a way that happens to preserver order. But this is considered an implementation detail. Do not count on it! If you want order preserved, use OrderedDict.
+

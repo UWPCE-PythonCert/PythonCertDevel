@@ -7,9 +7,7 @@ List Lab
 Learning about lists
 ====================
 
-After:
-
-http://www.upriss.org.uk/python/session5.html
+Inspired by: http://www.upriss.org.uk/python/session5.html
 
 Goal:
 -----

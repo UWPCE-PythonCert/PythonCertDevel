@@ -14,6 +14,8 @@ Read:
 
 :ref:`files`
 
+:ref:`style_and_naming`
+
 Recommended Reading:
 ---------------------
 
@@ -24,9 +26,18 @@ Recommended Reading:
 http://www.diveintopython3.net/native-datatypes.html#dictionaries
 
 
-
 In-class Activities
 ===================
+
+ * Review last sessions labs:
+   - slicing
+   - string formatting
+
+ * Review  looping: ``for`` and ``while``
+
+    - ``break`` and ``continue``
+
+    - ``else``
 
  * Review mailroom
 
@@ -39,8 +50,8 @@ In-class Activities
  * update mailroom with dicts :ref:`exercise_mailroom_plus`
 
 
-Post-class Activites
-====================
+Post-class Activities
+=====================
 
 Finish the exercises
 
