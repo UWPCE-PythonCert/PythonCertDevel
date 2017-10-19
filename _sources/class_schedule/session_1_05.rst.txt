@@ -4,13 +4,26 @@
 Intro to Python Session 5
 #########################
 
+Exceptions and Comprehensions
+
 Pre-class prep
 ==============
+
+Read:
+
+:ref:`style_and_naming`
+
+
+
 
 In-class Activities
 ===================
 
- * Update mailroom with Exceptions: :ref:`exercise_mailroom_exeptions:`
+Review of last classes labs:
+
+
+
+ * Update mailroom with Exceptions: :ref:`exercise_mailroom_exceptions`
 
 Post-class Activities
 =====================

@@ -139,7 +139,7 @@ Example:
 Don't worry too much about the "**" -- we'll get into the details later, but for now, it means, more or less, -- pass this whole dict in as a bunch of keyword arguments.
 
 
-.. _exercise_mailroom_exeptions:
+.. _exercise_mailroom_exceptions:
 
 Adding Exceptions and Testing
 =============================

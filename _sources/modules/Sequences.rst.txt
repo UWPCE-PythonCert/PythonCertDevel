@@ -6,8 +6,6 @@
 Python Sequences
 ################
 
-With Chris Barker...
-
 .. rst-class:: center large
 
 Ordered collections of objects
@@ -265,7 +263,7 @@ Note that strings are a bit of an exception -- there is no character type in Pyt
     In [132]: s[20:30]
     Out[132]: ''
 
-(demo)
+(try it yourself....)
 
 Membership
 ==========
@@ -446,11 +444,18 @@ This does not raise an error if the item you seek is not present:
 Iteration
 =========
 
-All sequences are "iterables" --
+All sequences are "iterables"
 
-More on this in another lecture
+You can iterate over a sequence with ``for``:
 
-But a hint: that's what a for loop does...
+.. code-block:: python
+
+    for element in sequence:
+        do_something(element)
+
+Which is what we mean when we say a sequence is an "iterable".
+
+There are some complexities about that -- but more on that in another lecture.
 
 
 Lists, Tuples...
@@ -463,7 +468,7 @@ The *primary* sequence types.
 Lists
 -----
 
-Lists can be constructed using list Literals (``[]``):
+Lists can be constructed using list literals (``[]``):
 
 .. code-block:: ipython
 
@@ -1052,25 +1057,8 @@ Iterate over a copy, and mutate the original:
     Out[35]: []
 
 
-Just Say It, Already
---------------------
-
-Okay, so we've done this a bunch already, but let's state it out loud.
-
-You can iterate over a sequence with ``for``:
-
-.. code-block:: python
-
-    for element in sequence:
-        do_something(element)
-
-Which is what we mean when we say a sequence is an "iterable".
-
-Again, we'll touch more on this in a short while, but first a few more words about Lists and Tuples.
-
-
 Miscellaneous List Methods
---------------------------
+==========================
 
 These methods change a list in place and are not available on immutable sequence types.
 
@@ -1110,6 +1098,7 @@ It should be a function that takes one parameter (list items one at a time) and 
     In [139]: food
     Out[139]: ['spam', 'eggs', 'ham']
 
+You end up with the list sorted by the third letter in each element.
 
 List Performance
 ----------------
@@ -1126,7 +1115,7 @@ List Performance
   * ``pop(0)``, ``insert(0, v)``
   * But, reversing is fast. ``Also, collections.deque``
 
-what the heck does this O() thing mean?  That is known as "big O" notation for time complexity.  What it does is provide an indication of how much more time an operation will take depending on how many items the operation is acting on.
+What the heck does this O() thing mean?  That is known as "big O" notation for time complexity.  What it does is provide an indication of how much more time an operation will take depending on how many items the operation is acting on.
 
 Check out the Python wiki entry on Time Complexity for more info:
 
@@ -1134,7 +1123,7 @@ http://wiki.python.org/moin/TimeComplexity
 
 
 Choosing Lists or Tuples
-------------------------
+========================
 
 Here are a few guidelines on when to choose a list or a tuple:
 
@@ -1150,12 +1139,11 @@ Otherwise ... taste and convention
 Convention
 ----------
 
-
-Lists are Collections (homogeneous):
+Lists are Homogeneous Collections:
 -- contain values of the same type
 -- simplifies iterating, sorting, etc
 
-tuples are mixed types:
+Tuples are mixed types:
 -- Group multiple values into one logical thing
 -- Kind of like simple C structs.
 
@@ -1192,3 +1180,4 @@ For more information, read the list docs:
 https://docs.python.org/3.6/library/stdtypes.html#mutable-sequence-types
 
 (actually any mutable sequence....)
+

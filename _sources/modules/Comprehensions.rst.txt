@@ -1,5 +1,9 @@
+.. _comprehensions:
+
+##############
 Comprehensions
-==============
+##############
+
 
 List comprehensions
 -------------------

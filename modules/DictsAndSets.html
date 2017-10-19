@@ -130,6 +130,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_10.html">Internet Programming in Python: Session 10</a></li>
 </ul>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Class_introduction.html">Introductions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BasicPython.html">Basic Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Git.html">Intro to Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GitWorkflow.html">Git Workflow</a></li>
@@ -137,7 +138,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Documentation.html">Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Booleans.html">Boolean Expressions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules.html">Code Structure, Modules, and Namespaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/Sequences.html">Python Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Sequences.html">Python Sequences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Iteration.html">Iteration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Strings.html">Strings</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Dictionaries and Sets</a><ul>
@@ -158,9 +159,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#frozen-set">Frozen Set</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#a-few-added-notes">A few added notes:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-count-method">The count() method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-update">set.update()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sorting-stuff-in-dictionaries">Sorting stuff in dictionaries:</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Files.html">File Reading and Writing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Exceptions.html">Exception Handling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Comprehensions.html">Comprehensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AdvancedArgumentPassing.html">Advanced Argument Passing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DictionaryAsSwitch.html">Dictionary as Switch</a></li>
@@ -637,6 +645,56 @@
 <span class="gr">AttributeError</span>: <span class="n">&#39;frozenset&#39; object has no attribute &#39;add&#39;</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="a-few-added-notes">
+<h2>A few added notes:<a class="headerlink" href="#a-few-added-notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-count-method">
+<h3>The count() method<a class="headerlink" href="#the-count-method" title="Permalink to this headline">¶</a></h3>
+<p>All Python sequences (including strings) have a <code class="docutils literal"><span class="pre">count()</span></code> method:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;This is an arbitrary string&quot;</span>
+
+<span class="gp">In [2]: </span><span class="n">s</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="gh">Out[2]: </span><span class="go">2</span>
+</pre></div>
+</div>
+<p>What if you want a case-insensitive count?</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="gh">Out[3]: </span><span class="go">3</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-update">
+<h3>set.update()<a class="headerlink" href="#set-update" title="Permalink to this headline">¶</a></h3>
+<p>If you want to add a bunch of stuff to a set, you can use update:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">s</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In [2]: s.update
+Out[2]: &lt;function set.update&gt;</p>
+<p>In [3]: s.update([‘this’, ‘that’])</p>
+<p>In [4]: s
+Out[4]: {‘that’, ‘this’}</p>
+<p>In [5]: s.update([‘this’, ‘thatthing’])</p>
+<p>In [6]: s
+Out[6]: {‘that’, ‘thatthing’, ‘this’}</p>
+<p><strong>NOTE:</strong> It’s VERY often the case that when you find yourself writing a trivial loop – there is a way to do it with a built in method!</p>
+</div>
+<div class="section" id="sorting-stuff-in-dictionaries">
+<h3>Sorting stuff in dictionaries:<a class="headerlink" href="#sorting-stuff-in-dictionaries" title="Permalink to this headline">¶</a></h3>
+<p>dicts aren’t sorted, so what if you want to do something in a sorted way?</p>
+<p>The “standard” way:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Another option:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span>
+</pre></div>
+</div>
+<p>Also other nifty stuff in the <code class="docutils literal"><span class="pre">collections</span></code> module:</p>
+<p><a class="reference external" href="https://docs.python.org/3.6/library/collections.html">https://docs.python.org/3.6/library/collections.html</a></p>
+<p><strong>NOTE:</strong> In Python 3.6, dicts were optimized in a way that happens to preserver order. But this is considered an implementation detail. Do not count on it! If you want order preserved, use OrderedDict.</p>
 </div>
 </div>
 </div>
