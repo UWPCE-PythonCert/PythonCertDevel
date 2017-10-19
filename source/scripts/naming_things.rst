@@ -1,3 +1,5 @@
+:orphan:
+
 .. _style_and_naming:
 
 ################

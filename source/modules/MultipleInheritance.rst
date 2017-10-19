@@ -127,7 +127,7 @@ Remember that super does not only delegate to your superclass, it delegates to a
 
 Therefore you must be prepared to call any other class's method in the hierarchy and be prepared to be called from any other class's method.
 
-The general rule is to pass all arguments you received on to the super function.  If classes can take differing arguments, accept *args and **kwargs.
+The general rule is to pass all arguments you received on to the super function.  If classes can take differing arguments, accept ``*args`` and ``**kwargs``.
 
 Two seminal articles
 --------------------

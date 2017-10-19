@@ -253,6 +253,8 @@ If you want to do something completely different with each Exception type, you c
 
 So a full-featured ``try`` block has all of this:
 
+.. code-block:: python
+
     try:
        some_code
     except IOError:

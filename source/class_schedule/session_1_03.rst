@@ -19,7 +19,7 @@ Read: :ref:`iteration`
 Read: :ref:`strings`
 
 
-Supplimental Reading:
+Supplemental Reading:
 ---------------------
 
 Think Python, chapters 7 -- 10 (11, 12)

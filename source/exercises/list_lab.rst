@@ -56,9 +56,9 @@ This is known as the "she-bang" line -- it tells the shell how to execute that f
 
 NOTE: on Windows, there is a python launcher which, if everything is configured correctly will look at that line to know you want python3 if there is more than one python on your system.
 
-If this doesn't work on Windows, jsut run the file some other way:
+If this doesn't work on Windows, just run the file some other way:
 
- - ``python list_lab.py
+ - ``python list_lab.py``
  - with ``run`` in ipython
  - from your IDE or editor is you are using one
 

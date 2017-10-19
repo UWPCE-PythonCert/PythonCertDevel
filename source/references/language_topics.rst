@@ -68,7 +68,7 @@ Concurrency is a pretty big topic, but here are few good ones:
 
 General introduction to the concept with examples of both threads and processes:
 
-`Intro to Threads and Processes in Python<https://medium.com/@bfortuner/python-multithreading-vs-multiprocessing-73072ce5600b>`_.
+`Intro to Threads and Processes in Python <https://medium.com/@bfortuner/python-multithreading-vs-multiprocessing-73072ce5600b>`_.
 
 Threading
 ---------
@@ -77,8 +77,9 @@ Threading and GUI programming:
 
 https://www.blog.pythonlibrary.org/2013/06/27/wxpython-how-to-communicate-with-your-gui-via-sockets/
 
-Understanding the GLobal Interpeter Lock:
-`"Groc the GIL:"<https://opensource.com/article/17/4/grok-gil>`_
+Understanding the GLobal Interpreter Lock:
+
+`Groc the GIL: <https://opensource.com/article/17/4/grok-gil>`_
 
 Asynchronous Programming
 ------------------------
@@ -117,14 +118,14 @@ http://pyvideo.org/pycon-us-2015/python-concurrency-from-the-ground-up-live.html
 logging
 -------
 
-`A guide to logging in Python<https://opensource.com/article/17/9/python-logging>`_
+`A guide to logging in Python <https://opensource.com/article/17/9/python-logging>`_
 
 Corners of Python
 =================
 
 This is a nice collection of little bits of Python that may be surprising:
 
-`WTF Python?<https://github.com/satwikkansal/wtfpython>`_
+`WTF Python? <https://github.com/satwikkansal/wtfpython>`_
 
 
 

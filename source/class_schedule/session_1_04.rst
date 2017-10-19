@@ -14,7 +14,6 @@ Read:
 
 :ref:`files`
 
-:ref:`style_and_naming`
 
 Recommended Reading:
 ---------------------
