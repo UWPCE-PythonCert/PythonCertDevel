@@ -8,24 +8,29 @@ Comprehensions
 List comprehensions
 -------------------
 
-A bit of functional programming
+A bit of functional programming.
 
-consider this common ``for`` loop structure:
+The concept of "functional programming" is clearly defined in some contexts, but is also used in a less strict sense. Python is **not** a functional language in the strict sense, but it does support a number of functional paradigms.
+
+In general, code is considered "Pythonic" that used functional paradigms where they are natural, but not when they have to be forced in.
+
+We will cover functional programming concepts more clearly later in the program, but for now, we'll talk about the syntax for a common functional paradigm: applying an expression to all the members of a sequence to produce another sequence:
+
+Consider this common ``for`` loop structure:
 
 .. code-block:: python
 
     new_list = []
     for variable in a_list:
-        new_list.append(expression)
+        new_list.append(expression(variable))
 
-This can be expressed with a single line using a "list comprehension"
+This is such a common pattern, that python added syntax to directly support it:
+
+It can be expressed with a single line using a "list comprehension"
 
 .. code-block:: python
 
     new_list = [expression for variable in a_list]
-
-
-.. nextslide::
 
 What about nested for loops?
 
@@ -44,7 +49,10 @@ Can also be expressed in one line:
 
 You get the "outer product", i.e. all combinations.
 
-.. nextslide::
+NOTE: Example here...
+
+This pattern is another way of expressing the "map" pattern from functional programming.
+
 
 But usually you at least have a conditional in the loop:
 
@@ -61,7 +69,8 @@ You can add a conditional to the comprehension:
 
     new_list = [expr for var in a_list if something_is_true]
 
-.. nextslide::
+This is expressing the "filter" pattern. (and map at the same time)
+
 
 Examples:
 
