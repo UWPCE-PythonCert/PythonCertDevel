@@ -282,14 +282,18 @@
 <span id="id1"></span><h1>Comprehensions<a class="headerlink" href="#comprehensions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="list-comprehensions">
 <h2>List comprehensions<a class="headerlink" href="#list-comprehensions" title="Permalink to this headline">¶</a></h2>
-<p>A bit of functional programming</p>
-<p>consider this common <code class="docutils literal"><span class="pre">for</span></code> loop structure:</p>
+<p>A bit of functional programming.</p>
+<p>The concept of “functional programming” is clearly defined in some contexts, but is also used in a less strict sense. Python is <strong>not</strong> a functional language in the strict sense, but it does support a number of functional paradigms.</p>
+<p>In general, code is considered “Pythonic” that used functional paradigms where they are natural, but not when they have to be forced in.</p>
+<p>We will cover functional programming concepts more clearly later in the program, but for now, we’ll talk about the syntax for a common functional paradigm: applying an expression to all the members of a sequence to produce another sequence:</p>
+<p>Consider this common <code class="docutils literal"><span class="pre">for</span></code> loop structure:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
-    <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+    <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">(</span><span class="n">variable</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>This can be expressed with a single line using a “list comprehension”</p>
+<p>This is such a common pattern, that python added syntax to directly support it:</p>
+<p>It can be expressed with a single line using a “list comprehension”</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">expression</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -305,6 +309,8 @@
 </pre></div>
 </div>
 <p>You get the “outer product”, i.e. all combinations.</p>
+<p>NOTE: Example here…</p>
+<p>This pattern is another way of expressing the “map” pattern from functional programming.</p>
 <p>But usually you at least have a conditional in the loop:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
@@ -316,6 +322,7 @@
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">expr</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">a_list</span> <span class="k">if</span> <span class="n">something_is_true</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>This is expressing the “filter” pattern. (and map at the same time)</p>
 <p>Examples:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [341]: </span><span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
 <span class="gh">Out[341]: </span><span class="go">[0, 1, 4]</span>
