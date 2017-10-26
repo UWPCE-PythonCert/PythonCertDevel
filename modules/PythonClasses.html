@@ -165,12 +165,13 @@
 <li class="toctree-l1"><a class="reference internal" href="Properties.html">Properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Py2vsPy3.html">Python 2 verses Python 3</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Python Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-class-statement">The <code class="docutils literal"><span class="pre">class</span></code> statement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#basic-structure-of-a-class">Basic Structure of a class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-initializer">The Initializer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#self">Self</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#class-attributes">Class Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#typical-methods">Typical methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#arity-gotcha">Arity Gotcha</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gotcha">Gotcha !</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#functions-methods-are-first-class">Functions (methods) are First Class</a></li>
 </ul>
 </li>
@@ -189,7 +190,7 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/python_pushups.html">Python Pushups</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/args_kwargs_lab.html">Args and Kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/args_kwargs_lab.html">Args and Kwargs LAB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/circle_class.html">Circle Class Excercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/dict_lab.html">Dictionary and Set Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exceptions_lab.html">Exceptions Lab</a></li>
@@ -283,18 +284,21 @@
            <div itemprop="articleBody">
             
   <div class="section" id="python-classes">
-<h1>Python Classes<a class="headerlink" href="#python-classes" title="Permalink to this headline">¶</a></h1>
-<p class="left">The <code class="docutils literal"><span class="pre">class</span></code>  statement</p>
-<p class="left"><code class="docutils literal"><span class="pre">class</span></code>  creates a new type object:</p>
-<div class="left highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
+<span id="id1"></span><h1>Python Classes<a class="headerlink" href="#python-classes" title="Permalink to this headline">¶</a></h1>
+<p>How do we make classes in Python?</p>
+<div class="section" id="the-class-statement">
+<h2>The <code class="docutils literal"><span class="pre">class</span></code> statement<a class="headerlink" href="#the-class-statement" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">class</span></code>  statement</p>
+<p><code class="docutils literal"><span class="pre">class</span></code>  creates a new type object:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
 <span class="go">    pass</span>
 <span class="gp">   ...:</span>
 <span class="gp">In [5]: </span><span class="nb">type</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
 <span class="gh">Out[5]: </span><span class="go">type</span>
 </pre></div>
 </div>
-<p class="left">A class is a type – interesting!</p>
-<p class="left">It is created when the statement is run – much like <code class="docutils literal"><span class="pre">def</span></code></p>
+<p>A class is a type – interesting!</p>
+<p>It is created when the statement is run – much like <code class="docutils literal"><span class="pre">def</span></code></p>
 <p>A simple class</p>
 <p>About the simplest class you can write</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
@@ -310,6 +314,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">x</span>
 <span class="go">1</span>
 </pre></div>
+</div>
 </div>
 <div class="section" id="basic-structure-of-a-class">
 <h2>Basic Structure of a class<a class="headerlink" href="#basic-structure-of-a-class" title="Permalink to this headline">¶</a></h2>
@@ -385,6 +390,30 @@ instance of the class shares the same one.</p>
 </pre></div>
 </div>
 <p>class attributes are accessed with <code class="docutils literal"><span class="pre">self</span></code>  also.</p>
+<p>So what is the difference?</p>
+<blockquote>
+<div><ul class="simple">
+<li>class attributes are shared by ALL the instances of the class.</li>
+<li>each instance has its own copy of each instance attribute.</li>
+</ul>
+</div></blockquote>
+<p>Example:</p>
+<p>..code-block:: ipython</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>In [6]: class C:</dt>
+<dd>…:     x = [1,2,3] # class attribute
+…:     def __init__(self):
+…:         self.y = [4,5,6] # instance attribute
+…:</dd>
+</dl>
+<p>In [7]: c1 = C()</p>
+<p>In [8]: c2 = C()</p>
+<p>In [9]: c1.x is c2.x # does each instance see the same x?
+Out[9]: True</p>
+<p>In [10]: c1.y is c2.y # does each instance see the same y?
+Out[10]: False</p>
+</div></blockquote>
 </div>
 <div class="section" id="typical-methods">
 <h2>Typical methods<a class="headerlink" href="#typical-methods" title="Permalink to this headline">¶</a></h2>
@@ -401,8 +430,8 @@ instance of the class shares the same one.</p>
 <p>Methods take some parameters, manipulate the attributes in <code class="docutils literal"><span class="pre">self</span></code>.</p>
 <p>They may or may not return something useful.</p>
 </div>
-<div class="section" id="arity-gotcha">
-<h2>Arity Gotcha<a class="headerlink" href="#arity-gotcha" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="gotcha">
+<h2>Gotcha !<a class="headerlink" href="#gotcha" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">...</span>
     <span class="k">def</span> <span class="nf">grow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">*</span> <span class="n">factor</span>

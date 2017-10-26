@@ -40,13 +40,16 @@ In-class Activities
 
  * Review mailroom
 
+Exercises:
+----------
+
  * :ref:`exercise_dict_lab`
 
  * :ref:`exercise_file_lab`
 
- * :ref:`exercise_trigrams`
+ * Update mailroom with dicts :ref:`exercise_mailroom_plus`
 
- * update mailroom with dicts :ref:`exercise_mailroom_plus`
+ * :ref:`exercise_trigrams`
 
 
 Post-class Activities

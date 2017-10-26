@@ -21,7 +21,7 @@ NOTE: you will find that most introductions to unit testing with Python use the 
 
   - http://nedbatchelder.com/text/test0.html
 
-** :ref:`advanced_argument_passing`
+* :ref:`advanced_argument_passing`
 
 * arguments and parameters:
 
@@ -32,6 +32,21 @@ NOTE: you will find that most introductions to unit testing with Python use the 
 In-class Activities
 ===================
 
+Exercises:
+----------
+
+:ref:`exercise_args_kwargs_lab`
+
+Testing mailroom:
+.................
+
+Write a complete set of unit tests for your mailroom program.
+
+   * You will likely find that it is really hard to test without refactoring.
+
+   * This is Good!
+
+   * If code is hard to test -- it probably should be refactored.
 
 Post-class Activities
 =====================
@@ -42,13 +57,6 @@ Look at the next session for reading, etc:
 
 :ref:`session_1_07`
 
-  Write a complete set of unit tests for your mailroom program.
-
-   * You will likely find that it is really hard to test without refactoring.
-
-   * This is Good!
-
-   * If code is hard to test -- it probably should be refactored.
 
 Material to review for next week
 --------------------------------

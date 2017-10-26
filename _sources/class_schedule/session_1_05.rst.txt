@@ -23,6 +23,10 @@ In-class Activities
 
 Review of last class's labs:
 
+Exercises:
+----------
+
+
  * Update mailroom with Exceptions: :ref:`exercise_mailroom_exceptions`
 
 Post-class Activities
