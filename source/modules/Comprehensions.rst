@@ -164,4 +164,86 @@ Example
               3: 'this_3', 4: 'this_4'}
 
 
-(not as useful with the ``dict()``  constructor...)
+This is not as useful as it used to be, now that we have the ``dict()``  constructor.
+
+A bit of history:
+-----------------
+
+In the early days of Python the only way to create a dict was with a literal::
+
+  a_dict = {}  # for an empty dict
+
+or a dict that was already populated with a bunch of data.
+
+If you had a bunch of data in some other form, like a couple lists, you'd need to write a loop to fill it in:
+
+.. code-block:: ipython
+
+    In [1]: names = ["fred", "john", "mary"]
+
+    In [2]: ids = [1, 2, 3]
+
+    In [4]: d = {}
+
+    In [5]: for id, name in zip(names, ids):
+       ...:     d[id] = name
+       ...:
+
+    In [6]: d
+    Out[6]: {'fred': 1, 'john': 2, 'mary': 3}
+
+now, with dict comps, you can do:
+
+.. code-block:: ipython
+
+    In [9]: d = {id: name for id, name in zip(ids, names)}
+
+    In [10]: d
+    Out[10]: {1: 'fred', 2: 'john', 3: 'mary'}
+
+But there is also now a ``dict()`` constructor (actually the type object for dict):
+
+.. code-block:: ipython
+
+    In [13]: dict?
+    Init signature: dict(self, /, *args, **kwargs)
+    Docstring:
+    dict() -> new empty dictionary
+    dict(mapping) -> new dictionary initialized from a mapping object's
+        (key, value) pairs
+    dict(iterable) -> new dictionary initialized as if via:
+        d = {}
+        for k, v in iterable:
+            d[k] = v
+    dict(**kwargs) -> new dictionary initialized with the name=value pairs
+        in the keyword argument list.  For example:  dict(one=1, two=2)
+    Type:           type
+
+So the first one is an empty dict -- simple enough
+
+The second makes a dict from the contents of another dict (or similar object)
+
+The third one is of interest here -- it makes a dict from an iterable of key,value pairs -- exactly what ``zip()`` gives you.
+
+So we can create a dict from data like so:
+
+.. code-block:: ipython
+
+    In [14]: d = dict(zip(ids, names))
+
+    In [15]: d
+    Out[15]: {1: 'fred', 2: 'john', 3: 'mary'}
+
+Which is more compact, and arguably more clear than the dict comprehension.
+
+dict comps are still nice if you need to filter the results, though:
+
+.. code-block:: ipython
+
+    In [16]: d = {id: name for id, name in zip(ids, names) if name != 'mary'}
+
+    In [17]: d
+    Out[17]: {1: 'fred', 2: 'john'}
+
+
+

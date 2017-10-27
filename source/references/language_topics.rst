@@ -15,6 +15,15 @@ https://docs.python.org/3/glossary.html#term-parameter
 Sequences and Slicing
 ======================
 
+Working with text
+=================
+
+String Formatting
+-----------------
+
+https://www.digitalocean.com/community/tutorials/how-to-use-string-formatters-in-python-3
+
+
 Arguments and Parameters
 ========================
 

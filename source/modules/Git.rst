@@ -162,13 +162,13 @@ copies of it in different remote locations.
 
     .. code-block:: bash
 
-        $ git remote add upstream https://github.com/UWPCE-PythonCert/IntroPython2015.git
+        $ git remote add upstream https://github.com/UWPCE-PythonCert/IntroPython2017.git
 
         $ git remote -v
-        origin  https://github.com/PythonCHB/IntroPython2015.git (fetch)
-        origin  https://github.com/PythonCHB/IntroPython2015.git (push)
-        upstream    https://github.com/UWPCE-PythonCert/IntroPython2015.git (fetch)
-        upstream    https://github.com/UWPCE-PythonCert/IntroPython2015.git (push)
+        origin  https://github.com/PythonCHB/IntroPython2017.git (fetch)
+        origin  https://github.com/PythonCHB/IntroPython2017.git (push)
+        upstream    https://github.com/UWPCE-PythonCert/IntroPython2017.git (fetch)
+        upstream    https://github.com/UWPCE-PythonCert/IntroPython2017.git (push)
 
 This should leave you in a situation that looks like this:
 

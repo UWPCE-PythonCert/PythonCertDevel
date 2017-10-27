@@ -1,6 +1,8 @@
-***************************
+.. _object_orientation_overview:
+
+###########################
 Object Orientation Overview
-***************************
+###########################
 
 In the Beginning there was the GOTO.
 

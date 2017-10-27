@@ -7,21 +7,19 @@ Intro to Python Session 7
 Pre-class prep
 ==============
 
-In-class Activities
-===================
+read: :ref:`object_orientation_overview`
 
+read: :ref:`python_classes`
 
-Post-class Activities
-=====================
+Some Videos to watch:
+---------------------
 
-Finish the exercises
+Python Class Toolkit by *Raymond Hettinger*
 
-Look at the next session for reading, etc:
+https://youtu.be/HTLu2DFOdTg
 
-:ref:`session_1_08`
+https://speakerdeck.com/pyconslides/pythons-class-development-toolkit-by-raymond-hettinger
 
-The Art of Subclassing
-----------------------
 
 The Art of Subclassing by *Raymond Hettinger*
 
@@ -35,34 +33,34 @@ The most salient points from that video are as follows:
 
 * **Bear in mind that the subclass is in charge**
 
-Stop Writing Classes
---------------------
 
-Stop Writing Classes by *Jack Diederich*
+Note that the previous talk and this one were back to back at PyCon -- but despite their contradictory titles -- they have similar messages.
+
+
+Stop Writing Classes
+....................
+
+by *Jack Diederich*
 
 http://pyvideo.org/video/880/stop-writing-classes
 
 "If your class has only two methods -- and one of them is ``__init__``
 -- you don't need a class"
 
-Python Class Toolkit
---------------------
 
-Python Class Toolkit by *Raymond Hettinger*
+In-class Activities
+===================
 
-https://youtu.be/HTLu2DFOdTg
+Exercises:
+----------
 
-https://speakerdeck.com/pyconslides/pythons-class-development-toolkit-by-raymond-hettinger
 
-Multiple Inheritance and the Diamond Problem
---------------------------------------------
+Post-class Activities
+=====================
 
-https://en.wikipedia.org/wiki/Multiple_inheritance
+Finish the exercises
 
-https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem
+Look at the next session for reading, etc:
 
-Method Resolution Order
+:ref:`session_1_08`
 
-https://www.python.org/download/releases/2.3/mro/
-
-http://python-history.blogspot.com/2010/06/method-resolution-order.html
