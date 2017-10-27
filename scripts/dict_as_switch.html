@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Kata Fourteen: Tom Swift Under Milk Wood &mdash; PythonCert 4.0 documentation</title>
+  <title>Using a Dictionary to switch &mdash; PythonCert 4.0 documentation</title>
   
 
   
@@ -35,9 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="next" title="lambda and keyword Magic" href="lambda_magic.html"/>
-        <link rel="prev" title="HTML Renderer Exercise" href="html_renderer.html"/> 
+    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -152,14 +150,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../modules/ContextManagers.html">Context Managers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Decorators.html">Decorators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/EnvironmentOverview.html">Introduction to the Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/FunctionalProgramming.html">Functional Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FunctionalProgramming.html">Functional Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/IPythonIntroduction.html">IPython Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/IteratorsAndGenerators.html">Iterators and Generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Lambda.html">Lambda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/MapFilterReduce.html">Map Filter and Reduce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Math.html">Math with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/Methods.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Methods.html">Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/MultipleInheritance.html">Multiple Inheritance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/ObjectOrientationOverview.html">Object Orientation Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Properties.html">Properties</a></li>
@@ -178,35 +176,28 @@
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/basic_math_quiz.html">Basic Math Quiz</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/comprehensions_quiz.html">Comprehensions Quiz</a></li>
 </ul>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="python_pushups.html">Python Pushups</a></li>
-<li class="toctree-l1"><a class="reference internal" href="args_kwargs_lab.html">Args and Kwargs LAB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="circle_class.html">Circle Class Excercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dict_lab.html">Dictionary and Set Lab</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exceptions_lab.html">Exceptions Lab</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fib_and_lucas.html">Fibonacci Series Exercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="file_lab.html">File LAB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fizz_buzz.html">Fizz Buzz Exercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="grid_printer.html">Grid Printer Exercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="html_renderer.html">HTML Renderer Exercise</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Kata Fourteen: Tom Swift Under Milk Wood</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#trigrams">Trigrams</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#the-problem">The Problem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#objectives">Objectives</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="lambda_magic.html">lambda and keyword Magic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="list_lab.html">List Lab</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mailroom.html">Mailroom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mailroom-oo.html">Mailroom Object Oriented</a></li>
-<li class="toctree-l1"><a class="reference internal" href="roman.html">Roman/Arabic Numeral Converter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rot13.html">ROT13</a></li>
-<li class="toctree-l1"><a class="reference internal" href="slicing.html">Slicing Lab</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sparse_array.html">Sparse Array Exercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="string_formatting.html">String Formatting Lab</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trapezoid.html">Trapezoidal Rule</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/python_pushups.html">Python Pushups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/args_kwargs_lab.html">Args and Kwargs LAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/circle_class.html">Circle Class Excercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/dict_lab.html">Dictionary and Set Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/exceptions_lab.html">Exceptions Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/fib_and_lucas.html">Fibonacci Series Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/file_lab.html">File LAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/fizz_buzz.html">Fizz Buzz Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/grid_printer.html">Grid Printer Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/html_renderer.html">HTML Renderer Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/kata_fourteen.html">Kata Fourteen: Tom Swift Under Milk Wood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/lambda_magic.html">lambda and keyword Magic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/list_lab.html">List Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mailroom.html">Mailroom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mailroom-oo.html">Mailroom Object Oriented</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/roman.html">Roman/Arabic Numeral Converter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/rot13.html">ROT13</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/slicing.html">Slicing Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/sparse_array.html">Sparse Array Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/string_formatting.html">String Formatting Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/trapezoid.html">Trapezoidal Rule</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/HowToRunAPythonFile.html">How to run a python file</a></li>
@@ -261,13 +252,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Kata Fourteen: Tom Swift Under Milk Wood</li>
+      <li>Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code></li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/exercises/kata_fourteen.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/scripts/dict_as_switch.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -280,108 +271,111 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="kata-fourteen-tom-swift-under-milk-wood">
-<span id="exercise-trigrams"></span><h1>Kata Fourteen: Tom Swift Under Milk Wood<a class="headerlink" href="#kata-fourteen-tom-swift-under-milk-wood" title="Permalink to this headline">¶</a></h1>
-<p>Adapted from Dave Thomas’s work:</p>
-<p><a class="reference external" href="http://codekata.com/kata/kata14-tom-swift-under-the-milkwood/">http://codekata.com/kata/kata14-tom-swift-under-the-milkwood/</a></p>
-<div class="section" id="trigrams">
-<h2>Trigrams<a class="headerlink" href="#trigrams" title="Permalink to this headline">¶</a></h2>
-<p>Trigrams can be used to mutate text into new, surreal, forms. But what
-heuristics do we apply to get a reasonable result?</p>
-<div class="section" id="the-problem">
-<h3>The Problem<a class="headerlink" href="#the-problem" title="Permalink to this headline">¶</a></h3>
-<p>As a boy, one of my treats was go to the shops on a Saturday and spend part
-of my allowance on books; for a nine-year old, I had quite a collection of
-Tom Swift and Hardy Boys. Wouldn’t it be great to be able to create
-more and more of these classic books, to be able to generate a new Tom
-Swift adventure on demand?</p>
-<p>OK, perhaps not. But that won’t stop us trying. I coded up a quick
-program to generate some swash-buckling scientific adventure on demand. It
-came up with:</p>
-<blockquote>
-<div><p>… it was in the wind that was what he thought was his companion. I
-think would be a good one and accordingly the ship their situation
-improved. Slowly so slowly that it beat the band! You’d think no one
-was a low voice. “Don’t take any of the elements and the
-inventors of the little Frenchman in the enclosed car or cabin completely
-fitted up in front of the gas in the house and wringing her hands.
-“I’m sure they’ll fall!”</p>
-<p>She looked up at them. He dug a mass of black vapor which it had
-refused to accept any. As for Mr. Swift as if it goes too high I’ll
-warn you and you can and swallow frequently. That will make the airship was
-shooting upward again and just before the raid wouldn’t have been
-instrumental in capturing the scoundrels right out of jail.”</p>
-</div></blockquote>
-<p>Stylistically, it’s Victor Appleton meets Dylan Thomas. Technically,
-it’s all done with trigrams.</p>
-<p>Trigram analysis is very simple. Look at each set of three adjacent words
-in a document. Use the first two words of the set as a key, and remember
-the fact that the third word followed that key. Once you’ve finished,
-you know the list of individual words that can follow each two word
-sequence in the document. For example, given the input:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">wish</span> <span class="n">I</span> <span class="n">may</span> <span class="n">I</span> <span class="n">wish</span> <span class="n">I</span> <span class="n">might</span>
+  <div class="section" id="using-a-dictionary-to-switch">
+<h1>Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code><a class="headerlink" href="#using-a-dictionary-to-switch" title="Permalink to this headline">¶</a></h1>
+<p>Python does not have a <code class="docutils literal"><span class="pre">switch/case</span> <span class="pre">statement</span></code>.  Why not?</p>
+<p><a class="reference external" href="https://www.python.org/dev/peps/pep-3103/">https://www.python.org/dev/peps/pep-3103/</a></p>
+<p>So what to use instead of “switch-case”?</p>
+<div class="section" id="switch-case">
+<h2><code class="docutils literal"><span class="pre">switch</span></code> / <code class="docutils literal"><span class="pre">case</span></code><a class="headerlink" href="#switch-case" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-is-switch">
+<h3>What is <code class="docutils literal"><span class="pre">switch</span></code>?<a class="headerlink" href="#what-is-switch" title="Permalink to this headline">¶</a></h3>
+<p>Many languages have a “switch-case” construct:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">switch</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">case</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;zero&quot;</span><span class="p">;</span>
+    <span class="n">case</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;one&quot;</span><span class="p">;</span>
+    <span class="n">case</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;two&quot;</span><span class="p">;</span>
+    <span class="n">default</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;nothing&quot;</span><span class="p">;</span>
+<span class="p">};</span>
 </pre></div>
 </div>
-<p>You might generate:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;I wish&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;I&quot;</span><span class="p">]</span>
-<span class="s2">&quot;wish I&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;may&quot;</span><span class="p">,</span> <span class="s2">&quot;might&quot;</span><span class="p">]</span>
-<span class="s2">&quot;may I&quot;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;wish&quot;</span><span class="p">]</span>
-<span class="s2">&quot;I may&quot;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">]</span>
+<p>How do you say this in Python?</p>
+</div>
+<div class="section" id="if-elif-chains">
+<h3><code class="docutils literal"><span class="pre">if-elif</span></code> chains<a class="headerlink" href="#if-elif-chains" title="Permalink to this headline">¶</a></h3>
+<p>The obvious way to say it is a chain of <code class="docutils literal"><span class="pre">elif</span></code> statements:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">argument</span> <span class="o">==</span>  <span class="mi">0</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;zero&quot;</span>
+<span class="k">elif</span> <span class="n">argument</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;one&quot;</span>
+<span class="k">elif</span> <span class="n">argument</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;two&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;nothing&quot;</span>
 </pre></div>
 </div>
-<p>This says that the words “I wish” are twice followed by the word
-“I”, the words “wish I” are followed once by
-“may” and once by “might” and so on.</p>
-<p>To generate new text from this analysis, choose an arbitrary word pair as a
-starting point. Use these to look up a random next word (using the table
-above) and append this new word to the text so far. This now gives you a
-new word pair at the end of the text, so look up a potential next word
-based on these. Add this to the list, and so on. In the previous example,
-we could start with “I may”. The only possible next word is
-“I”, so now we have:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">may</span> <span class="n">I</span>
+<p>And there is nothing wrong with that, but….</p>
+</div>
+<div class="section" id="dict-as-switch">
+<h3>dict as switch<a class="headerlink" href="#dict-as-switch" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">elif</span></code> chain is neither elegant nor efficient. There are a number of ways to say it in python – but one elegant one is to use a dict:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">arg_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s2">&quot;zero&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;two&quot;</span><span class="p">}</span>
+    <span class="nb">dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="s2">&quot;nothing&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The last two words are “may I”, so the next word is
-“wish”. We then look up “I wish”, and find our choice
-is constrained to another “I”.:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">may</span> <span class="n">I</span> <span class="n">wish</span> <span class="n">I</span>
+<p>Simple, elegant and fast.</p>
+<p>You can do a dispatch table by putting functions as the value.</p>
+<p>Example: The mailroom2 solution.</p>
+</div>
+<div class="section" id="switch-with-functions">
+<h3>Switch with functions<a class="headerlink" href="#switch-with-functions" title="Permalink to this headline">¶</a></h3>
+<p>What would this be like if you used functions instead? Think of the possibilities.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="k">def</span> <span class="nf">my_zero_func</span><span class="p">():</span>
+<span class="go">return &quot;I&#39;m zero&quot;</span>
+
+<span class="gp">In [12]: </span><span class="k">def</span> <span class="nf">my_one_func</span><span class="p">():</span>
+<span class="go">    return &quot;I&#39;m one&quot;</span>
+
+<span class="gp">In [13]: </span><span class="n">switch_func_dict</span> <span class="o">=</span> <span class="p">{</span>
+<span class="go">    0: my_zero_func,</span>
+<span class="go">    1: my_one_func,</span>
+<span class="go">}</span>
+
+<span class="gp">In [14]: </span><span class="n">switch_func_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)()</span>
+<span class="gh">Out[14]: </span><span class="go">&quot;I&#39;m zero&quot;</span>
 </pre></div>
 </div>
-<p>Now we look up “wish I”, and find we have a choice. Let’s
-choose “may”:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">may</span> <span class="n">I</span> <span class="n">wish</span> <span class="n">I</span> <span class="n">may</span>
+<p>Again, fast and efficient.</p>
+<p>This is possible because functions are “first class objects” in Python.</p>
+</div>
+<div class="section" id="oo-switch-case">
+<h3>OO switch/case<a class="headerlink" href="#oo-switch-case" title="Permalink to this headline">¶</a></h3>
+<p>Another way to do the equivalent of switch / case is subclassing.</p>
+<p>If you haven’t learned about classes in Python this will be pretty confusing. But here’s a high level overview:</p>
+<p>In C, before C++, a common idiom was something like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">switch</span><span class="p">(</span><span class="n">object_type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">case</span> <span class="n">circle</span><span class="p">:</span>
+        <span class="n">draw_a_circle</span><span class="p">();</span>
+    <span class="n">case</span> <span class="n">square</span><span class="p">:</span>
+        <span class="n">draw_a_square</span><span class="p">();</span>
+    <span class="n">case</span> <span class="n">polygon</span><span class="p">:</span>
+        <span class="n">draw_a_polygon</span><span class="p">();</span>
+    <span class="n">default</span><span class="p">:</span>
+        <span class="n">draw_nothing</span><span class="p">();</span>
+<span class="p">};</span>
 </pre></div>
 </div>
-<p>Now we’re back where we started from, with “I may.”
-Following the same sequence, but choosing “might” this time, we
-get:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">may</span> <span class="n">I</span> <span class="n">wish</span> <span class="n">I</span> <span class="n">may</span> <span class="n">I</span> <span class="n">wish</span> <span class="n">I</span> <span class="n">might</span>
+<p>That is, a different function is called depending on what type of “thing” you are dealing with.</p>
+<p>This is actually a really common idiom in C. And even in modern OO code written by old C developers – I had a developer on my team do exactly this in a program we were working on. It was a map drawing program (written in Python), and there was code all over it like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">layer</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;tiles&quot;</span><span class="p">:</span>
+    <span class="n">do_something_with_tiles</span>
+<span class="k">elif</span> <span class="n">layer</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;grid&quot;</span><span class="p">:</span>
+    <span class="n">do_somethign_with_grid</span>
 </pre></div>
 </div>
-<p>At this point we stop, as no sequence starts “I might.”</p>
-<p>Given a short input text, the algorithm isn’t too interesting. Feed
-it a book, however, and you give it more options, so the resulting output
-can be surprising.</p>
-<p>For this kata, try implementing a trigram algorithm that generates a couple
-of hundred words of text using a book-sized file as input.
-<a class="reference external" href="http://www.gutenberg.org/">Project Gutenberg</a> is a good source of online
-books (Tom Swift and His Airship is <a class="reference external" href="http://sailor.gutenberg.org/etext02/03tom10.txt">here</a>.)</p>
-<p>Be warned that these files have DOS line endings (carriage return followed by
-newline).</p>
-<p>There is a copy of sherlock holmes right here:</p>
-<p><a class="reference download internal" href="../_downloads/sherlock.txt" download=""><code class="xref download docutils literal"><span class="pre">sherlock.txt</span></code></a>.</p>
-<p>And a shorter copy for testing:</p>
-<p><a class="reference download internal" href="../_downloads/sherlock_small.txt" download=""><code class="xref download docutils literal"><span class="pre">sherlock_small.txt</span></code></a>.</p>
+<p>This was a maintainability nightmare – if you added a new layer type, you had to find every one of these constructs and add another <code class="docutils literal"><span class="pre">elif</span></code> block to it.</p>
 </div>
-<div class="section" id="objectives">
-<h3>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h3>
-<p>Kata’s are about trying something many times. In this one, what
-we’re experimenting with is not just the code, but the heuristics of
-processing the text. What do we do with punctuation? Paragraphs? Do we have
-to implement backtracking if we chose a next word that turns out to be a
-dead end?</p>
-<p>I’ll fire the signal and the fun will commence…</p>
+<div class="section" id="the-oo-way">
+<h3>The OO way<a class="headerlink" href="#the-oo-way" title="Permalink to this headline">¶</a></h3>
+<p>With object oriented programming, you can “subclass” objects, and use “polymorphism” to achieve this kind of selection. Say you have a bunch of objects you want to be able to draw. Give each of them a <code class="docutils literal"><span class="pre">draw()</span></code> method, and then the above switch statement becomes:</p>
+<p>the_object.draw()</p>
+<p>That’s IT!</p>
+<p>You don’t have to test to see which type of object it is, you only have to know that it knows how to draw itself.</p>
+<p>Now when you add a new object type – all you need to do is make sure it has a draw() method (and other needed methods) and then all the other code will know how to use it without your changing anything.</p>
 </div>
 </div>
 </div>
@@ -393,15 +387,6 @@ dead end?</p>
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="lambda_magic.html" class="btn btn-neutral float-right" title="lambda and keyword Magic" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="html_renderer.html" class="btn btn-neutral" title="HTML Renderer Exercise" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

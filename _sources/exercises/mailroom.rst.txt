@@ -122,7 +122,8 @@ But once you've learned about dictionaries, you may be able to re-write it a bit
 
   - Use dicts where appropriate
 
-  - See if you can use a dict to switch between the users selections
+  - See if you can use a dict to switch between the users selections.
+    see :ref:`dict_as_switch` for what this means.
 
   - Try to use a dict and the .format() method to do the letter as one
     big template -- rather than building up a big string in parts.
