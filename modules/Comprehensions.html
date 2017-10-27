@@ -148,6 +148,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#list-comprehensions">List comprehensions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#set-comprehensions">Set Comprehensions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dict-comprehensions">Dict Comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-bit-of-history">A bit of history:</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="AdvancedArgumentPassing.html">Advanced Argument Passing</a></li>
@@ -386,7 +387,71 @@
 <span class="go">          3: &#39;this_3&#39;, 4: &#39;this_4&#39;}</span>
 </pre></div>
 </div>
-<p>(not as useful with the <code class="docutils literal"><span class="pre">dict()</span></code>  constructor…)</p>
+<p>This is not as useful as it used to be, now that we have the <code class="docutils literal"><span class="pre">dict()</span></code>  constructor.</p>
+</div>
+<div class="section" id="a-bit-of-history">
+<h2>A bit of history:<a class="headerlink" href="#a-bit-of-history" title="Permalink to this headline">¶</a></h2>
+<p>In the early days of Python the only way to create a dict was with a literal:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a_dict</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># for an empty dict</span>
+</pre></div>
+</div>
+<p>or a dict that was already populated with a bunch of data.</p>
+<p>If you had a bunch of data in some other form, like a couple lists, you’d need to write a loop to fill it in:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;fred&quot;</span><span class="p">,</span> <span class="s2">&quot;john&quot;</span><span class="p">,</span> <span class="s2">&quot;mary&quot;</span><span class="p">]</span>
+
+<span class="gp">In [2]: </span><span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="gp">In [4]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="gp">In [5]: </span><span class="k">for</span> <span class="nb">id</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">ids</span><span class="p">):</span>
+<span class="gp">   ...: </span>    <span class="n">d</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+<span class="gp">   ...:</span>
+
+<span class="gp">In [6]: </span><span class="n">d</span>
+<span class="gh">Out[6]: </span><span class="go">{&#39;fred&#39;: 1, &#39;john&#39;: 2, &#39;mary&#39;: 3}</span>
+</pre></div>
+</div>
+<p>now, with dict comps, you can do:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="nb">id</span><span class="p">:</span> <span class="n">name</span> <span class="k">for</span> <span class="nb">id</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">names</span><span class="p">)}</span>
+
+<span class="gp">In [10]: </span><span class="n">d</span>
+<span class="gh">Out[10]: </span><span class="go">{1: &#39;fred&#39;, 2: &#39;john&#39;, 3: &#39;mary&#39;}</span>
+</pre></div>
+</div>
+<p>But there is also now a <code class="docutils literal"><span class="pre">dict()</span></code> constructor (actually the type object for dict):</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span>dict<span class="o">?</span>
+<span class="go">Init signature: dict(self, /, *args, **kwargs)</span>
+<span class="go">Docstring:</span>
+<span class="go">dict() -&gt; new empty dictionary</span>
+<span class="go">dict(mapping) -&gt; new dictionary initialized from a mapping object&#39;s</span>
+<span class="go">    (key, value) pairs</span>
+<span class="go">dict(iterable) -&gt; new dictionary initialized as if via:</span>
+<span class="go">    d = {}</span>
+<span class="go">    for k, v in iterable:</span>
+<span class="go">        d[k] = v</span>
+<span class="go">dict(**kwargs) -&gt; new dictionary initialized with the name=value pairs</span>
+<span class="go">    in the keyword argument list.  For example:  dict(one=1, two=2)</span>
+<span class="go">Type:           type</span>
+</pre></div>
+</div>
+<p>So the first one is an empty dict – simple enough</p>
+<p>The second makes a dict from the contents of another dict (or similar object)</p>
+<p>The third one is of interest here – it makes a dict from an iterable of key,value pairs – exactly what <code class="docutils literal"><span class="pre">zip()</span></code> gives you.</p>
+<p>So we can create a dict from data like so:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">names</span><span class="p">))</span>
+
+<span class="gp">In [15]: </span><span class="n">d</span>
+<span class="gh">Out[15]: </span><span class="go">{1: &#39;fred&#39;, 2: &#39;john&#39;, 3: &#39;mary&#39;}</span>
+</pre></div>
+</div>
+<p>Which is more compact, and arguably more clear than the dict comprehension.</p>
+<p>dict comps are still nice if you need to filter the results, though:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="nb">id</span><span class="p">:</span> <span class="n">name</span> <span class="k">for</span> <span class="nb">id</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span> <span class="k">if</span> <span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;mary&#39;</span><span class="p">}</span>
+
+<span class="gp">In [17]: </span><span class="n">d</span>
+<span class="gh">Out[17]: </span><span class="go">{1: &#39;fred&#39;, 2: &#39;john&#39;}</span>
+</pre></div>
+</div>
 </div>
 </div>
 

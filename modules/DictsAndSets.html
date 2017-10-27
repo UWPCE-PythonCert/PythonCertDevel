@@ -145,12 +145,18 @@
 <li class="toctree-l2"><a class="reference internal" href="#dictionary">Dictionary</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#dictionary-constructors">Dictionary Constructors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dictionary-indexing">Dictionary Indexing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-can-keys-be">What can keys be?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hashing">Hashing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Dictionary indexing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dictionary-ordering-not">Dictionary Ordering (not)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dictionary-iterating">Dictionary Iterating</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dict-keys-and-values">dict keys and values</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">dict keys and values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">dict keys and values</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dictionary-performance">Dictionary Performance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#other-dict-operations">Other dict operations:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-something-like-indexing">Getting something: (like indexing)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iterating">iterating</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pop"><code class="docutils literal"><span class="pre">pop()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#sets">Sets</a><ul>
@@ -314,28 +320,49 @@
 <li>key-value pair</li>
 </ul>
 </div></blockquote>
+<p>It is also known in python as a “mapping”, as it “maps” keys to values.</p>
+<p>It is like an array, in that it holds a number of items, and you can index into it to get at particular items. But it can use arbitrary indexes, rather than a sequence of numbers.</p>
+<p>These indexes are called “keys”, and the items stored are called “values”</p>
+<p>So for an python sequence, you might do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">item</span> <span class="o">=</span> <span class="n">stuff</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>for a dict, you do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">item</span> <span class="o">=</span> <span class="n">stuff</span><span class="p">[</span><span class="s2">&quot;third&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
 <div class="section" id="dictionary-constructors">
 <h3>Dictionary Constructors<a class="headerlink" href="#dictionary-constructors" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
-<span class="go">{&#39;key1&#39;: 3, &#39;key2&#39;: 5}</span>
+<p>So how does one make a dict? There are a few ways…</p>
+<p>The dict “literal”:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># This dict &quot;lie&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Calling the dict type object constructor:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># passing in a sequence of (key,value) pairs:</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">dict</span><span class="p">([(</span><span class="s1">&#39;key1&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;key2&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
+<span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">([(</span><span class="s1">&#39;key1&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),(</span><span class="s1">&#39;key2&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
-<span class="go">{&#39;key1&#39;: 3, &#39;key2&#39;: 5}</span>
+<span class="c1"># passing keys and values as keyword arguments:</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">dict</span><span class="p">(</span><span class="n">key1</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">key2</span><span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">(</span><span class="n">key1</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">key2</span><span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
-<span class="go">{&#39;key1&#39;: 3, &#39;key2&#39;: 5}</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;key2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
-<span class="go">{&#39;key1&#39;: 3, &#39;key2&#39;: 5}</span>
+<span class="c1"># creating and empty dict, and then populating it:</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;key2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+<span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="dictionary-indexing">
 <h3>Dictionary Indexing<a class="headerlink" href="#dictionary-indexing" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Brian&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">}</span>
+<p>And how do you get stuff out (index it)?</p>
+<p>The say way you index a sequence, except the index (now called a key) can be all kinds of stuff:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Brian&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">}</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span>
 <span class="go">42</span>
@@ -344,14 +371,20 @@
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">&#39;zero&#39;</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;non-existing key&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>What if the key doesn’t exist in the dict?</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;non-existing key&#39;</span><span class="p">]</span>
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
 <span class="gr">KeyError</span>: <span class="n">&#39;non-existing key&#39;</span>
 </pre></div>
 </div>
-<p>Keys can be any immutable:</p>
+</div>
+<div class="section" id="what-can-keys-be">
+<h3>What can keys be?<a class="headerlink" href="#what-can-keys-be" title="Permalink to this headline">¶</a></h3>
+<p>Surely not ANYTHING?</p>
+<p>Not quite: keys can be any immutable:</p>
 <blockquote>
 <div><ul class="simple">
 <li>number</li>
@@ -363,21 +396,33 @@
 <span class="gp">In [326]: </span><span class="n">d</span><span class="p">[</span><span class="mf">3.14</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;pi&#39;</span>
 <span class="gp">In [327]: </span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;pi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.14</span>
 <span class="gp">In [328]: </span><span class="n">d</span><span class="p">[</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;a tuple key&#39;</span>
-<span class="gp">In [329]: </span><span class="n">d</span><span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;a list key&#39;</span>
+</pre></div>
+</div>
+<p>What if you try to use a mutable type?</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [329]: </span><span class="n">d</span><span class="p">[</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;a list key&#39;</span>
 <span class="go">   TypeError: unhashable type: &#39;list&#39;</span>
 </pre></div>
 </div>
 <p>Actually – any “hashable” type.</p>
-<p>Hash functions convert arbitrarily large data to a small proxy (usually int)</p>
-<p>Always return the same proxy for the same input</p>
-<p>MD5, SHA, etc</p>
+<p>So, technically, it’s not mutability, but hashability that matters.</p>
+<p>(though for most intents and purposes, you want to use immutable types as keys in dicts.)</p>
+</div>
+<div class="section" id="hashing">
+<h3>Hashing<a class="headerlink" href="#hashing" title="Permalink to this headline">¶</a></h3>
+<p>Hash functions convert arbitrarily large data to a small proxy (usually an int)</p>
+<p>They always return the same proxy for the same input.</p>
+<p>MD5, SHA, etc, are some well known hash allgorithms.</p>
 <p>Dictionaries hash the key to an integer proxy and use it to find the key and value.</p>
-<p>Key lookup is efficient because the hash function leads directly to a bucket with very few keys (often just one)</p>
-<p>What would happen if the proxy changed after storing a key?</p>
-<p>Hashability requires immutability</p>
-<p>Key lookup is very efficient</p>
-<p>Same average time regardless of size</p>
-<p>Note: Python name look-ups are implemented with dict – it’s highly optimized</p>
+<p>Key lookup is efficient because the hash function leads directly to a bucket with very few keys (often just one).</p>
+<p>What would happen if the proxy (hash) changed after storing a key?</p>
+<p>(you wouldn’t be able to find it again!)</p>
+<p>Hashability requires immutability.</p>
+<p>Key lookup is very efficient.</p>
+<p>Same average time regardless of size of the dict.</p>
+</div>
+<div class="section" id="id1">
+<h3>Dictionary indexing<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Note: cPython name look-ups are implemented with the dicts – it’s highly optimized</p>
 <p>Key to value:</p>
 <blockquote>
 <div><ul class="simple">
@@ -403,6 +448,8 @@
 <span class="gh">Out[354]: </span><span class="go">dict_keys([&#39;three&#39;, &#39;two&#39;, &#39;one&#39;])</span>
 </pre></div>
 </div>
+<p><strong>Python 3.6 Note:</strong> In cPython 3.6, the internal implementation was changed, and it <em>does</em> happen to preserve order. But that is considered an implementation detail – do not count on it!</p>
+<p>(the above demo was done on an earlier version of Python)</p>
 </div>
 <div class="section" id="dictionary-iterating">
 <h3>Dictionary Iterating<a class="headerlink" href="#dictionary-iterating" title="Permalink to this headline">¶</a></h3>
@@ -432,9 +479,11 @@
 <span class="gh">Out[23]: </span><span class="go">dict_items([(&#39;score&#39;, 42), (&#39;name&#39;, &#39;Brian&#39;)])</span>
 </pre></div>
 </div>
+<p>Notice that these are of type “dict_keys” and “dict_values”. These are special types that provide iteration and printing, and other features, but are tied to the underlying dict, rather than copies.</p>
+<p>(Python2 would simply create lists of keys and values – but then you were making a copy when you probably didn’t need one)</p>
 </div>
-<div class="section" id="id1">
-<h3>dict keys and values<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>dict keys and values<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Iterating on everything</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Brian&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">}</span>
 
@@ -477,7 +526,12 @@
 </pre></div>
 </div>
 <p>Containment is on the keys.</p>
-<p>Getting something: (like indexing)</p>
+<p>Think of it like  “real” dictionary, where the keys are the words, and the values are the definitions.</p>
+<p>Is the word “gullible” in the dictionary?</p>
+<p>Is asking if the key is in the dict.</p>
+</div>
+<div class="section" id="getting-something-like-indexing">
+<h3>Getting something: (like indexing)<a class="headerlink" href="#getting-something-like-indexing" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;this&#39;</span><span class="p">)</span>
 <span class="gh">Out[9]: </span><span class="go">5</span>
 </pre></div>
@@ -488,7 +542,9 @@
 </pre></div>
 </div>
 <p>Never raises an Exception (default default is None)</p>
-<p>iterating</p>
+</div>
+<div class="section" id="iterating">
+<h3>iterating<a class="headerlink" href="#iterating" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
 <span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 <span class="gp">   ....:</span>
@@ -496,7 +552,7 @@
 <span class="go">that</span>
 </pre></div>
 </div>
-<p>which is equivalent to, but faster than:</p>
+<p>Which is equivalent to, but faster than:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
 <span class="go">    print(key)</span>
 <span class="gp">   ....:</span>
@@ -504,7 +560,7 @@
 <span class="go">that</span>
 </pre></div>
 </div>
-<p>but to get values, must specify you want values:</p>
+<p>But to get values, must specify you want values:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
 <span class="go">    print(val)</span>
 <span class="gp">   ....:</span>
@@ -512,8 +568,11 @@
 <span class="go">7</span>
 </pre></div>
 </div>
-<p>“Popping”: getting the value while removing it</p>
-<p>pop out a particular key</p>
+</div>
+<div class="section" id="pop">
+<h3><code class="docutils literal"><span class="pre">pop()</span></code><a class="headerlink" href="#pop" title="Permalink to this headline">¶</a></h3>
+<p>“Popping”: getting the value while removing it.</p>
+<p>Pop out a particular key:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;this&#39;</span><span class="p">)</span>
 <span class="gh">Out[19]: </span><span class="go">5</span>
 
@@ -532,14 +591,22 @@
 <p>This one is handy:</p>
 <p><code class="docutils literal"><span class="pre">setdefault(key[,</span> <span class="pre">default])</span></code></p>
 <p>gets the value if it’s there, sets it if it’s not</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [27]: </span><span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;something&#39;</span><span class="p">,</span> <span class="s1">&#39;a value&#39;</span><span class="p">)</span>
-<span class="gh">Out[27]: </span><span class="go">&#39;a value&#39;</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
 
-<span class="gp">In [28]: </span><span class="n">d</span>
-<span class="gh">Out[28]: </span><span class="go">{&#39;something&#39;: &#39;a value&#39;}</span>
+<span class="gp">In [5]: </span><span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;something&#39;</span><span class="p">,</span> <span class="s1">&#39;a value&#39;</span><span class="p">)</span>
+<span class="gh">Out[5]: </span><span class="go">&#39;a value&#39;</span>
+
+<span class="gp">In [6]: </span><span class="n">d</span>
+<span class="gh">Out[6]: </span><span class="go">{&#39;something&#39;: &#39;a value&#39;}</span>
 </pre></div>
 </div>
-<p>Assignment maintains link to the original dict</p>
+<p>The next time you call it, it gets the already set value:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;something&#39;</span><span class="p">,</span> <span class="s1">&#39;a different value&#39;</span><span class="p">)</span>
+<span class="gh">Out[7]: </span><span class="go">&#39;a value&#39;</span>
+</pre></div>
+</div>
+<p>Assignment is a link to the original dict, just like lists or anything else.</p>
+<p>And dicts a mutable – so be careful!</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [47]: </span><span class="n">d</span>
 <span class="gh">Out[47]: </span><span class="go">{&#39;something&#39;: &#39;a value&#39;}</span>
 
@@ -551,7 +618,7 @@
 <span class="gh">Out[50]: </span><span class="go">{&#39;something&#39;: &#39;a value&#39;, &#39;something else&#39;: &#39;another value&#39;}</span>
 </pre></div>
 </div>
-<p>Use explicit copy method to get a copy</p>
+<p>If you want a copy, use the explicit copy method to get a copy</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="go">In [51] item_copy = d.copy()</span>
 
 <span class="gp">In [52]: </span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;another thing&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;different value&#39;</span>
