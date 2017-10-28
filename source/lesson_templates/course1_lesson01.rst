@@ -1,4 +1,3 @@
-:orphan:
 
 .. _course1_lesson01:
 
@@ -29,15 +28,15 @@ After completing this lesson, students will:
  1. Have functional Python development environments appropriate for their operating system of choice.
  2. Be able to minimally navigate a command line.
  3. Have a working installation of git for source code collaboration and control.
- 4. Enjoy an introduction to the Python programming language as component in the practice of developing software.:w
+ 4. Enjoy an introduction to the Python programming language as component in the practice of developing software.
 
 Readings
 ---------
 
-https://uwpce-pythoncert.github.io/PythonCertDevel/class_schedule/session_1_01.html
-
 Self Produced
 .............
+
+https://uwpce-pythoncert.github.io/PythonCertDevel/class_schedule/session_1_01.html
 
 External Readings
 .................
@@ -48,7 +47,7 @@ screencasts/videos
 
  (~1-3 videos per lesson, 1 topic per video)
 
-Titles and links to scripts
+Intro
 
 https://github.com/UWPCE-PythonCert/PythonCertDevel/blob/master/source/scripts/Intro.txt
 
@@ -60,12 +59,12 @@ There is nothing gradable for this class. Our primary objective is to get them s
 Quizzes/exams
 -------------
 
-(graded or ungraded)
+None for the first class.
 
 Other activities
 ----------------
 
-[Title, instructions]
+Python Pushups
 
 https://uwpce-pythoncert.github.io/PythonCertDevel/exercises/python_pushups.html#python-pushups
 
