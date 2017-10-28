@@ -1,24 +1,29 @@
+.. _python_classes:
+
+##############
 Python Classes
-==============
+##############
 
+How do we make classes in Python?
 
-.. rst-class:: left
+The ``class`` statement
+-----------------------
 
-    The ``class``  statement
+The ``class``  statement
 
-    ``class``  creates a new type object:
+``class``  creates a new type object:
 
-    .. code-block:: ipython
+.. code-block:: ipython
 
-        In [4]: class C:
-            pass
-           ...:
-        In [5]: type(C)
-        Out[5]: type
+    In [4]: class C:
+        pass
+       ...:
+    In [5]: type(C)
+    Out[5]: type
 
-    A class is a type -- interesting!
+A class is a type -- interesting!
 
-    It is created when the statement is run -- much like ``def``
+It is created when the statement is run -- much like ``def``
 
 A simple class
 
@@ -139,6 +144,33 @@ The class is one namespace, the instance is another.
 
 class attributes are accessed with ``self``  also.
 
+So what is the difference?
+
+ * class attributes are shared by ALL the instances of the class.
+ * each instance has its own copy of each instance attribute.
+
+Example:
+
+..code-block:: ipython
+
+    In [6]: class C:
+       ...:     x = [1,2,3] # class attribute
+       ...:     def __init__(self):
+       ...:         self.y = [4,5,6] # instance attribute
+       ...:
+
+    In [7]: c1 = C()
+
+    In [8]: c2 = C()
+
+    In [9]: c1.x is c2.x # does each instance see the same x?
+    Out[9]: True
+
+    In [10]: c1.y is c2.y # does each instance see the same y?
+    Out[10]: False
+
+
+
 
 Typical methods
 ---------------
@@ -160,8 +192,8 @@ Methods take some parameters, manipulate the attributes in ``self``.
 They may or may not return something useful.
 
 
-Arity Gotcha
-------------
+Gotcha !
+--------
 
 .. code-block:: python
 

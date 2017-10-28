@@ -1,7 +1,12 @@
+.. _advanced_argument_passing:
+
+#########################
 Advanced Argument Passing
-=========================
+#########################
 
 This is a very, very nifty Python feature -- it really lets you write dynamic programs.
+
+NOTE: add keyword only arguments!
 
 Keyword arguments
 -----------------
