@@ -1,4 +1,4 @@
-.. _dict_as_switch:
+:orphan:
 
 ################################
 Using a Dictionary to ``switch``
@@ -133,3 +133,4 @@ That's IT!
 You don't have to test to see which type of object it is, you only have to know that it knows how to draw itself.
 
 Now when you add a new object type -- all you need to do is make sure it has a draw() method (and other needed methods) and then all the other code will know how to use it without your changing anything.
+
