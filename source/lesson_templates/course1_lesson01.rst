@@ -67,6 +67,8 @@ Other activities
 
 [Title, instructions]
 
+https://uwpce-pythoncert.github.io/PythonCertDevel/exercises/python_pushups.html#python-pushups
+
 Special notes/ instructions
 ---------------------------
 
