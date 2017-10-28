@@ -50,6 +50,8 @@ screencasts/videos
 
 Titles and links to scripts
 
+https://github.com/UWPCE-PythonCert/PythonCertDevel/blob/master/source/scripts/Intro.txt
+
 Graded Assignments
 ------------------
 
