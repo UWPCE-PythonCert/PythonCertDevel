@@ -1,23 +1,29 @@
+.. _session_2_06:
+
 #########################################
 Advanced Programming in Python: Session 6
 #########################################
-
-Testing and Advanced Argument Passing
 
 Pre-class prep
 ==============
 
 Read:
 
-:ref:`unit_testing`
-
-
 
 In-class Activities
 ===================
 
+Review Exercises from last week
+-------------------------------
 
-Post-class Activites
-====================
+Exercises
+---------
 
-Finish the Exercises
+
+Post-class Activities
+=====================
+
+Finish the Exercises from class
+
+Refer to: :ref:`session_2_07:` for prep for next week
+

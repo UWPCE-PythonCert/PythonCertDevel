@@ -1,7 +1,6 @@
 
 .. _unit_testing:
 
-
 ############
 Unit Testing
 ############
@@ -77,7 +76,9 @@ module:
     if __name__ == '__main__':
         unittest.main()
 
-.. nextslide:: Testing Your Code
+
+Testing Your Code
+-----------------
 
 This way, you can write your code in one file and test it from another:
 
@@ -227,7 +228,7 @@ http://pytest.org/latest/getting-started.html#getstarted
 
 It will run ``unittest`` tests for you.
 
-But in addition to finding and running tests, it makes writting tests simple, and provides a bunch of nifty utilities to support more complex testing.
+But in addition to finding and running tests, it makes writing tests simple, and provides a bunch of nifty utilities to support more complex testing.
 
 Test Driven Development
 -----------------------
@@ -261,15 +262,12 @@ and:
 
 and run::
 
-  $ py.teset test_cigar_party.py
+  $ py.test test_cigar_party.py
 
 Copy both of these files into your home directory in the repo.
 
 Develop ``cigar_party.py`` until all the tests pass.
 
-
-LAB
----
 
 .. rst-class:: left
 

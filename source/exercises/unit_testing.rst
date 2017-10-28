@@ -42,7 +42,6 @@ Copy both of these files into your home directory in the repo.
 
 Develop ``cigar_party.py`` until all the tests pass.
 
-
 .. rst-class:: left
 
   Pick an example from codingbat:

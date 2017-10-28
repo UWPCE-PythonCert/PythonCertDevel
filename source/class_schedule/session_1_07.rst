@@ -11,6 +11,15 @@ read: :ref:`object_orientation_overview`
 
 read: :ref:`python_classes`
 
+Supplemental reading
+--------------------
+
+* Dive into Python3: 7.2 -- 7.3
+   http://www.diveintopython3.net/iterators.html#defining-classes
+
+* Think Python: 15 -- 18
+   http://www.greenteapress.com/thinkpython/html/thinkpython016.html
+
 Some Videos to watch:
 ---------------------
 
@@ -46,6 +55,16 @@ http://pyvideo.org/video/880/stop-writing-classes
 
 "If your class has only two methods -- and one of them is ``__init__``
 -- you don't need a class"
+
+Material to review for next week
+--------------------------------
+
+
+Talk by Raymond Hettinger:
+
+Video of talk: https://youtu.be/HTLu2DFOdTg
+
+Slides: https://speakerdeck.com/pyconslides/pythons-class-development-toolkit-by-raymond-hettinger
 
 
 In-class Activities
