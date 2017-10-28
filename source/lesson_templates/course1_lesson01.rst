@@ -55,7 +55,7 @@ https://github.com/UWPCE-PythonCert/PythonCertDevel/blob/master/source/scripts/I
 Graded Assignments
 ------------------
 
-(title and details)
+There is nothing gradable for this class. Our primary objective is to get them set up so that they are ready to start coding for the rest of the program.
 
 Quizzes/exams
 -------------
