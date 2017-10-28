@@ -36,17 +36,6 @@ Readings
 
 https://uwpce-pythoncert.github.io/PythonCertDevel/class_schedule/session_1_01.html
 
-https://uwpce-pythoncert.github.io/PythonCertDevel/modules/Class_introduction.html
-
-https://uwpce-pythoncert.github.io/PythonCertDevel/modules/Git.html
-
-https://uwpce-pythoncert.github.io/PythonCertDevel/modules/PythonOverview.html
-
-https://uwpce-pythoncert.github.io/PythonCertDevel/modules/BasicPython.html
-
-https://uwpce-pythoncert.github.io/PythonCertDevel/modules/Py2vsPy3.html
-
-
 Self Produced
 .............
 
