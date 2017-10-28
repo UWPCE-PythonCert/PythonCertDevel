@@ -36,7 +36,7 @@ In-class Activities
 .. toctree::
     :maxdepth: 1
 
-    ../modules/class_introduction
+    ../modules/Class_introduction
 
     ../modules/Git
 

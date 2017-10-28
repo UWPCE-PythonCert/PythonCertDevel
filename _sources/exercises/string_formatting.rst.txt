@@ -1,19 +1,18 @@
 .. _exercise_string_formatting:
 
-*********************
+#####################
 String Formatting Lab
-*********************
+#####################
 
 Building up strings
 ===================
 
-.. rst-class:: left
 
 For reference:
 
 The official reference docs:
 
-https://docs.python.org/3/library/string.html#string-formatting
+https://docs.python.org/3/library/string.html#format-string-syntax
 
 And a more human-readable intro:
 
@@ -27,19 +26,18 @@ https://mkaz.tech/python-string-format.html
 A Couple Exercises
 ------------------
 
-* Write a format string that will take:
+* Write a format string that will take the tuple:
 
-    ``( 2, 123.4567, 10000)``
+    ``( 2, 123.4567, 10000, 12345.67)``
 
     and produce:
 
-    ``'file_002 :   123.46, 1.00e+04'``
+    ``'file_002 :   123.46, 1.00e+04, 1.23e+04'``
 
-**Note:** the idea behind the "file_002" is that if you have a bunch of files that you want to name with numbers that can be sorted, you need to "pad" the numbers with zeros to get the right sort order.
+1) The idea behind the "file_002" is that if you have a bunch of files that you want to name with numbers that can be sorted, you need to "pad" the numbers with zeros to get the right sort order.
 
-.. nextslide::
 
-For example:
+**Example:**
 
 .. code-block:: ipython
 
@@ -60,6 +58,13 @@ That works!
 
 So you want to find a string formatting operator that will "pad" the number with zeros for you.
 
+2) The second element is a floating point number, you want to display it with 2 decimal places shown.
+
+3) The third value is an integer, but could be any number -- you want it displayed in scientific notation with 2 decimal places shown.
+
+4) The fourth value is a float with a lot of digits -- display it in scientific notation with 3 significant figures
+
+
 Dynamically Building up format strings
 --------------------------------------
 
@@ -67,7 +72,7 @@ Dynamically Building up format strings
 
 ``"the 3 numbers are: {:d}, {:d}, {:d}".format(1,2,3)``
 
-to take an arbitrary number of values.
+To take an arbitrary number of values.
 
 Trick: You can pass in a tuple of values to a function with a ``*``:
 
@@ -78,8 +83,6 @@ Trick: You can pass in a tuple of values to a function with a ``*``:
     In [53]: "the 3 numbers are: {:d}, {:d}, {:d}".format(*t)
     Out[53]: 'the 3 numbers are: 1, 2, 3'
 
-.. nextslide::
-
 The idea here is that you may have a tuple of three numbers, but might also have 4 or 5 or....
 
 So you can dynamically build up the format string to accommodate the length of the tuple.
@@ -88,18 +91,17 @@ The string object has the ``format()`` method, so you can call it with a string 
 
 .. code-block:: ipython
 
-    In [16]: fstring = "{:d}, {:d}"
+    In [16]: form_string = "{:d}, {:d}"
 
     In [17]: nums = (34, 56)
 
     In [18]: fstring.format(*nums)
     Out[18]: '34, 56'
 
-So how would you make an fstring that was the right length for an arbitrary tuple?
+So how would you make a form_string that was the right length for an arbitrary tuple?
 
-.. nextslide::
 
-Put your code in a function that will return the formatted string like so:
+Put your code in a function that will return the final string like so:
 
 .. code-block:: ipython
 
@@ -108,4 +110,19 @@ Put your code in a function that will return the formatted string like so:
 
     In [21]: formatter((2,3,5,7,9))
     Out[21]: 'the 5 numbers are: 2, 3, 5, 7, 9'
+
+It will look like:
+
+.. code-block:: python
+
+  def formatter(in_tuple):
+      do_something_here_to_make_a_format_string
+
+      return form_string.format(in_tuple)
+
+
+
+
+
+
 

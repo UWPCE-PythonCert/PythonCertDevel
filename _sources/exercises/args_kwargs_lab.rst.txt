@@ -1,7 +1,7 @@
 .. _exercise_args_kwargs_lab:
 
-Args and Kwargs
-===============
+Args and Kwargs LAB
+===================
 
 Goal:
 -----

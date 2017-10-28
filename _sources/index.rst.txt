@@ -73,6 +73,7 @@ Modules
 .. toctree::
     :maxdepth: 1
 
+    modules/Class_introduction
     modules/BasicPython
     modules/Git
     modules/GitWorkflow
@@ -80,16 +81,19 @@ Modules
     modules/Documentation
     modules/Booleans
     modules/Modules
-    scripts/Sequences
+    modules/Sequences
     modules/Iteration
     modules/Strings
+    modules/DictsAndSets
+    modules/Files
+    modules/Exceptions
+    modules/Comprehensions
     modules/AdvancedArgumentPassing
+    modules/DictionaryAsSwitch
     modules/Closures
     modules/Composition
-    modules/Comprehensions
     modules/ContextManagers
     modules/Decorators
-    modules/DictionaryAsSwitch
     modules/EnvironmentOverview
     scripts/FunctionalProgramming
     scripts/Functions

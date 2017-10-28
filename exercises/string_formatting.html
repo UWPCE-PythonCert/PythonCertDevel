@@ -1,53 +1,291 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>String Formatting Lab &#8212; PythonCert 4.0 documentation</title>
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '4.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Trapezoidal Rule" href="trapezoid.html" />
-    <link rel="prev" title="Sparse Array Exercise" href="sparse_array.html" />
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>String Formatting Lab &mdash; PythonCert 4.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
+        <link rel="next" title="Trapezoidal Rule" href="trapezoid.html"/>
+        <link rel="prev" title="Sparse Array Exercise" href="sparse_array.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
    
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  <div class="wy-grid-for-nav">
 
-  </head>
-  <body>
-  
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+          
+            <a href="../index.html" class="icon icon-home"> PythonCert
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/orientation.html">Orientation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_01.html">Intro to Python Session 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_02.html">Intro to Python Session 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_03.html">Intro to Python Session 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_04.html">Intro to Python Session 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_05.html">Intro to Python Session 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_06.html">Intro to Python Session 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_07.html">Intro to Python Session 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_08.html">Intro to Python Session 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_09.html">Intro to Python Session 9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_10.html">Intro to Python Session 10</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_01.html">Advanced Programming in Python: Session 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_02.html">Advanced Programming in Python: Session 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_03.html">Advanced Programming in Python: Session 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_04.html">Advanced Programming in Python: Session 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_05.html">Advanced Programming in Python: Session 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_06.html">Advanced Programming in Python: Session 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_07.html">Advanced Programming in Python: Session 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_08.html">Advanced Programming in Python: Session 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_09.html">Advanced Programming in Python: Session 9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_10.html">Advanced Programming in Python: Session 10</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_01.html">Internet Programming in Python: Session 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_02.html">Internet Programming in Python: Session 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_03.html">Internet Programming in Python: Session 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_04.html">Internet Programming in Python: Session 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_05.html">Internet Programming in Python: Session 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_06.html">Internet Programming in Python: Session 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_07.html">Internet Programming in Python: Session 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_08.html">Internet Programming in Python: Session 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_09.html">Internet Programming in Python: Session 9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_10.html">Internet Programming in Python: Session 10</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Class_introduction.html">Introductions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/BasicPython.html">Basic Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Git.html">Intro to Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/GitWorkflow.html">Git Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Functions.html">More on Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Documentation.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Booleans.html">Boolean Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Modules.html">Code Structure, Modules, and Namespaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Sequences.html">Python Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Iteration.html">Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Strings.html">Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/DictsAndSets.html">Dictionaries and Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Files.html">File Reading and Writing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Exceptions.html">Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Comprehensions.html">Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/AdvancedArgumentPassing.html">Advanced Argument Passing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/DictionaryAsSwitch.html">Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Closures.html">Closures and function Currying</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Composition.html">Composition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/ContextManagers.html">Context Managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/EnvironmentOverview.html">Introduction to the Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/IPythonIntroduction.html">IPython Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/IteratorsAndGenerators.html">Iterators and Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/MapFilterReduce.html">Map Filter and Reduce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Math.html">Math with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Methods.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/MultipleInheritance.html">Multiple Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/ObjectOrientationOverview.html">Object Orientation Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Properties.html">Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Py2vsPy3.html">Python 2 verses Python 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/PythonClasses.html">Python Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/PythonOverview.html">Python Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Recursion.html">Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/SpecialMethodsAndProtocols.html">Special Methods &amp; Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/SpecialMethodsAndProtocols.html#emulating-standard-types">Emulating Standard types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/StaticAndClassMethods.html">Static and Class Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/SubclassingAndInheritance.html">Subclassing and Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Tutorial.html">Python Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quizzes/basic_math_quiz.html">Basic Math Quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quizzes/comprehensions_quiz.html">Comprehensions Quiz</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="python_pushups.html">Python Pushups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="args_kwargs_lab.html">Args and Kwargs LAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circle_class.html">Circle Class Excercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dict_lab.html">Dictionary and Set Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions_lab.html">Exceptions Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fib_and_lucas.html">Fibonacci Series Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_lab.html">File LAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fizz_buzz.html">Fizz Buzz Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grid_printer.html">Grid Printer Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="html_renderer.html">HTML Renderer Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kata_fourteen.html">Kata Fourteen: Tom Swift Under Milk Wood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lambda_magic.html">lambda and keyword Magic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_lab.html">List Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mailroom.html">Mailroom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mailroom-oo.html">Mailroom Object Oriented</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roman.html">Roman/Arabic Numeral Converter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rot13.html">ROT13</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slicing.html">Slicing Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sparse_array.html">Sparse Array Exercise</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">String Formatting Lab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#building-up-strings">Building up strings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-couple-exercises">A Couple Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dynamically-building-up-format-strings">Dynamically Building up format strings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trapezoid.html">Trapezoidal Rule</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../supplemental/HowToRunAPythonFile.html">How to run a python file</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../supplemental/installing/index.html">Installing Python and core tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supplemental/dev_environment/index.html">Setting Up A Development Environment For Python</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/index.html">Resources for Specific Python Topics</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PythonCert</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>String Formatting Lab</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/exercises/string_formatting.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="string-formatting-lab">
 <span id="exercise-string-formatting"></span><h1>String Formatting Lab<a class="headerlink" href="#string-formatting-lab" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="building-up-strings">
 <h2>Building up strings<a class="headerlink" href="#building-up-strings" title="Permalink to this headline">¶</a></h2>
-<p class="left">For reference:</p>
+<p>For reference:</p>
 <p>The official reference docs:</p>
-<p><a class="reference external" href="https://docs.python.org/3/library/string.html#string-formatting">https://docs.python.org/3/library/string.html#string-formatting</a></p>
+<p><a class="reference external" href="https://docs.python.org/3/library/string.html#format-string-syntax">https://docs.python.org/3/library/string.html#format-string-syntax</a></p>
 <p>And a more human-readable intro:</p>
 <p><a class="reference external" href="https://pyformat.info/">https://pyformat.info/</a></p>
 <p>And a nice “Cookbook”:</p>
@@ -55,16 +293,18 @@
 <div class="section" id="a-couple-exercises">
 <h3>A Couple Exercises<a class="headerlink" href="#a-couple-exercises" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p class="first">Write a format string that will take:</p>
+<li><p class="first">Write a format string that will take the tuple:</p>
 <blockquote>
-<div><p><code class="docutils literal"><span class="pre">(</span> <span class="pre">2,</span> <span class="pre">123.4567,</span> <span class="pre">10000)</span></code></p>
+<div><p><code class="docutils literal"><span class="pre">(</span> <span class="pre">2,</span> <span class="pre">123.4567,</span> <span class="pre">10000,</span> <span class="pre">12345.67)</span></code></p>
 <p>and produce:</p>
-<p><code class="docutils literal"><span class="pre">'file_002</span> <span class="pre">:</span>&#160;&#160; <span class="pre">123.46,</span> <span class="pre">1.00e+04'</span></code></p>
+<p><code class="docutils literal"><span class="pre">'file_002</span> <span class="pre">:</span>&#160;&#160; <span class="pre">123.46,</span> <span class="pre">1.00e+04,</span> <span class="pre">1.23e+04'</span></code></p>
 </div></blockquote>
 </li>
 </ul>
-<p><strong>Note:</strong> the idea behind the “file_002” is that if you have a bunch of files that you want to name with numbers that can be sorted, you need to “pad” the numbers with zeros to get the right sort order.</p>
-<p>For example:</p>
+<ol class="arabic simple">
+<li>The idea behind the “file_002” is that if you have a bunch of files that you want to name with numbers that can be sorted, you need to “pad” the numbers with zeros to get the right sort order.</li>
+</ol>
+<p><strong>Example:</strong></p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">fnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;file1&#39;</span><span class="p">,</span> <span class="s1">&#39;file2&#39;</span><span class="p">,</span> <span class="s1">&#39;file10&#39;</span><span class="p">,</span> <span class="s1">&#39;file11&#39;</span><span class="p">]</span>
 <span class="gp">In [11]: </span><span class="n">fnames</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 <span class="gp">In [12]: </span><span class="n">fnames</span>
@@ -79,6 +319,11 @@
 </div>
 <p>That works!</p>
 <p>So you want to find a string formatting operator that will “pad” the number with zeros for you.</p>
+<ol class="arabic simple" start="2">
+<li>The second element is a floating point number, you want to display it with 2 decimal places shown.</li>
+<li>The third value is an integer, but could be any number – you want it displayed in scientific notation with 2 decimal places shown.</li>
+<li>The fourth value is a float with a lot of digits – display it in scientific notation with 3 significant figures</li>
+</ol>
 </div>
 <div class="section" id="dynamically-building-up-format-strings">
 <h3>Dynamically Building up format strings<a class="headerlink" href="#dynamically-building-up-format-strings" title="Permalink to this headline">¶</a></h3>
@@ -86,7 +331,7 @@
 <li>Rewrite:</li>
 </ul>
 <p><code class="docutils literal"><span class="pre">&quot;the</span> <span class="pre">3</span> <span class="pre">numbers</span> <span class="pre">are:</span> <span class="pre">{:d},</span> <span class="pre">{:d},</span> <span class="pre">{:d}&quot;.format(1,2,3)</span></code></p>
-<p>to take an arbitrary number of values.</p>
+<p>To take an arbitrary number of values.</p>
 <p>Trick: You can pass in a tuple of values to a function with a <code class="docutils literal"><span class="pre">*</span></code>:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [52]: </span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 
@@ -97,7 +342,7 @@
 <p>The idea here is that you may have a tuple of three numbers, but might also have 4 or 5 or….</p>
 <p>So you can dynamically build up the format string to accommodate the length of the tuple.</p>
 <p>The string object has the <code class="docutils literal"><span class="pre">format()</span></code> method, so you can call it with a string that is bound to a name, not just a string literal. For example:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">fstring</span> <span class="o">=</span> <span class="s2">&quot;{:d}, {:d}&quot;</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">form_string</span> <span class="o">=</span> <span class="s2">&quot;{:d}, {:d}&quot;</span>
 
 <span class="gp">In [17]: </span><span class="n">nums</span> <span class="o">=</span> <span class="p">(</span><span class="mi">34</span><span class="p">,</span> <span class="mi">56</span><span class="p">)</span>
 
@@ -105,8 +350,8 @@
 <span class="gh">Out[18]: </span><span class="go">&#39;34, 56&#39;</span>
 </pre></div>
 </div>
-<p>So how would you make an fstring that was the right length for an arbitrary tuple?</p>
-<p>Put your code in a function that will return the formatted string like so:</p>
+<p>So how would you make a form_string that was the right length for an arbitrary tuple?</p>
+<p>Put your code in a function that will return the final string like so:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">formatter</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="gh">Out[20]: </span><span class="go">&#39;the 3 numbers are: 2, 3, 5&#39;</span>
 
@@ -114,71 +359,88 @@
 <span class="gh">Out[21]: </span><span class="go">&#39;the 5 numbers are: 2, 3, 5, 7, 9&#39;</span>
 </pre></div>
 </div>
+<p>It will look like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">formatter</span><span class="p">(</span><span class="n">in_tuple</span><span class="p">):</span>
+    <span class="n">do_something_here_to_make_a_format_string</span>
+
+    <span class="k">return</span> <span class="n">form_string</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">in_tuple</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
 
 
+           </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="trapezoid.html" class="btn btn-neutral float-right" title="Trapezoidal Rule" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sparse_array.html" class="btn btn-neutral" title="Sparse Array Exercise" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Christopher Barker, Cris Ewing, Christy Heaton, Maria McKinley, Rick Riehle, Joseph Schilz.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">String Formatting Lab</a><ul>
-<li><a class="reference internal" href="#building-up-strings">Building up strings</a><ul>
-<li><a class="reference internal" href="#a-couple-exercises">A Couple Exercises</a></li>
-<li><a class="reference internal" href="#dynamically-building-up-format-strings">Dynamically Building up format strings</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="sparse_array.html" title="previous chapter">Sparse Array Exercise</a></li>
-      <li>Next: <a href="trapezoid.html" title="next chapter">Trapezoidal Rule</a></li>
-  </ul></li>
-</ul>
-</div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/exercises/string_formatting.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2017, Christopher Barker, Cris Ewing, Christy Heaton, Maria McKinley, Rick Riehle, Joseph Schilz.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
-      
-      |
-      <a href="../_sources/exercises/string_formatting.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
-    
-  </body>
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'4.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

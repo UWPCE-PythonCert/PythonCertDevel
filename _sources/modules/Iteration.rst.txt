@@ -15,7 +15,7 @@ We've seen simple iteration over a sequence with ``for ... in``:
 .. code-block:: ipython
 
     In [170]: for x in "a string":
-       .....:         print(x)
+       .....:     print(x)
        .....:
     a
     s
@@ -29,7 +29,7 @@ We've seen simple iteration over a sequence with ``for ... in``:
 No Indexing Required
 --------------------
 
-Contrast this with other languages, where you must build and use an ``index``:
+Contrast this with other languages, where you must build and use an ``index`` to iterate through an array.
 
 .. code-block:: javascript
 
@@ -79,7 +79,8 @@ In fact, it's a common convention to make this clear with a "nothing" name:
     *
 
 
-.. nextslide:: No Namespace
+No Namespace
+------------
 
 Be alert that a loop does not create a local namespace:
 
@@ -92,15 +93,13 @@ Be alert that a loop does not create a local namespace:
     In [174]: x
     Out[174]: 2
 
-
-.. nextslide:: Loop Control
+Loop Control
+------------
 
 Sometimes you want to interrupt or alter the flow of control through a loop.
 
 Loops can be controlled in two ways, with ``break`` and ``continue``
 
-
-.. nextslide:: Break
 
 The ``break`` keyword will cause a loop to immediately terminate:
 
@@ -113,7 +112,6 @@ The ``break`` keyword will cause a loop to immediately terminate:
        .....:
     0 1 2 3 4 5... 46 47 48 49 50 51
 
-.. nextslide:: Continue
 
 The ``continue`` keyword will skip later statements in the loop block, but
 allow iteration to continue:
@@ -129,9 +127,14 @@ allow iteration to continue:
        .....:
        25 26 27 28 29 ... 41 42 43 44 45 46 47 48 49 50
 
-.. nextslide:: else
+Take some time to look at these examples carefully, and make sure you uderstand them. It's probably a good idea to write a bit of code to experiment as well.
+
+else
+----
 
 For loops can also take an optional ``else`` block.
+
+This is **not** a feature of most languages, but it can be handy.
 
 Executed only when the loop exits normally (not via break):
 
@@ -153,20 +156,40 @@ Executed only when the loop exits normally (not via break):
 
 This is a really nice unique Python feature!
 
+If python didn't have ``else`` on loops, you'd need to set a flag, somethign like:
+
+.. code-block:: python
+
+    it_did_break = False
+    for x in range(10):
+        if x == 11:
+            it_did_break = True
+            break
+    if it_did_break:
+        print('finished')
+
+That's klunkier, no?
+
+Make sure to try this a bit yourself too, to make sure you get it.
+
+
 While Loops
 ===========
 
-While loops are different -- they are not for iterating over a collection, but rather for repeating something an unknown number of times -- and maybe even forever.
+While loops are different -- they are not for iterating over a collection, but rather for repeating something an unknown number of times -- and maybe even forever -- or until the program terminates.
 
 The ``while`` keyword is for when you don't know how many loops you need.
 
-It continues to execute the body until condition is not ``True``::
+It continues to execute the body until condition is not "Truthy":
+
+.. code-block:: python
 
     while a_condition:
        some_code
        in_the_body
 
-.. nextslide:: ``while`` vs. ``for``
+``while`` vs. ``for``
+---------------------
 
 ``while``  is more general than ``for``
 
@@ -185,7 +208,8 @@ potential error -- infinite loops:
         print(i)
 
 
-.. nextslide:: Terminating a while Loop
+Terminating a while Loop
+------------------------
 
 Use ``break``:
 
@@ -198,8 +222,6 @@ Use ``break``:
        .....:     print(i)
        .....:
     1 2 3 4 5 6 7 8 9 10
-
-.. nextslide:: Terminating a while Loop
 
 Set a flag:
 
@@ -215,7 +237,6 @@ Set a flag:
        .....:
     3
 
-.. nextslide:: Terminating a While Loop
 
 Use a condition:
 
@@ -238,4 +259,81 @@ Both ``for`` and ``while`` loops can have an optional ``else`` block
 
 In both loops, the statements in the ``else`` block are only executed if the
 loop terminates normally (no ``break``)
+
+Pythonic Iteration
+==================
+
+I've already said it, but it bears repeating:
+
+for loops are for iterating over something (an "iterable") -- you almost never want to iterate over the indexes, and then access items with the index.
+
+nifty for loop tricks
+---------------------
+
+**tuple unpacking:**
+
+remember this?
+
+.. code-block:: python
+
+    x, y = 3, 4
+
+You can do that in a for loop, also:
+
+.. code-block:: ipython
+
+  In [4]: l = [(1, 2), (3, 4), (5, 6)]
+
+  In [5]: for i, j in l:
+              print("i:{}, j:{}".format(i, j))
+
+  i:1, j:2
+  i:3, j:4
+  i:5, j:6
+
+Looping through two iterables at once:
+--------------------------------------
+
+.. rst-class:: mlarge
+
+  ``zip``
+
+.. code-block:: ipython
+
+    In [10]: l1 = [1, 2, 3]
+
+    In [11]: l2 = [3, 4, 5]
+
+    In [12]: for i, j in zip(l1, l2):
+              print("i:{}, j:{}".format(i, j))
+
+    i:1, j:3
+    i:2, j:4
+    i:3, j:5
+
+Can be more than two:
+
+.. code-block:: python
+
+  for i, j, k, l in zip(l1, l2, l3, l4):
+
+
+Need the index and the item?
+----------------------------
+
+.. rst-class:: mlarge
+
+  ``enumerate``
+
+.. code-block:: ipython
+
+    In [2]: l = ['this', 'that', 'the other']
+
+    In [3]: for i, item in enumerate(l):
+       ...:     print("the {:d}th item is: {:s}".format(i, item))
+       ...:
+    the 0th item is: this
+    the 1th item is: that
+    the 2th item is: the other
+
 

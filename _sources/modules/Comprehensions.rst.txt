@@ -1,27 +1,36 @@
+.. _comprehensions:
+
+##############
 Comprehensions
-==============
+##############
+
 
 List comprehensions
 -------------------
 
-A bit of functional programming
+A bit of functional programming.
 
-consider this common ``for`` loop structure:
+The concept of "functional programming" is clearly defined in some contexts, but is also used in a less strict sense. Python is **not** a functional language in the strict sense, but it does support a number of functional paradigms.
+
+In general, code is considered "Pythonic" that used functional paradigms where they are natural, but not when they have to be forced in.
+
+We will cover functional programming concepts more clearly later in the program, but for now, we'll talk about the syntax for a common functional paradigm: applying an expression to all the members of a sequence to produce another sequence:
+
+Consider this common ``for`` loop structure:
 
 .. code-block:: python
 
     new_list = []
     for variable in a_list:
-        new_list.append(expression)
+        new_list.append(expression(variable))
 
-This can be expressed with a single line using a "list comprehension"
+This is such a common pattern, that python added syntax to directly support it:
+
+It can be expressed with a single line using a "list comprehension"
 
 .. code-block:: python
 
     new_list = [expression for variable in a_list]
-
-
-.. nextslide::
 
 What about nested for loops?
 
@@ -40,7 +49,10 @@ Can also be expressed in one line:
 
 You get the "outer product", i.e. all combinations.
 
-.. nextslide::
+NOTE: Example here...
+
+This pattern is another way of expressing the "map" pattern from functional programming.
+
 
 But usually you at least have a conditional in the loop:
 
@@ -57,7 +69,8 @@ You can add a conditional to the comprehension:
 
     new_list = [expr for var in a_list if something_is_true]
 
-.. nextslide::
+This is expressing the "filter" pattern. (and map at the same time)
+
 
 Examples:
 
@@ -151,4 +164,86 @@ Example
               3: 'this_3', 4: 'this_4'}
 
 
-(not as useful with the ``dict()``  constructor...)
+This is not as useful as it used to be, now that we have the ``dict()``  constructor.
+
+A bit of history:
+-----------------
+
+In the early days of Python the only way to create a dict was with a literal::
+
+  a_dict = {}  # for an empty dict
+
+or a dict that was already populated with a bunch of data.
+
+If you had a bunch of data in some other form, like a couple lists, you'd need to write a loop to fill it in:
+
+.. code-block:: ipython
+
+    In [1]: names = ["fred", "john", "mary"]
+
+    In [2]: ids = [1, 2, 3]
+
+    In [4]: d = {}
+
+    In [5]: for id, name in zip(names, ids):
+       ...:     d[id] = name
+       ...:
+
+    In [6]: d
+    Out[6]: {'fred': 1, 'john': 2, 'mary': 3}
+
+now, with dict comps, you can do:
+
+.. code-block:: ipython
+
+    In [9]: d = {id: name for id, name in zip(ids, names)}
+
+    In [10]: d
+    Out[10]: {1: 'fred', 2: 'john', 3: 'mary'}
+
+But there is also now a ``dict()`` constructor (actually the type object for dict):
+
+.. code-block:: ipython
+
+    In [13]: dict?
+    Init signature: dict(self, /, *args, **kwargs)
+    Docstring:
+    dict() -> new empty dictionary
+    dict(mapping) -> new dictionary initialized from a mapping object's
+        (key, value) pairs
+    dict(iterable) -> new dictionary initialized as if via:
+        d = {}
+        for k, v in iterable:
+            d[k] = v
+    dict(**kwargs) -> new dictionary initialized with the name=value pairs
+        in the keyword argument list.  For example:  dict(one=1, two=2)
+    Type:           type
+
+So the first one is an empty dict -- simple enough
+
+The second makes a dict from the contents of another dict (or similar object)
+
+The third one is of interest here -- it makes a dict from an iterable of key,value pairs -- exactly what ``zip()`` gives you.
+
+So we can create a dict from data like so:
+
+.. code-block:: ipython
+
+    In [14]: d = dict(zip(ids, names))
+
+    In [15]: d
+    Out[15]: {1: 'fred', 2: 'john', 3: 'mary'}
+
+Which is more compact, and arguably more clear than the dict comprehension.
+
+dict comps are still nice if you need to filter the results, though:
+
+.. code-block:: ipython
+
+    In [16]: d = {id: name for id, name in zip(ids, names) if name != 'mary'}
+
+    In [17]: d
+    Out[17]: {1: 'fred', 2: 'john'}
+
+
+

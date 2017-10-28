@@ -8,7 +8,7 @@ Making Mailroom Object Oriented
 A complete program
 ------------------
 
-It was quite resonable to build the simple MailRoom program using a
+It was quite reasonable to build the simple MailRoom program using a
 single module, a simple data structure, and functions that manipulate
 that data structure.
 
@@ -20,7 +20,7 @@ So it's a pretty good candidate for an object-oriented approach.
 Goal:
 -----
 
-Refactor the mailroom program using classes to help organise the code.
+Refactor the mailroom program using classes to help organize the code.
 
 The program
 -----------
@@ -99,65 +99,6 @@ about so far. There is no need to go any farther than that for this assignment.
 Submission
 ----------
 
-As always, put the new file in your student directory in a ``session03``
-directory, and add it to your clone early. Make frequent commits with
-good, clear messages about what you are doing and why.
+As always, put the new file in your student directory in an appropraite  ``session??`` directory, and add it to your clone early. Make frequent commits with good, clear messages about what you are doing and why.
 
 When you are done, push your changes and make a pull request.
-
-.. _exercise_mailroom_plus:
-
-Adding dicts...
----------------
-
-
-For the next week (after Session04)
-
-You should have been able to do all that with the basic data types:
-
-numbers, strings, lists and tuples.
-
-But once you've learned about dictionaries (Session04) you may be able to re-write it a bit more simply and efficiently.
-
- * Update mailroom from last week to:
-
-  - Use dicts where appropriate
-  - Write a full set of letters to everyone to individual files on disk
-  - See if you can use a dict to switch between the users selections
-  - Try to use a dict and the .format() method to do the letter as one
-    big template -- rather than building up a big string in parts.
-
-Example:
-
-.. code-block:: ipython
-
-  In [3]: d
-  Out[3]: {'first_name': 'Chris', 'last_name': 'Barker'}
-
-
-  In [5]: "My name is {first_name} {last_name}".format(**d)
-  Out[5]: 'My name is Chris Barker'
-
-Don't worry too much about the "**" -- we'll get into the details later, but for now, it means, more or less -- pass this whole dict in as a bunch of keyword arguments.
-
-
-.. _exercise_mailroom_exeptions:
-
-Adding Exceptions
------------------
-
-**After Session05:**
-
-* Exceptions:
-
-Now that you've learned about Exception handling, you can update your code to handle errors better -- like when a user inputs bad data.
-
-* Comprehensions:
-
-Can you use comprehensions to clean up your code a bit?
-
-* Tests
-
-Add some tests..
-
-
