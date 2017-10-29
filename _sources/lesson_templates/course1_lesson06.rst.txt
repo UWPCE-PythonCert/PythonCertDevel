@@ -1,6 +1,6 @@
 :orphan:
 
-.. _course1_lessonXX:
+.. _course1_lesson06:
 
 Lesson Title
 ============
