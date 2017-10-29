@@ -403,7 +403,7 @@ the syntax and the advantage over the try-finally block:</p>
     <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;this is line: </span><span class="si">%i</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">i</span><span class="p">)</span>
 <span class="n">outfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;output.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">):</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;output.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;this is line: </span><span class="si">%i</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
