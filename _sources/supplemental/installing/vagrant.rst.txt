@@ -1,12 +1,12 @@
-.. _Vagrant:
+.. _vagrant-notes:
 
 ********************************
 Setting up Python via a Linux VM
 ********************************
 
-One of the challenges we face as developers on a team or as students in a classroom setting is getting everyone quickly up and running with a full fledged, feature rich, functional, consistent, and homogenous Python development environment.
+One of the challenges we face as developers on a team or as students in a classroom setting is getting everyone quickly up and running with a full fledged, feature rich, functional, consistent, and homogeneous Python development environment.
 
-Python is robust platfrom-independent programming language, and a full fledged development environment can be set up on any platform. However, there are still system differences, particuarly between Windows and the \*nix family of Operating Systems.
+Python is robust platform-independent programming language, and a full fledged development environment can be set up on any platform. However, there are still system differences, particularly between Windows and the \*nix family of Operating Systems.
 
 Also -- particularly if you are working on a web service of some sort, the odds are good that it will be deployed on a Linux system. In this case, developing on Linux makes things easier.
 

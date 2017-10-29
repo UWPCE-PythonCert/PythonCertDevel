@@ -149,17 +149,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../modules/AdvancedArgumentPassing.html">Advanced Argument Passing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/DictionaryAsSwitch.html">Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/Closures.html">Closures and function Currying</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/Composition.html">Composition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/ContextManagers.html">Context Managers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/Decorators.html">Decorators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/EnvironmentOverview.html">Introduction to the Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../scripts/Functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/IPythonIntroduction.html">IPython Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/IteratorsAndGenerators.html">Iterators and Generators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/Lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/Lambda.html">Anonymous Functions: Lambda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/MapFilterReduce.html">Map Filter and Reduce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/Math.html">Math with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../scripts/Methods.html">Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/MultipleInheritance.html">Multiple Inheritance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/ObjectOrientationOverview.html">Object Orientation Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/Properties.html">Properties</a></li>
@@ -168,10 +165,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../modules/PythonOverview.html">Python Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/Recursion.html">Recursion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/SpecialMethodsAndProtocols.html">Special Methods &amp; Protocols</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/SpecialMethodsAndProtocols.html#emulating-standard-types">Emulating Standard types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/StaticAndClassMethods.html">Static and Class Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/SubclassingAndInheritance.html">Subclassing and Inheritance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/Testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/Testing.html">Unit Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/Tutorial.html">Python Tutorial</a></li>
 </ul>
 <ul>
@@ -193,13 +189,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/lambda_magic.html">lambda and keyword Magic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/list_lab.html">List Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/mailroom.html">Mailroom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/mailroom-oo.html">Mailroom Object Oriented</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/unit_testing.html">Introduction To Unit Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/roman.html">Roman/Arabic Numeral Converter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/rot13.html">ROT13</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/slicing.html">Slicing Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/sparse_array.html">Sparse Array Exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/string_formatting.html">String Formatting Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/trapezoid.html">Trapezoidal Rule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/mailroom-oo.html">Mailroom Object Oriented</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../HowToRunAPythonFile.html">How to run a python file</a></li>
@@ -217,6 +214,10 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../references/index.html">Resources for Specific Python Topics</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../scripts/Functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripts/Methods.html">Methods</a></li>
 </ul>
 
             
@@ -283,9 +284,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="setting-up-python-via-a-linux-vm">
-<span id="vagrant"></span><h1>Setting up Python via a Linux VM<a class="headerlink" href="#setting-up-python-via-a-linux-vm" title="Permalink to this headline">¶</a></h1>
-<p>One of the challenges we face as developers on a team or as students in a classroom setting is getting everyone quickly up and running with a full fledged, feature rich, functional, consistent, and homogenous Python development environment.</p>
-<p>Python is robust platfrom-independent programming language, and a full fledged development environment can be set up on any platform. However, there are still system differences, particuarly between Windows and the *nix family of Operating Systems.</p>
+<span id="vagrant-notes"></span><h1>Setting up Python via a Linux VM<a class="headerlink" href="#setting-up-python-via-a-linux-vm" title="Permalink to this headline">¶</a></h1>
+<p>One of the challenges we face as developers on a team or as students in a classroom setting is getting everyone quickly up and running with a full fledged, feature rich, functional, consistent, and homogeneous Python development environment.</p>
+<p>Python is robust platform-independent programming language, and a full fledged development environment can be set up on any platform. However, there are still system differences, particularly between Windows and the *nix family of Operating Systems.</p>
 <p>Also – particularly if you are working on a web service of some sort, the odds are good that it will be deployed on a Linux system. In this case, developing on Linux makes things easier.</p>
 <p>So if you want an already setup environment in which to do your python programming that matches well the environment used by the instructors and other students (and many professional python developers), a virtual machine running Linux can provide you that environment, regardless of the host operating system.</p>
 <p>We recommend <a class="reference external" href="https://www.virtualbox.org/">VirtualBox</a> for providing the VM, and <a class="reference external" href="https://www.vagrantup.com/">Vagrant</a> for deploying a pre-configured system.</p>

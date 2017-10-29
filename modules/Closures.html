@@ -36,7 +36,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="next" title="Composition" href="Composition.html"/>
+        <link rel="next" title="Context Managers" href="ContextManagers.html"/>
         <link rel="prev" title="Using a Dictionary to switch" href="DictionaryAsSwitch.html"/> 
 
   
@@ -149,22 +149,18 @@
 <li class="toctree-l1"><a class="reference internal" href="DictionaryAsSwitch.html">Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code></a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Closures and function Currying</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#functions-within-functions">Functions within Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#closures">Closures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Closures</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#functools-partial"><code class="docutils literal"><span class="pre">functools.partial</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Composition.html">Composition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ContextManagers.html">Context Managers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Decorators.html">Decorators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="EnvironmentOverview.html">Introduction to the Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/FunctionalProgramming.html">Functional Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="IPythonIntroduction.html">IPython Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lambda.html">Anonymous Functions: Lambda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MapFilterReduce.html">Map Filter and Reduce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Math.html">Math with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/Methods.html">Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MultipleInheritance.html">Multiple Inheritance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ObjectOrientationOverview.html">Object Orientation Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Properties.html">Properties</a></li>
@@ -173,10 +169,9 @@
 <li class="toctree-l1"><a class="reference internal" href="PythonOverview.html">Python Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Recursion.html">Recursion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SpecialMethodsAndProtocols.html">Special Methods &amp; Protocols</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SpecialMethodsAndProtocols.html#emulating-standard-types">Emulating Standard types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="StaticAndClassMethods.html">Static and Class Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SubclassingAndInheritance.html">Subclassing and Inheritance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">Unit Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Python Tutorial</a></li>
 </ul>
 <ul>
@@ -198,13 +193,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../exercises/lambda_magic.html">lambda and keyword Magic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/list_lab.html">List Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/mailroom.html">Mailroom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/mailroom-oo.html">Mailroom Object Oriented</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/unit_testing.html">Introduction To Unit Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/roman.html">Roman/Arabic Numeral Converter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/rot13.html">ROT13</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/slicing.html">Slicing Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/sparse_array.html">Sparse Array Exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/string_formatting.html">String Formatting Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/trapezoid.html">Trapezoidal Rule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mailroom-oo.html">Mailroom Object Oriented</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/HowToRunAPythonFile.html">How to run a python file</a></li>
@@ -215,6 +211,10 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../references/index.html">Resources for Specific Python Topics</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Methods.html">Methods</a></li>
 </ul>
 
             
@@ -279,14 +279,14 @@
            <div itemprop="articleBody">
             
   <div class="section" id="closures-and-function-currying">
-<h1>Closures and function Currying<a class="headerlink" href="#closures-and-function-currying" title="Permalink to this headline">¶</a></h1>
+<span id="closures"></span><h1>Closures and function Currying<a class="headerlink" href="#closures-and-function-currying" title="Permalink to this headline">¶</a></h1>
 <p>Defining specialized functions on the fly.</p>
 <div class="section" id="functions-within-functions">
 <h2>Functions within Functions<a class="headerlink" href="#functions-within-functions" title="Permalink to this headline">¶</a></h2>
 <p>TODO: Preface this topic with basic scope rules, specifically that you can define functions within functions.  – rriehle</p>
 </div>
-<div class="section" id="closures">
-<h2>Closures<a class="headerlink" href="#closures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h2>Closures<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>“Closures” and “Currying” are cool CS terms for what is really just defining functions on the fly.</p>
 <p>you can find a “proper” definition here:</p>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/Closure_(computer_programming">http://en.wikipedia.org/wiki/Closure_(computer_programming</a>)</p>
@@ -371,7 +371,7 @@ cube = partial(power, exponent=3)</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Composition.html" class="btn btn-neutral float-right" title="Composition" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ContextManagers.html" class="btn btn-neutral float-right" title="Context Managers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="DictionaryAsSwitch.html" class="btn btn-neutral" title="Using a Dictionary to switch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

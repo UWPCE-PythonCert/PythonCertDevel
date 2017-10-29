@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
         <link rel="next" title="Object Orientation Overview" href="ObjectOrientationOverview.html"/>
-        <link rel="prev" title="Methods" href="../scripts/Methods.html"/> 
+        <link rel="prev" title="Math with Python" href="Math.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -148,27 +148,28 @@
 <li class="toctree-l1"><a class="reference internal" href="AdvancedArgumentPassing.html">Advanced Argument Passing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DictionaryAsSwitch.html">Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="Closures.html">Closures and function Currying</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Composition.html">Composition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ContextManagers.html">Context Managers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Decorators.html">Decorators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="EnvironmentOverview.html">Introduction to the Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="IPythonIntroduction.html">IPython Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lambda.html">Anonymous Functions: Lambda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MapFilterReduce.html">Map Filter and Reduce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Math.html">Math with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/Methods.html">Methods</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Multiple Inheritance</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#purpose">Purpose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#python-s-multiple-inheritance-model">Python’s Multiple Inheritance Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-diamond-problem">The Diamond Problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#super"><code class="docutils literal"><span class="pre">super()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mro-method-resolution-order">MRO: Method Resolution Order</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#super-s-superpowers">Super’s Superpowers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#dependency-injection">Dependency Injection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#argument-passing">Argument Passing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#two-seminal-articles">Two seminal articles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inheriting-from-more-than-one-class">Inheriting from more than one class.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-mechanics-of-multiple-inheritance">The mechanics of multiple inheritance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#purpose">Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-s-multiple-inheritance-model">Python’s Multiple Inheritance Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-diamond-problem">The Diamond Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#super"><code class="docutils literal"><span class="pre">super()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mro-method-resolution-order">MRO: Method Resolution Order</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#super-s-superpowers">Super’s Superpowers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dependency-injection">Dependency Injection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#argument-passing">Argument Passing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#two-seminal-articles">Two seminal articles</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ObjectOrientationOverview.html">Object Orientation Overview</a></li>
@@ -178,10 +179,9 @@
 <li class="toctree-l1"><a class="reference internal" href="PythonOverview.html">Python Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Recursion.html">Recursion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SpecialMethodsAndProtocols.html">Special Methods &amp; Protocols</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SpecialMethodsAndProtocols.html#emulating-standard-types">Emulating Standard types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="StaticAndClassMethods.html">Static and Class Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SubclassingAndInheritance.html">Subclassing and Inheritance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">Unit Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Python Tutorial</a></li>
 </ul>
 <ul>
@@ -203,13 +203,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../exercises/lambda_magic.html">lambda and keyword Magic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/list_lab.html">List Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/mailroom.html">Mailroom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/mailroom-oo.html">Mailroom Object Oriented</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/unit_testing.html">Introduction To Unit Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/roman.html">Roman/Arabic Numeral Converter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/rot13.html">ROT13</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/slicing.html">Slicing Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/sparse_array.html">Sparse Array Exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/string_formatting.html">String Formatting Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/trapezoid.html">Trapezoidal Rule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mailroom-oo.html">Mailroom Object Oriented</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/HowToRunAPythonFile.html">How to run a python file</a></li>
@@ -220,6 +221,10 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../references/index.html">Resources for Specific Python Topics</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Methods.html">Methods</a></li>
 </ul>
 
             
@@ -284,8 +289,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="multiple-inheritance">
-<h1>Multiple Inheritance<a class="headerlink" href="#multiple-inheritance" title="Permalink to this headline">¶</a></h1>
-<p>Multiple inheritance: Inheriting from more than one class.</p>
+<span id="id1"></span><h1>Multiple Inheritance<a class="headerlink" href="#multiple-inheritance" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="inheriting-from-more-than-one-class">
+<h2>Inheriting from more than one class.<a class="headerlink" href="#inheriting-from-more-than-one-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-mechanics-of-multiple-inheritance">
+<h3>The mechanics of multiple inheritance<a class="headerlink" href="#the-mechanics-of-multiple-inheritance" title="Permalink to this headline">¶</a></h3>
 <p>Simply provide more than one parent.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Combined</span><span class="p">(</span><span class="n">Parent1</span><span class="p">,</span> <span class="n">Parent2</span><span class="p">,</span> <span class="n">Parent3</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">something</span><span class="p">,</span> <span class="n">something</span> <span class="k">else</span><span class="p">):</span>
@@ -297,19 +305,20 @@
 </pre></div>
 </div>
 <p>Calls to the parent class <code class="docutils literal"><span class="pre">__init__</span></code>  are optional and case dependent.</p>
+</div>
 <div class="section" id="purpose">
-<h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
+<h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
 <p>What was the purpose behind inheritance?</p>
-<p>Code reuse.</p>
+<p><em>Code reuse.</em></p>
 <p>What is the purpose behind multiple inheritance?</p>
-<p>Code reuse.</p>
+<p><em>Code reuse.</em></p>
 <p>What wasn’t the purpose of inheritance?</p>
-<p>Building massive class hierarchies for their own sake.</p>
+<p><em>Building massive class hierarchies for their own sake.</em></p>
 <p>What isn’t the purpose of multiple inheritance?</p>
-<p>Building massive class hierarchies for their own sake.</p>
+<p><em>Building massive class hierarchies for their own sake.</em></p>
 </div>
 <div class="section" id="python-s-multiple-inheritance-model">
-<h2>Python’s Multiple Inheritance Model<a class="headerlink" href="#python-s-multiple-inheritance-model" title="Permalink to this headline">¶</a></h2>
+<h3>Python’s Multiple Inheritance Model<a class="headerlink" href="#python-s-multiple-inheritance-model" title="Permalink to this headline">¶</a></h3>
 <p>Cooperative Multiple Inheritance</p>
 <p>Emphasis on cooperative!</p>
 <ul class="simple">
@@ -320,12 +329,12 @@
 <p>What could go wrong?</p>
 </div>
 <div class="section" id="the-diamond-problem">
-<h2>The Diamond Problem<a class="headerlink" href="#the-diamond-problem" title="Permalink to this headline">¶</a></h2>
+<h3>The Diamond Problem<a class="headerlink" href="#the-diamond-problem" title="Permalink to this headline">¶</a></h3>
 <p>With Python “new style” classes everything is descended from ‘object’.  Thus, the moment you invoke multiple inheritance you have the diamond problem.</p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem">https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem</a></p>
 </div>
 <div class="section" id="super">
-<h2><code class="docutils literal"><span class="pre">super()</span></code><a class="headerlink" href="#super" title="Permalink to this headline">¶</a></h2>
+<h3><code class="docutils literal"><span class="pre">super()</span></code><a class="headerlink" href="#super" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal"><span class="pre">super()</span></code>: use it to call a superclass method, rather than explicitly calling the unbound method on the superclass.</p>
 <p>instead of:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
@@ -343,7 +352,7 @@
 </div>
 </div>
 <div class="section" id="mro-method-resolution-order">
-<h2>MRO: Method Resolution Order<a class="headerlink" href="#mro-method-resolution-order" title="Permalink to this headline">¶</a></h2>
+<h3>MRO: Method Resolution Order<a class="headerlink" href="#mro-method-resolution-order" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Combined</span><span class="p">(</span><span class="n">Super1</span><span class="p">,</span> <span class="n">Super2</span><span class="p">,</span> <span class="n">Super3</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -363,31 +372,32 @@
 <p><a class="reference external" href="http://python-history.blogspot.com/2010/06/method-resolution-order.html">http://python-history.blogspot.com/2010/06/method-resolution-order.html</a></p>
 </div>
 <div class="section" id="super-s-superpowers">
-<h2>Super’s Superpowers<a class="headerlink" href="#super-s-superpowers" title="Permalink to this headline">¶</a></h2>
+<h3>Super’s Superpowers<a class="headerlink" href="#super-s-superpowers" title="Permalink to this headline">¶</a></h3>
 <p>It works out – dynamically at runtime – which classes are in the delegation order.</p>
 <p>Do not be afraid.  And be very afraid.</p>
 </div>
 <div class="section" id="dependency-injection">
-<h2>Dependency Injection<a class="headerlink" href="#dependency-injection" title="Permalink to this headline">¶</a></h2>
+<h3>Dependency Injection<a class="headerlink" href="#dependency-injection" title="Permalink to this headline">¶</a></h3>
 <p>Super() is the right way to do dependency injection.</p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Dependency_injection">https://en.wikipedia.org/wiki/Dependency_injection</a></p>
 <p>Compare with Monkey Patching as done in other languages.</p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Monkey_patch">https://en.wikipedia.org/wiki/Monkey_patch</a></p>
 </div>
 <div class="section" id="argument-passing">
-<h2>Argument Passing<a class="headerlink" href="#argument-passing" title="Permalink to this headline">¶</a></h2>
+<h3>Argument Passing<a class="headerlink" href="#argument-passing" title="Permalink to this headline">¶</a></h3>
 <p>Remember that super does not only delegate to your superclass, it delegates to any class in the MRO.</p>
 <p>Therefore you must be prepared to call any other class’s method in the hierarchy and be prepared to be called from any other class’s method.</p>
 <p>The general rule is to pass all arguments you received on to the super function.  If classes can take differing arguments, accept <code class="docutils literal"><span class="pre">*args</span></code> and <code class="docutils literal"><span class="pre">**kwargs</span></code>.</p>
 </div>
 <div class="section" id="two-seminal-articles">
-<h2>Two seminal articles<a class="headerlink" href="#two-seminal-articles" title="Permalink to this headline">¶</a></h2>
+<h3>Two seminal articles<a class="headerlink" href="#two-seminal-articles" title="Permalink to this headline">¶</a></h3>
 <p>“Super Considered Harmful” – James Knight</p>
 <p><a class="reference external" href="https://fuhm.net/super-harmful/">https://fuhm.net/super-harmful/</a></p>
 <p>“Super() considered super!”  –  Raymond Hettinger</p>
 <p><a class="reference external" href="http://rhettinger.wordpress.com/2011/05/26/super-considered-super/">http://rhettinger.wordpress.com/2011/05/26/super-considered-super/</a></p>
 <p><a class="reference external" href="https://youtu.be/EiOglTERPEo">https://youtu.be/EiOglTERPEo</a></p>
 <p>Both perspectives worth your consideration.</p>
+</div>
 </div>
 </div>
 
@@ -404,7 +414,7 @@
         <a href="ObjectOrientationOverview.html" class="btn btn-neutral float-right" title="Object Orientation Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../scripts/Methods.html" class="btn btn-neutral" title="Methods" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Math.html" class="btn btn-neutral" title="Math with Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
