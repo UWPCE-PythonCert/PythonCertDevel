@@ -17,9 +17,27 @@ Functions in Python start here, and indeed when programming according to the Fun
 
  adhere to this basic form when constructing functions, yet functions in Python can be much more. Before we get ahead of ourselves let's look at a few basic definitions.
 
+
+Object Objected Programming vs Functional Programming
+-----------------------------------------------------
+
+Use Cases & Problem Domains
+...........................
+
+
+Objects vs Functions
+--------------------
+
 Function Composition
 --------------------
 
 Control Flow verses Data Flow
 -----------------------------
+
+Mutability vs Immutability
+--------------------------
+
+Managing State
+--------------
+
 

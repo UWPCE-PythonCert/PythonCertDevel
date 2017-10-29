@@ -17,7 +17,7 @@ In this lesson we are looking to provision your workshop. We are going to set up
 
 .. And of course learning to program means understanding the fundamentals of the language itself.
 
-.. Moreover an experienced carpenter is going to be more pikcy about their tools than an amateur, insisting on the right tool at the right time.
+.. Moreover an experienced carpenter is going to be more picky about their tools than an amateur, insisting on the right tool at the right time.
 
 Learning objectives
 -------------------
@@ -69,7 +69,7 @@ https://github.com/UWPCE-PythonCert/PythonCertDevel/blob/master/source/scripts/I
 Graded Assignments
 ------------------
 
-There is nothing grade-able for this class. Our primary objective is to get them set up so that they are ready to start coding for the rest of the program.
+None for this class. Our primary objective is to get them set up so that they are ready to start coding for the rest of the program.
 
 Quizzes/exams
 -------------
