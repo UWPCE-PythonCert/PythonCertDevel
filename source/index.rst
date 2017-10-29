@@ -111,6 +111,7 @@ Modules
     modules/SubclassingAndInheritance
     modules/Testing
     modules/Tutorial
+    modules/MoreOnMutability
 
 Quizzes
 =======
