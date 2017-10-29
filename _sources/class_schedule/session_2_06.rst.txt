@@ -25,5 +25,5 @@ Post-class Activities
 
 Finish the Exercises from class
 
-Refer to: :ref:`session_2_07:` for prep for next week
+Refer to: :ref:`session_2_07` for prep for next week
 
