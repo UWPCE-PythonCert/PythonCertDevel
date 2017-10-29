@@ -4,8 +4,23 @@
 Intro to Python Session 8
 #########################
 
+More OO: Properties, Special methods.
+
 Pre-class prep
 ==============
+
+Readings
+--------
+
+**Read:**
+
+* :ref:`multiple_inheritance`
+
+* :ref:`properties`
+
+* :ref:`static_and_class_methods`
+
+* :ref:`special_methods`
 
 
 Some readings on the details of Inheritance
@@ -27,9 +42,23 @@ https://www.python.org/download/releases/2.3/mro/
 
 http://python-history.blogspot.com/2010/06/method-resolution-order.html
 
+A Good Book (dead trees version only):
+
+  Python 3 Object Oriented Programming: *Dusty Phillips*
+
+  (Dusty is a local boy and co-founder of PuPPy)
+
 
 In-class Activities
 ===================
+
+Exercises
+---------
+
+:ref:`exercise_circle_class`
+
+:ref:`exercise_sparse_array`
+
 
 
 Post-class Activities

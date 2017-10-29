@@ -4,22 +4,30 @@
 Intro to Python Session 6
 #########################
 
+**Unit Testing and Advanced Argument Passing**
+
 Pre-class prep
 ==============
 
-Material to review before next week
------------------------------------
+Reading
+-------
 
-**Unit Testing:**
+Unit Testing
+............
+
+* :ref:`unit_testing`
+
+**NOTE:** you will find that most introductions to unit testing with Python use the builtin ``unitest`` module. However, it is a bit heavyweight, and requires some knowledge of OOP -- classes, etc. So we'll be using pytest in this class: http://doc.pytest.org/en/latest/. But the principles of testing are the same.
 
 * Dive into Python: chapter 9:
   http://www.diveintopython3.net/unit-testing.html
 
-NOTE: you will find that most introductions to unit testing with Python use the builtin ``unitest`` module. However, it is a bit heavyweight, and requires some knowledge of OOP -- classes, etc. So we'll be using pytest in this class: http://doc.pytest.org/en/latest/. But the principles of testing are the same.
-
 * Ned Batchelder's intro to testing presentation:
 
   - http://nedbatchelder.com/text/test0.html
+
+Arguments and Parameters
+------------------------
 
 * :ref:`advanced_argument_passing`
 
@@ -29,13 +37,18 @@ NOTE: you will find that most introductions to unit testing with Python use the 
 
   - https://pythontips.com/2013/08/04/args-and-kwargs-in-python-explained/
 
+
 In-class Activities
 ===================
+
+:ref:`a_bit_on_mutability`
 
 Exercises:
 ----------
 
-:ref:`exercise_args_kwargs_lab`
+* :ref:`exercise_unit_testing`
+
+* :ref:`exercise_args_kwargs_lab`
 
 Testing mailroom:
 .................
@@ -58,24 +71,3 @@ Look at the next session for reading, etc:
 :ref:`session_1_07`
 
 
-Material to review for next week
---------------------------------
-
-Next week, we'll get started on Object Oriented Methods. It's a good idea to read up on it first -- so we can dive right in:
-
- * Dive into Python3: 7.2 -- 7.3
-   http://www.diveintopython3.net/iterators.html#defining-classes
-
- * Think Python: 15 -- 18
-   http://www.greenteapress.com/thinkpython/html/thinkpython016.html
-
- * LPTHW: 40 -- 44
-   http://learnpythonthehardway.org/book/ex40.html
-
-[note that in py3 you don't need to inherit from object]
-
-Talk by Raymond Hettinger:
-
-Video of talk: https://youtu.be/HTLu2DFOdTg
-
-Slides: https://speakerdeck.com/pyconslides/pythons-class-development-toolkit-by-raymond-hettinger

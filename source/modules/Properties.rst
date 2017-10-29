@@ -1,5 +1,8 @@
+.. _properties:
+
+##########
 Properties
-==========
+##########
 
 https://en.wikipedia.org/wiki/Property_%28programming%29#Python
 
@@ -129,7 +132,7 @@ You do not need to define a setter. If you don't, you get a "read only" attribut
     AttributeError: can't set attribute
 
 Deleters
----------
+--------
 
 If you want to do something special when a property is deleted, you can define a deleter as well:
 
@@ -148,4 +151,6 @@ If you want to do something special when a property is deleted, you can define a
 If you leave this out, the property can't be deleted, which is usually
 what you want.
 
-.. [demo: :download:`properties_example.py <../../Examples/Session08/properties_example.py>`]
+Play around with some properties code:
+
+:download:`properties_example.py <../examples/Properties/properties_example.py>`]
