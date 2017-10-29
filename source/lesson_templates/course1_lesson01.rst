@@ -7,11 +7,11 @@ Course Intro:
 
 [Paragraph introducing lesson to students]
 
-Learning to program, whether in Python or in any other language, is about more than lerning the fundamentals of the language. Learning to program also involves learning the tools involved. You might liken it to carpentry. Without an adequatly provisioned workshop, without tools appropriate for the job, a carpenter wouldn't get very far.
+Learning to program, whether in Python or in any other language, is about more than learning the fundamentals of the language. Learning to program also involves learning the tools involved. You might liken it to carpentry. Without an adequately provisioned workshop, without tools appropriate for the job, a carpenter wouldn't get very far.
 
-Under ideal circumstances learning to program also involves learning to collaboate with others on code development. Working with other programmers is one of the best ways to improve as a programmer. The tools involved in collaboration are also a part of a programmers's workshop.
+Under ideal circumstances learning to program also involves learning to collaborate with others on code development. Working with other programmers is one of the best ways to improve as a programmer. The tools involved in collaboration are also a part of a programmer's workshop.
 
-In this lesson we are looking to provision your workshop. We are going to set up an environment that will faciliate the collaborative creattion of Python code. We are also going to introuduce you to Python itself.
+In this lesson we are looking to provision your workshop. We are going to set up an environment that will facilitate the collaborative creation of Python code. We are also going to introduce you to Python itself.
 
 .. Fragments below:
 
@@ -19,7 +19,7 @@ In this lesson we are looking to provision your workshop. We are going to set up
 
 .. And of course learning to program means understanding the fundamentals of the language itself.
 
-.. Moreover an experienced carpenter is going to be more pikcy about their tools than an amateur, insisting on the right tool at the right time.
+.. Moreover an experienced carpenter is going to be more picky about their tools than an amateur, insisting on the right tool at the right time.
 
 Learning objectives
 -------------------
@@ -72,7 +72,7 @@ https://github.com/UWPCE-PythonCert/PythonCertDevel/blob/master/source/scripts/I
 Graded Assignments
 ------------------
 
-There is nothing gradable for this class. Our primary objective is to get them set up so that they are ready to start coding for the rest of the program.
+None for this class. Our primary objective is to get them set up so that they are ready to start coding for the rest of the program.
 
 Quizzes/exams
 -------------
