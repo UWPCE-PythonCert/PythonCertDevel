@@ -130,7 +130,7 @@ File Writing
         outfile.write("this is line: %i\n"%i)
     outfile.close()
 
-    with open('output.txt', 'w'):
+    with open('output.txt', 'w') as f:
         for i in range(10):
            f.write("this is line: %i\n"%i)
 

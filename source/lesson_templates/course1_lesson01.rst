@@ -27,7 +27,7 @@ After completing this lesson, students will:
  1. Have functional Python development environments appropriate for their operating system of choice.
  2. Be able to minimally navigate a command line.
  3. Have a working installation of git for source code collaboration and control.
- 4. Enjoy an introduction to the Python programming language as component in the practice of developing software.
+ 4. Gain a basic introductory understanding of the Python programming language so that you can explain how Python can be used to successfully develop software.
 
 Readings
 ---------
