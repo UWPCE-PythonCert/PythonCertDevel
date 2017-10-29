@@ -1,5 +1,10 @@
+.. _closures:
+
+
+##############################
 Closures and function Currying
-==============================
+##############################
+
 
 Defining specialized functions on the fly.
 

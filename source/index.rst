@@ -91,18 +91,14 @@ Modules
     modules/AdvancedArgumentPassing
     modules/DictionaryAsSwitch
     modules/Closures
-    modules/Composition
     modules/ContextManagers
     modules/Decorators
     modules/EnvironmentOverview
-    scripts/FunctionalProgramming
-    scripts/Functions
     modules/IPythonIntroduction
     modules/IteratorsAndGenerators
     modules/Lambda
     modules/MapFilterReduce
     modules/Math
-    scripts/Methods
     modules/MultipleInheritance
     modules/ObjectOrientationOverview
     modules/Properties
@@ -144,13 +140,14 @@ Exercises
     exercises/lambda_magic.rst
     exercises/list_lab.rst
     exercises/mailroom.rst
-    exercises/mailroom-oo.rst
+    exercises/unit_testing.rst
     exercises/roman.rst
     exercises/rot13.rst
     exercises/slicing.rst
     exercises/sparse_array.rst
     exercises/string_formatting.rst
     exercises/trapezoid.rst
+    exercises/mailroom-oo.rst
 
 
 Supplemental Materials
@@ -175,6 +172,15 @@ References:
 
     references/index
 
+scripts
+=======
+
+.. toctree::
+    :maxdepth: 2
+
+    scripts/FunctionalProgramming
+    scripts/Functions
+    scripts/Methods
 
 Indices and tables
 ==================

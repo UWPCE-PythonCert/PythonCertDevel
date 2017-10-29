@@ -7,9 +7,14 @@ Intro to Python Session 7
 Pre-class prep
 ==============
 
-read: :ref:`object_orientation_overview`
+**Read:**
 
-read: :ref:`python_classes`
+* :ref:`object_orientation_overview`
+
+* :ref:`python_classes`
+
+* :ref:`subclassing_inheritance`
+
 
 Supplemental reading
 --------------------
@@ -56,28 +61,26 @@ http://pyvideo.org/video/880/stop-writing-classes
 "If your class has only two methods -- and one of them is ``__init__``
 -- you don't need a class"
 
-Material to review for next week
---------------------------------
-
-
-Talk by Raymond Hettinger:
-
-Video of talk: https://youtu.be/HTLu2DFOdTg
-
-Slides: https://speakerdeck.com/pyconslides/pythons-class-development-toolkit-by-raymond-hettinger
-
 
 In-class Activities
 ===================
 
+review mailman with testing
+
 Exercises:
 ----------
+
+OO and classes are a big confusing topic when you are new to it.
+
+So we're going to learn hands-on by doing this exercise:
+
+:ref:`exercise_html_renderer`
 
 
 Post-class Activities
 =====================
 
-Finish the exercises
+Finish the HTML render Excercsie through step
 
 Look at the next session for reading, etc:
 

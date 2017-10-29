@@ -1,7 +1,16 @@
-Multiple Inheritance
-====================
+.. _multiple_inheritance:
 
-Multiple inheritance: Inheriting from more than one class.
+
+####################
+Multiple Inheritance
+####################
+
+
+Inheriting from more than one class.
+====================================
+
+The mechanics of multiple inheritance
+-------------------------------------
 
 Simply provide more than one parent.
 
@@ -22,20 +31,20 @@ Purpose
 
 What was the purpose behind inheritance?
 
-Code reuse.
+*Code reuse.*
 
 What is the purpose behind multiple inheritance?
 
-Code reuse.
+*Code reuse.*
 
 What wasn't the purpose of inheritance?
 
-Building massive class hierarchies for their own sake.
-
+*Building massive class hierarchies for their own sake.*
 
 What isn't the purpose of multiple inheritance?
 
-Building massive class hierarchies for their own sake.
+*Building massive class hierarchies for their own sake.*
+
 
 Python's Multiple Inheritance Model
 -----------------------------------

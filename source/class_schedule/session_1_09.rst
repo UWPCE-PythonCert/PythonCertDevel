@@ -4,8 +4,47 @@
 Intro to Python Session 9
 #########################
 
+**NOTE:** This material not developed yet!
+
+Functional Programming
+
+Topics:
+
+ * Object Objected Programming vs Functional Programming
+ * Objects vs Functions
+ * Control Flow vs Data Flow
+ * Mutability vs Immutability
+ * Managing State
+ * Statements vs Expressions for flow control
+
+
 Pre-class prep
 ==============
+
+Reading:
+--------
+
+* :ref:`anonymous_functions`
+
+
+Videos:
+-------
+
+(NOTE: these are not available yet!)
+
+"Intro to Functional Programming"
+
+
+Supplemental Reading:
+---------------------
+
+Lambda:
+.......
+
+http://www.blog.pythonlibrary.org/2015/10/28/python-101-lambda-basics/
+
+https://pythonconquerstheuniverse.wordpress.com/2011/08/29/lambda_tutorial/
+
 
 In-class Activities
 ===================

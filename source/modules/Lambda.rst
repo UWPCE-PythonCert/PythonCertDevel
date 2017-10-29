@@ -1,5 +1,16 @@
-Lambda
-======
+.. _anonymous_functions:
+
+###########################
+Anonymous Functions: Lambda
+###########################
+
+``lambda``
+==========
+
+The ``lambda`` keyword is a way to create a function on the fly, without giving it a name.
+
+How to use it
+-------------
 
 .. code-block:: ipython
 
@@ -7,7 +18,7 @@ Lambda
     In [172]: f(2,3)
     Out[172]: 5
 
-Content of function can only be an expression -- not a statement
+Content of the expression can only be an expression -- not a statement
 
 Anyone remember what the difference is?
 
@@ -83,3 +94,5 @@ lambda in keyword arguments
     9
 
 Note when the keyword argument is evaluated: this turns out to be very handy!
+
+
