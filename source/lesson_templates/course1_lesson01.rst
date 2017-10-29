@@ -5,8 +5,6 @@
 Course Intro:
 =============
 
-[Paragraph introducing lesson to students]
-
 Learning to program, whether in Python or in any other language, is about more than learning the fundamentals of the language. Learning to program also involves learning the tools involved. You might liken it to carpentry. Without an adequately provisioned workshop, without tools appropriate for the job, a carpenter wouldn't get very far.
 
 Under ideal circumstances learning to program also involves learning to collaborate with others on code development. Working with other programmers is one of the best ways to improve as a programmer. The tools involved in collaboration are also a part of a programmer's workshop.
@@ -58,7 +56,6 @@ https://uwpce-pythoncert.github.io/PythonCertDevel/modules/Py2vsPy3.html
 
 External Readings
 .................
-
 
 screencasts/videos
 ------------------
