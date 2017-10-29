@@ -1,5 +1,10 @@
+.. _subclassing_inheritance:
+
+
 Subclassing and Inheritance
 ===========================
+
+How to put the pieces together to build a complex system without repeating code.
 
 Inheritance
 -----------
@@ -76,7 +81,6 @@ Same thing, but with methods (remember, a method *is* an attribute in python)
 
 all the instances will have the new method
 
-.. nextslide::
 
 Here's a program design suggestion:
 
@@ -87,9 +91,9 @@ If you obey this rule, you will find that any function designed to work with an 
 Overriding \_\_init\_\_
 -----------------------
 
-``__init__`` common method to override
+``__init__`` is a common method to override.
 
-You often need to call the super class ``__init__``  as well
+You often need to call the super class ``__init__``  as well.
 
 .. code-block:: python
 
@@ -104,7 +108,8 @@ You often need to call the super class ``__init__``  as well
             Circle.__init__(self, diameter)
 
 
-exception to: "don't change the method signature" rule.
+Exception to: "don't change the method signature" rule.
+
 
 Using the superclasses' methods
 -------------------------------
@@ -127,16 +132,17 @@ You can also call the superclass' other methods:
 There is nothing special about ``__init__``  except that it gets called
 automatically when you instantiate an instance.
 
-When to Subclass
-----------------
+
+Subclassing vs Composition
+--------------------------
 
 "Is a" relationship: Subclass/inheritance
 
 "Has a" relationship: Composition
 
-.. nextslide::
 
 "Is a" vs "Has a"
+.................
 
 You may have a class that needs to accumulate an arbitrary number of objects.
 
@@ -152,7 +158,8 @@ or
 
 You only want to subclass list if your class could be used anywhere a list can be used.
 
-Attribute resolution order
+
+Attribute Resolution Order
 --------------------------
 
 When you access an attribute:
@@ -206,3 +213,19 @@ When it's called for:
 
     * ``isinstance()``
     * ``issubclass()``
+
+Wrap Up
+-------
+
+Thinking OO in Python:
+
+Think about what makes sense for your code:
+
+* Code re-use
+* Clean APIs
+* ...
+
+Don't be a slave to what OO is *supposed* to look like.
+
+Let OO work for you, not *create* work for you
+

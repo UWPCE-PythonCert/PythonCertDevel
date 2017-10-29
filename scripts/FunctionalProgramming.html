@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
         <link rel="next" title="Functions" href="Functions.html"/>
-        <link rel="prev" title="Introduction to the Environment" href="../modules/EnvironmentOverview.html"/> 
+        <link rel="prev" title="The SciPy Stack" href="../references/scipy.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -129,7 +129,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_09.html">Internet Programming in Python: Session 9</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_10.html">Internet Programming in Python: Session 10</a></li>
 </ul>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Class_introduction.html">Introductions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/BasicPython.html">Basic Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Git.html">Intro to Git</a></li>
@@ -146,25 +146,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../modules/Exceptions.html">Exception Handling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Comprehensions.html">Comprehensions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/AdvancedArgumentPassing.html">Advanced Argument Passing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules/DictionaryAsSwitch.html">Dictionary as Switch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/DictionaryAsSwitch.html">Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Closures.html">Closures and function Currying</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules/Composition.html">Composition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/ContextManagers.html">Context Managers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Decorators.html">Decorators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/EnvironmentOverview.html">Introduction to the Environment</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Functional Programming</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#with-rick-riehle">With Rick Riehle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#function-composition">Function Composition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#control-flow-verses-data-flow">Control Flow verses Data Flow</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/IPythonIntroduction.html">IPython Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/IteratorsAndGenerators.html">Iterators and Generators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules/Lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Lambda.html">Anonymous Functions: Lambda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/MapFilterReduce.html">Map Filter and Reduce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Math.html">Math with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Methods.html">Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/MultipleInheritance.html">Multiple Inheritance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/ObjectOrientationOverview.html">Object Orientation Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Properties.html">Properties</a></li>
@@ -173,10 +164,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../modules/PythonOverview.html">Python Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Recursion.html">Recursion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/SpecialMethodsAndProtocols.html">Special Methods &amp; Protocols</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules/SpecialMethodsAndProtocols.html#emulating-standard-types">Emulating Standard types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/StaticAndClassMethods.html">Static and Class Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/SubclassingAndInheritance.html">Subclassing and Inheritance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules/Testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Testing.html">Unit Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Tutorial.html">Python Tutorial</a></li>
 </ul>
 <ul>
@@ -185,7 +175,7 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/python_pushups.html">Python Pushups</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/args_kwargs_lab.html">Args and Kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/args_kwargs_lab.html">Args and Kwargs LAB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/circle_class.html">Circle Class Excercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/dict_lab.html">Dictionary and Set Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exceptions_lab.html">Exceptions Lab</a></li>
@@ -198,13 +188,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../exercises/lambda_magic.html">lambda and keyword Magic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/list_lab.html">List Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/mailroom.html">Mailroom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/mailroom-oo.html">Mailroom Object Oriented</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/unit_testing.html">Introduction To Unit Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/roman.html">Roman/Arabic Numeral Converter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/rot13.html">ROT13</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/slicing.html">Slicing Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/sparse_array.html">Sparse Array Exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/string_formatting.html">String Formatting Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/trapezoid.html">Trapezoidal Rule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mailroom-oo.html">Mailroom Object Oriented</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/HowToRunAPythonFile.html">How to run a python file</a></li>
@@ -215,6 +206,16 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../references/index.html">Resources for Specific Python Topics</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Functional Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#with-rick-riehle">With Rick Riehle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-composition">Function Composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#control-flow-verses-data-flow">Control Flow verses Data Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Methods.html">Methods</a></li>
 </ul>
 
             
@@ -282,12 +283,13 @@
 <h1>Functional Programming<a class="headerlink" href="#functional-programming" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="with-rick-riehle">
 <h2>With Rick Riehle<a class="headerlink" href="#with-rick-riehle" title="Permalink to this headline">¶</a></h2>
-<p>Let’s start with high shool math. As you will recall, functions take arguments and return a value. The strict definition can be found on <a class="reference external" href="https://en.wikipedia.org/wiki/Function_(mathematics)">Wikipedia</a>:</p>
+<p>Let’s start with high school math. As you will recall, functions take arguments and return a value. The strict definition can be found on <a href="#id1"><span class="problematic" id="id2">Wikipedia_</span></a>:</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Function_(mathematics">https://en.wikipedia.org/wiki/Function_(mathematics</a>)</p>
 <dl class="docutils">
 <dt>Function</dt>
 <dd>In mathematics, a function is a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output.</dd>
 </dl>
-<p>So functions take arguments and return a single, deterministic output, and for a given set of arguments the same value is always returnd.</p>
+<p>So functions take arguments and return a single, deterministic output, and for a given set of arguments the same value is always returned.</p>
 <p>Functions in Python start here, and indeed when programming according to the Functional Programming paradigm they tend to stay here and not go much beyond. Let’s think about that.</p>
 <blockquote>
 <div>adhere to this basic form when constructing functions, yet functions in Python can be much more. Before we get ahead of ourselves let’s look at a few basic definitions.</div></blockquote>
@@ -313,7 +315,7 @@
         <a href="Functions.html" class="btn btn-neutral float-right" title="Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../modules/EnvironmentOverview.html" class="btn btn-neutral" title="Introduction to the Environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../references/scipy.html" class="btn btn-neutral" title="The SciPy Stack" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

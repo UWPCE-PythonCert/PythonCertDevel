@@ -125,7 +125,7 @@ But once you've learned about dictionaries, you may be able to re-write it a bit
   - See if you can use a dict to switch between the users selections.
     see :ref:`dict_as_switch` for what this means.
 
-  - Try to use a dict and the .format() method to do the letter as one
+  - Try to use a dict and the ``.format()`` method to do the letter as one
     big template -- rather than building up a big string in parts.
 
 Example:
@@ -139,7 +139,7 @@ Example:
   In [5]: "My name is {first_name} {last_name}".format(**d)
   Out[5]: 'My name is Chris Barker'
 
-Don't worry too much about the "**" -- we'll get into the details later, but for now, it means, more or less, -- pass this whole dict in as a bunch of keyword arguments.
+Don't worry too much about the "**" -- we'll get into the details later, but for now it means, more or less, pass this whole dict in as a bunch of keyword arguments.
 
 Update mailroom with file writing.
 ----------------------------------

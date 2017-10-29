@@ -6,7 +6,7 @@ Booleans
 With Rick Riehle
 ----------------
 
-In a certain sense there isn't much to talk about with regard to booleans. Everybody knows what the word boolean means: true of false, yes or no. When programming we are using them all the time to accomplish flow control, sometimes explicitly yet often implicitly. Among Python's key or reserved words are ``True`` and ``False``.  You can test for these values explicitly when making flow control decisions.
+In a certain sense there isn't much to talk about with regard to booleans. Everybody knows what the word boolean means: true of false, yes or no. When programming we're using them all the time to accomplish flow control, sometimes explicitly, often implicitly. Among Python's key or reserved words are ``True`` and ``False``.  You can test for these values explicitly when making flow control decisions.
 
 .. code-block:: ipython
 
@@ -46,7 +46,7 @@ Wait, we did not get a Yup. Why not?
 Truthy & falsy
 --------------
 
-We have developed an idea in the programming world... I don't know if it originated in the halls of computer science departments or if it's more of a hacker term. That idea is "truthy". Truthiness, truthy and falsy. Odd sounding terms if you haven't heard them before. They sound somewhat iffy or floaty, as if Truth were hard to pin down. Well, truth is hard to pin down, but that's not the sort of truth we're talking about. Rather, we are referring to values that Python considers to be equivalents to true or values that are equivalent to false. One way to test is to use the built-in function ``bool()``.
+We have taken up an idea in the programming world... truthy. We think Stephen Colbert coined the term. Truthiness, truthy and falsy. Odd sounding terms if you haven't heard them before. They sound somewhat iffy or floaty, as if Truth were hard to pin down. When we're using it in the Python world we are thinking about what Python considers equivalents of true and false. One way to test is to use the built-in function ``bool()``.
 
 .. code-block:: ipython
 
@@ -56,7 +56,7 @@ We have developed an idea in the programming world... I don't know if it origina
 	In [6]: bool(3-3)
 	Out[6]: False
 
-By now you are likely noticing a pattern, but to make it yet more obvious....
+By now you are likely noticing a pattern -- something verses nothing. Something is truthy and nothing is falsy. To make it perfectly obvious....
 
 .. code-block:: ipython
 

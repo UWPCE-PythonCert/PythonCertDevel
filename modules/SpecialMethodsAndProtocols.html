@@ -148,18 +148,14 @@
 <li class="toctree-l1"><a class="reference internal" href="AdvancedArgumentPassing.html">Advanced Argument Passing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DictionaryAsSwitch.html">Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="Closures.html">Closures and function Currying</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Composition.html">Composition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ContextManagers.html">Context Managers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Decorators.html">Decorators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="EnvironmentOverview.html">Introduction to the Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/FunctionalProgramming.html">Functional Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="IPythonIntroduction.html">IPython Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lambda.html">Anonymous Functions: Lambda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MapFilterReduce.html">Map Filter and Reduce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Math.html">Math with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/Methods.html">Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MultipleInheritance.html">Multiple Inheritance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ObjectOrientationOverview.html">Object Orientation Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Properties.html">Properties</a></li>
@@ -174,21 +170,22 @@
 <li class="toctree-l2"><a class="reference internal" href="#the-numerics-protocol">The Numerics Protocol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-container-protocol">The Container Protocol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#an-example">An Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#protocols-in-summary">Protocols in Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#protocols-in-summary">Protocols in Summary</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#emulating-standard-types">Emulating Standard types</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#emulating-standard-types">Emulating Standard types</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#callable-classes">Callable classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#callables">“Callables”</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#custom-callable-objects">Custom callable objects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#writing-your-own-sequence-type">Writing your own sequence type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#a-sparse-array">A Sparse array</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#the-sequence-protocol">The Sequence protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Callables:</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="StaticAndClassMethods.html">Static and Class Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SubclassingAndInheritance.html">Subclassing and Inheritance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">Unit Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Python Tutorial</a></li>
 </ul>
 <ul>
@@ -210,13 +207,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../exercises/lambda_magic.html">lambda and keyword Magic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/list_lab.html">List Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/mailroom.html">Mailroom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/mailroom-oo.html">Mailroom Object Oriented</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/unit_testing.html">Introduction To Unit Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/roman.html">Roman/Arabic Numeral Converter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/rot13.html">ROT13</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/slicing.html">Slicing Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/sparse_array.html">Sparse Array Exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/string_formatting.html">String Formatting Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/trapezoid.html">Trapezoidal Rule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mailroom-oo.html">Mailroom Object Oriented</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/HowToRunAPythonFile.html">How to run a python file</a></li>
@@ -227,6 +225,11 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../references/index.html">Resources for Specific Python Topics</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/FunctionalProgramming.html">Functional Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Methods.html">Methods</a></li>
 </ul>
 
             
@@ -291,7 +294,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="special-methods-protocols">
-<h1>Special Methods &amp; Protocols<a class="headerlink" href="#special-methods-protocols" title="Permalink to this headline">¶</a></h1>
+<span id="special-methods"></span><h1>Special Methods &amp; Protocols<a class="headerlink" href="#special-methods-protocols" title="Permalink to this headline">¶</a></h1>
 <div class="left docutils container">
 <p>Special methods (also called <em>magic</em> methods) are the secret sauce to Python’s Duck typing.</p>
 <p>Defining the appropriate special methods in your classes is how you make your class act like standard classes.</p>
@@ -383,11 +386,11 @@ implement <code class="docutils literal"><span class="pre">__add__</span></code>
 <ul class="simple">
 <li><a class="reference external" href="https://docs.python.org/3.5/reference/datamodel.html#special-method-names">https://docs.python.org/3.5/reference/datamodel.html#special-method-names</a></li>
 </ul>
-</div>
-</div>
 <div class="section" id="emulating-standard-types">
-<h1>Emulating Standard types<a class="headerlink" href="#emulating-standard-types" title="Permalink to this headline">¶</a></h1>
+<h3>Emulating Standard types<a class="headerlink" href="#emulating-standard-types" title="Permalink to this headline">¶</a></h3>
 <p class="medium">Making your classes behave like the built-ins</p>
+</div>
+</div>
 <div class="section" id="callable-classes">
 <h2>Callable classes<a class="headerlink" href="#callable-classes" title="Permalink to this headline">¶</a></h2>
 <p>We’ve been using functions a lot:</p>
@@ -497,6 +500,21 @@ the set of special methods you need:</p>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="id1">
+<h2>Callables:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>And Example of writing a callable class:</p>
+<p>Write a class for a quadratic equation.</p>
+<ul class="simple">
+<li>The initializer for that class should take the parameters: <code class="docutils literal"><span class="pre">a,</span> <span class="pre">b,</span> <span class="pre">c</span></code></li>
+<li>It should store those parameters as attributes.</li>
+<li>The resulting instance should evaluate the function when called, and return the result:</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">my_quad</span> <span class="o">=</span> <span class="n">Quadratic</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">my_quad</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 

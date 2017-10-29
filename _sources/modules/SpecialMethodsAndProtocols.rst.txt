@@ -1,5 +1,8 @@
+.. _special_methods:
+
+###########################
 Special Methods & Protocols
-===========================
+###########################
 
 .. rst-class:: left
 .. container::
@@ -116,6 +119,7 @@ Look up the special methods you need and define them.
 There's more to read about the details of implementing these methods:
 
 * https://docs.python.org/3.5/reference/datamodel.html#special-method-names
+
 
 Emulating Standard types
 =========================
@@ -253,3 +257,26 @@ The key ones are:
 +-------------------+-----------------------+
 |  ``__contains__`` | for ``x in seq``      |
 +-------------------+-----------------------+
+
+Callables:
+-----------
+
+And Example of writing a callable class:
+
+Write a class for a quadratic equation.
+
+* The initializer for that class should take the parameters: ``a, b, c``
+
+* It should store those parameters as attributes.
+
+* The resulting instance should evaluate the function when called, and return the result:
+
+
+.. code-block:: python
+
+    my_quad = Quadratic(a=2, b=3, c=1)
+
+    my_quad(0)
+
+
+

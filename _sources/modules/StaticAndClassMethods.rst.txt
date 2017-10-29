@@ -1,5 +1,10 @@
+.. _static_and_class_methods:
+
+
+########################
 Static and Class Methods
-========================
+########################
+
 
 .. rst-class:: left build
 .. container::

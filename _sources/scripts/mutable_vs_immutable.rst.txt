@@ -8,4 +8,7 @@ Python objects fall into two categories -- mutable and immutable -- it's importa
 
 Cover copy vs deep copy here?
 
-Talk about reference semantics? -- Alex MArtelli's great piece about the statue that points to the cathedral (or something like that)
+Talk about reference semantics? -- Alex Martelli's great piece about the statue that points to the cathedral (or something like that)
+
+See the MoreOnMutability module for more.
+
