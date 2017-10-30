@@ -4,6 +4,8 @@
 Intro to Python Session 4
 #########################
 
+Dictionaries, Sets, and File Handling
+
 Pre-class prep
 ==============
 
@@ -13,6 +15,7 @@ Read:
 :ref:`dicts_and_sets`
 
 :ref:`files`
+
 
 Recommended Reading:
 ---------------------
@@ -24,23 +27,35 @@ Recommended Reading:
 http://www.diveintopython3.net/native-datatypes.html#dictionaries
 
 
-
 In-class Activities
 ===================
 
+ * Review last sessions labs:
+   - slicing
+   - string formatting
+
+ * Review  looping: ``for`` and ``while``
+
+    - ``break`` and ``continue``
+
+    - ``else``
+
  * Review mailroom
+
+Exercises:
+----------
 
  * :ref:`exercise_dict_lab`
 
  * :ref:`exercise_file_lab`
 
+ * Update mailroom with dicts :ref:`exercise_mailroom_plus`
+
  * :ref:`exercise_trigrams`
 
- * update mailroom with dicts :ref:`exercise_mailroom_plus`
 
-
-Post-class Activites
-====================
+Post-class Activities
+=====================
 
 Finish the exercises
 

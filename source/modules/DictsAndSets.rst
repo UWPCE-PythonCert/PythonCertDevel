@@ -18,20 +18,46 @@ Other languages call it:
   * hash
   * key-value pair
 
+It is also known in python as a "mapping", as it "maps" keys to values.
+
+It is like an array, in that it holds a number of items, and you can index into it to get at particular items. But it can use arbitrary indexes, rather than a sequence of numbers.
+
+These indexes are called "keys", and the items stored are called "values"
+
+So for an python sequence, you might do::
+
+  item = stuff[3]
+
+for a dict, you do::
+
+  item = stuff["third"]
 
 Dictionary Constructors
 -----------------------
+
+So how does one make a dict? There are a few ways...
+
+The dict "literal":
+
 .. code-block:: python
 
+    # This dict "lie"
     >>> {'key1': 3, 'key2': 5}
     {'key1': 3, 'key2': 5}
 
-    >>> dict([('key1', 3),('key2', 5)])
+Calling the dict type object constructor:
+
+.. code-block:: python
+
+    # passing in a sequence of (key,value) pairs:
+    >>> dict([('key1', 3), ('key2', 5)])
     {'key1': 3, 'key2': 5}
 
+    # passing keys and values as keyword arguments:
     >>> dict(key1=3, key2= 5)
     {'key1': 3, 'key2': 5}
 
+    # creating and empty dict, and then populating it:
     >>> d = {}
     >>> d['key1'] = 3
     >>> d['key2'] = 5
@@ -40,7 +66,12 @@ Dictionary Constructors
 
 Dictionary Indexing
 -------------------
-::
+
+And how do you get stuff out (index it)?
+
+The say way you index a sequence, except the index (now called a key) can be all kinds of stuff:
+
+.. code-block:: python
 
     >>> d = {'name': 'Brian', 'score': 42}
 
@@ -52,15 +83,22 @@ Dictionary Indexing
     >>> d[0]
     'zero'
 
+What if the key doesn't exist in the dict?
+
+.. code-block:: python
+
     >>> d['non-existing key']
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     KeyError: 'non-existing key'
 
 
-.. nextslide::
+What can keys be?
+-----------------
 
-Keys can be any immutable:
+Surely not ANYTHING?
+
+Not quite: keys can be any immutable:
 
   * number
   * string
@@ -72,38 +110,47 @@ Keys can be any immutable:
     In [326]: d[3.14] = 'pi'
     In [327]: d['pi'] = 3.14
     In [328]: d[ (1,2,3) ] = 'a tuple key'
+
+What if you try to use a mutable type?
+
+.. code-block:: ipython
+
     In [329]: d[ [1,2,3] ] = 'a list key'
        TypeError: unhashable type: 'list'
 
-
 Actually -- any "hashable" type.
 
+So, technically, it's not mutability, but hashability that matters.
 
-.. nextslide:: Hashing
+(though for most intents and purposes, you want to use immutable types as keys in dicts.)
 
-Hash functions convert arbitrarily large data to a small proxy (usually int)
+Hashing
+-------
 
-Always return the same proxy for the same input
+Hash functions convert arbitrarily large data to a small proxy (usually an int)
 
-MD5, SHA, etc
+They always return the same proxy for the same input.
+
+MD5, SHA, etc, are some well known hash allgorithms.
 
 Dictionaries hash the key to an integer proxy and use it to find the key and value.
 
-Key lookup is efficient because the hash function leads directly to a bucket with very few keys (often just one)
+Key lookup is efficient because the hash function leads directly to a bucket with very few keys (often just one).
 
-What would happen if the proxy changed after storing a key?
+What would happen if the proxy (hash) changed after storing a key?
 
-Hashability requires immutability
+(you wouldn't be able to find it again!)
 
-Key lookup is very efficient
+Hashability requires immutability.
 
-Same average time regardless of size
+Key lookup is very efficient.
 
+Same average time regardless of size of the dict.
 
-.. nextslide:: Dictionary indexing
+Dictionary indexing
+-------------------
 
-
-Note: Python name look-ups are implemented with dict -- it's highly optimized
+Note: cPython name look-ups are implemented with the dicts -- it's highly optimized
 
 Key to value:
 
@@ -121,7 +168,6 @@ If you need to check dict values often, create another dict or set
 Dictionary Ordering (not)
 -------------------------
 
-
 Dictionaries have no defined order
 
 .. code-block:: ipython
@@ -131,6 +177,10 @@ Dictionaries have no defined order
     Out[353]: {'one': 1, 'three': 3, 'two': 2}
     In [354]: d.keys()
     Out[354]: dict_keys(['three', 'two', 'one'])
+
+**Python 3.6 Note:** In cPython 3.6, the internal implementation was changed, and it *does* happen to preserve order. But that is considered an implementation detail -- do not count on it!
+
+(the above demo was done on an earlier version of Python)
 
 Dictionary Iterating
 --------------------
@@ -166,6 +216,9 @@ dict keys and values
     In [23]: d.items()
     Out[23]: dict_items([('score', 42), ('name', 'Brian')])
 
+Notice that these are of type "dict_keys" and "dict_values". These are special types that provide iteration and printing, and other features, but are tied to the underlying dict, rather than copies.
+
+(Python2 would simply create lists of keys and values -- but then you were making a copy when you probably didn't need one)
 
 dict keys and values
 --------------------
@@ -222,9 +275,14 @@ Is it in there?
 
 Containment is on the keys.
 
-.. nextslide::
+Think of it like  "real" dictionary, where the keys are the words, and the values are the definitions.
+
+Is the word "gullible" in the dictionary?
+
+Is asking if the key is in the dict.
 
 Getting something: (like indexing)
+----------------------------------
 
 .. code-block:: ipython
 
@@ -240,9 +298,8 @@ But you can specify a default
 
 Never raises an Exception (default default is None)
 
-.. nextslide::
-
 iterating
+---------
 
 .. code-block:: ipython
 
@@ -252,7 +309,7 @@ iterating
   this
   that
 
-which is equivalent to, but faster than:
+Which is equivalent to, but faster than:
 
 .. code-block:: ipython
 
@@ -262,9 +319,7 @@ which is equivalent to, but faster than:
   this
   that
 
-.. nextslide::
-
-but to get values, must specify you want values:
+But to get values, must specify you want values:
 
 .. code-block:: ipython
 
@@ -274,12 +329,12 @@ but to get values, must specify you want values:
   5
   7
 
+``pop()``
+---------
 
-.. nextslide::
+"Popping": getting the value while removing it.
 
-"Popping": getting the value while removing it
-
-pop out a particular key
+Pop out a particular key:
 
 .. code-block:: ipython
 
@@ -299,8 +354,6 @@ pop out an arbitrary key, value pair
   In [24]: d
   Out[24]: {}
 
-.. nextslide::
-
 This one is handy:
 
 ``setdefault(key[, default])``
@@ -309,16 +362,25 @@ gets the value if it's there, sets it if it's not
 
 .. code-block:: ipython
 
-  In [27]: d.setdefault('something', 'a value')
-  Out[27]: 'a value'
+  In [4]: d = {}
 
-  In [28]: d
-  Out[28]: {'something': 'a value'}
+  In [5]: d.setdefault('something', 'a value')
+  Out[5]: 'a value'
+
+  In [6]: d
+  Out[6]: {'something': 'a value'}
+
+The next time you call it, it gets the already set value:
+
+.. code-block:: ipython
+
+  In [7]: d.setdefault('something', 'a different value')
+  Out[7]: 'a value'
 
 
-.. nextslide::
+Assignment is a link to the original dict, just like lists or anything else.
 
-Assignment maintains link to the original dict
+And dicts a mutable -- so be careful!
 
 .. code-block:: ipython
 
@@ -333,9 +395,7 @@ Assignment maintains link to the original dict
   Out[50]: {'something': 'a value', 'something else': 'another value'}
 
 
-.. nextslide::
-
-Use explicit copy method to get a copy
+If you want a copy, use the explicit copy method to get a copy
 
 .. code-block:: ipython
 
@@ -449,3 +509,76 @@ immutable -- for use as a key in a dict
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
     AttributeError: 'frozenset' object has no attribute 'add'
+
+A few added notes:
+==================
+
+The count() method
+------------------
+
+All Python sequences (including strings) have a ``count()`` method:
+
+.. code-block:: ipython
+
+    In [1]: s = "This is an arbitrary string"
+
+    In [2]: s.count('t')
+    Out[2]: 2
+
+What if you want a case-insensitive count?
+
+.. code-block:: ipython
+
+    In [3]: s.lower().count('t')
+    Out[3]: 3
+
+set.update()
+------------
+
+If you want to add a bunch of stuff to a set, you can use update:
+
+.. code-block:: ipython
+
+    In [1]: s = set()
+
+In [2]: s.update
+Out[2]: <function set.update>
+
+In [3]: s.update(['this', 'that'])
+
+In [4]: s
+Out[4]: {'that', 'this'}
+
+In [5]: s.update(['this', 'thatthing'])
+
+In [6]: s
+Out[6]: {'that', 'thatthing', 'this'}
+
+**NOTE:** It's VERY often the case that when you find yourself writing a trivial loop -- there is a way to do it with a built in method!
+
+
+
+Sorting stuff in dictionaries:
+-------------------------------
+
+dicts aren't sorted, so what if you want to do something in a sorted way?
+
+The "standard" way:
+
+.. code-block:: python
+
+  for key in sorted(d.keys()):
+      ...
+
+Another option:
+
+.. code-block:: python
+
+    collections.OrderedDict
+
+Also other nifty stuff in the ``collections`` module:
+
+https://docs.python.org/3.6/library/collections.html
+
+**NOTE:** In Python 3.6, dicts were optimized in a way that happens to preserver order. But this is considered an implementation detail. Do not count on it! If you want order preserved, use OrderedDict.
+

@@ -8,9 +8,10 @@ Saving and loading data
 
 
 Files
------
+=====
 
 Text Files
+----------
 
 .. code-block:: python
 
@@ -22,9 +23,9 @@ Text Files
 
 NOTE: these days, you probably need to use Unicode for text -- we'll get to that next week
 
-.. nextslide::
 
 Binary Files
+------------
 
 .. code-block:: python
 
@@ -39,10 +40,8 @@ Binary Files
 (See the ``struct``  module to unpack binary data )
 
 
-.. nextslide::
-
-
 File Opening Modes
+------------------
 
 .. code-block:: python
 
@@ -60,7 +59,8 @@ http://www.manpagez.com/man/3/fopen/
 
 **Gotcha** -- 'w' modes always clear the file
 
-.. nextslide:: Text File Notes
+Text File Notes
+---------------
 
 Text is default
 
@@ -88,10 +88,9 @@ Reading part of a file
     secret_rest = f.read()
     f.close()
 
-.. nextslide::
-
 
 Common Idioms
+-------------
 
 .. code-block:: python
 
@@ -109,7 +108,6 @@ Common Idioms
             break
         do_something_with_line()
 
-.. nextslide::
 
 We will learn more about the keyword with later, but for now, just understand
 the syntax and the advantage over the try-finally block:
@@ -132,7 +130,7 @@ File Writing
         outfile.write("this is line: %i\n"%i)
     outfile.close()
 
-    with open('output.txt', 'w'):
+    with open('output.txt', 'w') as f:
         for i in range(10):
            f.write("this is line: %i\n"%i)
 
@@ -174,7 +172,6 @@ There is also cStringIO -- a bit faster.
 
     from cStringIO import StringIO
 
-=====================
 Paths and Directories
 =====================
 
@@ -212,7 +209,8 @@ os module
     os.path.relpath()
 
 
-.. nextslide:: os.path module
+``os.path`` module
+------------------
 
 .. code-block:: python
 
@@ -225,7 +223,8 @@ os module
 
 (all platform independent)
 
-.. nextslide:: directories
+Directories
+-----------
 
 .. code-block:: python
 
@@ -257,4 +256,128 @@ All the stuff in os.path and more:
     junk2.txt
     junkfile.txt
     ...
+
+And it has a really nifty way to join paths, by overloading the "division" operator:
+
+.. code-block:: ipython
+
+    In [49]: p = pathlib.Path.home()  # create a path to the user home dir.
+
+    In [50]: p
+    Out[50]: PosixPath('/Users/Chris')
+
+    In [51]: p / "a_dir" / "one_more" / "a_filename"
+    Out[51]: PosixPath('/Users/Chris/a_dir/one_more/a_filename')
+
+Kinda slick, eh?
+
+For the full docs:
+
+https://docs.python.org/3/library/pathlib.html
+
+The Path Protocol
+-----------------
+
+As of Python 3.6, there is now a protocol for making arbitrary objects act like paths:
+
+Read about it in PEP 519:
+
+https://www.python.org/dev/peps/pep-0519/
+
+This we added because most built-in file handling modules, as well as any number of third party packages that needed a path worked only with paths string paths.
+
+Even after ``pathlib`` was added to the standard library, you couldn't pass a ``Path`` object in where a path was needed --even the most common ones like ``open()``
+
+So you could use the nifty path manipulation stuff, but still needed to call ``str`` on it:
+
+.. code-block:: python
+
+    p = pathlib.Path.home() / a_filename.txt
+
+    f = open(str(p), 'r')
+
+Rather than add explicit support for ``Path`` objects, a new protocol was defined, and most of the standard library was updated to support the new protocol.
+
+This way third party path libraries could be used with the standard library as well.
+
+What this means to you
+----------------------
+
+Unless you are writing a path manipulation library, or a library that deals with paths other than with the stdlib packages (like ``open()``), All you need to know is that you can use ``Path`` objects most places you need a path.
+
+I expect we will see expanded use of pathlib as python 3.6 becomes widely used.
+
+Some added notes:
+=================
+
+Using files and "with"
+-----------------------
+
+Sorry for the confusion, but I'll be more clear now.
+
+When working with files, unless you have a good reason not to, use ``with``:
+
+.. code-block:: python
+
+  with open(the_filename, 'w') as outfile:
+      outfile.write(something)
+      do_some_more...
+  # now done with out file -- it will be closed, regardless of errors, etc.
+  do_other_stuff
+
+``with`` invokes a context manager -- which can be confusing, but for now,
+just follow this pattern -- it really is more robust.
+
+And you can even do two at once:
+
+.. code-block:: python
+
+    with open(source, 'rb') as infile, open(dest, 'wb') as outfile:
+        outfile.write(infile.read())
+
+
+Binary files
+------------
+
+Python can open files in one of two modes:
+
+ * Text
+ * Binary
+
+This is just what you'd think -- if the file contains text, you want text mode. If the file contains arbitrary binary data, you want binary mode.
+
+All data in all files is binary -- that's how computers work. So in Python3, "text" actually means Unicode -- which is a particular system for matching characters to binary data.
+
+But this too is complicated -- there are multiple ways that binary data can be mapped to Unicode text, known as "encodings". In Python, text files are by default opened with the "utf-8" encoding. These days, that mostly "just works".
+
+.. nextslide::
+
+But if you read a binary file as text, then Python will try to interpret the bytes as utf-8 encoded text -- and this will likely fail:
+
+.. code-block:: ipython
+
+    In [13]: open("a_photo.jpg").read()
+    ---------------------------------------------------------------------------
+    UnicodeDecodeError                        Traceback (most recent call last)
+    <ipython-input-13-5c699bc20e80> in <module>()
+    ----> 1 open("PassportPhoto.JPG").read()
+
+    /Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/codecs.py in decode(self, input, final)
+        319         # decode input (taking the buffer into account)
+        320         data = self.buffer + input
+    --> 321         (result, consumed) = self._buffer_decode(data, self.errors, final)
+        322         # keep undecoded input until the next call
+        323         self.buffer = data[consumed:]
+
+    UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
+
+.. nextslide::
+
+In Python2, it's less likely that you'll get an error like this -- it doesn't try to decode the file as it's read -- even for text files -- so it's a bit tricky and more error prone.
+
+**NOTE:** If you want to actually DO anything with a binary file, other than passing it around, then you'll need to know a lot about how the details of what the bytes in the file mean -- and most likely, you'll use a library for that -- like an image processing library for the jpeg example above.
+
+
+
+
 

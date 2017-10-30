@@ -1,7 +1,16 @@
-Multiple Inheritance
-====================
+.. _multiple_inheritance:
 
-Multiple inheritance: Inheriting from more than one class.
+
+####################
+Multiple Inheritance
+####################
+
+
+Inheriting from more than one class.
+====================================
+
+The mechanics of multiple inheritance
+-------------------------------------
 
 Simply provide more than one parent.
 
@@ -22,20 +31,20 @@ Purpose
 
 What was the purpose behind inheritance?
 
-Code reuse.
+*Code reuse.*
 
 What is the purpose behind multiple inheritance?
 
-Code reuse.
+*Code reuse.*
 
 What wasn't the purpose of inheritance?
 
-Building massive class hierarchies for their own sake.
-
+*Building massive class hierarchies for their own sake.*
 
 What isn't the purpose of multiple inheritance?
 
-Building massive class hierarchies for their own sake.
+*Building massive class hierarchies for their own sake.*
+
 
 Python's Multiple Inheritance Model
 -----------------------------------
@@ -127,7 +136,7 @@ Remember that super does not only delegate to your superclass, it delegates to a
 
 Therefore you must be prepared to call any other class's method in the hierarchy and be prepared to be called from any other class's method.
 
-The general rule is to pass all arguments you received on to the super function.  If classes can take differing arguments, accept *args and **kwargs.
+The general rule is to pass all arguments you received on to the super function.  If classes can take differing arguments, accept ``*args`` and ``**kwargs``.
 
 Two seminal articles
 --------------------

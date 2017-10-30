@@ -73,6 +73,7 @@ Modules
 .. toctree::
     :maxdepth: 1
 
+    modules/Class_introduction
     modules/BasicPython
     modules/Git
     modules/GitWorkflow
@@ -80,27 +81,24 @@ Modules
     modules/Documentation
     modules/Booleans
     modules/Modules
-    scripts/Sequences
+    modules/Sequences
     modules/Iteration
     modules/Strings
     modules/DictsAndSets
     modules/Files
+    modules/Exceptions
     modules/Comprehensions
     modules/AdvancedArgumentPassing
     modules/DictionaryAsSwitch
     modules/Closures
-    modules/Composition
     modules/ContextManagers
     modules/Decorators
     modules/EnvironmentOverview
-    scripts/FunctionalProgramming
-    scripts/Functions
     modules/IPythonIntroduction
     modules/IteratorsAndGenerators
     modules/Lambda
     modules/MapFilterReduce
     modules/Math
-    scripts/Methods
     modules/MultipleInheritance
     modules/ObjectOrientationOverview
     modules/Properties
@@ -113,6 +111,7 @@ Modules
     modules/SubclassingAndInheritance
     modules/Testing
     modules/Tutorial
+    modules/MoreOnMutability
 
 Quizzes
 =======
@@ -142,13 +141,14 @@ Exercises
     exercises/lambda_magic.rst
     exercises/list_lab.rst
     exercises/mailroom.rst
-    exercises/mailroom-oo.rst
+    exercises/unit_testing.rst
     exercises/roman.rst
     exercises/rot13.rst
     exercises/slicing.rst
     exercises/sparse_array.rst
     exercises/string_formatting.rst
     exercises/trapezoid.rst
+    exercises/mailroom-oo.rst
 
 
 Supplemental Materials
@@ -173,6 +173,15 @@ References:
 
     references/index
 
+scripts
+=======
+
+.. toctree::
+    :maxdepth: 2
+
+    scripts/FunctionalProgramming
+    scripts/Functions
+    scripts/Methods
 
 Indices and tables
 ==================

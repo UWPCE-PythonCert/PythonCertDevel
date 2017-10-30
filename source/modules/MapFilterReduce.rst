@@ -1,9 +1,15 @@
+.. _map_filter_reduce:
+
+#####################
 Map Filter and Reduce
-=====================
+#####################
 
-No real consensus about what that means.
+``map``, ``filter``, and ``reduce`` are considered key parts of "functional programming"
 
-But there are some "classic" methods available in Python.
+But there is no real consensus about what "functional" means.
+
+But Python does support these "classic" functional methods.
+
 
 map
 ---

@@ -1,7 +1,12 @@
+.. _advanced_argument_passing:
+
+#########################
 Advanced Argument Passing
-=========================
+#########################
 
 This is a very, very nifty Python feature -- it really lets you write dynamic programs.
+
+NOTE: add keyword only arguments!
 
 Keyword arguments
 -----------------
@@ -153,13 +158,6 @@ Becomes:
         "{cake} cake, {fruit} fruit, {salad} salad, "
         "and {pasta} pasta.".format(**food_prefs))
 
-LAB
-----
+Note that this is particularity useful when the same value is used in multiple places in the format string.
 
-Time to play with all this to get a feel for it.
 
-:ref:`exercise_args_kwargs_lab`
-
-This is not all that clearly specified.  The goal is for you to
-experiment with various ways to define and call functions so that
-you understand what is possible and what happens with each call.

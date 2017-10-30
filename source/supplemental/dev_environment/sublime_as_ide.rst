@@ -7,7 +7,7 @@ Turning Sublime Text Into a Lightweight Python IDE
 
 A solid text editor is a developer's best friend. You use it constantly and it
 becomes like a second pair of hands. The keyboard commands you use daily
-become so engrained in your muscle memory that you stop thinking about them
+become so ingrained in your muscle memory that you stop thinking about them
 entirely.
 
 With Sublime Text, it's possible to turn your text editor into the functional
@@ -23,9 +23,12 @@ Here are *my* requirements for an 'IDE':
 
 * It should provide excellent, configurable syntax colorization.
 * It should allow for robust tab completion.
+* It should perform automatic code linting to help avoid silly mistakes.
+
+And some more advanced features that you may want later:
+
 * It should offer the ability to jump to the definition of symbols in other
   files.
-* It should perform automatic code linting to help avoid silly mistakes.
 * It should be able to interact with a Python interpreter such that when
   debugging, the editor will follow along with the debugger.
 
@@ -149,6 +152,8 @@ Here are the plugins I've installed to achieve the requirements above.
 Anaconda
 --------
 
+There are a bunch of Python-related plugins available. However, Anaconda is a nice package that provides most the features you want, so using just that one.
+
 Not to be confused with the Scientific Python distribution -- The Anaconda sublime plugin is a full featured package to turn Sublime into a pretty full IDE:
 
 http://damnwidget.github.io/anaconda/
@@ -165,171 +170,35 @@ If you get the right python when you type "python" at a raw command line, then y
 
  http://damnwidget.github.io/anaconda/anaconda_settings/
 
+A few settings you'll want to change
+------------------------------------
 
-Code Linting
-------------
+There are a few setting you may want to change:
 
-Code linting shows you mistakes you've made in your source *before* you attempt
-to run the code. This saves time. Sublime Text has an available plugin for code
-linters called `SublimeLinter`_.
-
-.. _SublimeLinter: http://sublimelinter.readthedocs.org/en/latest/
+* max line length for the linter: default is 72, which is pretty short these day. I use 90
 
 
-Python has a couple of great tools available for linting, the `pep8`_ and
-`pyflakes`_ packages. ``Pep8`` checks for style violations, lines too long,
-extra spaces and so on. ``Pyflakes`` checks for syntactic violations, like
-using a symbol that isn't defined or importing a symbol you don't use.
-
-Another Python linting package, `flake8`_ combines these two, and adds in
-`mccabe`_, a tool to check the `cyclomatic complexity`_ of code you write. This
-can be of great help in discovering methods and functions that could be
-simplified and thus made easier to understand and more testable.
-
-
-.. _pep8: https://pypi.python.org/pypi/pep8
-.. _pyflakes: https://pypi.python.org/pypi/pyflakes
-.. _flake8: https://pypi.python.org/pypi/flake8
-.. _mccabe: https://pypi.python.org/pypi/mccabe
-.. _cyclomatic complexity: http://en.wikipedia.org/wiki/Cyclomatic_complexity
-
-There is a nice plugin for the SublimeLinter that `utilizes flake8`_. For it to
-work, the plugin will need to have a Python executable that has the Python
-tools it needs installed.
-
-
-
-Make sure that the python packages you need are installed in your main
-python install, rather than a virtualenv.
-
-
-.. _utilizes flake8: https://sublime.wbond.net/packages/SublimeLinter-flake8
-
-Use Python packaging tools to install the required packages:
-
-.. code-block:: bash
-
-    $ pip install flake8
-    Downloading/unpacking flake8
-    [...]
-    Downloading/unpacking pyflakes>=0.7.3 (from flake8)
-    [...]
-    Downloading/unpacking pep8>=1.4.6 (from flake8)
-    [...]
-    Downloading/unpacking mccabe>=0.2.1 (from flake8)
-    [...]
-    Installing collected packages: flake8, pyflakes, pep8, mccabe
-    [...]
-    Successfully installed flake8 pyflakes pep8 mccabe
-    Cleaning up...
-    $
-
-Your Python install now has the required packages installed.
-
-try typeing these command to make sure::
-
-    $ flake8
-    Usage: flake8 [options] input ...
-
-    flake8: error: input not specified
-
-Now install SublimeLinter and then SublimeLinter-flake8 using Package Control.
-
-Here are the settings you can add to ``Preferences`` -> ``Package Settings`` ->
-``SublimeLinter`` -> ``Settings - User``:
-
-.. code-block:: json
-
-    {
-        //...
-        "linters": {
-            "flake8": {
-                "@disable": false,
-                "args": [],
-                "builtins": "",
-                "excludes": [],
-                "ignore": "",
-                "max-complexity": 10,
-                "max-line-length": null,
-                "select": ""
-            }
-        },
-        //...
-        "paths": {
-            "linux": [],
-            "osx": [
-                "/Users/cewing/virtualenvs/sublenv/bin"
-            ],
-            "windows": []
-        },
-        "python_paths": {
-            "linux": [],
-            "osx": [
-                "/Users/cewing/virtualenvs/sublenv/bin"
-            ],
-            "windows": []
-        },
-        //...
-    }
-
-The ``paths`` key points to the path that contains the ``flake8`` executable
-command.
-
-The ``python_paths`` key points to the location of the python executable to be
-used.
-
-The settings inside the ``flake8`` object control the performance of the
-linter. `Read more about them here`_.
-
-.. _Read more about them here: https://github.com/SublimeLinter/SublimeLinter-flake8#settings
-
-.. image:: /_static/flake8_output.png
-    :width: 600px
-    :align: center
-    :alt: Flake8 shows unused import and trailing whitespace issues.
 
 White Space Management
 ----------------------
 
-One of the issues highlighted by ``flake8`` is trailing spaces.  Sublime text
+One of the issues highlighted by code linters is trailing spaces.  Sublime text
 provides a setting that allows you to remove them every time you save a file:
 
 .. code-block:: json
-
-    source
 
     {
         "trim_trailing_whitespace_on_save": true
     }
 
-**Do not use this setting**
+This is a useful setting, but be careful if you are working with existing code: removing trailing whitespace by default causes a *ton* of noise in git commits.
 
-Removing trailing whitespace by default causes a *ton* of noise in commits.
+But if you use it from the start with your code, it will keep it clean from the beginning.
 
-Keep commits for stylistic cleanup separate from those that make important
-changes to code.
+Debugging Support
+-----------------
 
-The `TrailingSpaces`_ SublimeText plugin can help with this.
-
-.. _TrailingSpaces: https://github.com/SublimeText/TrailingSpaces
-
-Here are the settings you can use:
-
-.. code-block:: json
-
-    {
-        //...
-        "trailing_spaces_modified_lines_only": true,
-        "trailing_spaces_trim_on_save": true,
-        // ...
-    }
-
-This allows trimming whitespace on save, but *only on lines you have directly
-modified*. You can still trim *all* whitespace manually and keep changesets
-free of noise.
-
-Follow-Along
-------------
+You'll probably want to wait on this until you start using a debugger, but it's a nifty feature when you get there.
 
 The final requirement for a reasonable IDE experience is to be able to follow a
 debugging session in the file where the code exists.

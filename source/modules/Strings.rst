@@ -80,7 +80,27 @@ So to be clear: if you have a bunch of strings in s a sequence and you want to p
     In [23]: "".join(["these", "are", "some", "strings"])
     Out[23]: 'thesearesomestrings'
 
-In fact, joining is a fast operation -- the best way to build up a large string is to collect the parts in a list, and then join() it.
+Building up a long string.
+--------------------------
+
+The obvious thing to do is something like:
+
+.. code-block:: python
+
+  msg = ""
+  for piece in list_of_stuff:
+      msg += piece
+
+But: strings are immutable -- python needs to create a new string each time you add a piece -- not efficient:
+
+.. code-block:: python
+
+   msg = []
+   for piece in list_of_stuff:
+       msg.append(piece)
+   " ".join(msg)
+
+appending to lists is efficient -- and so is the join() method of strings.
 
 
 Case Switching

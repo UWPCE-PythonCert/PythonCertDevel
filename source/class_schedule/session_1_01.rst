@@ -36,7 +36,7 @@ In-class Activities
 .. toctree::
     :maxdepth: 1
 
-    ../modules/class_introduction
+    ../modules/Class_introduction
 
     ../modules/Git
 
@@ -52,8 +52,8 @@ In-class Activities
 A few exercises: :ref:`python_pushups`
 
 
-Post-class Activites
-====================
+Post-class Activities
+=====================
 
 Read the rest of Basic Python Syntax intro, if we didn't have time in class:
 :ref:`basic_python_syntax`

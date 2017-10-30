@@ -1,7 +1,7 @@
 .. _exercise_args_kwargs_lab:
 
-Args and Kwargs
-===============
+Args and Kwargs LAB
+===================
 
 Goal:
 -----
@@ -11,6 +11,12 @@ Develop an understanding of using advanced argument passing and parameter defini
 If this is all confusing -- you may want to review this:
 
 http://stupidpythonideas.blogspot.com/2013/08/arguments-and-parameters.html
+
+Note:
+
+This is not all that clearly specified -- the goal is for you to
+experiment with various ways to define and call functions, so you
+can understand what's possible, and what happens with each call.
 
 Procedure
 ---------
