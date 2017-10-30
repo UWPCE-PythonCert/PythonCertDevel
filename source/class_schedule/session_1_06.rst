@@ -4,7 +4,7 @@
 Intro to Python Session 6
 #########################
 
-**Unit Testing and Advanced Argument Passing**
+Unit Testing and Advanced Argument Passing
 
 Pre-class prep
 ==============

@@ -4,6 +4,8 @@
 Intro to Python Session 4
 #########################
 
+Dictionaries, Sets, and File Handling
+
 Pre-class prep
 ==============
 
