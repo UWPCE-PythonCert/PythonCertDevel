@@ -28,11 +28,13 @@ Review of last class's labs
 Exercises:
 ----------
 
-1. :ref:`exercise_exceptions`
+1. :ref:`exercise_comprehensions`
 
-2. Optional: :ref:`exercise_exceptions_lab`
+2. :ref:`exercise_exceptions`
 
-3. Update mailroom with Exceptions: :ref:`exercise_mailroom_exceptions`
+3. Optional: :ref:`exercise_exceptions_lab`
+
+4. Update mailroom with Exceptions: :ref:`exercise_mailroom_exceptions`
 
 
 Post-class Activities
