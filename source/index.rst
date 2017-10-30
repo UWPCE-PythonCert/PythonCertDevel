@@ -132,6 +132,7 @@ Exercises
     exercises/circle_class.rst
     exercises/dict_lab.rst
     exercises/exceptions_lab.rst
+    exercises/except_exercise.rst
     exercises/fib_and_lucas.rst
     exercises/file_lab.rst
     exercises/fizz_buzz.rst
