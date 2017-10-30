@@ -1,0 +1,539 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Comprehensions Lab &mdash; PythonCert 4.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PythonCert
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/orientation.html">Orientation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_01.html">Intro to Python Session 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_02.html">Intro to Python Session 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_03.html">Intro to Python Session 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_04.html">Intro to Python Session 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_05.html">Intro to Python Session 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_06.html">Intro to Python Session 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_07.html">Intro to Python Session 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_08.html">Intro to Python Session 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_09.html">Intro to Python Session 9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_1_10.html">Intro to Python Session 10</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_01.html">Advanced Programming in Python: Session 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_02.html">Advanced Programming in Python: Session 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_03.html">Advanced Programming in Python: Session 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_04.html">Advanced Programming in Python: Session 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_05.html">Advanced Programming in Python: Session 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_06.html">Advanced Programming in Python: Session 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_07.html">Advanced Programming in Python: Session 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_08.html">Advanced Programming in Python: Session 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_09.html">Advanced Programming in Python: Session 9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_2_10.html">Advanced Programming in Python: Session 10</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_01.html">Internet Programming in Python: Session 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_02.html">Internet Programming in Python: Session 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_03.html">Internet Programming in Python: Session 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_04.html">Internet Programming in Python: Session 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_05.html">Internet Programming in Python: Session 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_06.html">Internet Programming in Python: Session 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_07.html">Internet Programming in Python: Session 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_08.html">Internet Programming in Python: Session 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_09.html">Internet Programming in Python: Session 9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class_schedule/session_3_10.html">Internet Programming in Python: Session 10</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Class_introduction.html">Introductions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/BasicPython.html">Basic Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Git.html">Intro to Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/GitWorkflow.html">Git Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Functions.html">More on Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Documentation.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Booleans.html">Boolean Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Modules.html">Code Structure, Modules, and Namespaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Sequences.html">Python Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Iteration.html">Iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Strings.html">Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/DictsAndSets.html">Dictionaries and Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Files.html">File Reading and Writing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Exceptions.html">Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Comprehensions.html">Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/AdvancedArgumentPassing.html">Advanced Argument Passing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/DictionaryAsSwitch.html">Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Closures.html">Closures and function Currying</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/ContextManagers.html">Context Managers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/EnvironmentOverview.html">Introduction to the Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/IPythonIntroduction.html">IPython Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/IteratorsAndGenerators.html">Iterators and Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Lambda.html">Anonymous Functions: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/MapFilterReduce.html">Map Filter and Reduce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Math.html">Math with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/MultipleInheritance.html">Multiple Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/ObjectOrientationOverview.html">Object Orientation Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Properties.html">Properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Py2vsPy3.html">Python 2 verses Python 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/PythonClasses.html">Python Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/PythonOverview.html">Python Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Recursion.html">Recursion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/SpecialMethodsAndProtocols.html">Special Methods &amp; Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/StaticAndClassMethods.html">Static and Class Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/SubclassingAndInheritance.html">Subclassing and Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Testing.html">Unit Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Tutorial.html">Python Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/MoreOnMutability.html">A bit more on mutability (and copies)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quizzes/basic_math_quiz.html">Basic Math Quiz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quizzes/comprehensions_quiz.html">Comprehensions Quiz</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_pushups.html">Python Pushups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="args_kwargs_lab.html">Args and Kwargs LAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circle_class.html">Circle Class Excercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dict_lab.html">Dictionary and Set Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions_lab.html">Exceptions Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="except_exercise.html">Exceptions Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fib_and_lucas.html">Fibonacci Series Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_lab.html">File LAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fizz_buzz.html">Fizz Buzz Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grid_printer.html">Grid Printer Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="html_renderer.html">HTML Renderer Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kata_fourteen.html">Kata Fourteen: Tom Swift Under Milk Wood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lambda_magic.html">lambda and keyword Magic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_lab.html">List Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mailroom.html">Mailroom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unit_testing.html">Introduction To Unit Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roman.html">Roman/Arabic Numeral Converter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rot13.html">ROT13</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slicing.html">Slicing Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sparse_array.html">Sparse Array Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_formatting.html">String Formatting Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trapezoid.html">Trapezoidal Rule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mailroom-oo.html">Mailroom Object Oriented</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../supplemental/HowToRunAPythonFile.html">How to run a python file</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../supplemental/installing/index.html">Installing Python and core tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supplemental/dev_environment/index.html">Setting Up A Development Environment For Python</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../references/index.html">Resources for Specific Python Topics</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/FunctionalProgramming.html">Functional Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Methods.html">Methods</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PythonCert</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Comprehensions Lab</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/exercises/comprehensions_lab.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="comprehensions-lab">
+<span id="exercise-comprehensions"></span><h1>Comprehensions Lab<a class="headerlink" href="#comprehensions-lab" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="playing-with-comprehensions">
+<h2>Playing with Comprehensions<a class="headerlink" href="#playing-with-comprehensions" title="Permalink to this headline">¶</a></h2>
+<p><strong>Goal:</strong></p>
+<p>Getting Familiar with list, set and dict comprehensions</p>
+<div class="section" id="list-comprehensions">
+<h3>List comprehensions<a class="headerlink" href="#list-comprehensions" title="Permalink to this headline">¶</a></h3>
+<p>Note: this is a bit of a “backwards” exercise – we show you code, you figure out what it does.</p>
+<p>As a result, not much to submit – don’t worry about it – you’ll have a chance to use these in other exercises.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">feast</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lambs&#39;</span><span class="p">,</span> <span class="s1">&#39;sloths&#39;</span><span class="p">,</span> <span class="s1">&#39;orangutans&#39;</span><span class="p">,</span>
+<span class="go">             &#39;breakfast cereals&#39;, &#39;fruit bats&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span> <span class="o">=</span> <span class="p">[</span><span class="n">delicacy</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">for</span> <span class="n">delicacy</span> <span class="ow">in</span> <span class="n">feast</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">???</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+<p>(figure it out before you try it)</p>
+</div>
+<div class="section" id="filtering-lists-with-list-comprehensions">
+<h3>Filtering lists with list comprehensions<a class="headerlink" href="#filtering-lists-with-list-comprehensions" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">feast</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;sloths&#39;</span><span class="p">,</span> <span class="s1">&#39;orangutans&#39;</span><span class="p">,</span> <span class="s1">&#39;breakfast cereals&#39;</span><span class="p">,</span>
+<span class="go">            &#39;fruit bats&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comp</span> <span class="o">=</span> <span class="p">[</span><span class="n">delicacy</span> <span class="k">for</span> <span class="n">delicacy</span> <span class="ow">in</span> <span class="n">feast</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">delicacy</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">feast</span><span class="p">)</span>
+<span class="go">???</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+<p>(figure it out first!)</p>
+</div>
+<div class="section" id="unpacking-tuples-in-list-comprehensions">
+<h3>Unpacking tuples in list comprehensions<a class="headerlink" href="#unpacking-tuples-in-list-comprehensions" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_of_tuples</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;lumberjack&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;inquisition&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;spam&#39;</span><span class="p">)]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span> <span class="o">=</span> <span class="p">[</span> <span class="n">skit</span> <span class="o">*</span> <span class="n">number</span> <span class="k">for</span> <span class="n">number</span><span class="p">,</span> <span class="n">skit</span> <span class="ow">in</span> <span class="n">list_of_tuples</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">???</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">comprehension</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="double-list-comprehensions">
+<h3>Double list comprehensions<a class="headerlink" href="#double-list-comprehensions" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eggs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;poached egg&#39;</span><span class="p">,</span> <span class="s1">&#39;fried egg&#39;</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">meats</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;lite spam&#39;</span><span class="p">,</span> <span class="s1">&#39;ham spam&#39;</span><span class="p">,</span> <span class="s1">&#39;fried spam&#39;</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span> <span class="o">=</span> \
+<span class="go">[ &#39;{0} and {1}&#39;.format(egg, meat) for egg in eggs for meat in meats]</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">comprehension</span><span class="p">)</span>
+<span class="go">???</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-comprehensions">
+<h3>Set comprehensions<a class="headerlink" href="#set-comprehensions" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span> <span class="o">=</span> <span class="p">{</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s1">&#39;aabbbcccc&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dictionary-comprehensions">
+<h3>Dictionary comprehensions<a class="headerlink" href="#dictionary-comprehensions" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dict_of_weapons</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;first&#39;</span><span class="p">:</span> <span class="s1">&#39;fear&#39;</span><span class="p">,</span>
+<span class="go">                       &#39;second&#39;: &#39;surprise&#39;,</span>
+<span class="go">                       &#39;third&#39;:&#39;ruthless efficiency&#39;,</span>
+<span class="go">                       &#39;forth&#39;:&#39;fanatical devotion&#39;,</span>
+<span class="go">                       &#39;fifth&#39;: None}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dict_comprehension</span> <span class="o">=</span> \
+<span class="go">{ k.upper(): weapon for k, weapon in dict_of_weapons.items() if weapon}</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;first&#39;</span> <span class="ow">in</span> <span class="n">dict_comprehension</span>
+<span class="go">???</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;FIRST&#39;</span> <span class="ow">in</span> <span class="n">dict_comprehension</span>
+<span class="go">???</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">dict_of_weapons</span><span class="p">)</span>
+<span class="go">???</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">dict_comprehension</span><span class="p">)</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="other-resources">
+<h3>Other resources<a class="headerlink" href="#other-resources" title="Permalink to this headline">¶</a></h3>
+<p>See also:</p>
+<p><a class="reference external" href="https://github.com/gregmalcolm/python_koans/blob/master/python3/koans/about_comprehension.py">https://github.com/gregmalcolm/python_koans/blob/master/python3/koans/about_comprehension.py</a></p>
+<p>From Greg Malcolm’s excellent Python Koans series:</p>
+<p><a class="reference external" href="https://github.com/gregmalcolm/python_koans">https://github.com/gregmalcolm/python_koans</a></p>
+</div>
+<div class="section" id="count-even-numbers">
+<h3>Count Even Numbers<a class="headerlink" href="#count-even-numbers" title="Permalink to this headline">¶</a></h3>
+<p>This is from CodingBat “count_evens” (<a class="reference external" href="http://codingbat.com/prob/p189616">http://codingbat.com/prob/p189616</a>)</p>
+<p><em>Using a list comprehension</em>, return the number of even integers in the given list.</p>
+<p>Note: the % “mod” operator computes the remainder, e.g. <code class="docutils literal"><span class="pre">5</span> <span class="pre">%</span> <span class="pre">2</span></code> is 1.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">count_evens</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> <span class="o">==</span> <span class="mi">3</span>
+
+<span class="n">count_evens</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">3</span>
+
+<span class="n">count_evens</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Can you do this with a single line comprehension?</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count_evens</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+   <span class="n">one_line_comprehension_here</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dict-and-set-comprehensions">
+<h3><code class="docutils literal"><span class="pre">dict</span></code> and <code class="docutils literal"><span class="pre">set</span></code> comprehensions<a class="headerlink" href="#dict-and-set-comprehensions" title="Permalink to this headline">¶</a></h3>
+<p>Revisiting the dict/set lab – see how much you can do with comprehensions instead.</p>
+<p>(<a class="reference internal" href="dict_lab.html#exercise-dict-lab"><span class="std std-ref">Dictionary and Set Lab</span></a>)</p>
+<p>Specifically, look at these:</p>
+<p>First a slightly bigger, more interesting (or at least bigger..) dict:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">food_prefs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Chris&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Seattle&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;cake&quot;</span><span class="p">:</span> <span class="s2">&quot;chocolate&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;fruit&quot;</span><span class="p">:</span> <span class="s2">&quot;mango&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;salad&quot;</span><span class="p">:</span> <span class="s2">&quot;greek&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;pasta&quot;</span><span class="p">:</span> <span class="s2">&quot;lasagna&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="working-with-this-dict">
+<h3>Working with this dict:<a class="headerlink" href="#working-with-this-dict" title="Permalink to this headline">¶</a></h3>
+<p>1. Print the dict by passing it to a string format method, so that you
+get something like:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>“Chris is from Seattle, and he likes chocolate cake, mango fruit,</dt>
+<dd>greek salad, and lasagna pasta”</dd>
+</dl>
+</div></blockquote>
+<p>2. Using a list comprehension, build a dictionary of numbers from zero
+to fifteen and the hexadecimal equivalent (string is fine).
+(the <code class="docutils literal"><span class="pre">hex()</span></code> function gives you the hexidecimal representation of a number as a string)</p>
+<ol class="arabic simple" start="3">
+<li>Do the previous entirely with a dict comprehension – should be a one-liner</li>
+</ol>
+<p>4. Using the dictionary from item (1): Make a dictionary using the same
+keys but with the number of ‘a’s in each value. You can do this either
+by editing the dict in place, or making a new one. If you edit in place,
+make a copy first!</p>
+<p>5. Create sets s2, s3 and s4 that contain numbers from zero through twenty,
+divisible 2, 3 and 4.</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>Do this with one set comprehension for each set.</li>
+<li>What if you had a lot more than 3? – Don’t Repeat Yourself (DRY).<ul>
+<li>create a sequence that holds all the divisors you might want –
+could be 2,3,4, or could be any other arbitrary divisors.</li>
+<li>loop through that sequence to build the sets up – so no repeated code.
+you will end up with a list of sets – one set for each divisor in your
+sequence.</li>
+<li>The idea here is that when you see three (Or more!) lines of code that
+are almost identical, then you you want to find a way to generalize
+that code and have it act on a set of inputs, so the actual code is
+only written once.</li>
+</ul>
+</li>
+<li>Extra credit:  do it all as a one-liner by nesting a set comprehension
+inside a list comprehension. (OK, that may be getting carried away!)</li>
+</ol>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Christopher Barker, Cris Ewing, Christy Heaton, Maria McKinley, Rick Riehle, Joseph Schilz.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'4.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
