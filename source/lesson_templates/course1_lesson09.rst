@@ -5,7 +5,7 @@
 Introduction to Functional Programming
 ======================================
 
-Programming paradigms facilitate the analysis of problems through a specific lens. They tend to congeal around constellations of related ideas and techniques. They tend to differentially support problem domains, with some programming domains being particularly suited to some problems and less well suited to others. In this and the next few lessons we will explore Python's support for the Functional Programming paradigm.
+Programming paradigms facilitate the analysis of problems through a specific lens. They tend to congeal around constellations of related ideas and techniques. They tend to differentially support problem domains, with some programming paradigms being particularly suited to some problems and less well suited to others. In this and the next few lessons we will explore Python's support for the Functional Programming paradigm.
 
 Learning objectives
 -------------------
