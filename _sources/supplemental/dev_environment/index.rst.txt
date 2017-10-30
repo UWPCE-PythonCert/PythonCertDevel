@@ -66,7 +66,7 @@ Minimal Requirements
 In order to be productive in this program, you need to be able to do the following:
 
 * Manipulate files and write and save python code in files.
-    You really, really want a "real" programmer's editor for this.
+  You really, really want a "real" programmer's editor for this.
 
 * Run your code with Python 3.6
 
