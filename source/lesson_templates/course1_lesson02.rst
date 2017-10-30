@@ -12,17 +12,17 @@ Learning objectives
 
 After completing this lesson, students will:
 
-(Need to fill these in!)
-
- 1. Write basic python functions
- 2.
+ 1. Be able to develop and run a simple Python program using their preferred editor, so that they are fully familiar with the associated techniques.
+ 2. Know how to name, create and use variables in a Python program, so that they have a foundation of this knowledge on which to build for later learning and assignments.
+ 3. Use and demonstrate Python constructs to control program flow, so that various types of conditional logic are understood and applied.
+ 4. Write basic Python functions and show how they are used in simple scenarios, so that they can demonstrate and understand how to start to avoid redundancies in code. 
 
 Readings
 ---------
 
-Tutorials come in many forms, but I define a python "tutorial" as a quick high-level introduction, designed to kick start your python programming. It should give you enough to get something done, but not provide a lot of detailed explanations.  If you have been doing a bit of python coding already, or have taken an introductory programing class with Python, then you may be able to skip this step.
+Tutorials come in many forms, but I define a Python "tutorial" as a quick high-level introduction, designed to kick start your Python programming. It should give you enough to get something done, but not provide a lot of detailed explanations.  If you have been doing a bit of Python coding already, or have taken an introductory programing class with Python, then you may be able to skip this step.
 
-Every one of you has a different background and learning style. So take a bit of time to figure out which resource works for you.
+Every one of you has a different background and learning style. So take whatever time you need to figure out which resource works for you.
 
 https://uwpce-pythoncert.github.io/PythonCertDevel/references/learning.html
 
