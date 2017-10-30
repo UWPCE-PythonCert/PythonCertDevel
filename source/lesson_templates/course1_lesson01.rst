@@ -5,7 +5,7 @@
 Course Intro:
 =============
 
-Learning to program, whether in Python or in any other language, is about more than learning the fundamentals of the language. Learning to program also involves learning the tools involved. You might liken it to carpentry. Without an adequately provisioned workshop, without tools appropriate for the job, a carpenter wouldn't get very far.
+Learning to program, whether in Python or in any other language, is about more than learning the fundamentals of the language. Learning to program also involves learning the tools involved. You might liken it to carpentry. Without an adequately provisioned workshop, and without tools appropriate for the job, a carpenter wouldn't get very far.
 
 Under ideal circumstances learning to program also involves learning to collaborate with others on code development. Working with other programmers is one of the best ways to improve as a programmer. The tools involved in collaboration are also a part of a programmer's workshop.
 
@@ -27,7 +27,7 @@ After completing this lesson, students will:
  1. Have functional Python development environments appropriate for their operating system of choice.
  2. Be able to minimally navigate a command line.
  3. Have a working installation of git for source code collaboration and control.
- 4. Gain a basic introductory understanding of the Python programming language so that you can explain how Python can be used to successfully develop software.
+ 4. Gain a basic introductory understanding of the Python programming language so that they can explain how Python can be used to successfully develop software.
 
 Readings
 ---------
