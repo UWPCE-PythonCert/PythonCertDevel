@@ -6,11 +6,7 @@ Intro to the Python Certificate Program
 With Chris Barker & Rick Riehle
 -------------------------------
 
-And the rest of the instructors?
-
-This will be an introduction to the program and the instructors.
-
-
+And the reset of the instructors?
 
 
 

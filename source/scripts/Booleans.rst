@@ -1,5 +1,7 @@
 :orphan:
 
+.. _script_booleans:
+
 Booleans
 ========
 
