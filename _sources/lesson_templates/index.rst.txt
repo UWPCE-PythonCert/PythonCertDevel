@@ -4,7 +4,6 @@
 All the Lessons for the first two classes in Python Cert
 ########################################################
 
-
 .. toctree::
     :maxdepth: 2
 
