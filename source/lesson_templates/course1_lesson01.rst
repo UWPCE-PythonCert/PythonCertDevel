@@ -82,7 +82,7 @@ git tutorial:
 
 https://try.github.io/levels/1/challenges/1
 
-basic git commands:
+Basic git commands:
 
 https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html
 
