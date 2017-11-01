@@ -2,8 +2,8 @@
 
 .. _script_booleans:
 
-Booleans
-========
+Booleans Video
+==============
 
 With Rick Riehle
 ----------------
