@@ -4,7 +4,7 @@
 Intro to Python Session 9
 #########################
 
-**NOTE:** This material not developed yet!
+**NOTE:** This material not fully developed yet!
 
 Functional Programming
 

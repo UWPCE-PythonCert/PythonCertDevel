@@ -60,7 +60,7 @@ most likely need ``superuser`` privileges to do so:
 Great.  Once that's done, you should find that you have a ``virtualenv``
 command available to you from your shell:
 
-.. code-block:: bash
+.. code-block::
 
     $ virtualenv --help
     Usage: virtualenv [OPTIONS] DEST_DIR
