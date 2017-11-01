@@ -1,12 +1,10 @@
 .. _atom_as_ide:
 
-**************************************************
+##########################################
 Turning Atom Into a Lightweight Python IDE
-**************************************************
+##########################################
 
-Atom is the self-proclaimed "hackable text editor for the 21st Century." It has a nice
-modern interface, and is highly customizable yet can also be used productively
-with minimal setup and configuration.
+Atom is the self-proclaimed "hackable text editor for the 21st Century." It has a nice modern interface, and is highly customizable yet can also be used productively with minimal setup and configuration.
 
 
 Requirements
@@ -69,7 +67,7 @@ everything you can do. You can also watch a Getting Started video_.
 Atom has a configuration file which you can modify called config.cson.
 Access it via ``File`` -> ``Config...``
 
-.. code-block:: markdown
+.. code-block::
 
   "*":
     core:

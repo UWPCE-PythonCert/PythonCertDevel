@@ -35,7 +35,9 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/> 
+    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
+        <link rel="next" title="Fibonacci Series Exercise" href="fib_and_lucas.html"/>
+        <link rel="prev" title="Exceptions Exercise" href="except_exercise.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -172,13 +174,29 @@
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/basic_math_quiz.html">Basic Math Quiz</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/comprehensions_quiz.html">Comprehensions Quiz</a></li>
 </ul>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="python_pushups.html">Python Pushups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="args_kwargs_lab.html">Args and Kwargs LAB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="circle_class.html">Circle Class Excercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dict_lab.html">Dictionary and Set Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exceptions_lab.html">Exceptions Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="except_exercise.html">Exceptions Exercise</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Comprehensions Lab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#playing-with-comprehensions">Playing with Comprehensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-comprehensions">List comprehensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-lists-with-list-comprehensions">Filtering lists with list comprehensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unpacking-tuples-in-list-comprehensions">Unpacking tuples in list comprehensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#double-list-comprehensions">Double list comprehensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-comprehensions">Set comprehensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dictionary-comprehensions">Dictionary comprehensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-resources">Other resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#count-even-numbers">Count Even Numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dict-and-set-comprehensions"><code class="docutils literal"><span class="pre">dict</span></code> and <code class="docutils literal"><span class="pre">set</span></code> comprehensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#working-with-this-dict">Working with this dict:</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="fib_and_lucas.html">Fibonacci Series Exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file_lab.html">File LAB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fizz_buzz.html">Fizz Buzz Exercise</a></li>
@@ -208,6 +226,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../references/index.html">Resources for Specific Python Topics</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Intro.html">Intro to the Python Certificate Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/how_to_run_python.html">How to run a Python File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/intro_to_ipython.html">Quick overview of using iPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Booleans.html">Booleans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/slicing.html">Slicing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scripts/FunctionalProgramming.html">Functional Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scripts/Methods.html">Methods</a></li>
@@ -355,7 +378,7 @@
 </div>
 <div class="section" id="set-comprehensions">
 <h3>Set comprehensions<a class="headerlink" href="#set-comprehensions" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span> <span class="o">=</span> <span class="p">{</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s1">&#39;aabbbcccc&#39;</span><span class="p">}</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span> <span class="o">=</span> <span class="p">{</span> <span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="s1">&#39;aabbbcccc&#39;</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>What is the output of:</p>
@@ -429,26 +452,18 @@
 </div>
 <div class="section" id="working-with-this-dict">
 <h3>Working with this dict:<a class="headerlink" href="#working-with-this-dict" title="Permalink to this headline">¶</a></h3>
-<p>1. Print the dict by passing it to a string format method, so that you
-get something like:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>“Chris is from Seattle, and he likes chocolate cake, mango fruit,</dt>
-<dd>greek salad, and lasagna pasta”</dd>
-</dl>
-</div></blockquote>
-<p>2. Using a list comprehension, build a dictionary of numbers from zero
-to fifteen and the hexadecimal equivalent (string is fine).
-(the <code class="docutils literal"><span class="pre">hex()</span></code> function gives you the hexidecimal representation of a number as a string)</p>
-<ol class="arabic simple" start="3">
-<li>Do the previous entirely with a dict comprehension – should be a one-liner</li>
-</ol>
-<p>4. Using the dictionary from item (1): Make a dictionary using the same
-keys but with the number of ‘a’s in each value. You can do this either
-by editing the dict in place, or making a new one. If you edit in place,
-make a copy first!</p>
-<p>5. Create sets s2, s3 and s4 that contain numbers from zero through twenty,
-divisible 2, 3 and 4.</p>
+<ol class="arabic">
+<li><p class="first">Print the dict by passing it to a string format method, so that you get something like:</p>
+<p>“Chris is from Seattle, and he likes chocolate cake, mango fruit,
+greek salad, and lasagna pasta”</p>
+</li>
+<li><p class="first">Using a list comprehension, build a dictionary of numbers from zero to fifteen and the hexadecimal equivalent (string is fine). (the <code class="docutils literal"><span class="pre">hex()</span></code> function gives you the hexidecimal representation of a number as a string)</p>
+</li>
+<li><p class="first">Do the previous entirely with a dict comprehension – should be a one-liner</p>
+</li>
+<li><p class="first">Using the dictionary from item (1): Make a dictionary using the same keys but with the number of ‘a’s in each value. You can do this either by editing the dict in place, or making a new one. If you edit in place make a copy first!</p>
+</li>
+<li><p class="first">Create sets s2, s3 and s4 that contain numbers from zero through twenty, divisible 2, 3 and 4.</p>
 <blockquote>
 <div><ol class="loweralpha simple">
 <li>Do this with one set comprehension for each set.</li>
@@ -468,6 +483,8 @@ only written once.</li>
 inside a list comprehension. (OK, that may be getting carried away!)</li>
 </ol>
 </div></blockquote>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -479,6 +496,15 @@ inside a list comprehension. (OK, that may be getting carried away!)</li>
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fib_and_lucas.html" class="btn btn-neutral float-right" title="Fibonacci Series Exercise" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="except_exercise.html" class="btn btn-neutral" title="Exceptions Exercise" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

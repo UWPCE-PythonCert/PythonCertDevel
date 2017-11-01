@@ -181,6 +181,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/circle_class.html">Circle Class Excercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/dict_lab.html">Dictionary and Set Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/exceptions_lab.html">Exceptions Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/except_exercise.html">Exceptions Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/comprehensions_lab.html">Comprehensions Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/fib_and_lucas.html">Fibonacci Series Exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/file_lab.html">File LAB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/fizz_buzz.html">Fizz Buzz Exercise</a></li>
@@ -237,6 +239,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../references/index.html">Resources for Specific Python Topics</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../scripts/Intro.html">Intro to the Python Certificate Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripts/how_to_run_python.html">How to run a Python File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripts/intro_to_ipython.html">Quick overview of using iPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripts/Booleans.html">Booleans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripts/slicing.html">Slicing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../scripts/FunctionalProgramming.html">Functional Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../scripts/Functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../scripts/Methods.html">Methods</a></li>
@@ -353,36 +360,36 @@ This will create an empty file, you can then copy the settings you want
 to override from the default set into your personal settings.</p>
 <p>Here’s a reasonable set of preliminary settings (theme, color scheme and font
 are quite personal, find ones that suit you.):</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span>{
-    &quot;color_scheme&quot;: &quot;Packages/User/Cobalt.tmTheme&quot;,
-    &quot;theme&quot;: &quot;Soda Light 3.sublime-theme&quot;,
-    // A font face that helps distinguish between 0 (the number) and &#39;O&#39; (the letter)
-    // among other problem characters. You also want a &quot;fixed width font&quot;
-    // Monaco is a nice option that comes with all Macs.
-    // Not sure what&#39;s best on Windows.
-    &quot;font_face&quot;: &quot;Monaco&quot;,
-    // getting older. I wonder if comfy font size increases as a linear
-    //  function of age?
-    &quot;font_size&quot;: 15,
-    &quot;ignored_packages&quot;:
-    [
-        // I&#39;m not a vi user, so this is of no use to me.
-        &quot;Vintage&quot;
-    ],
-    &quot;rulers&quot;:
-    [
-        // set text rulers so I can judge line length for pep8
-        72, // docstrings
-        79, // optimum code line length
-        100  // maximum allowable length
-    ],
-    &quot;word_wrap&quot;: false, // I hate auto-wrapped text.
-    &quot;wrap_width&quot;: 79, // This is used by a plugin elsewhere
-    &quot;tab_size&quot;: 4,
-    &quot;translate_tabs_to_spaces&quot;: true,
-    &quot;use_tab_stops&quot;: true,
-    &quot;draw_white_space&quot;: &quot;all&quot;, // I like so see spaces and tabs -- makes it easier to debug
-}
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;color_scheme&quot;</span><span class="o">:</span> <span class="s2">&quot;Packages/User/Cobalt.tmTheme&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;theme&quot;</span><span class="o">:</span> <span class="s2">&quot;Soda Light 3.sublime-theme&quot;</span><span class="p">,</span>
+    <span class="c1">// A font face that helps distinguish between 0 (the number) and &#39;O&#39; (the letter)</span>
+    <span class="c1">// among other problem characters. You also want a &quot;fixed width font&quot;</span>
+    <span class="c1">// Monaco is a nice option that comes with all Macs.</span>
+    <span class="c1">// Not sure what&#39;s best on Windows.</span>
+    <span class="s2">&quot;font_face&quot;</span><span class="o">:</span> <span class="s2">&quot;Monaco&quot;</span><span class="p">,</span>
+    <span class="c1">// getting older. I wonder if comfy font size increases as a linear</span>
+    <span class="c1">//  function of age?</span>
+    <span class="s2">&quot;font_size&quot;</span><span class="o">:</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="s2">&quot;ignored_packages&quot;</span><span class="o">:</span>
+    <span class="p">[</span>
+        <span class="c1">// I&#39;m not a vi user, so this is of no use to me.</span>
+        <span class="s2">&quot;Vintage&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;rulers&quot;</span><span class="o">:</span>
+    <span class="p">[</span>
+        <span class="c1">// set text rulers so I can judge line length for pep8</span>
+        <span class="mi">72</span><span class="p">,</span> <span class="c1">// docstrings</span>
+        <span class="mi">79</span><span class="p">,</span> <span class="c1">// optimum code line length</span>
+        <span class="mi">100</span>  <span class="c1">// maximum allowable length</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;word_wrap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// I hate auto-wrapped text.</span>
+    <span class="s2">&quot;wrap_width&quot;</span><span class="o">:</span> <span class="mi">79</span><span class="p">,</span> <span class="c1">// This is used by a plugin elsewhere</span>
+    <span class="s2">&quot;tab_size&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s2">&quot;translate_tabs_to_spaces&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;use_tab_stops&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;draw_white_space&quot;</span><span class="o">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="c1">// I like so see spaces and tabs -- makes it easier to debug</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Especially important is the setting <code class="docutils literal"><span class="pre">translate_tabs_to_spaces</span></code>, which ensures

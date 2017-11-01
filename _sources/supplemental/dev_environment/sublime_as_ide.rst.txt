@@ -69,7 +69,7 @@ to override from the default set into your personal settings.
 Here's a reasonable set of preliminary settings (theme, color scheme and font
 are quite personal, find ones that suit you.):
 
-.. code-block:: json
+.. code-block:: javascript
 
     {
         "color_scheme": "Packages/User/Cobalt.tmTheme",

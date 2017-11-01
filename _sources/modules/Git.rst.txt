@@ -204,7 +204,7 @@ Start by making sure you are on your own master branch:
     $ git checkout master
 
 This is **really really** important. Take the time to ensure you are where you think you are, iow, that your origin is your own github repository and that you are working on master from that remote.
-You can use :bash:`git remote -v` and :bash:`git branch -a` to verify.
+You can use `git remote -v` and `git branch -a` to verify.
 
 Now, fetch the upstream master branch and merge it into your master.
 You can do this in one step with:
@@ -221,7 +221,7 @@ You can do this in one step with:
 
 
 Now all the changes from *upstream* are present in your local clone.
-You should do this pull everytime you start to work on code.
+You should do this pull every time you start to work on code.
 
 In order to preserve the changes made by others in your fork on GitHub, you'll have to push:
 

@@ -53,6 +53,8 @@ Exercises:
 Testing mailroom:
 .................
 
+:ref:`exercise_mailroom_testing`
+
 Write a complete set of unit tests for your mailroom program.
 
    * You will likely find that it is really hard to test without refactoring.

@@ -180,6 +180,8 @@
 <li class="toctree-l1"><a class="reference internal" href="circle_class.html">Circle Class Excercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dict_lab.html">Dictionary and Set Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exceptions_lab.html">Exceptions Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="except_exercise.html">Exceptions Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comprehensions_lab.html">Comprehensions Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fib_and_lucas.html">Fibonacci Series Exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file_lab.html">File LAB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fizz_buzz.html">Fizz Buzz Exercise</a></li>
@@ -203,12 +205,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#update-mailroom-with-file-writing">Update mailroom with file writing.</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#adding-exceptions-and-testing">Adding Exceptions and Testing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#tests">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-exceptions-and-comprehensions">Adding Exceptions and Comprehensions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#exceptions">Exceptions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#comprehensions">Comprehensions</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-unit-tests">Adding Unit Tests</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="unit_testing.html">Introduction To Unit Testing</a></li>
@@ -231,6 +233,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../references/index.html">Resources for Specific Python Topics</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Intro.html">Intro to the Python Certificate Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/how_to_run_python.html">How to run a Python File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/intro_to_ipython.html">Quick overview of using iPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Booleans.html">Booleans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/slicing.html">Slicing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scripts/FunctionalProgramming.html">Functional Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scripts/Methods.html">Methods</a></li>
@@ -459,18 +466,9 @@ big template – rather than building up a big string in parts.</li>
 <p>The idea is to require you to structure your code so that you can write the same letter to the screen or to disk (and thus anywhere else) and also exercise a bit of file writing.</p>
 </div>
 </div>
-<div class="section" id="adding-exceptions-and-testing">
-<span id="exercise-mailroom-exceptions"></span><h2>Adding Exceptions and Testing<a class="headerlink" href="#adding-exceptions-and-testing" title="Permalink to this headline">¶</a></h2>
-<p><strong>After Session05</strong></p>
-<p>Once you once you’ve learned about Exception handling, testing, and comprehensions, you should be able to refactor your code to be more robust.</p>
-<div class="section" id="tests">
-<h3>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h3>
-<p>Add a full suite of unit tests.</p>
-<p>“full suite” means all the code is tested. In practice, it’s very hard to test the user interaction, but you can test everything else. Make sure that there is as little untested code in the user interaction portion of the program – hardly any logic.</p>
-<p>This is a big step – you may find that your code is hard to test. If that’s the case, it’s a good sign that you <em>should</em> refactor your code.</p>
-<p>I like to say: “If it’s hard to test, it’s not well structured”</p>
-<p>Put in the tests <strong>before</strong> you make the other changes below - that’s much of the point of tests – you can know that you haven’t broken anything when you refactor!</p>
-</div>
+<div class="section" id="adding-exceptions-and-comprehensions">
+<span id="exercise-mailroom-exceptions"></span><h2>Adding Exceptions and Comprehensions<a class="headerlink" href="#adding-exceptions-and-comprehensions" title="Permalink to this headline">¶</a></h2>
+<p><strong>After Learning about Exceptions</strong></p>
 <div class="section" id="exceptions">
 <h3>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h3>
 <p>Now that you’ve learned about exception handling, you can update your code to handle errors better – like when a user inputs bad data.</p>
@@ -479,6 +477,15 @@ big template – rather than building up a big string in parts.</li>
 <h3>Comprehensions<a class="headerlink" href="#comprehensions" title="Permalink to this headline">¶</a></h3>
 <p>Can you use comprehensions to clean up your code a bit?</p>
 </div>
+</div>
+<div class="section" id="adding-unit-tests">
+<span id="exercise-mailroom-testing"></span><h2>Adding Unit Tests<a class="headerlink" href="#adding-unit-tests" title="Permalink to this headline">¶</a></h2>
+<p><strong>After learning about Unit Testing</strong></p>
+<p>Add a full suite of unit tests.</p>
+<p>“full suite” means all the code is tested. In practice, it’s very hard to test the user interaction, but you can test everything else. Make sure that there is as little untested code in the user interaction portion of the program – hardly any logic.</p>
+<p>This is a big step – you may find that your code is hard to test. If that’s the case, it’s a good sign that you <em>should</em> refactor your code.</p>
+<p>I like to say: “If it’s hard to test, it’s not well structured”</p>
+<p>Put in the tests <strong>before</strong> you make the other changes below - that’s much of the point of tests – you can know that you haven’t broken anything when you refactor!</p>
 </div>
 </div>
 
