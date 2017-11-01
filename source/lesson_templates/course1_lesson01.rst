@@ -2,8 +2,9 @@
 
 .. _course1_lesson01:
 
-Course Intro:
-=============
+
+1. Course Intro:
+================
 
 Learning to program, whether in Python or in any other language, is about more than learning the fundamentals of the language. Learning to program also involves learning the tools involved. You might liken it to carpentry. Without an adequately provisioned workshop, and without tools appropriate for the job, a carpenter wouldn't get very far.
 
@@ -32,44 +33,83 @@ After completing this lesson, students will:
 Readings
 ---------
 
-Self Produced
-.............
+**NOTE:** Maybe we want some of this in a "Getting setup" or "orientation" pre-lesson?
 
-.. Source page:
-.. https://uwpce-pythoncert.github.io/PythonCertDevel/class_schedule/session_1_01.html
+:ref:`class_introduction` (This will need to be customized for each modality -- this one was used for the fall 2017 classroom class)
 
-https://uwpce-pythoncert.github.io/PythonCertDevel/supplemental/installing/index.html#installing-python
+.. https://uwpce-pythoncert.github.io/PythonCertDevel/modules/Class_introduction.html
 
-https://uwpce-pythoncert.github.io/PythonCertDevel/supplemental/dev_environment/shell.html#shell-customization
+:ref:`installing_python`
 
-https://uwpce-pythoncert.github.io/PythonCertDevel/supplemental/dev_environment/index.html#setting-up-dev-environment
+.. https://uwpce-pythoncert.github.io/PythonCertDevel/supplemental/installing/index.html#installing-python
 
-https://uwpce-pythoncert.github.io/PythonCertDevel/modules/Class_introduction.html
+:ref:`setting_up_dev_environment`
 
-https://uwpce-pythoncert.github.io/PythonCertDevel/modules/Git.html
+.. https://uwpce-pythoncert.github.io/PythonCertDevel/supplemental/dev_environment/index.html#setting-up-dev-environment
 
-https://uwpce-pythoncert.github.io/PythonCertDevel/modules/PythonOverview.html
+:ref:`shell_customization`
 
-https://uwpce-pythoncert.github.io/PythonCertDevel/modules/BasicPython.html
+.. https://uwpce-pythoncert.github.io/PythonCertDevel/supplemental/dev_environment/shell.html#shell-customization
 
-https://uwpce-pythoncert.github.io/PythonCertDevel/modules/Py2vsPy3.html
+:ref:`git`
 
-External Readings
-.................
+.. https://uwpce-pythoncert.github.io/PythonCertDevel/modules/Git.html
 
-screencasts/videos
-------------------
+:ref:`python_overview`
 
- (~1-3 videos per lesson, 1 topic per video)
+.. https://uwpce-pythoncert.github.io/PythonCertDevel/modules/PythonOverview.html
 
-Intro
+:ref:`basic_python_syntax`
 
-https://github.com/UWPCE-PythonCert/PythonCertDevel/blob/master/source/scripts/Intro.txt
+.. https://uwpce-pythoncert.github.io/PythonCertDevel/modules/BasicPython.html
+
+:ref:`py2_vs_py3`
+
+..  https://uwpce-pythoncert.github.io/PythonCertDevel/modules/Py2vsPy3.html
+
+Supplemental Readings
+---------------------
+
+Getting up to speed with the command line:
+..........................................
+
+https://learnpythonthehardway.org/book/appendixa.html
+
+More about git:
+...............
+
+git tutorial:
+
+https://try.github.io/levels/1/challenges/1
+
+Basic git commands:
+
+https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html
+
+Maybe put the external Python tutorials here, rather than in the next lesson...
+
+Videos
+------
+
+:ref:`script_intro`
+
+.. https://github.com/UWPCE-PythonCert/PythonCertDevel/blob/master/source/scripts/Intro.txt
+
+:ref:`script_how_to_run_python`
+
+:ref:`intro_to_ipython`
 
 Graded Assignments
 ------------------
 
-None for this class. Our primary objective is to get them set up so that they are ready to start coding for the rest of the program.
+None for this lesson. Our primary objective is to get them set up so that they are ready to start coding for the rest of the program.
+
+Ungraded Assignments
+--------------------
+
+:ref:`python_pushups`
+
+.. https://uwpce-pythoncert.github.io/PythonCertDevel/exercises/python_pushups.html#python-pushups
 
 Quizzes/exams
 -------------
@@ -79,10 +119,11 @@ None for the first class.
 Other activities
 ----------------
 
-Python Pushups
-
-https://uwpce-pythoncert.github.io/PythonCertDevel/exercises/python_pushups.html#python-pushups
 
 Special notes/ instructions
 ---------------------------
+
+The most important goal for this lesson is to be set up and ready to run python code. Make sure you are set up right:
+
+:ref:`how_to_run_a_python_file`
 

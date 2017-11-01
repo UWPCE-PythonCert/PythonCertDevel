@@ -132,6 +132,8 @@ Exercises
     exercises/circle_class.rst
     exercises/dict_lab.rst
     exercises/exceptions_lab.rst
+    exercises/except_exercise.rst
+    exercises/comprehensions_lab.rst
     exercises/fib_and_lucas.rst
     exercises/file_lab.rst
     exercises/fizz_buzz.rst
@@ -179,6 +181,11 @@ scripts
 .. toctree::
     :maxdepth: 2
 
+    scripts/Intro.rst
+    scripts/how_to_run_python
+    scripts/intro_to_ipython
+    scripts/Booleans
+    scripts/slicing
     scripts/FunctionalProgramming
     scripts/Functions
     scripts/Methods

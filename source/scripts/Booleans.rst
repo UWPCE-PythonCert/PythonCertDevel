@@ -1,7 +1,9 @@
 :orphan:
 
-Booleans
-========
+.. _script_booleans:
+
+Booleans Video
+==============
 
 With Rick Riehle
 ----------------

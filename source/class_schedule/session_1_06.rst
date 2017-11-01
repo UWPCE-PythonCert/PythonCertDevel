@@ -4,7 +4,7 @@
 Intro to Python Session 6
 #########################
 
-**Unit Testing and Advanced Argument Passing**
+Unit Testing and Advanced Argument Passing
 
 Pre-class prep
 ==============
@@ -52,6 +52,8 @@ Exercises:
 
 Testing mailroom:
 .................
+
+:ref:`exercise_mailroom_testing`
 
 Write a complete set of unit tests for your mailroom program.
 

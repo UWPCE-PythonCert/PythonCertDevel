@@ -49,12 +49,41 @@ Can also be expressed in one line:
 
 You get the "outer product", i.e. all combinations.
 
-NOTE: Example here...
+.. code-block:: ipython
 
-This pattern is another way of expressing the "map" pattern from functional programming.
+    In [33]: list1 = [1, 2, 3]
+
+    In [34]: list2 = [4, 5]
+
+    In [35]: [(a, b) for a in list1 for b in list2]
+    Out[35]: [(1, 4), (1, 5), (2, 4), (2, 5), (3, 4), (3, 5)]
+
+Note that it makes every combination of the two input lists, and thus will be ``len(list1) * len(list2)`` in size. And there is no reason for them to be the same size.
+
+zip() with comprehensions
+-------------------------
+
+If you want them paired up instead, you can use ``zip()``:
+
+In [31]: [(a, b) for a, b in zip(list1, list2)]
+Out[31]: [(1, 4), (2, 5), (3, 6)]
 
 
-But usually you at least have a conditional in the loop:
+
+Comprehensions and map()
+------------------------
+
+Comprehensions are another way of expressing the "map" pattern from functional programming.
+
+Python does have a ``map()``, which pre-dates comprehensions. But it does much of the same things -- and most folks think comprehensions are the more "Pythonic" way to do it.
+
+
+What about filter?
+------------------
+
+``filter()`` is another functional concept: building an new list with only *some* of the elements -- "filtering" out the ones you don't want.
+
+This is tp support the comon case of when you have a conditional in the loop:
 
 .. code-block:: python
 
@@ -63,16 +92,16 @@ But usually you at least have a conditional in the loop:
         if something_is_true:
             new_list.append(expression)
 
-You can add a conditional to the comprehension:
+You can do the same thing by adding a conditional to the comprehension:
 
 .. code-block:: python
 
     new_list = [expr for var in a_list if something_is_true]
 
-This is expressing the "filter" pattern. (and map at the same time)
+This is expressing the "filter" pattern. (and map at the same time -- one reason I like comprehensions more)
 
 
-Examples:
+**Examples:**
 
 .. code-block:: ipython
 
@@ -85,7 +114,6 @@ Examples:
     In [343]: [x*2 for x in range(6) if not x%2]
     Out[343]: [0, 4, 8]
 
-.. nextslide::
 
 Get creative....
 
@@ -102,7 +130,7 @@ Get creative....
 Set Comprehensions
 ------------------
 
-You can do it with sets, too:
+You can do a similar thing with sets, too:
 
 .. code-block:: python
 
@@ -118,9 +146,7 @@ same as for loop:
         new_set.add(value)
 
 
-.. nextslide::
-
-Example: finding all the vowels in a string...
+**Example:** Finding all the vowels in a string...
 
 .. code-block:: ipython
 
@@ -133,6 +159,7 @@ Example: finding all the vowels in a string...
 
 Side note: why did I do ``set('aeiou')`` rather than just `aeiou` ?
 
+
 Dict Comprehensions
 -------------------
 
@@ -140,10 +167,10 @@ Also with dictionaries
 
 .. code-block:: python
 
-    new_dict = { key:value for variable in a_sequence}
+    new_dict = { key: value for variable in a_sequence}
 
 
-same as for loop:
+Same as this for loop:
 
 .. code-block:: python
 
@@ -152,10 +179,7 @@ same as for loop:
         new_dict[key] = value
 
 
-
-.. nextslide::
-
-Example
+**Example:**
 
 .. code-block:: ipython
 
@@ -164,14 +188,14 @@ Example
               3: 'this_3', 4: 'this_4'}
 
 
-This is not as useful as it used to be, now that we have the ``dict()``  constructor.
+This is not as useful as it used to be, now that we have the ``dict()``  constructor...
 
 A bit of history:
 -----------------
 
 In the early days of Python the only way to create a dict was with a literal::
 
-  a_dict = {}  # for an empty dict
+  a_dict = {}  # an empty dict
 
 or a dict that was already populated with a bunch of data.
 
@@ -223,7 +247,7 @@ So the first one is an empty dict -- simple enough
 
 The second makes a dict from the contents of another dict (or similar object)
 
-The third one is of interest here -- it makes a dict from an iterable of key,value pairs -- exactly what ``zip()`` gives you.
+The third one is of interest here -- it makes a dict from an iterable of key, value pairs -- exactly what ``zip()`` gives you.
 
 So we can create a dict from data like so:
 
@@ -244,6 +268,4 @@ dict comps are still nice if you need to filter the results, though:
 
     In [17]: d
     Out[17]: {1: 'fred', 2: 'john'}
-
-
 
