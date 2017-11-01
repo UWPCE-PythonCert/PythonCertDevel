@@ -2,8 +2,9 @@
 
 .. _script_slicing:
 
-Slicing
-=======
+#############
+Slicing Video
+#############
 
 Python has a "secret power" beyond simple indexing as with arrays in any language, Python sequences support "slicing" -- pulling a chunk out of a sequence with one simple syntax.
 

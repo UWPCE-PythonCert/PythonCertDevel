@@ -43,7 +43,7 @@ screencasts/videos
 
 :ref:`script_slicing`
 
-:ref:`dynamic_string_formatting`
+:ref:`script_dynamic_string_formatting`
 
 Graded Assignment
 -----------------
@@ -60,7 +60,7 @@ Ungraded Assignments
 
 Re-write a couple CodingBat exercises, returning the direct boolean results, and/or using ternary expressions.
 
-Experiment with ``locals`` by adding this statement one of the functions we wrote last week (or any other function you wrote):
+Experiment with ``locals`` by adding this statement to one of the functions we wrote last week (or any other function you wrote):
 
 .. code-block:: python
 
