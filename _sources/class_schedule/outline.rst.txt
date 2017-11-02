@@ -18,9 +18,9 @@ Orientation
 
 Development environment setup and configuration.
 
-=====================
+#####################
 Py 1: Intro to Python
-=====================
+#####################
 
 Session 1-01
 ============
@@ -32,38 +32,33 @@ Session 1-01
 Session 1-02
 ============
 
-1.	Organizing your Programs
-2. 	Truthiness
+Organizing your Programs
 
-     a)  Booleans
-     b)  Ternary Expressions
-     c)  If .. elif .. else
-
-3.  Functions
-4.  Modules and Namespaces
-
-     a)	 Importing
+1.  Truthiness
+2.  If .. elif .. else
+3.  Ternary Expressions
+4.  Functions
+5.  Modules and Namespaces
 
 Session 1-03
 ============
 
-1.  Sequences, Slicing and Iteration
+Sequences, Slicing and Iteration
 
-     a)  Lists, Tuples, Strings
-     b)  Slicing
-     c)  Iteration
-     d)  String methods
-     e)  String formatting
+1.  Lists, Tuples, Strings
+2.  Slicing
+3.  Iteration
+4.  String methods
+5.  String formatting
 
 Session 1-04
 ============
 
-1.  Collections and I/O
+Collections and I/O
 
-     g)  Dictionaries
-     h)  Sets
-     i)  Files (probably a good place to introduce context managers from a client perspective, but not a server perspective if you know what I mean)
-
+1. Dictionaries
+2. Sets
+3. Files (probably a good place to introduce context managers from a client perspective, but not a server perspective if you know what I mean)
 
 Session 1-05
 ============
@@ -125,9 +120,9 @@ Functional Programming Continued
 2.  Anonymous Functions: Lambda
 3.  Closures and Currying
 
-=====================
+#####################
 PY 2: Advanced Python
-=====================
+#####################
 
 Session 2-01
 ============
