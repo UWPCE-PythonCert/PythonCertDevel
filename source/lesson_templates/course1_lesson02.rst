@@ -12,10 +12,10 @@ Learning objectives
 
 After completing this lesson, students will:
 
- 1. Be able to develop and run a simple Python program using their preferred editor, so that they are fully familiar with the associated techniques.
- 2. Know how to name, create and use variables in a Python program, so that they have a foundation of this knowledge on which to build for later learning and assignments.
- 3. Use and demonstrate Python constructs to control program flow, so that various types of conditional logic are understood and applied.
- 4. Write basic Python functions and show how they are used in simple scenarios, so that they can demonstrate and understand how to start to avoid redundancies in code.
+ 1. Develop and run a simple Python program using their preferred editor.
+ 2. Name, create and use variables in a Python program.
+ 3. Use and demonstrate Python constructs to control program flow.
+ 4. Write basic Python functions and show how they are used in simple scenarios.
 
 Readings
 ---------
@@ -66,26 +66,26 @@ If that is too fast, then here are some good options for another look:
 screencasts/videos
 ------------------
 
+:ref:`script_name_eq_main`
 
-
- (~1-3 videos per lesson, 1 topic per video)
-
+:ref:`script_submitting_to_gitHub`
 
 
 Graded Assignments
 ------------------
 
-.. :ref:`exercise_grid_printer` (5 points)
+:ref:`exercise_grid_printer` (5 points)
 
-https://uwpce-pythoncert.github.io/PythonCertDevel/exercises/grid_printer.html#exercise-grid-printer
+.. https://uwpce-pythoncert.github.io/PythonCertDevel/exercises/grid_printer.html#exercise-grid-printer
 
-.. :ref:`exercise_fizz_buzz` (5 points)
+:ref:`exercise_fizz_buzz` (5 points)
 
-https://uwpce-pythoncert.github.io/PythonCertDevel/exercises/fizz_buzz.html#exercise-fizz-buzz
+.. https://uwpce-pythoncert.github.io/PythonCertDevel/exercises/fizz_buzz.html#exercise-fizz-buzz
 
-.. :ref:`exercise_fibonacci` (5 points)
+:ref:`exercise_fibonacci` (5 points)
 
-https://uwpce-pythoncert.github.io/PythonCertDevel/exercises/fib_and_lucas.html#exercise-fibonacci
+.. https://uwpce-pythoncert.github.io/PythonCertDevel/exercises/fib_and_lucas.html#exercise-fibonacci
+
 
 Quizzes/exams
 -------------

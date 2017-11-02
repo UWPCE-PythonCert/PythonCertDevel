@@ -1,8 +1,10 @@
 :orphan:
 
-################################
-Using a Dictionary to ``switch``
-################################
+.. _script_dict_as_switch:
+
+#######################################
+Video: Using a Dictionary to ``switch``
+#######################################
 
 Python does not have a ``switch/case statement``.  Why not?
 
