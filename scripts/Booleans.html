@@ -223,7 +223,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="slicing.html">Slicing Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FunctionalProgramming.html">Functional Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Functions.html">Functions Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Methods.html">Methods</a></li>
 </ul>
 
@@ -293,100 +293,72 @@
 <div class="section" id="with-rick-riehle">
 <h2>With Rick Riehle<a class="headerlink" href="#with-rick-riehle" title="Permalink to this headline">¶</a></h2>
 <p>In a certain sense there isn’t much to talk about with regard to booleans. Everybody knows what the word boolean means: true of false, yes or no. When programming we’re using them all the time to accomplish flow control, sometimes explicitly, often implicitly. Among Python’s key or reserved words are <code class="docutils literal"><span class="pre">True</span></code> and <code class="docutils literal"><span class="pre">False</span></code>.  You can test for these values explicitly when making flow control decisions.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="k">if</span> <span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">6</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
-<span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Woo! Logic.&quot;</span><span class="p">)</span>
-<span class="gp">   ...:</span>
-<span class="go">Woo! Logic.</span>
-</pre></div>
-</div>
+<dl class="docutils">
+<dt>if (3 + 3 == 6) is True:</dt>
+<dd>print(“something”)</dd>
+</dl>
 <p>Yet as often you will not need nor will you use the explicit comparison with True, because the expression within the parenthesis evaluates to True.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="k">if</span> <span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">6</span><span class="p">):</span>
-<span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Woo! Still logic.&quot;</span><span class="p">)</span>
-<span class="gp">   ...:</span>
-<span class="go">Woo! Still logic.</span>
-</pre></div>
-</div>
+<dl class="docutils">
+<dt>if (3 + 3 == 6):</dt>
+<dd>print(“something”)</dd>
+</dl>
 <p>Do we even need the comparison within the expression?</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="k">if</span> <span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">):</span>
-<span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Yep&quot;</span><span class="p">)</span>
-<span class="gp">   ...:</span>
-<span class="go">Yep</span>
-</pre></div>
-</div>
+<dl class="docutils">
+<dt>if (3 + 3):</dt>
+<dd>print(“something”)</dd>
+</dl>
 <p>Perhaps not, but what is really going on here. What if we change the expression as follows?</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="k">if</span> <span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">3</span><span class="p">):</span>
-<span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Yup&quot;</span><span class="p">)</span>
-<span class="gp">   ...:</span>
-</pre></div>
-</div>
-<p>Wait, we did not get a Yup. Why not?</p>
+<dl class="docutils">
+<dt>if (3 - 3):</dt>
+<dd>print(“something”)</dd>
+</dl>
+<p>Wait, did we get “something”. Why not?</p>
 </div>
 <div class="section" id="truthy-falsy">
 <h2>Truthy &amp; falsy<a class="headerlink" href="#truthy-falsy" title="Permalink to this headline">¶</a></h2>
 <p>We have taken up an idea in the programming world… truthy. We think Stephen Colbert coined the term. Truthiness, truthy and falsy. Odd sounding terms if you haven’t heard them before. They sound somewhat iffy or floaty, as if Truth were hard to pin down. When we’re using it in the Python world we are thinking about what Python considers equivalents of true and false. One way to test is to use the built-in function <code class="docutils literal"><span class="pre">bool()</span></code>.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="nb">bool</span><span class="p">(</span><span class="mi">3</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
-<span class="gh">Out[5]: </span><span class="go">True</span>
-
-<span class="gp">In [6]: </span><span class="nb">bool</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
-<span class="gh">Out[6]: </span><span class="go">False</span>
-</pre></div>
-</div>
+<p>bool(3+3)
+True</p>
+<p>bool(3-3)
+False</p>
 <p>By now you are likely noticing a pattern – something verses nothing. Something is truthy and nothing is falsy. To make it perfectly obvious….</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="nb">bool</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-<span class="gh">Out[7]: </span><span class="go">True</span>
-
-<span class="gp">In [8]: </span><span class="nb">bool</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="gh">Out[8]: </span><span class="go">False</span>
-</pre></div>
-</div>
+<p>bool(6)
+True</p>
+<p>bool(0)
+False</p>
 <p>There are a lot of expressions that evaluate to <code class="docutils literal"><span class="pre">True</span></code> in Python. Any non-zero value is considered <code class="docutils literal"><span class="pre">True</span></code>. Any expression that evaluates to zero is <code class="docutils literal"><span class="pre">False</span></code>. Indeed it may be easier to think about what evaluates to <code class="docutils literal"><span class="pre">False</span></code> and is therefore considered falsy, than it is to think about what is true and therefore truthy. Here is a fairly inclusive list of things that are considered falsy.</p>
 <blockquote>
-<div><ul class="simple">
-<li>None</li>
-<li>False</li>
-<li>zero of any numeric type, for example, 0, 0.0, 0j</li>
-<li>any empty sequence, for example, ‘’, (), []</li>
-<li>any empty dictionary or set, for example, {}</li>
-<li>any object for which <code class="docutils literal"><span class="pre">__bool__()</span></code> returns False</li>
-<li>any object for which <code class="docutils literal"><span class="pre">__len__()</span></code> returns 0</li>
-</ul>
-</div></blockquote>
+<div>None
+False
+zero of any numeric type, for example, 0, 0.0, 0j
+any empty sequence, for example, ‘’, (), []
+any empty dictionary or set, for example, {}
+any object for which <code class="docutils literal"><span class="pre">__bool__()</span></code> returns False
+any object for which <code class="docutils literal"><span class="pre">__len__()</span></code> returns 0</div></blockquote>
 <p>You may not recognize <code class="docutils literal"><span class="pre">__bool__()</span></code> and <code class="docutils literal"><span class="pre">__len__()</span></code>. They are Python special methods. Special methods are sometimes called dunders because their names begin and end with double underscores. The Python interpreter invokes them for you, in the background so to speak, when it needs too. Don’t worry about it for now, more on dunders later.</p>
 </div>
 <div class="section" id="boolean-operations">
 <h2>Boolean Operations<a class="headerlink" href="#boolean-operations" title="Permalink to this headline">¶</a></h2>
 <p>There are three boolean operators in Python: <code class="docutils literal"><span class="pre">or</span></code>, <code class="docutils literal"><span class="pre">and</span></code> and <code class="docutils literal"><span class="pre">not</span></code>. The first two enable compound boolean expressions whereas <code class="docutils literal"><span class="pre">not</span></code> simply negates the boolean value of any expression. To demonstrate, let’s set up a couple of functions. One will evaluate to <code class="docutils literal"><span class="pre">True</span></code> and the other will evaluate to <code class="docutils literal"><span class="pre">False</span></code>.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="k">def</span> <span class="nf">truthy</span><span class="p">():</span>
-<span class="gp">   ...: </span>    <span class="sd">&quot;&quot;&quot; This function might do any number of things....</span>
-<span class="gp">   ...: </span><span class="sd">    query databases, make calculations, etc., but ultimately it does this: &quot;&quot;&quot;</span>
-<span class="gp">   ...: </span>    <span class="k">return</span> <span class="bp">True</span>
-<span class="gp">   ...:</span>
-
-<span class="gp">In [2]: </span><span class="k">def</span> <span class="nf">falsy</span><span class="p">():</span>
-<span class="gp">   ...: </span>    <span class="k">return</span> <span class="bp">False</span>
-<span class="gp">   ...:</span>
-
-<span class="gp">In [3]: </span><span class="n">truthy</span><span class="p">()</span>
-<span class="gh">Out[3]: </span><span class="go">True</span>
-
-<span class="gp">In [4]: </span><span class="n">falsy</span><span class="p">()</span>
-<span class="gh">Out[4]: </span><span class="go">False</span>
-</pre></div>
-</div>
+<dl class="docutils">
+<dt>def truthy():</dt>
+<dd>return True</dd>
+<dt>def falsy():</dt>
+<dd>return False</dd>
+</dl>
+<p>truthy()
+True</p>
+<p>falsy()
+False</p>
 <p>Now let’s use them in expressions to see how <code class="docutils literal"><span class="pre">`and`</span></code>, <code class="docutils literal"><span class="pre">`or`</span></code> and <code class="docutils literal"><span class="pre">`not`</span></code> work.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="p">(</span><span class="n">truthy</span><span class="p">()</span> <span class="ow">and</span> <span class="n">falsy</span><span class="p">())</span>  <span class="c1"># Both must be true for the whole expression to be true</span>
-<span class="gh">Out[5]: </span><span class="go">False</span>
-
-<span class="gp">In [6]: </span><span class="p">(</span><span class="n">truthy</span><span class="p">()</span> <span class="ow">or</span> <span class="n">falsy</span><span class="p">())</span>  <span class="c1"># Either must be true for the whole expression to be true</span>
-<span class="gh">Out[6]: </span><span class="go">True</span>
-
-<span class="gp">In [7]: </span><span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="n">truthy</span><span class="p">()</span> <span class="ow">and</span> <span class="n">falsy</span><span class="p">()))</span>  <span class="c1"># The negation of the inner expression</span>
-<span class="gh">Out[7]: </span><span class="go">True</span>
-
-<span class="gp">In [8]: </span><span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="n">truthy</span><span class="p">()</span> <span class="ow">or</span> <span class="n">falsy</span><span class="p">()))</span>  <span class="c1"># Again, the negation of the inner expression</span>
-<span class="gh">Out[8]: </span><span class="go">False</span>
-</pre></div>
-</div>
+<p>(truthy() and falsy())  # Both must be true for the whole expression to be true
+False</p>
+<p>(truthy() or falsy())  # Either must be true for the whole expression to be true
+True</p>
+<p>(not (truthy() and falsy()))  # The negation of the inner expression
+True</p>
+<p>(not (truthy() or falsy()))  # Again, the negation of the inner expression
+False</p>
 </div>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
