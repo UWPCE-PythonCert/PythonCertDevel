@@ -28,16 +28,21 @@ Review of last class's labs
 Exercises:
 ----------
 
- * Exceptions LAB
+1. :ref:`exercise_comprehensions`
 
- * Update mailroom with Exceptions: :ref:`exercise_mailroom_exceptions`
+2. :ref:`exercise_exceptions`
+
+3. Optional: :ref:`exercise_exceptions_lab`
+
+4. Update mailroom with Exceptions: :ref:`exercise_mailroom_exceptions`
+
 
 Post-class Activities
 =====================
 
 Finish the exercises
 
-* If you've done all that -- check out the collections module:
+* If you've done all that -- check out the collections module, there is a LOT of nifty stuff in there!
 
   - https://docs.python.org/3/library/collections.html
 

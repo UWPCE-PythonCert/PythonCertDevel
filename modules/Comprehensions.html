@@ -146,6 +146,9 @@
 <li class="toctree-l1"><a class="reference internal" href="Exceptions.html">Exception Handling</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Comprehensions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#list-comprehensions">List comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zip-with-comprehensions">zip() with comprehensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comprehensions-and-map">Comprehensions and map()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-about-filter">What about filter?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#set-comprehensions">Set Comprehensions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dict-comprehensions">Dict Comprehensions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#a-bit-of-history">A bit of history:</a></li>
@@ -174,6 +177,7 @@
 <li class="toctree-l1"><a class="reference internal" href="SubclassingAndInheritance.html">Subclassing and Inheritance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Testing.html">Unit Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Python Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MoreOnMutability.html">A bit more on mutability (and copies)</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/basic_math_quiz.html">Basic Math Quiz</a></li>
@@ -185,6 +189,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../exercises/circle_class.html">Circle Class Excercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/dict_lab.html">Dictionary and Set Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exceptions_lab.html">Exceptions Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/except_exercise.html">Exceptions Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/comprehensions_lab.html">Comprehensions Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/fib_and_lucas.html">Fibonacci Series Exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/file_lab.html">File LAB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/fizz_buzz.html">Fizz Buzz Exercise</a></li>
@@ -214,8 +220,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../references/index.html">Resources for Specific Python Topics</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Intro.html">Intro to the Python Certificate Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/how_to_run_python.html">How to run a Python File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/intro_to_ipython.html">Quick overview of using iPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Booleans.html">Booleans Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/slicing.html">Slicing Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scripts/FunctionalProgramming.html">Functional Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scripts/Methods.html">Methods</a></li>
 </ul>
 
@@ -311,21 +322,43 @@
 </pre></div>
 </div>
 <p>You get the “outer product”, i.e. all combinations.</p>
-<p>NOTE: Example here…</p>
-<p>This pattern is another way of expressing the “map” pattern from functional programming.</p>
-<p>But usually you at least have a conditional in the loop:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [33]: </span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="gp">In [34]: </span><span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="gp">In [35]: </span><span class="p">[(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">list1</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">list2</span><span class="p">]</span>
+<span class="gh">Out[35]: </span><span class="go">[(1, 4), (1, 5), (2, 4), (2, 5), (3, 4), (3, 5)]</span>
+</pre></div>
+</div>
+<p>Note that it makes every combination of the two input lists, and thus will be <code class="docutils literal"><span class="pre">len(list1)</span> <span class="pre">*</span> <span class="pre">len(list2)</span></code> in size. And there is no reason for them to be the same size.</p>
+</div>
+<div class="section" id="zip-with-comprehensions">
+<h2>zip() with comprehensions<a class="headerlink" href="#zip-with-comprehensions" title="Permalink to this headline">¶</a></h2>
+<p>If you want them paired up instead, you can use <code class="docutils literal"><span class="pre">zip()</span></code>:</p>
+<p>In [31]: [(a, b) for a, b in zip(list1, list2)]
+Out[31]: [(1, 4), (2, 5), (3, 6)]</p>
+</div>
+<div class="section" id="comprehensions-and-map">
+<h2>Comprehensions and map()<a class="headerlink" href="#comprehensions-and-map" title="Permalink to this headline">¶</a></h2>
+<p>Comprehensions are another way of expressing the “map” pattern from functional programming.</p>
+<p>Python does have a <code class="docutils literal"><span class="pre">map()</span></code>, which pre-dates comprehensions. But it does much of the same things – and most folks think comprehensions are the more “Pythonic” way to do it.</p>
+</div>
+<div class="section" id="what-about-filter">
+<h2>What about filter?<a class="headerlink" href="#what-about-filter" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">filter()</span></code> is another functional concept: building an new list with only <em>some</em> of the elements – “filtering” out the ones you don’t want.</p>
+<p>This is tp support the comon case of when you have a conditional in the loop:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">something_is_true</span><span class="p">:</span>
         <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>You can add a conditional to the comprehension:</p>
+<p>You can do the same thing by adding a conditional to the comprehension:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">expr</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">a_list</span> <span class="k">if</span> <span class="n">something_is_true</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>This is expressing the “filter” pattern. (and map at the same time)</p>
-<p>Examples:</p>
+<p>This is expressing the “filter” pattern. (and map at the same time – one reason I like comprehensions more)</p>
+<p><strong>Examples:</strong></p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [341]: </span><span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
 <span class="gh">Out[341]: </span><span class="go">[0, 1, 4]</span>
 
@@ -349,7 +382,7 @@
 </div>
 <div class="section" id="set-comprehensions">
 <h2>Set Comprehensions<a class="headerlink" href="#set-comprehensions" title="Permalink to this headline">¶</a></h2>
-<p>You can do it with sets, too:</p>
+<p>You can do a similar thing with sets, too:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_set</span> <span class="o">=</span> <span class="p">{</span> <span class="n">value</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_sequence</span> <span class="p">}</span>
 </pre></div>
 </div>
@@ -359,7 +392,7 @@
     <span class="n">new_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Example: finding all the vowels in a string…</p>
+<p><strong>Example:</strong> Finding all the vowels in a string…</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;a not very long string&quot;</span>
 
 <span class="gp">In [20]: </span><span class="n">vowels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s1">&#39;aeiou&#39;</span><span class="p">)</span>
@@ -373,27 +406,27 @@
 <div class="section" id="dict-comprehensions">
 <h2>Dict Comprehensions<a class="headerlink" href="#dict-comprehensions" title="Permalink to this headline">¶</a></h2>
 <p>Also with dictionaries</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_dict</span> <span class="o">=</span> <span class="p">{</span> <span class="n">key</span><span class="p">:</span><span class="n">value</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">}</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_dict</span> <span class="o">=</span> <span class="p">{</span> <span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>same as for loop:</p>
+<p>Same as this for loop:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_dict</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
     <span class="n">new_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
 </pre></div>
 </div>
-<p>Example</p>
+<p><strong>Example:</strong></p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [22]: </span><span class="p">{</span> <span class="n">i</span><span class="p">:</span> <span class="s2">&quot;this_</span><span class="si">%i</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">i</span> for i in range(5) }
 <span class="gh">Out[22]: </span><span class="go">{0: &#39;this_0&#39;, 1: &#39;this_1&#39;, 2: &#39;this_2&#39;,</span>
 <span class="go">          3: &#39;this_3&#39;, 4: &#39;this_4&#39;}</span>
 </pre></div>
 </div>
-<p>This is not as useful as it used to be, now that we have the <code class="docutils literal"><span class="pre">dict()</span></code>  constructor.</p>
+<p>This is not as useful as it used to be, now that we have the <code class="docutils literal"><span class="pre">dict()</span></code>  constructor…</p>
 </div>
 <div class="section" id="a-bit-of-history">
 <h2>A bit of history:<a class="headerlink" href="#a-bit-of-history" title="Permalink to this headline">¶</a></h2>
 <p>In the early days of Python the only way to create a dict was with a literal:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a_dict</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># for an empty dict</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a_dict</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># an empty dict</span>
 </pre></div>
 </div>
 <p>or a dict that was already populated with a bunch of data.</p>
@@ -437,7 +470,7 @@
 </div>
 <p>So the first one is an empty dict – simple enough</p>
 <p>The second makes a dict from the contents of another dict (or similar object)</p>
-<p>The third one is of interest here – it makes a dict from an iterable of key,value pairs – exactly what <code class="docutils literal"><span class="pre">zip()</span></code> gives you.</p>
+<p>The third one is of interest here – it makes a dict from an iterable of key, value pairs – exactly what <code class="docutils literal"><span class="pre">zip()</span></code> gives you.</p>
 <p>So we can create a dict from data like so:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">names</span><span class="p">))</span>
 

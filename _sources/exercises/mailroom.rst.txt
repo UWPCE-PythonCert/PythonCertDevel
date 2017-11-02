@@ -190,26 +190,10 @@ The idea is to require you to structure your code so that you can write the same
 
 .. _exercise_mailroom_exceptions:
 
-Adding Exceptions and Testing
-=============================
+Adding Exceptions and Comprehensions
+====================================
 
-**After Session05**
-
-Once you once you've learned about Exception handling, testing, and comprehensions, you should be able to refactor your code to be more robust.
-
-Tests
------
-
-Add a full suite of unit tests.
-
-"full suite" means all the code is tested. In practice, it's very hard to test the user interaction, but you can test everything else. Make sure that there is as little untested code in the user interaction portion of the program -- hardly any logic.
-
-This is a big step -- you may find that your code is hard to test. If that's the case, it's a good sign that you *should* refactor your code.
-
-I like to say: "If it's hard to test, it's not well structured"
-
-Put in the tests **before** you make the other changes below - that's much of the point of tests -- you can know that you haven't broken anything when you refactor!
-
+**After Learning about Exceptions**
 
 Exceptions
 ----------
@@ -220,4 +204,21 @@ Comprehensions
 --------------
 
 Can you use comprehensions to clean up your code a bit?
+
+.. _exercise_mailroom_testing:
+
+Adding Unit Tests
+=================
+
+**After learning about Unit Testing**
+
+Add a full suite of unit tests.
+
+"full suite" means all the code is tested. In practice, it's very hard to test the user interaction, but you can test everything else. Make sure that there is as little untested code in the user interaction portion of the program -- hardly any logic.
+
+This is a big step -- you may find that your code is hard to test. If that's the case, it's a good sign that you *should* refactor your code.
+
+I like to say: "If it's hard to test, it's not well structured"
+
+Put in the tests **before** you make the other changes below - that's much of the point of tests -- you can know that you haven't broken anything when you refactor!
 

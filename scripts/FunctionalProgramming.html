@@ -36,8 +36,8 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="next" title="Functions" href="Functions.html"/>
-        <link rel="prev" title="The SciPy Stack" href="../references/scipy.html"/> 
+        <link rel="next" title="Functions Video" href="Functions.html"/>
+        <link rel="prev" title="Slicing Video" href="slicing.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -168,6 +168,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../modules/SubclassingAndInheritance.html">Subclassing and Inheritance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Testing.html">Unit Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Tutorial.html">Python Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/MoreOnMutability.html">A bit more on mutability (and copies)</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/basic_math_quiz.html">Basic Math Quiz</a></li>
@@ -179,6 +180,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../exercises/circle_class.html">Circle Class Excercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/dict_lab.html">Dictionary and Set Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exceptions_lab.html">Exceptions Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/except_exercise.html">Exceptions Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/comprehensions_lab.html">Comprehensions Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/fib_and_lucas.html">Fibonacci Series Exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/file_lab.html">File LAB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/fizz_buzz.html">Fizz Buzz Exercise</a></li>
@@ -208,13 +211,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../references/index.html">Resources for Specific Python Topics</a></li>
 </ul>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Intro.html">Intro to the Python Certificate Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_run_python.html">How to run a Python File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_to_ipython.html">Quick overview of using iPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Booleans.html">Booleans Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slicing.html">Slicing Video</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Functional Programming</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#with-rick-riehle">With Rick Riehle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#function-composition">Function Composition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#control-flow-verses-data-flow">Control Flow verses Data Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#object-objected-programming-vs-functional-programming">Object Objected Programming vs Functional Programming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#use-cases-problem-domains">Use Cases &amp; Problem Domains</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#objects-vs-functions">Objects vs Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-composition">Function Composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#control-flow-verses-data-flow">Control Flow verses Data Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mutability-vs-immutability">Mutability vs Immutability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#managing-state">Managing State</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Functions.html">Functions Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Methods.html">Methods</a></li>
 </ul>
 
@@ -283,8 +298,7 @@
 <h1>Functional Programming<a class="headerlink" href="#functional-programming" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="with-rick-riehle">
 <h2>With Rick Riehle<a class="headerlink" href="#with-rick-riehle" title="Permalink to this headline">¶</a></h2>
-<p>Let’s start with high school math. As you will recall, functions take arguments and return a value. The strict definition can be found on <a href="#id1"><span class="problematic" id="id2">Wikipedia_</span></a>:</p>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Function_(mathematics">https://en.wikipedia.org/wiki/Function_(mathematics</a>)</p>
+<p>Let’s start with high school math. As you will recall, functions take arguments and return a value. The strict definition can be found on <cite>Wikipedia &lt;https://en.wikipedia.org/wiki/Function_(mathematics)&gt;</cite></p>
 <dl class="docutils">
 <dt>Function</dt>
 <dd>In mathematics, a function is a relation between a set of inputs and a set of permissible outputs with the property that each input is related to exactly one output.</dd>
@@ -294,11 +308,26 @@
 <blockquote>
 <div>adhere to this basic form when constructing functions, yet functions in Python can be much more. Before we get ahead of ourselves let’s look at a few basic definitions.</div></blockquote>
 </div>
+<div class="section" id="object-objected-programming-vs-functional-programming">
+<h2>Object Objected Programming vs Functional Programming<a class="headerlink" href="#object-objected-programming-vs-functional-programming" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="use-cases-problem-domains">
+<h3>Use Cases &amp; Problem Domains<a class="headerlink" href="#use-cases-problem-domains" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="objects-vs-functions">
+<h2>Objects vs Functions<a class="headerlink" href="#objects-vs-functions" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="function-composition">
 <h2>Function Composition<a class="headerlink" href="#function-composition" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="control-flow-verses-data-flow">
 <h2>Control Flow verses Data Flow<a class="headerlink" href="#control-flow-verses-data-flow" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="mutability-vs-immutability">
+<h2>Mutability vs Immutability<a class="headerlink" href="#mutability-vs-immutability" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="managing-state">
+<h2>Managing State<a class="headerlink" href="#managing-state" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -312,10 +341,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Functions.html" class="btn btn-neutral float-right" title="Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Functions.html" class="btn btn-neutral float-right" title="Functions Video" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../references/scipy.html" class="btn btn-neutral" title="The SciPy Stack" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="slicing.html" class="btn btn-neutral" title="Slicing Video" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -102,7 +102,7 @@ So you can do
     except ValueError:
         print("Input must be an integer, try again.")
 
-This is particularly helpful for things like converting to a float -- much more complicated to check -- and all that logic is already in theh ``float()`` constructor
+This is particularly helpful for things like converting to a float -- much more complicated to check -- and all that logic is already in the ``float()`` constructor.
 
 Or let the Exception be raised if you can't handle it.
 
@@ -202,6 +202,8 @@ And that's that.
 
 But if your code *can't* continue on, you can re-raise the Exception:
 
+.. code-block:: python
+
     try:
         do_something()
     except ValueError:
@@ -280,7 +282,7 @@ Raising Exceptions
         else:
             return a / b
 
-(OK, this is a stupid example, as that Error will be raised for you anyway . but bear with me)
+(OK, this is a stupid example, as that Error will be raised for you anyway. but bear with me)
 
 When you call it:
 
@@ -308,9 +310,10 @@ But...
 
 For the most part, you can/should use a built in one
 
-There are 48 built-in Exceptions -- odds are good that there's one that matches you use-case.
+There are 48 built-in Exceptions -- odds are good that there's one that matches your use-case.
 
-Also -- custom Exceptions require subclassing -- we haven't learned that yet :-)
+Also -- custom Exceptions require subclassing -- and we haven't learned that yet :-)
+
 
 Choosing an Exception
 ---------------------

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Intro &mdash; PythonCert 4.0 documentation</title>
+  <title>Intro to the Python Certificate Program &mdash; PythonCert 4.0 documentation</title>
   
 
   
@@ -35,7 +35,9 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/> 
+    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
+        <link rel="next" title="How to run a Python File" href="how_to_run_python.html"/>
+        <link rel="prev" title="The SciPy Stack" href="../references/scipy.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -146,18 +148,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../modules/AdvancedArgumentPassing.html">Advanced Argument Passing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/DictionaryAsSwitch.html">Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Closures.html">Closures and function Currying</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules/Composition.html">Composition</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/ContextManagers.html">Context Managers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Decorators.html">Decorators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/EnvironmentOverview.html">Introduction to the Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FunctionalProgramming.html">Functional Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/IPythonIntroduction.html">IPython Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/IteratorsAndGenerators.html">Iterators and Generators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules/Lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Lambda.html">Anonymous Functions: Lambda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/MapFilterReduce.html">Map Filter and Reduce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Math.html">Math with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Methods.html">Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/MultipleInheritance.html">Multiple Inheritance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/ObjectOrientationOverview.html">Object Orientation Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Properties.html">Properties</a></li>
@@ -166,11 +164,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../modules/PythonOverview.html">Python Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Recursion.html">Recursion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/SpecialMethodsAndProtocols.html">Special Methods &amp; Protocols</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules/SpecialMethodsAndProtocols.html#emulating-standard-types">Emulating Standard types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/StaticAndClassMethods.html">Static and Class Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/SubclassingAndInheritance.html">Subclassing and Inheritance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules/Testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/Testing.html">Unit Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/Tutorial.html">Python Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/MoreOnMutability.html">A bit more on mutability (and copies)</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/basic_math_quiz.html">Basic Math Quiz</a></li>
@@ -182,6 +180,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../exercises/circle_class.html">Circle Class Excercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/dict_lab.html">Dictionary and Set Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exceptions_lab.html">Exceptions Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/except_exercise.html">Exceptions Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/comprehensions_lab.html">Comprehensions Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/fib_and_lucas.html">Fibonacci Series Exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/file_lab.html">File LAB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/fizz_buzz.html">Fizz Buzz Exercise</a></li>
@@ -191,13 +191,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../exercises/lambda_magic.html">lambda and keyword Magic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/list_lab.html">List Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/mailroom.html">Mailroom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercises/mailroom-oo.html">Mailroom Object Oriented</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/unit_testing.html">Introduction To Unit Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/roman.html">Roman/Arabic Numeral Converter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/rot13.html">ROT13</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/slicing.html">Slicing Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/sparse_array.html">Sparse Array Exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/string_formatting.html">String Formatting Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/trapezoid.html">Trapezoidal Rule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/mailroom-oo.html">Mailroom Object Oriented</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/HowToRunAPythonFile.html">How to run a python file</a></li>
@@ -208,6 +209,19 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../references/index.html">Resources for Specific Python Topics</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Intro to the Python Certificate Program</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#with-chris-barker-rick-riehle">With Chris Barker &amp; Rick Riehle</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_run_python.html">How to run a Python File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro_to_ipython.html">Quick overview of using iPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Booleans.html">Booleans Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slicing.html">Slicing Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FunctionalProgramming.html">Functional Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Functions.html">Functions Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Methods.html">Methods</a></li>
 </ul>
 
             
@@ -252,13 +266,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Intro</li>
+      <li>Intro to the Python Certificate Program</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/scripts/Intro.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/scripts/Intro.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -271,10 +285,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="intro">
-<h1>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="intro-to-the-python-certificate-program">
+<span id="script-intro"></span><h1>Intro to the Python Certificate Program<a class="headerlink" href="#intro-to-the-python-certificate-program" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="with-chris-barker-rick-riehle">
 <h2>With Chris Barker &amp; Rick Riehle<a class="headerlink" href="#with-chris-barker-rick-riehle" title="Permalink to this headline">¶</a></h2>
+<p>And the reset of the instructors?</p>
 </div>
 </div>
 
@@ -285,6 +300,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="how_to_run_python.html" class="btn btn-neutral float-right" title="How to run a Python File" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../references/scipy.html" class="btn btn-neutral" title="The SciPy Stack" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

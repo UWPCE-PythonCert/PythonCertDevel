@@ -4,7 +4,7 @@
 Intro to Python Session 8
 #########################
 
-More OO: Properties, Special methods.
+More OO: Properties and Magic methods.
 
 Pre-class prep
 ==============

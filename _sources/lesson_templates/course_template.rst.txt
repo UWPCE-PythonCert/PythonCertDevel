@@ -16,12 +16,9 @@ After completing this lesson, students will:
 Readings
 ---------
 
-Self Produced
-.............
 
-
-External Readings
-.................
+Supplemental Readings
+---------------------
 
 
 screencasts/videos
@@ -33,6 +30,8 @@ screencasts/videos
 Graded Assignments
 ------------------
 
+Ungraded Assignments
+--------------------
 
 Quizzes/exams
 -------------

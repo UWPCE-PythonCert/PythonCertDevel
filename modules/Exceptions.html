@@ -185,6 +185,7 @@
 <li class="toctree-l1"><a class="reference internal" href="SubclassingAndInheritance.html">Subclassing and Inheritance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Testing.html">Unit Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Python Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MoreOnMutability.html">A bit more on mutability (and copies)</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/basic_math_quiz.html">Basic Math Quiz</a></li>
@@ -196,6 +197,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../exercises/circle_class.html">Circle Class Excercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/dict_lab.html">Dictionary and Set Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/exceptions_lab.html">Exceptions Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/except_exercise.html">Exceptions Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/comprehensions_lab.html">Comprehensions Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/fib_and_lucas.html">Fibonacci Series Exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/file_lab.html">File LAB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/fizz_buzz.html">Fizz Buzz Exercise</a></li>
@@ -225,7 +228,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../references/index.html">Resources for Specific Python Topics</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Intro.html">Intro to the Python Certificate Program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/how_to_run_python.html">How to run a Python File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/intro_to_ipython.html">Quick overview of using iPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Booleans.html">Booleans Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/slicing.html">Slicing Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/FunctionalProgramming.html">Functional Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scripts/Methods.html">Methods</a></li>
 </ul>
 
@@ -360,7 +369,7 @@
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Input must be an integer, try again.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This is particularly helpful for things like converting to a float – much more complicated to check – and all that logic is already in theh <code class="docutils literal"><span class="pre">float()</span></code> constructor</p>
+<p>This is particularly helpful for things like converting to a float – much more complicated to check – and all that logic is already in the <code class="docutils literal"><span class="pre">float()</span></code> constructor.</p>
 <p>Or let the Exception be raised if you can’t handle it.</p>
 </div>
 <div class="section" id="eafp">
@@ -428,15 +437,13 @@
 </div>
 <p>And that’s that.</p>
 <p>But if your code <em>can’t</em> continue on, you can re-raise the Exception:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>try:</dt>
-<dd>do_something()</dd>
-<dt>except ValueError:</dt>
-<dd>print(“That wasn’t any good”)
-raise</dd>
-</dl>
-</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">do_something</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;That wasn&#39;t any good&quot;</span><span class="p">)</span>
+    <span class="k">raise</span>
+</pre></div>
+</div>
 <p>The <code class="docutils literal"><span class="pre">raise</span></code> statement will re-raise the same exception object, where it may get caught higher up in the code, or even end the program.</p>
 <p>Exception objects are full-fledged Python objects – they can contain data, and you can add data to them:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
@@ -495,7 +502,7 @@ raise</dd>
         <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
 </pre></div>
 </div>
-<p>(OK, this is a stupid example, as that Error will be raised for you anyway . but bear with me)</p>
+<p>(OK, this is a stupid example, as that Error will be raised for you anyway. but bear with me)</p>
 <p>When you call it:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [515]: </span><span class="n">divide</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">ZeroDivisionError: b can not be zero</span>
@@ -514,8 +521,8 @@ raise</dd>
 </pre></div>
 </div>
 <p>For the most part, you can/should use a built in one</p>
-<p>There are 48 built-in Exceptions – odds are good that there’s one that matches you use-case.</p>
-<p>Also – custom Exceptions require subclassing – we haven’t learned that yet :-)</p>
+<p>There are 48 built-in Exceptions – odds are good that there’s one that matches your use-case.</p>
+<p>Also – custom Exceptions require subclassing – and we haven’t learned that yet :-)</p>
 </div>
 <div class="section" id="choosing-an-exception">
 <h2>Choosing an Exception<a class="headerlink" href="#choosing-an-exception" title="Permalink to this headline">¶</a></h2>

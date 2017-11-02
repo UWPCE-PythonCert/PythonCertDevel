@@ -47,7 +47,7 @@ actions:
 Dictionaries 1
 --------------
 
-* Create a dictionary containing "name", "city", and "cake" for "Chris" from "Seattle" who likes "Chocolate".
+* Create a dictionary containing "name", "city", and "cake" for "Chris" from "Seattle" who likes "Chocolate". (so the keys should be: "name", etc, and values: "Chris", etc.)
 
 * Display the dictionary.
 
