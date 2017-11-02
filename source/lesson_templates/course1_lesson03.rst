@@ -10,8 +10,10 @@ Learning objectives
 
 After completing this lesson, students will:
 
- 1.
- 2.
+ 1. Use Python's Truthiness concept in boolean expressions.
+ 2. Use appropriate Python Sequence types in their code.
+ 3. Write for loops to iterate through sequences
+ 4. Do basic text processing with string methods and string formatting.
 
 Readings
 ---------
@@ -55,8 +57,8 @@ You've now got the basics of the language down -- enough to write your first ful
 
 :ref:`exercise_mailroom`  (10 points)
 
-Ungraded Assignments
---------------------
+Ungraded exercises
+------------------
 
 Re-write a couple CodingBat exercises, returning the direct boolean results, and/or using ternary expressions.
 
@@ -93,5 +95,4 @@ Other activities
 Special notes/ instructions
 ---------------------------
 
-:orphan:
 

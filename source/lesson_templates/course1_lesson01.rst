@@ -26,9 +26,9 @@ Learning objectives
 After completing this lesson, students will:
 
  1. Have functional Python development environments appropriate for their operating system of choice.
- 2. Be able to minimally navigate a command line.
- 3. Have a working installation of git for source code collaboration and control.
- 4. Gain a basic introductory understanding of the Python programming language so that they can explain how Python can be used to successfully develop software.
+ 2. Navigate the command line shell to set the working directory and run python and git.
+ 3. Have a working installation of git.
+ 4. Create and run a simple python script.
 
 Readings
 ---------
