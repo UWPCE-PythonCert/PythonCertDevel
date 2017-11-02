@@ -1,138 +1,227 @@
-.. Source:
+.. Source
 .. https://docs.google.com/document/d/1RN9mvAa9c7LMeK1OW6hWNhDBO4mj71TLCevg2cargio/edit#
 
-Py1: Intro to Python
+.. _outline:
 
-Session 1: Introductions & Overviews
-Objectives:
-Navigate the basics of the python development environment, including:
-Basic command line environment
+########################
+Target/Alternate Outline
+########################
 
-Methods of writing and running scripts
+The current outline is reflected in source/index.rst. This document is a target outline which was pulled in from a shared google doc.
 
-Find and use documentation
+For discussion and rebalancing.
 
-Use git at a basic level
+Orientation
+===========
 
-Python Overview: What is Python and what are its major features?
-Python Language Primitives: data types, basic flow control.
-Dev Environment Overview: What tools do you need to develop programs in Python?
-Introduction to source control: Basic git.
-Python Kick Start.
+Development environment setup and configuration.
 
-Organizing your Programs
-Truthiness
-Booleans
-Ternary Expressions
-If .. elif .. else
-Functions
- Modules and namespaces
-Importing
-Sequences, Slicing and Iteration
-Lists, Tuples, Strings
-slicing
-Iteration
-String methods
-String formatting
-Collections and I/O
-Dictionaries
-Sets
-Files (probably a good place to introduce context managers from a client perspective, but not a server perspective if you know what I mean)
+=====================
+Py 1: Intro to Python
+=====================
 
+Session 1-01
+============
 
-Title: tbd
-Exceptions
-Basic Unit testing: pytest
-Advanced Argument Passing
-Functions as first class language constructs: passing functions to functions
-OO1:  Intro to Object Oriented Programming
-The Python Object Model
-Classes
-Attributes and Methods
-Single Inheritance
-Composition vs Sub-Classing
-OO2:  Object Oriented Programming Continued
-Properties
-Introduction to special methods, i.e., the Dunders.
-OO3:  Advanced Object Oriented Programming
-Static Methods
-Class Methods
-Multiple Inheritance
-Protocols
-Emulating standard types by overriding special methods
-FP1:  Introduction to Functional Programming
-Object Objected Programming vs Functional Programming
-Objects vs Functions
-Control Flow vs Data Flow
-Mutability vs Immutability
-Managing State
-Statements vs Expressions for flow control
-Map/filter/reduce
+1.  Python Overview: What is Python and what are its major features?
+2.  Python Language Primitives: data types, basic flow control.
+3.  Introduction to source control: Basic git.
+
+Session 1-02
+============
+
+1.	Organizing your Programs
+2. 	Truthiness
+
+     a)  Booleans
+     b)  Ternary Expressions
+     c)  If .. elif .. else
+
+3.  Functions
+4.  Modules and Namespaces
+
+     a)	 Importing
+
+Session 1-03
+============
+
+1.  Sequences, Slicing and Iteration
+
+     a)  Lists, Tuples, Strings
+     b)  Slicing
+     c)  Iteration
+     d)  String methods
+     e)  String formatting
+
+Session 1-04
+============
+
+1.  Collections and I/O
+
+     g)  Dictionaries
+     h)  Sets
+     i)  Files (probably a good place to introduce context managers from a client perspective, but not a server perspective if you know what I mean)
 
 
-FP2:  Functional Programming Continued
-Comprehensions
-Anonymous Functions: Lambda
-Closures and Currying
+Session 1-05
+============
 
+1.  Exceptions
+2.  Basic Unit testing: pytest
+3.  Advanced Argument Passing
+4.  Functions as first class language constructs: passing functions to functions
+
+Session 1-06
+============
+
+Intro to Object Oriented Programming
+
+1.  The Python Object Model
+2.  Classes
+3.  Attributes and Methods
+4.  Single Inheritance
+5.  Composition vs Sub-Classing
+
+Session 1-07
+============
+
+Object Oriented Programming Continued
+
+1.  Properties
+2.  Introduction to special methods, i.e., the Dunders.
+
+Session 1-08
+============
+
+Advanced Object Oriented Programming
+
+1.  Static Methods
+2.  Class Methods
+3.  Multiple Inheritance
+4.  Protocols
+5.  Emulating standard types by overriding special methods
+
+Session 1-09
+============
+
+Intro to Functional Programming
+
+1.  Object Objected Programming vs Functional Programming
+2.  Objects vs Functions
+3.  Control Flow vs Data Flow
+4.  Mutability vs Immutability
+5.  Managing State
+6.  Statements vs Expressions for flow control
+7.  Map/filter/reduce
+
+Session 1-10
+============
+
+Functional Programming Continued
+
+1.  Comprehensions
+2.  Anonymous Functions: Lambda
+3.  Closures and Currying
+
+=====================
 PY 2: Advanced Python
+=====================
 
-FP3:  Advanced Functional Programming
-Functools
-Itertools
-Generators
+Session 2-01
+============
 
+Advanced Functional Programming
+
+1.  Functools
+2.  Itertools
+3.  Generators
+
+Session 2-02
+============
 
 Advanced Python Language Constructs (made easy-ish)
-Decorators
-Context Managers
-Meta Programming
-Meta Classes
+
+1.  Decorators
+2.  Context Managers
+3.  Meta Programming
+4.  Meta Classes
 
 AT THIS POINT WE’RE FINALLY DONE WITH THE CORE OF THE LANGUAGE AND WE’RE MOVING ON TO HOW TO WORK EFFECTIVELY IN PYTHON’S ECOSYSTEM. THIS IS STUFF THAT WOULD FORMERLY HAVE GONE INTO “SYSTEMS DEVELOPMENT WITH PYTHON” AKA PY300. THIS IS A MUCH BETTER LAYOUT THAN INSERTING THE FORMER PY200/WEBDEV CLASS INTO THIS CONCEPTUAL STREAM.
 
+Session 2-03
+============
+
 Debugging & Logging
-Logging module
-Syslog
-pdb/ipdb
-PyCharm’s debugger
+
+1.  Logging module
+2.  Syslog
+3.  pdb/ipdb
+4.  PyCharm’s debugger
+
+Session 2-04
+============
 
 Advanced Testing
-Linting
-Coverage
-Fixtures
-Mocks
-Hypothesis
+
+1.  Linting
+2.  Coverage
+3.  Fixtures
+4.  Mocks
+5.  Hypothesis
+
+Session 2-05
+============
 
 Relational Databases
-SQL
-ORMs
-Normalization
-Schema
-Sqlite
-Postgresql
 
+1.  SQL
+2.  ORMs
+3.  Normalization
+4.  Schema
+5.  Sqlite
+6.  Postgresql
+
+Session 2-06
+============
 
 Object/Document, Key/Value and Graph Databases
-Schema vs “Schemaless”
-No-Sql
-Mongo
-Redis
-Neo4j
+
+1.  Schema vs “Schemaless”
+2.  No-Sql
+3.  Mongo
+4.  Redis
+5.  Neo4j
+
+Session 2-07
+============
 
 Profiling & Performance
-Timing
-Profiling
-PyPy
-Cython
+
+1.  Timing
+2.  Profiling
+3.  PyPy
+4.  Cython
+
+Session 2-08
+============
 
 Concurrency & Async Programming
-Concurrency
-Threading and Multiprocessing
-Message Queues
-Async
-Celery
 
-Internet of Things
-Joe
+1.  Concurrency
+2.  Threading and Multiprocessing
+3.  Message Queues
+4.  Async
+5.  Celery
+
+Sessions 2-09 & 2-10
+====================
+
+Grabbag
+
+Instructor & cohort-developed content.
+
+Potential topics:
+
+1.  Desktop UI Development
+2.  Internet of Things
 
