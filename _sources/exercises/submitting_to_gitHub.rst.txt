@@ -15,7 +15,7 @@ It also has great interface for code review, so provides a system with which the
 Starting a New Exercise
 =======================
 
-Most Exercise will begin with creating a new pyhton file.
+Most Exercise will begin with creating a new python file.
 
 Start by creating a folder for this lesson ("lesson02" or "lesson03", or....
 
