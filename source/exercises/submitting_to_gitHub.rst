@@ -1,0 +1,24 @@
+:orphan:
+
+.. _submitting_to_gitHub:
+
+##############################
+Submitting your work to gitHub
+##############################
+
+In this program, we are using the gitHub source code management system to manage each student's code, as well as examples and solutions.
+
+gitHub is designed as a system to develop collaborative software projects. As such, it is a great tool to learn for your future programming endeavors.
+
+It also has great interface for code review, so provides a system with which the instructors can review your code.
+
+Starting a New Exercise
+=======================
+
+Most Exercise will begin with creating a new python file.
+
+Start by creating a folder for this lesson ("lesson02" or "lesson03", or....
+
+
+
+
