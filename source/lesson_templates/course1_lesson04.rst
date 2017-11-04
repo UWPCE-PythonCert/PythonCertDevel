@@ -2,8 +2,8 @@
 
 .. _course1_lesson04:
 
-Intro to Python Session 4
-=========================
+Dictionaries, Set and Files
+===========================
 
 Learning objectives
 -------------------
@@ -13,18 +13,15 @@ After completing this lesson, students will:
  1. Use dictionaries and sets to process related groups of structured data.
  2. Process files, including reading, writing and managing records.
 
-Readings
----------
-
-Self Produced
-.............
+Reading
+-------
 
 :ref:`dicts_and_sets`
 
 :ref:`files`
 
-External Readings
-.................
+Supplemental Reading
+....................
 
 * Think Python: Chapters 11, 13, 14
 
@@ -33,8 +30,9 @@ External Readings
 http://www.diveintopython3.net/native-datatypes.html#dictionaries
 
 
-screencasts/videos
-------------------
+Screencasts / Videos
+--------------------
+
  * Review last sessions labs:
    - slicing
    - string formatting
@@ -59,10 +57,11 @@ Graded Assignments
 
  * :ref:`exercise_trigrams`
 
+Ungraded Exercises
+------------------
 
-Quizzes/exams
--------------
-
+Quizzes / Exams
+---------------
 
 Other activities
 ----------------
