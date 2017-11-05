@@ -1,10 +1,10 @@
 :orphan:
 
-.. _functional_programming:
+.. _fp-intro:
 
-######################
-Functional Programming
-######################
+#####################################
+Functional Programming - Introduction
+#####################################
 
 With Rick Riehle
 
