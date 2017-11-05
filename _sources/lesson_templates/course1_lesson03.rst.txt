@@ -15,8 +15,8 @@ After completing this lesson, students will:
  3. Write for loops to iterate through sequences
  4. Do basic text processing with string methods and string formatting.
 
-Readings
----------
+Reading
+-------
 
 :ref:`booleans`
 

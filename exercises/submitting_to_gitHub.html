@@ -284,11 +284,65 @@
 <span id="submitting-to-github"></span><h1>Submitting your work to gitHub<a class="headerlink" href="#submitting-your-work-to-github" title="Permalink to this headline">¶</a></h1>
 <p>In this program, we are using the gitHub source code management system to manage each student’s code, as well as examples and solutions.</p>
 <p>gitHub is designed as a system to develop collaborative software projects. As such, it is a great tool to learn for your future programming endeavors.</p>
-<p>It also has great interface for code review, so provides a system with which the instructors can review your code.</p>
+<p>It also has great interface for code review, so provides a system with which the instructors can review and provide feedback on your code.</p>
 <div class="section" id="starting-a-new-exercise">
 <h2>Starting a New Exercise<a class="headerlink" href="#starting-a-new-exercise" title="Permalink to this headline">¶</a></h2>
 <p>Most Exercise will begin with creating a new python file.</p>
-<p>Start by creating a folder for this lesson (“lesson02” or “lesson03”, or….</p>
+<ol class="arabic simple">
+<li>Start by creating a folder for the current lesson (“lesson02” or “lesson03”, or….)</li>
+<li>Create your python file and save it into the lesson folder you just created.</li>
+<li>Once the file exists, it can be added to your local git “repo” to be managed:</li>
+</ol>
+<blockquote>
+<div>git add the_file.py</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>If the exercise requires more than one file, create them and add each to the manged by git in the same way.</li>
+<li>As you work, when you have something working that you might want to go back to, commit the changes to your repo. YOu have two options now – youcan commit everything that you have changed (-a means “all”):</li>
+</ol>
+<blockquote>
+<div>git commit -a</div></blockquote>
+<p>or you can commit only those files that you want to. To do that, you need to “stage” the files you want to commit:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="n">one_file</span><span class="o">.</span><span class="n">py</span><span class="p">,</span> <span class="n">another_file</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>(Yes, it is confusing – “add” means: “add this file to the ones git is managing” if it’s a new file, but “add this file to the ones I want to commit (staged)” if git is already managing the file. In fact, for a new file, you need to do “git add the_file.py” twice!)</p>
+<p>Now you can do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span>
+</pre></div>
+</div>
+<p>and the files that are “staged for commit” will be committed to your repo.</p>
+<p><strong>reminder</strong> – you can (and frequently should) run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<p>To see what is going on – it will tell you which files are staged for commit, which files have been modified, and which are not being managed by git at all.</p>
+<ol class="arabic simple" start="6">
+<li>Recall that all this git adding and committing is only effecting your local repo – the one on your local machine. Once you have everything at a point where you want to share it with others (i.e. the instructors, classmates, or yourself on another machine!), you want to “push” it to your gitHub account:</li>
+</ol>
+<blockquote>
+<div>git push</div></blockquote>
+<p>Should do it.</p>
+<p>If you are working from multiple machines, and pushing to gitHub, you will need to do:</p>
+<blockquote>
+<div>git pull</div></blockquote>
+<p>To get everything that is up on gitHub down to your local machine.</p>
+<ol class="arabic simple" start="7">
+<li>Once you have completed the assignment, and are ready to “turn it in” (that is, have the instructors review your work), you need to:</li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha">
+<li><p class="first">make sure the latest version is in your gitHub account:</p>
+<p>git push</p>
+</li>
+<li><p class="first">Go to <em>your</em> repo in gitHub in a browser.</p>
+</li>
+<li><p class="first">Submit a “Pull Request” to the class repo:</p>
+<p>(more detail here)</p>
+<p>Make sure to add a note to the PR letting the instructors know which code is ready for review, or of you have any specific questions.</p>
+</li>
+</ol>
+<p>When you submit you PR on giotHub, the instructors will automatically get an email letting them know that you have submitted something.</p>
+</div></blockquote>
 </div>
 </div>
 
