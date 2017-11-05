@@ -1,5 +1,7 @@
 :orphan:
 
+NOTE: This is now being updated in the Google Docs version.
+
 .. _course1_lesson02:
 
 2. Basic Python and Functions

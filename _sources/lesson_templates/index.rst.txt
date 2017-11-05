@@ -7,7 +7,7 @@ All the Lessons for the first two classes in Python Cert
 ########################################################
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     course1_lesson01.rst
     course1_lesson02.rst

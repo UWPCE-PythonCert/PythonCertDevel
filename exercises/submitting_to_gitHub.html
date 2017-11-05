@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Trapezoidal Rule &mdash; PythonCert 4.0 documentation</title>
+  <title>Submitting your work to gitHub &mdash; PythonCert 4.0 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="next" title="Mailroom Object Oriented" href="mailroom-oo.html"/>
-        <link rel="prev" title="String Formatting Lab" href="string_formatting.html"/> 
+        <link rel="next" title="Python Pushups" href="python_pushups.html"/>
+        <link rel="prev" title="Comprehensions Quiz" href="../quizzes/comprehensions_quiz.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -175,7 +175,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/comprehensions_quiz.html">Comprehensions Quiz</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="submitting_to_gitHub.html">Submitting your work to gitHub</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Submitting your work to gitHub</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#starting-a-new-exercise">Starting a New Exercise</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="python_pushups.html">Python Pushups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="args_kwargs_lab.html">Args and Kwargs LAB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="circle_class.html">Circle Class Excercise</a></li>
@@ -198,23 +201,7 @@
 <li class="toctree-l1"><a class="reference internal" href="slicing.html">Slicing Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sparse_array.html">Sparse Array Exercise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="string_formatting.html">String Formatting Lab</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Trapezoidal Rule</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#passing-functions-around">Passing functions around</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Trapezoidal rule</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-task">The task</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#example">Example:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-solution">The Solution:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tests">tests</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#computational-accuracy">Computational Accuracy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#stage-two">Stage two:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#passing-arguments-through">Passing arguments through:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#currying">Currying</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#partial">partial</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#extra-credit">Extra credit</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="trapezoid.html">Trapezoidal Rule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mailroom-oo.html">Mailroom Object Oriented</a></li>
 </ul>
 <ul>
@@ -279,13 +266,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Trapezoidal Rule</li>
+      <li>Submitting your work to gitHub</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/exercises/trapezoid.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/exercises/submitting_to_gitHub.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -298,172 +285,76 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="trapezoidal-rule">
-<span id="exercise-trapezoidal-rule"></span><h1>Trapezoidal Rule<a class="headerlink" href="#trapezoidal-rule" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="passing-functions-around">
-<h2>Passing functions around<a class="headerlink" href="#passing-functions-around" title="Permalink to this headline">¶</a></h2>
-<p class="medium left">Goal:</p>
-<p class="left">Making use of functions as objects – functions that act on functions.</p>
-<div class="section" id="id1">
-<h3>Trapezoidal rule<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>The “trapezoidal rule”:</p>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Trapezoidal_rule">https://en.wikipedia.org/wiki/Trapezoidal_rule</a></p>
-<p>Is one of the easiest “quadrature” methods.</p>
-<p>Otherwise known as computing a definite integral, or, simply,</p>
-<p>Computing the area under a curve.</p>
-</div>
-<div class="section" id="the-task">
-<h3>The task<a class="headerlink" href="#the-task" title="Permalink to this headline">¶</a></h3>
-<p>Your task is to write a <code class="docutils literal"><span class="pre">trapz()</span></code> function that will compute the area under an arbitrary function, using the trapezoidal rule.</p>
-<p>The function will take another function as an argument, as well as the start and end points to compute, and return the area under the curve.</p>
-</div>
-<div class="section" id="example">
-<h3>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">line</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;a very simple straight horizontal line at y = 5&#39;&#39;&#39;</span>
-    <span class="k">return</span> <span class="mi">5</span>
-
-<span class="n">area</span> <span class="o">=</span> <span class="n">trapz</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-
-<span class="n">area</span>
-<span class="mi">50</span>
+  <div class="section" id="submitting-your-work-to-github">
+<span id="submitting-to-github"></span><h1>Submitting your work to gitHub<a class="headerlink" href="#submitting-your-work-to-github" title="Permalink to this headline">¶</a></h1>
+<p>In this program, we are using the gitHub source code management system to manage each student’s code, as well as examples and solutions.</p>
+<p>gitHub is designed as a system to develop collaborative software projects. As such, it is a great tool to learn for your future programming endeavors.</p>
+<p>It also has great interface for code review, so provides a system with which the instructors can review and provide feedback on your code.</p>
+<div class="section" id="starting-a-new-exercise">
+<h2>Starting a New Exercise<a class="headerlink" href="#starting-a-new-exercise" title="Permalink to this headline">¶</a></h2>
+<p>Most Exercise will begin with creating a new python file.</p>
+<ol class="arabic">
+<li><p class="first">Start by creating a folder for the current lesson (“lesson02” or “lesson03”, or….)</p>
+</li>
+<li><p class="first">Create your python file and save it into the lesson folder you just created.</p>
+</li>
+<li><p class="first">Once the file exists, it can be added to your local git “repo” to be managed:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="n">the_file</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>About the simplest “curve” you can have is a horizontal straight line, in this case, at y = 5. The area under that line from 0 to 10 is a rectangle that is 10 wide and 5 high, so with an area of 50.</p>
-<p>Of course in this case, it’s easiest to simply multiply the height times the width, but we want a function that will work for <strong>Any</strong> curve.</p>
-<p>HINT: this simple example could be a good test case!</p>
-</div>
-<div class="section" id="the-solution">
-<h3>The Solution:<a class="headerlink" href="#the-solution" title="Permalink to this headline">¶</a></h3>
-<p>Your function definition should look like:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">trapz</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute the area under the curve defined by</span>
-<span class="sd">    y = fun(x), for x between a and b</span>
-
-<span class="sd">    :param fun: the function to evaluate</span>
-<span class="sd">    :type fun: a function that takes a single parameter</span>
-
-<span class="sd">    :param a: the start point for teh integration</span>
-<span class="sd">    :type a: a numeric value</span>
-
-<span class="sd">    :param b: the end point for the integration</span>
-<span class="sd">    :type b: a numeric value</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">pass</span>
+</li>
+<li><p class="first">If the exercise requires more than one file, create them and add each to the manged by git in the same way.</p>
+</li>
+<li><p class="first">As you work, when you have something working that you might want to go back to, commit the changes to your repo. You have two options now – you can commit everything that you have changed (-a means “all”)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">a</span>
 </pre></div>
 </div>
-<p>In the function, you want to compute the following equation:</p>
-<div class="math">
-\[area = \frac{b-a}{2N}(f(x_0) + 2f(x_1) + 2f(x_2) + \dotsb + 2f(x_{N-1}) + f(x_N))\]</div>
-<p>So you will need to:</p>
+<p>or you can commit only those files that you want to. To do that, you need to “stage” the files you want to commit:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="n">one_file</span><span class="o">.</span><span class="n">py</span><span class="p">,</span> <span class="n">another_file</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>(Yes, it is confusing – “add” means: “add this file to the ones git is managing” if it’s a new file, but “add this file to the ones I want to commit (staged)” if git is already managing the file. In fact, for a new file, you need to do “git add the_file.py” twice!)</p>
+<p>Now you can do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span>
+</pre></div>
+</div>
+<p>and the files that are “staged for commit” will be committed to your repo.</p>
+<p><strong>reminder</strong> – you can (and frequently should) run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<p>To see what is going on – it will tell you which files are staged for commit, which files have been modified, and which are not being managed by git at all.</p>
+</li>
+<li><p class="first">Recall that all this git adding and committing is only effecting your local repo – the one on your local machine. Once you have everything at a point where you want to share it with others (i.e. the instructors, classmates, or yourself on another machine!), you want to “push” it to your gitHub account:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span>
+</pre></div>
+</div>
+<p>Should do it.</p>
+<p>If you are working from multiple machines, and pushing to gitHub, you will need to do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span>
+</pre></div>
+</div>
+<p>To get everything that is up on gitHub down to your local machine.</p>
+</li>
+<li><p class="first">Once you have completed the assignment, and are ready to “turn it in” (that is, have the instructors review your work), you need to:</p>
+</li>
+</ol>
 <blockquote>
-<div><ul class="simple">
-<li>create a list of x values from a to b (maybe 100 or so values to start)</li>
-<li>compute the function for each of those values and double them</li>
-<li>add them all up</li>
-<li>multiply by the half of the difference between a and b divided by the number of steps.</li>
-</ul>
+<div><ol class="loweralpha">
+<li><p class="first">make sure the latest version is in your gitHub account:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Go to <em>your</em> repo in gitHub in a browser.</p>
+</li>
+<li><p class="first">Submit a “Pull Request” to the class repo:</p>
+<p>(more detail here)</p>
+<p>Make sure to add a note to the PR letting the instructors know which code is ready for review, or of you have any specific questions.</p>
+</li>
+</ol>
 </div></blockquote>
-<p>Note that the first and last values are not doubled, so it may be more efficient to rearrange it like this:</p>
-<div class="math">
-\[area = \frac{b-a}{N} \left( \frac{f(x_0) + f(x_{N})}{2} + \sum_{i=1}^{N-1} f(x_i) \right)\]</div>
-<p>Can you use comprehensions for this?</p>
-<p>NOTE: <code class="docutils literal"><span class="pre">range()</span></code> only works for integers – how can you deal with that?</p>
-<p>Once you have that, it should work for any function that can be evaluated between a and b.</p>
-<p>Try it for some built-in math functions, like <code class="docutils literal"><span class="pre">math.sin</span></code></p>
-</div>
-<div class="section" id="tests">
-<h3>tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h3>
-<p>Do this using test-drive development.</p>
-<p>A few examples of analytical solutions you can use for tests:</p>
-<p>A simple horizontal line – see above.</p>
-<p>A sloped straight line:</p>
-<div class="math">
-\[\int_a^b  y = mx + B = \frac{1}{2} m (b^2-a^2) + B (b-a)\]</div>
-<p>The quadratic:</p>
-<div class="math">
-\[\int_a^b  y = Ax^2 + Bx + C = \frac{A}{3} (b^3-a^3) + \frac{B}{2} (b^2-a^2) + C (b-a)\]</div>
-<p>The sine function:</p>
-<div class="math">
-\[\int_a^b \sin(x) = \cos(a) - \cos(b)\]</div>
-</div>
-<div class="section" id="computational-accuracy">
-<h3>Computational Accuracy<a class="headerlink" href="#computational-accuracy" title="Permalink to this headline">¶</a></h3>
-<p>In the case of the linear functions, the result should theoretically be exact. But with the vagaries of floating point math may not be.</p>
-<p>And for non-linear functions, the result will certainly not be exact.</p>
-<p>So you want to check if the answer is <em>close</em> to what you expect.</p>
-<p>In py3.5 – there is an <code class="docutils literal"><span class="pre">isclose()</span></code> function (PEP485)</p>
-<p><a class="reference external" href="https://www.python.org/dev/peps/pep-0485/">https://www.python.org/dev/peps/pep-0485/</a></p>
-<p>In earlier pythons – you’ll need your own. There is one in:</p>
-<p><code class="docutils literal"><span class="pre">Examples/Session09/test_trapz.py</span></code></p>
-</div>
-<div class="section" id="stage-two">
-<h3>Stage two:<a class="headerlink" href="#stage-two" title="Permalink to this headline">¶</a></h3>
-<p>Some functions need extra parameters to do their thing. But the above will only handle a single parameter. For example, a quadratic function:</p>
-<div class="math">
-\[y = A x^2 + Bx + C\]</div>
-<p>Requires values for A, B, and C in order to compute y from an given x.</p>
-<p>You could write a specialized version of this function for each A, B, and C:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quad1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">4</span>
-</pre></div>
-</div>
-<p>But then you need to write a new function for any value of these parameters you might need.</p>
-<p>Instead, you can pass in A, B and C each time:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quadratic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">A</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">B</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">C</span>
-</pre></div>
-</div>
-<p>Nice and general purpose.</p>
-<p>But how would we compute the area under this function?</p>
-<p>The function we wrote above only passes x in to the function it is integrating.</p>
-</div>
-<div class="section" id="passing-arguments-through">
-<h3>Passing arguments through:<a class="headerlink" href="#passing-arguments-through" title="Permalink to this headline">¶</a></h3>
-<p>Update your trapz() function so that you can give it a function that takes arbitrary extra arguments, either positional or keyword, after the x.</p>
-<p>So you can do:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">trapz</span><span class="p">(</span><span class="n">quadratic</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>or</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">trapz</span><span class="p">(</span><span class="n">quadratic</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>or</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">coef</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
-<span class="n">trapz</span><span class="p">(</span><span class="n">quadratic</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">**</span><span class="n">coef</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>NOTE:</strong> Make sure this will work with ANY function, with <strong>ANY</strong> additional positional or keyword arguments – not just this particular function.</p>
-<p>This is pretty conceptually challenging – but it’s very little code!</p>
-<p>If you are totally lost – look at the lecture notes from previous classes – how can you both accept and pass arbitrary arguments to/from a function?</p>
-<p>You want your trapz function to take ANY function that can take ANY arbitrary extra arguments – not just the quadratic function, and not just <code class="docutils literal"><span class="pre">A,B,</span> <span class="pre">and</span> <span class="pre">C</span></code>. So good to test with another example.</p>
-<p>The generalized sine function is:</p>
-<div class="math">
-\[A \sin(\omega t)\]</div>
-<p>where <span class="math">\(A\)</span> is the amplitude, and <span class="math">\(\omega\)</span> is the frequency of the function. In this case, the area under the curve from a to b is:</p>
-<div class="math">
-\[\frac{A}{\omega} \left( \cos(\omega a) - \cos(\omega b) \right)\]</div>
-<p>The test code has a test for this one, too.</p>
-</div>
-<div class="section" id="currying">
-<h3>Currying<a class="headerlink" href="#currying" title="Permalink to this headline">¶</a></h3>
-<p>Another way to solve the above problem is to use the original <code class="docutils literal"><span class="pre">trapz</span></code>, and create a custom version of the quadratic() function instead.</p>
-<p>Write a function that takes <code class="docutils literal"><span class="pre">A,</span> <span class="pre">B,</span> <span class="pre">and</span> <span class="pre">C</span></code> as arguments, and returns a function that evaluates the quadratic for those particular coefficients.</p>
-<p>Try passing the results of this into your <code class="docutils literal"><span class="pre">trapz()</span></code> and see if you get the same answer.</p>
-</div>
-<div class="section" id="partial">
-<h3>partial<a class="headerlink" href="#partial" title="Permalink to this headline">¶</a></h3>
-<p>Do the above with <code class="docutils literal"><span class="pre">functools.partial</span></code> as well.</p>
-</div>
-<div class="section" id="extra-credit">
-<h3>Extra credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h3>
-<p>This isn’t really the point of the exercise, but see if you can make it dynamically accurate.</p>
-<p>How accurate it is depends on how small the chunks are that you break the function up into.</p>
-<p>See if you can think of a way to dynamically determine how small a step you should use.</p>
-<p>This is one for the math and computational programming geeks!</p>
-</div>
+<p>When you submit you PR on gitHub, the instructors will automatically get an email letting them know that you have submitted something.</p>
 </div>
 </div>
 
@@ -477,10 +368,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mailroom-oo.html" class="btn btn-neutral float-right" title="Mailroom Object Oriented" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="python_pushups.html" class="btn btn-neutral float-right" title="Python Pushups" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="string_formatting.html" class="btn btn-neutral" title="String Formatting Lab" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../quizzes/comprehensions_quiz.html" class="btn btn-neutral" title="Comprehensions Quiz" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

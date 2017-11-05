@@ -127,6 +127,7 @@ Exercises
 .. toctree::
     :maxdepth: 1
 
+    exercises/submitting_to_gitHub.rst
     exercises/python_pushups.rst
     exercises/args_kwargs_lab.rst
     exercises/circle_class.rst
@@ -162,7 +163,7 @@ Supplemental Materials
     supplemental/HowToRunAPythonFile
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     supplemental/installing/index
     supplemental/dev_environment/index
@@ -171,7 +172,7 @@ References:
 ===========
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     references/index
 
@@ -179,7 +180,7 @@ scripts
 =======
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     scripts/Intro.rst
     scripts/how_to_run_python
