@@ -17,15 +17,8 @@ Programming paradigms are like cultures. They coalesce around certain values and
 
 This is all to say that to try to define--to actually nail down a definition--of Object Oriented Programming, Functional Programming, or of any other paradigm is perhaps a misguided errand. It is perhaps better to think of them as constellations of ideas or as rich cultures that help you think about solutions to the problems you're trying to solve with software.
 
-
-Object Objected Programming vs Functional Programming
-=====================================================
-
-Use Cases & Problem Domains
----------------------------
-
 Objects and Functions
----------------------
+=====================
 
 Give me one of the main ideas or the main things in OBJECT Oriented programs. I'll give you two seconds. No I won't. Objects. In python perhaps we talk and even think more often about classes, but when we instantiate a class, when we make an instance of a class, we have an object.
 
