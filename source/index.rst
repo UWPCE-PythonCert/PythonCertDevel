@@ -187,9 +187,11 @@ scripts
     scripts/intro_to_ipython
     scripts/Booleans
     scripts/slicing
-    scripts/FunctionalProgramming
     scripts/Functions
     scripts/Methods
+    scripts/fp-intro
+    scripts/fp-functions
+    scripts/fp-summary
 
 Indices and tables
 ==================
