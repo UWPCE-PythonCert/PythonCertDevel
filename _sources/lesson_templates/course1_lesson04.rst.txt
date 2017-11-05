@@ -2,8 +2,8 @@
 
 .. _course1_lesson04:
 
-Dictionaries, Set and Files
-===========================
+4. Dictionaries, Set and Files
+==============================
 
 Learning objectives
 -------------------

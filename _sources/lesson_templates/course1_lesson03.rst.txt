@@ -1,5 +1,7 @@
 :orphan:
 
+NOTE: This is now being updated in the Google Docs version.
+
 .. _course1_lesson03:
 
 3. Booleans, Sequences, Iteration, and Strings
