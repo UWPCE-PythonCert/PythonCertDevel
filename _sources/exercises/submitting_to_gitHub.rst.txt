@@ -75,7 +75,7 @@ To get everything that is up on gitHub down to your local machine.
 
      Make sure to add a note to the PR letting the instructors know which code is ready for review, or of you have any specific questions.
 
-  When you submit you PR on giotHub, the instructors will automatically get an email letting them know that you have submitted something.
+  When you submit you PR on gitHub, the instructors will automatically get an email letting them know that you have submitted something.
 
 
 

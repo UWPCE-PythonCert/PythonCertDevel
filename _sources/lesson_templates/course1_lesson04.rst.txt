@@ -33,17 +33,7 @@ http://www.diveintopython3.net/native-datatypes.html#dictionaries
 Screencasts / Videos
 --------------------
 
- * Review last sessions labs:
-   - slicing
-   - string formatting
-
- * Review  looping: ``for`` and ``while``
-
-    - ``break`` and ``continue``
-
-    - ``else``
-
- * Review mailroom
+:ref:`dict_as_switch`
 
 
 Graded Assignments
