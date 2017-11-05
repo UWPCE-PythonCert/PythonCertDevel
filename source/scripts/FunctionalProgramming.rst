@@ -7,11 +7,9 @@ Functional Programming
 ######################
 
 With Rick Riehle
-----------------
 
-*********************
 Programming Paradigms
-*********************
+=====================
 
 Functional Programming is an alternative to Object Oriented Programming, which is to say that it takes a different perspective. As to a definition, that can be rather tricky. Definitions--by definition--are a statement of the exact meaning of a word; an exact statement or description of the nature, scope or meaning of something. I looked it up. What we're talking about here is more akin to two constellations of related ideas. I tend to picture a three dimensional space with the Functional Programming cloud here and a separate Object Oriented cloud coalescing over here. There are ideas that are somewhere in the middle between the two, and those might represent either equally shared ideas or in some cases, when you drill into them, you might find different approaches to address the one thing, the one idea. Let's think of it in another way.
 
@@ -24,18 +22,17 @@ Object Objected Programming vs Functional Programming
 =====================================================
 
 Use Cases & Problem Domains
-...........................
+---------------------------
 
-*********************
 Objects and Functions
-*********************
+---------------------
 
 Give me one of the main ideas or the main things in OBJECT Oriented programs. I'll give you two seconds. No I won't. Objects. In python perhaps we talk and even think more often about classes, but when we instantiate a class, when we make an instance of a class, we have an object.
 
 Give me one of the main ideas in FUNCTIONal programming. Two seconds, time's up. Functions. Since we discuss objects and classes elsewhere let's jump into functions first.
 
 Functions
-=========
+---------
 
 Let's start with high school math. As you will recall, functions take arguments and return a value. The strict definition can be found on `Wikipedia <https://en.wikipedia.org/wiki/Function_(mathematics)>`
 
@@ -68,23 +65,23 @@ Composition
 
 
 
-**************************
+##########################
 Mutability vs Immutability
-**************************
+##########################
 
 
 Managing State
 ==============
 
 
-*****************************
+#############################
 Control Flow verses Data Flow
-*****************************
+#############################
 
 
-******************
+
 What is the point?
-******************
+==================
 
 Why does any of this matter? Good question.
 
@@ -105,3 +102,4 @@ They tell you to focus on data flow rather than control flow and they provide sy
 In Python ultimately it means that the choice among these techniques is yours. A long time ago one of Python's prime directives was that there should be one and preferably only one obvious way to do a thing. That's not the case anymore. The language has grown and now in some cases it gives you different syntax--multiple ways--of doing exactly the same thing.
 
 Python leaves it to you to decide which strategy is best for your particular situation. Knowing how these constellations of ideas are related and support each other, understanding the rich cultures behind them and the problems they were designed to solve, will help you make the choice.
+

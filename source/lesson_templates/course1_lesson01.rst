@@ -1,7 +1,8 @@
 :orphan:
 
-.. _course1_lesson01:
+NOTE: This is now being updated in the Google Docs version.
 
+.. _course1_lesson01:
 
 1. Course Intro:
 ================
