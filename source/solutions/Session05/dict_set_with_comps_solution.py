@@ -2,6 +2,8 @@
 
 """
 dict/set lab solutions: Chris' version.
+
+This time with comprehensions:
 """
 
 food_prefs = {"name": "Chris",
@@ -41,6 +43,7 @@ print({key: val.count('a') for key, val in food_prefs.items()})
 s2 = {i for i in range(21) if not i % 2}
 s3 = {i for i in range(21) if not i % 3}
 s4 = {i for i in range(21) if not i % 4}
+
 
 print("\nHere are the three sets:")
 print(s2)

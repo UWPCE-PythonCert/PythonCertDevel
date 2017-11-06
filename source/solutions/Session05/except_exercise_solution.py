@@ -34,7 +34,7 @@ else:
 # Figure out what the exception is, catch it and in that same block
 # try calling the more_fun function with the 2nd language
 # in the list, again assigning it to next_joke.
-#
+
 # If there are no exceptions, call the more_fun
 # function with the last language in the list
 # Regardless of whether there was an exception
@@ -52,4 +52,3 @@ else:
     more_joke = more_fun(langs[-1])
 finally:
     last_fun()
-
