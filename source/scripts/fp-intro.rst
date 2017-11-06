@@ -1,10 +1,10 @@
 :orphan:
 
-.. _functional_programming:
+.. _fp-intro:
 
-######################
-Functional Programming
-######################
+#####################################
+Functional Programming - Introduction
+#####################################
 
 With Rick Riehle
 
@@ -17,15 +17,8 @@ Programming paradigms are like cultures. They coalesce around certain values and
 
 This is all to say that to try to define--to actually nail down a definition--of Object Oriented Programming, Functional Programming, or of any other paradigm is perhaps a misguided errand. It is perhaps better to think of them as constellations of ideas or as rich cultures that help you think about solutions to the problems you're trying to solve with software.
 
-
-Object Objected Programming vs Functional Programming
-=====================================================
-
-Use Cases & Problem Domains
----------------------------
-
 Objects and Functions
----------------------
+=====================
 
 Give me one of the main ideas or the main things in OBJECT Oriented programs. I'll give you two seconds. No I won't. Objects. In python perhaps we talk and even think more often about classes, but when we instantiate a class, when we make an instance of a class, we have an object.
 
@@ -43,15 +36,13 @@ So functions take arguments and return a single, deterministic output, and for a
 
 Functions in Python start here, and indeed when programming according to the Functional Programming paradigm they tend to stay here and not go much beyond. Let's think about that.
 
-Python allows us to do a lot with functions. We can return two or more values from a function for instance. This doesn't necessarily violate the stated definition, but multiple return values, even if they are returned in a tuple, might muddy the water and bring into question the deterministic aspect of the definition where each input or sets of inputs maps to exactly one output. Okay, something to stuff in the back of your mind for now.
+Python allows us to do a lot with functions. We can return two or more values from a function for instance. This doesn't necessarily violate the stated definition, but multiple return values, even if they are returned in a tuple which as you know is immutable, might muddy the water and bring into question the deterministic aspect of the definition where each input or sets of inputs maps to exactly one output. Okay, set that in back of your mind for now.
 
-Recall that when a "function" is defined within a class we no longer call it a function, but instead refer to it as a method. This is not an accident. The return values from methods can and indeed are typically based on data, or state information, that the class, or really, the object at this point, is carrying. That being the case we have clearly violated the textbook definition of a function. In other words, a method is explicitly not a function, even though they have the same structure and do the same sorts of things. The difference is that a method, which again is embedded in an object or class, is likely going to factor in the rest of the object's current state information when returning values, and thus we no longer have the property of a clean single input or set of inputs mapping to a single output. Let's take a look at a simple example.
+Recall that when a "function" is defined within a class we no longer call it a function, but instead refer to it as a method. This is not an accident. The return values from methods can and indeed are typically based on data, or state information, that the class, or really, the object at this point, is carrying. That being the case we have clearly violated the textbook definition of a function. In other words, a method is explicitly not a function, even though they have the same structure and do the same sorts of things. The difference is that a method, which again is embedded in an object or class, is likely going to factor in the rest of the object's current state information when returning values, and thus we no longer have the property of a clean single input or set of inputs mapping to a single output.
 
-Function vs Method example
---------------------------
+Keep in mind also that Python has scoping rules that allow functions to see outside of their definitions. Let's say that a function adds i to one of its arguments before returning a value, and that i is not defined locally within the function. In that case something beyond the function could modify the value of i between calls and thus the function would return a different result. In other words your function doesn't always return the same output for a given set of inputs. This is a violation of the one-output-per-set-of-inputs mathematical definition.
 
-TODO: examples
-
+In functional programming we avoid these sorts of situations. In Python, if we are to develop in a functional style, we need to be cognizant of our goals, we need to adopt the practices and habits of the culture, because Python does not force these habits upon us. It is up to us to adopt them.
 
 Composition
 ===========
@@ -63,21 +54,16 @@ Composition
 .. We are talking about an entirely different, though perfectly familiar type of composition when thinking from the functional perspective.
 
 
-
-
-##########################
 Mutability vs Immutability
-##########################
+==========================
 
 
 Managing State
 ==============
 
 
-#############################
 Control Flow verses Data Flow
-#############################
-
+=============================
 
 
 What is the point?
@@ -95,7 +81,7 @@ Some functional languages are obsessive in their management of state. They don't
 
 They tell you to favor composable functions, functions in the mathematical sense, over objects and classes.
 
-They tell you to prefer immutability over mutability in your choices of data objects and algorithms and they give you the tools to accomplish it.
+They tell you to prefer immutability over mutability in your choices of data objects and algorithms and they give you the tools to accomplish the task.
 
 They tell you to focus on data flow rather than control flow and they provide syntax that makes that sane and possible.
 
