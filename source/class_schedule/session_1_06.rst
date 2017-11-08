@@ -17,7 +17,7 @@ Unit Testing
 
 * :ref:`unit_testing`
 
-**NOTE:** you will find that most introductions to unit testing with Python use the builtin ``unitest`` module. However, it is a bit heavyweight, and requires some knowledge of OOP -- classes, etc. So we'll be using pytest in this class: http://doc.pytest.org/en/latest/. But the principles of testing are the same.
+**NOTE:** you will find that most introductions to unit testing with Python use the built in ``unittest`` module. However, it is a bit heavyweight, and requires some knowledge of OOP -- classes, etc. So we'll be using pytest in this class: http://doc.pytest.org/en/latest/. But the principles of testing are the same.
 
 * Dive into Python: chapter 9:
   http://www.diveintopython3.net/unit-testing.html
@@ -72,4 +72,7 @@ Look at the next session for reading, etc:
 
 :ref:`session_1_07`
 
+NOTE: there is not a lot of new stuff this week, but this will give all of you a chance to catch up if you don't have mailroom and trigrams fully working yet.
+
+And do spend time with the readings (and supplemental readings) -- we are going to dive right in to OO programming next week.
 

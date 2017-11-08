@@ -36,43 +36,41 @@ What is Object Oriented Programming?
 
 http://en.wikipedia.org/wiki/Object-oriented_programming
 
-.. nextslide::
 
-Even simpler:
+**Even simpler:**
 
 "Objects are data and the functions that act on them in one place."
 
 This is the core of "encapsulation"
 
+
 The Dominant Model
 ------------------
 
-OO is the dominant model for the past couple decades, but it is not the only model, and languages such as Python increasingly mix and blend among models.
+OO is the dominant model for the past couple decades, but it is not the only model, and languages such as Python increasingly mix and blend models.
 
 Object Oriented Concepts
 ------------------------
 
-.. rst-class:: medium centered
 
-.. container::
+Classes
 
-  Classes
+Instances or Objects
 
-  Instances or Objects
+Encapsulation
 
-  Encapsulation
+Class and instance attributes
 
-  Class and instance attributes
+Subclassing
 
-  Subclassing
+Overriding methods
 
-  Overriding methods
+Operator Overloading
 
-  Operator Overloading
+Polymorphism
 
-  Polymorphism
+Dynamic Dispatch
 
-  Dynamic Dispatch
 
 Definitions
 -----------
@@ -102,7 +100,7 @@ What are its strengths and weaknesses vis-a-vis OO?
 
 It does not support full encapsulation, i.e., it does not require classes,  etc.
 
-.. nextslide::
+**but ...**
 
 Folks can't even agree on what OO "really" means
 
@@ -112,14 +110,14 @@ See: The Quarks of Object-Oriented Development
 
 http://agp.hx0.ru/oop/quarks.pdf
 
-.. nextslide::
 
 Think in terms of what makes sense for your project
  -- not any one paradigm of software design.
 
-.. nextslide::
+
 
 OO Buzzwords
+------------
 
   * data abstraction
   * encapsulation
@@ -132,6 +130,7 @@ Python provides for all of this, though it doesn't enforce or require any of it.
 Python's roots
 --------------
 
+|
 |  C
 |  C with Classes (aka C++)
 |  Modula2
