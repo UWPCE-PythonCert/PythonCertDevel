@@ -14,13 +14,14 @@ seq = list(range(10))
 def test_shuffle():
     # make sure the shuffled sequence does not lose any elements
     random.shuffle(seq)
-    # seq.sort()  # this will amke it fail, so we can see output
+    seq.sort()  # IFyou comment this out, it will fail, so you can see output
     print("seq:", seq)  # only see output if it fails
     assert seq == list(range(10))
 
 
 def test_shuffle_immutable():
-    pytest.raises(TypeError, random.shuffle, (1, 2, 3))
+    with pytest.raises(TypeError):
+        random.shuffle((1, 2, 3))
 
 
 def test_choice():
