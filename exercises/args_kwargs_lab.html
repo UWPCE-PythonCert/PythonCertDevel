@@ -299,10 +299,15 @@
 <p>Note:</p>
 <p>This is not all that clearly specified – the goal is for you to
 experiment with various ways to define and call functions, so you
-can understand what’s possible, and what happens with each call.</p>
+can understand what’s possible, and what happens with each call.
+It is also entirely silly, since the function does not do anything
+at all, but it will teach you about using parameters effectively.</p>
 </div>
 <div class="section" id="procedure">
 <h2>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h2>
+<p>We are going to do this as test driven development. So your first task for
+each assignment below is to write a test that will ensure your code does what
+we are telling you it should do.</p>
 <p><strong>Keyword arguments:</strong></p>
 <ul class="simple">
 <li>Write a function that has four optional parameters (with defaults):<ul>
@@ -312,8 +317,9 @@ can understand what’s possible, and what happens with each call.</p>
 <li><cite>visited_color</cite></li>
 </ul>
 </li>
-<li>Have it print the colors (use strings for the colors)</li>
-<li>Call it with a couple different parameters set<ul>
+<li>Have it return the colors (use strings for the colors)</li>
+<li>Call it with a couple different parameters set
+IOW, write tests that verify that all of the following work as advertised:<ul>
 <li>using just positional arguments:<ul>
 <li><code class="docutils literal"><span class="pre">func('red',</span> <span class="pre">'blue',</span> <span class="pre">'yellow',</span> <span class="pre">'chartreuse')</span></code></li>
 </ul>
@@ -337,11 +343,11 @@ can understand what’s possible, and what happens with each call.</p>
 </ul>
 <p><strong>Generic parameters:</strong></p>
 <ul class="simple">
-<li>Write a the same function with the parameters as:</li>
+<li>Write a new function with the parameters as:</li>
 </ul>
-<p><code class="docutils literal"><span class="pre">*args</span></code> and <code class="docutils literal"><span class="pre">**kwags</span></code></p>
+<p><code class="docutils literal"><span class="pre">*args</span></code> and <code class="docutils literal"><span class="pre">**kwargs</span></code></p>
 <ul class="simple">
-<li>Have it print the colors (use strings for the colors)</li>
+<li>Have it return the colors (use strings for the colors)</li>
 <li>Call it with the same various combinations of arguments used above.</li>
 <li>Also have it print <cite>args</cite> and <cite>kwargs</cite> directly, so you can be sure you understand what’s going on.</li>
 <li>Note that in general, you can’t know what will get passed into <code class="docutils literal"><span class="pre">**kwargs</span></code> So maybe adapt your function to be able to do something reasonable with any keywords.</li>
