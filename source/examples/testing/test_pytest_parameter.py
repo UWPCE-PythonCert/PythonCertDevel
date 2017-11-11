@@ -6,6 +6,7 @@ pytest example of a parameterized test
 NOTE: there is a failure in here! can you fix it?
 
 """
+
 import pytest
 
 
@@ -16,8 +17,8 @@ def add(a, b):
     """
     return a + b
 
-# now some test data:
 
+# now some test data:
 test_data = [((2, 3), 5),
              ((-3, 2), -1),
              ((2, 0.5), 2.5),

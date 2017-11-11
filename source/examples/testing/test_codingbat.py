@@ -3,7 +3,10 @@
 """
 test file for codingbat module
 
-This version can be run with nose or py.test
+This version is designed to be run with py.test
+
+This has a few tests for the sleep_in and sumdouble functions.
+
 """
 
 from codingbat import sleep_in

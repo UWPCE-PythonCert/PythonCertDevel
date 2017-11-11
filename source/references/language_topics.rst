@@ -105,6 +105,10 @@ Async Through the Looking Glass -- Adventures in Python Land
 
 https://hackernoon.com/async-through-the-looking-glass-d69a0a88b661#.sd3xk0ru0
 
+How the heck does ``asyc-await`` Work in Python?
+
+https://snarky.ca/how-the-heck-does-async-await-work-in-python-3-5/
+
 Asyncio for the working Python developer
 ----------------------------------------
 This one talks about why you might want to do async development.
@@ -124,7 +128,10 @@ Python Concurrency From the Ground Up: LIVE!
 
 http://pyvideo.org/pycon-us-2015/python-concurrency-from-the-ground-up-live.html
 
-logging
+
+
+
+Logging
 -------
 
 `A guide to logging in Python <https://opensource.com/article/17/9/python-logging>`_
