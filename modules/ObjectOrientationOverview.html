@@ -162,12 +162,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#software-design">Software Design</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-dominant-model">The Dominant Model</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#object-oriented-concepts">Object Oriented Concepts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#definitions">Definitions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#python-and-oo">Python and OO</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#oo-buzzwords">OO Buzzwords</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#object-oriented-design">Object Oriented Design</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#python-s-roots">Python’s roots</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#you-can-do-oo-in-c">You can do OO in C</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#you-will-need-to-understand-oo">You will need to understand OO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#if-not-oo-design-then-what">If not OO Design, then what?</a></li>
 </ul>
 </li>
 </ul>
@@ -302,7 +302,7 @@
   <div class="section" id="object-orientation-overview">
 <span id="id1"></span><h1>Object Orientation Overview<a class="headerlink" href="#object-orientation-overview" title="Permalink to this headline">¶</a></h1>
 <p>In the Beginning there was the GOTO.</p>
-<p>And in fact, there wasn’t even that.</p>
+<p>… and in fact, there wasn’t even that.</p>
 <div class="section" id="programming-paradigms">
 <h2>Programming Paradigms<a class="headerlink" href="#programming-paradigms" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Programming_paradigm">https://en.wikipedia.org/wiki/Programming_paradigm</a></p>
@@ -339,37 +339,41 @@ that use”</div>
 </div>
 <div class="section" id="object-oriented-concepts">
 <h3>Object Oriented Concepts<a class="headerlink" href="#object-oriented-concepts" title="Permalink to this headline">¶</a></h3>
-<p>Classes</p>
-<p>Instances or Objects</p>
-<p>Encapsulation</p>
-<p>Class and instance attributes</p>
-<p>Subclassing</p>
-<p>Overriding methods</p>
-<p>Operator Overloading</p>
-<p>Polymorphism</p>
-<p>Dynamic Dispatch</p>
-</div>
-<div class="section" id="definitions">
-<h3>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h3>
+<p>These are all terms you will hear when talking about Object Oriented Programming:</p>
 <dl class="docutils">
-<dt>class</dt>
+<dt>Class</dt>
 <dd>A category of objects: particular data and behavior: A “circle” (same as a type in python)</dd>
-<dt>instance</dt>
+<dt>Instance</dt>
 <dd>A particular object of a class: a specific circle</dd>
-<dt>object</dt>
-<dd>The general case of an instance – really any value (in Python anyway)</dd>
-<dt>attribute</dt>
+<dt>Object</dt>
+<dd>The general case of an instance – really any value (in Python anyway). This term is a bit overloaded – it also is the generic term for any class. So a class is a particular kind of object.</dd>
+<dt>Attribute</dt>
 <dd>Something that belongs to an object (or class): generally thought of
 as a variable, or single object, as opposed to a …</dd>
-<dt>method</dt>
-<dd>A function that belongs to a class</dd>
+<dt>Method</dt>
+<dd>A function that belongs to a class. In Python, functions <em>are</em> semantically the same as any other type – so all methods are “attributes”. but not all attributes are methods –methods are the functions – or more strictly speaking the ‘callable’ attributes.</dd>
+<dt>Encapsulation</dt>
+<dd>The approach where the details of the structure is “hidden” in a class – the user of the class does not need to know how the data is stored (and may not be able to know…)</dd>
+<dt>Data Protection</dt>
+<dd>This is the cocept that classes can hide data from outside access (sometimes called “private” attributes. Python does not strictly support data protection.</dd>
+<dt>Class vs Instance attributes</dt>
+<dd>Attributes can be attached to a class – that is, shared by all instances of that class, or they can be attached to only that instance.</dd>
+<dt>Subclassing</dt>
+<dd>Subclassing is making a special version of a class. It is a class itself, but it gets (“inherits”) all the attributes and methods of its “parent” class. This makes it easy to re-use code.</dd>
+<dt>Overriding methods</dt>
+<dd>When subclassing, the subclass inherits the methods of its parent class. But it can replace them as well, which is called overriding a method.</dd>
+<dt>Operator Overloading</dt>
+<dd>Python (and most languages) have operators, like <cite>+</cite>, <cite>-</cite>. <cite>*</cite>, etc. Overloading an operator is a way to define what that operator means to a new class not originally in the language.</dd>
+<dt>Polymorphism</dt>
+<dd>Allowing instances of multiple classes to be used in the same way. This simply happens with Python’s “Duck Typing” – An object with a given method can have that method called on it. But is statically typed languages, this is a big deal.</dd>
 </dl>
 </div>
 <div class="section" id="python-and-oo">
 <h3>Python and OO<a class="headerlink" href="#python-and-oo" title="Permalink to this headline">¶</a></h3>
 <p>Is Python a “True” Object-Oriented Language?</p>
 <p>What are its strengths and weaknesses vis-a-vis OO?</p>
-<p>It does not support full encapsulation, i.e., it does not require classes,  etc.</p>
+<p>It does support all of the above concepts (except data protection)</p>
+<p>But it does not support <em>full</em> encapsulation, i.e., it does not require classes, and classes don’t have “private” attributes.</p>
 <p><strong>but …</strong></p>
 <p>Folks can’t even agree on what OO “really” means</p>
 <p>See: The Quarks of Object-Oriented Development</p>
@@ -379,23 +383,14 @@ as a variable, or single object, as opposed to a …</dd>
 </ul>
 </div></blockquote>
 <p><a class="reference external" href="http://agp.hx0.ru/oop/quarks.pdf">http://agp.hx0.ru/oop/quarks.pdf</a></p>
-<dl class="docutils">
-<dt>Think in terms of what makes sense for your project</dt>
-<dd>– not any one paradigm of software design.</dd>
-</dl>
 </div>
-<div class="section" id="oo-buzzwords">
-<h3>OO Buzzwords<a class="headerlink" href="#oo-buzzwords" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="object-oriented-design">
+<h3>Object Oriented Design<a class="headerlink" href="#object-oriented-design" title="Permalink to this headline">¶</a></h3>
+<p>There are many books (and web sites, and blog posts, and …) about “Object Oriented Design”, which is an approach to designing your program by starting with what “nouns” (objects) the program needs to manipulate.</p>
+<p>This may be a good approach for a “pure” OO language, but with Python it tends to lead to verbose, poorly performing code.</p>
+<p>So my recommendation is to think in terms of what makes sense for your project</p>
 <blockquote>
-<div><ul class="simple">
-<li>data abstraction</li>
-<li>encapsulation</li>
-<li>modularity</li>
-<li>polymorphism</li>
-<li>inheritance</li>
-</ul>
-</div></blockquote>
-<p>Python provides for all of this, though it doesn’t enforce or require any of it.</p>
+<div>– not any one paradigm of software design.</div></blockquote>
 </div>
 <div class="section" id="python-s-roots">
 <h3>Python’s roots<a class="headerlink" href="#python-s-roots" title="Permalink to this headline">¶</a></h3>
@@ -413,13 +408,15 @@ as a variable, or single object, as opposed to a …</dd>
 <h3>You can do OO in C<a class="headerlink" href="#you-can-do-oo-in-c" title="Permalink to this headline">¶</a></h3>
 <p>Which today is not considered an OO Language.</p>
 <p>See the GTK+ project.</p>
-<p>OO languages give you some handy tools to make it easier (and safer):</p>
+<p>So OO is really a design approach – putting the data together with the functions that manipulate that data. It isn’t defined by language features.</p>
+<p>That being said: OO languages give you some handy tools to make it easier (and safer):</p>
 <blockquote>
 <div><ul class="simple">
-<li>polymorphism (duck typing gives you this)</li>
-<li>inheritance</li>
+<li>Polymorphism (duck typing gives you this)</li>
+<li>Inheritance</li>
 </ul>
 </div></blockquote>
+<p>Are the big ones.</p>
 </div>
 <div class="section" id="you-will-need-to-understand-oo">
 <h3>You will need to understand OO<a class="headerlink" href="#you-will-need-to-understand-oo" title="Permalink to this headline">¶</a></h3>
@@ -428,6 +425,16 @@ as a variable, or single object, as opposed to a …</dd>
 <li>You’ll need to work with OO packages</li>
 </ul>
 <p>(Much of the standard library is object oriented)</p>
+</div>
+<div class="section" id="if-not-oo-design-then-what">
+<h3>If not OO Design, then what?<a class="headerlink" href="#if-not-oo-design-then-what" title="Permalink to this headline">¶</a></h3>
+<p>I like to take an incremental design approach:</p>
+<p>You start with your specification – what your program has to <strong>Do</strong></p>
+<p>Then you start to create the data structures you need and the functions you need to manipulate that data.</p>
+<p>If you find yourself needing more than one function that is manipulating the same data – you may need a class.</p>
+<p>It’s almost that simple :-)</p>
+<p>You may also find that you need multiple “things” that have slightly different properties or behavior – that is a case for subclassing.</p>
+<p>As you learn what is possible, this will all start to make more sense.</p>
 </div>
 </div>
 </div>
