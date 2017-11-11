@@ -200,12 +200,16 @@ The class is one namespace, the instance is another.
 
     class Point:
         size = 4
-        color= "red"
+        color = "red"
     ...
         def get_color():
             return self.color
     >>> p3.get_color()
      'red'
+
+So in this case, ``size`` and ``color`` are class attributes.
+
+But note in ``get_color`` -- it accesses color from ``self``:
 
 class attributes are accessed with ``self``  also.
 
@@ -235,8 +239,6 @@ Example:
     Out[10]: False
 
 
-
-
 Typical methods
 ---------------
 
@@ -248,7 +250,7 @@ Typical methods
         def __init__(self, diameter):
             self.diameter = diameter
 
-        def grow(self, factor=2):
+        def expand(self, factor=2):
             self.diameter = self.diameter * factor
 
 
@@ -273,12 +275,16 @@ Gotcha !
 
 Huh???? I only gave 2
 
-``self`` is implicitly passed in for you by python.
+``self`` is implicitly passed in for you by python. so it actually *did* get three!
+
 
 Functions (methods) are First Class
 -----------------------------------
 
-.. rst-class:: center
+Note that in python, functions are first class objects, so a method *is* an attribute
 
-    Note that in python, functions are first class objects, so a method *is* an attribute
+All the same rules apply about attribute access: note that the methods are defined in the class -- so they are class attributes. All the instances share the same methods.
+
+But each method gets its own namespace when it is actually called, so there is no confusion-- just like when you call a regular function multiple times.
+
 
