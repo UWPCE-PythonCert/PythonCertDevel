@@ -4,14 +4,18 @@
 Python Classes
 ##############
 
-How do we make classes in Python?
+"Classes" are the core of Object Oriented Programming.
+
+They provide the tools for encapsulation (keeping the data with the functions) and subclassing and polymorphism.
+
+
+How are classes made in Python?
+===============================
 
 The ``class`` statement
 -----------------------
 
-The ``class``  statement
-
-``class``  creates a new type object:
+The ``class``  statement creates a new type object:
 
 .. code-block:: ipython
 
@@ -25,9 +29,62 @@ A class is a type -- interesting!
 
 It is created when the statement is run -- much like ``def``
 
-A simple class
+So we now have a new type, or class -- it doesn't have any actual functionality, though be default all classes "inherit" from ``object``, and do get some minimal functionality from that:
 
-About the simplest class you can write
+.. code-block:: ipython
+
+    In [3]: issubclass(C, object)
+    Out[3]: True
+
+We can print it:
+
+.. code-block:: ipython
+
+    In [4]: print(C)
+    <class '__main__.C'>
+
+And look at all the methods it has!
+
+.. code-block:: ipython
+
+    In [5]: dir(C)
+    Out[5]:
+    ['__class__',
+     '__delattr__',
+     '__dict__',
+     '__dir__',
+     '__doc__',
+     '__eq__',
+     '__format__',
+     '__ge__',
+     '__getattribute__',
+     '__gt__',
+     '__hash__',
+     '__init__',
+     '__init_subclass__',
+     '__le__',
+     '__lt__',
+     '__module__',
+     '__ne__',
+     '__new__',
+     '__reduce__',
+     '__reduce_ex__',
+     '__repr__',
+     '__setattr__',
+     '__sizeof__',
+     '__str__',
+     '__subclasshook__',
+     '__weakref__']
+
+Most of those don't do anything -- but they are there, so every class is guaranteed to have all the "stuff" python expects objects to have.
+
+In order for the class to do anything useful, it needs to be given attributes and methods.
+
+
+A simple ``class``
+------------------
+
+About the simplest class you can write that is still useful.
 
 .. code-block:: python
 
@@ -44,6 +101,8 @@ About the simplest class you can write
     >>> p.x
     1
 
+This looks a lot like a "struct" in C -- Python doesn't have structures, so yes, a class with no methods (functions) is essentially a struct.
+
 Basic Structure of a class
 --------------------------
 
@@ -56,13 +115,7 @@ Basic Structure of a class
             self.x = x
             self.y = y
 
-    ## create an instance of the class
-    p = Point(3,4)
-
-    ## access the attributes
-    print("p.x is:", p.x)
-    print("p.y is:", p.y)
-
+so this class has a method called "__init__" -- which is a python special method.
 
 see: ``Examples/Session07/simple_classes.py``
 
@@ -87,6 +140,20 @@ It gets the arguments passed when you call the class object:
 
     Point(x, y)
 
+Once you have defined an __init__, you can create "instances" of the class:
+
+.. code-block:: python
+
+    p = Point(3,4)
+
+And access the attributes:
+
+.. code-block:: python
+
+    print("p.x is:", p.x)
+    print("p.y is:", p.y)
+
+
 Self
 ----
 
@@ -94,7 +161,7 @@ What is this ``self`` thing?
 
 The instance of the class is passed as the first parameter for every method.
 
-"``self``" is only a convention -- but you DO want to use it.
+the name "``self``" is only a convention -- but you *DO* want to use it.
 
 .. code-block:: python
 
@@ -104,13 +171,14 @@ The instance of the class is passed as the first parameter for every method.
 
 Does this look familiar from C-style procedural programming?
 
-
-.. nextslide::
-
 Anything assigned to a ``self.``  attribute is kept in the instance
 name space -- ``self`` *is* the instance.
 
 That's where all the instance-specific data is.
+
+
+Class Attributes
+----------------
 
 .. code-block:: python
 
@@ -120,9 +188,6 @@ That's where all the instance-specific data is.
         def __init__(self, x, y):
             self.x = x
             self.y = y
-
-Class Attributes
-----------------
 
 Anything assigned in the class scope is a class attribute -- every
 instance of the class shares the same one.
@@ -135,12 +200,16 @@ The class is one namespace, the instance is another.
 
     class Point:
         size = 4
-        color= "red"
+        color = "red"
     ...
         def get_color():
             return self.color
     >>> p3.get_color()
      'red'
+
+So in this case, ``size`` and ``color`` are class attributes.
+
+But note in ``get_color`` -- it accesses color from ``self``:
 
 class attributes are accessed with ``self``  also.
 
@@ -170,8 +239,6 @@ Example:
     Out[10]: False
 
 
-
-
 Typical methods
 ---------------
 
@@ -183,7 +250,7 @@ Typical methods
         def __init__(self, diameter):
             self.diameter = diameter
 
-        def grow(self, factor=2):
+        def expand(self, factor=2):
             self.diameter = self.diameter * factor
 
 
@@ -208,12 +275,16 @@ Gotcha !
 
 Huh???? I only gave 2
 
-``self`` is implicitly passed in for you by python.
+``self`` is implicitly passed in for you by python. so it actually *did* get three!
+
 
 Functions (methods) are First Class
 -----------------------------------
 
-.. rst-class:: center
+Note that in python, functions are first class objects, so a method *is* an attribute
 
-    Note that in python, functions are first class objects, so a method *is* an attribute
+All the same rules apply about attribute access: note that the methods are defined in the class -- so they are class attributes. All the instances share the same methods.
+
+But each method gets its own namespace when it is actually called, so there is no confusion-- just like when you call a regular function multiple times.
+
 

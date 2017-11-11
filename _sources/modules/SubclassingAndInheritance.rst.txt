@@ -1,13 +1,13 @@
 .. _subclassing_inheritance:
 
-
+###########################
 Subclassing and Inheritance
-===========================
+###########################
 
 How to put the pieces together to build a complex system without repeating code.
 
 Inheritance
------------
+===========
 
 In object-oriented programming (OOP), inheritance is a way to reuse code
 of existing objects, or to establish a subtype from an existing object.
@@ -129,8 +129,8 @@ You can also call the superclass' other methods:
         def get_area(self):
             return Circle.get_area(self, self.radius*2)
 
-There is nothing special about ``__init__``  except that it gets called
-automatically when you instantiate an instance.
+
+Note that there is nothing special about ``__init__``  except that it gets called automatically when you instantiate an instance. Otherwise, it is the same as any other method -- it gets ``self`` as the first argument, it can or can not call the superclasses methods, etc.
 
 
 Subclassing vs Composition
