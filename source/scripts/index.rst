@@ -1,9 +1,11 @@
 
 .. _index_to_scripts:
 
-##############################################################
-All the Video Scripts for the first two classes in Python Cert
-##############################################################
+######################################################
+Video Scripts for the first two classes in Python Cert
+######################################################
+
+These will not ultimately be published
 
 .. toctree::
     :maxdepth: 1
@@ -30,3 +32,4 @@ All the Video Scripts for the first two classes in Python Cert
     fp-intro.rst
     fp-functions.rst
     fp-summary.rst
+
