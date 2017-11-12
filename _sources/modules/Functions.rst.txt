@@ -5,7 +5,7 @@ More on Functions
 
 From various tutorials, etc, you should have the basics of writing functions down.
 
-In particular, you know that functions can contain a chunk of code that can be wirtten once, and used multiple times from other parts of the code.
+In particular, you know that functions can contain a chunk of code that can be written once, and used multiple times from other parts of the code.
 
 You know that you can pass values into the function, and that it can return values to the "calling" code.
 
@@ -22,11 +22,11 @@ Defining a function:
         z = x + y
         return z
 
-`x`, `y`, `z` are *local* names.
+``x``, ``y``, ``z`` are *local* names.
 
-`x` and `y` because there are function *parameters*
+``x`` and ``y`` because there are function *parameters*
 
-`z` because it was "bound" inside the function.
+``z`` because it was "bound" inside the function.
 
 
 Local vs. Global
@@ -34,7 +34,7 @@ Local vs. Global
 
 Names bound in Python have a *scope*
 
-That *scope* determines where a symbol is visible, or what value it has in a
+That *scope* determines where a symbol is visible, and what value it has in a
 given block.
 
 .. code-block:: ipython
@@ -48,10 +48,9 @@ given block.
     In [18]: fun(3, 4)
     32 3 4
 
+``x`` is global, while ``y`` and ``z`` are local to the function.
 
-x is global, y and z local to the function
-
-But, did the value of y and z change in the *global* scope?
+But, did the value of ``y`` and ``z`` change in the *global* scope?
 
 .. code-block:: ipython
 
@@ -67,7 +66,7 @@ The ones outside the function are "global" names.
 
 **NOTE:** "global" in python means global to the module (generally a single file), not global to an entire program. Which is really good, as you have little way of knowing what names are being used in packages you are using, but are not writing yourself!
 
-In general, you should use global bindings mostly for constants.
+In general, you should use global names mostly for constants.
 
 The python convention is to designate global constants by typing the
 names we bind to them in ALL_CAPS:
@@ -120,7 +119,13 @@ Try it and see:
     UnboundLocalError: local variable 'x' referenced before assignment
 
 Because you are binding the symbol ``x`` locally, it becomes a local and masks
-the global value already bound.
+the global value already bound. So in the line that caused the error:
+
+.. code-block:: python
+
+    y = x
+
+Python knows that x is a local name, as it is assigned on the next line.  But on this line,  x does has not yet been given a value -- hence the error.
 
 
 Parameters

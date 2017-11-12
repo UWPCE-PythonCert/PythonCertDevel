@@ -1,5 +1,7 @@
 .. _script_python_overview
 
+NOTE: now managed in Google Docs.
+
 ###############
 Python Overview
 ###############
@@ -165,7 +167,6 @@ https://wiki.python.org/moin/PortingPythonToPy3k
 
 And here are some other notes:
 
+
 https://uwpce-pythoncert.github.io/PythonCertDevel/modules/Py2vsPy3.html
-
-
 
