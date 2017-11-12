@@ -1,7 +1,7 @@
 .. _session_1_07:
 
 #####################################
-Session 7: Onject Oriented Programing
+Session 7: Object Oriented Programing
 #####################################
 
 Object Oriented Programing: classes, instance and class attributes, subclassing and inheritance.
