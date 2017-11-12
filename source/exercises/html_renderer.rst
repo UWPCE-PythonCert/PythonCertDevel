@@ -1,15 +1,15 @@
 .. _exercise_html_renderer:
 
-======================
+######################
 HTML Renderer Exercise
-======================
-
-HTML Renderer
-=============
+######################
 
 Ever need to generate some HTML?
 
 And not want to write all those tags yourself?
+
+HTML Renderer
+=============
 
 Goal:
 ------
@@ -18,20 +18,24 @@ The goal is to create a set of classes to render html pages -- in a "pretty prin
 
 i.e. nicely indented and human readable.
 
-We'll try to get to all the features required to render:
+We'll try to get to all the features required to render this file:
 
-:download:`sample_html.html  <./sample_html.html>`
+:download:`sample_html.html  <../examples/html_render/sample_html.html>`
 
-Take a look at it with "view source" in your browser -- or open in a text editor -- it's also in the Examples dir.
+Take a look at it by opening it in your text editor. And slo in a browser to see how it's rendered.
 
-If you don't know html -- just look at the example and copy that....
+If you don't know html -- just look at the example and copy that. And you can read this: :ref:`html_primer` for enough to due this exercise.
 
 The exercise is broken down into a number of steps -- each requiring a few more OO concepts in Python.
 
 General Instructions:
 ---------------------
 
-For each step, add the required functionality. There is example code to run your code for each step in: ``Examples\session07\run_html_render.py``
+For each step, add the required functionality. There is example code to run your code for each step in:
+
+.. ``Examples\session07\run_html_render.py``
+
+:download:`run_html_render.py  <../examples/html_render/run_html_render.py>`
 
 Name your file: ``html_render.py`` -- so it can be imported by ``run_html_render.py``
 
@@ -46,7 +50,7 @@ The html generated at each step will be in the files: ``test_html_ouput?.html``
 At each step, your results should look similar that those (maybe not identical...)
 
 Unit tests
-------------
+----------
 
 Use "test driven development":
 
@@ -75,27 +79,23 @@ The initializer signature should look like
 
     Element(content=None)
 
-where ``content`` is expected to be a string
+where ``content`` is expected to be a string -- and defaults to Nothing.
 
 It should have an ``append`` method that can add another string to the content.
 
-So your class will need a way to store the content in a way that you can keep adding more to it.
-
-.. nextslide::
+So your class will need a way to store the content in a way that you can keep adding more to it. (this is "composition" -- what kind of python type is good for storing a bunch of things, where order matters, and you can add to it later?)
 
 It should have a ``render(file_out, ind = "")`` method that renders the tag and the strings in the content.
 
-``file_out`` could be any file-like object ( i.e. have a ``write()`` method ).
+``file_out`` could be any open, writable file-like object ( i.e. have a ``write()`` method ). This is what you get from the ``open()`` function -- but there are other kinds of file-like objects. The html will be rendered to this file.
 
 ``ind`` is a string with the indentation level in it: the amount that the tag should be indented for pretty printing.
 
- - This is a little tricky: ``ind`` will be the amount that this element should be indented already. It will be from zero (an empty string) to a lot of spaces, depending on how deep it is in the tree.
+ - This is a little tricky: ``ind`` will be the amount that this element should be indented already. It will be from zero (an empty string) to a lot of spaces, depending on how deep it is in the tree. You could use an integer for the number of spaces to indent -- or keep it simple and simply use a string with 2, or 4 or ?? spaces in it.
 
 The amount of each level of indentation should be set by the class attribute: ``indent``
 
-NOTE: don't worry too much about indentation at this stage -- the primary goal is to get proper, compliant html. i.e. the opening and closing tags rendered correctly. Worry about cleaning up the indentation once you've got that working. See "Note on indentation" below for more explaination.
-
-.. nextslide::
+NOTE: don't worry too much about indentation at this stage -- the primary goal is to get proper, compliant html. i.e. the opening and closing tags rendered correctly. Worry about cleaning up the indentation once you've got that working. See :ref:`html_render_note_on_indentation` below for more explanation.
 
 So this ``render()`` method takes a file-like object, and calls its ``write()`` method, writing the html for a tag. Something like::
 
@@ -103,31 +103,29 @@ So this ``render()`` method takes a file-like object, and calls its ``write()`` 
         Some content. Some more content.
     <\html>
 
-You should now be able to render an html tag with text in it as contents.
+You should now be able to render an html tag with text in it as content.
 
 See: step 1. in ``run_html_render.py``
 
 Step 2:
---------
+-------
 
 Create a couple subclasses of ``Element``, for each of ``<html>``, ``<body>``, and ``<p>`` tags. All you should have to do is override the ``tag`` class attribute (you may need to add a ``tag`` class attribute to the ``Element`` class first, if you haven't already).
 
 Now you can render a few different types of element.
 
-Extend the ``Element.render()`` method so that it can render other elements inside the tag in addition to strings. Simple recursion should do it. i.e. it can call the ``render()`` method of the elements it contains. You'll need to be smart about setting the ``ind`` optional parameter -- so that the nested elements get indented correctly. (again, this is a secondary concern...)
+Extend the ``Element.render()`` method so that it can render other elements inside the tag in addition to strings. Simple recursion should do it. i.e. it can call the ``render()`` method of the elements it contains. You'll need to be smart about setting the ``ind`` optional parameter -- so that the nested elements get indented correctly (again, this is a secondary concern...get correct html first).
 
-Figure out a way to deal with the fact that the contained elements could be either simple strings or ``Element`` s with render methods (there are a few ways to handle that...). Think about "Duck Typing" and EAFP. See the section 'Notes on handling "duck typing"' and the end of the Exercise for more.
-
-.. nextslide::
+Figure out a way to deal with the fact that the contained elements could be either simple strings or ``Element`` s with render methods (there are a few ways to handle that...). Think about "Duck Typing" and EAFP. See the section :ref:`notes_on_handling_duck_typing` and the end of the Exercise for more.
 
 You should now be able to render a basic web page with an ``<html>`` tag around the whole thing, a ``<body>`` tag inside, and multiple ``<p>`` tags inside that, with text inside that. And all indented nicely.
 
-See ``test_html_output2.html``
+See: :download:`test_html_output2.htm  <../examples/html_render/test_html_output2.html>`
 
 NOTE: when you run step 2 in ``run_html_render.py``, you will want to comment out step 1 -- that way you'll only get one set of output.
 
 Step 3:
---------
+-------
 
 Create a ``<head>`` element -- a simple subclass.
 
@@ -142,10 +140,10 @@ Create a ``Title`` subclass of ``OneLineTag`` class for the title.
 You should now be able to render an html doc with a head element, with a
 title element in that, and a body element with some ``<P>`` elements and some text.
 
-See ``test_html_output3.html``
+See :download:`test_html_output3.htm  <../examples/html_render/test_html_output3.html>`
 
 Step 4:
---------
+-------
 
 Extend the ``Element`` class to accept a set of attributes as keywords to the
 constructor, e.g. ``run_html_render.py``
@@ -160,7 +158,7 @@ The render method will need to be extended to render the attributes properly.
 
 You can now render some ``<p>`` tags (and others) with attributes
 
-See ``test_html_output4.html``
+See: :download:`test_html_output4.htm  <../examples/html_render/test_html_output4.html>`
 
 .. nextslide:: the "class" attribute.
 
@@ -214,7 +212,7 @@ Note that you now have a couple render methods -- is there repeated code in them
 
 Can you refactor the common parts into a separate method that all the render methods can call? And do all your tests still pass (you do have tests for everything, don't you?) after refactoring?
 
-See ``test_html_output5.html``
+See: :download:`test_html_output5.htm  <../examples/html_render/test_html_output5.html>`
 
 Step 6:
 -------
@@ -231,7 +229,7 @@ You should be able to subclass from ``Element``, and only override the ``__init_
 
 You can now add a link to your web page.
 
-See ``test_html_output6.html``
+See: :download:`test_html_output6.htm  <../examples/html_render/test_html_output6.html>`
 
 Step 7:
 --------
@@ -253,7 +251,7 @@ for an <h2> header
 
 It can subclass from ``OneLineTag`` -- overriding the ``__init__``, then calling the superclass ``__init__``
 
-See ``test_html_output7.html``
+See: :download:`test_html_output7.htm  <../examples/html_render/test_html_output7.html>`
 
 Step 8:
 --------
@@ -269,14 +267,16 @@ The doctype and encoding are HTML 5 and you can check this at: http://validator.
 You now have a pretty full-featured html renderer -- play with it, add some
 new tags, etc....
 
-See ``test_html_output8.html``
+See :download:`test_html_output8.htm  <../examples/html_render/test_html_output8.html>`
 
-Note on indentation
+.. _html_render_note_on_indentation:
+
+Note on Indentation
 ===================
 
-Indentation is not stricly required for html -- html ignores most whitespace.
+Indentation is not strictly required for html -- html ignores most whitespace.
 
-But it can make it much easier to read for humans, and it's a nice excercise to see how one might make it nice.
+But it can make it much easier to read for humans, and it's a nice exercise to see how one might make it nice.
 
 There is also more than one way to indent html -- so you have a bit of flexibility here.
 
@@ -296,6 +296,7 @@ So:
 * You want to have the amount of spaces per indentation defined as a class attribute of the base class (the ``Element`` class). That way, you could change it in one place, and it would change everywhere an remain consistent.
 
 
+.. _notes_on_handling_duck_typing:
 
 Notes on handling "duck typing"
 ===============================
@@ -449,6 +450,8 @@ But if, just by bad luck, it has an bug that raises an ``AttributeError`` -- the
 
 If you have a unit test that calls every render method in your code -- then it should catch that error, and in the unit test it will be clear where it is coming from.
 
+
+.. _html_primer:
 
 HTML Primer
 ============

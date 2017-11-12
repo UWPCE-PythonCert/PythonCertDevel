@@ -98,7 +98,6 @@ Modules
     modules/IteratorsAndGenerators
     modules/Lambda
     modules/MapFilterReduce
-    modules/Math
     modules/MultipleInheritance
     modules/ObjectOrientationOverview
     modules/Properties

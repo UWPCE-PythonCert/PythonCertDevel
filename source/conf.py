@@ -56,10 +56,27 @@ source_suffix = '.rst'
 # The master toctree document.
 master_doc = 'index'
 
+author_list = ["Christopher Barker",
+               "Cris Ewing",
+               "Christy Heaton",
+               "Maria McKinley",
+               "Rick Riehle",
+               "Joseph Schilz",
+               "Jon Jacky",
+               "Brian Dorsey",
+               ]
+
+author = ", ".join(sorted(author_list, key=lambda n: n.split()[1]))
+
 # General information about the project.
 project = 'PythonCert'
-copyright = '2017, Christopher Barker, Cris Ewing, Christy Heaton, Maria McKinley, Rick Riehle, Joseph Schilz'
-author = 'Christopher Barker, Cris Ewing, Christy Heaton, Maria McKinley, Rick Riehle, Joseph Schilz'
+copyright = ("2017, University of Washington, {}. "
+             "Creative Commons Attribution-ShareAlike 3.0 licence".format(author)
+             ).format(author)
+
+# author = ("Christopher Barker, Cris Ewing, Christy Heaton, Maria McKinley, "
+#          "Rick Riehle, Joseph Schilz"
+#          )
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
