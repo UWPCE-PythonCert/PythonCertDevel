@@ -8,6 +8,7 @@ All the Video Scripts for the first two classes in Python Cert
 .. toctree::
     :maxdepth: 1
 
+    python_overview.rst
     Booleans.rst
     else_in_loops.rst
     how_to_run_python.rst

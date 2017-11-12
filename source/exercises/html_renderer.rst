@@ -83,7 +83,15 @@ where ``content`` is expected to be a string -- and defaults to Nothing.
 
 It should have an ``append`` method that can add another string to the content.
 
-So your class will need a way to store the content in a way that you can keep adding more to it. (this is "composition" -- what kind of python type is good for storing a bunch of things, where order matters, and you can add to it later?)
+So your class will need a way to store the content in a way that you can keep adding more to it.
+
+An ``Element`` object has to collect a bunch of sub-elements, in order, and you need to be able to append new ones to it -- sounds like a like a ``list``? So should it subclass from ``list``?
+
+Ask yourself -- does this make sense? an "Element *is* a list" -- no.
+
+But "An Element *uses* a list" makes perfect sense.
+
+If the *is* phrase makes sense, then subclassing makes sense. If the *uses* phrase makes sense, *then* you want to subclass.
 
 It should have a ``render(file_out, ind = "")`` method that renders the tag and the strings in the content.
 
@@ -114,7 +122,11 @@ Create a couple subclasses of ``Element``, for each of ``<html>``, ``<body>``, a
 
 Now you can render a few different types of element.
 
-Extend the ``Element.render()`` method so that it can render other elements inside the tag in addition to strings. Simple recursion should do it. i.e. it can call the ``render()`` method of the elements it contains. You'll need to be smart about setting the ``ind`` optional parameter -- so that the nested elements get indented correctly (again, this is a secondary concern...get correct html first).
+Note: So why are we subclassing here? Because: "an body element *is* an ``Element``" makes perfect sense -- that's when you want to subclass. Another way to think about it is that you want to subclass to make a specialized version of something.
+
+You may note not that the ``Element`` class really doesn't do anything by itself -- it needs a tag (at least) to be a proper element. This is what's called a "Base Class". It contains functionality required by various subclasses, but may not do anything on its own.
+
+Extend the ``Element.render()`` method so that it can render other elements inside the tag in addition to strings. A recursion-like approach should do it. i.e. it can call the ``render()`` method of the elements it contains. You'll need to be smart about setting the ``ind`` optional parameter -- so that the nested elements get indented correctly (again, this is a secondary concern...get correct html first).
 
 Figure out a way to deal with the fact that the contained elements could be either simple strings or ``Element`` s with render methods (there are a few ways to handle that...). Think about "Duck Typing" and EAFP. See the section :ref:`notes_on_handling_duck_typing` and the end of the Exercise for more.
 
