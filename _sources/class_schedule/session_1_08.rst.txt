@@ -1,8 +1,8 @@
 .. _session_1_08:
 
-#########################
-Intro to Python Session 8
-#########################
+#######################################
+Session 8: Properties and Magic methods
+#######################################
 
 More OO: Properties and Magic methods.
 

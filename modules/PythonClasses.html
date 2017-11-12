@@ -155,20 +155,23 @@
 <li class="toctree-l1"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Lambda.html">Anonymous Functions: Lambda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MapFilterReduce.html">Map Filter and Reduce</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Math.html">Math with Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MultipleInheritance.html">Multiple Inheritance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ObjectOrientationOverview.html">Object Orientation Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Properties.html">Properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Py2vsPy3.html">Python 2 verses Python 3</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Python Classes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#the-class-statement">The <code class="docutils literal"><span class="pre">class</span></code> statement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#basic-structure-of-a-class">Basic Structure of a class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-initializer">The Initializer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#self">Self</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#class-attributes">Class Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#typical-methods">Typical methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#gotcha">Gotcha !</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#functions-methods-are-first-class">Functions (methods) are First Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-are-classes-made-in-python">How are classes made in Python?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-class-statement">The <code class="docutils literal"><span class="pre">class</span></code> statement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-simple-class">A simple <code class="docutils literal"><span class="pre">class</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-structure-of-a-class">Basic Structure of a class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-initializer">The Initializer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#self">Self</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#class-attributes">Class Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typical-methods">Typical methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gotcha">Gotcha !</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functions-methods-are-first-class">Functions (methods) are First Class</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="PythonOverview.html">Python Overview</a></li>
@@ -297,11 +300,13 @@
             
   <div class="section" id="python-classes">
 <span id="id1"></span><h1>Python Classes<a class="headerlink" href="#python-classes" title="Permalink to this headline">¶</a></h1>
-<p>How do we make classes in Python?</p>
+<p>“Classes” are the core of Object Oriented Programming.</p>
+<p>They provide the tools for encapsulation (keeping the data with the functions) and subclassing and polymorphism.</p>
+<div class="section" id="how-are-classes-made-in-python">
+<h2>How are classes made in Python?<a class="headerlink" href="#how-are-classes-made-in-python" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="the-class-statement">
-<h2>The <code class="docutils literal"><span class="pre">class</span></code> statement<a class="headerlink" href="#the-class-statement" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">class</span></code>  statement</p>
-<p><code class="docutils literal"><span class="pre">class</span></code>  creates a new type object:</p>
+<h3>The <code class="docutils literal"><span class="pre">class</span></code> statement<a class="headerlink" href="#the-class-statement" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">class</span></code>  statement creates a new type object:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
 <span class="go">    pass</span>
 <span class="gp">   ...:</span>
@@ -311,8 +316,53 @@
 </div>
 <p>A class is a type – interesting!</p>
 <p>It is created when the statement is run – much like <code class="docutils literal"><span class="pre">def</span></code></p>
-<p>A simple class</p>
-<p>About the simplest class you can write</p>
+<p>So we now have a new type, or class – it doesn’t have any actual functionality, though be default all classes “inherit” from <code class="docutils literal"><span class="pre">object</span></code>, and do get some minimal functionality from that:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="nb">issubclass</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="nb">object</span><span class="p">)</span>
+<span class="gh">Out[3]: </span><span class="go">True</span>
+</pre></div>
+</div>
+<p>We can print it:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="k">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="go">&lt;class &#39;__main__.C&#39;&gt;</span>
+</pre></div>
+</div>
+<p>And look at all the methods it has!</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="nb">dir</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="gh">Out[5]:</span>
+<span class="go">[&#39;__class__&#39;,</span>
+<span class="go"> &#39;__delattr__&#39;,</span>
+<span class="go"> &#39;__dict__&#39;,</span>
+<span class="go"> &#39;__dir__&#39;,</span>
+<span class="go"> &#39;__doc__&#39;,</span>
+<span class="go"> &#39;__eq__&#39;,</span>
+<span class="go"> &#39;__format__&#39;,</span>
+<span class="go"> &#39;__ge__&#39;,</span>
+<span class="go"> &#39;__getattribute__&#39;,</span>
+<span class="go"> &#39;__gt__&#39;,</span>
+<span class="go"> &#39;__hash__&#39;,</span>
+<span class="go"> &#39;__init__&#39;,</span>
+<span class="go"> &#39;__init_subclass__&#39;,</span>
+<span class="go"> &#39;__le__&#39;,</span>
+<span class="go"> &#39;__lt__&#39;,</span>
+<span class="go"> &#39;__module__&#39;,</span>
+<span class="go"> &#39;__ne__&#39;,</span>
+<span class="go"> &#39;__new__&#39;,</span>
+<span class="go"> &#39;__reduce__&#39;,</span>
+<span class="go"> &#39;__reduce_ex__&#39;,</span>
+<span class="go"> &#39;__repr__&#39;,</span>
+<span class="go"> &#39;__setattr__&#39;,</span>
+<span class="go"> &#39;__sizeof__&#39;,</span>
+<span class="go"> &#39;__str__&#39;,</span>
+<span class="go"> &#39;__subclasshook__&#39;,</span>
+<span class="go"> &#39;__weakref__&#39;]</span>
+</pre></div>
+</div>
+<p>Most of those don’t do anything – but they are there, so every class is guaranteed to have all the “stuff” python expects objects to have.</p>
+<p>In order for the class to do anything useful, it needs to be given attributes and methods.</p>
+</div>
+<div class="section" id="a-simple-class">
+<h3>A simple <code class="docutils literal"><span class="pre">class</span></code><a class="headerlink" href="#a-simple-class" title="Permalink to this headline">¶</a></h3>
+<p>About the simplest class you can write that is still useful.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">... </span>    <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
@@ -327,28 +377,23 @@
 <span class="go">1</span>
 </pre></div>
 </div>
+<p>This looks a lot like a “struct” in C – Python doesn’t have structures, so yes, a class with no methods (functions) is essentially a struct.</p>
 </div>
 <div class="section" id="basic-structure-of-a-class">
-<h2>Basic Structure of a class<a class="headerlink" href="#basic-structure-of-a-class" title="Permalink to this headline">¶</a></h2>
+<h3>Basic Structure of a class<a class="headerlink" href="#basic-structure-of-a-class" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
 <span class="c1"># everything defined in here is in the class namespace</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
-
-<span class="c1">## create an instance of the class</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="c1">## access the attributes</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;p.x is:&quot;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;p.y is:&quot;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>so this class has a method called “__init__” – which is a python special method.</p>
 <p>see: <code class="docutils literal"><span class="pre">Examples/Session07/simple_classes.py</span></code></p>
 </div>
 <div class="section" id="the-initializer">
-<h2>The Initializer<a class="headerlink" href="#the-initializer" title="Permalink to this headline">¶</a></h2>
+<h3>The Initializer<a class="headerlink" href="#the-initializer" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal"><span class="pre">__init__</span></code>  special method is called when a new instance of a class is created.</p>
 <p>You can use it to do any set-up you need</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Point</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -361,12 +406,21 @@
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Once you have defined an __init__, you can create “instances” of the class:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And access the attributes:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;p.x is:&quot;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;p.y is:&quot;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="self">
-<h2>Self<a class="headerlink" href="#self" title="Permalink to this headline">¶</a></h2>
+<h3>Self<a class="headerlink" href="#self" title="Permalink to this headline">¶</a></h3>
 <p>What is this <code class="docutils literal"><span class="pre">self</span></code> thing?</p>
 <p>The instance of the class is passed as the first parameter for every method.</p>
-<p>“<code class="docutils literal"><span class="pre">self</span></code>” is only a convention – but you DO want to use it.</p>
+<p>the name “<code class="docutils literal"><span class="pre">self</span></code>” is only a convention – but you <em>DO</em> want to use it.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">a_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="o">...</span>
@@ -376,6 +430,9 @@
 <p>Anything assigned to a <code class="docutils literal"><span class="pre">self.</span></code>  attribute is kept in the instance
 name space – <code class="docutils literal"><span class="pre">self</span></code> <em>is</em> the instance.</p>
 <p>That’s where all the instance-specific data is.</p>
+</div>
+<div class="section" id="class-attributes">
+<h3>Class Attributes<a class="headerlink" href="#class-attributes" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Point</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span>
     <span class="n">color</span><span class="o">=</span> <span class="s2">&quot;red&quot;</span>
@@ -384,16 +441,13 @@ name space – <code class="docutils literal"><span class="pre">self</span></cod
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="class-attributes">
-<h2>Class Attributes<a class="headerlink" href="#class-attributes" title="Permalink to this headline">¶</a></h2>
 <p>Anything assigned in the class scope is a class attribute – every
 instance of the class shares the same one.</p>
 <p>Note: the methods defined by <code class="docutils literal"><span class="pre">def</span></code> are class attributes as well.</p>
 <p>The class is one namespace, the instance is another.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
     <span class="n">size</span> <span class="o">=</span> <span class="mi">4</span>
-    <span class="n">color</span><span class="o">=</span> <span class="s2">&quot;red&quot;</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span>
 <span class="o">...</span>
     <span class="k">def</span> <span class="nf">get_color</span><span class="p">():</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span>
@@ -401,6 +455,8 @@ instance of the class shares the same one.</p>
  <span class="s1">&#39;red&#39;</span>
 </pre></div>
 </div>
+<p>So in this case, <code class="docutils literal"><span class="pre">size</span></code> and <code class="docutils literal"><span class="pre">color</span></code> are class attributes.</p>
+<p>But note in <code class="docutils literal"><span class="pre">get_color</span></code> – it accesses color from <code class="docutils literal"><span class="pre">self</span></code>:</p>
 <p>class attributes are accessed with <code class="docutils literal"><span class="pre">self</span></code>  also.</p>
 <p>So what is the difference?</p>
 <blockquote>
@@ -428,14 +484,14 @@ Out[10]: False</p>
 </div></blockquote>
 </div>
 <div class="section" id="typical-methods">
-<h2>Typical methods<a class="headerlink" href="#typical-methods" title="Permalink to this headline">¶</a></h2>
+<h3>Typical methods<a class="headerlink" href="#typical-methods" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
     <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diameter</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">=</span> <span class="n">diameter</span>
 
-    <span class="k">def</span> <span class="nf">grow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">*</span> <span class="n">factor</span>
 </pre></div>
 </div>
@@ -443,7 +499,7 @@ Out[10]: False</p>
 <p>They may or may not return something useful.</p>
 </div>
 <div class="section" id="gotcha">
-<h2>Gotcha !<a class="headerlink" href="#gotcha" title="Permalink to this headline">¶</a></h2>
+<h3>Gotcha !<a class="headerlink" href="#gotcha" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">...</span>
     <span class="k">def</span> <span class="nf">grow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">*</span> <span class="n">factor</span>
@@ -455,11 +511,14 @@ Out[10]: False</p>
 </pre></div>
 </div>
 <p>Huh???? I only gave 2</p>
-<p><code class="docutils literal"><span class="pre">self</span></code> is implicitly passed in for you by python.</p>
+<p><code class="docutils literal"><span class="pre">self</span></code> is implicitly passed in for you by python. so it actually <em>did</em> get three!</p>
 </div>
 <div class="section" id="functions-methods-are-first-class">
-<h2>Functions (methods) are First Class<a class="headerlink" href="#functions-methods-are-first-class" title="Permalink to this headline">¶</a></h2>
-<p class="center">Note that in python, functions are first class objects, so a method <em>is</em> an attribute</p>
+<h3>Functions (methods) are First Class<a class="headerlink" href="#functions-methods-are-first-class" title="Permalink to this headline">¶</a></h3>
+<p>Note that in python, functions are first class objects, so a method <em>is</em> an attribute</p>
+<p>All the same rules apply about attribute access: note that the methods are defined in the class – so they are class attributes. All the instances share the same methods.</p>
+<p>But each method gets its own namespace when it is actually called, so there is no confusion– just like when you call a regular function multiple times.</p>
+</div>
 </div>
 </div>
 
@@ -485,7 +544,7 @@ Out[10]: False</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Christopher Barker, Cris Ewing, Christy Heaton, Maria McKinley, Rick Riehle, Joseph Schilz.
+        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 licence.
 
     </p>
   </div>

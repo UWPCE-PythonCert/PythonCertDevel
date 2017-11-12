@@ -176,6 +176,8 @@ You may also find that you need multiple "things" that have slightly different p
 
 As you learn what is possible, this will all start to make more sense.
 
+So time to move on to how to actually **do** OO in Python!
+
 
 
 

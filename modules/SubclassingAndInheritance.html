@@ -155,7 +155,6 @@
 <li class="toctree-l1"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Lambda.html">Anonymous Functions: Lambda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MapFilterReduce.html">Map Filter and Reduce</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Math.html">Math with Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MultipleInheritance.html">Multiple Inheritance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ObjectOrientationOverview.html">Object Orientation Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Properties.html">Properties</a></li>
@@ -166,20 +165,22 @@
 <li class="toctree-l1"><a class="reference internal" href="SpecialMethodsAndProtocols.html">Special Methods &amp; Protocols</a></li>
 <li class="toctree-l1"><a class="reference internal" href="StaticAndClassMethods.html">Static and Class Methods</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Subclassing and Inheritance</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#inheritance">Inheritance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#subclassing">Subclassing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#overriding-attributes">Overriding attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#overriding-methods">Overriding methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#overriding-init">Overriding __init__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#using-the-superclasses-methods">Using the superclasses’ methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#subclassing-vs-composition">Subclassing vs Composition</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#is-a-vs-has-a">“Is a” vs “Has a”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inheritance">Inheritance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subclassing">Subclassing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overriding-attributes">Overriding attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overriding-methods">Overriding methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overriding-init">Overriding __init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-superclasses-methods">Using the superclasses’ methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subclassing-vs-composition">Subclassing vs Composition</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#is-a-vs-has-a">“Is a” vs “Has a”</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#attribute-resolution-order">Attribute Resolution Order</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#what-are-python-classes-really">What are Python classes, really?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#type-based-dispatch">Type-Based dispatch</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#wrap-up">Wrap Up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#attribute-resolution-order">Attribute Resolution Order</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-are-python-classes-really">What are Python classes, really?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#type-based-dispatch">Type-Based dispatch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wrap-up">Wrap Up</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Testing.html">Unit Testing</a></li>
@@ -191,6 +192,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/comprehensions_quiz.html">Comprehensions Quiz</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/submitting_to_gitHub.html">Submitting your work to gitHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/python_pushups.html">Python Pushups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/args_kwargs_lab.html">Args and Kwargs LAB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/circle_class.html">Circle Class Excercise</a></li>
@@ -230,11 +232,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../scripts/Intro.html">Intro to the Python Certificate Program</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scripts/how_to_run_python.html">How to run a Python File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scripts/intro_to_ipython.html">Quick overview of using iPython</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/Booleans.html">Booleans</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/slicing.html">Slicing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/FunctionalProgramming.html">Functional Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Booleans.html">Booleans Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/slicing.html">Slicing Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/Functions.html">Functions Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../scripts/Methods.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/fp-intro.html">Functional Programming - Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/fp-functions.html">Functional Programming - Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripts/fp-summary.html">Functional Programming - Summary</a></li>
 </ul>
 
             
@@ -309,9 +313,8 @@ of existing objects, or to establish a subtype from an existing object.</p>
 from pre-existing classes called base classes or super classes.</p>
 <p>The resulting classes are known as derived classes or subclasses.</p>
 <p>(<a class="reference external" href="http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29">http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29</a>)</p>
-</div>
 <div class="section" id="subclassing">
-<h2>Subclassing<a class="headerlink" href="#subclassing" title="Permalink to this headline">¶</a></h2>
+<h3>Subclassing<a class="headerlink" href="#subclassing" title="Permalink to this headline">¶</a></h3>
 <p>A subclass “inherits” all the attributes (methods, etc) of the parent class.</p>
 <p>You can then change (“override”) some or all of the attributes to change the behavior.</p>
 <p>You can also add new attributes to extend the behavior.</p>
@@ -323,7 +326,7 @@ from pre-existing classes called base classes or super classes.</p>
 <p><code class="docutils literal"><span class="pre">A_subclass</span></code>  now has exactly the same behavior as <code class="docutils literal"><span class="pre">The_superclass</span></code></p>
 </div>
 <div class="section" id="overriding-attributes">
-<h2>Overriding attributes<a class="headerlink" href="#overriding-attributes" title="Permalink to this headline">¶</a></h2>
+<h3>Overriding attributes<a class="headerlink" href="#overriding-attributes" title="Permalink to this headline">¶</a></h3>
 <p>Overriding is as simple as creating a new attribute with the same name:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
     <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span>
@@ -340,7 +343,7 @@ from pre-existing classes called base classes or super classes.</p>
 <p>all the <code class="docutils literal"><span class="pre">self</span></code>  instances will have the new attribute.</p>
 </div>
 <div class="section" id="overriding-methods">
-<h2>Overriding methods<a class="headerlink" href="#overriding-methods" title="Permalink to this headline">¶</a></h2>
+<h3>Overriding methods<a class="headerlink" href="#overriding-methods" title="Permalink to this headline">¶</a></h3>
 <p>Same thing, but with methods (remember, a method <em>is</em> an attribute in python)</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
 <span class="o">...</span>
@@ -362,7 +365,7 @@ from pre-existing classes called base classes or super classes.</p>
 <p>If you obey this rule, you will find that any function designed to work with an instance of a superclass, like a Deck, will also work with instances of subclasses like a Hand or PokerHand.  If you violate this rule, your code will collapse like (sorry) a house of cards.</p>
 </div>
 <div class="section" id="overriding-init">
-<h2>Overriding __init__<a class="headerlink" href="#overriding-init" title="Permalink to this headline">¶</a></h2>
+<h3>Overriding __init__<a class="headerlink" href="#overriding-init" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal"><span class="pre">__init__</span></code> is a common method to override.</p>
 <p>You often need to call the super class <code class="docutils literal"><span class="pre">__init__</span></code>  as well.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
@@ -379,7 +382,7 @@ from pre-existing classes called base classes or super classes.</p>
 <p>Exception to: “don’t change the method signature” rule.</p>
 </div>
 <div class="section" id="using-the-superclasses-methods">
-<h2>Using the superclasses’ methods<a class="headerlink" href="#using-the-superclasses-methods" title="Permalink to this headline">¶</a></h2>
+<h3>Using the superclasses’ methods<a class="headerlink" href="#using-the-superclasses-methods" title="Permalink to this headline">¶</a></h3>
 <p>You can also call the superclass’ other methods:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
 <span class="o">...</span>
@@ -393,15 +396,14 @@ from pre-existing classes called base classes or super classes.</p>
         <span class="k">return</span> <span class="n">Circle</span><span class="o">.</span><span class="n">get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>There is nothing special about <code class="docutils literal"><span class="pre">__init__</span></code>  except that it gets called
-automatically when you instantiate an instance.</p>
+<p>Note that there is nothing special about <code class="docutils literal"><span class="pre">__init__</span></code>  except that it gets called automatically when you instantiate an instance. Otherwise, it is the same as any other method – it gets <code class="docutils literal"><span class="pre">self</span></code> as the first argument, it can or can not call the superclasses methods, etc.</p>
 </div>
 <div class="section" id="subclassing-vs-composition">
-<h2>Subclassing vs Composition<a class="headerlink" href="#subclassing-vs-composition" title="Permalink to this headline">¶</a></h2>
+<h3>Subclassing vs Composition<a class="headerlink" href="#subclassing-vs-composition" title="Permalink to this headline">¶</a></h3>
 <p>“Is a” relationship: Subclass/inheritance</p>
 <p>“Has a” relationship: Composition</p>
 <div class="section" id="is-a-vs-has-a">
-<h3>“Is a” vs “Has a”<a class="headerlink" href="#is-a-vs-has-a" title="Permalink to this headline">¶</a></h3>
+<h4>“Is a” vs “Has a”<a class="headerlink" href="#is-a-vs-has-a" title="Permalink to this headline">¶</a></h4>
 <p>You may have a class that needs to accumulate an arbitrary number of objects.</p>
 <p>A list can do that – so should you subclass list?</p>
 <p>Ask yourself:</p>
@@ -412,7 +414,7 @@ automatically when you instantiate an instance.</p>
 </div>
 </div>
 <div class="section" id="attribute-resolution-order">
-<h2>Attribute Resolution Order<a class="headerlink" href="#attribute-resolution-order" title="Permalink to this headline">¶</a></h2>
+<h3>Attribute Resolution Order<a class="headerlink" href="#attribute-resolution-order" title="Permalink to this headline">¶</a></h3>
 <p>When you access an attribute:</p>
 <p><code class="docutils literal"><span class="pre">an_instance.something</span></code></p>
 <p>Python looks for it in this order:</p>
@@ -430,7 +432,7 @@ automatically when you instantiate an instance.</p>
 <p><a class="reference external" href="http://python-history.blogspot.com/2010/06/method-resolution-order.html">http://python-history.blogspot.com/2010/06/method-resolution-order.html</a></p>
 </div>
 <div class="section" id="what-are-python-classes-really">
-<h2>What are Python classes, really?<a class="headerlink" href="#what-are-python-classes-really" title="Permalink to this headline">¶</a></h2>
+<h3>What are Python classes, really?<a class="headerlink" href="#what-are-python-classes-really" title="Permalink to this headline">¶</a></h3>
 <p>Putting aside the OO theory…</p>
 <p>Python classes are:</p>
 <blockquote>
@@ -447,7 +449,7 @@ automatically when you instantiate an instance.</p>
 <p>That’s about it – really!</p>
 </div>
 <div class="section" id="type-based-dispatch">
-<h2>Type-Based dispatch<a class="headerlink" href="#type-based-dispatch" title="Permalink to this headline">¶</a></h2>
+<h3>Type-Based dispatch<a class="headerlink" href="#type-based-dispatch" title="Permalink to this headline">¶</a></h3>
 <p>You’ll see code that looks like this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">A_Class</span><span class="p">):</span>
     <span class="n">Do_something_with_other</span>
@@ -464,7 +466,7 @@ automatically when you instantiate an instance.</p>
 </div></blockquote>
 </div>
 <div class="section" id="wrap-up">
-<h2>Wrap Up<a class="headerlink" href="#wrap-up" title="Permalink to this headline">¶</a></h2>
+<h3>Wrap Up<a class="headerlink" href="#wrap-up" title="Permalink to this headline">¶</a></h3>
 <p>Thinking OO in Python:</p>
 <p>Think about what makes sense for your code:</p>
 <ul class="simple">
@@ -474,6 +476,7 @@ automatically when you instantiate an instance.</p>
 </ul>
 <p>Don’t be a slave to what OO is <em>supposed</em> to look like.</p>
 <p>Let OO work for you, not <em>create</em> work for you</p>
+</div>
 </div>
 </div>
 
@@ -499,7 +502,7 @@ automatically when you instantiate an instance.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Christopher Barker, Cris Ewing, Christy Heaton, Maria McKinley, Rick Riehle, Joseph Schilz.
+        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 licence.
 
     </p>
   </div>

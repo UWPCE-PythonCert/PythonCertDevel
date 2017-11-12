@@ -1,10 +1,10 @@
 .. _session_1_07:
 
-#########################
-Intro to Python Session 7
-#########################
+#####################################
+Session 7: Onject Oriented Programing
+#####################################
 
-Object Oriented Programing
+Object Oriented Programing: classes, instance and class attributes, subclassing and inheritance.
 
 Pre-class prep
 ==============
