@@ -42,8 +42,6 @@ In-class Activities
 
     ../modules/lightning_talks
 
-    ../modules/PythonOverview
-
     ../modules/BasicPython
 
     ../modules/Py2vsPy3

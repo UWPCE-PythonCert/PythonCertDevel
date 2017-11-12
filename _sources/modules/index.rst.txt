@@ -40,7 +40,6 @@ More or less in order of presentation
     Properties
     Py2vsPy3
     PythonClasses
-    PythonOverview
     Recursion
     SpecialMethodsAndProtocols
     StaticAndClassMethods
