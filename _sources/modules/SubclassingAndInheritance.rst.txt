@@ -133,22 +133,38 @@ You can also call the superclass' other methods:
 Note that there is nothing special about ``__init__``  except that it gets called automatically when you instantiate an instance. Otherwise, it is the same as any other method -- it gets ``self`` as the first argument, it can or can not call the superclasses methods, etc.
 
 
-Subclassing vs Composition
---------------------------
+"Favor Object Composition Over Class Inheritance"
+-------------------------------------------------
 
-"Is a" relationship: Subclass/inheritance
+That is a quotation from the "Design Patterns" book -- kind of one of the gospels of OO programming.
 
-"Has a" relationship: Composition
+But what does it mean?
+
+There are essentially two ways to add multiple functionalities to a class:
+
+Subclassing
+
+and
+
+Composition
+
+As we have just leaned about subclassing, you might be tempted to do it a lot. But you need to be careful of over-using subclassing:
+
+https://en.wikipedia.org/wiki/Composition_over_inheritance
+
+Composition is when your classes have attributes of various types that they use to gain functionality -- "delegate" functionality to -- "Delegation" is related concept in OO.
 
 
 "Is a" vs "Has a"
 .................
 
-You may have a class that needs to accumulate an arbitrary number of objects.
+Thinking about "is a" vs "has a" can help you sort this out.
 
-A list can do that -- so should you subclass list?
+For example, you may have a class that needs to accumulate an arbitrary number of objects.
 
-Ask yourself:
+A list can do that -- so maybe you should subclass list?
+
+To help decide -- Ask yourself:
 
 -- **Is** your class a list (with some extra functionality)?
 
@@ -156,7 +172,7 @@ or
 
 -- Does you class **have** a list?
 
-You only want to subclass list if your class could be used anywhere a list can be used.
+You only want to subclass list if your class could be used anywhere a list can be used. IN fact this is a really good way to think about subclassing in general -- subclasses should be specialized versions of the superclass. "kind of" the same, but with a little different functionality.
 
 
 Attribute Resolution Order
@@ -174,11 +190,14 @@ Python looks for it in this order:
   * Is it a super-superclass attribute ?
   * ...
 
-It can get more complicated...
+It can get more complicated, particularly when there are multiple superclasses (multiple inheritance), but when there is a simple inheritance structure (the usual case) -- it's fairly straightforward.
+
+If you want to know more of the gory details -- here's some reading:
 
 https://www.python.org/download/releases/2.3/mro/
 
 http://python-history.blogspot.com/2010/06/method-resolution-order.html
+
 
 What are Python classes, really?
 --------------------------------
@@ -192,12 +211,15 @@ Python classes are:
     * One for the class object
     * One for each instance
 
-  * Attribute resolution order
+  * Attribute resolution order -- how do you find an attribute.
   * Auto tacking-on of ``self`` when methods are called
+  * automatically calling ``__init__`` when the class object is called.
 
 That's about it -- really!
 
-Type-Based dispatch
+(Well, not really, there is more fancy stuff going on under the hood -- but this basic structure will get you far)
+
+Type-Based Dispatch
 -------------------
 
 You'll see code that looks like this:
@@ -209,10 +231,12 @@ You'll see code that looks like this:
       else:
           Do_something_else
 
-When it's called for:
+When it's called for, python provides these utilties:
 
     * ``isinstance()``
     * ``issubclass()``
+
+But it is very rarely called for! Between Duck typing, polymorphism, and EAFP, you rarely need to check for type directly.
 
 Wrap Up
 -------
@@ -223,9 +247,10 @@ Think about what makes sense for your code:
 
 * Code re-use
 * Clean APIs
+* Separation of Concerns
 * ...
 
-Don't be a slave to what OO is *supposed* to look like.
+OO can be a very powerful approach, but don't be a slave to what OO is *supposed* to look like.
 
-Let OO work for you, not *create* work for you
+Let OO work for you, not *create* work for you.
 
