@@ -103,7 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="submitting_to_gitHub.html">Submitting your work to gitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_pushups.html">Python Pushups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="args_kwargs_lab.html">Args and Kwargs LAB</a></li>
-<li class="toctree-l2"><a class="reference internal" href="circle_class.html">Circle Class Excercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="circle_class.html">Circle Class Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dict_lab.html">Dictionary and Set Lab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exceptions_lab.html">Exceptions Lab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="except_exercise.html">Exceptions Exercise</a></li>
@@ -416,7 +416,8 @@ header level. i.e &lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, called like</p>
 <p>Update the <code class="docutils literal"><span class="pre">Html</span></code> element class to render the “&lt;!DOCTYPE html&gt;” tag at the head of the page, before the html element.</p>
 <p>You can do this by subclassing <code class="docutils literal"><span class="pre">Element</span></code>, overriding <code class="docutils literal"><span class="pre">render()</span></code>, but then calling the <code class="docutils literal"><span class="pre">Element</span></code> render from the new render.</p>
 <p>Create a subclass of <code class="docutils literal"><span class="pre">SelfClosingTag</span></code> for <code class="docutils literal"><span class="pre">&lt;meta</span> <span class="pre">charset=&quot;UTF-8&quot;</span> <span class="pre">/&gt;</span></code> (like for <code class="docutils literal"><span class="pre">&lt;hr</span> <span class="pre">/&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;br</span> <span class="pre">/&gt;</span></code> and add the meta element to the beginning of the head element to give your document an encoding.</p>
-<p>The doctype and encoding are HTML 5 and you can check this at: <a class="reference external" href="http://validator.w3.org">http://validator.w3.org</a>.</p>
+<p>The doctype and encoding are HTML 5 and you can check this at:</p>
+<p><a class="reference external" href="http://validator.w3.org/#validate_by_input">http://validator.w3.org/#validate_by_input</a></p>
 <p>You now have a pretty full-featured html renderer – play with it, add some
 new tags, etc….</p>
 <p>See <a class="reference download internal" href="../_downloads/test_html_output8.html" download=""><code class="xref download docutils literal"><span class="pre">test_html_output8.htm</span></code></a></p>
@@ -429,7 +430,7 @@ new tags, etc….</p>
 <p>There is also more than one way to indent html – so you have a bit of flexibility here.</p>
 <p>So:</p>
 <ul class="simple">
-<li>You probably  <code class="docutils literal"><span class="pre">ind</span></code> to be an optional argument to render – so it will not indent if nothing is passed in. And that lets you write the code without indentation first if you like.</li>
+<li>You probably  want <code class="docutils literal"><span class="pre">ind</span></code> to be an optional argument to render – so it will not indent if nothing is passed in. And that lets you write the code without indentation first if you like.</li>
 <li>But ultimately, you want your code to USE the ind parameter – it is supposed to indicate how much this entire tag is already indented.</li>
 <li>When this one gets rendered, you don’t know where it is in a potentially deeply nested hierarchy – it could be at the top level or ten levels deep. passing <code class="docutils literal"><span class="pre">ind</span></code> into the render method is how this is communicated.</li>
 <li>You have (at least) two options for how to indicate level of indentation:<ul>
@@ -438,6 +439,7 @@ new tags, etc….</p>
 </ul>
 </li>
 <li>You want to have the amount of spaces per indentation defined as a class attribute of the base class (the <code class="docutils literal"><span class="pre">Element</span></code> class). That way, you could change it in one place, and it would change everywhere an remain consistent.</li>
+<li>Be sure to test that the indentation of the result changes if you cahnge the class attribute!</li>
 </ul>
 </div>
 <div class="section" id="notes-on-handling-duck-typing">
