@@ -14,39 +14,24 @@ Readings
 
 **Read:**
 
-* :ref:`multiple_inheritance`
-
 * :ref:`properties`
-
-* :ref:`static_and_class_methods`
 
 * :ref:`special_methods`
 
+About Python's "magic methods":
 
-Some readings on the details of Inheritance
--------------------------------------------
+https://www.python-course.eu/python3_magic_methods.php
 
-Multiple Inheritance and the Diamond Problem
-............................................
-
-https://en.wikipedia.org/wiki/Multiple_inheritance
-
-https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem
-
-Method Resolution Order
-.......................
-
-If you really want to understand the way it works:
-
-https://www.python.org/download/releases/2.3/mro/
-
-http://python-history.blogspot.com/2010/06/method-resolution-order.html
+http://minhhh.github.io/posts/a-guide-to-pythons-magic-methods
 
 A Good Book (dead trees version only):
 
   Python 3 Object Oriented Programming: *Dusty Phillips*
 
   (Dusty is a local boy and co-founder of PuPPy)
+
+And:
+
 
 
 In-class Activities
@@ -58,7 +43,6 @@ Exercises
 :ref:`exercise_circle_class`
 
 :ref:`exercise_sparse_array`
-
 
 
 Post-class Activities

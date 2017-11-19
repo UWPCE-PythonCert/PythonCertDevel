@@ -82,7 +82,7 @@ So we're going to learn hands-on by doing this exercise:
 Post-class Activities
 =====================
 
-Finish the HTML render Excercsie through step
+Finish the HTML render Exercise through step 3.
 
 Look at the next session for reading, etc:
 

@@ -1,20 +1,17 @@
 .. _exercise_trapezoidal_rule:
 
-*****************
+################
 Trapezoidal Rule
-*****************
+################
 
 Passing functions around
 =========================
 
 
-.. rst-class:: medium left
+Goal:
 
-    Goal:
 
-.. rst-class:: left
-
-    Making use of functions as objects -- functions that act on functions.
+Making use of functions as objects -- functions that act on functions.
 
 
 Trapezoidal rule
