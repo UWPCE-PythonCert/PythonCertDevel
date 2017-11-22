@@ -7,6 +7,9 @@ Circle Class Exercise
 Circle Class
 ============
 
+The ultimate circle....
+
+
 Goal:
 ------
 
