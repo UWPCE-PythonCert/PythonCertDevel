@@ -94,25 +94,3 @@ Your report should look something like this::
 Guidelines
 ----------
 
-First, factor your script into separate functions. Each of the above
-tasks can be accomplished by a series of steps.  Write discreet functions
-that accomplish individual steps and call them.
-
-Second, use loops to control the logical flow of your program. Interactive
-programs are a classic use-case for the ``while`` loop.
-
-Of course, ``input()`` will be useful here.
-
-Put the functions you write into the script at the top.
-
-Put your main interaction into an ``if __name__ == '__main__'`` block.
-
-Finally, use only functions and the basic Python data types you've learned
-about so far. There is no need to go any farther than that for this assignment.
-
-Submission
-----------
-
-As always, put the new file in your student directory in an appropraite  ``session??`` directory, and add it to your clone early. Make frequent commits with good, clear messages about what you are doing and why.
-
-When you are done, push your changes and make a pull request.

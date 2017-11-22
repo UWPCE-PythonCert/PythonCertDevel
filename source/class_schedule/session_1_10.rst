@@ -9,6 +9,21 @@ Intro to Functional Programming
 
 Functional Programming
 
+
+**NOTE:** This material not fully developed yet!
+
+Functional Programming
+
+Topics:
+
+ * Object Objected Programming vs Functional Programming
+ * Objects vs Functions
+ * Control Flow vs Data Flow
+ * Mutability vs Immutability
+ * Managing State
+ * Statements vs Expressions for flow control
+
+
 Topics:
 
  * Map/filter/reduce
