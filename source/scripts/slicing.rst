@@ -26,20 +26,20 @@ Slicing uses the indexing operator: ``[]``
 |
 |
 
-``sequence[start:finish]``
+``sequence[start:end]``
 ==========================
 
 
 Returns:
 
-``sequence[i] for which start <= i < finish``
+``sequence[i] for which start <= i < end``
 =============================================
 
 
 |
 |
 
-That's a fancy way to say that it's all the items from start to finish -- including start, but NOT including finish.
+That's a fancy way to say that it's all the items from start to end -- including start, but NOT including end.
 
 
 Helpful Hint
