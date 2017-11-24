@@ -31,7 +31,7 @@ You will need a command line terminal. The built-in "terminal" application works
 
   /Applications/Utilities/Terminal
 
-Drag it to the dock to easy access.
+Drag it to the dock to easily access.
 
 Python
 ------
@@ -41,7 +41,7 @@ latest version, and you really don't want to mess with the system
 installation. So we recommend installing an independent installation from
 ``python.org``:
 
-Download the latest realease of Python (currently 3.6.2) installer from Python.org:
+Download the latest realease of Python (currently 3.6.3) installer from Python.org:
 
 https://www.python.org/downloads/
 
@@ -54,7 +54,11 @@ Oddly, this does NOT install a ``python`` command, but rather a ``python3`` comm
   $ cd /Library/Frameworks/Python.framework/Versions/3.6/bin
   $ ln -s python3.6 python
 
-(or an add an alias in your shell -- an Unix geeks here?)
+(or an add an alias in your shell: add the following line
+
+alias python='python3'
+
+to your .bash_profile).
 
 Once you have done that, you should be able to type ``python`` at the command prompt, and get something like:
 

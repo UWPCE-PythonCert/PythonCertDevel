@@ -107,7 +107,7 @@ When you are done, push your changes and make a pull request.
 Adding dicts and Files
 ======================
 
-**Wait to do this till after you've learned about dictionaries next week!**
+**Wait to do this till after you've learned about dictionaries in the next class!**
 
 use dicts where appropriate
 ---------------------------
