@@ -78,7 +78,7 @@ Expressions:
 .. nextslide::
 
 Statements:
-but statements carry out an action, but do not evaluate to a value, that is you can't assign to them (or put them in a lamda, or...)
+statements carry out an action, but do not evaluate to a value, that is you can't assign to them (or put them in a lamda, or...)
 
 .. code-block:: ipython
 
@@ -542,7 +542,7 @@ To check if a name is bound to one of these, you use ``is``::
 
     x is None
 
-Note that in contrast to english -- "is" is asking a question, not making an assertion -- ``a is True`` means "is a the True value?"
+Note that in contrast to English -- "is" is asking a question, not making an assertion -- ``a is True`` means "is a the True value?"
 
 Operator Precedence
 -------------------
@@ -645,7 +645,7 @@ You define a ``string`` value by writing a string *literal*:
     In [7]: r'a "raw" string, the \n comes through as a \n'
     Out[7]: 'a "raw" string, the \\n comes through as a \\n'
 
-Python3 strings fully support Unicode, which means that it can support literally all the languages in the world (and then some -- Kligon, anyone? -- well `sort of. <http://www.personal.psu.edu/ejp10/blogs/gotunicode/2010/10/conscript-unicode-registry-csu.html>`_)
+Python3 strings fully support Unicode, which means they can support literally all the languages in the world (and then some -- Kligon, anyone? -- well `sort of. <http://www.personal.psu.edu/ejp10/blogs/gotunicode/2010/10/conscript-unicode-registry-csu.html>`_)
 
 Because Unicode is native to python strings, you can get very far without even thinking about it. Anything you can type in your editor will work fine.
 
@@ -845,7 +845,7 @@ Calling a function is how you run the code in that function.
 Functions: Call Stack
 ---------------------
 
-Functions call functions -- this makes what is called an execution stack. That is what a "trace back", often referred to in Exceptions, is -- the function call stack.
+Functions can call functions -- this makes what is called an execution stack. That is what a "trace back", often referred to in Exceptions, is -- the function call stack.
 
 .. code-block:: ipython
 

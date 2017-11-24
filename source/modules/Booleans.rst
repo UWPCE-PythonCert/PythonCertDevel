@@ -4,7 +4,7 @@
 Boolean Expressions
 ###################
 
-"Boolean" logic is the logic of binary values -- things that can be on eof two values. Usually, the two values are considered to be true or false.
+"Boolean" logic is the logic of binary values -- things that can be one of two values. Usually, the two values are considered to be true or false.
 
 In programming languages, "booleans" are often a data type -- one that captures this notion of True and False.
 
@@ -12,7 +12,7 @@ Python has a boolean type as well: the singletons ``True`` and ``False``.
 
 Booleans are used in ``if`` statements, as well as the boolean operators, ``and`` and ``or``.
 
-But Python is not limited to using the actual boolean type in logic expressions -- in the spirit of dynamic languages, virtually anytype can have values that are considered True or False.
+But Python is not limited to using the actual boolean type in logic expressions -- in the spirit of dynamic languages, virtually any type can have values that are considered True or False.
 
 Some like to refer to this concept by the moniker given by Stephan Colbert: "Truthiness"
 
@@ -147,14 +147,14 @@ Think about ``and``: it is testing if *both* the operands are True. If the first
 
 Alternatively, ``or`` is trying to see if only one of the operands is True. So if the first one is True, it can stop, and does not need to evaluate the second.
 
-Also key is that if an operation is "shirtcut" -- the second part of the expression will not be evaluated -- so it couldbe an invalid expression and never raise an error:
+Also key is that if an operation is "shortcut" -- the second part of the expression will not be evaluated -- so it could be an invalid expression and never raise an error:
 
 .. code-block:: ipython
 
     In [3]: 34 or (10/0)
     Out[3]: 34
 
-Since the expression was known to be true after the first value was checked (an number that is nonzero), the seconds was never evaluated.
+Since the expression was known to be true after the first value was checked (a number that is nonzero), the second was never evaluated.
 
 .. code-block:: ipython
 

@@ -52,6 +52,18 @@ http://treyhunner.com/2015/12/python-list-comprehensions-now-in-color/
 Object Oriented Programming: classes
 ====================================
 
+Magic Methods
+-------------
+
+A good reference:
+
+http://minhhh.github.io/posts/a-guide-to-pythons-magic-methods
+
+And with a bit more explanation:
+
+https://www.python-course.eu/python3_magic_methods.php
+
+
 ``super()``
 -----------
 

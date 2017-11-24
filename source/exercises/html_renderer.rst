@@ -274,7 +274,9 @@ You can do this by subclassing ``Element``, overriding ``render()``, but then ca
 
 Create a subclass of ``SelfClosingTag`` for ``<meta charset="UTF-8" />`` (like for ``<hr />`` and ``<br />`` and add the meta element to the beginning of the head element to give your document an encoding.
 
-The doctype and encoding are HTML 5 and you can check this at: http://validator.w3.org.
+The doctype and encoding are HTML 5 and you can check this at:
+
+http://validator.w3.org/#validate_by_input
 
 You now have a pretty full-featured html renderer -- play with it, add some
 new tags, etc....
@@ -294,7 +296,7 @@ There is also more than one way to indent html -- so you have a bit of flexibili
 
 So:
 
-* You probably  ``ind`` to be an optional argument to render -- so it will not indent if nothing is passed in. And that lets you write the code without indentation first if you like.
+* You probably  want ``ind`` to be an optional argument to render -- so it will not indent if nothing is passed in. And that lets you write the code without indentation first if you like.
 
 * But ultimately, you want your code to USE the ind parameter -- it is supposed to indicate how much this entire tag is already indented.
 
@@ -306,6 +308,8 @@ So:
   - It could, more simply, be a bunch of spaces.
 
 * You want to have the amount of spaces per indentation defined as a class attribute of the base class (the ``Element`` class). That way, you could change it in one place, and it would change everywhere an remain consistent.
+
+* Be sure to test that the indentation of the result changes if you cahnge the class attribute!
 
 
 .. _notes_on_handling_duck_typing:

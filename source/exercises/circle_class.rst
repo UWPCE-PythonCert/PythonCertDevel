@@ -1,11 +1,14 @@
 .. _exercise_circle_class:
 
-======================
-Circle Class Excercise
-======================
+#####################
+Circle Class Exercise
+#####################
 
 Circle Class
 ============
+
+The ultimate circle....
+
 
 Goal:
 ------
@@ -24,13 +27,12 @@ Other abilities of a Circle instance:
  * Be able to compare to see if there are equal
  * (follows from above) be able to put them in a list and sort them
 
-.. nextslide::
 
 You will use:
 
   - properties
-  - a classmethod
   - a define a bunch of "special methods"
+  - a classmethod
 
 
 General Instructions:
@@ -117,6 +119,8 @@ The user should not be able to set the area:
 Step 5:
 -------
 
+NOTE: wait on this one 'till we learn about class methods..
+
 Add an "alternate constructor" that lets the user create a Circle directly
 with the diameter:
 
@@ -175,11 +179,12 @@ and multiply one times a number:
 
 (what happens with ``3 * c2`` ? -- can you fix that?)
 
-.. nextslide::
+
 
 Step 8:
 --------
-add the ability to compare two circles:
+
+Add the ability to compare two circles:
 
 .. code-block:: ipython
 
@@ -197,7 +202,6 @@ add the ability to compare two circles:
     In [14]: c2 == c3
     Out[14]: True
 
-.. nextslide::
 
 Once the comparing is done,  you should be able to sort a list of circles:
 

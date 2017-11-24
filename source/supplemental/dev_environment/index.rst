@@ -58,7 +58,7 @@ There are three basic elements to your environment when working with Python:
 * The Editor
 * The source code version control system
 
-Some folks use an Integrated Development Environment (IDE), which combines some or all of these functions. For this class, we don't recommend using an IDE, because while it can makes some things easier, it also hides complication that is good to understand.
+Some folks use an Integrated Development Environment (IDE), which combines some or all of these functions. For this class, we don't recommend using an IDE, because while it can makes some things easier, it can also hide things that will be good for you to understand.
 
 Minimal Requirements
 --------------------
