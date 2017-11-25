@@ -633,7 +633,7 @@ appears:</p>
 </pre></div>
 </div>
 <p>Which is what we mean when we say a sequence is an “iterable”.</p>
-<p>There are some complexities about that – but more on that in another lecture.</p>
+<p>There are some complexities about that – but more on that in another lesson.</p>
 </div>
 <div class="section" id="lists-tuples">
 <h2>Lists, Tuples…<a class="headerlink" href="#lists-tuples" title="Permalink to this headline">¶</a></h2>
@@ -726,7 +726,7 @@ multiple names (or no name)</p>
 <span class="gh">Out[160]: </span><span class="go">tuple</span>
 </pre></div>
 </div>
-<p>This is a Python “gotcha” – some folks on my team recently had a wierd bug that two of them could not figure out. They were getting a type error – something like:</p>
+<p>This is a Python “gotcha” – some folks on my team recently had a weird bug that two of them could not figure out. They were getting a type error – something like:</p>
 <p>TypeError: unsupported operand type(s) for /: ‘tuple’ and ‘float’</p>
 <p>Which made no sense – there were no tuples involved – in this case, the value was being pulled from an list – and it WAS a float. They even put type checking code in there, and it was, indeed, a float.</p>
 <p>After poking at the code a bit, I suddenly spotted an extra comma – BINGO! that was it.</p>
@@ -750,7 +750,7 @@ multiple names (or no name)</p>
 </div>
 <div class="section" id="converting-something-to-a-tuple">
 <h3>Converting something to a Tuple<a class="headerlink" href="#converting-something-to-a-tuple" title="Permalink to this headline">¶</a></h3>
-<p>You can also use the <code class="docutils literal"><span class="pre">tuple</span></code> type object to convert any iterable(sequence) into a tuple:</p>
+<p>You can also use the <code class="docutils literal"><span class="pre">tuple</span></code> type object to convert any iterable (sequence) into a tuple:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="nb">tuple</span><span class="p">()</span>
 <span class="gh">Out[20]: </span><span class="go">()</span>
 <span class="gp">In [21]: </span><span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>

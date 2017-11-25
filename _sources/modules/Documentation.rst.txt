@@ -9,7 +9,7 @@ thinking when you wrote it.
 
 This can help reduce the number of `WTFs per minute <http://www.osnews.com/story/19266/WTFs_m>`_ in reading it later.
 
-There are two approaches to this in python:
+There are two approaches to this in Python:
 
 * Comments
 * Docstrings

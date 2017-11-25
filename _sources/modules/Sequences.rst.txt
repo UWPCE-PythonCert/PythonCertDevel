@@ -455,7 +455,7 @@ You can iterate over a sequence with ``for``:
 
 Which is what we mean when we say a sequence is an "iterable".
 
-There are some complexities about that -- but more on that in another lecture.
+There are some complexities about that -- but more on that in another lesson.
 
 
 Lists, Tuples...
@@ -574,7 +574,7 @@ But they *do* need commas...!
     In [160]: type(t)
     Out[160]: tuple
 
-This is a Python "gotcha" -- some folks on my team recently had a wierd bug that two of them could not figure out. They were getting a type error -- something like:
+This is a Python "gotcha" -- some folks on my team recently had a weird bug that two of them could not figure out. They were getting a type error -- something like:
 
 TypeError: unsupported operand type(s) for /: 'tuple' and 'float'
 
@@ -607,7 +607,7 @@ Would you have seen that?
 Converting something to a Tuple
 -------------------------------
 
-You can also use the ``tuple`` type object to convert any iterable(sequence) into a tuple:
+You can also use the ``tuple`` type object to convert any iterable (sequence) into a tuple:
 
 .. code-block:: ipython
 

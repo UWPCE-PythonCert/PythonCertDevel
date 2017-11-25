@@ -259,7 +259,7 @@
 </pre></div>
 </div>
 <p>Statements:
-but statements carry out an action, but do not evaluate to a value, that is you can’t assign to them (or put them in a lamda, or…)</p>
+statements carry out an action, but do not evaluate to a value, that is you can’t assign to them (or put them in a lamda, or…)</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="c1"># statements carry out an action, do not evaluate a value, may contain an expression</span>
 
 <span class="gp">In [7]: </span><span class="n">line_count</span> <span class="o">=</span> <span class="mi">42</span>
@@ -607,7 +607,7 @@ object</strong> using the <code class="docutils literal"><span class="pre">is</s
 <p>b is False</p>
 <p>x is None</p>
 </div></blockquote>
-<p>Note that in contrast to english – “is” is asking a question, not making an assertion – <code class="docutils literal"><span class="pre">a</span> <span class="pre">is</span> <span class="pre">True</span></code> means “is a the True value?”</p>
+<p>Note that in contrast to English – “is” is asking a question, not making an assertion – <code class="docutils literal"><span class="pre">a</span> <span class="pre">is</span> <span class="pre">True</span></code> means “is a the True value?”</p>
 </div>
 <div class="section" id="operator-precedence">
 <h2>Operator Precedence<a class="headerlink" href="#operator-precedence" title="Permalink to this headline">¶</a></h2>
@@ -689,7 +689,7 @@ object</strong> using the <code class="docutils literal"><span class="pre">is</s
 <span class="gh">Out[7]: </span><span class="go">&#39;a &quot;raw&quot; string, the \\n comes through as a \\n&#39;</span>
 </pre></div>
 </div>
-<p>Python3 strings fully support Unicode, which means that it can support literally all the languages in the world (and then some – Kligon, anyone? – well <a class="reference external" href="http://www.personal.psu.edu/ejp10/blogs/gotunicode/2010/10/conscript-unicode-registry-csu.html">sort of.</a>)</p>
+<p>Python3 strings fully support Unicode, which means they can support literally all the languages in the world (and then some – Kligon, anyone? – well <a class="reference external" href="http://www.personal.psu.edu/ejp10/blogs/gotunicode/2010/10/conscript-unicode-registry-csu.html">sort of.</a>)</p>
 <p>Because Unicode is native to python strings, you can get very far without even thinking about it. Anything you can type in your editor will work fine.</p>
 </div>
 <div class="section" id="keywords">
@@ -840,7 +840,7 @@ or in multiple parts of the program.</p>
 </div>
 <div class="section" id="functions-call-stack">
 <h2>Functions: Call Stack<a class="headerlink" href="#functions-call-stack" title="Permalink to this headline">¶</a></h2>
-<p>Functions call functions – this makes what is called an execution stack. That is what a “trace back”, often referred to in Exceptions, is – the function call stack.</p>
+<p>Functions can call functions – this makes what is called an execution stack. That is what a “trace back”, often referred to in Exceptions, is – the function call stack.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="k">def</span> <span class="nf">exceptional</span><span class="p">():</span>
 <span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am exceptional!&quot;</span><span class="p">)</span>
 <span class="gp">   ...: </span>    <span class="k">print</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
