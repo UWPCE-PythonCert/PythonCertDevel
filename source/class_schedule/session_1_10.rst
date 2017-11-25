@@ -10,13 +10,17 @@ Functional Programming
 
 Topics:
 
- * Object Objected Programming vs Functional Programming
- * Functions as First Class Objects
- * Map/Filter/Reduce
+* Object Objected Programming vs Functional Programming
+* Functions as First Class Objects
+* Map/Filter/Reduce
 
 
 Pre-class prep
 ==============
+
+Videos
+------
+
 
 Reading
 -------
@@ -33,9 +37,7 @@ In-class Activities
 
 Exercises
 ---------
-:ref:`exercise_mailroom_mfr`
-
-:ref:`exercise_lambda_magic`
 
 :ref:`exercise_trapezoidal_rule`
 
+:ref:`exercise_mailroom_mfr`
