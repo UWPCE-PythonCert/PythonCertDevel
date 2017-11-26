@@ -5,9 +5,6 @@ Mailroom Object Oriented
 
 Making Mailroom Object Oriented
 
-[NOTE: needs updating!!]
-
-
 Goal:
 -----
 
@@ -19,7 +16,7 @@ The goal here is the same as the earlier mailroom:
 
 But this time, we want to use an OO approach to better structure the code to make it more extensible.
 
-It was quite reasonable to build the simple MailRoom program using a
+It was quite reasonable to build the simple mailroom program using a
 single module, a simple data structure, and functions that manipulate
 that data structure.
 
@@ -28,69 +25,53 @@ would start to get a bit unwieldy and hard to maintain.
 
 So it's a pretty good candidate for an object-oriented approach.
 
-As you design appropriate classes, keep in mind that there are three goals:
+As you design appropriate classes, keep in mind these three guidlines for good code structure:
 
-1) encapsulation: you have a data structure that holds your data, and you have methods that manipulate that data -- you want them "bundled up" in a neat package, so that the rest of the code doesn't need to know about the data structure you are using.
+1) Encapsulation: you have a data structure that holds your data, and you have functions that manipulate that data -- you want them "bundled up" in a neat package, so that the rest of the code doesn't need to know about the data structure you are using.
 
-2) separation of concerns: the user interaction code should be cleanly separteed from the data handling code.
+2) Separation of Concerns: The user interaction code should be cleanly separated from the data handling code.
+
+   https://en.wikipedia.org/wiki/Separation_of_concerns
+
+   There should be no `input` function in the class that holds the data!
 
 3) As always: **DRY** -- Don't repeat yourself -- anywhere you see repeated code -- refactor it!
 
-The program (reminder..)
-------------------------
 
-Write a small command-line script called ``mailroom.py``. This script should be executable. The script should accomplish the following goals:
+The program
+-----------
 
-* It should have a data structure that holds a list of your donors and a
-  history of the amounts they have donated. This structure should be populated
-  at first with at least five donors, with between 1 and 3 donations each
-
-* The script should prompt the user (you) to choose from a menu of 3 actions:
-  'Send a Thank You' or 'Create a Report' or 'quit')
-
-Sending a Thank You
--------------------
-
-* If the user (you) selects 'Send a Thank You', prompt for a Full Name.
-
-  * If the user types 'list', show them a list of the donor names and re-prompt
-  * If the user types a name not in the list, add that name to the data structure and use it.
-  * If the user types a name in the list, use it.
-  * Once a name has been selected, prompt for a donation amount.
-  * Turn the amount into a number -- it is OK at this point for the program to crash if someone types a bogus amount.
-  * Once an amount has been given, add that amount to the donation history of
-    the selected user.
-  * Finally, use string formatting to compose an email thanking the donor for
-    their generous donation. Print the email to the terminal and return to the
-    original prompt.
-
-**It is fine to forget new donors once the script quits running.**
-
-Creating a Report
------------------
-
-* If the user (you) selected 'Create a Report' print a list of your donors,
-  sorted by total historical donation amount.
-
-  - Include Donor Name, total donated, number of donations and average donation amount as values in each row. You do not need to print out all their donations, just the summary info.
-  - Using string formatting, format the output rows as nicely as possible.  The end result should be tabular (values in each column should align with those above and below)
-  - After printing this report, return to the original prompt.
-
-* At any point, the user should be able to quit their current task and return
-  to the original prompt.
-
-* From the original prompt, the user should be able to quit the script cleanly
+See: :ref:`exercise_mailroom` to remind yourself what the program needs to do.
 
 
-Your report should look something like this::
+Suggestions
+-----------
 
-    Donor Name                | Total Given | Num Gifts | Average Gift
-    ------------------------------------------------------------------
-    William Gates, III         $  653784.49           2  $   326892.24
-    Mark Zuckerberg            $   16396.10           3  $     5465.37
-    Jeff Bezos                 $     877.33           1  $      877.33
-    Paul Allen                 $     708.42           3  $      236.14
+One of the hardest parts of OO design (particularly in python) is to know how "low" to go with the classes and data structures. In particular, you might have a bit of data collected together (say, a donor's name and donation history), This can be a simple tuple with a few items in it, it can be a dict with those same data available as key:value pairs, or it can be a class, with class attributes (and maybe methods).
 
-Guidelines
-----------
+There are no hard and fast rules, but I'll try to provide guidelines:
+
+For this assignment it's OK to go with simple tuples. However, in order for the code to be more flexible in the future, of new "fields" were added to the donor object, it's probably better to use a more structured type, so you don't have to worry about changing the order, etc of fields.
+
+So now you have to think about dict or class? Again for flexibility, I think a dict is a bit easier -- you can add fields to it very easily. However, with a class, you can build some functionality in there, too. This is were Encapsulation comes in -- for instance, one thing you might want to do is get the total of all donations a donor has made in the past. If you add a method to compute that (or a property!), then the rest of the code doesn't need to know how the donations are stored.
+
+So: if you want my hints :-)
+
+You'll want a Donor class -- this will hold all the information about the donor, and have attributes and methods to provide access to the donor specific information that is needed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

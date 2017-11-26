@@ -1,4 +1,5 @@
-.. _exercise_mailroom_map_filter_reduce:
+.. _exercise_mailroom_mfr:
+
 
 Mailroom - Map Filter Reduce
 ============================
