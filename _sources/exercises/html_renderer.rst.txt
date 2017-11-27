@@ -22,18 +22,17 @@ We'll try to get to all the features required to render this file:
 
 :download:`sample_html.html  <../examples/html_render/sample_html.html>`
 
-Take a look at it by opening it in your text editor. And slo in a browser to see how it's rendered.
+Take a look at it by opening it in your text editor. And also in a browser to see how it's rendered.
 
-If you don't know html -- just look at the example and copy that. And you can read this: :ref:`html_primer` for enough to due this exercise.
+If you don't know html -- just look at the example and copy that. And you can read this: :ref:`html_primer` for enough to do this exercise.
 
 The exercise is broken down into a number of steps -- each requiring a few more OO concepts in Python.
+
 
 General Instructions:
 ---------------------
 
 For each step, add the required functionality. There is example code to run your code for each step in:
-
-.. ``Examples\session07\run_html_render.py``
 
 :download:`run_html_render.py  <../examples/html_render/run_html_render.py>`
 
@@ -93,13 +92,15 @@ But "An Element *uses* a list" makes perfect sense.
 
 If the *is* phrase makes sense, then subclassing makes sense. If the *uses* phrase makes sense, *then* you want to subclass.
 
-It should have a ``render(file_out, ind = "")`` method that renders the tag and the strings in the content.
+So no -- you don't want ``Element`` to subclass from list.
+
+It should have a ``render(file_out, cur_ind = "")`` method that renders the tag and the strings in the content.
 
 ``file_out`` could be any open, writable file-like object ( i.e. have a ``write()`` method ). This is what you get from the ``open()`` function -- but there are other kinds of file-like objects. The html will be rendered to this file.
 
-``ind`` is a string with the indentation level in it: the amount that the tag should be indented for pretty printing.
+``cur_ind`` is a string with the current level of indentation in it: the amount that the entire tag should be indented for pretty printing.
 
- - This is a little tricky: ``ind`` will be the amount that this element should be indented already. It will be from zero (an empty string) to a lot of spaces, depending on how deep it is in the tree. You could use an integer for the number of spaces to indent -- or keep it simple and simply use a string with 2, or 4 or ?? spaces in it.
+ - This is a little tricky: ``cur_ind`` will be the amount that this element should be indented already. It will be from zero (an empty string) to a lot of spaces, depending on how deep it is in the tree. You could use an integer for the number of spaces to indent -- or keep it simple and simply use a string with 2, or 4 or ?? spaces in it.
 
 The amount of each level of indentation should be set by the class attribute: ``indent``
 
@@ -122,11 +123,11 @@ Create a couple subclasses of ``Element``, for each of ``<html>``, ``<body>``, a
 
 Now you can render a few different types of element.
 
-Note: So why are we subclassing here? Because: "an body element *is* an ``Element``" makes perfect sense -- that's when you want to subclass. Another way to think about it is that you want to subclass to make a specialized version of something.
+Note: So why are we subclassing here? Because: "a body element *is* an ``Element``" makes perfect sense -- that's when you want to subclass. Another way to think about it is that you want to subclass to make a specialized version of something.
 
 You may note not that the ``Element`` class really doesn't do anything by itself -- it needs a tag (at least) to be a proper element. This is what's called a "Base Class". It contains functionality required by various subclasses, but may not do anything on its own.
 
-Extend the ``Element.render()`` method so that it can render other elements inside the tag in addition to strings. A recursion-like approach should do it. i.e. it can call the ``render()`` method of the elements it contains. You'll need to be smart about setting the ``ind`` optional parameter -- so that the nested elements get indented correctly (again, this is a secondary concern...get correct html first).
+Extend the ``Element.render()`` method so that it can render other elements inside the tag in addition to strings. A recursion-like approach should do it. i.e. it can call the ``render()`` method of the elements it contains. You'll need to be smart about setting the ``cur_ind`` optional parameter -- so that the nested elements get indented correctly (again, this is a secondary concern...get correct html first).
 
 Figure out a way to deal with the fact that the contained elements could be either simple strings or ``Element`` s with render methods (there are a few ways to handle that...). Think about "Duck Typing" and EAFP. See the section :ref:`notes_on_handling_duck_typing` and the end of the Exercise for more.
 

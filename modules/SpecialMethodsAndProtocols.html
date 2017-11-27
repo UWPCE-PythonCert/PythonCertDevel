@@ -134,8 +134,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#generally-useful-special-methods">Generally Useful Special Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#protocols">Protocols</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-numerics-protocol">The Numerics Protocol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operator-overloading">Operator Overloading</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-container-protocol">The Container Protocol</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#an-example">An Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indexing-and-slicing">Indexing and Slicing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#protocols-in-summary">Protocols in Summary</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#emulating-standard-types">Emulating Standard types</a></li>
 </ul>
@@ -228,10 +230,8 @@
             
   <div class="section" id="special-methods-protocols">
 <span id="special-methods"></span><h1>Special Methods &amp; Protocols<a class="headerlink" href="#special-methods-protocols" title="Permalink to this headline">¶</a></h1>
-<div class="left docutils container">
 <p>Special methods (also called <em>magic</em> methods) are the secret sauce to Python’s Duck typing.</p>
 <p>Defining the appropriate special methods in your classes is how you make your class act like standard classes.</p>
-</div>
 <div class="section" id="what-s-in-a-name">
 <h2>What’s in a Name?<a class="headerlink" href="#what-s-in-a-name" title="Permalink to this headline">¶</a></h2>
 <p>We’ve seen at least one special method so far:</p>
@@ -239,7 +239,7 @@
 </pre></div>
 </div>
 <p>It’s all in the double underscores…</p>
-<p>Pronounced “dunder” (or “under-under”)</p>
+<p>Pronounced “dunder”</p>
 <p>try: <code class="docutils literal"><span class="pre">dir(2)</span></code>  or <code class="docutils literal"><span class="pre">dir(list)</span></code></p>
 </div>
 <div class="section" id="generally-useful-special-methods">
@@ -269,6 +269,8 @@ the <em>informal</em> string representation of an object.</dd>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">object</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 <span class="nb">object</span><span class="o">.</span><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 <span class="nb">object</span><span class="o">.</span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+<span class="nb">object</span><span class="o">.</span><span class="n">__matmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+<span class="nb">object</span><span class="o">.</span><span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 <span class="nb">object</span><span class="o">.</span><span class="fm">__floordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 <span class="nb">object</span><span class="o">.</span><span class="fm">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 <span class="nb">object</span><span class="o">.</span><span class="fm">__divmod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
@@ -281,6 +283,22 @@ the <em>informal</em> string representation of an object.</dd>
 </pre></div>
 </div>
 </div>
+<div class="section" id="operator-overloading">
+<h2>Operator Overloading<a class="headerlink" href="#operator-overloading" title="Permalink to this headline">¶</a></h2>
+<p>Most of the previous examples map to “operators”: <code class="docutils literal"><span class="pre">+,</span> <span class="pre">-</span> <span class="pre">,</span> <span class="pre">*,</span> <span class="pre">//,</span> <span class="pre">/,</span> <span class="pre">%</span></code> etc. This is often known as “operator overloading”, as you are redefining what the operators mean for that specific type.</p>
+<p>Note that you can define these operators to do ANYTHING you want – but it is a really good idea to only define them to mean something that makes sense on the usual way.</p>
+<p>One interesting exception to this rule is the <code class="docutils literal"><span class="pre">pathlib.Path</span></code> class, that has defined <code class="docutils literal"><span class="pre">__truediv__</span></code> to mean path concatenation:</p>
+<p>..code-block:: ipython</p>
+<blockquote>
+<div><p>In [19]: import pathlib</p>
+<p>In [20]: p1 = pathlib.Path.cwd()</p>
+<p>In [21]: p1
+Out[21]: PosixPath(‘/Users/Chris/PythonStuff/UWPCE/PythonCertDevel’)</p>
+<p>In [22]: p1 / “a_filename”
+Out[22]: PosixPath(‘/Users/Chris/PythonStuff/UWPCE/PythonCertDevel/a_filename’)</p>
+</div></blockquote>
+<p>While this is not division in any sense, the slash <em>is</em> used as a path separator – so this does make intuitive sense.</p>
+</div>
 <div class="section" id="the-container-protocol">
 <h2>The Container Protocol<a class="headerlink" href="#the-container-protocol" title="Permalink to this headline">¶</a></h2>
 <p>Want to make a container type? Here’s what you need:</p>
@@ -291,11 +309,14 @@ the <em>informal</em> string representation of an object.</dd>
 <span class="nb">object</span><span class="o">.</span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 <span class="nb">object</span><span class="o">.</span><span class="fm">__reversed__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 <span class="nb">object</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="fm">__getslice__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="fm">__setslice__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">sequence</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="fm">__delslice__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+<span class="nb">object</span><span class="o">.</span><span class="fm">__index__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </pre></div>
 </div>
+<p><code class="docutils literal"><span class="pre">__len__</span></code> is called when len(object) is called.</p>
+<p><code class="docutils literal"><span class="pre">__reversed__</span></code> is called when reversed(object) is called.</p>
+<p><code class="docutils literal"><span class="pre">__contains__</span></code> is called with <code class="docutils literal"><span class="pre">in</span></code> is used: <code class="docutils literal"><span class="pre">something</span> <span class="pre">in</span> <span class="pre">object</span></code></p>
+<p><code class="docutils literal"><span class="pre">__iter__</span></code> is used for iteration – called when in a for loop.</p>
+<p><code class="docutils literal"><span class="pre">__index__</span></code> is used to convert the object into an integer for indexing. If you have a class that could reasonably be interpreted as in index, you should define this, and it can be used as in index. It should return an integer.  This was added to support multiple integer types for numpy.</p>
 </div>
 <div class="section" id="an-example">
 <h2>An Example<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h2>
@@ -309,7 +330,18 @@ implement <code class="docutils literal"><span class="pre">__add__</span></code>
     <span class="k">return</span> <span class="n">vector</span><span class="p">([</span><span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span> <span class="k">for</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">)])</span>
 </pre></div>
 </div>
-<p class="centered">[a more complete example may be seen <a class="reference download internal" href="../_downloads/vector.py" download=""><code class="xref download docutils literal"><span class="pre">here</span></code></a>]</p>
+<p>[a slightly more complete example may be seen here <a class="reference download internal" href="../_downloads/vector.py" download=""><code class="xref download docutils literal"><span class="pre">vector.py</span></code></a>]</p>
+</div>
+<div class="section" id="indexing-and-slicing">
+<h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">__getitem__</span></code> and <code class="docutils literal"><span class="pre">set__item__</span></code> are used when indexing:</p>
+<p><code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">object[i]</span></code> calls <code class="docutils literal"><span class="pre">__getitem__</span></code>, and <code class="docutils literal"><span class="pre">object[i]</span> <span class="pre">=</span> <span class="pre">something</span></code> calls <code class="docutils literal"><span class="pre">__setitem__</span></code>.</p>
+<p>But indexing is pretty complex in python. There is simple indexing: <code class="docutils literal"><span class="pre">object[i]</span></code>, but there is also slicing: <code class="docutils literal"><span class="pre">object[i:j:skip]</span></code></p>
+<p>When you implement <code class="docutils literal"><span class="pre">__getitem__(self,</span> <span class="pre">index)</span></code>, <code class="docutils literal"><span class="pre">index</span></code> will simply be the index if it’s a simple index, but if it’s slicing, it will be a <code class="docutils literal"><span class="pre">slice</span></code> object. Python also supports multiple slices:</p>
+<p><code class="docutils literal"><span class="pre">object[a:b,c:d]</span></code></p>
+<p>These are used in numpy to support multi-dimensional arrays, for instance.</p>
+<p>In this case, a tuple of slice objects is passed in.</p>
+<p>See: <a class="reference download internal" href="../_downloads/index_slicing.py" download=""><code class="xref download docutils literal"><span class="pre">index_slicing.py</span></code></a></p>
 </div>
 <div class="section" id="protocols-in-summary">
 <h2>Protocols in Summary<a class="headerlink" href="#protocols-in-summary" title="Permalink to this headline">¶</a></h2>
@@ -317,7 +349,7 @@ implement <code class="docutils literal"><span class="pre">__add__</span></code>
 <p>Look up the special methods you need and define them.</p>
 <p>There’s more to read about the details of implementing these methods:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://docs.python.org/3.5/reference/datamodel.html#special-method-names">https://docs.python.org/3.5/reference/datamodel.html#special-method-names</a></li>
+<li><a class="reference external" href="https://docs.python.org/3.6/reference/datamodel.html#special-method-names">https://docs.python.org/3.6/reference/datamodel.html#special-method-names</a></li>
 </ul>
 <div class="section" id="emulating-standard-types">
 <h3>Emulating Standard types<a class="headerlink" href="#emulating-standard-types" title="Permalink to this headline">¶</a></h3>

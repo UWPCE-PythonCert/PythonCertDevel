@@ -237,6 +237,20 @@ how to open projects, install packages, and customize your themes and styling.</
 everything you can do. You can also watch a Getting Started <a class="reference external" href="https://www.youtube.com/watch?v=U5POoGSrtGg">video</a>.</p>
 <p>Atom has a configuration file which you can modify called config.cson.
 Access it via <code class="docutils literal"><span class="pre">File</span></code> -&gt; <code class="docutils literal"><span class="pre">Config...</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;*&quot;</span><span class="p">:</span>
+  <span class="n">core</span><span class="p">:</span>
+    <span class="n">themes</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;atom-dark-ui&quot;</span>
+      <span class="s2">&quot;solarized-light-syntax&quot;</span>
+    <span class="p">]</span>
+  <span class="n">editor</span><span class="p">:</span>
+    <span class="n">fontSize</span><span class="p">:</span> <span class="mi">19</span>
+  <span class="s2">&quot;exception-reporting&quot;</span><span class="p">:</span>
+    <span class="n">userId</span><span class="p">:</span> <span class="s2">&quot;6e2a9c3f-7ddb-7deb-b5f7-b58f2f87ac0d&quot;</span>
+  <span class="s2">&quot;tree-view&quot;</span><span class="p">:</span>
+    <span class="n">hideVcsIgnoredFiles</span><span class="p">:</span> <span class="n">true</span>
+</pre></div>
+</div>
 <p>Here you can quickly change the theme or font size. Some packages will require you to add configs
 or make adjustments here. Read the documentation carefully when installing packages.</p>
 <p>In general, you can extend Atom by installing packages, and then accessing their functionality from the Packages
