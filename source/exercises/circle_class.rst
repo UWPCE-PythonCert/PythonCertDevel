@@ -31,8 +31,8 @@ Other abilities of a Circle instance:
 You will use:
 
   - properties
-  - a define a bunch of "special methods"
-  - a classmethod
+  - a bunch of "magic methods"
+  - a classmethod (after you've learned about them...)
 
 
 General Instructions:
@@ -54,7 +54,7 @@ create class called ``Circle`` -- it's signature should look like::
 
 The radius is a required parameter (can't have a circle without one!)
 
-the resulting circle should have a attribute for the radius::
+The resulting circle should have a attribute for the radius::
 
   c.radius
 
@@ -63,7 +63,7 @@ So you can do:
 .. code-block:: python
 
     >> c = Circle(4)
-    >> print c.radius
+    >> print(c.radius)
     4
 
 Remember: tests first!
@@ -76,7 +76,7 @@ Add a "diameter" property, so the user can get the diameter of the circle:
 .. code-block:: python
 
     >> c = Circle(4)
-    >> print c.diameter
+    >> print(c.diameter)
     8
 
 Step 3:
@@ -94,6 +94,8 @@ Set up the diameter property so that the user can set the diameter of the circle
     1
 
 **NOTE** that the radius has changed!
+
+**Important:** do not store both the radius and the diameter as attributes! If you do that, they could get out of sync. So store only one (the radius), and have the other calculated "on the fly" by the property.
 
 Step 4:
 --------
