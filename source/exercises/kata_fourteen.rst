@@ -119,7 +119,7 @@ newline).
 .. nextslide::
 
 
-There is a copy of sherlock holmes right here:
+There is a copy of Sherlock Holmes right here:
 
 :download:`sherlock.txt  <./sherlock.txt>`.
 
