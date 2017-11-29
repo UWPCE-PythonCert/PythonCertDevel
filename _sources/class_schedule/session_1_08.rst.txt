@@ -40,9 +40,13 @@ In-class Activities
 Exercises
 ---------
 
+Finish (or make more progress on...) html_render.
+
 :ref:`exercise_circle_class`
 
-:ref:`exercise_sparse_array`
+Optional: :ref:`exercise_sparse_array`
+
+This one is challenging -- if you have got html_render and circle class done, then by all means -- it's a great exercise.  but if you are still struggling with html_render -- get that done first.
 
 
 Post-class Activities

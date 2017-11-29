@@ -1,5 +1,7 @@
 :orphan:
 
+Moved to google docs
+
 .. _fp-summary:
 
 ################################

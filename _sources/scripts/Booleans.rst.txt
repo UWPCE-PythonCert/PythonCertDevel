@@ -1,5 +1,7 @@
 :orphan:
 
+Moved to google docs
+
 .. _script_booleans:
 
 Booleans Video
