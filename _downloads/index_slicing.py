@@ -12,16 +12,16 @@ import operator
 class IndexTest:
 
     def __getitem__(self, index):
-        print("In getindex, indexes is:", index)
+        # print("In getindex, indexes is:", index)
         if isinstance(index, slice):
-            print("it's a single slice")
+            print("it's a single slice:", index)
         elif isinstance(index, tuple):
-            print("it's a multi-dimesional slice")
+            print("it's a multi-dimensional slice:", index)
         else:
             try:
-                ind = operator.index(index)
+                ind = operator.index(index)  # this converts arbitrary objects to an int.
                 print("it's an index: ", ind)
-            except TypeError: # not a simple index
+            except TypeError:  # not a simple index
                 raise
             print("It's a simple index")
 
@@ -38,6 +38,11 @@ if __name__ == "__main__":
 
     print("calling with two slices")
     it[3:4, 7:8]
+
+    print("calling with an invalid index")
+    it["this"]
+
+
 
 
 

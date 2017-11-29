@@ -251,17 +251,17 @@
 the <em>informal</em> string representation of an object.</dd>
 <dt><code class="docutils literal"><span class="pre">object.__repr__</span></code>:</dt>
 <dd><p class="first">Called by the repr() built-in function to compute the <em>official</em> string representation of an object.</p>
-<p class="last">(ideally: <code class="docutils literal"><span class="pre">eval(</span> <span class="pre">repr(something)</span> <span class="pre">)</span> <span class="pre">==</span> <span class="pre">something</span></code>)</p>
+<p>Ideally: <code class="docutils literal"><span class="pre">eval(</span> <span class="pre">repr(something)</span> <span class="pre">)</span> <span class="pre">==</span> <span class="pre">something</span></code></p>
+<p>This means that the “repr” is what you type to create the object. IN practice, this is impractical for complex objects… but it is still a more “formal” form.</p>
+<p class="last">Note that is you don’t define a <code class="docutils literal"><span class="pre">__str__</span></code> method, than the __repr__ will be used. And the base class (<code class="docutils literal"><span class="pre">object</span></code>) has a __repr__ defined, so every class automatically gets one – but it’s ugly :-)</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="protocols">
 <h2>Protocols<a class="headerlink" href="#protocols" title="Permalink to this headline">¶</a></h2>
-<div class="build docutils container">
 <p>The set of special methods needed to emulate a particular type of Python object is called a <em>protocol</em>.</p>
 <p>Your classes can “become” like Python built-in classes by implementing the methods in a given protocol.</p>
 <p>Remember, these are more <em>guidelines</em> than laws.  Implement what you need.</p>
-</div>
 </div>
 <div class="section" id="the-numerics-protocol">
 <h2>The Numerics Protocol<a class="headerlink" href="#the-numerics-protocol" title="Permalink to this headline">¶</a></h2>
@@ -282,6 +282,7 @@ the <em>informal</em> string representation of an object.</dd>
 <span class="nb">object</span><span class="o">.</span><span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>(or the fraction you actually need)</p>
 </div>
 <div class="section" id="operator-overloading">
 <h2>Operator Overloading<a class="headerlink" href="#operator-overloading" title="Permalink to this headline">¶</a></h2>

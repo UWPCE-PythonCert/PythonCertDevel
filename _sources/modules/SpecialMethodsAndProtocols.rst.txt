@@ -37,20 +37,22 @@ Most classes should at least have these special methods:
 ``object.__repr__``:
   Called by the repr() built-in function to compute the *official* string representation of an object.
 
-  (ideally: ``eval( repr(something) ) == something``)
+  Ideally: ``eval( repr(something) ) == something``
+
+  This means that the "repr" is what you type to create the object. IN practice, this is impractical for complex objects... but it is still a more "formal" form.
+
+  Note that is you don't define a ``__str__`` method, than the __repr__ will be used. And the base class (``object``) has a __repr__ defined, so every class automatically gets one -- but it's ugly :-)
 
 
 Protocols
 ----------
 
-.. rst-class:: build
-.. container::
+The set of special methods needed to emulate a particular type of Python object is called a *protocol*.
 
-    The set of special methods needed to emulate a particular type of Python object is called a *protocol*.
+Your classes can "become" like Python built-in classes by implementing the methods in a given protocol.
 
-    Your classes can "become" like Python built-in classes by implementing the methods in a given protocol.
+Remember, these are more *guidelines* than laws.  Implement what you need.
 
-    Remember, these are more *guidelines* than laws.  Implement what you need.
 
 The Numerics Protocol
 ---------------------
@@ -73,6 +75,9 @@ Do you want your class to behave like a number? Implement these methods:
     object.__and__(self, other)
     object.__xor__(self, other)
     object.__or__(self, other)
+
+(or the fraction you actually need)
+
 
 Operator Overloading
 --------------------

@@ -237,8 +237,8 @@ and the user can query the circle for either its radius or diameter.</p>
 <blockquote>
 <div><ul class="simple">
 <li>properties</li>
-<li>a define a bunch of “special methods”</li>
-<li>a classmethod</li>
+<li>a bunch of “magic methods”</li>
+<li>a classmethod (after you’ve learned about them…)</li>
 </ul>
 </div></blockquote>
 </div>
@@ -257,13 +257,13 @@ and the user can query the circle for either its radius or diameter.</p>
 </pre></div>
 </div>
 <p>The radius is a required parameter (can’t have a circle without one!)</p>
-<p>the resulting circle should have a attribute for the radius:</p>
+<p>The resulting circle should have a attribute for the radius:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">radius</span>
 </pre></div>
 </div>
 <p>So you can do:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="o">&gt;&gt;</span> <span class="k">print</span> <span class="n">c</span><span class="o">.</span><span class="n">radius</span>
+<span class="o">&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span>
 <span class="mi">4</span>
 </pre></div>
 </div>
@@ -273,7 +273,7 @@ and the user can query the circle for either its radius or diameter.</p>
 <h3>Step 2:<a class="headerlink" href="#step-2" title="Permalink to this headline">¶</a></h3>
 <p>Add a “diameter” property, so the user can get the diameter of the circle:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="o">&gt;&gt;</span> <span class="k">print</span> <span class="n">c</span><span class="o">.</span><span class="n">diameter</span>
+<span class="o">&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">diameter</span><span class="p">)</span>
 <span class="mi">8</span>
 </pre></div>
 </div>
@@ -290,6 +290,7 @@ and the user can query the circle for either its radius or diameter.</p>
 </pre></div>
 </div>
 <p><strong>NOTE</strong> that the radius has changed!</p>
+<p><strong>Important:</strong> do not store both the radius and the diameter as attributes! If you do that, they could get out of sync. So store only one (the radius), and have the other calculated “on the fly” by the property.</p>
 </div>
 <div class="section" id="step-4">
 <h3>Step 4:<a class="headerlink" href="#step-4" title="Permalink to this headline">¶</a></h3>
