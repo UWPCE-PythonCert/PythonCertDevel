@@ -4,12 +4,11 @@
 Special Methods & Protocols
 ###########################
 
-.. rst-class:: left
-.. container::
 
-    Special methods (also called *magic* methods) are the secret sauce to Python's Duck typing.
+Special methods (also called *magic* methods) are the secret sauce to Python's Duck typing.
 
-    Defining the appropriate special methods in your classes is how you make your class act like standard classes.
+Defining the appropriate special methods in your classes is how you make your class act like standard classes.
+
 
 What's in a Name?
 -----------------
@@ -20,9 +19,11 @@ We've seen at least one special method so far::
 
 It's all in the double underscores...
 
-Pronounced "dunder" (or "under-under")
+Pronounced "dunder"
+
 
 try: ``dir(2)``  or ``dir(list)``
+
 
 Generally Useful Special Methods
 --------------------------------
@@ -61,6 +62,8 @@ Do you want your class to behave like a number? Implement these methods:
     object.__add__(self, other)
     object.__sub__(self, other)
     object.__mul__(self, other)
+    object.__matmul__(self, other)
+    object.__truediv__(self, other)
     object.__floordiv__(self, other)
     object.__mod__(self, other)
     object.__divmod__(self, other)
@@ -70,6 +73,30 @@ Do you want your class to behave like a number? Implement these methods:
     object.__and__(self, other)
     object.__xor__(self, other)
     object.__or__(self, other)
+
+Operator Overloading
+--------------------
+
+Most of the previous examples map to "operators": ``+, - , *, //, /, %`` etc. This is often known as "operator overloading", as you are redefining what the operators mean for that specific type.
+
+Note that you can define these operators to do ANYTHING you want -- but it is a really good idea to only define them to mean something that makes sense on the usual way.
+
+One interesting exception to this rule is the ``pathlib.Path`` class, that has defined ``__truediv__`` to mean path concatenation:
+
+..code-block:: ipython
+
+    In [19]: import pathlib
+
+    In [20]: p1 = pathlib.Path.cwd()
+
+    In [21]: p1
+    Out[21]: PosixPath('/Users/Chris/PythonStuff/UWPCE/PythonCertDevel')
+
+    In [22]: p1 / "a_filename"
+    Out[22]: PosixPath('/Users/Chris/PythonStuff/UWPCE/PythonCertDevel/a_filename')
+
+While this is not division in any sense, the slash *is* used as a path separator -- so this does make intuitive sense.
+
 
 The Container Protocol
 ----------------------
@@ -85,9 +112,17 @@ Want to make a container type? Here's what you need:
     object.__iter__(self)
     object.__reversed__(self)
     object.__contains__(self, item)
-    object.__getslice__(self, i, j)
-    object.__setslice__(self, i, j, sequence)
-    object.__delslice__(self, i, j)
+    object.__index__(self)
+
+``__len__`` is called when len(object) is called.
+
+``__reversed__`` is called when reversed(object) is called.
+
+``__contains__`` is called with ``in`` is used: ``something in object``
+
+``__iter__`` is used for iteration -- called when in a for loop.
+
+``__index__`` is used to convert the object into an integer for indexing. If you have a class that could reasonably be interpreted as in index, you should define this, and it can be used as in index. It should return an integer.  This was added to support multiple integer types for numpy.
 
 An Example
 ----------
@@ -105,9 +140,33 @@ implement ``__add__``:
         assert len(self) == len(v)
         return vector([x1 + x2 for x1, x2 in zip(self, v)])
 
-.. rst-class:: centered
 
-[a more complete example may be seen :download:`here <../examples/vector.py>`]
+[a slightly more complete example may be seen here :download:`vector.py <../examples/object_oriented/vector.py>`]
+
+Indexing and Slicing
+--------------------
+
+``__getitem__`` and ``set__item__`` are used when indexing:
+
+``x = object[i]`` calls ``__getitem__``, and ``object[i] = something`` calls ``__setitem__``.
+
+But indexing is pretty complex in python. There is simple indexing: ``object[i]``, but there is also slicing: ``object[i:j:skip]``
+
+When you implement ``__getitem__(self, index)``, ``index`` will simply be the index if it's a simple index, but if it's slicing, it will be a ``slice`` object. Python also supports multiple slices:
+
+``object[a:b,c:d]``
+
+These are used in numpy to support multi-dimensional arrays, for instance.
+
+In this case, a tuple of slice objects is passed in.
+
+
+
+
+
+See: :download:`index_slicing.py<../examples/object_oriented/index_slicing.py>`
+
+
 
 Protocols in Summary
 --------------------
@@ -118,7 +177,7 @@ Look up the special methods you need and define them.
 
 There's more to read about the details of implementing these methods:
 
-* https://docs.python.org/3.5/reference/datamodel.html#special-method-names
+* https://docs.python.org/3.6/reference/datamodel.html#special-method-names
 
 
 Emulating Standard types

@@ -44,11 +44,10 @@ class Element:
         #       it's probably better remove it
         # if isinstance(content, Element):
         if hasattr(content, 'render'):
-           self.content.append(content)
+            self.content.append(content)
         else:
-           self.content.append(TextWrapper(str(content)))
+            self.content.append(TextWrapper(str(content)))
         # self.content.append(content)
-
 
     def make_tags(self):
         """
@@ -76,14 +75,10 @@ class Element:
 
 class OneLineTag(Element):
     def render(self, out_file, cur_ind=""):
-        # there is some repition here -- maybe factor that out?
         open_tag, close_tag = self.make_tags()
         out_file.write(cur_ind + open_tag)
         for stuff in self.content:
-            try:
-                stuff.render(out_file)
-            except AttributeError:
-                out_file.write(stuff)
+            stuff.render(out_file)
         out_file.write(close_tag)
 
 

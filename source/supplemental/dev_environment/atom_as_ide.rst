@@ -67,7 +67,7 @@ everything you can do. You can also watch a Getting Started video_.
 Atom has a configuration file which you can modify called config.cson.
 Access it via ``File`` -> ``Config...``
 
-.. code-block::
+::
 
   "*":
     core:
