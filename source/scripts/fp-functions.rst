@@ -1,5 +1,7 @@
 :orphan:
 
+Moved to Google Docs
+
 .. _fp-functions:
 
 ##################################
