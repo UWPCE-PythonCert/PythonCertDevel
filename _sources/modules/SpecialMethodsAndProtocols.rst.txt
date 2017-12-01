@@ -84,7 +84,7 @@ Operator Overloading
 
 Most of the previous examples map to "operators": ``+, - , *, //, /, %`` etc. This is often known as "operator overloading", as you are redefining what the operators mean for that specific type.
 
-Note that you can define these operators to do ANYTHING you want -- but it is a really good idea to only define them to mean something that makes sense on the usual way.
+Note that you can define these operators to do ANYTHING you want -- but it is a really good idea to only define them to mean something that makes sense in the usual way.
 
 One interesting exception to this rule is the ``pathlib.Path`` class, that has defined ``__truediv__`` to mean path concatenation:
 
@@ -129,6 +129,7 @@ Want to make a container type? Here's what you need:
 
 ``__index__`` is used to convert the object into an integer for indexing. If you have a class that could reasonably be interpreted as in index, you should define this, and it can be used as in index. It should return an integer.  This was added to support multiple integer types for numpy.
 
+
 An Example
 ----------
 
@@ -165,12 +166,7 @@ These are used in numpy to support multi-dimensional arrays, for instance.
 
 In this case, a tuple of slice objects is passed in.
 
-
-
-
-
 See: :download:`index_slicing.py<../examples/object_oriented/index_slicing.py>`
-
 
 
 Protocols in Summary
@@ -323,7 +319,7 @@ The key ones are:
 +-------------------+-----------------------+
 
 Callables:
------------
+----------
 
 And Example of writing a callable class:
 
@@ -342,5 +338,14 @@ Write a class for a quadratic equation.
 
     my_quad(0)
 
+References
+----------
 
+Here is a good reference for magic methods:
+
+http://minhhh.github.io/posts/a-guide-to-pythons-magic-methods
+
+And with a bit more explanation:
+
+https://www.python-course.eu/python3_magic_methods.php
 

@@ -74,6 +74,6 @@ When you are done, running except_exercise.py should result in output something 
 Why are you doing this?
 -----------------------
 
-This is a kind of silly exercise, but in real life, this is a common workflow -- you call a library, and find that in certain circumstances it raise an Exception.  As the code in the library is out of your hands, you need to decide how to handle that Exception in your code instead.
+This is a kind of silly exercise, but in real life, this is a common workflow -- you call a library, and find that in certain circumstances it raises an Exception.  As the code in the library is out of your hands, you need to decide how to handle that Exception in your code instead.
 
 

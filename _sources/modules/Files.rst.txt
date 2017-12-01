@@ -21,7 +21,7 @@ Text Files
 
 ``secret_data`` is a string
 
-NOTE: these days, you probably need to use Unicode for text -- we'll get to that next week
+NOTE: these days, you probably need to use Unicode for text -- we'll get to that later
 
 
 Binary Files
@@ -303,7 +303,7 @@ This way third party path libraries could be used with the standard library as w
 What this means to you
 ----------------------
 
-Unless you are writing a path manipulation library, or a library that deals with paths other than with the stdlib packages (like ``open()``), All you need to know is that you can use ``Path`` objects most places you need a path.
+Unless you are writing a path manipulation library, or a library that deals with paths other than with the stdlib packages (like ``open()``), all you need to know is that you can use ``Path`` objects most places you need a path.
 
 I expect we will see expanded use of pathlib as python 3.6 becomes widely used.
 

@@ -290,13 +290,13 @@ and the user can query the circle for either its radius or diameter.</p>
 </pre></div>
 </div>
 <p><strong>NOTE</strong> that the radius has changed!</p>
-<p><strong>Important:</strong> do not store both the radius and the diameter as attributes! If you do that, they could get out of sync. So store only one (the radius), and have the other calculated “on the fly” by the property.</p>
+<p><strong>Important:</strong> Do not store both the radius and the diameter as attributes! If you do that, they could get out of sync. So store only one (the radius), and have the other calculated “on the fly” by the property.</p>
 </div>
 <div class="section" id="step-4">
 <h3>Step 4:<a class="headerlink" href="#step-4" title="Permalink to this headline">¶</a></h3>
 <p>Add an <code class="docutils literal"><span class="pre">area</span></code> property so the user can get the area of the circle:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="o">&gt;&gt;</span> <span class="k">print</span> <span class="n">c</span><span class="o">.</span><span class="n">area</span>
+<span class="o">&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">area</span><span class="p">)</span>
 <span class="mf">12.566370</span>
 </pre></div>
 </div>
@@ -310,7 +310,7 @@ and the user can query the circle for either its radius or diameter.</p>
 </div>
 <div class="section" id="step-5">
 <h3>Step 5:<a class="headerlink" href="#step-5" title="Permalink to this headline">¶</a></h3>
-<p>NOTE: wait on this one ‘till we learn about class methods..</p>
+<p><strong>NOTE:</strong> wait on this one ‘till we learn about class methods..</p>
 <p>Add an “alternate constructor” that lets the user create a Circle directly
 with the diameter:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Circle</span><span class="o">.</span><span class="n">from_diameter</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
@@ -323,6 +323,7 @@ with the diameter:</p>
 </div>
 <div class="section" id="step-6">
 <h3>Step 6:<a class="headerlink" href="#step-6" title="Permalink to this headline">¶</a></h3>
+<p>Every class should have a nice way to print it out…</p>
 <p>Add __str__ and __repr__ methods to your Circle class.</p>
 <p>Now you can print it:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="n">c</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>

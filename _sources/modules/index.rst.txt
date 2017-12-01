@@ -36,6 +36,7 @@ More or less in order of presentation
     Lambda
     MapFilterReduce
     MultipleInheritance
+    NamingThings
     ObjectOrientationOverview
     Properties
     Py2vsPy3

@@ -237,6 +237,8 @@ But for anything "real", you'll want to save the work you are doing in a more pe
 
 This is where an Editor fits in.
 
+.. _editor_for_python:
+
 Text Editors Only
 -----------------
 
