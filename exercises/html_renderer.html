@@ -380,6 +380,7 @@ with one s, and you could tranlate it in the generated html.</p>
 </div>
 <p>You will need to override the render method to render just the one tag and
 attributes, if any.</p>
+<p>Note that self closing tags can’t have any content. MAke sure that your SelfClosingTag element raises an exception if someone tries to put in any content – probably a <code class="docutils literal"><span class="pre">TypeError</span></code>.</p>
 <p>Create a couple subclasses of <code class="docutils literal"><span class="pre">SelfClosingTag</span></code> for and &lt;hr /&gt; and &lt;br /&gt;</p>
 <p>Note that you now have a couple render methods – is there repeated code in them?</p>
 <p>Can you refactor the common parts into a separate method that all the render methods can call? And do all your tests still pass (you do have tests for everything, don’t you?) after refactoring?</p>

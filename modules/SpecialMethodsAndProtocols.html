@@ -136,6 +136,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#protocols">Protocols</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-numerics-protocol">The Numerics Protocol</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#operator-overloading">Operator Overloading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comparing">Comparing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#total-ordering">Total Ordering</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-container-protocol">The Container Protocol</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#an-example">An Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#indexing-and-slicing">Indexing and Slicing</a></li>
@@ -301,6 +303,61 @@ Out[21]: PosixPath(‘/Users/Chris/PythonStuff/UWPCE/PythonCertDevel’)</p>
 Out[22]: PosixPath(‘/Users/Chris/PythonStuff/UWPCE/PythonCertDevel/a_filename’)</p>
 </div></blockquote>
 <p>While this is not division in any sense, the slash <em>is</em> used as a path separator – so this does make intuitive sense.</p>
+</div>
+<div class="section" id="comparing">
+<h2>Comparing<a class="headerlink" href="#comparing" title="Permalink to this headline">¶</a></h2>
+<p>If you want you objects to be comparable:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">&gt;</span> <span class="n">B</span>
+<span class="n">A</span> <span class="o">&lt;</span> <span class="n">B</span>
+<span class="n">A</span> <span class="o">&gt;=</span> <span class="n">B</span>
+</pre></div>
+</div>
+<p>etc…</p>
+<p>There is a full set of magic methods you can use to override the “comparison operators”</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="fm">__lt__</span> <span class="p">:</span> <span class="o">&lt;</span>  <span class="p">(</span><span class="n">less</span> <span class="n">than</span><span class="p">)</span>
+<span class="fm">__le__</span> <span class="p">:</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">less</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span><span class="p">)</span>
+<span class="fm">__eq__</span> <span class="p">:</span> <span class="o">==</span> <span class="p">(</span><span class="n">equal</span><span class="p">)</span>
+<span class="fm">__ge__</span> <span class="p">:</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">greater</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span><span class="p">)</span>
+<span class="fm">__gt__</span> <span class="p">:</span>  <span class="o">&gt;</span> <span class="p">(</span><span class="n">greater</span> <span class="n">than</span><span class="p">)</span>
+<span class="fm">__ne__</span> <span class="p">:</span> <span class="o">!=</span> <span class="p">(</span><span class="ow">not</span> <span class="n">equal</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These are known as the “rich comparison” operators, as they allow fuller featured comparisons. In particular, they are used by numpy to provide “element-wise” comparison – that is, comparing two arrays yields an array of results, rather than a single result:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="gp">In [27]: </span><span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
+
+<span class="gp">In [28]: </span><span class="n">arr2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
+
+<span class="gp">In [29]: </span><span class="n">arr1</span> <span class="o">&gt;</span> <span class="n">arr2</span>
+<span class="gh">Out[29]: </span><span class="go">array([False,  True, False,  True,  True,  True, False], dtype=bool)</span>
+
+<span class="gp">In [30]: </span><span class="n">arr1</span> <span class="o">==</span> <span class="n">arr2</span>
+<span class="gh">Out[30]: </span><span class="go">array([False, False, False, False, False, False,  True], dtype=bool)</span>
+</pre></div>
+</div>
+<p>This is just one example – the point is that for your particular class, you can define these comparisons however you want.</p>
+</div>
+<div class="section" id="total-ordering">
+<h2>Total Ordering<a class="headerlink" href="#total-ordering" title="Permalink to this headline">¶</a></h2>
+<p>You may notice that those operators are kind of redundant – if <code class="docutils literal"><span class="pre">A</span> <span class="pre">&gt;</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">True</span></code> then we know that <code class="docutils literal"><span class="pre">A</span> <span class="pre">&lt;</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">False</span></code> and <code class="docutils literal"><span class="pre">A</span> <span class="pre">&lt;=</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">False</span></code></p>
+<p>in fact, there is a mathematical / computer science concept know as “Total Order”: (<a class="reference external" href="https://en.wikipedia.org/wiki/Total_order">https://en.wikipedia.org/wiki/Total_order</a>), which strictly defines “well behaved” objects in this regard.</p>
+<p>There may be some special cases, where these rules may not apply for your classes (though I can’t think of any :-) ), but for the mostpart, you want your classes, if they support comparisons at all, to be well behaved, or “total ordered”.</p>
+<p>Because this is the common case, pyhton comes with a nifty utility that implements total ordering for you:</p>
+<p><a class="reference external" href="https://docs.python.org/3.6/library/functools.html#functools.total_ordering">https://docs.python.org/3.6/library/functools.html#functools.total_ordering</a></p>
+<p>it can be found in the functools module, and allows you to speicfy __eq__ and only one of: <code class="docutils literal"><span class="pre">__lt__()</span></code>, <code class="docutils literal"><span class="pre">__le__()</span></code>, <code class="docutils literal"><span class="pre">__gt__()</span></code>, or <code class="docutils literal"><span class="pre">__ge__()</span></code>.  It will then fill in the others for you.</p>
+<p>Here is the truncated example from the docs:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@total_ordering</span>
+<span class="k">class</span> <span class="nc">Student</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">lastname</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">firstname</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="o">==</span>
+                <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">lastname</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">other</span><span class="o">.</span><span class="n">firstname</span><span class="o">.</span><span class="n">lower</span><span class="p">()))</span>
+    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">lastname</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">firstname</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="o">&lt;</span>
+                <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">lastname</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">other</span><span class="o">.</span><span class="n">firstname</span><span class="o">.</span><span class="n">lower</span><span class="p">()))</span>
+</pre></div>
+</div>
+<p>Note that this makes it a lot easier than implementing all six comparison operators. However, if you read the doc, it lets you know that <code class="docutils literal"><span class="pre">total_ordering</span></code> has poor performance – it is doing extra method call re-direction when the operators are used. If performance matters to your use case (and it probably doesn’t), you need to write all six comparison dunders.</p>
 </div>
 <div class="section" id="the-container-protocol">
 <h2>The Container Protocol<a class="headerlink" href="#the-container-protocol" title="Permalink to this headline">¶</a></h2>

@@ -102,6 +102,74 @@ One interesting exception to this rule is the ``pathlib.Path`` class, that has d
 
 While this is not division in any sense, the slash *is* used as a path separator -- so this does make intuitive sense.
 
+Comparing
+---------
+
+If you want you objects to be comparable::
+
+  A > B
+  A < B
+  A >= B
+
+etc...
+
+There is a full set of magic methods you can use to override the "comparison operators" ::
+
+    __lt__ : <  (less than)
+    __le__ : <= (less than or equal)
+    __eq__ : == (equal)
+    __ge__ : >= (greater than or equal)
+    __gt__ :  > (greater than)
+    __ne__ : != (not equal)
+
+These are known as the "rich comparison" operators, as they allow fuller featured comparisons. In particular, they are used by numpy to provide "element-wise" comparison -- that is, comparing two arrays yields an array of results, rather than a single result:
+
+.. code-block:: ipython
+
+    In [26]: import numpy as np
+
+    In [27]: arr1 = np.array([3,4,5,6,7,8,9])
+
+    In [28]: arr2 = np.array([9,2,6,2,6,3,9])
+
+    In [29]: arr1 > arr2
+    Out[29]: array([False,  True, False,  True,  True,  True, False], dtype=bool)
+
+    In [30]: arr1 == arr2
+    Out[30]: array([False, False, False, False, False, False,  True], dtype=bool)
+
+This is just one example -- the point is that for your particular class, you can define these comparisons however you want.
+
+Total Ordering
+--------------
+
+You may notice that those operators are kind of redundant -- if ``A > B is True`` then we know that ``A < B is False`` and ``A <= B is False``
+
+in fact, there is a mathematical / computer science concept know as "Total Order": (https://en.wikipedia.org/wiki/Total_order), which strictly defines "well behaved" objects in this regard.
+
+There may be some special cases, where these rules may not apply for your classes (though I can't think of any :-) ), but for the mostpart, you want your classes, if they support comparisons at all, to be well behaved, or "total ordered".
+
+Because this is the common case, pyhton comes with a nifty utility that implements total ordering for you:
+
+https://docs.python.org/3.6/library/functools.html#functools.total_ordering
+
+it can be found in the functools module, and allows you to speicfy __eq__ and only one of: ``__lt__()``, ``__le__()``, ``__gt__()``, or ``__ge__()``.  It will then fill in the others for you.
+
+Here is the truncated example from the docs:
+
+.. code-block:: python
+
+    @total_ordering
+    class Student:
+        def __eq__(self, other):
+            return ((self.lastname.lower(), self.firstname.lower()) ==
+                    (other.lastname.lower(), other.firstname.lower()))
+        def __lt__(self, other):
+            return ((self.lastname.lower(), self.firstname.lower()) <
+                    (other.lastname.lower(), other.firstname.lower()))
+
+Note that this makes it a lot easier than implementing all six comparison operators. However, if you read the doc, it lets you know that ``total_ordering`` has poor performance -- it is doing extra method call re-direction when the operators are used. If performance matters to your use case (and it probably doesn't), you need to write all six comparison dunders.
+
 
 The Container Protocol
 ----------------------

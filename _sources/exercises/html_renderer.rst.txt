@@ -219,6 +219,8 @@ Create a ``SelfClosingTag`` subclass of Element, to render tags like::
 You will need to override the render method to render just the one tag and
 attributes, if any.
 
+Note that self closing tags can't have any content. MAke sure that your SelfClosingTag element raises an exception if someone tries to put in any content -- probably a ``TypeError``.
+
 Create a couple subclasses of ``SelfClosingTag`` for and <hr /> and <br />
 
 Note that you now have a couple render methods -- is there repeated code in them?
