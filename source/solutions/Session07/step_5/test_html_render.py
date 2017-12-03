@@ -5,6 +5,7 @@ includes up to step 5
 """
 
 import io
+import pytest  # for utilities like pytest.raises
 
 from html_render import (Element,
                          Html,
@@ -310,6 +311,11 @@ def test_br():
     file_contents = render_result(br)
     print(file_contents)
     assert file_contents == "<br />"
+
+
+def test_content_in_br():
+    with pytest.raises(TypeError):
+        br = Br("some content")
 
 
 def test_br_in_p():
