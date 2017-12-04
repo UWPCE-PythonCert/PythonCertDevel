@@ -35,6 +35,7 @@ Its docs are here:
 https://pillow.readthedocs.io/en/4.3.x/index.html
 
 """
+from math import ceil
 
 from PIL import Image, ImageDraw
 
@@ -91,7 +92,8 @@ class DrawObject:
 
     def __init__(self, *args, **kwargs):
         print("in DrawObject __init__", kwargs)
-        super().__init__(*args, **kwargs)  # do nothing, but to make super happy
+        # do nothing, but to make super happy
+        super().__init__(*args, **kwargs)
 
 
 class LineObject:
@@ -101,7 +103,7 @@ class LineObject:
 
     def __init__(self,
                  line_color='black',
-                 line_width=2,
+                 line_width=1,
                  **kwargs,
                  ):
         print("in LineObject __init__", kwargs)
@@ -149,13 +151,23 @@ class Circle(DrawObject, LineObject, FillObject):
 
     def draw(self, drawer):
         """
-        draw the object
-
+        Draw the object
         :param drawer: PIL.ImageDraw object to draw to
         """
         r = self.diameter // 2
         c = self.center
-        bounds = [c[0] - r, c[0] + r, c[1] - r, c[1] + r]
-        drawer.ellipse(bounds, fill=self.fill_color, outline=self.line_color)
+        # PIL doesn't support different line widths for ellipses,
+        # so we fake it.
+        lw2 = self.line_width / 2
+        bounds = ((c[0] - r, c[1] - r), (c[0] + r, c[1] + r))
+        drawer.ellipse(bounds, fill=self.fill_color, outline=None)
+        for i in range(int(ceil(lw2)), int(-lw2), -1):
+            r = self.diameter // 2 + i
+            bounds = ((c[0] - r, c[1] - r), (c[0] + r, c[1] + r))
+            drawer.ellipse(bounds, fill=None, outline=self.line_color)
+
+
+
+
 
 

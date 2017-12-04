@@ -64,11 +64,13 @@ def test_circle():
     canvas = oc.ObjectCanvas()
     center = (100, 100)
     diameter = 75
-    pl = oc.Circle(center,
-                   diameter,
-                   line_color="red",
-                   fill_color="blue")
-    canvas.add_object(pl)
+    for line_width in range(1, 5):
+        c = oc.Circle(center,
+                      diameter,
+                      line_color="red",
+                      fill_color="blue",
+                      line_width=line_width,
+                      )
+        canvas.add_object(c)
+        center = (center[0] + 50, center[0] + 50)
     render_to_file(canvas, "circle.png")
-
-
