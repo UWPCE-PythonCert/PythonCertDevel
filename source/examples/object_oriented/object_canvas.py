@@ -88,18 +88,49 @@ class DrawObject:
     """
     base class for all draw objects
     """
-    pass
+
+    def __init__(self, *args, **kwargs):
+        print("in DrawObject __init__", kwargs)
+        super().__init__(*args, **kwargs)  # do nothing, but to make super happy
 
 
-class PolyLine(DrawObject):
+class LineObject:
+    """
+    mixin for classes with a line
+    """
+
+    def __init__(self,
+                 line_color='black',
+                 line_width=2,
+                 **kwargs,
+                 ):
+        print("in LineObject __init__", kwargs)
+        super().__init__(**kwargs)
+        self.line_color = line_color
+        self.line_width = line_width
+
+
+class FillObject:
+    """
+    mixin for classes with a fill
+    """
+
+    def __init__(self,
+                 fill_color=None,
+                 **kwargs
+                 ):
+        print("in FillObject __init__", kwargs)
+        self.fill_color = fill_color
+
+
+class PolyLine(DrawObject, LineObject):
     def __init__(self,
                  vertices,
-                 color='black',
-                 line_width=1
+                 **kwargs
                  ):
         self.vertices = vertices
-        self.line_width = line_width
-        self.color = color
+        print("in PolyLine init", kwargs)
+        super().__init__(**kwargs)
 
     def draw(self, drawer):
         """
@@ -107,6 +138,24 @@ class PolyLine(DrawObject):
 
         :param drawer: PIL.ImageDraw object to draw to
         """
-        drawer.line(self.vertices, fill=self.color, width=self.line_width)
+        drawer.line(self.vertices, fill=self.line_color, width=self.line_width)
+
+
+class Circle(DrawObject, LineObject, FillObject):
+    def __init__(self, center, diameter, **kwargs):
+        self.center = center
+        self.diameter = diameter
+        super().__init__(**kwargs)
+
+    def draw(self, drawer):
+        """
+        draw the object
+
+        :param drawer: PIL.ImageDraw object to draw to
+        """
+        r = self.diameter // 2
+        c = self.center
+        bounds = [c[0] - r, c[0] + r, c[1] - r, c[1] + r]
+        drawer.ellipse(bounds, fill=self.fill_color, outline=self.line_color)
 
 
