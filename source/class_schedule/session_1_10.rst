@@ -1,8 +1,8 @@
 .. _session_1_10:
 
-###############################
-Intro to Functional Programming
-###############################
+###########################################
+Session 10: Intro to Functional Programming
+###########################################
 
 **NOTE:** This material not fully developed yet!
 

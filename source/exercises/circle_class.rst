@@ -31,8 +31,8 @@ Other abilities of a Circle instance:
 You will use:
 
   - properties
-  - a define a bunch of "special methods"
-  - a classmethod
+  - a bunch of "magic methods"
+  - a classmethod (after you've learned about them...)
 
 
 General Instructions:
@@ -54,7 +54,7 @@ create class called ``Circle`` -- it's signature should look like::
 
 The radius is a required parameter (can't have a circle without one!)
 
-the resulting circle should have a attribute for the radius::
+The resulting circle should have a attribute for the radius::
 
   c.radius
 
@@ -63,7 +63,7 @@ So you can do:
 .. code-block:: python
 
     >> c = Circle(4)
-    >> print c.radius
+    >> print(c.radius)
     4
 
 Remember: tests first!
@@ -76,7 +76,7 @@ Add a "diameter" property, so the user can get the diameter of the circle:
 .. code-block:: python
 
     >> c = Circle(4)
-    >> print c.diameter
+    >> print(c.diameter)
     8
 
 Step 3:
@@ -95,6 +95,8 @@ Set up the diameter property so that the user can set the diameter of the circle
 
 **NOTE** that the radius has changed!
 
+**Important:** Do not store both the radius and the diameter as attributes! If you do that, they could get out of sync. So store only one (the radius), and have the other calculated "on the fly" by the property.
+
 Step 4:
 --------
 
@@ -103,7 +105,7 @@ Add an ``area`` property so the user can get the area of the circle:
 .. code-block:: python
 
     >> c = Circle(2)
-    >> print c.area
+    >> print(c.area)
     12.566370
 
 (``pi`` can be found in the math module)
@@ -119,7 +121,7 @@ The user should not be able to set the area:
 Step 5:
 -------
 
-NOTE: wait on this one 'till we learn about class methods..
+**NOTE:** wait on this one 'till we learn about class methods..
 
 Add an "alternate constructor" that lets the user create a Circle directly
 with the diameter:
@@ -134,6 +136,8 @@ with the diameter:
 
 Step 6:
 -------
+
+Every class should have a nice way to print it out...
 
 Add __str__ and __repr__ methods to your Circle class.
 

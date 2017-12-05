@@ -103,8 +103,16 @@ class Title(OneLineTag):
 
 class SelfClosingTag(Element):
     """
-    base class for tags that have no content
+    Base class for tags that have no content
     """
+
+    def append(self, *args, **kwargs):
+        """
+        self closing tags can't have content, so we raise an error if someone
+        tries to add some.
+        """
+        raise TypeError("You can not add content to a self closing tag")
+
     def render(self, out_file, ind=""):
         # there is some repition here -- maybe factor that out?
         open_tag, _ = self.make_tags()
@@ -132,9 +140,9 @@ class A(OneLineTag):
     """
     tag = "a"
 
-    def __init__(self, link, content, **kwargs):
+    def __init__(self, link, *args, **kwargs):
         kwargs['href'] = link
-        super().__init__(content, **kwargs)
+        super().__init__(*args, **kwargs)
         # this could also be direct:
-        # Element.__init__(self, content, **kwargs)
+        # Element.__init__(self, *args, **kwargs)
 

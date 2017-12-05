@@ -35,6 +35,8 @@ Try it now -- really!
 
 Note that ideally you have a linter installed in your editor that yells at you if you violate PEP8 -- no need to run ``pycodestyle`` if it's already in your editor.
 
+See: :ref:`editor_for_python` for suggestions on editors and configuration.
+
 Naming things...
 ----------------
 
@@ -58,7 +60,7 @@ Only use single-letter names for things with limited scope: indexes and the like
     for i, item in enumerate(a_sequence):
         do_something(i, item)
 
-**Don't** use a name like "item", when there is a meaning to what the item is:
+But **Don't** use a name like "item", when there is a meaning to what the item is:
 
 .. code-block:: python
 
@@ -71,6 +73,12 @@ Use plurals for collections of things:
 
     names = ['Fred', 'George', ...]
 
+And then singular for a single item in that collection:
+
+.. code-block:: python
+
+    for name in names:
+       ...
 
 **Do** re-use names when the use is essentially the same, and you don't need the old one:
 

@@ -1,8 +1,8 @@
 .. _session_1_09:
 
-############################################################
-Even more OO: static and class methods: multiple inheritance
-############################################################
+#########################################################
+Session 9: Static and class methods: multiple inheritance
+#########################################################
 
 
 Pre-class prep

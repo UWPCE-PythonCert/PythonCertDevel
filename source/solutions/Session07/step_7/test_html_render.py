@@ -4,6 +4,7 @@ test code for html_render.py
 includes step 7
 """
 import io
+import pytest
 
 from html_render import (Element,
                          Html,
@@ -313,6 +314,11 @@ def test_br():
     file_contents = render_result(br)
     print(file_contents)
     assert file_contents == "<br />"
+
+
+def test_content_in_br():
+    with pytest.raises(TypeError):
+        br = Br("some content")
 
 
 def test_hr():

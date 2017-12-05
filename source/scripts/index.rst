@@ -24,7 +24,6 @@ These will not ultimately be published
     mutable_vs_immutable.rst
     Modules.rst
     name_eq_main.rst
-    naming_things.rst
     dict_as_switch.rst
     slicing.rst
     dynamic_string_formatting.rst
