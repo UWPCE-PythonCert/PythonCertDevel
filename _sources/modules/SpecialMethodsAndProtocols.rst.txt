@@ -88,7 +88,7 @@ Note that you can define these operators to do ANYTHING you want -- but it is a 
 
 One interesting exception to this rule is the ``pathlib.Path`` class, that has defined ``__truediv__`` to mean path concatenation:
 
-..code-block:: ipython
+.. code-block:: ipython
 
     In [19]: import pathlib
 
@@ -100,7 +100,8 @@ One interesting exception to this rule is the ``pathlib.Path`` class, that has d
     In [22]: p1 / "a_filename"
     Out[22]: PosixPath('/Users/Chris/PythonStuff/UWPCE/PythonCertDevel/a_filename')
 
-While this is not division in any sense, the slash *is* used as a path separator -- so this does make intuitive sense.
+While this is not division in any sense, the slash *is* used as a path separator -- so this does make intuitive sense. At least to me -- I think it's pretty cool.
+
 
 Comparing
 ---------
@@ -147,13 +148,15 @@ You may notice that those operators are kind of redundant -- if ``A > B is True`
 
 in fact, there is a mathematical / computer science concept know as "Total Order": (https://en.wikipedia.org/wiki/Total_order), which strictly defines "well behaved" objects in this regard.
 
-There may be some special cases, where these rules may not apply for your classes (though I can't think of any :-) ), but for the mostpart, you want your classes, if they support comparisons at all, to be well behaved, or "total ordered".
+There may be some special cases, where these rules may not apply for your classes (though I can't think of any :-) ), but for the most part, you want your classes, if they support comparisons at all, to be well behaved, or "total ordered".
 
-Because this is the common case, pyhton comes with a nifty utility that implements total ordering for you:
+Because this is the common case, Python comes with a nifty utility that implements total ordering for you:
 
 https://docs.python.org/3.6/library/functools.html#functools.total_ordering
 
-it can be found in the functools module, and allows you to speicfy __eq__ and only one of: ``__lt__()``, ``__le__()``, ``__gt__()``, or ``__ge__()``.  It will then fill in the others for you.
+it can be found in the functools module, and allows you to specify __eq__ and only one of: ``__lt__()``, ``__le__()``, ``__gt__()``, or ``__ge__()``.  It will then fill in the others for you.
+
+Note: if you define only one, it should be ``__lt__``, because this is the one used for sorting (see below for more about that)
 
 Here is the truncated example from the docs:
 
@@ -170,33 +173,58 @@ Here is the truncated example from the docs:
 
 Note that this makes it a lot easier than implementing all six comparison operators. However, if you read the doc, it lets you know that ``total_ordering`` has poor performance -- it is doing extra method call re-direction when the operators are used. If performance matters to your use case (and it probably doesn't), you need to write all six comparison dunders.
 
+Sorting
+-------
 
-The Container Protocol
-----------------------
+Python has a handful of sorting methods built in:
 
-Want to make a container type? Here's what you need:
+``list.sort()`` -- for sorting a list in place
+``sorted(iterable)`` -- for creating a sorted copy of an iterable (sequence)
+
+And a couple more obscure ones.
+
+In order for your custom objects to be sortable, they need the ``__lt__`` (less than) magic method defined -- that's about it.
+
+So if you are using the ``total_ordering`` decorator, it's best to define ``__eq__`` and ``__lt__`` -- that way sorting will be able to use a "native" method for sorting, and maybe get better performance.
+
+Sort key methods
+----------------
+
+By default, the sorting methods use ``__lt__`` for comparison, and that algorithm calls ``__lt__`` O(n log(n)) times. But if you pass a "key" function in to the sort call:
+
+``a_list.sort(key=key_fun)``
+
+Then the key_fun is only called n times, and if the key returns a simple type, like an integer or float, then the sorting will be faster.
+
+So it often helps to provide a sort_key() method on your class, so it can be passed in to the sort methods:
 
 .. code-block:: python
 
-    object.__len__(self)
-    object.__getitem__(self, key)
-    object.__setitem__(self, key, value)
-    object.__delitem__(self, key)
-    object.__iter__(self)
-    object.__reversed__(self)
-    object.__contains__(self, item)
-    object.__index__(self)
+    class Simple:
+        """
+        simple class to demonstrate a simple sorting key method
+        """
 
-``__len__`` is called when len(object) is called.
+        def __init__(self, val):
+            self.val = val
 
-``__reversed__`` is called when reversed(object) is called.
+        def sort_key(self):
+            return self.val
 
-``__contains__`` is called with ``in`` is used: ``something in object``
+And to use it:
 
-``__iter__`` is used for iteration -- called when in a for loop.
+.. code-block:: python
 
-``__index__`` is used to convert the object into an integer for indexing. If you have a class that could reasonably be interpreted as in index, you should define this, and it can be used as in index. It should return an integer.  This was added to support multiple integer types for numpy.
+    list_of_Simple_objects.sort(key=Simple.sort_key)
 
+See: :download:`sort_key.py <../examples/sort_key.py>` for complete example with timing. Here is an example of running it::
+
+    Timing for 10000 items
+    regular sort took: 0.04288s
+    key sort took: 0.004779s
+    performance improvement factor: 8.9726
+
+So almost 9 times faster for a 10,000 item list. Pretty good, eh?
 
 An Example
 ----------
@@ -217,6 +245,40 @@ implement ``__add__``:
 
 [a slightly more complete example may be seen here :download:`vector.py <../examples/object_oriented/vector.py>`]
 
+Emulating Standard types
+=========================
+
+Making your classes behave like the built-ins
+
+
+The Container Protocol
+----------------------
+
+Want to make a container type? Here's what you need:
+
+.. code-block:: python
+
+    object.__len__(self)
+    object.__getitem__(self, key)
+    object.__setitem__(self, key, value)
+    object.__delitem__(self, key)
+    object.__iter__(self)
+    object.__reversed__(self)
+    object.__contains__(self, item)
+
+    object.__index__(self)
+
+``__len__`` is called when len(object) is called.
+
+``__reversed__`` is called when reversed(object) is called.
+
+``__contains__`` is called with ``in`` is used: ``something in object``
+
+``__iter__`` is used for iteration -- called when in a for loop.
+
+``__index__`` is used to convert the object into an integer for indexing. So you don't define this in a container type but rather define it for a type so it can be used as an index.  If you have a class that could reasonably be interpreted as an index, you should define this. It should return an integer.  This was added to support multiple integer types for numpy.
+
+
 Indexing and Slicing
 --------------------
 
@@ -235,26 +297,6 @@ These are used in numpy to support multi-dimensional arrays, for instance.
 In this case, a tuple of slice objects is passed in.
 
 See: :download:`index_slicing.py<../examples/object_oriented/index_slicing.py>`
-
-
-Protocols in Summary
---------------------
-
-Use special methods when you want your class to act like a "standard" class in some way.
-
-Look up the special methods you need and define them.
-
-There's more to read about the details of implementing these methods:
-
-* https://docs.python.org/3.6/reference/datamodel.html#special-method-names
-
-
-Emulating Standard types
-=========================
-
-.. rst-class:: medium
-
-  Making your classes behave like the built-ins
 
 Callable classes
 -----------------
@@ -339,55 +381,9 @@ Then you can do:
 
     result = callable_instance(some_arguments)
 
-Writing your own sequence type
-------------------------------
 
-Python has a handful of nifty sequence types built in:
-
- * lists
- * tuples
- * strings
- * ...
-
-But what if you need a sequence that isn't built in?
-
-A Sparse array
---------------
-
-Example: Sparse Array
-
-Sometimes we have data sets that are "sparse" -- i.e. most of the values are zero.
-
-So you may not want to store a huge bunch of zeros.
-
-But you do want the array to look like a regular old sequence.
-
-So how do you do that?
-
-The Sequence protocol
-----------------------
-
-You can make your class look like a regular python sequence by defining
-the set of special methods you need:
-
-https://docs.python.org/3/reference/datamodel.html#emulating-container-types
-
-The key ones are:
-
-+-------------------+-----------------------+
-|  ``__len__``      | for ``len(sequence)`` |
-+-------------------+-----------------------+
-|  ``__getitem__``  | for  ``x = seq[i]``   |
-+-------------------+-----------------------+
-|  ``__setitem__``  | for ``seq[i] = x``    |
-+-------------------+-----------------------+
-|  ``__delitem__``  | for ``del seq[i]``    |
-+-------------------+-----------------------+
-|  ``__contains__`` | for ``x in seq``      |
-+-------------------+-----------------------+
-
-Callables:
-----------
+Callable example
+----------------
 
 And Example of writing a callable class:
 
@@ -405,6 +401,21 @@ Write a class for a quadratic equation.
     my_quad = Quadratic(a=2, b=3, c=1)
 
     my_quad(0)
+
+Here's one way to do that:
+:download:`quadratic.py <../solutions/quadratic/quadratic.py>`
+
+Protocols in Summary
+--------------------
+
+Use special methods when you want your class to act like a "standard" type or class in some way.
+
+Look up the special methods you need and define them (and only the ones you need).
+
+There's more to read about the details of implementing these methods:
+
+* https://docs.python.org/3.6/reference/datamodel.html#special-method-names
+
 
 References
 ----------

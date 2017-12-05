@@ -138,20 +138,19 @@
 <li class="toctree-l3"><a class="reference internal" href="#operator-overloading">Operator Overloading</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#comparing">Comparing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#total-ordering">Total Ordering</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-container-protocol">The Container Protocol</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#an-example">An Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#indexing-and-slicing">Indexing and Slicing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#protocols-in-summary">Protocols in Summary</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sorting">Sorting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sort-key-methods">Sort key methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#an-example">An Example</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#emulating-standard-types">Emulating Standard types</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#the-container-protocol">The Container Protocol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indexing-and-slicing">Indexing and Slicing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#callable-classes">Callable classes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#callables">“Callables”</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#custom-callable-objects">Custom callable objects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#writing-your-own-sequence-type">Writing your own sequence type</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#a-sparse-array">A Sparse array</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-sequence-protocol">The Sequence protocol</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Callables:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#callable-example">Callable example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#protocols-in-summary">Protocols in Summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
@@ -293,16 +292,18 @@ the <em>informal</em> string representation of an object.</dd>
 <p>Most of the previous examples map to “operators”: <code class="docutils literal"><span class="pre">+,</span> <span class="pre">-</span> <span class="pre">,</span> <span class="pre">*,</span> <span class="pre">//,</span> <span class="pre">/,</span> <span class="pre">%</span></code> etc. This is often known as “operator overloading”, as you are redefining what the operators mean for that specific type.</p>
 <p>Note that you can define these operators to do ANYTHING you want – but it is a really good idea to only define them to mean something that makes sense in the usual way.</p>
 <p>One interesting exception to this rule is the <code class="docutils literal"><span class="pre">pathlib.Path</span></code> class, that has defined <code class="docutils literal"><span class="pre">__truediv__</span></code> to mean path concatenation:</p>
-<p>..code-block:: ipython</p>
-<blockquote>
-<div><p>In [19]: import pathlib</p>
-<p>In [20]: p1 = pathlib.Path.cwd()</p>
-<p>In [21]: p1
-Out[21]: PosixPath(‘/Users/Chris/PythonStuff/UWPCE/PythonCertDevel’)</p>
-<p>In [22]: p1 / “a_filename”
-Out[22]: PosixPath(‘/Users/Chris/PythonStuff/UWPCE/PythonCertDevel/a_filename’)</p>
-</div></blockquote>
-<p>While this is not division in any sense, the slash <em>is</em> used as a path separator – so this does make intuitive sense.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="gp">In [20]: </span><span class="n">p1</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+
+<span class="gp">In [21]: </span><span class="n">p1</span>
+<span class="gh">Out[21]: </span><span class="go">PosixPath(&#39;/Users/Chris/PythonStuff/UWPCE/PythonCertDevel&#39;)</span>
+
+<span class="gp">In [22]: </span><span class="n">p1</span> <span class="o">/</span> <span class="s2">&quot;a_filename&quot;</span>
+<span class="gh">Out[22]: </span><span class="go">PosixPath(&#39;/Users/Chris/PythonStuff/UWPCE/PythonCertDevel/a_filename&#39;)</span>
+</pre></div>
+</div>
+<p>While this is not division in any sense, the slash <em>is</em> used as a path separator – so this does make intuitive sense. At least to me – I think it’s pretty cool.</p>
 </div>
 <div class="section" id="comparing">
 <h2>Comparing<a class="headerlink" href="#comparing" title="Permalink to this headline">¶</a></h2>
@@ -342,10 +343,11 @@ Out[22]: PosixPath(‘/Users/Chris/PythonStuff/UWPCE/PythonCertDevel/a_filename�
 <h2>Total Ordering<a class="headerlink" href="#total-ordering" title="Permalink to this headline">¶</a></h2>
 <p>You may notice that those operators are kind of redundant – if <code class="docutils literal"><span class="pre">A</span> <span class="pre">&gt;</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">True</span></code> then we know that <code class="docutils literal"><span class="pre">A</span> <span class="pre">&lt;</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">False</span></code> and <code class="docutils literal"><span class="pre">A</span> <span class="pre">&lt;=</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">False</span></code></p>
 <p>in fact, there is a mathematical / computer science concept know as “Total Order”: (<a class="reference external" href="https://en.wikipedia.org/wiki/Total_order">https://en.wikipedia.org/wiki/Total_order</a>), which strictly defines “well behaved” objects in this regard.</p>
-<p>There may be some special cases, where these rules may not apply for your classes (though I can’t think of any :-) ), but for the mostpart, you want your classes, if they support comparisons at all, to be well behaved, or “total ordered”.</p>
-<p>Because this is the common case, pyhton comes with a nifty utility that implements total ordering for you:</p>
+<p>There may be some special cases, where these rules may not apply for your classes (though I can’t think of any :-) ), but for the most part, you want your classes, if they support comparisons at all, to be well behaved, or “total ordered”.</p>
+<p>Because this is the common case, Python comes with a nifty utility that implements total ordering for you:</p>
 <p><a class="reference external" href="https://docs.python.org/3.6/library/functools.html#functools.total_ordering">https://docs.python.org/3.6/library/functools.html#functools.total_ordering</a></p>
-<p>it can be found in the functools module, and allows you to speicfy __eq__ and only one of: <code class="docutils literal"><span class="pre">__lt__()</span></code>, <code class="docutils literal"><span class="pre">__le__()</span></code>, <code class="docutils literal"><span class="pre">__gt__()</span></code>, or <code class="docutils literal"><span class="pre">__ge__()</span></code>.  It will then fill in the others for you.</p>
+<p>it can be found in the functools module, and allows you to specify __eq__ and only one of: <code class="docutils literal"><span class="pre">__lt__()</span></code>, <code class="docutils literal"><span class="pre">__le__()</span></code>, <code class="docutils literal"><span class="pre">__gt__()</span></code>, or <code class="docutils literal"><span class="pre">__ge__()</span></code>.  It will then fill in the others for you.</p>
+<p>Note: if you define only one, it should be <code class="docutils literal"><span class="pre">__lt__</span></code>, because this is the one used for sorting (see below for more about that)</p>
 <p>Here is the truncated example from the docs:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@total_ordering</span>
 <span class="k">class</span> <span class="nc">Student</span><span class="p">:</span>
@@ -359,24 +361,45 @@ Out[22]: PosixPath(‘/Users/Chris/PythonStuff/UWPCE/PythonCertDevel/a_filename�
 </div>
 <p>Note that this makes it a lot easier than implementing all six comparison operators. However, if you read the doc, it lets you know that <code class="docutils literal"><span class="pre">total_ordering</span></code> has poor performance – it is doing extra method call re-direction when the operators are used. If performance matters to your use case (and it probably doesn’t), you need to write all six comparison dunders.</p>
 </div>
-<div class="section" id="the-container-protocol">
-<h2>The Container Protocol<a class="headerlink" href="#the-container-protocol" title="Permalink to this headline">¶</a></h2>
-<p>Want to make a container type? Here’s what you need:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">object</span><span class="o">.</span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="fm">__reversed__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="fm">__index__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<div class="section" id="sorting">
+<h2>Sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">¶</a></h2>
+<p>Python has a handful of sorting methods built in:</p>
+<p><code class="docutils literal"><span class="pre">list.sort()</span></code> – for sorting a list in place
+<code class="docutils literal"><span class="pre">sorted(iterable)</span></code> – for creating a sorted copy of an iterable (sequence)</p>
+<p>And a couple more obscure ones.</p>
+<p>In order for your custom objects to be sortable, they need the <code class="docutils literal"><span class="pre">__lt__</span></code> (less than) magic method defined – that’s about it.</p>
+<p>So if you are using the <code class="docutils literal"><span class="pre">total_ordering</span></code> decorator, it’s best to define <code class="docutils literal"><span class="pre">__eq__</span></code> and <code class="docutils literal"><span class="pre">__lt__</span></code> – that way sorting will be able to use a “native” method for sorting, and maybe get better performance.</p>
+</div>
+<div class="section" id="sort-key-methods">
+<h2>Sort key methods<a class="headerlink" href="#sort-key-methods" title="Permalink to this headline">¶</a></h2>
+<p>By default, the sorting methods use <code class="docutils literal"><span class="pre">__lt__</span></code> for comparison, and that algorithm calls <code class="docutils literal"><span class="pre">__lt__</span></code> O(n log(n)) times. But if you pass a “key” function in to the sort call:</p>
+<p><code class="docutils literal"><span class="pre">a_list.sort(key=key_fun)</span></code></p>
+<p>Then the key_fun is only called n times, and if the key returns a simple type, like an integer or float, then the sorting will be faster.</p>
+<p>So it often helps to provide a sort_key() method on your class, so it can be passed in to the sort methods:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Simple</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    simple class to demonstrate a simple sorting key method</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
+
+    <span class="k">def</span> <span class="nf">sort_key</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">val</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">__len__</span></code> is called when len(object) is called.</p>
-<p><code class="docutils literal"><span class="pre">__reversed__</span></code> is called when reversed(object) is called.</p>
-<p><code class="docutils literal"><span class="pre">__contains__</span></code> is called with <code class="docutils literal"><span class="pre">in</span></code> is used: <code class="docutils literal"><span class="pre">something</span> <span class="pre">in</span> <span class="pre">object</span></code></p>
-<p><code class="docutils literal"><span class="pre">__iter__</span></code> is used for iteration – called when in a for loop.</p>
-<p><code class="docutils literal"><span class="pre">__index__</span></code> is used to convert the object into an integer for indexing. If you have a class that could reasonably be interpreted as in index, you should define this, and it can be used as in index. It should return an integer.  This was added to support multiple integer types for numpy.</p>
+<p>And to use it:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">list_of_Simple_objects</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">Simple</span><span class="o">.</span><span class="n">sort_key</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See: <a class="reference download internal" href="../_downloads/sort_key.py" download=""><code class="xref download docutils literal"><span class="pre">sort_key.py</span></code></a> for complete example with timing. Here is an example of running it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Timing</span> <span class="k">for</span> <span class="mi">10000</span> <span class="n">items</span>
+<span class="n">regular</span> <span class="n">sort</span> <span class="n">took</span><span class="p">:</span> <span class="mf">0.04288</span><span class="n">s</span>
+<span class="n">key</span> <span class="n">sort</span> <span class="n">took</span><span class="p">:</span> <span class="mf">0.004779</span><span class="n">s</span>
+<span class="n">performance</span> <span class="n">improvement</span> <span class="n">factor</span><span class="p">:</span> <span class="mf">8.9726</span>
+</pre></div>
+</div>
+<p>So almost 9 times faster for a 10,000 item list. Pretty good, eh?</p>
 </div>
 <div class="section" id="an-example">
 <h2>An Example<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h2>
@@ -391,6 +414,30 @@ implement <code class="docutils literal"><span class="pre">__add__</span></code>
 </pre></div>
 </div>
 <p>[a slightly more complete example may be seen here <a class="reference download internal" href="../_downloads/vector.py" download=""><code class="xref download docutils literal"><span class="pre">vector.py</span></code></a>]</p>
+<div class="section" id="emulating-standard-types">
+<h3>Emulating Standard types<a class="headerlink" href="#emulating-standard-types" title="Permalink to this headline">¶</a></h3>
+<p>Making your classes behave like the built-ins</p>
+</div>
+</div>
+<div class="section" id="the-container-protocol">
+<h2>The Container Protocol<a class="headerlink" href="#the-container-protocol" title="Permalink to this headline">¶</a></h2>
+<p>Want to make a container type? Here’s what you need:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">object</span><span class="o">.</span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="nb">object</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+<span class="nb">object</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="nb">object</span><span class="o">.</span><span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+<span class="nb">object</span><span class="o">.</span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="nb">object</span><span class="o">.</span><span class="fm">__reversed__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="nb">object</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+
+<span class="nb">object</span><span class="o">.</span><span class="fm">__index__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">__len__</span></code> is called when len(object) is called.</p>
+<p><code class="docutils literal"><span class="pre">__reversed__</span></code> is called when reversed(object) is called.</p>
+<p><code class="docutils literal"><span class="pre">__contains__</span></code> is called with <code class="docutils literal"><span class="pre">in</span></code> is used: <code class="docutils literal"><span class="pre">something</span> <span class="pre">in</span> <span class="pre">object</span></code></p>
+<p><code class="docutils literal"><span class="pre">__iter__</span></code> is used for iteration – called when in a for loop.</p>
+<p><code class="docutils literal"><span class="pre">__index__</span></code> is used to convert the object into an integer for indexing. So you don’t define this in a container type but rather define it for a type so it can be used as an index.  If you have a class that could reasonably be interpreted as an index, you should define this. It should return an integer.  This was added to support multiple integer types for numpy.</p>
 </div>
 <div class="section" id="indexing-and-slicing">
 <h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">¶</a></h2>
@@ -402,19 +449,6 @@ implement <code class="docutils literal"><span class="pre">__add__</span></code>
 <p>These are used in numpy to support multi-dimensional arrays, for instance.</p>
 <p>In this case, a tuple of slice objects is passed in.</p>
 <p>See: <a class="reference download internal" href="../_downloads/index_slicing.py" download=""><code class="xref download docutils literal"><span class="pre">index_slicing.py</span></code></a></p>
-</div>
-<div class="section" id="protocols-in-summary">
-<h2>Protocols in Summary<a class="headerlink" href="#protocols-in-summary" title="Permalink to this headline">¶</a></h2>
-<p>Use special methods when you want your class to act like a “standard” class in some way.</p>
-<p>Look up the special methods you need and define them.</p>
-<p>There’s more to read about the details of implementing these methods:</p>
-<ul class="simple">
-<li><a class="reference external" href="https://docs.python.org/3.6/reference/datamodel.html#special-method-names">https://docs.python.org/3.6/reference/datamodel.html#special-method-names</a></li>
-</ul>
-<div class="section" id="emulating-standard-types">
-<h3>Emulating Standard types<a class="headerlink" href="#emulating-standard-types" title="Permalink to this headline">¶</a></h3>
-<p class="medium">Making your classes behave like the built-ins</p>
-</div>
 </div>
 <div class="section" id="callable-classes">
 <h2>Callable classes<a class="headerlink" href="#callable-classes" title="Permalink to this headline">¶</a></h2>
@@ -475,59 +509,8 @@ code “calls” an instance of your class:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="writing-your-own-sequence-type">
-<h2>Writing your own sequence type<a class="headerlink" href="#writing-your-own-sequence-type" title="Permalink to this headline">¶</a></h2>
-<p>Python has a handful of nifty sequence types built in:</p>
-<blockquote>
-<div><ul class="simple">
-<li>lists</li>
-<li>tuples</li>
-<li>strings</li>
-<li>…</li>
-</ul>
-</div></blockquote>
-<p>But what if you need a sequence that isn’t built in?</p>
-</div>
-<div class="section" id="a-sparse-array">
-<h2>A Sparse array<a class="headerlink" href="#a-sparse-array" title="Permalink to this headline">¶</a></h2>
-<p>Example: Sparse Array</p>
-<p>Sometimes we have data sets that are “sparse” – i.e. most of the values are zero.</p>
-<p>So you may not want to store a huge bunch of zeros.</p>
-<p>But you do want the array to look like a regular old sequence.</p>
-<p>So how do you do that?</p>
-</div>
-<div class="section" id="the-sequence-protocol">
-<h2>The Sequence protocol<a class="headerlink" href="#the-sequence-protocol" title="Permalink to this headline">¶</a></h2>
-<p>You can make your class look like a regular python sequence by defining
-the set of special methods you need:</p>
-<p><a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#emulating-container-types">https://docs.python.org/3/reference/datamodel.html#emulating-container-types</a></p>
-<p>The key ones are:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="45%" />
-<col width="55%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">__len__</span></code></td>
-<td>for <code class="docutils literal"><span class="pre">len(sequence)</span></code></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">__getitem__</span></code></td>
-<td>for  <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">seq[i]</span></code></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">__setitem__</span></code></td>
-<td>for <code class="docutils literal"><span class="pre">seq[i]</span> <span class="pre">=</span> <span class="pre">x</span></code></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">__delitem__</span></code></td>
-<td>for <code class="docutils literal"><span class="pre">del</span> <span class="pre">seq[i]</span></code></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">__contains__</span></code></td>
-<td>for <code class="docutils literal"><span class="pre">x</span> <span class="pre">in</span> <span class="pre">seq</span></code></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="id1">
-<h2>Callables:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="callable-example">
+<h2>Callable example<a class="headerlink" href="#callable-example" title="Permalink to this headline">¶</a></h2>
 <p>And Example of writing a callable class:</p>
 <p>Write a class for a quadratic equation.</p>
 <ul class="simple">
@@ -540,6 +523,17 @@ the set of special methods you need:</p>
 <span class="n">my_quad</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Here’s one way to do that:
+<a class="reference download internal" href="../_downloads/quadratic.py" download=""><code class="xref download docutils literal"><span class="pre">quadratic.py</span></code></a></p>
+</div>
+<div class="section" id="protocols-in-summary">
+<h2>Protocols in Summary<a class="headerlink" href="#protocols-in-summary" title="Permalink to this headline">¶</a></h2>
+<p>Use special methods when you want your class to act like a “standard” type or class in some way.</p>
+<p>Look up the special methods you need and define them (and only the ones you need).</p>
+<p>There’s more to read about the details of implementing these methods:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/3.6/reference/datamodel.html#special-method-names">https://docs.python.org/3.6/reference/datamodel.html#special-method-names</a></li>
+</ul>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
