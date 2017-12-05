@@ -39,10 +39,11 @@ class Circle(object):
         return self.radius**2 * pi
 
     def __repr__(self):
-        return "Circle({})".format(repr(self.radius))
+        # usingthe repr attributes is a neat trick
+        return "Circle({:s})".format(repr(self.radius))
 
     def __str__(self):
-        return "Circle with radius: {:.4f}".format(self.radius)
+        return "Circle with radius: {:g}".format(self.radius)
 
     def __add__(self, other):
         return Circle(self.radius + other.radius)
@@ -87,10 +88,27 @@ class Circle(object):
     # and do only these:
     def __eq__(self, other):
         return self.radius == other.radius
+
     def __lt__(self, other):
         return self.radius < other.radius
 
 
-# class SubCircle(Circle):
-#     pass
+# This demostrates how you can
+#  subclass and get everyhting -- even the alternate constructor!
+class Sphere(Circle):
+    """
+    A simple Sphere object, which you can do math with...
+    """
+
+    def volume(self):
+        return 4 / 3 * pi * self.radius ** 3
+
+    def area(self):
+        raise NotImplementedError("Spheres don't have an area")
+
+    def __repr__(self):
+        return "Sphere({:g})".format(self.radius)
+
+    def __str__(self):
+        return "Sphere with radius: {:g}".format(self.radius)
 

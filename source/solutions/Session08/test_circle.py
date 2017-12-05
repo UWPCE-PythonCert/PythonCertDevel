@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 
-from circle import Circle
+from circle import Circle, Sphere
 
 import pytest
 
 from math import pi
+import random
 
 
 def test_init():
@@ -84,9 +85,9 @@ def test_repr():
 
 
 def test_str():
-    c = Circle(3)
+    c = Circle(3.0)
 
-    assert str(c) == 'Circle with radius: 3.0000'
+    assert str(c) == 'Circle with radius: 3'
 
 
 def test_addition():
@@ -174,5 +175,68 @@ def test_sort():
     assert a_list[0] == Circle(5)
     assert a_list[3] == Circle(20)
     assert a_list[0] < a_list[1] < a_list[2] < a_list[3]
+
+
+#############################
+# Tests for the Sphere Object
+#############################
+def test_sphere_vol():
+    s = Sphere(4)
+
+    print(s.volume())
+    assert s.volume() == 268.082573106329
+
+
+def test_sphere_change_radius():
+    s = Sphere.from_diameter(8)
+
+    assert s.radius == 4
+
+    s.radius = 3
+    assert s.diameter == 6
+
+
+def test_sphere_diameter():
+    s = Sphere.from_diameter(8)
+
+    # note that the classmethod got properly inherited
+    assert type(s) == Sphere
+    print(s.volume())
+    assert s.volume() == 268.082573106329
+
+
+def test_sphere_area():
+    s = Sphere(4)
+
+    with pytest.raises(NotImplementedError):
+        s.area()
+
+
+def test_sphere_repr():
+    s = Sphere(12)
+
+    assert repr(s) == "Sphere(12)"
+    assert eval(repr(s)) == s
+
+
+def test_sphere_str():
+    s = Sphere(12)
+
+    assert str(s) == "Sphere with radius: 12"
+    assert eval(repr(s)) == s
+
+
+def test_sphere_sort():
+    list_o_spheres = [Sphere(random.randint(1, 20)) for i in range(10)]
+
+    print(list_o_spheres)
+
+    list_o_spheres.sort()
+
+    print(list_o_spheres)
+
+    for s1, s2 in zip(list_o_spheres, list_o_spheres[1:]):
+        assert s1 <= s2
+
 
 
