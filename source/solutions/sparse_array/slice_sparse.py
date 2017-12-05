@@ -8,9 +8,9 @@ class SparseArray(object):
 
     def __init__(self, my_array=()):
         self.length = len(my_array)
-        self.sparse_array = self.convert_to_sparse(my_array)
+        self.sparse_array = self._convert_to_sparse(my_array)
 
-    def convert_to_sparse(self, my_array):
+    def _convert_to_sparse(self, my_array):
         sparse_array = {}
         for index, number in enumerate(my_array):
             if number:
@@ -44,9 +44,9 @@ class SparseArray(object):
             # makes it an int, even if it's some other
             # type that supports being used as an index
             index = index.__index__()
-            return self.get_single_value(index)
+            return self._get_single_value(index)
 
-    def get_single_value(self, key):
+    def _get_single_value(self, key):
         if key >= self.length:
             raise IndexError('array index out of range')
         else:
@@ -71,12 +71,12 @@ class SparseArray(object):
                     new_keys.append(key)
                 key += step
             if new_keys:
-                self.add_in_slice(new_keys, new_values)
+                self._add_in_slice(new_keys, new_values)
         else:
             index = index.__index__()
-            self.set_single_value(index, value)
+            self._set_single_value(index, value)
 
-    def set_single_value(self, key, value):
+    def _set_single_value(self, key, value):
         if key > self.length:
             raise IndexError('array assignment index out of range')
         if value != 0:
@@ -86,7 +86,7 @@ class SparseArray(object):
             # remove a key from our dictionary.
             self.sparse_array.pop(key, None)
 
-    def add_in_slice(self, new_keys, new_values):
+    def _add_in_slice(self, new_keys, new_values):
         # sometimes we need to add in extra values
         # any existing values
         # greater than the last key of the new data
