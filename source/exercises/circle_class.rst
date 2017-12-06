@@ -249,21 +249,22 @@ Step 8: Optional Features:
 Step 9: Subclassing!
 --------------------
 
-You've got a circle already -- what if you needed a Sphere? They have a fair bit on common -- both defined by a radius, same relationship of radius to diameter, etc.
+You've got a circle already -- what if you needed a Sphere? They have a fair bit in common -- both defined by a radius, same relationship of radius to diameter, etc.
 
 So we can get a pretty useful Sphere class by simply subclassing Circle, and adding and changing a couple things.
 
-* Create a Sphere Class that subclasses Circle.
+* Create a ``Sphere`` Class that subclasses ``Circle``.
 
 * Override the ``__str__`` and ``__repr__`` methods to be appropriate for Spheres.
 
-* Create a "volume" property that returns the volume (hint: volume of a sphere is: 4/3 pi r^3).
+* Create a ``volume`` property that returns the volume (hint: volume of a sphere is: 4/3 pi r^3).
 
-* Override the area property so that it either computes the surface area of a sphere (what's the formula for that???), or have it raise an Exception: maybe ``NotImplementedError``
+* Override the area property so that it either computes the surface area of a sphere (what's the formula for that???), or have it raise an Exception: maybe ``NotImplementedError``.
 
 Make sure to write some tests -- maybe ahead of time! --  that confirm that all this works. And the other things like addition, and sorting...
 
-Check that the Sphere.from_diameter() alternate instructor actually creates a Sphere! -- pretty cool, eh?
+Check that the ``Sphere.from_diameter()`` alternate constructor actually creates a Sphere! (you DO NOT have to write a new classmethod for that!) -- pretty cool, eh?
+
 
 
 
