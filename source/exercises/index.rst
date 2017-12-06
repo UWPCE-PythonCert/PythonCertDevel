@@ -29,5 +29,5 @@ Exercises
     string_formatting.rst
     trapezoid.rst
     mailroom-oo.rst
-    mailroom-mfr.rst
+    mailroom-fp.rst
 
