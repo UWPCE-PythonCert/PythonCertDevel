@@ -111,7 +111,7 @@ See: The Quarks of Object-Oriented Development
 
   - Deborah J. Armstrong
 
-http://agp.hx0.ru/oop/quarks.pdf
+http://ontheturingtest.blogspot.com/2013/11/the-quarks-of-objected-orientation-la.html
 
 Object Oriented Design
 ----------------------

@@ -1,8 +1,8 @@
 .. _session_1_01:
 
-#########################
-Intro to Python Session 1
-#########################
+########################################
+Session 1: Intro to the class and Python
+########################################
 
 **Intro to the class and Python**
 
@@ -41,8 +41,6 @@ In-class Activities
     ../modules/Git
 
     ../modules/lightning_talks
-
-    ../modules/PythonOverview
 
     ../modules/BasicPython
 

@@ -156,7 +156,7 @@ Executed only when the loop exits normally (not via break):
 
 This is a really nice unique Python feature!
 
-If python didn't have ``else`` on loops, you'd need to set a flag, somethign like:
+If python didn't have ``else`` on loops, you'd need to set a flag, something like:
 
 .. code-block:: python
 

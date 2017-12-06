@@ -1,5 +1,7 @@
 :orphan:
 
+Moved to google docs
+
 .. _fp-summary:
 
 ################################
@@ -14,7 +16,9 @@ Alright we've covered most if not all of Python's support for Functional Program
 Use Cases & Problem Domains
 ===========================
 
-During the last many lessons, you may have likely been thinking how, where and why to embrace Functional Programming techniques. We're often down among the weeds when we're programming, so now is a good time to step back and take a look at the lay of the land. Have any new vistas opened along the path of these last lessons?
+During the last many lessons, you may have likely been thinking how, where and why to embrace Functional Programming techniques. We're often down among the weeds when we're programming, so now is a good time to step back and take a look at the lay of the land. For what sorts of programming domains should you start to think functionally rather than remain object oriented?
+
+ Have any new vistas opened along the path of these last lessons? Where would you like to spend more time?
 
 Your travels have only begun
 ============================

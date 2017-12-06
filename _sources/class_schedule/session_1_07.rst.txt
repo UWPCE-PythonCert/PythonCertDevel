@@ -1,10 +1,10 @@
 .. _session_1_07:
 
-#########################
-Intro to Python Session 7
-#########################
+#####################################
+Session 7: Object Oriented Programing
+#####################################
 
-Object Oriented Programing
+Object Oriented Programing: classes, instance and class attributes, subclassing and inheritance.
 
 Pre-class prep
 ==============
@@ -82,7 +82,7 @@ So we're going to learn hands-on by doing this exercise:
 Post-class Activities
 =====================
 
-Finish the HTML render Excercsie through step
+Finish the HTML render Exercise through step 3.
 
 Look at the next session for reading, etc:
 

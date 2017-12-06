@@ -1,14 +1,17 @@
 .. _exercise_circle_class:
 
-======================
-Circle Class Excercise
-======================
+#####################
+Circle Class Exercise
+#####################
 
 Circle Class
 ============
 
+The ultimate circle....
+
+
 Goal:
-------
+-----
 
 The goal is to create a class that represents a simple circle.
 
@@ -24,13 +27,12 @@ Other abilities of a Circle instance:
  * Be able to compare to see if there are equal
  * (follows from above) be able to put them in a list and sort them
 
-.. nextslide::
 
 You will use:
 
   - properties
-  - a classmethod
-  - a define a bunch of "special methods"
+  - a bunch of "magic methods"
+  - a classmethod (after you've learned about them...)
 
 
 General Instructions:
@@ -52,7 +54,7 @@ create class called ``Circle`` -- it's signature should look like::
 
 The radius is a required parameter (can't have a circle without one!)
 
-the resulting circle should have a attribute for the radius::
+The resulting circle should have a attribute for the radius::
 
   c.radius
 
@@ -61,7 +63,7 @@ So you can do:
 .. code-block:: python
 
     >> c = Circle(4)
-    >> print c.radius
+    >> print(c.radius)
     4
 
 Remember: tests first!
@@ -74,7 +76,7 @@ Add a "diameter" property, so the user can get the diameter of the circle:
 .. code-block:: python
 
     >> c = Circle(4)
-    >> print c.diameter
+    >> print(c.diameter)
     8
 
 Step 3:
@@ -93,6 +95,8 @@ Set up the diameter property so that the user can set the diameter of the circle
 
 **NOTE** that the radius has changed!
 
+**Important:** Do not store both the radius and the diameter as attributes! If you do that, they could get out of sync. So store only one (the radius), and have the other calculated "on the fly" by the property.
+
 Step 4:
 --------
 
@@ -101,7 +105,7 @@ Add an ``area`` property so the user can get the area of the circle:
 .. code-block:: python
 
     >> c = Circle(2)
-    >> print c.area
+    >> print(c.area)
     12.566370
 
 (``pi`` can be found in the math module)
@@ -117,6 +121,8 @@ The user should not be able to set the area:
 Step 5:
 -------
 
+**NOTE:** wait on this one 'till we learn about class methods..
+
 Add an "alternate constructor" that lets the user create a Circle directly
 with the diameter:
 
@@ -130,6 +136,8 @@ with the diameter:
 
 Step 6:
 -------
+
+Every class should have a nice way to print it out...
 
 Add __str__ and __repr__ methods to your Circle class.
 
@@ -175,11 +183,12 @@ and multiply one times a number:
 
 (what happens with ``3 * c2`` ? -- can you fix that?)
 
-.. nextslide::
+
 
 Step 8:
 --------
-add the ability to compare two circles:
+
+Add the ability to compare two circles:
 
 .. code-block:: ipython
 
@@ -197,7 +206,6 @@ add the ability to compare two circles:
     In [14]: c2 == c3
     Out[14]: True
 
-.. nextslide::
 
 Once the comparing is done,  you should be able to sort a list of circles:
 
@@ -236,5 +244,28 @@ Step 8: Optional Features:
   a_circle *= 2
 
 * look through all the "magic methods" and see what makes sense for circles
+
+
+Step 9: Subclassing!
+--------------------
+
+You've got a circle already -- what if you needed a Sphere? They have a fair bit in common -- both defined by a radius, same relationship of radius to diameter, etc.
+
+So we can get a pretty useful Sphere class by simply subclassing Circle, and adding and changing a couple things.
+
+* Create a ``Sphere`` Class that subclasses ``Circle``.
+
+* Override the ``__str__`` and ``__repr__`` methods to be appropriate for Spheres.
+
+* Create a ``volume`` property that returns the volume (hint: volume of a sphere is: 4/3 pi r^3).
+
+* Override the area property so that it either computes the surface area of a sphere (what's the formula for that???), or have it raise an Exception: maybe ``NotImplementedError``.
+
+Make sure to write some tests -- maybe ahead of time! --  that confirm that all this works. And the other things like addition, and sorting...
+
+Check that the ``Sphere.from_diameter()`` alternate constructor actually creates a Sphere! (you DO NOT have to write a new classmethod for that!) -- pretty cool, eh?
+
+
+
 
 

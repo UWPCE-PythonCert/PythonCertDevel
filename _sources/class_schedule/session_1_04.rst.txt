@@ -1,8 +1,8 @@
 .. _session_1_04:
 
-#########################
-Intro to Python Session 4
-#########################
+################################################
+Session 4: Dictionaries, Sets, and File Handling
+################################################
 
 Dictionaries, Sets, and File Handling
 

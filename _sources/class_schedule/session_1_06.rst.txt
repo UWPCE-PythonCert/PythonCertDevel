@@ -1,8 +1,8 @@
 .. _session_1_06:
 
-#########################
-Intro to Python Session 6
-#########################
+################################################
+Session 6: Testing and Advanced Argument Passing
+################################################
 
 Unit Testing and Advanced Argument Passing
 

@@ -1,36 +1,35 @@
 .. _virtualenv_section:
 
-***********************
+#######################
 Working with Virtualenv
-***********************
+#######################
 
-.. rst-class:: medium
 
-    "For every non-standard package installed in a system Python, the gods kill a
-    kitten"
+"For every non-standard package installed in a system Python, the gods kill a kitten"
 
     - me
 
-============
 Reasons Why
 ============
-.. rst-class:: left
 
-    * As a working developer you will need to install packages that aren't in the
-      Python standard Library
-    * As a working developer you often need to install *different* versions of the
-      *same* library for different projects
-    * Conflicts arising from having the wrong version of a dependency installed can
-      cause long-term nightmares
-    * Use `virtualenv`_ ...
-    * **Always**
+* As a working developer you will need to install packages that aren't in the
+  Python standard Library
+
+* As a working developer you often need to install *different* versions of the
+  *same* library for different projects
+
+* Conflicts arising from having the wrong version of a dependency installed can
+  cause long-term nightmares
+
+* Use `virtualenv`_ ...
+
+* **Always**
 
 
 Installing Virtualenv
 ---------------------
 
-The best way is to install directly in your system Python (one exception to the
-rule).
+The best way is to install directly in your system Python (one exception to the rule).
 
 To do so you will have to have `pip`_ installed.
 
@@ -60,7 +59,7 @@ most likely need ``superuser`` privileges to do so:
 Great.  Once that's done, you should find that you have a ``virtualenv``
 command available to you from your shell:
 
-.. code-block::
+::
 
     $ virtualenv --help
     Usage: virtualenv [OPTIONS] DEST_DIR
@@ -73,27 +72,25 @@ command available to you from your shell:
 .. _pip: http://www.pip-installer.org
 .. _the instructions here: http://www.pip-installer.org/en/latest/installing.html
 
-================
 Using Virtualenv
 ================
 
-.. rst-class:: left
+Creating a new virtualenv is very very simple:
 
-    Creating a new virtualenv is very very simple:
+.. code-block:: bash
 
-    .. code-block:: bash
-
-        $ virtualenv [options] <ENV>
+    $ virtualenv [options] <ENV>
 
 
-    ``<ENV>`` is just the name of the environment you want to create. It's
-    arbitrary. Let's make one for demonstration purposes:
+``<ENV>`` is just the name of the environment you want to create. It's
+arbitrary. Let's make one for demonstration purposes:
 
-    .. code-block:: bash
+.. code-block:: bash
 
-        $ virtualenv demoenv
-        New python executable in demoenv/bin/python
-        Installing setuptools, pip...done.
+    $ virtualenv demoenv
+    New python executable in demoenv/bin/python
+    Installing setuptools, pip...done.
+
 
 What Happened?
 --------------
@@ -178,7 +175,7 @@ and more:
 And now, when we fire up our Python interpreter, the docutils package is
 available to us:
 
-.. code-block:: pycon
+.. code-block:: bash
 
     (demoenv)$ python
     Python 2.7.5 (default, Aug 25 2013, 00:04:04)
