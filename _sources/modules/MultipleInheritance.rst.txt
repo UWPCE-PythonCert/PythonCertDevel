@@ -122,12 +122,15 @@ What could go wrong?
 The Diamond Problem
 -------------------
 
-With Python "new style" classes everything is descended from 'object'.  Thus, the moment you invoke multiple inheritance you have the diamond problem.
+In Python, everything is descended from 'object'.  Thus, the moment you invoke multiple inheritance you have the diamond problem.
 
 https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem
 
+
 ``super()``
 -----------
+
+``super()`` can help.
 
 ``super()``: use it to call a superclass method, rather than explicitly calling the unbound method on the superclass.
 
@@ -148,6 +151,7 @@ You can do:
         def __init__(self, *args, **kwargs)
             super().__init__(*argw, **kwargs)
             ...
+
 
 MRO: Method Resolution Order
 ----------------------------
@@ -170,6 +174,7 @@ Attributes are located bottom-to-top, left-to-right
 * ... also left to right ...
 
 http://python-history.blogspot.com/2010/06/method-resolution-order.html
+
 
 Super's Superpowers
 -------------------

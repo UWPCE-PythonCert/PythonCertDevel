@@ -116,6 +116,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#step-7">Step 7:</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#step-8">Step 8:</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#step-8-optional-features">Step 8: Optional Features:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-9-subclassing">Step 9: Subclassing!</a></li>
 </ul>
 </li>
 </ul>
@@ -413,6 +414,19 @@ with the diameter:</p>
 <ul class="simple">
 <li>look through all the “magic methods” and see what makes sense for circles</li>
 </ul>
+</div>
+<div class="section" id="step-9-subclassing">
+<h3>Step 9: Subclassing!<a class="headerlink" href="#step-9-subclassing" title="Permalink to this headline">¶</a></h3>
+<p>You’ve got a circle already – what if you needed a Sphere? They have a fair bit on common – both defined by a radius, same relationship of radius to diameter, etc.</p>
+<p>So we can get a pretty useful Sphere class by simply subclassing Circle, and adding and changing a couple things.</p>
+<ul class="simple">
+<li>Create a Sphere Class that subclasses Circle.</li>
+<li>Override the <code class="docutils literal"><span class="pre">__str__</span></code> and <code class="docutils literal"><span class="pre">__repr__</span></code> methods to be appropriate for Spheres.</li>
+<li>Create a “volume” property that returns the volume (hint: volume of a sphere is: 4/3 pi r^3).</li>
+<li>Override the area property so that it either computes the surface area of a sphere (what’s the formula for that???), or have it raise an Exception: maybe <code class="docutils literal"><span class="pre">NotImplementedError</span></code></li>
+</ul>
+<p>Make sure to write some tests – maybe ahead of time! –  that confirm that all this works. And the other things like addition, and sorting…</p>
+<p>Check that the Sphere.from_diameter() alternate instructor actually creates a Sphere! – pretty cool, eh?</p>
 </div>
 </div>
 </div>

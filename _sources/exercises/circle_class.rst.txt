@@ -11,7 +11,7 @@ The ultimate circle....
 
 
 Goal:
-------
+-----
 
 The goal is to create a class that represents a simple circle.
 
@@ -244,5 +244,27 @@ Step 8: Optional Features:
   a_circle *= 2
 
 * look through all the "magic methods" and see what makes sense for circles
+
+
+Step 9: Subclassing!
+--------------------
+
+You've got a circle already -- what if you needed a Sphere? They have a fair bit on common -- both defined by a radius, same relationship of radius to diameter, etc.
+
+So we can get a pretty useful Sphere class by simply subclassing Circle, and adding and changing a couple things.
+
+* Create a Sphere Class that subclasses Circle.
+
+* Override the ``__str__`` and ``__repr__`` methods to be appropriate for Spheres.
+
+* Create a "volume" property that returns the volume (hint: volume of a sphere is: 4/3 pi r^3).
+
+* Override the area property so that it either computes the surface area of a sphere (what's the formula for that???), or have it raise an Exception: maybe ``NotImplementedError``
+
+Make sure to write some tests -- maybe ahead of time! --  that confirm that all this works. And the other things like addition, and sorting...
+
+Check that the Sphere.from_diameter() alternate instructor actually creates a Sphere! -- pretty cool, eh?
+
+
 
 
