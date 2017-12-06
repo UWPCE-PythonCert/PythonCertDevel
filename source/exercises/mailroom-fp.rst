@@ -1,8 +1,8 @@
-.. _exercise_mailroom_mfr:
+.. _exercise_mailroom_fp:
 
 
-Mailroom - Map Filter Reduce
-============================
+Mailroom - Functional
+=====================
 
 Making Mailroom Functional
 
