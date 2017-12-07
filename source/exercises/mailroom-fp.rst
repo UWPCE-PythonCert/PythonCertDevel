@@ -56,9 +56,8 @@ Map, filter and reduce lend themselves to parallel, distributed programming.  In
 
 We have many avenues open to us in terms of setting up the back-end infrastructure for this exercise.  In lieu of a supercomputer cluster, which we could easily spin up on any of several cloud computing services, we are going to use `IPython Parallel`_.
 
-
+To get started follow the instructions in this :ref:`ipyparallel_quickstart`.
 
 .. _embarrassingly parallel: https://en.wikipedia.org/wiki/Map_(parallel_pattern)
 .. _IPython Parallel: https://ipyparallel.readthedocs.io/en/latest/
 
-To get started follow the IPython Parallel instructions
