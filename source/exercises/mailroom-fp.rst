@@ -54,10 +54,22 @@ Distributed Processing
 
 Map, filter and reduce lend themselves to parallel, distributed programming.  Indeed algorithms that lend themselves gracefully to map/filter solutions tend to lend themselves equally well to parallel processing.  We have a name for it: `embarrassingly parallel`_.
 
-We have many avenues open to us in terms of setting up the back-end infrastructure for this exercise.  In lieu of a supercomputer cluster, which we could easily spin up on any of several cloud computing services, we are going to use `IPython Parallel`_.
+Our next expansion of Mailroom stands on the shoulders of the work you did with map, filter and reduce.  We are going to take advantage of the embarrassingly parallel property of map/filter algorithms to run map operations in parallel.
+
+We have many avenues open to us in terms of setting up the back-end infrastructure for this exercise.  In lieu of a supercomputer cluster, which we could easily spin up on any of several cloud computing services, we are going to use `IPython Parallel`_.  Note that we could spin up IPython Parallel across a cluster of machines, but for the purposes of this exercise running it locally will suffice.
 
 To get started follow the instructions in this :ref:`ipyparallel_quickstart`.
 
+Look now at the code you created for the map, filter, reduce exercise above.  Focus on the map operations.  Your task is to replace the map operations using one of IPython Parallel's `apply`_ functions.  For this exercise ``apply_sync()`` may be your most straightforward option.  For our purposes Python's built-in ``map`` and IPyParallel's ``apply`` are conceptually identical: they both apply a function to all the elements of a data structure.
+
 .. _embarrassingly parallel: https://en.wikipedia.org/wiki/Map_(parallel_pattern)
 .. _IPython Parallel: https://ipyparallel.readthedocs.io/en/latest/
+.. _apply: http://ipyparallel.readthedocs.io/en/6.0.2/multiengine.html?highlight=apply_sync#calling-python-functions
+
+Closures
+--------
+
+Closures are another functional programming strategy.  They allow you to create functions according to parameters that are known only at runtime and not beforehand.
+
+Your task now is to replace the functions that you have been passing to ``map()`` or ``apply()`` with a closure.
 
