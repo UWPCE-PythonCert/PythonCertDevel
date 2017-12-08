@@ -4,6 +4,7 @@
 
 import glob
 import pickle
+import ipyparallel as ipp
 
 
 def print_usage():
@@ -105,16 +106,12 @@ def challenge(db, factor):
     """
 
     challenge_multiplier = multiplier_factory(factor)
-    challenge_maps = dict()
-    new_db = dict()
 
-    for doner in db:
-        challenge_maps[doner] = map(challenge_multiplier, db[doner])
-
-    for name, new_donations in challenge_maps.items():
-        new_db[name] = [donation for donation in new_donations]
-
-    return new_db
+    # Distributed map operation via ipyparallel
+    for donor in db:
+        c = ipp.Client()
+        c[:].apply_sync(challenge_multiplier, db[donor])
+    return db
 
 
 def print_db(db):
