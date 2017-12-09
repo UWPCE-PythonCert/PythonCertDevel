@@ -40,4 +40,4 @@ Exercises
 
 :ref:`exercise_trapezoidal_rule`
 
-:ref:`exercise_mailroom_mfr`
+:ref:`exercise_mailroom_fp`

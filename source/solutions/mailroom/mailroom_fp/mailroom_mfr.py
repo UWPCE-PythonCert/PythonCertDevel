@@ -101,7 +101,7 @@ def challenge(db, factor):
         factor (int): challenge multiplier
 
     Returns:
-        dict: updaated donor database
+        dict: a new, updaated donor database
     """
 
     challenge_multiplier = multiplier_factory(factor)
