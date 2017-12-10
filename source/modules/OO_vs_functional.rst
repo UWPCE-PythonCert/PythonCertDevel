@@ -76,7 +76,9 @@ That's what functional programming is all about:
 * Immutable types
 * First class functions
 * Functions without side effects
-* Data flow
+* Data transformations
+
+
 
 
 
