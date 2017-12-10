@@ -32,6 +32,7 @@ More or less in order of presentation
     Decorators
     EnvironmentOverview
     IPythonIntroduction
+    IPythonParallel
     IteratorsAndGenerators
     Lambda
     MapFilterReduce

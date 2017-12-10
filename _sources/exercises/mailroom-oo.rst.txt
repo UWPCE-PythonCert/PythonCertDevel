@@ -1,7 +1,7 @@
 .. _exercise_mailroom_oo:
 
-Mailroom Object Oriented
-========================
+Mailroom - Object Oriented
+==========================
 
 Making Mailroom Object Oriented
 

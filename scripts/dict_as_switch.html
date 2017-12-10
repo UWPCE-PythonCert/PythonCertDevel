@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Video: Using a Dictionary to switch &mdash; PythonCert 4.0 documentation</title>
+  <title>Using a Dictionary to switch &mdash; PythonCert 4.0 documentation</title>
   
 
   
@@ -118,9 +118,9 @@
 <li class="toctree-l2"><a class="reference internal" href="Modules.html">Modules, Scope and Namespaces</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Modules.html#advanced-topics">Advanced Topics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="name_eq_main.html">Script: The <code class="docutils literal"><span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;</span></code> block</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Video: Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code></a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#switch-case"><code class="docutils literal"><span class="pre">switch</span></code> / <code class="docutils literal"><span class="pre">case</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#what-is-switch">What is <code class="docutils literal"><span class="pre">switch</span></code>?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-is-switch-case">What is <code class="docutils literal"><span class="pre">switch</span></code> / <code class="docutils literal"><span class="pre">case</span></code>?</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#if-elif-chains"><code class="docutils literal"><span class="pre">if-elif</span></code> chains</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dict-as-switch">dict as switch</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#switch-with-functions">Switch with functions</a></li>
@@ -184,7 +184,7 @@
         
           <li><a href="index.html">Video Scripts for the first two classes in Python Cert</a> &raquo;</li>
         
-      <li>Video: Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code></li>
+      <li>Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code></li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -203,15 +203,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="video-using-a-dictionary-to-switch">
-<span id="script-dict-as-switch"></span><h1>Video: Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code><a class="headerlink" href="#video-using-a-dictionary-to-switch" title="Permalink to this headline">¶</a></h1>
-<p>Python does not have a <code class="docutils literal"><span class="pre">switch/case</span> <span class="pre">statement</span></code>.  Why not?</p>
+  <div class="section" id="using-a-dictionary-to-switch">
+<span id="script-dict-as-switch"></span><h1>Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code><a class="headerlink" href="#using-a-dictionary-to-switch" title="Permalink to this headline">¶</a></h1>
+<p>Python does not have a <code class="docutils literal"><span class="pre">switch/case</span> <span class="pre">statement</span></code>.</p>
+<p>Why not?</p>
 <p><a class="reference external" href="https://www.python.org/dev/peps/pep-3103/">https://www.python.org/dev/peps/pep-3103/</a></p>
 <p>So what to use instead of “switch-case”?</p>
 <div class="section" id="switch-case">
 <h2><code class="docutils literal"><span class="pre">switch</span></code> / <code class="docutils literal"><span class="pre">case</span></code><a class="headerlink" href="#switch-case" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="what-is-switch">
-<h3>What is <code class="docutils literal"><span class="pre">switch</span></code>?<a class="headerlink" href="#what-is-switch" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="what-is-switch-case">
+<h3>What is <code class="docutils literal"><span class="pre">switch</span></code> / <code class="docutils literal"><span class="pre">case</span></code>?<a class="headerlink" href="#what-is-switch-case" title="Permalink to this headline">¶</a></h3>
 <p>Many languages have a “switch-case” construct:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">switch</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">case</span> <span class="mi">0</span><span class="p">:</span>
@@ -240,7 +241,8 @@
     <span class="k">return</span> <span class="s2">&quot;nothing&quot;</span>
 </pre></div>
 </div>
-<p>And there is nothing wrong with that, but….</p>
+<p>And there is nothing wrong with that, and it is often used.</p>
+<p>but….</p>
 </div>
 <div class="section" id="dict-as-switch">
 <h3>dict as switch<a class="headerlink" href="#dict-as-switch" title="Permalink to this headline">¶</a></h3>
@@ -249,13 +251,17 @@
     <span class="nb">dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="s2">&quot;nothing&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Simple, elegant and fast.</p>
-<p>You can do a dispatch table by putting functions as the value.</p>
-<p>Example: The mailroom2 solution.</p>
+<p>This is known a a “dispatch” dict – it is Simple, elegant and fast.</p>
+<p>This is a very simple example, returning constant strings. But you often want to run different code depending on the value – that is, call a function.</p>
+<p>Recall that functions are “first class objects” in python. That is then can by attached to variables, stored in containers like a dict, etc.</p>
+<p>So you can do a dispatch table by putting functions as the values in the dict.</p>
+<p>One example of this could be processing the menu selections in the
+mailroom program.</p>
 </div>
 <div class="section" id="switch-with-functions">
 <h3>Switch with functions<a class="headerlink" href="#switch-with-functions" title="Permalink to this headline">¶</a></h3>
-<p>What would this be like if you used functions instead? Think of the possibilities.</p>
+<p>So how do you actually <strong>do</strong> that?</p>
+<p>We can define the functions to be called depending on some input:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="k">def</span> <span class="nf">my_zero_func</span><span class="p">():</span>
 <span class="go">return &quot;I&#39;m zero&quot;</span>
 
@@ -272,7 +278,13 @@
 </pre></div>
 </div>
 <p>Again, fast and efficient.</p>
-<p>This is possible because functions are “first class objects” in Python.</p>
+<p>Perhaps a little silly for only two options,
+but I hope you get the idea.</p>
+<p>And if you establish a protocol for what those functions return,
+you can use the return value – perhaps as simple as a True or FAlse to indicate success.</p>
+<p>Or a sentinel value to indicate it’s time to break out of a loop.</p>
+<p>This is particularly powerful if you have multiple such constructs with a similar structure. Then you can write that dispatch once, and use it multiple times with different dispatch dicts.</p>
+<p>Here’s an example of that:</p>
 </div>
 <div class="section" id="oo-switch-case">
 <h3>OO switch/case<a class="headerlink" href="#oo-switch-case" title="Permalink to this headline">¶</a></h3>
