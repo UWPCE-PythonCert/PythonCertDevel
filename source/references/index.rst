@@ -15,4 +15,6 @@ Very often search for a very specific question or topic will very quickly get yo
     packaging
     language_topics
     scipy
+    guis
+
 
