@@ -39,6 +39,7 @@ More or less in order of presentation
     MultipleInheritance
     NamingThings
     ObjectOrientationOverview
+    OO_vs_functional
     Properties
     Py2vsPy3
     PythonClasses
