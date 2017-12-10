@@ -62,7 +62,7 @@ Desktop GUI options in Python
 =============================
 
 PyGTK:
-  native on *nix, semi-native-ish on Windows, horribly non-native on the Mac (If you can even get it to work)
+  native on Unix/Linux, semi-native-ish on Windows, horribly non-native on the Mac (If you can even get it to work)
 
 PyQT / PySide:
   wrapper around the QT framework -- almost native on all three platforms -- maybe licensing issues
