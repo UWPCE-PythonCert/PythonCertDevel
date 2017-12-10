@@ -4,10 +4,12 @@ import pytest
 from random import randint, SystemRandom
 from string import ascii_letters as letters
 
-from mailroom_mfr import (load_donordb,
-                          add_donation,
-                          tally_report,
-                          )
+# from mailroom_mfr import (
+from mailroom_parallel import (
+    load_donordb,
+    add_donation,
+    tally_report,
+)
 
 
 @pytest.fixture(scope='module')
