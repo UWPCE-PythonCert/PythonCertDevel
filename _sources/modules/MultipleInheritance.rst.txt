@@ -85,7 +85,7 @@ In the above contrived example, we could put "give_birth" (and associated method
 
 But this is pretty darn contrived .. where do you use these for real?
 
-Real World Example: ``wxPython FloatCanvas``:
+Real World Example: The wxPython FloatCanvas:
 
 https://github.com/wxWidgets/Phoenix/blob/master/wx/lib/floatcanvas/FCObjects.py
 
@@ -256,11 +256,11 @@ The rules:
 
 Raymond Hettinger's rules for ``super()``
 
-1. the method being called by super() needs to exist
+1. The method being called by super() needs to exist
 
-2. the caller and callee need to have a matching argument signature
+2. The caller and callee need to have a matching argument signature
 
-3. and every occurrence of the method needs to use super()
+3. Every occurrence of the method needs to use super()
 
 (1) is pretty obvious :-)
 

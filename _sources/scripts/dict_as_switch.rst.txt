@@ -2,11 +2,13 @@
 
 .. _script_dict_as_switch:
 
-#######################################
-Video: Using a Dictionary to ``switch``
-#######################################
+################################
+Using a Dictionary to ``switch``
+################################
 
-Python does not have a ``switch/case statement``.  Why not?
+Python does not have a ``switch/case statement``.
+
+Why not?
 
 https://www.python.org/dev/peps/pep-3103/
 
@@ -15,8 +17,8 @@ So what to use instead of "switch-case"?
 ``switch`` / ``case``
 =====================
 
-What is ``switch``?
--------------------
+What is ``switch`` / ``case``?
+------------------------------
 
 Many languages have a "switch-case" construct::
 
@@ -49,7 +51,9 @@ The obvious way to say it is a chain of ``elif`` statements:
     else:
         return "nothing"
 
-And there is nothing wrong with that, but....
+And there is nothing wrong with that, and it is often used.
+
+but....
 
 dict as switch
 --------------
@@ -61,16 +65,23 @@ The ``elif`` chain is neither elegant nor efficient. There are a number of ways 
     arg_dict = {0:"zero", 1:"one", 2: "two"}
         dict.get(argument, "nothing")
 
-Simple, elegant and fast.
+This is known a a "dispatch" dict -- it is Simple, elegant and fast.
 
-You can do a dispatch table by putting functions as the value.
+This is a very simple example, returning constant strings. But you often want to run different code depending on the value -- that is, call a function.
 
-Example: The mailroom2 solution.
+Recall that functions are "first class objects" in python. That is then can by attached to variables, stored in containers like a dict, etc.
+
+So you can do a dispatch table by putting functions as the values in the dict.
+
+One example of this could be processing the menu selections in the
+mailroom program.
 
 Switch with functions
 ---------------------
 
-What would this be like if you used functions instead? Think of the possibilities.
+So how do you actually **do** that?
+
+We can define the functions to be called depending on some input:
 
 .. code-block:: ipython
 
@@ -90,7 +101,18 @@ What would this be like if you used functions instead? Think of the possibilitie
 
 Again, fast and efficient.
 
-This is possible because functions are "first class objects" in Python.
+Perhaps a little silly for only two options,
+but I hope you get the idea.
+
+And if you establish a protocol for what those functions return,
+you can use the return value -- perhaps as simple as a True or FAlse to indicate success.
+
+Or a sentinel value to indicate it's time to break out of a loop.
+
+This is particularly powerful if you have multiple such constructs with a similar structure. Then you can write that dispatch once, and use it multiple times with different dispatch dicts.
+
+Here's an example of that:
+
 
 OO switch/case
 --------------
