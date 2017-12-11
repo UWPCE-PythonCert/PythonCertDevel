@@ -50,3 +50,5 @@ More or less in order of presentation
     Testing
     Tutorial
     MoreOnMutability
+    Packaging
+
