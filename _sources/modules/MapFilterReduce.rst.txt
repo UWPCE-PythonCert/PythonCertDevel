@@ -122,17 +122,19 @@ Yes:
 
 (Except Reduce)
 
-But Guido thinks almost all uses of reduce are really ``sum()``
+But Guido thinks almost all uses of reduce are really ``sum()``. In fact, that's why it got moved out of built-ins into the ``functools`` module.
+
 
 Functional Programming
 ----------------------
 
-Comprehensions and map, filter, reduce are all "functional programming" approaches}
+Comprehensions and map, filter, reduce are all "functional programming" approaches.
 
 ``map, filter``  and ``reduce``  pre-date comprehensions in Python's history
 
-Some people like that syntax better
+Some people like that syntax better.
 
 And "map-reduce" is a big concept these days for parallel processing of "Big Data" in NoSQL databases.
 
 (Hadoop, MongoDB, etc.)
+
