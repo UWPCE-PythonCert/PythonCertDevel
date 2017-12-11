@@ -96,3 +96,73 @@ Here's what I got with that example::
     4795ddf4 (Chris Barker 2017-10-31 18:59:31 -0700 6)
 
 So this shows me that it was changed on 12-09, and before that on 10-31. IN this case, I'm the only one that has messed with that file, so no one to shift the blame too :-)
+
+
+.. _git_branching:
+
+Branching
+=========
+
+A really quick intro to branching.
+
+You may want to start with this tutorial to familiarize yourself with the idea:
+
+https://www.atlassian.com/git/tutorials/using-branches
+
+
+quick tutorial
+--------------
+
+You create a new "branch" with git with the branch command::
+
+    git branch the_name_of_the_branch
+
+where ``the_name_of_the_branch`` is the name of the branch, naturally. To see all the branches you have, you can simply do::
+
+  git branch
+
+The "current" branch or "HEAD" will be marked with an asterix.
+
+To switch to another branch, you can checkout the branch:
+
+    git checkout the_name_of_the_branch
+
+You are now working in the new branch. Anything you commit will be comited to that branch, and no longer effect the master branch.
+
+IF you do a ``git push`` -- you will get a message from git telling you that the branch you are now on is not set up to push to "origin" (your giotHub repo), but it will show you the command you need to set that up -- set-upstream::
+
+  git push --set-upstream origin the_name_of_the_branch
+
+Now it will push to gitHub, and you can see it there.
+
+You can create Pull Requests from that new branch, as well as the old, master, branch.
+
+merging
+-------
+
+When you are happy with your work in the new branch, you may want to merge it back into the "master" branch.
+
+Yu can do this by switching to the master branch::
+
+    git checkout master
+
+And then merging your new work into it::
+
+    git merge the_name_of_the_branch
+
+And there you go!
+
+There is a saying in the git world:
+
+    "Branch early, merge often"
+
+It's a good way to work -- branching and merging is easy enough it git that it pays off to do it often.
+
+
+
+
+
+
+
+
+

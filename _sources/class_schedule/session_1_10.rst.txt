@@ -21,7 +21,9 @@ Reading
 -------
 
 :ref:`oo_vs_functional`
+
 :ref:`anonymous_functions`
+
 :ref:`map_filter_reduce`
 
 

@@ -109,6 +109,11 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#git-blame"><code class="docutils literal"><span class="pre">git</span> <span class="pre">blame</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#branching">Branching</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quick-tutorial">quick tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#merging">merging</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="packaging.html">Packages and Packaging</a></li>
@@ -256,6 +261,51 @@ Date:   Tue Oct 31 18:59:31 2017 -0700
 </pre></div>
 </div>
 <p>So this shows me that it was changed on 12-09, and before that on 10-31. IN this case, I’m the only one that has messed with that file, so no one to shift the blame too :-)</p>
+</div>
+<div class="section" id="branching">
+<span id="git-branching"></span><h2>Branching<a class="headerlink" href="#branching" title="Permalink to this headline">¶</a></h2>
+<p>A really quick intro to branching.</p>
+<p>You may want to start with this tutorial to familiarize yourself with the idea:</p>
+<p><a class="reference external" href="https://www.atlassian.com/git/tutorials/using-branches">https://www.atlassian.com/git/tutorials/using-branches</a></p>
+<div class="section" id="quick-tutorial">
+<h3>quick tutorial<a class="headerlink" href="#quick-tutorial" title="Permalink to this headline">¶</a></h3>
+<p>You create a new “branch” with git with the branch command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="n">the_name_of_the_branch</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">the_name_of_the_branch</span></code> is the name of the branch, naturally. To see all the branches you have, you can simply do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span>
+</pre></div>
+</div>
+<p>The “current” branch or “HEAD” will be marked with an asterix.</p>
+<p>To switch to another branch, you can checkout the branch:</p>
+<blockquote>
+<div>git checkout the_name_of_the_branch</div></blockquote>
+<p>You are now working in the new branch. Anything you commit will be comited to that branch, and no longer effect the master branch.</p>
+<p>IF you do a <code class="docutils literal"><span class="pre">git</span> <span class="pre">push</span></code> – you will get a message from git telling you that the branch you are now on is not set up to push to “origin” (your giotHub repo), but it will show you the command you need to set that up – set-upstream:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="o">--</span><span class="nb">set</span><span class="o">-</span><span class="n">upstream</span> <span class="n">origin</span> <span class="n">the_name_of_the_branch</span>
+</pre></div>
+</div>
+<p>Now it will push to gitHub, and you can see it there.</p>
+<p>You can create Pull Requests from that new branch, as well as the old, master, branch.</p>
+</div>
+<div class="section" id="merging">
+<h3>merging<a class="headerlink" href="#merging" title="Permalink to this headline">¶</a></h3>
+<p>When you are happy with your work in the new branch, you may want to merge it back into the “master” branch.</p>
+<p>Yu can do this by switching to the master branch:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
+</pre></div>
+</div>
+<p>And then merging your new work into it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">merge</span> <span class="n">the_name_of_the_branch</span>
+</pre></div>
+</div>
+<p>And there you go!</p>
+<p>There is a saying in the git world:</p>
+<blockquote>
+<div>“Branch early, merge often”</div></blockquote>
+<p>It’s a good way to work – branching and merging is easy enough it git that it pays off to do it often.</p>
+</div>
 </div>
 </div>
 
