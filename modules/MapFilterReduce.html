@@ -120,6 +120,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Decorators.html">Decorators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="EnvironmentOverview.html">Introduction to the Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IPythonIntroduction.html">IPython Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IPythonParallel.html">IPython Parallel Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Lambda.html">Anonymous Functions: Lambda</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Map Filter and Reduce</a><ul>
@@ -131,7 +132,9 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="MultipleInheritance.html">Multiple Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NamingThings.html">Style and Naming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ObjectOrientationOverview.html">Object Orientation Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OO_vs_functional.html">Object Oriented vs Functional Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Properties.html">Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Py2vsPy3.html">Python 2 verses Python 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PythonClasses.html">Python Classes</a></li>
@@ -142,6 +145,8 @@
 <li class="toctree-l2"><a class="reference internal" href="Testing.html">Unit Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tutorial.html">Python Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MoreOnMutability.html">A bit more on mutability (and copies)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Packaging.html#distributing">Distributing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/index.html">Quizzes</a></li>
@@ -221,16 +226,23 @@
 <p>But Python does support these “classic” functional methods.</p>
 <div class="section" id="map">
 <h2>map<a class="headerlink" href="#map" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">map</span></code>  “maps” a function onto a sequence of objects – It applies the function to each item in the list, returning another list</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="gp">In [24]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="go">             return x*2 + 10</span>
-<span class="gp">In [25]: </span><span class="nb">map</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
-<span class="gh">Out[25]: </span><span class="go">[14, 20, 24, 34, 22, 18]</span>
+<p><code class="docutils literal"><span class="pre">map</span></code>  “maps” a function onto a sequence of objects – It applies the function to each item in the sequence, returning an “iterable” “map object”.</p>
+<p>The map object delays evaluation until you iterate over it. That way you can pass it to another map, or use it in a for loop, without creating a unnecessary copy of the list.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="gp">In [5]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">   ...: </span>    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">10</span>
+<span class="gp">   ...:</span>
+
+<span class="gp">In [6]: </span><span class="nb">map</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+<span class="gh">Out[6]: </span><span class="go">&lt;map at 0x1046f2ac8&gt;</span>
+
+<span class="gp">In [7]: </span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span>
+<span class="gh">Out[7]: </span><span class="go">[14, 20, 24, 34, 22, 18]</span>
 </pre></div>
 </div>
-<p>But if it’s a small function, and you only need it once:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+<p>And if it’s a small function, and you only need it once, this is a great use for <code class="docutils literal"><span class="pre">lambda</span></code></p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span>
 <span class="gh">Out[26]: </span><span class="go">[14, 20, 24, 34, 22, 18]</span>
 </pre></div>
 </div>
@@ -239,27 +251,33 @@
 <h2>filter<a class="headerlink" href="#filter" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">filter</span></code>  “filters” a sequence of objects with a boolean function –
 It keeps only those for which the function is True – filtering our the rest.</p>
+<p>It similarly returns and iterable object.</p>
 <p>To get only the even numbers:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [27]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="gp">In [28]: </span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="n">x</span><span class="o">%</span><span class="k">2</span>, l)
+<span class="gp">In [28]: </span><span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="n">x</span><span class="o">%</span><span class="k">2</span>, l))
 <span class="gh">Out[28]: </span><span class="go">[2, 12, 6, 4]</span>
 </pre></div>
 </div>
 <p>If you pass <code class="docutils literal"><span class="pre">None</span></code> to <code class="docutils literal"><span class="pre">filter()</span></code>, you get only items that evaluate to true:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[],</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">None</span> <span class="p">]</span>
 
-<span class="gp">In [2]: </span><span class="nb">filter</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+<span class="gp">In [2]: </span><span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span>
 <span class="gh">Out[2]: </span><span class="go">[1, 2.3, &#39;text&#39;, [1, 2], True]</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="reduce">
 <h2>reduce<a class="headerlink" href="#reduce" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">reduce</span></code>  “reduces” a sequence of objects to a single object with a function that combines two arguments</p>
+<p><code class="docutils literal"><span class="pre">reduce</span></code>  “reduces” a sequence of objects to a single object with a function that combines two arguments.</p>
+<p>In python3, reduce has been a bit hidden in the “functools” module:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>
+</pre></div>
+</div>
 <p>To get the sum:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [30]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="gp">In [31]: </span><span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
-<span class="gh">Out[31]: </span><span class="go">36</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>
+<span class="gp">In [12]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="gp">In [13]: </span><span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+<span class="gh">Out[13]: </span><span class="go">36</span>
 </pre></div>
 </div>
 <p>To get the product:</p>
