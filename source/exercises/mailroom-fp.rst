@@ -63,16 +63,15 @@ Map, Filter, Reduce
 
 1. Add a new feature to Mailroom using ``map`` so that each donation on record can be doubled, tripled or indeed multiplied by any arbitrary factor based on the whims of philanthropists who would like to support our cause.
 
-   This will require a new function (or method in your donor database class) called "challenge(factor)" that takes a multiplier, and multiplies all teh donations of all the donors by the factor.  The function returns a NEW donor database, with the new data.
+  This will require a new function (or method in your donor database class) called ``challenge(factor)`` that takes a multiplier ``(factor)``, and multiplies all the donations of all the donors by the factor.  The function returns a NEW donor database, with the new data.
 
 2. Add a new feature to Mailroom using filter so that donations either above or below a specified dollar amount are included in the map operations of #1 above.
 
-   You can do this by adding ``min_donation`` ``and max_donation`` optional keyword parameters to your ``challenge`` function. You'll want to filter the donations before passing them to map.
-
+  You can do this by adding ``min_donation`` ``and max_donation`` optional keyword parameters to your ``challenge`` function. You'll want to filter the donations before passing them to map.
 
 3. Refactor the new features outlined in #1 and #2 above such that they can be used to run projections.  Imagine the following scenario.  You are an account manager out in the field meeting with philanthropists and talking with them about the many ways they might structure their matching contributions.  You would like a feature that could show them, based on past contributions, what their total contribution would become under different scenarios.  For instance, based on donations in the current database, show them (a) what their total contribution would come to in dollars if they were to double contributions under $100.  And then (b) show them what their total contribution would come to if they were to triple contributions over $50.
 
-   This may require another option in your menu-driven interface.
+  This may require another option in your menu-driven interface.
 
 Use ``map``, ``filter`` and either ``sum`` or ``reduce`` to accomplish the goals above.
 
@@ -93,6 +92,7 @@ Look now at the code you created for the map, filter, reduce exercise above.  Fo
 .. _embarrassingly parallel: https://en.wikipedia.org/wiki/Map_(parallel_pattern)
 .. _IPython Parallel: https://ipyparallel.readthedocs.io/en/latest/
 .. _apply: http://ipyparallel.readthedocs.io/en/6.0.2/multiengine.html?highlight=apply_sync#calling-python-functions
+
 
 Closures
 --------
