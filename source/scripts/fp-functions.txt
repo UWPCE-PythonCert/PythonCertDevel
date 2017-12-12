@@ -51,7 +51,9 @@ Keep in mind also that Python has scoping rules that allow functions to see outs
 [title: Functional Programming in Python is a Discipline]
 
 In functional programming we avoid these sorts of situations. In Python, if we are to develop in a functional style, we need to be cognizant of our goals, we need to adopt the practices and habits of the culture, because Python does not force these habits upon us. It is up to us to adopt them.
+
 [title: Functions as First Class Language Constructs]
+
 What does it mean that this or that is a first-class language construct?
 
 Well, in Python what do we have that are first class language constructs?
@@ -62,7 +64,7 @@ Lists, Tuples, Dictionaries, Sets. These are all first class language constructs
 
 Likewise in Python you can define functions. You can name them with def or leave them unnamed with lambda. You can save them in lists or tuples. You can pass them around to other functions. They can become members of objects as methods when you define them inside of classes… notwithstanding the definitional caveats we’ve already discussed.
 
-Recognize that most of what we’re going to discuss in the rest of the material on functional programming would not be possible if functions were not first-class language constructs. When we’re using map, filter and reduce we’re passing functions to them. When we’re working with comprehensions we’ll be passing functions around. Closures and then especially Decorators rely on the ability to pass functions to other functions. It’s all based on the fact that Python supports functions as first class language constructs.
+Recognize that most of what we’re going to discuss in the rest of the material on functional programming would not be possible if functions were not first-class language constructs. When we’re using map, filter and reduce we’re passing functions to them. When we’re working with comprehensions we’ll be passing functions around. Closures and Decorators rely on the ability to pass functions to other functions. It’s all based on the fact that Python supports functions as first class language constructs.
 
 [title: Composition]
 
