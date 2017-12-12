@@ -55,7 +55,7 @@ Or separate directories for each of your versions like this:
   mailroom_oo/mailroom.py
   mailroom_fp/mailroom.py
 
-Regardless of how you decide to manage the names and track versions you may also need to decide where to start on this exercise.  Should you start from your most recent version which likely involves classes or do you back out to an earlier version before we studied object orientation?  Another option is to start again from scratch.  The choice is yours.
+Regardless of how you decide to manage names and track versions you may also need to decide where to start on this exercise.  Should you start from your most recent version which likely involves classes or do you back out to an earlier version before we studied object orientation?  Another option is to start again from scratch.  The choice is yours.
 
 
 Map, Filter, Reduce
