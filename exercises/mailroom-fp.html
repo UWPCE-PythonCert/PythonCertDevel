@@ -242,21 +242,25 @@ mailroom_oo/mailroom.py
 mailroom_fp/mailroom.py
 </pre></div>
 </div>
-<p>Regardless of how you decide to manage the names and track versions you may also need to decide where to start on this exercise.  Should you start from your most recent version which likely involves classes or do you back out to an earlier version before we studied object orientation?  Another option is to start again from scratch.  The choice is yours.</p>
+<p>Regardless of how you decide to manage names and track versions you may also need to decide where to start on this exercise.  Should you start from your most recent version which likely involves classes or do you back out to an earlier version before we studied object orientation?  Another option is to start again from scratch.  The choice is yours.</p>
 </div>
 <div class="section" id="map-filter-reduce">
 <h3>Map, Filter, Reduce<a class="headerlink" href="#map-filter-reduce" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic">
-<li><p class="first">Add a new feature to Mailroom using <code class="docutils literal"><span class="pre">map</span></code> so that each donation on record can be doubled, tripled or indeed multiplied by any arbitrary factor based on the whims of philanthropists who would like to support our cause.</p>
-<p>This will require a new function (or method in your donor database class) called “challenge(factor)” that takes a multiplier, and multiplies all teh donations of all the donors by the factor.  The function returns a NEW donor database, with the new data.</p>
-</li>
-<li><p class="first">Add a new feature to Mailroom using filter so that donations either above or below a specified dollar amount are included in the map operations of #1 above.</p>
-<p>You can do this by adding <code class="docutils literal"><span class="pre">min_donation</span></code> <code class="docutils literal"><span class="pre">and</span> <span class="pre">max_donation</span></code> optional keyword parameters to your <code class="docutils literal"><span class="pre">challenge</span></code> function. You’ll want to filter the donations before passing them to map.</p>
-</li>
-<li><p class="first">Refactor the new features outlined in #1 and #2 above such that they can be used to run projections.  Imagine the following scenario.  You are an account manager out in the field meeting with philanthropists and talking with them about the many ways they might structure their matching contributions.  You would like a feature that could show them, based on past contributions, what their total contribution would become under different scenarios.  For instance, based on donations in the current database, show them (a) what their total contribution would come to in dollars if they were to double contributions under $100.  And then (b) show them what their total contribution would come to if they were to triple contributions over $50.</p>
-<p>This may require another option in your menu-driven interface.</p>
-</li>
+<ol class="arabic simple">
+<li>Add a new feature to Mailroom using <code class="docutils literal"><span class="pre">map</span></code> so that each donation on record can be doubled, tripled or indeed multiplied by any arbitrary factor based on the whims of philanthropists who would like to support our cause.</li>
 </ol>
+<blockquote>
+<div>This will require a new function (or method in your donor database class) called <code class="docutils literal"><span class="pre">challenge(factor)</span></code> that takes a multiplier <code class="docutils literal"><span class="pre">(factor)</span></code>, and multiplies all the donations of all the donors by the factor.  The function returns a NEW donor database, with the new data.</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Add a new feature to Mailroom using filter so that donations either above or below a specified dollar amount are included in the map operations of #1 above.</li>
+</ol>
+<blockquote>
+<div>You can do this by adding <code class="docutils literal"><span class="pre">min_donation</span></code> <code class="docutils literal"><span class="pre">and</span> <span class="pre">max_donation</span></code> optional keyword parameters to your <code class="docutils literal"><span class="pre">challenge</span></code> function. You’ll want to filter the donations before passing them to map.</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Refactor the new features outlined in #1 and #2 above such that they can be used to run projections.  Imagine the following scenario.  You are an account manager out in the field meeting with philanthropists and talking with them about the many ways they might structure their matching contributions.  You would like a feature that could show them, based on past contributions, what their total contribution would become under different scenarios.  For instance, based on donations in the current database, show them (a) what their total contribution would come to in dollars if they were to double contributions under $100.  And then (b) show them what their total contribution would come to if they were to triple contributions over $50.</li>
+</ol>
+<blockquote>
+<div>This may require another option in your menu-driven interface.</div></blockquote>
 <p>Use <code class="docutils literal"><span class="pre">map</span></code>, <code class="docutils literal"><span class="pre">filter</span></code> and either <code class="docutils literal"><span class="pre">sum</span></code> or <code class="docutils literal"><span class="pre">reduce</span></code> to accomplish the goals above.</p>
 </div>
 <div class="section" id="distributed-processing">
