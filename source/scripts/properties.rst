@@ -10,6 +10,8 @@ With Rick Riehle
 
 Requires a feed to my laptop.
 
+Status:  Filmed w Ryan on 2017-12-12
+
 
 Introduction
 ============

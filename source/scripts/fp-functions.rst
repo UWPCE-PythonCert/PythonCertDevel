@@ -8,7 +8,10 @@ Functional Programming - Functions
 
 With Rick Riehle
 
+Status:  Filmed with Ryan on 2017-12-12
+
 [Required: some fancy weatherman style overlay for the math notation?]
+
 
 We have been working with functions since the early lessons of the curriculum. Let’s step back for a moment to frame them in the context of Functional Programming.
 
