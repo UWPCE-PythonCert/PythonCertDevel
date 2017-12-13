@@ -1,8 +1,8 @@
 .. _session_1_05:
 
-#########################
-Intro to Python Session 5
-#########################
+########################################
+Session 5: Exceptions and Comprehensions
+########################################
 
 Exceptions and Comprehensions
 

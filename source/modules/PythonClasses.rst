@@ -117,7 +117,7 @@ Basic Structure of a class
 
 so this class has a method called "__init__" -- which is a python special method.
 
-see: ``Examples/Session07/simple_classes.py``
+see: :download:`simple_classes.py <../examples/classes/simple_classes.py>`
 
 The Initializer
 ---------------
@@ -220,7 +220,7 @@ So what is the difference?
 
 Example:
 
-..code-block:: ipython
+.. code-block:: ipython
 
     In [6]: class C:
        ...:     x = [1,2,3] # class attribute

@@ -24,7 +24,7 @@ It is like an array, in that it holds a number of items, and you can index into 
 
 These indexes are called "keys", and the items stored are called "values"
 
-So for an python sequence, you might do::
+So for any python sequence, you might do::
 
   item = stuff[3]
 
@@ -69,7 +69,7 @@ Dictionary Indexing
 
 And how do you get stuff out (index it)?
 
-The say way you index a sequence, except the index (now called a key) can be all kinds of stuff:
+The same way you index a sequence, except the index (now called a key) can be all kinds of stuff:
 
 .. code-block:: python
 
@@ -131,7 +131,7 @@ Hash functions convert arbitrarily large data to a small proxy (usually an int)
 
 They always return the same proxy for the same input.
 
-MD5, SHA, etc, are some well known hash allgorithms.
+MD5, SHA, etc, are some well known hash algorithms.
 
 Dictionaries hash the key to an integer proxy and use it to find the key and value.
 
@@ -277,9 +277,7 @@ Containment is on the keys.
 
 Think of it like  "real" dictionary, where the keys are the words, and the values are the definitions.
 
-Is the word "gullible" in the dictionary?
-
-Is asking if the key is in the dict.
+Is the word "gullible" in the dictionary is asking if the key is in the dict.
 
 Getting something: (like indexing)
 ----------------------------------
@@ -380,7 +378,7 @@ The next time you call it, it gets the already set value:
 
 Assignment is a link to the original dict, just like lists or anything else.
 
-And dicts a mutable -- so be careful!
+And dicts are mutable -- so be careful!
 
 .. code-block:: ipython
 

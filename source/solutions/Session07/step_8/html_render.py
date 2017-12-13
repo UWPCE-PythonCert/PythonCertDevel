@@ -44,11 +44,10 @@ class Element:
         #       it's probably better remove it
         # if isinstance(content, Element):
         if hasattr(content, 'render'):
-           self.content.append(content)
+            self.content.append(content)
         else:
-           self.content.append(TextWrapper(str(content)))
+            self.content.append(TextWrapper(str(content)))
         # self.content.append(content)
-
 
     def make_tags(self):
         """
@@ -76,14 +75,10 @@ class Element:
 
 class OneLineTag(Element):
     def render(self, out_file, cur_ind=""):
-        # there is some repition here -- maybe factor that out?
         open_tag, close_tag = self.make_tags()
         out_file.write(cur_ind + open_tag)
         for stuff in self.content:
-            try:
-                stuff.render(out_file)
-            except AttributeError:
-                out_file.write(stuff)
+            stuff.render(out_file)
         out_file.write(close_tag)
 
 
@@ -114,10 +109,18 @@ class SelfClosingTag(Element):
     """
     base class for tags that have no content
     """
+
+    def append(self, *args, **kwargs):
+        """
+        self closing tags can't have content, so we raise an error if someone
+        tries to add some.
+        """
+        raise TypeError("You can not add content to a self closing tag")
+
     def render(self, out_file, ind=""):
-        # there is some repition here -- maybe factor that out?
+        # there is some repetition here -- maybe factor that out?
         open_tag, _ = self.make_tags()
-        # make it a self cloding tag by adding the /
+        # make it a self closing tag by adding the /
         out_file.write(ind + open_tag.replace(">", " />"))
 
 
@@ -141,11 +144,11 @@ class A(OneLineTag):
     """
     tag = "a"
 
-    def __init__(self, link, content, **kwargs):
+    def __init__(self, link, *args, **kwargs):
         kwargs['href'] = link
-        super().__init__(content, **kwargs)
+        super().__init__(*args, **kwargs)
         # this could also be direct:
-        # Element.__init__(self, content, **kwargs)
+        # Element.__init__(self, *args, **kwargs)
 
 
 class Ul(Element):
@@ -168,9 +171,9 @@ class H(OneLineTag):
     """
     tag = "H"
 
-    def __init__(self, level, content=None, **kwargs):
+    def __init__(self, level, *args, **kwargs):
         self.tag = "h" + str(int(level))
-        super().__init__(content, **kwargs)
+        super().__init__(*args, **kwargs)
 
 
 class Meta(SelfClosingTag):

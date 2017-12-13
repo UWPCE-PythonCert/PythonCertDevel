@@ -211,6 +211,8 @@ def test_multiple_indent():
     """
     body = Body()
     body.append(P("some text"))
+    body.append(P("even more text"))
+
     html = Html(body)
 
     file_contents = render_result(html)
@@ -219,8 +221,12 @@ def test_multiple_indent():
     lines = file_contents.split("\n")
     for i in range(3):
         assert lines[i].startswith(i * Element.indent + "<")
-
     assert lines[3].startswith(3 * Element.indent + "some")
+    assert lines[4].startswith(2 * Element.indent + "</p>")
+    assert lines[5].startswith(2 * Element.indent + "<p>")
+    assert lines[6].startswith(3 * Element.indent + "even ")
+    for i in range(3):
+        assert lines[-(i + 1)].startswith(i * Element.indent + "<")
 
 
 def test_title():
@@ -247,6 +253,15 @@ def test_head():
     """
     h = Head()
     h.append(Title("A nifty title for the page"))
+    file_contents = render_result(h, ind="   ")
+
+    print(file_contents)
+    assert file_contents.startswith("   <head>")
+    assert file_contents.endswith("</head>")
+
+    assert "<title>" in file_contents
+    assert "</title>" in file_contents
+    assert "A nifty title for the page" in file_contents
 
 
 def test_full_page_with_title():

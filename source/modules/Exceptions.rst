@@ -4,7 +4,7 @@
 Exception Handling
 ##################
 
-Exceptions are a really nifty python feature -- really handy!
+Exceptions are a really nifty Python feature -- really handy!
 
 From the zen:
 
@@ -82,7 +82,7 @@ It is "possible" that the file got deleted by another process in the precise mom
 Example from mailroom exercise:
 -------------------------------
 
-You want to convert the user's input into an integer. And youwant to give a nice message if the user didn't provide a valid input.
+You want to convert the user's input into an integer. And you want to give a nice message if the user didn't provide a valid input.
 
 So you could do this:
 

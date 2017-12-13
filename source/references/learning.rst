@@ -80,7 +80,7 @@ Complete Books / Series
 Python Tutor
 ............
 
-Python Tutor is a really nifty site that lets you write and run python code, and visualize what is going on as it runs. Really gives you idea what is going on under the hood,with the stack, etc.
+Python Tutor is a really nifty site that lets you write and run python code, and visualize what is going on as it runs. Really gives you idea what is going on under the hood, with the stack, etc.
 
 http://pythontutor.com/
 

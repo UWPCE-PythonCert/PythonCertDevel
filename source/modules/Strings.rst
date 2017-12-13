@@ -9,7 +9,7 @@ Strings
 Strings
 =======
 
-A "String" is a computerese word for a piece of text -- a "string" of charactors.
+A "String" is a computerese word for a piece of text -- a "string" of characters.
 
 Creating strings:
 -----------------
@@ -64,9 +64,9 @@ And you need a string to join the parts with -- so we need a string object in th
 
 Lastly, having join() be a string method means that it can join strings in ANY iterable object -- not just the built-in sequence types.
 
-So it does make sense -- but even if not that's the way it is.
+So it does make sense -- but even if not, that's the way it is.
 
-So to be clear: if you have a bunch of strings in s a sequence and you want to put them together, you create a string with the character (or characters) you want to join them with, and call join() on that object:
+So to be clear: if you have a bunch of strings in a sequence and you want to put them together, you create a string with the character (or characters) you want to join them with, and call join() on that object:
 
 .. code-block:: python
 
@@ -390,7 +390,7 @@ For this most simple example::
 
   f"some text: {str(expression)}"
 
-`expression` is any valid python expression(remember that an expression is a combination of values ans operators and names that produces a value).
+`expression` is any valid python expression(remember that an expression is a combination of values and operators and names that produces a value).
 
 The expression is evaluated, and then, if it is not a string, it is converted to one, so it's really::
 

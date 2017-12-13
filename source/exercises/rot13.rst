@@ -31,7 +31,7 @@ Your module should include an ``if __name__ == '__main__':`` block with tests (a
 ordinals...
 -----------
 
-"Ordinals" are the numerical values associated with characters. Python stringsl are native unicode, so teh number values of any character
+"Ordinals" are the numerical values associated with characters. Python strings are native unicode, so they are the number values of any character
 
 Hints
 -----

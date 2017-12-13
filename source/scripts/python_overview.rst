@@ -1,4 +1,4 @@
-.. _script_python_overview
+.. _script_python_overview:
 
 NOTE: now managed in Google Docs.
 

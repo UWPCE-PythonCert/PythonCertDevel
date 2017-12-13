@@ -1,11 +1,11 @@
 .. _exercise_mailroom:
 
-########
-Mailroom
-########
+############################
+Mailroom: A complete program
+############################
 
-A complete program
-==================
+Part 1
+======
 
 Using Python's basic data types and logic for a full program.
 
@@ -104,10 +104,11 @@ When you are done, push your changes and make a pull request.
 
 .. _exercise_mailroom_plus:
 
-Adding dicts and Files
-======================
 
-**Wait to do this till after you've learned about dictionaries next week!**
+Part 2: Adding dicts and Files
+==============================
+
+**Wait to do this till after you've learned about dictionaries in a later lesson!**
 
 use dicts where appropriate
 ---------------------------
@@ -190,10 +191,11 @@ The idea is to require you to structure your code so that you can write the same
 
 .. _exercise_mailroom_exceptions:
 
-Adding Exceptions and Comprehensions
-====================================
 
-**After Learning about Exceptions**
+Part 3: Adding Exceptions and Comprehensions
+============================================
+
+**After the lesson where you learn about Exceptions**
 
 Exceptions
 ----------
@@ -207,10 +209,10 @@ Can you use comprehensions to clean up your code a bit?
 
 .. _exercise_mailroom_testing:
 
-Adding Unit Tests
-=================
+Part 4: Adding Unit Tests
+=========================
 
-**After learning about Unit Testing**
+**After the lesson when you learn about Unit Testing**
 
 Add a full suite of unit tests.
 

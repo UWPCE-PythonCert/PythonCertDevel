@@ -5,6 +5,8 @@ An example of emulating a sequence
 A SparseArray is like a list, but only stores the non-zero values
 
 It can be indexed, appended-to, and iterated through.
+
+This version does not support slicing.
 """
 
 
@@ -19,9 +21,9 @@ class SparseArray(object):
         """
         self.length = len(my_array)
         # self.sparse_array is a dict that stores only the non-zero items
-        self.sparse_array = self.convert_to_sparse(my_array)
+        self.sparse_array = self._convert_to_sparse(my_array)
 
-    def convert_to_sparse(self, my_array):
+    def _convert_to_sparse(self, my_array):
         sparse_array = {}
         for index, number in enumerate(my_array):
             if number:  # remember that zeros are falsey.

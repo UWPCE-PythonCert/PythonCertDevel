@@ -1,21 +1,8 @@
 .. _session_1_09:
 
-#########################
-Intro to Python Session 9
-#########################
-
-**NOTE:** This material not fully developed yet!
-
-Functional Programming
-
-Topics:
-
- * Object Objected Programming vs Functional Programming
- * Objects vs Functions
- * Control Flow vs Data Flow
- * Mutability vs Immutability
- * Managing State
- * Statements vs Expressions for flow control
+#########################################################
+Session 9: Static and class methods: multiple inheritance
+#########################################################
 
 
 Pre-class prep
@@ -24,30 +11,44 @@ Pre-class prep
 Reading:
 --------
 
-* :ref:`anonymous_functions`
+* :ref:`static_and_class_methods`
 
-
-Videos:
--------
-
-(NOTE: these are not available yet!)
-
-"Intro to Functional Programming"
-
+* :ref:`multiple_inheritance`
 
 Supplemental Reading:
 ---------------------
 
-Lambda:
-.......
+Multiple Inheritance and the Diamond Problem
+............................................
 
-http://www.blog.pythonlibrary.org/2015/10/28/python-101-lambda-basics/
+https://en.wikipedia.org/wiki/Multiple_inheritance
 
-https://pythonconquerstheuniverse.wordpress.com/2011/08/29/lambda_tutorial/
+https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem
+
+Method Resolution Order
+.......................
+
+If you really want to understand the way it works:
+
+https://www.python.org/download/releases/2.3/mro/
+
+http://python-history.blogspot.com/2010/06/method-resolution-order.html
+
 
 
 In-class Activities
 ===================
+
+Exercises
+---------
+
+Finish up the Circle Exercise
+
+:ref:`exercise_circle_class`
+
+Make an Object Oriented mailroom!
+
+:ref:`exercise_mailroom_oo`
 
 Post-class Activities
 =====================
@@ -59,31 +60,4 @@ Look at the next session for reading, etc:
 :ref:`session_1_10`
 
 
-Properties, Class Methods, Static Methods: The Circle Exercise
 
-https://uwpce-pythoncert.github.io/Py100/build/html/exercises/circle_class.html
-
-Emulating a built-in type: The Sparse Array Exercise
-
-https://uwpce-pythoncert.github.io/Py100/build/html/exercises/sparse_array.html
-
-Functools
----------
-
-https://pymotw.com/2/functools/
-
-http://www.pydanny.com/python-partials-are-fun.html
-
-Closures & Currying
--------------------
-
-http://www.programiz.com/python-programming/closure
-
-https://www.clear.rice.edu/comp130/12spring/curry/
-
-Multi-methods in Python
------------------------
-
-GvR on Multi-methods
-
-http://www.artima.com/weblogs/viewpost.jsp?thread=101605

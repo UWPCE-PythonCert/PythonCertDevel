@@ -32,11 +32,14 @@ More or less in order of presentation
     Decorators
     EnvironmentOverview
     IPythonIntroduction
+    IPythonParallel
     IteratorsAndGenerators
     Lambda
     MapFilterReduce
     MultipleInheritance
+    NamingThings
     ObjectOrientationOverview
+    OO_vs_functional
     Properties
     Py2vsPy3
     PythonClasses
@@ -47,3 +50,5 @@ More or less in order of presentation
     Testing
     Tutorial
     MoreOnMutability
+    Packaging
+
