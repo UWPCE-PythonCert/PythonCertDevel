@@ -646,7 +646,7 @@ You define a ``string`` value by writing a string *literal*:
     In [7]: r'a "raw" string, the \n comes through as a \n'
     Out[7]: 'a "raw" string, the \\n comes through as a \\n'
 
-Python3 strings fully support Unicode, which means they can support literally all the languages in the world (and then some -- Kligon, anyone? -- well `sort of. <http://www.personal.psu.edu/ejp10/blogs/gotunicode/2010/10/conscript-unicode-registry-csu.html>`_)
+Python3 strings fully support Unicode, which means they can support literally all the languages in the world (and then some -- Klingon, anyone? -- well `sort of. <http://www.personal.psu.edu/ejp10/blogs/gotunicode/2010/10/conscript-unicode-registry-csu.html>`_)
 
 Because Unicode is native to python strings, you can get very far without even thinking about it. Anything you can type in your editor will work fine.
 

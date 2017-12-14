@@ -93,7 +93,7 @@ We have some resources here: :ref:`command_line_basics`
 
 We suggest running through the **cli** tutorial at "learn code the hard way":
 
-https://learnpythonthehardway.org/python3/appendixa.html
+`Command Line Crash Course <https://learnpythonthehardway.org/book/appendixa.html>`_
 
 Or, for Linux and OS-X users:
 
