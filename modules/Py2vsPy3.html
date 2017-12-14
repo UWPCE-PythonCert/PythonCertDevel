@@ -120,16 +120,19 @@
 <li class="toctree-l2"><a class="reference internal" href="Decorators.html">Decorators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="EnvironmentOverview.html">Introduction to the Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IPythonIntroduction.html">IPython Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IPythonParallel.html">IPython Parallel Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Lambda.html">Anonymous Functions: Lambda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MapFilterReduce.html">Map Filter and Reduce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MultipleInheritance.html">Multiple Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NamingThings.html">Style and Naming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ObjectOrientationOverview.html">Object Orientation Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OO_vs_functional.html">Object Oriented vs Functional Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Properties.html">Properties</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Python 2 verses Python 3</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#print">print()</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#division">Division</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#other-py2-py3-differences">Other py2/py3 differences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-python2-python3-differences">Other Python2 / Python3 differences</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="PythonClasses.html">Python Classes</a></li>
@@ -140,6 +143,8 @@
 <li class="toctree-l2"><a class="reference internal" href="Testing.html">Unit Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tutorial.html">Python Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MoreOnMutability.html">A bit more on mutability (and copies)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Packaging.html#distributing">Distributing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/index.html">Quizzes</a></li>
@@ -222,7 +227,7 @@
 <p>But a couple that you’ll need to know right off the bat:</p>
 <div class="section" id="print">
 <h2>print()<a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h2>
-<p>In python2, <code class="docutils literal"><span class="pre">print</span></code> is a “statement”, rather than a function. That means it didn’t require parentheses around what you want printed:</p>
+<p>In Python2, <code class="docutils literal"><span class="pre">print</span></code> is a “statement”, rather than a function. That means it didn’t require parentheses around what you want printed:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="n">something</span><span class="p">,</span> <span class="n">something_else</span>
 </pre></div>
 </div>
@@ -248,7 +253,7 @@
 <span class="gh">Out[17]: </span><span class="go">0.5</span>
 </pre></div>
 </div>
-<p>However in python2, integer division, will give you an integer result:</p>
+<p>However in Python2, integer division, will give you an integer result:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
 <span class="gh">Out[1]: </span><span class="go">0</span>
 </pre></div>
@@ -258,19 +263,19 @@
 <span class="gh">Out[1]: </span><span class="go">0</span>
 </pre></div>
 </div>
-<p>And in python2, you can get the behavior of py3 with “true division”:</p>
+<p>And in Python2, you can get the behavior of Python3 with “true division”:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
 
 <span class="gp">In [3]: </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
 <span class="gh">Out[3]: </span><span class="go">0.5</span>
 </pre></div>
 </div>
-<p>For the most part, you just need to be a bit careful with the rare cases where py2 code counts on integer division.</p>
+<p>For the most part, you just need to be a bit careful with the rare cases where Python2 code counts on integer division.</p>
 </div>
-<div class="section" id="other-py2-py3-differences">
-<h2>Other py2/py3 differences<a class="headerlink" href="#other-py2-py3-differences" title="Permalink to this headline">¶</a></h2>
-<p>The most drastic difference (improvement!) is better Unicode support, and better bytes/Unicode separation.</p>
-<p>Most of the other differences are essentially implementation details, like getting iterators instead of sequences – we’ll talk about that more when it comes up in class.</p>
+<div class="section" id="other-python2-python3-differences">
+<h2>Other Python2 / Python3 differences<a class="headerlink" href="#other-python2-python3-differences" title="Permalink to this headline">¶</a></h2>
+<p>The most drastic difference (improvement!) is better Unicode support, and better bytes / Unicode separation.</p>
+<p>Most of the other differences are essentially implementation details, like getting iterators instead of sequences – we’ll talk about that more when it comes up in a later lesson.</p>
 <p>There are also a few syntax differences with more advanced topics: Exceptions, <code class="docutils literal"><span class="pre">super()</span></code>, etc.</p>
 <p>We’ll talk about all that when we cover those topics.</p>
 </div>

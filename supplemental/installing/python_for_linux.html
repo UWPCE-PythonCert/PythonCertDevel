@@ -247,7 +247,7 @@ $ sudo apt-get install python3.5
 <div class="section" id="pip">
 <h3>pip<a class="headerlink" href="#pip" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal"><span class="pre">pip</span></code> is the Python package installer.</p>
-<p>Many python packages are also available directly from your distro – but you’ll get the latest and greatest if you use <code class="docutils literal"><span class="pre">pip</span></code> to install it instead.</p>
+<p>Many Python packages are also available directly from your distro – but you’ll get the latest and greatest if you use <code class="docutils literal"><span class="pre">pip</span></code> to install it instead.</p>
 <p>To get pip, the first option is to use your system package manager, something like:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install python3-pip
 </pre></div>
@@ -260,7 +260,7 @@ $ sudo apt-get install python3.5
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">the_name_of_the_package</span>
 </pre></div>
 </div>
-<p>Where <code class="docutils literal"><span class="pre">python</span></code> is the command you use to invoke the python you want to use (could be <code class="docutils literal"><span class="pre">python3</span></code>)</p>
+<p>Where <code class="docutils literal"><span class="pre">python</span></code> is the command you use to invoke the Python you want to use (could be <code class="docutils literal"><span class="pre">python3</span></code>)</p>
 <p><strong>NOTE:</strong> You will frequently see advice to use pip like so:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ pip install something_or_other
 </pre></div>
@@ -269,7 +269,7 @@ $ sudo apt-get install python3.5
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ python -m pip install something_or_other
 </pre></div>
 </div>
-<p>calls python, and tells it to run the <code class="docutils literal"><span class="pre">pip</span></code> module. It is exactly the same as calling pip directly, except that you are assured that you are getting the version of pip connected the version of python that you are running.</p>
+<p>calls Python, and tells it to run the <code class="docutils literal"><span class="pre">pip</span></code> module. It is exactly the same as calling pip directly, except that you are assured that you are getting the version of pip connected the version of python that you are running.</p>
 </div>
 <div class="section" id="ipython">
 <h3>iPython<a class="headerlink" href="#ipython" title="Permalink to this headline">¶</a></h3>
@@ -302,7 +302,7 @@ object?   -&gt; Details about &#39;object&#39;, use &#39;object??&#39; for extra
 <h2>Fedora and Red Hat Related Distros (CentOS)<a class="headerlink" href="#fedora-and-red-hat-related-distros-centos" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">CentOS is probably the most popular distro of these related flavors. However, getting Python3 on it can be a pain. You have been warned</p>
+<p class="last">CentOS is probably the most popular distro of these related flavors. However, getting Python3 on it can be a pain. You have been warned!</p>
 </div>
 <div class="section" id="id1">
 <h3>Python<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
@@ -321,7 +321,7 @@ Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo yum -y install scl-utils
 </pre></div>
 </div>
-<p>Then go to the <a class="reference external" href="https://www.softwarecollections.org/en/scls/">software collections listing</a> and click on the python collection version you want to install.</p>
+<p>Then go to the <a class="reference external" href="https://www.softwarecollections.org/en/scls/">software collections listing</a> and click on the Python collection version you want to install.</p>
 <p>Probably this one:</p>
 <p><a class="reference external" href="https://www.softwarecollections.org/en/scls/rhscl/rh-python35/">https://www.softwarecollections.org/en/scls/rhscl/rh-python35/</a></p>
 <p>Note, you also need to know which version of CentOS you are using (probably 6 or 7). For example, we care about <cite>python version 3.5</cite> so let’s go the <cite>.rpm</cite> i want to install <a class="reference external" href="https://www.softwarecollections.org/repos/rhscl/rh-python35/epel-7-x86_64/noarch/">here</a>:</p>
@@ -351,7 +351,7 @@ $ sudo yum install rh-python35
 <div class="section" id="id5">
 <h3>pip<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal"><span class="pre">pip</span></code> is the Python package installer.</p>
-<p>Many python packages are also available directly from your distro – but you’ll get the latest and greatest if you use <code class="docutils literal"><span class="pre">pip</span></code> to install it instead.</p>
+<p>Many Python packages are also available directly from your distro – but you’ll get the latest and greatest if you use <code class="docutils literal"><span class="pre">pip</span></code> to install it instead.</p>
 <p>In CentOS, if you used the above technique to install Python3, then it comes with pip. Try:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>centos@ip-172-31-21-5 ~<span class="o">]</span>$ python -m pip -V
 pip <span class="m">8</span>.1.2 from /opt/rh/rh-python35/root/usr/lib/python3.5/site-packages <span class="o">(</span>python <span class="m">3</span>.5<span class="o">)</span>
@@ -364,7 +364,7 @@ pip <span class="m">8</span>.1.2 from /opt/rh/rh-python35/root/usr/lib/python3.5
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">the_name_of_the_package</span>
 </pre></div>
 </div>
-<p>Where <code class="docutils literal"><span class="pre">python</span></code> is the command you use to invoke the python you want to use (could be <cite>python3</cite>)</p>
+<p>Where <code class="docutils literal"><span class="pre">python</span></code> is the command you use to invoke the Python you want to use (could be <cite>python3</cite>)</p>
 <p><strong>NOTE:</strong> You will frequently see advice to use pip like so:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ pip install something_or_other
 </pre></div>
@@ -373,7 +373,7 @@ pip <span class="m">8</span>.1.2 from /opt/rh/rh-python35/root/usr/lib/python3.5
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ python -m pip install something_or_other
 </pre></div>
 </div>
-<p>calls python, and tells it to run the <code class="docutils literal"><span class="pre">pip</span></code> module. It is exactly the same as calling pip directly, except that you are assured that you are getting the version of pip connected the version of python that you are running.</p>
+<p>calls Python, and tells it to run the <code class="docutils literal"><span class="pre">pip</span></code> module. It is exactly the same as calling pip directly, except that you are assured that you are getting the version of pip connected the version of python that you are running.</p>
 </div>
 <div class="section" id="id7">
 <h3>iPython<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>

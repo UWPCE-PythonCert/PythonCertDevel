@@ -266,10 +266,10 @@ two or optionally three arguments:</p>
 <li>The optional third argumment will be used as a format string for the output
 of the command itself. If there is no output, it will not appear at all.</li>
 </ul>
-<p>Combining these three elements can be very expressive. For example, A standard
-OS X command prompt can be expressed like so: <code class="docutils literal"><span class="pre">\h:\W</span> <span class="pre">\u\\\$</span> <span class="pre">``.</span> <span class="pre">If</span> <span class="pre">you</span> <span class="pre">use</span> <span class="pre">this</span>
-<span class="pre">expression</span> <span class="pre">as</span> <span class="pre">the</span> <span class="pre">second</span> <span class="pre">argument,</span> <span class="pre">leave</span> <span class="pre">the</span> <span class="pre">first</span> <span class="pre">empty</span> <span class="pre">and</span> <span class="pre">provide</span> <span class="pre">a</span> <span class="pre">simple</span> <span class="pre">format</span>
-<span class="pre">ending</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">newline</span> <span class="pre">for</span> <span class="pre">the</span> <span class="pre">``__git_ps1</span></code> output, you get some nice results.</p>
+<p>Combining these three elements can be very expressive. For example, a standard
+OS X command prompt can be expressed like so: <code class="docutils literal"><span class="pre">\h:\W</span> <span class="pre">\u\\\$</span></code>. If you use this
+expression as the second argument, leave the first empty and provide a simple format
+ending in a newline for the <code class="docutils literal"><span class="pre">__git_ps1</span></code> output, you get some nice results.</p>
 <p>Enter this in your shell startup file:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">PROMPT_COMMAND</span><span class="o">=</span><span class="s1">&#39;__git_ps1 &quot;&quot; &quot;\h:\W \u\\\$ &quot; &quot;[%s]\n&quot;&#39;</span>
 </pre></div>
@@ -299,7 +299,7 @@ of the environment you are working on to the shell prompt.</p>
 used the <code class="docutils literal"><span class="pre">PROMPT_COMMAND</span></code> to create your prompt, <code class="docutils literal"><span class="pre">PS1</span></code> is ignored, and
 this nice feature of virtualenv is lost.</p>
 <p>Luckily, there is a way out. Bash shell scripting offers <a class="reference external" href="http://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion">parameter expansion</a>
-and a trick of the that syntax can help. Normally, a shell parameter is
+and a trick of that syntax can help. Normally, a shell parameter is
 referenced like so:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">PARAM</span><span class="o">=</span><span class="s1">&#39;foobar&#39;</span>
 $ <span class="nb">echo</span> <span class="nv">$PARAM</span>
