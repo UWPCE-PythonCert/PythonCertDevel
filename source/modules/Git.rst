@@ -73,12 +73,12 @@ A repository is just a collection of files that 'belong together'.
 Since ``git`` is a *distributed* versioning system, there is no **central**
 repository that serves as the one to rule them all. This simply means that all repositories should look the same.
 
-However, to keep things sane, there is generally one "central" repository chosen that users check with for changes, for us this is GitHub.
+However, to keep things sane, there is generally one "central" repository chosen that users check with for changes. For us this is GitHub.
 
 Working with Remotes
 --------------------
 
-With git, you work with *local* repositories and *remotes* that they are connected to.
+With git, you work with *local* repositories and the *remotes* that they are connected to.
 
 .. rst-class:: build
 .. container::
@@ -92,22 +92,22 @@ With git, you work with *local* repositories and *remotes* that they are connect
       origin  https://github.com/UWPCE-PythonCert/IntroPython-2017.git (push)
 
    This shows that the local repo on my machine *originated* from the one in
-   the UWPCE-PythonCert gitHub account (it shows up twice, because there is
-   a shortcut for both fetch from and push to this remote)
+   the UWPCE-PythonCert GitHub account (it shows up twice, because there is
+   a shortcut for both fetch from and push to this remote).
 
 .. rst-class:: build
 .. container::
 
-    You can work on any project you wish to that has a public repository on Github. However, since you won't have permission to edit most projects directly, there is such a thing as *forking* a project.
+    You can work on any project you wish to that has a public repository on GitHub. However, since you won't have permission to edit most projects directly, there is such a thing as *forking* a project.
 
-    When you *fork* a repository, you make a copy of that repository in your own (Github) account.
+    When you *fork* a repository, you make a copy of that repository in your own (GitHub) account.
 
     When you have made changes that you believe the rest of the community will want to adopt, you make a *pull request* to the original project. The maintainer(s) of that project than have the option of accepting your changes, in which case your changes will become part of that project.
 
     This is how we will be working in this class. When you want feedback on your work, you will make a *pull request* to the instructors.
 
 
-Our class materials reside in a repository on *Github* in the *UWPCE-PythonCert* organization:
+Our class materials reside in a repository on *GitHub* in the *UWPCE-PythonCert* organization:
 
 .. figure:: /_static/remotes_start.png
    :width: 50%
@@ -130,7 +130,7 @@ This will make it easier to collaborate. Weirdly enough, collaborating is import
 
 We will do a live demo of setting up a machine for working with this repository now.
 
-The first thing we have to do is on the Github website. We will create a fork of the class repository from the ``UWPCE-PythonCert`` account on GitHub into your personal account. Please create a gitHub account if you don't have one already.
+The first thing we have to do is on the GitHub website. We will create a fork of the class repository from the ``UWPCE-PythonCert`` account on GitHub into your personal account. Please create a GitHub account if you don't have one already.
 
 Note: You do not have to use your real name to set up your git account.
 
@@ -140,7 +140,7 @@ Note: You do not have to use your real name to set up your git account.
 
 Everyone should now have a copy of the class repository in their account on the GitHub website.
 
-The next step is to make a *clone* of your fork on your own computer, which means that **your fork** in github is the *origin* (Demo):
+The next step is to make a *clone* of your fork on your own computer, which means that **your fork** in GitHub is the *origin* (Demo):
 
 .. figure:: /_static/remotes_clone.png
    :width: 50%
@@ -203,7 +203,7 @@ Start by making sure you are on your own master branch:
 
     $ git checkout master
 
-This is **really really** important. Take the time to ensure you are where you think you are, iow, that your origin is your own github repository and that you are working on master from that remote.
+This is **really really** important. Take the time to ensure you are where you think you are, in other words, that your origin is your own GitHub repository and that you are working on master from that remote.
 You can use `git remote -v` and `git branch -a` to verify.
 
 Now, fetch the upstream master branch and merge it into your master.
@@ -251,7 +251,7 @@ And the files tend to be small.
 
 We encourage sharing of knowledge in this class. Helping your
 fellow students will also help you to better understand. Share
-your code, and get use to giving/receiving feedback on how to
+your code, and get used to giving / receiving feedback on how to
 improve your code, if you are not already.
 
 Each repository will have a directory called ``.git`` that is normally

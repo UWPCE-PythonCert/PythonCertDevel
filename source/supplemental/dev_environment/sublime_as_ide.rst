@@ -63,7 +63,7 @@ On the Mac, you can find it under:
 The preferences file is simply a JSON text file you edit like any other text file.
 
 Create your own set of preferences by opening the user preferences file.
-This will create an empty file, you can then copy the settings you want
+This will create an empty file,. You can then copy the settings you want
 to override from the default set into your personal settings.
 
 Here's a reasonable set of preliminary settings (theme, color scheme and font
@@ -110,12 +110,12 @@ that any time you hit a tab key, the single ``\t`` character is replaced by four
 Extending the Editor
 ====================
 
-Most of the requirements above go beyond basic editor function. Use Plugins.
+Most of the requirements above go beyond basic editor functionality. So we'll use Plugins.
 
 Sublime Text comes with a great system for `Package Control`_. It handles
 installing and uninstalling plugins, and even updates installed plugins for
 you. You can also manually install plugins that haven't made it to the big-time
-yet, including `ones you write yourself`_. Happily, the plugin system is
+yet, including `ones you write yourself`_. Happily, the plugin system is based on
 Python!
 
 .. _Package Control: https://sublime.wbond.net
@@ -152,21 +152,21 @@ Here are the plugins I've installed to achieve the requirements above.
 Anaconda
 --------
 
-There are a bunch of Python-related plugins available. However, Anaconda is a nice package that provides most the features you want, so using just that one.
+There are a bunch of Python-related plugins available. However, Anaconda is a nice package that provides most of the features you want, so plan on using just that one.
 
-Not to be confused with the Scientific Python distribution -- The Anaconda sublime plugin is a full featured package to turn Sublime into a pretty full IDE:
+Not to be confused with the Scientific Python distribution -- the Anaconda sublime plugin is a full featured package to turn Sublime into a pretty full IDE:
 
 http://damnwidget.github.io/anaconda/
 
 There are nifty instructions on that page.
 
-By default, anaconda uses the python interpreter that is in your PATH environment variable, the most important configuration option is the python_interpreter option that allow the user to use a different python interpreter, for example, one that resides in a virtual environment:
+By default, Anaconda uses the python interpreter that is in your PATH environment variable. So, the most important configuration option is the python_interpreter option that allows you to use a different Python interpreter, for example, one that resides in a virtual environment.
 
-If you get the right python when you type "python" at a raw command line, then you are OK. But if not you may need to re-configure it.
+If you get the right Python when you type "python" at a raw command line, then you are OK. But if not you may need to re-configure it.
 
  {"python_interpreter": "~/.virtualenvs/myproject/bin/python"}
 
- Note: for detailed information about how to properly configure anaconda to get the maximum of it, follow the Configure Anaconda the Right Way section:
+ Note: for detailed information about how to properly configure Anaconda to get the maximum of it, follow the "Configure Anaconda the Right Way" section:
 
  http://damnwidget.github.io/anaconda/anaconda_settings/
 
@@ -182,7 +182,7 @@ There are a few setting you may want to change:
 White Space Management
 ----------------------
 
-One of the issues highlighted by code linters is trailing spaces.  Sublime text
+One of the issues highlighted by code linters is trailing spaces.  Sublime Text
 provides a setting that allows you to remove them every time you save a file:
 
 .. code-block:: json
@@ -203,7 +203,7 @@ You'll probably want to wait on this until you start using a debugger, but it's 
 The final requirement for a reasonable IDE experience is to be able to follow a
 debugging session in the file where the code exists.
 
-There is no plugin for SublimeText that supports this. But there is a Python
+There is no plugin for Sublime Text that supports this. But there is a Python
 package you can install into the virtualenv for each of your projects that does
 it.
 
@@ -216,7 +216,6 @@ The package is called `PDBSublimeTextSupport`_ and its simple to install with ``
     (projectenv)$ pip install PDBSublimeTextSupport
 
 With that package installed in the Python that is used for your project, any
-breakpoint you set will automatically pop to the surface in SublimeText.  And
+breakpoint you set will automatically pop to the surface in Sublime Text.  And
 as you step through the code, you will see the current line in your Sublime
 Text file move along with you.
-
