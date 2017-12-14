@@ -27,10 +27,6 @@ Reading
 :ref:`map_filter_reduce`
 
 
-Supplemental Reading
---------------------
-
-
 In-class Activities
 ===================
 

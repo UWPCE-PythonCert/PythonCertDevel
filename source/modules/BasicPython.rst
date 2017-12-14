@@ -532,7 +532,7 @@ Python has three "singletons" -- a value for which there is only one instance:
 
   ``True``, ``False``, and ``None``
 
-To check if a name is bound to one of these, you use ``is``::
+To check if a name is bound to one of these, you use ``is``:
 
 .. code-block:: python
 
@@ -543,6 +543,7 @@ To check if a name is bound to one of these, you use ``is``::
     x is None
 
 Note that in contrast to English -- "is" is asking a question, not making an assertion -- ``a is True`` means "is a the True value?"
+
 
 Operator Precedence
 -------------------

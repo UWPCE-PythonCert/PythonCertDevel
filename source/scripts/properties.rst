@@ -1,6 +1,6 @@
 :orphan:
 
-.. _properties:
+.. _script_properties:
 
 ##########
 Properties
