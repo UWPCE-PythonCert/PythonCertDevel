@@ -95,7 +95,7 @@ It is somewhat obvious, but handy when playing with code:
 
 .. code-block:: ipython
 
-    In [1]: print ("something")
+    In [1]: print("something")
     something
 
 You can print multiple things:
@@ -249,7 +249,7 @@ Symbols are how we give names to values (objects).
 
 * Symbols don't have a type; values do
 
-  * This is why python is "Dynamic"
+  * This is why Python is "Dynamic"
 
 
 Symbols and Type
@@ -326,7 +326,7 @@ Variables?
 * That's because they are used, for the most part, for the same purposes.
 
 * But often a "variable" is defined as something like:
-  "a place in memory that can store values"
+  "a place in memory that can store values".
 
 * That is **NOT** the same thing as a symbol or name in Python!
 
@@ -364,7 +364,7 @@ Multiple Assignment
 -------------------
 
 You can assign multiple names from multiple expressions in one
-statement
+statement:
 
 .. code-block:: ipython
 
@@ -381,7 +381,7 @@ statement
     Out[52]: 243
 
 
-Python evaluates all the expressions on the right before doing any assignments
+Python evaluates all the expressions on the right before doing any assignments.
 
 
 Nifty Python Trick
@@ -405,12 +405,12 @@ Using this feature, we can swap values between two names in one statement:
     In [55]: j
     Out[55]: 4
 
-Multiple assignment and symbol swapping can be very useful in certain contexts
+Multiple assignment and symbol swapping can be very useful in certain contexts.
 
 Deleting
 --------
 
-You can't actually directly delete values in python...
+You can't actually directly delete values in Python...
 
 ``del`` only deletes a name (or "unbinds" the name...)
 
@@ -648,7 +648,7 @@ You define a ``string`` value by writing a string *literal*:
 
 Python3 strings fully support Unicode, which means they can support literally all the languages in the world (and then some -- Kligon, anyone? -- well `sort of. <http://www.personal.psu.edu/ejp10/blogs/gotunicode/2010/10/conscript-unicode-registry-csu.html>`_)
 
-Because Unicode is native to python strings, you can get very far without even thinking about it. Anything you can type in your editor will work fine.
+Because Unicode is native to Python strings, you can get very far without even thinking about it. Anything you can type in your editor will work fine.
 
 
 Keywords
@@ -763,7 +763,7 @@ Functions
 
 **What is a function?**
 
-A function is a self-contained chunk of code
+A function is a self-contained chunk of code.
 
 You use them when you need the same code to run multiple times,
 or in multiple parts of the program.
@@ -846,7 +846,7 @@ Calling a function is how you run the code in that function.
 Functions: Call Stack
 ---------------------
 
-Functions can call functions -- this makes what is called an execution stack. That is what a "trace back", often referred to in Exceptions, is -- the function call stack.
+Functions can call functions -- this makes what is called an execution stack. That is what a "trace back", often referred to in exceptions, is -- the function call stack.
 
 .. code-block:: ipython
 
@@ -902,7 +902,7 @@ In a more complex system, this can be VERY useful -- learn to read tracebacks!
 Functions: ``return``
 ---------------------
 
-Every function ends by returning a value
+Every function ends by returning a value.
 
 This is actually the simplest possible function:
 
@@ -913,7 +913,7 @@ This is actually the simplest possible function:
 
 .. nextslide::
 
-if you don't explicitly put ``return``  there, Python will return ``None``:
+If you don't explicitly put ``return``  there, Python will return ``None``:
 
 .. code-block:: ipython
 
@@ -925,7 +925,7 @@ if you don't explicitly put ``return``  there, Python will return ``None``:
     In [12]: print(result)
     None
 
-note that the interpreter eats ``None`` -- you need to call ``print()`` to see it.
+Note that the interpreter eats ``None`` -- you need to call ``print()`` to see it.
 
 More on return
 --------------
@@ -934,7 +934,7 @@ Only one return statement in a function will ever be executed.
 
 Ever.
 
-Anything after a executed return statement will never get run.
+Anything after an executed return statement will never get run.
 
 This is useful when debugging!
 
@@ -1053,9 +1053,9 @@ What's the difference between these two?
 Lists
 -----
 
-A way to store a bunch of stuff in order
+A way to store a bunch of stuff in order.
 
-Pretty much like an "array" or "vector" in other languages
+Pretty much like an "array" or "vector" in other languages.
 
 To make a list literal you use square brackets an commas between the items:
 
@@ -1066,14 +1066,14 @@ To make a list literal you use square brackets an commas between the items:
 
 You can put any type of object in a list...
 
-Lists are a key python data type with lots of functionality that we will get into later.
+Lists are a key Python data type with lots of functionality that we will get into later.
 
 ``for`` loops
 --------------
 
-Sometimes called a 'determinate' loop
+Sometimes called a 'determinate' loop.
 
-When you need to do something to all the objects in a sequence
+When you need to do something to all the objects in a sequence:
 
 .. code-block:: ipython
 
@@ -1137,14 +1137,14 @@ Intricacies
 
 This is enough to get you started.
 
-Each of these have intricacies special to python
+Each of these have intricacies special to Python
 
-We'll get to those over the next couple of classes -- or really, the rest of the program!
+We'll get to those over the next couple of lessons -- or really, the rest of the program!
 
 
 Enough For Now
 --------------
 
-That's it for our basic intro to Python
+That's it for our basic intro to Python.
 
 You now know enough Python to do some basic exercises in Python programming.
