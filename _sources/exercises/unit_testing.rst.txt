@@ -7,7 +7,7 @@ Introduction To Unit Testing
 Test Driven Development
 -----------------------
 
-in the exercises dir, try::
+in the examples/Session06 dir, try::
 
   $ py.test test_cigar_party
 

@@ -1,10 +1,8 @@
 .. _session_1_10:
 
-###########################################
-Session 10: Intro to Functional Programming
-###########################################
-
-**NOTE:** This material not fully developed yet!
+###########################################################################
+Session 10: Intro to Functional Programming: lambda and Map, Filter, Reduce
+###########################################################################
 
 Functional Programming
 
@@ -18,18 +16,15 @@ Topics:
 Pre-class prep
 ==============
 
-Videos
-------
-
 
 Reading
 -------
 
+:ref:`oo_vs_functional`
+
+:ref:`anonymous_functions`
+
 :ref:`map_filter_reduce`
-
-
-Supplemental Reading
---------------------
 
 
 In-class Activities
@@ -38,6 +33,6 @@ In-class Activities
 Exercises
 ---------
 
-:ref:`exercise_trapezoidal_rule`
+.. :ref:`exercise_trapezoidal_rule`
 
 :ref:`exercise_mailroom_fp`

@@ -128,12 +128,14 @@
 <li class="toctree-l2"><a class="reference internal" href="Decorators.html">Decorators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="EnvironmentOverview.html">Introduction to the Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IPythonIntroduction.html">IPython Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IPythonParallel.html">IPython Parallel Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Lambda.html">Anonymous Functions: Lambda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MapFilterReduce.html">Map Filter and Reduce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MultipleInheritance.html">Multiple Inheritance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="NamingThings.html">Style and Naming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ObjectOrientationOverview.html">Object Orientation Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OO_vs_functional.html">Object Oriented vs Functional Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Properties.html">Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Py2vsPy3.html">Python 2 verses Python 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PythonClasses.html">Python Classes</a></li>
@@ -144,6 +146,8 @@
 <li class="toctree-l2"><a class="reference internal" href="Testing.html">Unit Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tutorial.html">Python Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MoreOnMutability.html">A bit more on mutability (and copies)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Packaging.html#distributing">Distributing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/index.html">Quizzes</a></li>
@@ -272,11 +276,11 @@ $ git config --global user.email <span class="s2">&quot;marie@radioactive.com&qu
 <p>A repository is just a collection of files that ‘belong together’.</p>
 <p>Since <code class="docutils literal"><span class="pre">git</span></code> is a <em>distributed</em> versioning system, there is no <strong>central</strong>
 repository that serves as the one to rule them all. This simply means that all repositories should look the same.</p>
-<p>However, to keep things sane, there is generally one “central” repository chosen that users check with for changes, for us this is GitHub.</p>
+<p>However, to keep things sane, there is generally one “central” repository chosen that users check with for changes. For us this is GitHub.</p>
 </div>
 <div class="section" id="working-with-remotes">
 <h2>Working with Remotes<a class="headerlink" href="#working-with-remotes" title="Permalink to this headline">¶</a></h2>
-<p>With git, you work with <em>local</em> repositories and <em>remotes</em> that they are connected to.</p>
+<p>With git, you work with <em>local</em> repositories and the <em>remotes</em> that they are connected to.</p>
 <div class="build docutils container">
 <p>Git uses shortcuts to address <em>remotes</em>. Cloned repositories get an <em>origin</em> shortcut for free:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ git remote -v
@@ -285,16 +289,16 @@ origin  https://github.com/UWPCE-PythonCert/IntroPython-2017.git <span class="o"
 </pre></div>
 </div>
 <p>This shows that the local repo on my machine <em>originated</em> from the one in
-the UWPCE-PythonCert gitHub account (it shows up twice, because there is
-a shortcut for both fetch from and push to this remote)</p>
+the UWPCE-PythonCert GitHub account (it shows up twice, because there is
+a shortcut for both fetch from and push to this remote).</p>
 </div>
 <div class="build docutils container">
-<p>You can work on any project you wish to that has a public repository on Github. However, since you won’t have permission to edit most projects directly, there is such a thing as <em>forking</em> a project.</p>
-<p>When you <em>fork</em> a repository, you make a copy of that repository in your own (Github) account.</p>
+<p>You can work on any project you wish to that has a public repository on GitHub. However, since you won’t have permission to edit most projects directly, there is such a thing as <em>forking</em> a project.</p>
+<p>When you <em>fork</em> a repository, you make a copy of that repository in your own (GitHub) account.</p>
 <p>When you have made changes that you believe the rest of the community will want to adopt, you make a <em>pull request</em> to the original project. The maintainer(s) of that project than have the option of accepting your changes, in which case your changes will become part of that project.</p>
 <p>This is how we will be working in this class. When you want feedback on your work, you will make a <em>pull request</em> to the instructors.</p>
 </div>
-<p>Our class materials reside in a repository on <em>Github</em> in the <em>UWPCE-PythonCert</em> organization:</p>
+<p>Our class materials reside in a repository on <em>GitHub</em> in the <em>UWPCE-PythonCert</em> organization:</p>
 <div class="figure">
 <a class="center reference internal image-reference" href="../_images/remotes_start.png"><img alt="../_images/remotes_start.png" class="center" src="../_images/remotes_start.png" style="width: 50%;" /></a>
 </div>
@@ -306,13 +310,13 @@ a shortcut for both fetch from and push to this remote)</p>
 <p>So, everyone will commit to this repository, and everyone will have access to everyone’s code.</p>
 <p>This will make it easier to collaborate. Weirdly enough, collaborating is important for developing code, both for class and in the <em>real world</em>.</p>
 <p>We will do a live demo of setting up a machine for working with this repository now.</p>
-<p>The first thing we have to do is on the Github website. We will create a fork of the class repository from the <code class="docutils literal"><span class="pre">UWPCE-PythonCert</span></code> account on GitHub into your personal account. Please create a gitHub account if you don’t have one already.</p>
+<p>The first thing we have to do is on the GitHub website. We will create a fork of the class repository from the <code class="docutils literal"><span class="pre">UWPCE-PythonCert</span></code> account on GitHub into your personal account. Please create a GitHub account if you don’t have one already.</p>
 <p>Note: You do not have to use your real name to set up your git account.</p>
 <div class="figure">
 <a class="center reference internal image-reference" href="../_images/remotes_fork.png"><img alt="../_images/remotes_fork.png" class="center" src="../_images/remotes_fork.png" style="width: 50%;" /></a>
 </div>
 <p>Everyone should now have a copy of the class repository in their account on the GitHub website.</p>
-<p>The next step is to make a <em>clone</em> of your fork on your own computer, which means that <strong>your fork</strong> in github is the <em>origin</em> (Demo):</p>
+<p>The next step is to make a <em>clone</em> of your fork on your own computer, which means that <strong>your fork</strong> in GitHub is the <em>origin</em> (Demo):</p>
 <div class="figure">
 <a class="center reference internal image-reference" href="../_images/remotes_clone.png"><img alt="../_images/remotes_clone.png" class="center" src="../_images/remotes_clone.png" style="width: 50%;" /></a>
 </div>
@@ -358,7 +362,7 @@ Fetching upstream
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ git checkout master
 </pre></div>
 </div>
-<p>This is <strong>really really</strong> important. Take the time to ensure you are where you think you are, iow, that your origin is your own github repository and that you are working on master from that remote.
+<p>This is <strong>really really</strong> important. Take the time to ensure you are where you think you are, in other words, that your origin is your own GitHub repository and that you are working on master from that remote.
 You can use <cite>git remote -v</cite> and <cite>git branch -a</cite> to verify.</p>
 <p>Now, fetch the upstream master branch and merge it into your master.
 You can do this in one step with:</p>
@@ -394,7 +398,7 @@ the students directory on your machine. This is not a bad thing.
 And the files tend to be small.</p>
 <p>We encourage sharing of knowledge in this class. Helping your
 fellow students will also help you to better understand. Share
-your code, and get use to giving/receiving feedback on how to
+your code, and get used to giving / receiving feedback on how to
 improve your code, if you are not already.</p>
 <p>Each repository will have a directory called <code class="docutils literal"><span class="pre">.git</span></code> that is normally
 not seen. This directory is how git keeps track of everything. Leave it alone. :)</p>
