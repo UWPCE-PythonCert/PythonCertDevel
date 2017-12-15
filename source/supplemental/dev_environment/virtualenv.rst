@@ -44,7 +44,7 @@ If the ``which`` command returns no value for you, then ``pip`` is not
 installed in your system. To fix this, follow `the instructions here`_.
 
 Once you have ``pip`` installed in your system, you can use it to install
-`virtualenv`_. Because you are installing it into your system python, you will
+`virtualenv`_. Because you are installing it into your system Python, you will
 most likely need ``superuser`` privileges to do so:
 
 .. code-block:: bash
@@ -95,14 +95,14 @@ arbitrary. Let's make one for demonstration purposes:
 What Happened?
 --------------
 
-When you ran that command, a couple of things took place:
+When you ran that command, a few things took place:
 
 * A new directory with your requested name was created
 * A new Python executable was created in <ENV>/bin (<ENV>/Scripts on Windows)
 * The new Python was cloned from your system Python (where virtualenv was
   installed)
 * The new Python was isolated from any libraries installed in the old Python
-* Setuptools was installed so you have ``easy_install`` for this new python
+* Setuptools was installed so you have ``easy_install`` for this new Python
 * Pip was installed so you have ``pip`` for this new python
 
 Activation

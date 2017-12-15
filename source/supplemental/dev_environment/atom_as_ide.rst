@@ -54,7 +54,7 @@ write your Python files in Atom, then run them in your Python command prompt.
 Extending the Editor
 ====================
 
-When you first open Atom, a Welcome Guide appears. This provides some quick and helpful info on
+When you first open Atom, a Welcome Guide appears. This provides some quick and helpful information on
 how to open projects, install packages, and customize your themes and styling.
 
 Atom has great documentation_ on how to hack and configure it. Read the Flight Manual_ for tons of information on
