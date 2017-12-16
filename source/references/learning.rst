@@ -73,14 +73,14 @@ Complete Books / Series
 
 * **Python 101**
   (http://www.blog.pythonlibrary.org/2014/06/03/python-101-book-published-today/)
-  Available as a reasonably priced ebook. This is a new one from a popular Blogger
-  about Python. Lots of practical examples. Also avaiable as a Kindle book:
+  Available as a reasonably priced ebook. This is a new one from a popular blogger
+  about Python. Lots of practical examples. Also available as a Kindle book:
   http://www.amazon.com/Python-101-Michael-Driscoll-ebook/dp/B00KQTFHNK
 
 Python Tutor
 ............
 
-Python Tutor is a really nifty site that lets you write and run python code, and visualize what is going on as it runs. Really gives you idea what is going on under the hood, with the stack, etc.
+Python Tutor is a really nifty site that lets you write and run Python code, and visualize what is going on as it runs. Really gives you idea what is going on under the hood, with the stack, etc.
 
 http://pythontutor.com/
 
@@ -89,7 +89,7 @@ Next Steps
 ----------
 
 * **New Coder**
-  (http://newcoder.io): Advertised as "Five lifejackets to throw to
+  (http://newcoder.io): advertised as "Five lifejackets to throw to
   the new coder", this site offers five very interesting tutorials written in
   an engaging style. Not an introduction. More a second step.
 

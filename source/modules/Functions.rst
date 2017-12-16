@@ -3,7 +3,7 @@
 More on Functions
 =================
 
-From various tutorials, etc, you should have the basics of writing functions down.
+From the materials you have covered up to this point you should have mastered the basics of writing functions.
 
 In particular, you know that functions can contain a chunk of code that can be written once, and used multiple times from other parts of the code.
 
@@ -64,11 +64,11 @@ No -- they did not. The "y" and "z" names *inside* the function are completely s
 
 The ones outside the function are "global" names.
 
-**NOTE:** "global" in python means global to the module (generally a single file), not global to an entire program. Which is really good, as you have little way of knowing what names are being used in packages you are using, but are not writing yourself!
+**NOTE:** "global" in Python means global to the module (generally a single file), not global to an entire program. Which is really good, as you have little way of knowing what names are being used in packages you are using, but are not writing yourself!
 
 In general, you should use global names mostly for constants.
 
-The python convention is to designate global constants by typing the
+The Python convention is to designate global constants by typing the
 names we bind to them in ALL_CAPS:
 
 .. code-block:: python
@@ -125,7 +125,7 @@ the global value already bound. So in the line that caused the error:
 
     y = x
 
-Python knows that x is a local name, as it is assigned on the next line.  But on this line,  x does has not yet been given a value -- hence the error.
+Python knows that x is a local name, as it is assigned on the next line.  But on this line,  x has not yet been given a value -- hence the error.
 
 
 Parameters
@@ -141,7 +141,7 @@ So far we've seen simple parameter lists:
 These types of parameters are called *positional*
 
 When you call a function, you **must** provide arguments for all *positional*
-parameters *in the order they are listed*
+parameters *in the order they are listed*.
 
 You can provide *default values* for parameters in a function definition:
 
@@ -151,7 +151,7 @@ You can provide *default values* for parameters in a function definition:
        ....:     print(x, y, z)
        ....:
 
-When parameters are given with default values, they become *optional*
+When parameters are given with default values, they become *optional*.
 
 .. code-block:: ipython
 
@@ -192,9 +192,9 @@ Recursion
 
 You've seen functions that call other functions.
 
-If a function calls *itself*, we call that **recursion**
+If a function calls *itself*, we call that **recursion**.
 
-Like with other functions, a call within a call establishes a *call stack*
+Like with other functions, a call within a call establishes a *call stack*.
 
 With recursion, if you are not careful, this stack can get *very* deep.
 
@@ -214,7 +214,7 @@ In mathematics, the *factorial* of an integer is the result of multiplying that 
 
     5! == 5 * 4 * 3 * 2 * 1
 
-We can use a recursive function nicely to model this mathematical function
+We can use a recursive function nicely to model this mathematical function:
 
 .. code-block:: python
 
@@ -227,11 +227,11 @@ We can use a recursive function nicely to model this mathematical function
 
 This is a typical structure for a recursive function:
 
-A) It starts with a check to see if there if the recursive process is "done" -- can it simply return a simple value.
+A) It starts with a check to see if the recursive process is "done" -- can it simply return a simple value.
 
-B) If not, then it does a computation using the same function of another value.
+B) If not, then it does a computation using the same function with another value.
 
-It is critical at that that first step be there, or the function will never terminate.
+It is critical at that the first check is there, or the function will never terminate.
 
 
 
