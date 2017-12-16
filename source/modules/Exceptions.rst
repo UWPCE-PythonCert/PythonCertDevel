@@ -28,7 +28,7 @@ Handling Exceptions
 
 Exceptions are handled with a "try -- except" block.
 
-This provides another Branching structure (kind of like if) -- a way for different code to run depending on what happens.
+This provides another branching structure (kind of like if) -- a way for different code to run depending on what happens.
 
 .. code-block:: python
 
@@ -42,7 +42,7 @@ This provides another Branching structure (kind of like if) -- a way for differe
 bare ``except``
 ---------------
 
-*Never* Do this:
+*Never* do this:
 
 .. code-block:: python
 
@@ -53,9 +53,9 @@ bare ``except``
     except:
         print "couldn't open missing.txt"
 
-If you don't specify a particular Exception, ``except`` will catch *All* exceptions.
+If you don't specify a particular exception, ``except`` will catch *All* exceptions.
 
-**always** capture the *particular* Exception(s) you know how to handle.
+**Always** capture the *particular* Exception(s) you know how to handle.
 
 Trust me, you can't anticipate everything, and you want the exception to propagate if it is not expected when you wrote the code.
 
@@ -76,7 +76,7 @@ Don't do this:
 
 It will almost always work -- but the almost will drive you crazy.
 
-It is "possible" that the file got deleted by another process in the precise moment between checking for it and opening it. Rare, but possible. but catching the exception will always work.
+It is "possible" that the file got deleted by another process in the precise moment between checking for it and opening it. Rare, but possible. But catching the exception will always work.
 
 
 Example from mailroom exercise:
@@ -123,7 +123,7 @@ Here's a nice PyCon talk by Alex Martelli about that:
 
 http://www.youtube.com/watch?v=AZDWveIdqjY
 
-(Alex Martelli is a Python Luminary -- read / watch anything you find by him)
+(Alex Martelli is a Python Luminary -- read / watch anything you find by him).
 
 
 Do you catch all Exceptions?
@@ -133,7 +133,7 @@ For simple scripts, let exceptions happen.
 
 Only handle the exception if the code can and will do something about it.
 
-This results in much better debugging info when an error does occur.  The user will see the Exception, and where in the code it happened, etc.
+This results in much better debugging info when an error does occur.  The user will see the exception, and where in the code it happened, etc.
 
 
 Exceptions -- finally
@@ -152,7 +152,7 @@ There is another control structure to exceptions:
     finally:
         do_some_clean-up
 
-The ``finally:``  clause will always run
+The ``finally:``  clause will always run.
 
 This is really important if your code does anything before the exception occurred that needs to be cleaned up -- open database connection, etc...
 
@@ -178,11 +178,11 @@ So the ``else`` block only runs if there was no exception. That was also the cas
 
 Using the ``else`` block lets you catch the exception as close to where it occurred as possible -- always a good thing.
 
-Why? -- because maybe the "process(f)" could raise an Exception, too? Then you don't know if the exeption came from the ``open()`` call or in some code after that.
+Why? -- because maybe the "process(f)" could raise an exception, too? Then you don't know if the exception came from the ``open()`` call or in some code after that.
 
 This bears repeating:
 
-**Always catch exceptions as close to where they might occur as you can**
+**Always catch exceptions as close to where they might occur as you can**.
 
 Exceptions -- using the exception object
 ----------------------------------------
@@ -200,7 +200,7 @@ If your code can continue along fine, you can do very little and move along:
 
 And that's that.
 
-But if your code *can't* continue on, you can re-raise the Exception:
+But if your code *can't* continue on, you can re-raise the exception:
 
 .. code-block:: python
 
@@ -224,7 +224,7 @@ Exception objects are full-fledged Python objects -- they can contain data, and 
         the_error.extra_info = "some more information"
         raise
 
-This prints the Exception, then adds some extra information to it, and then re-raises the same Exception object -- so it will have that extra data when it gets handled higher up on the stack.
+This prints the exception, then adds some extra information to it, and then re-raises the same exception object -- so it will have that extra data when it gets handled higher up on the stack.
 
 This is particularly useful if you catch more than one exception:
 
@@ -233,14 +233,14 @@ This is particularly useful if you catch more than one exception:
     except (IOError, BufferError, OSError) as the_error:
         do_something_with(the_error)
 
-You may want to do something different depending on which Exception it is.
+You may want to do something different depending on which exception it is.
 
 Multiple Exceptions
 -------------------
 
 As seen above, you can catch multiple exceptions in an ``except`` statement
 
-If you want to do something completely different with each Exception type, you can have multiple ``except`` blocks:
+If you want to do something completely different with each exception type, you can have multiple ``except`` blocks:
 
 .. code-block:: python
 
@@ -282,7 +282,7 @@ Raising Exceptions
         else:
             return a / b
 
-(OK, this is a stupid example, as that Error will be raised for you anyway. but bear with me)
+(OK, this is a stupid example, as that error will be raised for you anyway. but bear with me).
 
 When you call it:
 
@@ -291,13 +291,13 @@ When you call it:
     In [515]: divide (12,0)
     ZeroDivisionError: b can not be zero
 
-Note how you can pass a message to the Exception object constructor. It will get printed when the exception is printed.
+note how you can pass a message to the exception object constructor. It will get printed when the exception is printed.
 
 
 Built in Exceptions
 -------------------
 
-You can create your own custom exceptions
+You can create your own custom exceptions.
 
 But...
 
@@ -308,11 +308,11 @@ But...
     len(exp)
     48
 
-For the most part, you can/should use a built in one
+For the most part, you can/should use a built in one.
 
 There are 48 built-in Exceptions -- odds are good that there's one that matches your use-case.
 
-Also -- custom Exceptions require subclassing -- and we haven't learned that yet :-)
+Also -- custom exceptions require subclassing -- and we haven't learned that yet :-).
 
 
 Choosing an Exception
@@ -339,7 +339,7 @@ What I usually do is run some code that's similar that raises a built-in excepti
 Knowing what Exception to catch
 -------------------------------
 
-I usually figure out what Exception to catch with an iterative process.
+I usually figure out what exception to catch with an iterative process.
 
 I write the code without a try block, pass in "bad data", or somehow trigger the exception, then see what it is.
 
@@ -362,9 +362,6 @@ Now I know to use::
     except  ``FileNotFoundError``:
 
 In the ``try`` block where I am opening the file.
-
-
-
 
 
 
