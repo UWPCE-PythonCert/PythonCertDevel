@@ -17,14 +17,14 @@ Procedure
 
 In your student dir in the class repo, create a ``session04`` dir and put in a new ``dict_lab.py`` file.
 
-The file should be an executable python script. That is to say that one
+The file should be an executable Python script. That is to say that one
 should be able to run the script directly like so:
 
 .. code-block:: bash
 
     $ ./dict_lab.py
 
-(At least on OS-X and Linux)
+(at least on OS-X and Linux).
 
 -- you do that with this command:
 
@@ -47,7 +47,7 @@ actions:
 Dictionaries 1
 --------------
 
-* Create a dictionary containing "name", "city", and "cake" for "Chris" from "Seattle" who likes "Chocolate". (so the keys should be: "name", etc, and values: "Chris", etc.)
+* Create a dictionary containing "name", "city", and "cake" for "Chris" from "Seattle" who likes "Chocolate" (so the keys should be: "name", etc, and values: "Chris", etc.)
 
 * Display the dictionary.
 
@@ -67,13 +67,13 @@ Dictionaries 2
 --------------
 
 * Using the dictionary from item 1: Make a dictionary using the same keys but
-  with the number of 't's in each value as the value. (upper and lower case?).
+  with the number of 't's in each value as the value (consider upper and lower case?).
 
 Sets
 ----
 
 * Create sets s2, s3 and s4 that contain numbers from zero through twenty,
-  divisible 2, 3 and 4.
+  divisible by 2, 3 and 4.
 
 * Display the sets.
 
@@ -86,7 +86,7 @@ Sets 2
 
 * Create a set with the letters in 'Python' and add 'i' to the set.
 
-* Create a frozenset with the letters in 'marathon'
+* Create a frozenset with the letters in 'marathon'.
 
 * display the union and intersection of the two sets.
 
