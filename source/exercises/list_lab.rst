@@ -31,14 +31,14 @@ Procedure
 
 In your student dir in the class repo, create a ``session03`` dir and put in a new ``list_lab.py`` file.
 
-The file should be an executable python script. That is to say that one
+The file should be an executable Python script. That is to say that one
 should be able to run the script directly like so:
 
 .. code-block:: bash
 
     $ ./list_lab.py
 
-(At least on OS-X and Linux)
+(At least on OS-X and Linux).
 
 -- you do that with this command:
 
@@ -46,7 +46,7 @@ should be able to run the script directly like so:
 
   $ chmod +x list_lab.py
 
-(The +x means make this executable)
+(The +x means make this executable).
 
 The file will also need this on the first line::
 
@@ -67,7 +67,7 @@ Add the file to your clone of the repository and commit changes frequently
 while working on the following tasks. When you are done, push your changes to
 GitHub and issue a pull request.
 
-(if you are still struggling with git -- just write the code for now)
+(if you are still struggling with git -- just write the code for now).
 
 When the script is run, it should accomplish the following four series of
 actions:
@@ -95,7 +95,7 @@ Using the list created in series 1 above:
 - Display the list.
 - Remove the last fruit from the list.
 - Display the list.
-- Ask the user for a fruit to delete and find it and delete it.
+- Ask the user for a fruit to delete, find it and delete it.
 - (Bonus: Multiply the list times two. Keep asking until a match is found. Once found, delete all occurrences.)
 
 Series 3

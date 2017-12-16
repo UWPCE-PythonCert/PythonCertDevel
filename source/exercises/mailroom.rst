@@ -14,7 +14,7 @@ Goal:
 
 You work in the mail room at a local charity. Part of your job is to write
 incredibly boring, repetitive emails thanking your donors for their generous
-gifts. You are tired of doing this over an over again, so you've decided to
+gifts. You are tired of doing this over and over again, so you've decided to
 let Python help you out of a jam and do your work for you.
 
 The program
@@ -62,7 +62,7 @@ Creating a Report
 * At any point, the user should be able to quit their current task and return
   to the original prompt.
 
-* From the original prompt, the user should be able to quit the script cleanly
+* From the original prompt, the user should be able to quit the script cleanly.
 
 
 Your report should look something like this::
@@ -145,7 +145,7 @@ Don't worry too much about the "**" -- we'll get into the details later, but for
 Update mailroom with file writing.
 ----------------------------------
 
-Write a full set of letters to everyone to individual files on disk
+Write a full set of letters to everyone to individual files on disk.
 
 In the first version of mailroom, you generated a letter to someone who had just made a new donation, and printed it to the screen.
 
@@ -195,7 +195,7 @@ The idea is to require you to structure your code so that you can write the same
 Part 3: Adding Exceptions and Comprehensions
 ============================================
 
-**After the lesson where you learn about Exceptions**
+**After the lesson where you learn about Exceptions**.
 
 Exceptions
 ----------
@@ -216,7 +216,7 @@ Part 4: Adding Unit Tests
 
 Add a full suite of unit tests.
 
-"full suite" means all the code is tested. In practice, it's very hard to test the user interaction, but you can test everything else. Make sure that there is as little untested code in the user interaction portion of the program -- hardly any logic.
+"Full suite" means all the code is tested. In practice, it's very hard to test the user interaction, but you can test everything else. Make sure that there is as little untested code in the user interaction portion of the program as possible -- hardly any logic.
 
 This is a big step -- you may find that your code is hard to test. If that's the case, it's a good sign that you *should* refactor your code.
 
