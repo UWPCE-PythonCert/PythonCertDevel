@@ -58,3 +58,10 @@ So now you have to think about dict or class? Again for flexibility, I think a d
 So: if you want my hints :-)...
 
 You'll want a Donor class -- this will hold all the information about the donor, and have attributes and methods to provide access to the donor specific information that is needed.
+
+You'll then want a class that handles the collection of donors. This will hold all the donor objects, but also methods to add a new donor, search for a given donor, etc. If you want a way to save and re-load your data, this class would have that too.
+
+your class for the collection of donors will also hold the code that generates reports about multiple donors.
+
+In general, you will have a method for each of the functions in your non-OO version. Which class they go it will depend on whether the method only needs the information from one donor, or from the whole collection.
+
