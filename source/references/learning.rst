@@ -88,6 +88,9 @@ http://pythontutor.com/
 Next Steps
 ----------
 
+Web sites / services:
+.....................
+
 * **New Coder**
   (http://newcoder.io): Advertised as "Five lifejackets to throw to
   the new coder", this site offers five very interesting tutorials written in
@@ -98,6 +101,14 @@ Next Steps
   The Open Hatch project offers a number of workshops with well-paced
   intermediate tutorials for Python programming. A great place to go once you
   have the basics down and are ready for more challenging work.
+
+Advanced Books
+..............
+
+* **The Python Cookbook**
+  (http://chimera.labs.oreilly.com/books/1230000000393):
+  The Python Cookbook provides practical solutions to various programming tasks, along with excellent explanations of how they work. Written by David Beazley -- Python author and instructor extraordinaire. Also available fully online: (http://chimera.labs.oreilly.com/books/1230000000393/index.html)
+
 
 Evaluating Your Options
 -----------------------------
