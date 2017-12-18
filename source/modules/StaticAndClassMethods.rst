@@ -154,7 +154,7 @@ implements an alternate constructor that *can*.
             self[key] = value
         return self
 
-(this is actually from the OrderedDict implementation in ``collections.py``)
+(This is actually from the OrderedDict implementation in ``collections.py``).
 
 See also datetime.datetime.now(), etc....
 

@@ -18,13 +18,13 @@ All of programming is really about manipulating values.
 
 * Values are pieces of unnamed data: ``42``, ``'Hello, world'``
 
-* In Python, all values are objects
+* In Python, all values are objects.
 
   - Try ``dir(42)``  - lots going on behind the curtain!
 
 * Every value has a type
 
-  - Try ``type(42)`` - the type of a value determines what it can do
+  - Try ``type(42)`` - the type of a value determines what it can do.
 
 .. ifslides::
 
@@ -43,7 +43,7 @@ Numbers:
 Text:
   -  ``"a bit of text"``
   -  ``'a bit of text'``
-  - (either single or double quotes work -- why?)
+  - (either single or double quotes work -- why? If you dont know try looking it up in one of the referenced sources!)
 
 Boolean values:
   -  ``True``
@@ -52,7 +52,7 @@ Boolean values:
 The nothing object:
   - ``None``
 
-(There are intricacies to all of these that we'll get into later)
+(There are intricacies to all of these that we'll get into later.)
 
 
 Code structure
@@ -95,7 +95,7 @@ It is somewhat obvious, but handy when playing with code:
 
 .. code-block:: ipython
 
-    In [1]: print ("something")
+    In [1]: print("something")
     something
 
 You can print multiple things:
@@ -108,7 +108,7 @@ You can print multiple things:
 
 .. nextslide::
 
-Any python object can be printed (though it might not be pretty...)
+Any Python object can be printed (though it might not be pretty...)
 
 .. code-block:: ipython
 
@@ -128,7 +128,7 @@ Blocks of code are delimited by a colon and indentation:
 
     def a_function():
         a_new_code_block
-    end_of_the_block
+    # end_of_the_block on previous line
 
 .. code-block:: python
 
@@ -144,11 +144,7 @@ Blocks of code are delimited by a colon and indentation:
 
 .. nextslide::
 
-Python uses indentation to delineate structure.
-
-This means that in Python, whitespace is **significant**.
-
-(but **ONLY** for newlines and indentation)
+Python uses indentation to delineate structure. This means that in Python, whitespace is **significant** (but **ONLY** for newlines and indentation).
 
 The standard is to indent with **4 spaces**.
 
@@ -156,6 +152,8 @@ The standard is to indent with **4 spaces**.
 
 **TABS ARE NOT SPACES**
 
+Python requires spaces for indents. You can probably set your editor to replace tabs with spaces.
+This is a good idea as it is easier to type one tab than 4 spaces.
 
 .. nextslide::
 
@@ -193,8 +191,6 @@ But they are not:
 
 .. rst-class:: center large
 
-NEVER INDENT WITH TABS
-
 Make sure your editor is set to use spaces only --
 
 Even when you hit the <tab> key
@@ -211,18 +207,18 @@ An *expression* is made up of values and operators.
 
 * An expression is evaluated to produce a new value:  ``2 + 2``
 
-  *  The Python interpreter can be used as a calculator to evaluate expressions
+  *  The Python interpreter can be used as a calculator to evaluate expressions.
 
 * Integer vs. float arithmetic
 
-  * (Python 3 smooths this out)
+  * (Python 3 smooths this out).
   * Always use ``/`` when you want division with float results, ``//`` when you want floored (integer) results (no remainder).
 
-* Type conversions
+* Type conversions.
 
-  * This is the source of many errors, especially in handling text
+  * This is the source of many errors, especially in handling text.
 
-* Type errors - checked at run time only
+* Type errors - checked at run time only.
 
 .. ifslides::
 
@@ -238,8 +234,8 @@ Symbols are how we give names to values (objects).
 
 .. rst-class:: build
 
-* Symbols must begin with an underscore or letter
-* Symbols can contain any number of underscores, letters and numbers
+* Symbols must begin with an underscore or letter.
+* Symbols can contain any number of underscores, letters and numbers.
 
   * this_is_a_symbol
   * this_is_2
@@ -247,9 +243,9 @@ Symbols are how we give names to values (objects).
   * 1butThisIsNot
   * nor-is-this
 
-* Symbols don't have a type; values do
+* Symbols don't have a type; values do.
 
-  * This is why python is "Dynamic"
+  * This is why Python is "Dynamic".
 
 
 Symbols and Type
@@ -287,10 +283,10 @@ Assignment
 A *symbol* is **bound** to a *value* with the assignment operator: ``=``
 
 .. rst-class:: build
-
-* This attaches a name to a value
+.
+* This attaches a name to a value.
 * A value can have many names (or none!)
-* Assignment is a statement, it returns no value
+* Assignment is a statement, it returns no value.
 
 
 .. nextslide::
@@ -326,7 +322,7 @@ Variables?
 * That's because they are used, for the most part, for the same purposes.
 
 * But often a "variable" is defined as something like:
-  "a place in memory that can store values"
+  "a place in memory that can store values".
 
 * That is **NOT** the same thing as a symbol or name in Python!
 
@@ -364,7 +360,7 @@ Multiple Assignment
 -------------------
 
 You can assign multiple names from multiple expressions in one
-statement
+statement:
 
 .. code-block:: ipython
 
@@ -381,7 +377,7 @@ statement
     Out[52]: 243
 
 
-Python evaluates all the expressions on the right before doing any assignments
+Python evaluates all the expressions on the right before doing any assignments.
 
 
 Nifty Python Trick
@@ -405,12 +401,12 @@ Using this feature, we can swap values between two names in one statement:
     In [55]: j
     Out[55]: 4
 
-Multiple assignment and symbol swapping can be very useful in certain contexts
+Multiple assignment and symbol swapping can be very useful in certain contexts.
 
 Deleting
 --------
 
-You can't actually directly delete values in python...
+You can't actually directly delete values in Python...
 
 ``del`` only deletes a name (or "unbinds" the name...)
 
@@ -432,7 +428,7 @@ You can't actually directly delete values in python...
 
 .. nextslide::
 
-The object is still there...python will only delete it if there are no
+The object is still there...Python will only delete it if there are no
 references to it.
 
 .. code-block:: ipython
@@ -532,7 +528,7 @@ Python has three "singletons" -- a value for which there is only one instance:
 
   ``True``, ``False``, and ``None``
 
-To check if a name is bound to one of these, you use ``is``::
+To check if a name is bound to one of these, you use ``is``:
 
 .. code-block:: python
 
@@ -542,7 +538,8 @@ To check if a name is bound to one of these, you use ``is``::
 
     x is None
 
-Note that in contrast to English -- "is" is asking a question, not making an assertion -- ``a is True`` means "is a the True value?"
+Note that in contrast to English -- "is" is asking a question, not making an assertion -- ``a is True`` means "is a set to the value True?"
+
 
 Operator Precedence
 -------------------
@@ -645,9 +642,9 @@ You define a ``string`` value by writing a string *literal*:
     In [7]: r'a "raw" string, the \n comes through as a \n'
     Out[7]: 'a "raw" string, the \\n comes through as a \\n'
 
-Python3 strings fully support Unicode, which means they can support literally all the languages in the world (and then some -- Kligon, anyone? -- well `sort of. <http://www.personal.psu.edu/ejp10/blogs/gotunicode/2010/10/conscript-unicode-registry-csu.html>`_)
+Python3 strings fully support Unicode, which means they can support literally all the languages in the world (and then some -- Klingon, anyone? -- well `sort of. <http://www.personal.psu.edu/ejp10/blogs/gotunicode/2010/10/conscript-unicode-registry-csu.html>`_)
 
-Because Unicode is native to python strings, you can get very far without even thinking about it. Anything you can type in your editor will work fine.
+Because Unicode is native to Python strings, you can get very far without even thinking about it. Anything you can type in your editor will work fine.
 
 
 Keywords
@@ -762,18 +759,20 @@ Functions
 
 **What is a function?**
 
-A function is a self-contained chunk of code
+A function is a self-contained chunk of code.
 
 You use them when you need the same code to run multiple times,
 or in multiple parts of the program.
 
-(DRY) -- "Don't Repeat Yourself"
+Functions allow you to take code that would otherwise be duplicated potentially many times, and put it in once place. Then all you do is call that code to use it.
 
-Or just to keep the code clean.
+This is often referred to as "DRY" -- "Don't Repeat Yourself".
+
+It also helps to keep the code clean and maintainable, as there is only one place to make a change. This in trun helps reduce defects.
 
 Functions can take and return information.
 
-The minimal Function has at least one statement.
+The minimal function has at least one statement.
 
 .. code-block:: python
 
@@ -789,7 +788,9 @@ Pass Statement does nothing (Note the indentation!)
     def minimal():
         pass
 
-This, of course, is not useful -- you will generally have multiple statements in a function -- and they will do something.
+This, of course, has limited use -- you will generally have multiple statements in a function -- and they will do something.
+
+However, the pass statement can help you by allowing you to create placeholder functions that you will come back to later to develop and embelish.
 
 Functions: ``def``
 ------------------
@@ -845,7 +846,7 @@ Calling a function is how you run the code in that function.
 Functions: Call Stack
 ---------------------
 
-Functions can call functions -- this makes what is called an execution stack. That is what a "trace back", often referred to in Exceptions, is -- the function call stack.
+Functions can call functions -- this makes what is called an execution stack. That is what a "trace back", often referred to in exceptions, is -- the function call stack.
 
 .. code-block:: ipython
 
@@ -893,7 +894,7 @@ Functions: Tracebacks
 
 The error occurred in the ``doer`` function -- but the traceback shows you where that was called from.
 
-Note that is listed in reverse order -- reverse of the order in which it was called.
+Note that this listed in reverse order -- reverse of the order in which the functions are called.
 
 In a more complex system, this can be VERY useful -- learn to read tracebacks!
 
@@ -901,7 +902,7 @@ In a more complex system, this can be VERY useful -- learn to read tracebacks!
 Functions: ``return``
 ---------------------
 
-Every function ends by returning a value
+Every function ends by returning a value.
 
 This is actually the simplest possible function:
 
@@ -912,7 +913,7 @@ This is actually the simplest possible function:
 
 .. nextslide::
 
-if you don't explicitly put ``return``  there, Python will return ``None``:
+If you don't explicitly put ``return``  there, Python will return ``None``:
 
 .. code-block:: ipython
 
@@ -924,7 +925,7 @@ if you don't explicitly put ``return``  there, Python will return ``None``:
     In [12]: print(result)
     None
 
-note that the interpreter eats ``None`` -- you need to call ``print()`` to see it.
+Note that the interpreter eats ``None`` -- you need to call ``print()`` to see it.
 
 More on return
 --------------
@@ -933,7 +934,7 @@ Only one return statement in a function will ever be executed.
 
 Ever.
 
-Anything after a executed return statement will never get run.
+Anything after an executed return statement will never get run.
 
 This is useful when debugging!
 
@@ -1008,7 +1009,7 @@ Making a Decision
 
 **"Conditionals"**
 
-In order to do anything interesting at all, you need to be able to make a decision.
+In order to do anything interesting at all, you need to be able to write code to make a decision.
 
 ``if`` and ``elif`` (else if) allow you to make decisions:
 
@@ -1052,11 +1053,11 @@ What's the difference between these two?
 Lists
 -----
 
-A way to store a bunch of stuff in order
+A way to store a bunch of stuff in order.
 
-Pretty much like an "array" or "vector" in other languages
+Pretty much like an "array" or "vector" in other languages.
 
-To make a list literal you use square brackets an commas between the items:
+To make a list literal you use square brackets and commas between the items:
 
 .. code-block:: python
 
@@ -1065,14 +1066,14 @@ To make a list literal you use square brackets an commas between the items:
 
 You can put any type of object in a list...
 
-Lists are a key python data type with lots of functionality that we will get into later.
+Lists are a key Python data type with lots of functionality that we will get into later.
 
 ``for`` loops
 --------------
 
-Sometimes called a 'determinate' loop
+Sometimes called a 'determinate' loop.
 
-When you need to do something to all the objects in a sequence
+When you need to do something to all the objects in a sequence:
 
 .. code-block:: ipython
 
@@ -1092,7 +1093,7 @@ When you need to do something to all the objects in a sequence
 
 ``range`` builds sequences of numbers automatically
 
-Use it when you need to do something a set number of times
+Use it when you need to do something a set number of times:
 
 .. code-block:: ipython
 
@@ -1102,15 +1103,15 @@ Use it when you need to do something a set number of times
        ....:
     * * * *
 
-NOTE: ``range(n)`` creates an "iterable" -- something you can loop over
--- more on that later.
+NOTE: ``range(n)`` creates an "iterable" -- something you can loop over.
+We will cover iterables in greater depth in a later lesson.
 
 ``assert``
 ----------
 
 Writing ``tests`` that demonstrate that your program works is an important part of learning to program.
 
-The python ``assert`` statement is useful in writing simple tests
+The Python ``assert`` statement is useful in writing simple tests:
 for your code.
 
 .. code-block:: ipython
@@ -1136,14 +1137,14 @@ Intricacies
 
 This is enough to get you started.
 
-Each of these have intricacies special to python
+Each of the feature we have covered has intricacies special to Python.
 
-We'll get to those over the next couple of classes -- or really, the rest of the program!
+We'll get to those over the next couple of lessons -- or really, the rest of the program!
 
 
 Enough For Now
 --------------
 
-That's it for our basic intro to Python
+That's it for our basic intro to Python.
 
 You now know enough Python to do some basic exercises in Python programming.

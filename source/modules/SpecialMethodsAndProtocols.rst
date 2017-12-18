@@ -5,9 +5,9 @@ Special Methods & Protocols
 ###########################
 
 
-Special methods (also called *magic* methods) are the secret sauce to Python's Duck typing.
+Special methods (also called *magic* methods) are the secret sauce to Python's duck typing.
 
-Defining the appropriate special methods in your classes is how you make your class act like standard classes.
+Defining the appropriate special methods in your classes is how you make your class act like the standard classes.
 
 
 What's in a Name?
@@ -39,7 +39,7 @@ Most classes should at least have these special methods:
 
   Ideally: ``eval( repr(something) ) == something``
 
-  This means that the "repr" is what you type to create the object. IN practice, this is impractical for complex objects... but it is still a more "formal" form.
+  This means that the "repr" is what you type to create the object. In practice, this is impractical for complex objects... but it is still a more "formal" form.
 
   Note that is you don't define a ``__str__`` method, than the __repr__ will be used. And the base class (``object``) has a __repr__ defined, so every class automatically gets one -- but it's ugly :-)
 
@@ -51,7 +51,7 @@ The set of special methods needed to emulate a particular type of Python object 
 
 Your classes can "become" like Python built-in classes by implementing the methods in a given protocol.
 
-Remember, these are more *guidelines* than laws.  Implement what you need.
+Remember, these are more *guidelines* than laws.  Implement only what you need.
 
 
 The Numerics Protocol
@@ -76,7 +76,7 @@ Do you want your class to behave like a number? Implement these methods:
     object.__xor__(self, other)
     object.__or__(self, other)
 
-(or the fraction you actually need)
+(or the fraction you actually need).
 
 
 Operator Overloading
@@ -144,9 +144,9 @@ This is just one example -- the point is that for your particular class, you can
 Total Ordering
 --------------
 
-You may notice that those operators are kind of redundant -- if ``A > B is True`` then we know that ``A < B is False`` and ``A <= B is False``
+You may notice that those operators are kind of redundant -- if ``A > B is True`` then we know that ``A < B is False`` and ``A <= B is False``.
 
-in fact, there is a mathematical / computer science concept know as "Total Order": (https://en.wikipedia.org/wiki/Total_order), which strictly defines "well behaved" objects in this regard.
+In fact, there is a mathematical / computer science concept know as "Total Order": (https://en.wikipedia.org/wiki/Total_order), which strictly defines "well behaved" objects in this regard.
 
 There may be some special cases, where these rules may not apply for your classes (though I can't think of any :-) ), but for the most part, you want your classes, if they support comparisons at all, to be well behaved, or "total ordered".
 
@@ -154,9 +154,9 @@ Because this is the common case, Python comes with a nifty utility that implemen
 
 https://docs.python.org/3.6/library/functools.html#functools.total_ordering
 
-it can be found in the functools module, and allows you to specify __eq__ and only one of: ``__lt__()``, ``__le__()``, ``__gt__()``, or ``__ge__()``.  It will then fill in the others for you.
+It can be found in the functools module, and allows you to specify __eq__ and only one of: ``__lt__()``, ``__le__()``, ``__gt__()``, or ``__ge__()``.  It will then fill in the others for you.
 
-Note: if you define only one, it should be ``__lt__``, because this is the one used for sorting (see below for more about that)
+Note: if you define only one, it should be ``__lt__``, because this is the one used for sorting (see below for more about that).
 
 Here is the truncated example from the docs:
 
@@ -178,10 +178,10 @@ Sorting
 
 Python has a handful of sorting methods built in:
 
-``list.sort()`` -- for sorting a list in place
-``sorted(iterable)`` -- for creating a sorted copy of an iterable (sequence)
+``list.sort()`` -- for sorting a list in place.
+``sorted(iterable)`` -- for creating a sorted copy of an iterable (sequence).
 
-And a couple more obscure ones.
+And a couple of more obscure ones.
 
 In order for your custom objects to be sortable, they need the ``__lt__`` (less than) magic method defined -- that's about it.
 
@@ -194,7 +194,7 @@ By default, the sorting methods use ``__lt__`` for comparison, and that algorith
 
 ``a_list.sort(key=key_fun)``
 
-Then the key_fun is only called n times, and if the key returns a simple type, like an integer or float, then the sorting will be faster.
+then the key_fun is only called n times, and if the key returns a simple type, like an integer or float, then the sorting will be faster.
 
 So it often helps to provide a sort_key() method on your class, so it can be passed in to the sort methods:
 
@@ -217,7 +217,7 @@ And to use it:
 
     list_of_Simple_objects.sort(key=Simple.sort_key)
 
-See: :download:`sort_key.py <../examples/sort_key.py>` for complete example with timing. Here is an example of running it::
+See: :download:`sort_key.py <../examples/sort_key.py>` for a complete example with timing. Here is an example of running it::
 
     Timing for 10000 items
     regular sort took: 0.04288s
@@ -248,7 +248,7 @@ implement ``__add__``:
 Emulating Standard types
 =========================
 
-Making your classes behave like the built-ins
+Making your classes behave like the built-ins.
 
 
 The Container Protocol
@@ -341,14 +341,14 @@ Or what if you need to pass this in to something
 "Callables"
 -----------
 
-Various places in python expect a "callable" -- something that you can
+Various places in Python expect a "callable" -- something that you can
 call like a function:
 
 .. code-block:: python
 
     a_result = something(some_arguments)
 
-"something" in this case is often a function, but can be anything else
+"Something" in this case is often a function, but can be anything else
 that is "callable".
 
 What have we been introduced to recently that is "callable", but not a
@@ -385,7 +385,7 @@ Then you can do:
 Callable example
 ----------------
 
-And Example of writing a callable class:
+An example of writing a callable class:
 
 Write a class for a quadratic equation.
 

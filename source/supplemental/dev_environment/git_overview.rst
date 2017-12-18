@@ -8,7 +8,7 @@ git is a very complex and powerful system. However, it can be very useful even i
 
 Note that in the certificate program we will be using git in conjunction with gitHub, a cloud-based service that provides a collaboration environment for software development based on the git version control system.
 
-gitHub provides a Web service and web interface that hosts projects and supports collaboration among teams and the open source community. It adds other features, but is very much built on the Source Control system, git. So a basic understanding of git is required to make proper use of gitHub.
+gitHub provides a web service and web interface that hosts projects and supports collaboration among teams and the open source community. It adds other features, but is very much built on the source control system, git. So a basic understanding of git is required to make proper use of gitHub.
 
 
 Learning Resources
@@ -182,7 +182,7 @@ You can use this to switch between branches and make changes in isolation.
 
     Branching allows you to keep related sets of work separate from each-other.
 
-    In class here, you can use it to do your exercises for each session.
+    In our lessons, you can use it to do each of your exercises.
 
     Simply create a new branch for each session from your repository master
     branch.

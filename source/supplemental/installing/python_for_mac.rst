@@ -20,7 +20,7 @@ So we recommend installing a new version.
 
 .. rst-class:: left
 
-If you use ``macports`` or ``homebrew`` to manage \*nix software on your machine, feel free to use those for ``python``, ``git``, etc, as well. But make sure you have python 3.6.*
+If you use ``macports`` or ``homebrew`` to manage \*nix software on your machine, feel free to use those for ``python``, ``git``, etc, as well. But make sure you have Python 3.6.*
 
 If not, then read on.
 
@@ -36,7 +36,7 @@ Drag it to the dock to easily access.
 Python
 ------
 
-While OS-X does provide python out of the box -- it tends not to have the
+While OS-X does provide Python out of the box -- it tends not to have the
 latest version, and you really don't want to mess with the system
 installation. So we recommend installing an independent installation from
 ``python.org``:
@@ -77,7 +77,7 @@ Type ``ctrl+D`` to get out (or ``exit()``)
 pip
 ---
 
-``pip`` is the Python package installer. It is updated faster than python itself, so once you have python, you want to get the latest version of pip working::
+``pip`` is the Python package installer. It is updated faster than Python itself, so once you have Python, you want to get the latest version of pip working::
 
   $ python -m ensurepip --upgrade
 
@@ -94,7 +94,7 @@ To use pip to install a package, you invoke it with this command::
 
   python -m pip install the_name_of_the_package
 
-Where ``python`` is the command you use to invoke the python you want to use (could be ``python3``)
+Where ``python`` is the command you use to invoke the Python you want to use (could be ``python3``)
 
 **NOTE:** You will frequently see advice to use pip like so::
 
@@ -104,7 +104,7 @@ Which often works, but also can invoke the *wrong* version of pip. The above com
 
   $ python -m pip install something_or_other
 
-calls python, and tells it to run the ``pip`` module. It is exactly the same as calling pip directly, except that you are assured that you are getting the version of pip connected the version of python that you are running.
+calls Python, and tells it to run the ``pip`` module. It is exactly the same as calling pip directly, except that you are assured that you are getting the version of pip connected the version of Python that you are running.
 
 iPython
 --------
@@ -155,7 +155,7 @@ This one:
 
 http://git-scm.com/download/mac
 
-Works great, but you need the XCode command line tools to run it. If you already have that, or expect to need a compiler anyway, then this is a good option.
+works great, but you need the XCode command line tools to run it. If you already have that, or expect to need a compiler anyway, then this is a good option.
 
 You can get XCode from the Apple App Store.
 
@@ -183,7 +183,7 @@ All available from the command line.
 
 To try it out, you should be able to run all of these commands, and get something like the following results:
 
-(recall that you can get out of the python or iPython command lines with ``ctrl+D``)
+(recall that you can get out of the Python or iPython command lines with ``ctrl+D``)
 
 For Python:
 
@@ -221,21 +221,3 @@ For git:
 
   MacBook-Pro:PythonCertDevel Chris$ git --version
   git version 2.11.0 (Apple Git-81)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
