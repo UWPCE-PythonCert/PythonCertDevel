@@ -9,10 +9,10 @@ How to put the pieces together to build a complex system without repeating code.
 Inheritance
 ===========
 
-In object-oriented programming (OOP), inheritance is a way to reuse code
+In object-oriented programming (OOP), inheritance is a way to reuse the code
 of existing objects, or to establish a subtype from an existing object.
 
-Objects are defined by classes, classes can inherit attributes and behavior
+Objects are defined by classes. Classes can inherit attributes and behavior
 from pre-existing classes called base classes or super classes.
 
 The resulting classes are known as derived classes or subclasses.
@@ -61,7 +61,7 @@ all the ``self``  instances will have the new attribute.
 Overriding methods
 ------------------
 
-Same thing, but with methods (remember, a method *is* an attribute in python)
+Same thing, but with methods (remember, a method *is* an attribute in Python)
 
 .. code-block:: python
 
@@ -79,7 +79,7 @@ Same thing, but with methods (remember, a method *is* an attribute in python)
             self.diameter = self.diameter * math.sqrt(2)
 
 
-all the instances will have the new method
+all the instances will have the new method.
 
 
 Here's a program design suggestion:
@@ -148,11 +148,11 @@ and
 
 Composition
 
-As we have just leaned about subclassing, you might be tempted to do it a lot. But you need to be careful of over-using subclassing:
+As we have just learned about subclassing, you might be tempted to do it a lot. But you need to be careful of over-using subclassing:
 
 https://en.wikipedia.org/wiki/Composition_over_inheritance
 
-Composition is when your classes have attributes of various types that they use to gain functionality -- "delegate" functionality to -- "Delegation" is related concept in OO.
+Composition is when your classes have attributes of various types that they use to gain functionality -- "delegate" functionality to -- "Delegation" is a related concept in OO.
 
 
 "Is a" vs "Has a"
@@ -172,7 +172,7 @@ or
 
 -- Does you class **have** a list?
 
-You only want to subclass list if your class could be used anywhere a list can be used. IN fact this is a really good way to think about subclassing in general -- subclasses should be specialized versions of the superclass. "kind of" the same, but with a little different functionality.
+You only want to subclass list if your class could be used anywhere a list can be used. In fact this is a really good way to think about subclassing in general -- subclasses should be specialized versions of the superclass. "Kind of" the same, but with a little different functionality.
 
 
 Attribute Resolution Order
@@ -204,7 +204,7 @@ What are Python classes, really?
 
 Putting aside the OO theory...
 
-Python classes are:
+Python classes feature:
 
   * Namespaces
 
@@ -217,7 +217,7 @@ Python classes are:
 
 That's about it -- really!
 
-(Well, not really, there is more fancy stuff going on under the hood -- but this basic structure will get you far)
+(Well, not really, there is more fancy stuff going on under the hood -- but this basic structure will get you far).
 
 Type-Based Dispatch
 -------------------
@@ -231,7 +231,7 @@ You'll see code that looks like this:
       else:
           Do_something_else
 
-When it's called for, python provides these utilties:
+When it's called for, Python provides these utilties:
 
     * ``isinstance()``
     * ``issubclass()``

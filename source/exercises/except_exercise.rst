@@ -4,7 +4,7 @@
 Exceptions Exercise
 ###################
 
-This is a little exercise that shows you how to handle exceptions is a way that models actual development.
+This is a little exercise that shows you how to handle exceptions in a way that mirrors actual development.
 
 Procedure
 =========
@@ -33,7 +33,7 @@ There are instructions in the ``except_exercise.py`` file telling you want you w
 
 This is simulating writing code that is using another library -- your code is ``except_exercise.py`` and ``except_test.py`` is the other library. So you don't want to alter ``except_test.py`` -- only change the ``except_exercise.py`` file.
 
-**Hint:** the Exceptions themselves usually come from the other file, so you will get a traceback like this::
+**Hint:** the exceptions themselves usually come from the other file, so you will get a traceback like this::
 
     ---------------------------------------------------------------------------
     NameError                                 Traceback (most recent call last)
@@ -53,7 +53,7 @@ This is simulating writing code that is using another library -- your code is ``
 
     NameError: name 's' is not defined
 
-The ``NameError`` is coming from line 15 of ``except_test.py``. But this is not your code! So you need to look higher up in the traceback to see where in *your* code the Exception is triggered. That is where you put your ``try--except`` block.
+The ``NameError`` is coming from line 15 of ``except_test.py``. But this is not your code! So you need to look higher up in the traceback to see where in *your* code the exception is triggered. That is where you put your ``try--except`` block.
 
 In this case, that's line 17 of ``except_exercise.py``. In real life, it can be higher up in a much deeper stack trace -- but keep looking 'till you see your code.
 
@@ -74,6 +74,6 @@ When you are done, running except_exercise.py should result in output something 
 Why are you doing this?
 -----------------------
 
-This is a kind of silly exercise, but in real life, this is a common workflow -- you call a library, and find that in certain circumstances it raises an Exception.  As the code in the library is out of your hands, you need to decide how to handle that Exception in your code instead.
+This is a kind of silly exercise, but in real life, this is a common workflow -- you call a library, and find that in certain circumstances it raises an exception.  As the code in the library is out of your hands, you need to decide how to handle that exception in your code instead.
 
 

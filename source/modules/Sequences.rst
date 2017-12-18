@@ -18,7 +18,7 @@ A sequence is an ordered collection of objects.
 
 They are analogous to what are often called "arrays" or "lists" in other programming languages.
 
-But in Python, there are number of types that all fit this description, each with special customization. But any object that has the behavior expeted of a sequence can be treated the same way in Python:
+But in Python, there are number of types that all fit this description, each with special customization. But any object that has the behavior expected of a sequence can be treated the same way in Python:
 
 Remember Duck Typing?
 
@@ -58,10 +58,10 @@ There are eight built in types in Python that are *sequences*:
 * array.array
 * range object (almost)
 
-For this class, you won't see much beyond strings, lists, and tuples --
+For this lesson, you won't see much beyond strings, lists, and tuples --
 the rest are pretty special purpose.
 
-But what we learn in this lesson applies to all sequences (with minor caveats)
+But what we learn in this lesson applies to all sequences (with minor caveats).
 
 I'll use lists, strings and tuples in the examples.
 
@@ -125,7 +125,7 @@ Pretty straight forward so far...
 Slicing
 -------
 
-Slicing is a real "power tool" of python -- it can allow very short code.
+Slicing is a real "power tool" of Python -- it can allow very short code.
 
 Slicing a sequence creates a new sequence with a range of objects from the
 original sequence.
@@ -236,7 +236,7 @@ returned:
     In [22]: a_tuple[::-1]
     Out[22]: (19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
 
-very cool -- a negative step reverses the results!
+Very cool -- a negative step reverses the results!
 
 Slicing vs. Indexing
 --------------------
@@ -366,8 +366,7 @@ Better to use ``s[-1]``
 Miscellaneous
 =============
 
-There are a bunch more operations supported by most sequences
-
+There are a bunch more operations supported by most sequences.
 Min and Max
 -----------
 
@@ -444,7 +443,7 @@ This does not raise an error if the item you seek is not present:
 Iteration
 =========
 
-All sequences are "iterables"
+All sequences are "iterables".
 
 You can iterate over a sequence with ``for``:
 
@@ -500,7 +499,7 @@ The elements contained in a list need not be of a single type.
 Lists are *heterogenous*, *ordered* collections.
 
 Each element in a list is a value, and can be in multiple lists and have
-multiple names (or no name)
+multiple names (or no name):
 
 .. code-block:: ipython
 
@@ -578,7 +577,7 @@ This is a Python "gotcha" -- some folks on my team recently had a weird bug that
 
 TypeError: unsupported operand type(s) for /: 'tuple' and 'float'
 
-Which made no sense -- there were no tuples involved -- in this case, the value was being pulled from an list -- and it WAS a float. They even put type checking code in there, and it was, indeed, a float.
+which made no sense -- there were no tuples involved -- in this case, the value was being pulled from a list -- and it WAS a float. They even put type checking code in there, and it was, indeed, a float.
 
 After poking at the code a bit, I suddenly spotted an extra comma -- BINGO! that was it.
 
@@ -627,7 +626,7 @@ The elements contained in a tuple need not be of a single type.
 Tuples are *heterogenous*, *ordered* collections.
 
 Each element in a tuple is a value, and can be in multiple tuples and have
-multiple names (or no name)
+multiple names (or no name):
 
 .. code-block:: ipython
 
@@ -647,7 +646,7 @@ Lists vs. Tuples
 
 .. rst-class:: center large
 
-    So Why Have Both?
+    So why have both?
 
 Mutability
 ==========
@@ -709,7 +708,7 @@ Try this out:
     Out[31]: ['spam', 'raspberries', 'ham']
 
 
-.. nextslide:: Tuples Are Not
+.. nextslide:: Tuples are not
 
 We repeat the exercise with a Tuple:
 
@@ -727,7 +726,7 @@ We repeat the exercise with a Tuple:
     TypeError: 'tuple' object does not support item assignment
 
 
-Watch Out when Name Binding
+Watch Out when name binding
 ---------------------------
 
 This property means you need to be aware of what you are doing with your lists:
@@ -795,7 +794,7 @@ Easy container setup, or deadly trap?
 
 So, what is going to be in ``bins`` now?
 
-There is Only **One** Bin
+There is only **One** bin
 -------------------------
 
 .. code-block:: ipython
@@ -859,7 +858,7 @@ By the way --this is how you *should* write that code:
     In [23]: accumulator(7)
     Out[23]: [0, 1, 2, 3, 4, 5, 6]
 
-This will assure that a new list will be created if one is not passed-in.
+This will ensure that a new list will be created if one is not passed-in.
 
 
 Mutable Sequence Methods
@@ -921,7 +920,7 @@ You can pass any sequence to ``.extend()``:
     ['beans', 'spam', 'eggs', 'ham', 'sushi', 'bread', 'water',
      's', 'p', 'a', 'g', 'h', 'e', 't', 't', 'i']
 
-So be careful -- a string is a single object --but also a sequence of charactors.
+So be careful -- a string is a single object --but also a sequence of characters.
 
 
 Shrinking the List
@@ -1010,7 +1009,7 @@ The list is itself a new object, but the objects it contains are not.
     Out[258]: ['spam', ['eggs']]
 
 
-Copies can Solve Problems
+Copies can solve problems
 -------------------------
 
 Consider this common pattern:
@@ -1131,43 +1130,43 @@ Here are a few guidelines on when to choose a list or a tuple:
 
 * If it needs to be immutable: tuple
 
-  * safety when passing to a function (and key in a dict)
+  * provides safety when passing to a function (and as a key in a dict)
 
-Otherwise ... taste and convention
+Otherwise ... taste and convention.
 
 
 Convention
 ----------
 
-Lists are Homogeneous Collections:
--- contain values of the same type
--- simplifies iterating, sorting, etc
+Lists are homogeneous collections:
+-- they alway contain values of the same type
+-- they simplify iterating, sorting, etc
 
 Tuples are mixed types:
--- Group multiple values into one logical thing
--- Kind of like simple C structs.
+-- they group multiple values into one logical thing
+-- they are similar to simple C structs.
 
 
 Other Considerations
 --------------------
 
-* Do the same operation to each element?
+* Do you need to do the same operation to each element?
 
   * list
 
-* Small collection of values which make a single logical item?
+* Is there a small collection of values which make a single logical item?
 
   * tuple
 
-* To document that these values won't change?
+* Do you want to document that these values won't change?
 
   * tuple
 
-* Build it iteratively?
+* Do you want to build it iteratively?
 
   * list
 
-* Transform, filter, etc?
+* Do you need to transform, filter, etc?
 
   * list
 

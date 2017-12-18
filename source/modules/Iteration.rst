@@ -18,6 +18,7 @@ We've seen simple iteration over a sequence with ``for ... in``:
        .....:     print(x)
        .....:
     a
+
     s
     t
     r
@@ -98,7 +99,7 @@ Loop Control
 
 Sometimes you want to interrupt or alter the flow of control through a loop.
 
-Loops can be controlled in two ways, with ``break`` and ``continue``
+Loops can be controlled in two ways, with ``break`` and ``continue``.
 
 
 The ``break`` keyword will cause a loop to immediately terminate:
@@ -127,7 +128,7 @@ allow iteration to continue:
        .....:
        25 26 27 28 29 ... 41 42 43 44 45 46 47 48 49 50
 
-Take some time to look at these examples carefully, and make sure you uderstand them. It's probably a good idea to write a bit of code to experiment as well.
+Take some time to look at these examples carefully, and make sure you understand them. It's probably a good idea to write a bit of code to experiment as well.
 
 else
 ----
@@ -154,9 +155,9 @@ Executed only when the loop exits normally (not via break):
        .....:     print('finished')
     5
 
-This is a really nice unique Python feature!
+This is a really nice, unique Python feature!
 
-If python didn't have ``else`` on loops, you'd need to set a flag, something like:
+If Python didn't have ``else`` on loops, you'd need to set a flag, something like:
 
 .. code-block:: python
 
@@ -180,7 +181,7 @@ While loops are different -- they are not for iterating over a collection, but r
 
 The ``while`` keyword is for when you don't know how many loops you need.
 
-It continues to execute the body until condition is not "Truthy":
+It continues to execute the body until the associated condition does not evaluate to True:
 
 .. code-block:: python
 
@@ -195,11 +196,11 @@ It continues to execute the body until condition is not "Truthy":
 
 -- you can always express ``for`` as ``while``, but not always vice-versa.
 
-``while``  is more error-prone -- requires some care to terminate
+``while``  is more error-prone -- requires some care to terminate.
 
-loop body must make progress, so condition can become ``False``
+The loop body must make progress, so the associated condition can become ``False``.
 
-potential error -- infinite loops:
+Care must be taken to avoid an unintended error -- infinite loops:
 
 .. code-block:: python
 
@@ -255,10 +256,10 @@ Similarities
 Both ``for`` and ``while`` loops can use ``break`` and ``continue`` for
 internal flow control.
 
-Both ``for`` and ``while`` loops can have an optional ``else`` block
+Both ``for`` and ``while`` loops can have an optional ``else`` block.
 
 In both loops, the statements in the ``else`` block are only executed if the
-loop terminates normally (no ``break``)
+loop terminates normally (no ``break``).
 
 Pythonic Iteration
 ==================
@@ -311,7 +312,7 @@ Looping through two iterables at once:
     i:2, j:4
     i:3, j:5
 
-Can be more than two:
+There can be more than two:
 
 .. code-block:: python
 

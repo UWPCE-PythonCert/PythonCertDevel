@@ -27,9 +27,9 @@ The ``class``  statement creates a new type object:
 
 A class is a type -- interesting!
 
-It is created when the statement is run -- much like ``def``
+It is created when the statement is run -- much like ``def``.
 
-So we now have a new type, or class -- it doesn't have any actual functionality, though be default all classes "inherit" from ``object``, and do get some minimal functionality from that:
+So we now have a new type, or class -- it doesn't have any actual functionality, though by default all classes "inherit" from ``object``. In doing so they get some minimal functionality from that:
 
 .. code-block:: ipython
 
@@ -76,7 +76,7 @@ And look at all the methods it has!
      '__subclasshook__',
      '__weakref__']
 
-Most of those don't do anything -- but they are there, so every class is guaranteed to have all the "stuff" python expects objects to have.
+Most of those don't do anything -- but they are there, so every class is guaranteed to have all the "stuff" Python expects objects to have.
 
 In order for the class to do anything useful, it needs to be given attributes and methods.
 
@@ -84,7 +84,7 @@ In order for the class to do anything useful, it needs to be given attributes an
 A simple ``class``
 ------------------
 
-About the simplest class you can write that is still useful.
+About the simplest class you can write that is still useful:
 
 .. code-block:: python
 
@@ -115,7 +115,7 @@ Basic Structure of a class
             self.x = x
             self.y = y
 
-so this class has a method called "__init__" -- which is a python special method.
+so this class has a method called "__init__" -- which is a Python special method.
 
 see: :download:`simple_classes.py <../examples/classes/simple_classes.py>`
 
@@ -124,7 +124,7 @@ The Initializer
 
 The ``__init__``  special method is called when a new instance of a class is created.
 
-You can use it to do any set-up you need
+You can use it to do any set-up you need:
 
 .. code-block:: python
 
@@ -161,7 +161,7 @@ What is this ``self`` thing?
 
 The instance of the class is passed as the first parameter for every method.
 
-the name "``self``" is only a convention -- but you *DO* want to use it.
+The name "``self``" is only a convention -- but you *DO* want to use it.
 
 .. code-block:: python
 
@@ -273,15 +273,15 @@ Gotcha !
 
     TypeError: grow() takes at most 2 arguments (3 given)
 
-Huh???? I only gave 2
+Huh???? I only gave 2:
 
-``self`` is implicitly passed in for you by python. so it actually *did* get three!
+``self`` is implicitly passed in for you by Python. so it actually *did* get three!
 
 
 Functions (methods) are First Class
 -----------------------------------
 
-Note that in python, functions are first class objects, so a method *is* an attribute
+Note that in Python, functions are first class objects, so a method *is* an attribute.
 
 All the same rules apply about attribute access: note that the methods are defined in the class -- so they are class attributes. All the instances share the same methods.
 

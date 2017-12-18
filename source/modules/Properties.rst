@@ -26,7 +26,7 @@ Attributes are clear and concise
         In [9]: c.x
         Out[9]: 8
 
-And we want to maintain this clarity.
+And we want to maintain this clarity as we develop our programs.
 
 Getter and Setters
 ------------------
@@ -88,7 +88,7 @@ Decorators
 
 What's up with the "@" symbols?
 
-Those are "decorations" it is a syntax for wrapping functions up with something special.
+Those are "decorations". It is a syntax for wrapping functions up with something special.
 
 We will cover decorators in detail in another part of the program, but for now just copy the syntax.
 
@@ -104,7 +104,7 @@ means: make a property called x with this as the "getter".
     @x.setter
     def x(self, value):
 
-means: make the "setter" of the 'x' property this new function
+means: make the "setter" of the 'x' property this new function.
 
 Read Only Attributes
 --------------------
