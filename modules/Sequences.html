@@ -128,7 +128,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#length">Length</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#miscellaneous">Miscellaneous</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#min-and-max">Min and Max</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#index">Index</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#count">Count</a></li>
 </ul>
@@ -148,10 +147,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#mutability-in-python">Mutability in Python</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#the-types-we-know">The Types We Know</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#lists-are-mutable">Lists Are Mutable</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#watch-out-when-name-binding">Watch Out when Name Binding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#watch-out-when-name-binding">Watch Out when name binding</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#perhaps-not-what-you-expect">Perhaps Not What You Expect</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#other-gotchas">Other Gotchas</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#there-is-only-one-bin">There is Only <strong>One</strong> Bin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#there-is-only-one-bin">There is only <strong>One</strong> bin</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mutable-default-argument">Mutable Default Argument</a></li>
 </ul>
 </li>
@@ -162,7 +161,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#shrinking-the-list">Shrinking the List</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#copying-lists">Copying Lists</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#shallow-copies">Shallow Copies</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#copies-can-solve-problems">Copies can Solve Problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#copies-can-solve-problems">Copies can solve problems</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#the-problem">The Problem</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#the-solution">The Solution</a></li>
 </ul>
@@ -292,7 +291,7 @@
 <h2>What is a Sequence?<a class="headerlink" href="#what-is-a-sequence" title="Permalink to this headline">¶</a></h2>
 <p>A sequence is an ordered collection of objects.</p>
 <p>They are analogous to what are often called “arrays” or “lists” in other programming languages.</p>
-<p>But in Python, there are number of types that all fit this description, each with special customization. But any object that has the behavior expeted of a sequence can be treated the same way in Python:</p>
+<p>But in Python, there are number of types that all fit this description, each with special customization. But any object that has the behavior expected of a sequence can be treated the same way in Python:</p>
 <p>Remember Duck Typing?</p>
 <p>If it looks like a duck and quacks like a duck…</p>
 <p>OR: If it looks and acts like a sequence – it <strong>is</strong> a sequence.</p>
@@ -324,9 +323,9 @@
 <li>array.array</li>
 <li>range object (almost)</li>
 </ul>
-<p>For this class, you won’t see much beyond strings, lists, and tuples –
+<p>For this lesson, you won’t see much beyond strings, lists, and tuples –
 the rest are pretty special purpose.</p>
-<p>But what we learn in this lesson applies to all sequences (with minor caveats)</p>
+<p>But what we learn in this lesson applies to all sequences (with minor caveats).</p>
 <p>I’ll use lists, strings and tuples in the examples.</p>
 <p>So let’s take a look at the key parts of the sequence protocol:</p>
 </div>
@@ -375,7 +374,7 @@ operator: <code class="docutils literal"><span class="pre">[]</span></code></p>
 <p>Pretty straight forward so far…</p>
 <div class="section" id="slicing">
 <h3>Slicing<a class="headerlink" href="#slicing" title="Permalink to this headline">¶</a></h3>
-<p>Slicing is a real “power tool” of python – it can allow very short code.</p>
+<p>Slicing is a real “power tool” of Python – it can allow very short code.</p>
 <p>Slicing a sequence creates a new sequence with a range of objects from the
 original sequence.</p>
 <p>It also uses the indexing operator (<code class="docutils literal"><span class="pre">[]</span></code>), but with a twist.</p>
@@ -464,7 +463,7 @@ returned:</p>
 <span class="gh">Out[22]: </span><span class="go">(19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)</span>
 </pre></div>
 </div>
-<p>very cool – a negative step reverses the results!</p>
+<p>Very cool – a negative step reverses the results!</p>
 </div>
 <div class="section" id="slicing-vs-indexing">
 <h3>Slicing vs. Indexing<a class="headerlink" href="#slicing-vs-indexing" title="Permalink to this headline">¶</a></h3>
@@ -569,9 +568,9 @@ concise code:</p>
 </div>
 <div class="section" id="miscellaneous">
 <h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h2>
-<p>There are a bunch more operations supported by most sequences</p>
-<div class="section" id="min-and-max">
-<h3>Min and Max<a class="headerlink" href="#min-and-max" title="Permalink to this headline">¶</a></h3>
+<p>There are a bunch more operations supported by most sequences.
+Min and Max
+———–</p>
 <p>All sequences also support the <code class="docutils literal"><span class="pre">min</span></code> and <code class="docutils literal"><span class="pre">max</span></code> builtins:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [42]: </span><span class="n">all_letters</span> <span class="o">=</span> <span class="s2">&quot;thequickbrownfoxjumpedoverthelazydog&quot;</span>
 
@@ -592,7 +591,6 @@ concise code:</p>
 <span class="gp">In [3]: </span><span class="nb">max</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
 <span class="gh">Out[3]: </span><span class="go">8</span>
 </pre></div>
-</div>
 </div>
 <div class="section" id="index">
 <h3>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h3>
@@ -631,7 +629,7 @@ appears:</p>
 </div>
 <div class="section" id="iteration">
 <h2>Iteration<a class="headerlink" href="#iteration" title="Permalink to this headline">¶</a></h2>
-<p>All sequences are “iterables”</p>
+<p>All sequences are “iterables”.</p>
 <p>You can iterate over a sequence with <code class="docutils literal"><span class="pre">for</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
     <span class="n">do_something</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
@@ -670,7 +668,7 @@ appears:</p>
 <p>The elements contained in a list need not be of a single type.</p>
 <p>Lists are <em>heterogenous</em>, <em>ordered</em> collections.</p>
 <p>Each element in a list is a value, and can be in multiple lists and have
-multiple names (or no name)</p>
+multiple names (or no name):</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Brian&#39;</span>
 <span class="gp">In [10]: </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="p">]</span>
 <span class="gp">In [11]: </span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">name</span><span class="p">]</span>
@@ -733,7 +731,7 @@ multiple names (or no name)</p>
 </div>
 <p>This is a Python “gotcha” – some folks on my team recently had a weird bug that two of them could not figure out. They were getting a type error – something like:</p>
 <p>TypeError: unsupported operand type(s) for /: ‘tuple’ and ‘float’</p>
-<p>Which made no sense – there were no tuples involved – in this case, the value was being pulled from an list – and it WAS a float. They even put type checking code in there, and it was, indeed, a float.</p>
+<p>which made no sense – there were no tuples involved – in this case, the value was being pulled from a list – and it WAS a float. They even put type checking code in there, and it was, indeed, a float.</p>
 <p>After poking at the code a bit, I suddenly spotted an extra comma – BINGO! that was it.</p>
 <p>The code was more involved, and thus harder to see, but it was pretty much like this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
@@ -770,7 +768,7 @@ multiple names (or no name)</p>
 <p>The elements contained in a tuple need not be of a single type.</p>
 <p>Tuples are <em>heterogenous</em>, <em>ordered</em> collections.</p>
 <p>Each element in a tuple is a value, and can be in multiple tuples and have
-multiple names (or no name)</p>
+multiple names (or no name):</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Brian&#39;</span>
 <span class="gp">In [24]: </span><span class="n">other</span> <span class="o">=</span> <span class="n">name</span>
 <span class="gp">In [25]: </span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
@@ -785,7 +783,7 @@ multiple names (or no name)</p>
 </div>
 <div class="section" id="lists-vs-tuples">
 <h3>Lists vs. Tuples<a class="headerlink" href="#lists-vs-tuples" title="Permalink to this headline">¶</a></h3>
-<p class="center large">So Why Have Both?</p>
+<p class="center large">So why have both?</p>
 </div>
 </div>
 <div class="section" id="mutability">
@@ -859,7 +857,7 @@ multiple names (or no name)</p>
 </div>
 </div>
 <div class="section" id="watch-out-when-name-binding">
-<h3>Watch Out when Name Binding<a class="headerlink" href="#watch-out-when-name-binding" title="Permalink to this headline">¶</a></h3>
+<h3>Watch Out when name binding<a class="headerlink" href="#watch-out-when-name-binding" title="Permalink to this headline">¶</a></h3>
 <p>This property means you need to be aware of what you are doing with your lists:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [36]: </span><span class="n">original</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="gp">In [37]: </span><span class="n">altered</span> <span class="o">=</span> <span class="n">original</span>
@@ -910,7 +908,7 @@ whatever condition caused it to be updated.</p>
 <p>So, what is going to be in <code class="docutils literal"><span class="pre">bins</span></code> now?</p>
 </div>
 <div class="section" id="there-is-only-one-bin">
-<h3>There is Only <strong>One</strong> Bin<a class="headerlink" href="#there-is-only-one-bin" title="Permalink to this headline">¶</a></h3>
+<h3>There is only <strong>One</strong> bin<a class="headerlink" href="#there-is-only-one-bin" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [65]: </span><span class="n">bins</span>
 <span class="gh">Out[65]:</span>
 <span class="go">[[&#39;one&#39;, &#39;three&#39;, &#39;rough&#39;, &#39;sad&#39;, &#39;goof&#39;],</span>
@@ -958,7 +956,7 @@ whatever condition caused it to be updated.</p>
 <span class="gh">Out[23]: </span><span class="go">[0, 1, 2, 3, 4, 5, 6]</span>
 </pre></div>
 </div>
-<p>This will assure that a new list will be created if one is not passed-in.</p>
+<p>This will ensure that a new list will be created if one is not passed-in.</p>
 </div>
 </div>
 <div class="section" id="mutable-sequence-methods">
@@ -1006,7 +1004,7 @@ used to change it in place.</p>
 <span class="go"> &#39;s&#39;, &#39;p&#39;, &#39;a&#39;, &#39;g&#39;, &#39;h&#39;, &#39;e&#39;, &#39;t&#39;, &#39;t&#39;, &#39;i&#39;]</span>
 </pre></div>
 </div>
-<p>So be careful – a string is a single object –but also a sequence of charactors.</p>
+<p>So be careful – a string is a single object –but also a sequence of characters.</p>
 </div>
 <div class="section" id="shrinking-the-list">
 <h3>Shrinking the List<a class="headerlink" href="#shrinking-the-list" title="Permalink to this headline">¶</a></h3>
@@ -1078,7 +1076,7 @@ used to change it in place.</p>
 </div>
 </div>
 <div class="section" id="copies-can-solve-problems">
-<h3>Copies can Solve Problems<a class="headerlink" href="#copies-can-solve-problems" title="Permalink to this headline">¶</a></h3>
+<h3>Copies can solve problems<a class="headerlink" href="#copies-can-solve-problems" title="Permalink to this headline">¶</a></h3>
 <p>Consider this common pattern:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">somelist</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">should_be_removed</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -1174,40 +1172,40 @@ used to change it in place.</p>
 <ul class="simple">
 <li>If it needs to mutable: list</li>
 <li>If it needs to be immutable: tuple<ul>
-<li>safety when passing to a function (and key in a dict)</li>
+<li>provides safety when passing to a function (and as a key in a dict)</li>
 </ul>
 </li>
 </ul>
-<p>Otherwise … taste and convention</p>
+<p>Otherwise … taste and convention.</p>
 <div class="section" id="convention">
 <h3>Convention<a class="headerlink" href="#convention" title="Permalink to this headline">¶</a></h3>
-<p>Lists are Homogeneous Collections:
-– contain values of the same type
-– simplifies iterating, sorting, etc</p>
+<p>Lists are homogeneous collections:
+– they alway contain values of the same type
+– they simplify iterating, sorting, etc</p>
 <p>Tuples are mixed types:
-– Group multiple values into one logical thing
-– Kind of like simple C structs.</p>
+– they group multiple values into one logical thing
+– they are similar to simple C structs.</p>
 </div>
 <div class="section" id="other-considerations">
 <h3>Other Considerations<a class="headerlink" href="#other-considerations" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Do the same operation to each element?<ul>
+<li>Do you need to do the same operation to each element?<ul>
 <li>list</li>
 </ul>
 </li>
-<li>Small collection of values which make a single logical item?<ul>
+<li>Is there a small collection of values which make a single logical item?<ul>
 <li>tuple</li>
 </ul>
 </li>
-<li>To document that these values won’t change?<ul>
+<li>Do you want to document that these values won’t change?<ul>
 <li>tuple</li>
 </ul>
 </li>
-<li>Build it iteratively?<ul>
+<li>Do you want to build it iteratively?<ul>
 <li>list</li>
 </ul>
 </li>
-<li>Transform, filter, etc?<ul>
+<li>Do you need to transform, filter, etc?<ul>
 <li>list</li>
 </ul>
 </li>
@@ -1244,7 +1242,7 @@ used to change it in place.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 licence.
+        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>

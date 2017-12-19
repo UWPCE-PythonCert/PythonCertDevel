@@ -157,5 +157,13 @@ This is a nice collection of little bits of Python that may be surprising:
 
 `WTF Python? <https://github.com/satwikkansal/wtfpython>`_
 
+Metaprogramming
+===============
+
+Metaprogramming is writting porgrams that write programs... it is a large topic, starting with fairly simple things like the use of ``getattr`` or ``setattr``, through decorators, and all the way up to metaclasses.
+
+This lecture by David Beazley is a great overview:
+
+https://youtu.be/sPiWg5jSoZI
 
 

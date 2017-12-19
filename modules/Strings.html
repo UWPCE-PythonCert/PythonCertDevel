@@ -149,11 +149,14 @@
 <li class="toctree-l2"><a class="reference internal" href="Decorators.html">Decorators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="EnvironmentOverview.html">Introduction to the Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IPythonIntroduction.html">IPython Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IPythonParallel.html">IPython Parallel Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Lambda.html">Anonymous Functions: Lambda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MapFilterReduce.html">Map Filter and Reduce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MultipleInheritance.html">Multiple Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NamingThings.html">Style and Naming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ObjectOrientationOverview.html">Object Orientation Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OO_vs_functional.html">Object Oriented vs Functional Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Properties.html">Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Py2vsPy3.html">Python 2 verses Python 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PythonClasses.html">Python Classes</a></li>
@@ -164,6 +167,8 @@
 <li class="toctree-l2"><a class="reference internal" href="Testing.html">Unit Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tutorial.html">Python Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MoreOnMutability.html">A bit more on mutability (and copies)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Packaging.html#distributing">Distributing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/index.html">Quizzes</a></li>
@@ -245,7 +250,7 @@
 <p>A “String” is a computerese word for a piece of text – a “string” of characters.</p>
 <div class="section" id="creating-strings">
 <h3>Creating strings:<a class="headerlink" href="#creating-strings" title="Permalink to this headline">¶</a></h3>
-<p>A string literal creates a string type</p>
+<p>A string literal creates a string type.</p>
 <p>(we’ve seen this already…)</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;this is a string&quot;</span>
 
@@ -279,8 +284,8 @@
 <span class="gh">Out[170]: </span><span class="go">&#39;comma|separated|values&#39;</span>
 </pre></div>
 </div>
-<p>It may seem odd at first that <code class="docutils literal"><span class="pre">.join()</span></code> is a string method, rather than, say, a method on lists. But, in fact it makes a lot of sense. Lists (and tuple, and other sequences) can hold any type of data – and “joining” arbitrary data types doesn’t make any sense.  Joining is strictly a string activity.</p>
-<p>And you need a string to join the parts with – so we need a string object in there somewhere anyway.</p>
+<p>It may seem odd at first that <code class="docutils literal"><span class="pre">.join()</span></code> is a string method, rather than, say, a method on lists. But, in fact it makes a lot of sense. Lists (and tuples, and other sequences) can hold any type of data – and “joining” arbitrary data types doesn’t make any sense.  Joining is strictly a string activity.</p>
+<p>And you need a string so you can join the parts – therefore, we need a string object in there somewhere anyway.</p>
 <p>Lastly, having join() be a string method means that it can join strings in ANY iterable object – not just the built-in sequence types.</p>
 <p>So it does make sense – but even if not, that’s the way it is.</p>
 <p>So to be clear: if you have a bunch of strings in a sequence and you want to put them together, you create a string with the character (or characters) you want to join them with, and call join() on that object:</p>
@@ -304,7 +309,7 @@
     <span class="n">msg</span> <span class="o">+=</span> <span class="n">piece</span>
 </pre></div>
 </div>
-<p>But: strings are immutable – python needs to create a new string each time you add a piece – not efficient:</p>
+<p>But: strings are immutable – Python needs to create a new string each time you add a piece – not efficient:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">msg</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">piece</span> <span class="ow">in</span> <span class="n">list_of_stuff</span><span class="p">:</span>
     <span class="n">msg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">piece</span><span class="p">)</span>
@@ -401,11 +406,11 @@
 <span class="go">Chris</span>
 </pre></div>
 </div>
-<p>For the English language, stick with ASCII, otherwise use full Unicode: it’s easy with python3 – more on that in a few weeks.</p>
+<p>For the English language, stick with ASCII, otherwise use full Unicode: it’s easy with Python3 – more on that in a later lesson.</p>
 </div>
 <div class="section" id="building-strings-from-data">
 <h3>Building Strings from data<a class="headerlink" href="#building-strings-from-data" title="Permalink to this headline">¶</a></h3>
-<p>You can, but please don’t do this:</p>
+<p>You could, but please don’t(!), do this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="s1">&#39;Hello &#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;!&#39;</span>
 </pre></div>
 </div>
@@ -419,7 +424,7 @@
 </div>
 <div class="section" id="old-and-new-string-formatting">
 <h3>Old and New string formatting<a class="headerlink" href="#old-and-new-string-formatting" title="Permalink to this headline">¶</a></h3>
-<p>Back in early python days, there was the string formatting operator: <code class="docutils literal"><span class="pre">%</span></code></p>
+<p>Back in early Python days, there was the string formatting operator: <code class="docutils literal"><span class="pre">%</span></code></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="s2">&quot;a string: </span><span class="si">%s</span><span class="s2"> and a number: </span><span class="si">%i</span><span class="s2"> &quot;</span><span class="o">%</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -620,7 +625,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 licence.
+        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>

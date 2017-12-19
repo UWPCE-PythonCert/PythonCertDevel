@@ -120,6 +120,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Decorators.html">Decorators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="EnvironmentOverview.html">Introduction to the Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IPythonIntroduction.html">IPython Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IPythonParallel.html">IPython Parallel Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Lambda.html">Anonymous Functions: Lambda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MapFilterReduce.html">Map Filter and Reduce</a></li>
@@ -131,6 +132,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ObjectOrientationOverview.html">Object Orientation Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OO_vs_functional.html">Object Oriented vs Functional Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Properties.html">Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Py2vsPy3.html">Python 2 verses Python 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PythonClasses.html">Python Classes</a></li>
@@ -141,6 +143,8 @@
 <li class="toctree-l2"><a class="reference internal" href="Testing.html">Unit Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tutorial.html">Python Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MoreOnMutability.html">A bit more on mutability (and copies)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Packaging.html#distributing">Distributing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/index.html">Quizzes</a></li>
@@ -233,24 +237,26 @@ $ pycodestyle my_python_file
 </div>
 <p>Try it now – really!</p>
 <p>Note that ideally you have a linter installed in your editor that yells at you if you violate PEP8 – no need to run <code class="docutils literal"><span class="pre">pycodestyle</span></code> if it’s already in your editor.</p>
-<p>See: <span class="xref std std-ref">editor_for_python</span> for suggestions on editors and configuration.</p>
+<p>See: <a class="reference internal" href="../supplemental/dev_environment/index.html#editor-for-python"><span class="std std-ref">Text Editors Only</span></a> for suggestions on editors and configuration.</p>
 </div>
 <div class="section" id="naming-things">
 <h2>Naming things…<a class="headerlink" href="#naming-things" title="Permalink to this headline">¶</a></h2>
 <p>It matters what names you give your variables.</p>
-<p>Python has rules about what it <em>allows</em></p>
+<p>Python has rules about what it <em>allows</em>.</p>
 <p>PEP8 has rules for style: capitalization, and underscores and all that.</p>
 <p>But you still get to decide within those rules.</p>
 <p>So use names that make sense to the reader.</p>
 </div>
 <div class="section" id="naming-guidelines">
 <h2>Naming Guidelines<a class="headerlink" href="#naming-guidelines" title="Permalink to this headline">¶</a></h2>
+<p>Whenever possible, use strong, unambiguous names that relate to a concept in the business area applicable for your program.
+For example, cargo_weight is probably better than item_weight, current_fund_price is better than value.</p>
 <p>Only use single-letter names for things with limited scope: indexes and the like:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">a_sequence</span><span class="p">):</span>
     <span class="n">do_something</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>But <strong>Don’t</strong> use a name like “item”, when there is a meaning to what the item is:</p>
+<p>But <strong>don’t</strong> use a name like “item”, when there is a meaning to what the item is:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">all_the_names</span><span class="p">:</span>
     <span class="n">do_something_with</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
@@ -297,7 +303,7 @@ $ pycodestyle my_python_file
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 licence.
+        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>

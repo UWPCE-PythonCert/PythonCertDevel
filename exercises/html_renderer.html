@@ -255,7 +255,7 @@
 <p>It builds up an html tree, and then calls the <code class="docutils literal"><span class="pre">render()</span></code> method of your element to render the page.</p>
 <p>It uses a <code class="docutils literal"><span class="pre">StringIO</span></code> object (like a file, but in memory) to render to memory, then dumps it to the console, and writes a file. Take a look at the code at the end to make sure you understand it.</p>
 <p>The html generated at each step will be in the files: <code class="docutils literal"><span class="pre">test_html_ouput?.html</span></code></p>
-<p>At each step, your results should look similar that those (maybe not identical…)</p>
+<p>At each step, your results should look similar to those (maybe not identical…)</p>
 </div>
 <div class="section" id="unit-tests">
 <h3>Unit tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline">¶</a></h3>
@@ -286,14 +286,14 @@
 <p>An <code class="docutils literal"><span class="pre">Element</span></code> object has to collect a bunch of sub-elements, in order, and you need to be able to append new ones to it – sounds like a like a <code class="docutils literal"><span class="pre">list</span></code>? So should it subclass from <code class="docutils literal"><span class="pre">list</span></code>?</p>
 <p>Ask yourself – does this make sense? an “Element <em>is</em> a list” – no.</p>
 <p>But “An Element <em>uses</em> a list” makes perfect sense.</p>
-<p>If the <em>is</em> phrase makes sense, then subclassing makes sense. If the <em>uses</em> phrase makes sense, <em>then</em> you want to subclass.</p>
+<p>If the <em>is</em> phrase makes sense, then subclassing would makes sense. If the <em>uses</em> phrase makes sense, <em>then</em> you would want to subclass.</p>
 <p>So no – you don’t want <code class="docutils literal"><span class="pre">Element</span></code> to subclass from list.</p>
 <p>It should have a <code class="docutils literal"><span class="pre">render(file_out,</span> <span class="pre">cur_ind</span> <span class="pre">=</span> <span class="pre">&quot;&quot;)</span></code> method that renders the tag and the strings in the content.</p>
 <p><code class="docutils literal"><span class="pre">file_out</span></code> could be any open, writable file-like object ( i.e. have a <code class="docutils literal"><span class="pre">write()</span></code> method ). This is what you get from the <code class="docutils literal"><span class="pre">open()</span></code> function – but there are other kinds of file-like objects. The html will be rendered to this file.</p>
 <p><code class="docutils literal"><span class="pre">cur_ind</span></code> is a string with the current level of indentation in it: the amount that the entire tag should be indented for pretty printing.</p>
 <blockquote>
 <div><ul class="simple">
-<li>This is a little tricky: <code class="docutils literal"><span class="pre">cur_ind</span></code> will be the amount that this element should be indented already. It will be from zero (an empty string) to a lot of spaces, depending on how deep it is in the tree. You could use an integer for the number of spaces to indent – or keep it simple and simply use a string with 2, or 4 or ?? spaces in it.</li>
+<li>This is a little tricky: <code class="docutils literal"><span class="pre">cur_ind</span></code> will be the amount that this element should be indented already. It will be from zero (an empty string) to a lot of spaces, depending on how deep it is in the tree. You could use an integer for the number of spaces to indent – or keep it simple and just use a string with 2, or 4 or ?? spaces in it.</li>
 </ul>
 </div></blockquote>
 <p>The amount of each level of indentation should be set by the class attribute: <code class="docutils literal"><span class="pre">indent</span></code></p>
@@ -342,9 +342,9 @@ constructor, e.g. <code class="docutils literal"><span class="pre">run_html_rend
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Element</span><span class="p">(</span><span class="s2">&quot;some text content&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;TheList&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;line-height:200%&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>html elements can take essentially any attributes – so you can’t hard-code these particular ones. ( remember <code class="docutils literal"><span class="pre">**kwargs</span></code>? )</p>
+<p>html elements can take essentially any attributes – so you can’t hard-code these particular ones (remember <code class="docutils literal"><span class="pre">**kwargs</span></code>? )</p>
 <p>The render method will need to be extended to render the attributes properly.</p>
-<p>You can now render some <code class="docutils literal"><span class="pre">&lt;p&gt;</span></code> tags (and others) with attributes</p>
+<p>You can now render some <code class="docutils literal"><span class="pre">&lt;p&gt;</span></code> tags (and others) with attributes.</p>
 <p>See: <a class="reference download internal" href="../_downloads/test_html_output4.html" download=""><code class="xref download docutils literal"><span class="pre">test_html_output4.htm</span></code></a></p>
 <p>NOTE: if you do “proper” CSS+html, then you wouldn’t specify style directly in element attributes.</p>
 <p>Rather you would set the “class” attribute:</p>
@@ -380,8 +380,8 @@ with one s, and you could tranlate it in the generated html.</p>
 </div>
 <p>You will need to override the render method to render just the one tag and
 attributes, if any.</p>
-<p>Note that self closing tags can’t have any content. MAke sure that your SelfClosingTag element raises an exception if someone tries to put in any content – probably a <code class="docutils literal"><span class="pre">TypeError</span></code>.</p>
-<p>Create a couple subclasses of <code class="docutils literal"><span class="pre">SelfClosingTag</span></code> for and &lt;hr /&gt; and &lt;br /&gt;</p>
+<p>Note that self closing tags can’t have any content. Make sure that your SelfClosingTag element raises an exception if someone tries to put in any content – probably a <code class="docutils literal"><span class="pre">TypeError</span></code>.</p>
+<p>Create a couple subclasses of <code class="docutils literal"><span class="pre">SelfClosingTag</span></code> for &lt;hr /&gt; and &lt;br /&gt;</p>
 <p>Note that you now have a couple render methods – is there repeated code in them?</p>
 <p>Can you refactor the common parts into a separate method that all the render methods can call? And do all your tests still pass (you do have tests for everything, don’t you?) after refactoring?</p>
 <p>See: <a class="reference download internal" href="../_downloads/test_html_output5.html" download=""><code class="xref download docutils literal"><span class="pre">test_html_output5.htm</span></code></a></p>
@@ -402,15 +402,15 @@ attributes, if any.</p>
 </div>
 <div class="section" id="step-7">
 <h3>Step 7:<a class="headerlink" href="#step-7" title="Permalink to this headline">¶</a></h3>
-<p>Create <code class="docutils literal"><span class="pre">Ul</span></code> class for an unordered list (really simple subclass of <code class="docutils literal"><span class="pre">Element</span></code>)</p>
-<p>Create <code class="docutils literal"><span class="pre">Li</span></code> class for an element in a list (also really simple)</p>
+<p>Create <code class="docutils literal"><span class="pre">Ul</span></code> class for an unordered list (really simple subclass of <code class="docutils literal"><span class="pre">Element</span></code>).</p>
+<p>Create <code class="docutils literal"><span class="pre">Li</span></code> class for an element in a list (also really simple).</p>
 <p>Add a list to your web page.</p>
 <p>Create a <code class="docutils literal"><span class="pre">Header</span></code> class – this one should take an integer argument for the
 header level. i.e &lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, called like</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">H</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;The text of the header&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>for an &lt;h2&gt; header</p>
+<p>for an &lt;h2&gt; header.</p>
 <p>It can subclass from <code class="docutils literal"><span class="pre">OneLineTag</span></code> – overriding the <code class="docutils literal"><span class="pre">__init__</span></code>, then calling the superclass <code class="docutils literal"><span class="pre">__init__</span></code></p>
 <p>See: <a class="reference download internal" href="../_downloads/test_html_output7.html" download=""><code class="xref download docutils literal"><span class="pre">test_html_output7.htm</span></code></a></p>
 </div>
@@ -437,12 +437,12 @@ new tags, etc….</p>
 <li>But ultimately, you want your code to USE the ind parameter – it is supposed to indicate how much this entire tag is already indented.</li>
 <li>When this one gets rendered, you don’t know where it is in a potentially deeply nested hierarchy – it could be at the top level or ten levels deep. passing <code class="docutils literal"><span class="pre">ind</span></code> into the render method is how this is communicated.</li>
 <li>You have (at least) two options for how to indicate level of indentation:<ul>
-<li>It could be a integer indicating number of levels of indentation</li>
+<li>It could be a integer indicating number of levels of indentation.</li>
 <li>It could, more simply, be a bunch of spaces.</li>
 </ul>
 </li>
-<li>You want to have the amount of spaces per indentation defined as a class attribute of the base class (the <code class="docutils literal"><span class="pre">Element</span></code> class). That way, you could change it in one place, and it would change everywhere an remain consistent.</li>
-<li>Be sure to test that the indentation of the result changes if you cahnge the class attribute!</li>
+<li>You want to have the amount of spaces per indentation defined as a class attribute of the base class (the <code class="docutils literal"><span class="pre">Element</span></code> class). That way, you could change it in one place, and it would change everywhere and remain consistent.</li>
+<li>Be sure to test that the indentation of the result changes if you change the class attribute!</li>
 </ul>
 </div>
 <div class="section" id="notes-on-handling-duck-typing">
@@ -451,7 +451,7 @@ new tags, etc….</p>
 <p class="left">There are two primary ways to address this (and multiple ways to actually write the code for each of these).</p>
 <ol class="left arabic simple">
 <li>Make sure that the content only has renderable objects in it.</li>
-<li>Make sure the render() method can handle either type on the fly</li>
+<li>Make sure the render() method can handle either type on the fly.</li>
 </ol>
 <p class="left">The difference is where you handle the multiple types – in the render method itself, or ahead of time.</p>
 <div class="section" id="the-ahead-of-time-option">
@@ -471,7 +471,7 @@ new tags, etc….</p>
 </pre></div>
 </div>
 <p>You could require your users to use the wrapper, so instead of just appending a string, they would do:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">an_element</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TextWRapper</span><span class="p">(</span><span class="s2">&quot;the string they want to add&quot;</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">an_element</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TextWrapper</span><span class="p">(</span><span class="s2">&quot;the string they want to add&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>But this is not very Pythonic style – it’s OO heavy. Strings for text are so common you want to be able to simply use them:</p>
@@ -492,7 +492,7 @@ new tags, etc….</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TextWrapper</span><span class="p">(</span><span class="n">content</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>This would work well, but closes the door to using any other type that may not be a strict subclsss of Element, but can render itself. Not too bad in this case, but in general, frowned upon in Python.</p>
+<p>This would work well, but closes the door to using any other type that may not be a strict subclass of Element, but can render itself. Not too bad in this case, but in general, frowned upon in Python.</p>
 <p>Alternatively, you could check for the string type:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TextWrapper</span><span class="p">(</span><span class="n">content</span><span class="p">))</span>
@@ -500,7 +500,7 @@ new tags, etc….</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>I think this is a little better – strings are a pretty core type in python, it’s not likely that anyone is going to need to use a “string-like” object.</p>
+<p>I think this is a little better – strings are a pretty core type in Python, so it’s not likely that anyone is going to need to use a “string-like” object.</p>
 </div>
 <div class="section" id="duck-typing">
 <h3>Duck Typing<a class="headerlink" href="#duck-typing" title="Permalink to this headline">¶</a></h3>
@@ -589,7 +589,7 @@ the element, and the end of the element is indicated by the same tag with a slas
 </div>
 <div class="section" id="attributes">
 <h3>Attributes:<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
-<p>In addition to the tag name and the content, extra attributes can be attached to a tag. These are added to the “opening tag”, with name=”something”, another_name=”somethign else” format:</p>
+<p>In addition to the tag name and the content, extra attributes can be attached to a tag. These are added to the “opening tag”, with name=”something”, another_name=”something else” format:</p>
 <div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;text-align: center&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;intro&quot;</span><span class="p">&gt;</span>
 </pre></div>
 </div>
@@ -652,7 +652,7 @@ the element, and the end of the element is indicated by the same tag with a slas
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 licence.
+        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>

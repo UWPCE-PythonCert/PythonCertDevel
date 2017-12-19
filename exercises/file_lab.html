@@ -124,7 +124,7 @@
 <li class="toctree-l2"><a class="reference internal" href="kata_fourteen.html">Kata Fourteen: Tom Swift Under Milk Wood</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lambda_magic.html">lambda and keyword Magic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="list_lab.html">List Lab</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mailroom.html">Mailroom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mailroom.html">Mailroom: A complete program</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Introduction To Unit Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="roman.html">Roman/Arabic Numeral Converter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rot13.html">ROT13</a></li>
@@ -132,8 +132,8 @@
 <li class="toctree-l2"><a class="reference internal" href="sparse_array.html">Sparse Array Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="string_formatting.html">String Formatting Lab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trapezoid.html">Trapezoidal Rule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mailroom-oo.html">Mailroom Object Oriented</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mailroom-mfr.html">Mailroom - Map Filter Reduce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mailroom-oo.html">Mailroom - Object Oriented</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mailroom-fp.html">Mailroom - Functional</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
@@ -215,17 +215,17 @@
 <div class="section" id="paths-and-file-processing">
 <h3>Paths and File Processing<a class="headerlink" href="#paths-and-file-processing" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Write a program which prints the full path to all files in the current
+<li>Write a program which prints the full path for all files in the current
 directory, one per line</li>
 <li>Write a program which copies a file from a source, to a destination
-(without using shutil, or the OS copy command)<ul>
+(without using shutil, or the OS copy command).<ul>
 <li>Advanced: make it work for any size file: i.e. don’t read the entire
 contents of the file into memory at once.</li>
 <li>This should work for any kind of file, so you need to open
 the files in binary mode: <code class="docutils literal"><span class="pre">open(filename,</span> <span class="pre">'rb')</span></code> (or <code class="docutils literal"><span class="pre">'wb'</span></code> for
 writing). Note that for binary files, you can’t use <code class="docutils literal"><span class="pre">readline()</span></code> –
 lines don’t have any meaning for binary files.</li>
-<li>Test it with both text and binary files (maybe jpeg or??)</li>
+<li>Test it with both text and binary files (maybe jpeg or something of oyur chosing).</li>
 </ul>
 </li>
 </ul>
@@ -234,7 +234,7 @@ lines don’t have any meaning for binary files.</li>
 <h3>File reading and parsing<a class="headerlink" href="#file-reading-and-parsing" title="Permalink to this headline">¶</a></h3>
 <p>In the class repo, in:</p>
 <p><code class="docutils literal"><span class="pre">Examples/Session01/students.txt</span></code></p>
-<p>You will find the list we generated in the first class of all the students in the class, and what programming languages they have used in the past.</p>
+<p>you will find the list we generated in the first class of all the students in the class, and what programming languages they have used in the past.</p>
 <p>Write a little script that reads that file, and generates a list of all
 the languages that have been used.</p>
 <p>Extra credit: keep track of how many students specified each language.</p>
@@ -267,7 +267,7 @@ your repo. Otherwise, you can get it from gitHub:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 licence.
+        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>

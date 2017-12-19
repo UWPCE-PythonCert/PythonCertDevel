@@ -116,7 +116,7 @@
 <li class="toctree-l2"><a class="reference internal" href="kata_fourteen.html">Kata Fourteen: Tom Swift Under Milk Wood</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lambda_magic.html">lambda and keyword Magic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="list_lab.html">List Lab</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mailroom.html">Mailroom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mailroom.html">Mailroom: A complete program</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Introduction To Unit Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="roman.html">Roman/Arabic Numeral Converter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rot13.html">ROT13</a></li>
@@ -203,12 +203,12 @@
             
   <div class="section" id="mailroom-object-oriented">
 <span id="exercise-mailroom-oo"></span><h1>Mailroom - Object Oriented<a class="headerlink" href="#mailroom-object-oriented" title="Permalink to this headline">¶</a></h1>
-<p>Making Mailroom Object Oriented</p>
+<p>Making Mailroom Object Oriented.</p>
 <div class="section" id="goal">
 <h2>Goal:<a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h2>
 <p>Refactor the mailroom program using classes to help organize the code.</p>
 <p>The goal here is the same as the earlier mailroom:</p>
-<p><a class="reference internal" href="mailroom.html#exercise-mailroom"><span class="std std-ref">Mailroom</span></a></p>
+<p><a class="reference internal" href="mailroom.html#exercise-mailroom"><span class="std std-ref">Mailroom: A complete program</span></a></p>
 <p>But this time, we want to use an OO approach to better structure the code to make it more extensible.</p>
 <p>It was quite reasonable to build the simple mailroom program using a
 single module, a simple data structure, and functions that manipulate
@@ -230,16 +230,19 @@ would start to get a bit unwieldy and hard to maintain.</p>
 </div>
 <div class="section" id="the-program">
 <h2>The program<a class="headerlink" href="#the-program" title="Permalink to this headline">¶</a></h2>
-<p>See: <a class="reference internal" href="mailroom.html#exercise-mailroom"><span class="std std-ref">Mailroom</span></a> to remind yourself what the program needs to do.</p>
+<p>See: <a class="reference internal" href="mailroom.html#exercise-mailroom"><span class="std std-ref">Mailroom: A complete program</span></a> to remind yourself what the program needs to do.</p>
 </div>
 <div class="section" id="suggestions">
 <h2>Suggestions<a class="headerlink" href="#suggestions" title="Permalink to this headline">¶</a></h2>
-<p>One of the hardest parts of OO design (particularly in python) is to know how “low” to go with the classes and data structures. In particular, you might have a bit of data collected together (say, a donor’s name and donation history), This can be a simple tuple with a few items in it, it can be a dict with those same data available as key:value pairs, or it can be a class, with class attributes (and maybe methods).</p>
+<p>One of the hardest parts of OO design (particularly in Python) is to know how “low” to go with the classes and data structures. In particular, you might have a bit of data collected together (say, a donor’s name and donation history), This can be a simple tuple with a few items in it, it can be a dict with those same data available as key:value pairs, or it can be a class, with class attributes (and maybe methods).</p>
 <p>There are no hard and fast rules, but I’ll try to provide guidelines:</p>
-<p>For this assignment it’s OK to go with simple tuples. However, in order for the code to be more flexible in the future, of new “fields” were added to the donor object, it’s probably better to use a more structured type, so you don’t have to worry about changing the order, etc of fields.</p>
-<p>So now you have to think about dict or class? Again for flexibility, I think a dict is a bit easier – you can add fields to it very easily. However, with a class, you can build some functionality in there, too. This is were Encapsulation comes in – for instance, one thing you might want to do is get the total of all donations a donor has made in the past. If you add a method to compute that (or a property!), then the rest of the code doesn’t need to know how the donations are stored.</p>
-<p>So: if you want my hints :-)</p>
+<p>For this assignment it’s OK to go with simple tuples. However, in order for the code to be more flexible in the future, for new “fields” were added to the donor object, it’s probably better to use a more structured type, so you don’t have to worry about changing the order, etc of fields.</p>
+<p>So now you have to think about dict or class? Again for flexibility, I think a dict is a bit easier – you can add fields to it very easily. However, with a class, you can build some functionality in there, too. This is where encapsulation comes in – for instance, one thing you might want to do is get the total of all donations a donor has made in the past. If you add a method to compute that (or a property!), then the rest of the code doesn’t need to know how the donations are stored.</p>
+<p>So: if you want my hints :-)…</p>
 <p>You’ll want a Donor class – this will hold all the information about the donor, and have attributes and methods to provide access to the donor specific information that is needed.</p>
+<p>You’ll then want a class that handles the collection of donors. This will hold all the donor objects, but also methods to add a new donor, search for a given donor, etc. If you want a way to save and re-load your data, this class would have that too.</p>
+<p>your class for the collection of donors will also hold the code that generates reports about multiple donors.</p>
+<p>In general, you will have a method for each of the functions in your non-OO version. Which class they go it will depend on whether the method only needs the information from one donor, or from the whole collection.</p>
 </div>
 </div>
 
@@ -265,7 +268,7 @@ would start to get a bit unwieldy and hard to maintain.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 licence.
+        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>

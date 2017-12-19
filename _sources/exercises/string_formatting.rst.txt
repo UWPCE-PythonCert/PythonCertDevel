@@ -23,8 +23,8 @@ And a nice "Cookbook":
 https://mkaz.tech/python-string-format.html
 
 
-A Couple Exercises
-------------------
+A Couple of Exercises
+---------------------
 
 * Write a format string that will take the tuple:
 
@@ -58,11 +58,11 @@ That works!
 
 So you want to find a string formatting operator that will "pad" the number with zeros for you.
 
-2) The second element is a floating point number, you want to display it with 2 decimal places shown.
+2) The second element is a floating point number. You should display it with 2 decimal places shown.
 
-3) The third value is an integer, but could be any number -- you want it displayed in scientific notation with 2 decimal places shown.
+3) The third value is an integer, but could be any number. You should display it in scientific notation, with 2 decimal places shown.
 
-4) The fourth value is a float with a lot of digits -- display it in scientific notation with 3 significant figures
+4) The fourth value is a float with a lot of digits -- display it in scientific notation with 3 significant figures.
 
 
 Dynamically Building up format strings
@@ -119,10 +119,6 @@ It will look like:
       do_something_here_to_make_a_format_string
 
       return form_string.format(in_tuple)
-
-
-
-
 
 
 

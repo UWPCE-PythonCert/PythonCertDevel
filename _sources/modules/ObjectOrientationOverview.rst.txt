@@ -21,8 +21,8 @@ Good software design is about code re-use, clean separation of concerns,
 refactorability, testability, etc...
 
 OO can help with all that, but:
-  * It doesn't guarantee it
-  * It can get in the way
+  * It doesn't guarantee it.
+  * It can get in the way.
 
 What is Object Oriented Programming?
 
@@ -56,10 +56,10 @@ These are all terms you will hear when talking about Object Oriented Programming
 
 
 Class
-  A category of objects: particular data and behavior: A "circle" (same as a type in python)
+  A category of objects: particular data and behavior: for example, a "circle" (same as a type in Python).
 
 Instance
-  A particular object of a class: a specific circle
+  A particular object of a class: a specific circle.
 
 Object
   The general case of an instance -- really any value (in Python anyway). This term is a bit overloaded -- it also is the generic term for any class. So a class is a particular kind of object.
@@ -69,10 +69,10 @@ Attribute
   as a variable, or single object, as opposed to a ...
 
 Method
-  A function that belongs to a class. In Python, functions *are* semantically the same as any other type -- so all methods are "attributes". but not all attributes are methods --methods are the functions -- or more strictly speaking the 'callable' attributes.
+  A function that belongs to a class. In Python, functions *are* semantically the same as any other type -- so all methods are "attributes", but not all attributes are methods --methods are the functions -- or more strictly speaking the 'callable' attributes.
 
 Encapsulation
-  The approach where the details of the structure is "hidden" in a class -- the user of the class does not need to know how the data is stored (and may not be able to know...)
+  The approach where the details of the structure are "hidden" in a class -- the user of the class does not need to know how the data is stored (and may not be able to know...)
 
 Data Protection
   This is the cocept that classes can hide data from outside access (sometimes called "private" attributes. Python does not strictly support data protection.
@@ -87,10 +87,10 @@ Overriding methods
   When subclassing, the subclass inherits the methods of its parent class. But it can replace them as well, which is called overriding a method.
 
 Operator Overloading
-  Python (and most languages) have operators, like `+`, `-`. `*`, etc. Overloading an operator is a way to define what that operator means to a new class not originally in the language.
+  Python (and most languages) have operators, like `+`, `-`. `*`, etc. Overloading an operator is a way to define what that operator means to a new class that is not originally part of the language.
 
 Polymorphism
-  Allowing instances of multiple classes to be used in the same way. This simply happens with Python's "Duck Typing" -- An object with a given method can have that method called on it. But is statically typed languages, this is a big deal.
+  Allowing instances of multiple classes to be used in the same way. Literally means "having many forms". This simply happens with Python's "Duck Typing" -- An object with a given method can have that method called on it. But is statically typed languages, this is a big deal.
 
 Python and OO
 -------------
@@ -99,13 +99,13 @@ Is Python a "True" Object-Oriented Language?
 
 What are its strengths and weaknesses vis-a-vis OO?
 
-It does support all of the above concepts (except data protection)
+Python does support all of the above concepts (except data protection).
 
 But it does not support *full* encapsulation, i.e., it does not require classes, and classes don't have "private" attributes.
 
 **but ...**
 
-Folks can't even agree on what OO "really" means
+Folks can't even agree on what OO "really" means.
 
 See: The Quarks of Object-Oriented Development
 
@@ -116,13 +116,13 @@ http://ontheturingtest.blogspot.com/2013/11/the-quarks-of-objected-orientation-l
 Object Oriented Design
 ----------------------
 
-There are many books (and web sites, and blog posts, and ...) about "Object Oriented Design", which is an approach to designing your program by starting with what "nouns" (objects) the program needs to manipulate.
+There are many books (and web sites, and blog posts, and ...) about "Object Oriented Design", which is an approach to designing your program by starting with the "nouns" (objects) the program needs to manipulate.
 
 This may be a good approach for a "pure" OO language, but with Python it tends to lead to verbose, poorly performing code.
 
-So my recommendation is to think in terms of what makes sense for your project
+So my recommendation is to think in terms of what makes sense for your project:
 
- -- not any one paradigm of software design.
+ -- there is no single paradigm for software design.
 
 
 Python's roots
@@ -148,23 +148,23 @@ That being said: OO languages give you some handy tools to make it easier (and s
   * Polymorphism (duck typing gives you this)
   * Inheritance
 
-Are the big ones.
+are the big ones.
 
 You will need to understand OO
 ------------------------------
 
-- It's a good idea for a lot of problems
+- It's a good idea for a lot of problems.
 
-- You'll need to work with OO packages
+- You'll need to work with OO packages.
 
-(Much of the standard library is object oriented)
+(Much of the standard library is object oriented).
 
 If not OO Design, then what?
 ----------------------------
 
 I like to take an incremental design approach:
 
-You start with your specification -- what your program has to **Do**
+You start with your specification -- what your program has to **do**
 
 Then you start to create the data structures you need and the functions you need to manipulate that data.
 

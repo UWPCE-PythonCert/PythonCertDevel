@@ -133,7 +133,7 @@
 <li class="toctree-l2"><a class="reference internal" href="kata_fourteen.html">Kata Fourteen: Tom Swift Under Milk Wood</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lambda_magic.html">lambda and keyword Magic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="list_lab.html">List Lab</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mailroom.html">Mailroom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mailroom.html">Mailroom: A complete program</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Introduction To Unit Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="roman.html">Roman/Arabic Numeral Converter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rot13.html">ROT13</a></li>
@@ -141,8 +141,8 @@
 <li class="toctree-l2"><a class="reference internal" href="sparse_array.html">Sparse Array Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="string_formatting.html">String Formatting Lab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trapezoid.html">Trapezoidal Rule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mailroom-oo.html">Mailroom Object Oriented</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mailroom-mfr.html">Mailroom - Map Filter Reduce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mailroom-oo.html">Mailroom - Object Oriented</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mailroom-fp.html">Mailroom - Functional</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
@@ -226,20 +226,20 @@ and the user can query the circle for either its radius or diameter.</p>
 <p>Other abilities of a Circle instance:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Compute the circle’s area</li>
-<li>Print the circle and get something nice</li>
-<li>Be able to add two circles together</li>
-<li>Be able to compare two circles to see which is bigger</li>
-<li>Be able to compare to see if there are equal</li>
-<li>(follows from above) be able to put them in a list and sort them</li>
+<li>Compute the circle’s area.</li>
+<li>Print the circle and get something nice.</li>
+<li>Be able to add two circles together.</li>
+<li>Be able to compare two circles to see which is bigger.</li>
+<li>Be able to compare to see if they are are equal.</li>
+<li>(follows from above) be able to put them in a list and sort them.</li>
 </ul>
 </div></blockquote>
 <p>You will use:</p>
 <blockquote>
 <div><ul class="simple">
-<li>properties</li>
-<li>a bunch of “magic methods”</li>
-<li>a classmethod (after you’ve learned about them…)</li>
+<li>properties.</li>
+<li>a bunch of “magic methods”.</li>
+<li>a classmethod (after you’ve learned about them…).</li>
 </ul>
 </div></blockquote>
 </div>
@@ -253,12 +253,12 @@ and the user can query the circle for either its radius or diameter.</p>
 </div>
 <div class="section" id="step-1">
 <h3>Step 1:<a class="headerlink" href="#step-1" title="Permalink to this headline">¶</a></h3>
-<p>create class called <code class="docutils literal"><span class="pre">Circle</span></code> – it’s signature should look like:</p>
+<p>Create class called <code class="docutils literal"><span class="pre">Circle</span></code> – it’s signature should look like:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="n">the_radius</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The radius is a required parameter (can’t have a circle without one!)</p>
-<p>The resulting circle should have a attribute for the radius:</p>
+<p>The resulting circle should have an attribute for the radius:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">radius</span>
 </pre></div>
 </div>
@@ -301,7 +301,7 @@ and the user can query the circle for either its radius or diameter.</p>
 <span class="mf">12.566370</span>
 </pre></div>
 </div>
-<p>(<code class="docutils literal"><span class="pre">pi</span></code> can be found in the math module)</p>
+<p>(<code class="docutils literal"><span class="pre">pi</span></code> can be found in the math module).</p>
 <p>The user should not be able to set the area:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="o">&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">area</span> <span class="o">=</span> <span class="mi">42</span>
@@ -354,7 +354,7 @@ with the diameter:</p>
 <span class="gh">Out[9]: </span><span class="go">Circle(6)</span>
 </pre></div>
 </div>
-<p>and multiply one times a number:</p>
+<p>and multiply one by a number:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">c2</span> <span class="o">*</span> <span class="mi">3</span>
 <span class="gh">Out[16]: </span><span class="go">Circle(12)</span>
 </pre></div>
@@ -412,7 +412,7 @@ with the diameter:</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li>look through all the “magic methods” and see what makes sense for circles</li>
+<li>Look through all the “magic methods” and see what makes sense for circles.</li>
 </ul>
 </div>
 <div class="section" id="step-9-subclassing">
@@ -423,7 +423,7 @@ with the diameter:</p>
 <li>Create a <code class="docutils literal"><span class="pre">Sphere</span></code> Class that subclasses <code class="docutils literal"><span class="pre">Circle</span></code>.</li>
 <li>Override the <code class="docutils literal"><span class="pre">__str__</span></code> and <code class="docutils literal"><span class="pre">__repr__</span></code> methods to be appropriate for Spheres.</li>
 <li>Create a <code class="docutils literal"><span class="pre">volume</span></code> property that returns the volume (hint: volume of a sphere is: 4/3 pi r^3).</li>
-<li>Override the area property so that it either computes the surface area of a sphere (what’s the formula for that???), or have it raise an Exception: maybe <code class="docutils literal"><span class="pre">NotImplementedError</span></code>.</li>
+<li>Override the area property so that it either computes the surface area of a sphere (what’s the formula for that???), or have it raise an exception: maybe <code class="docutils literal"><span class="pre">NotImplementedError</span></code>.</li>
 </ul>
 <p>Make sure to write some tests – maybe ahead of time! –  that confirm that all this works. And the other things like addition, and sorting…</p>
 <p>Check that the <code class="docutils literal"><span class="pre">Sphere.from_diameter()</span></code> alternate constructor actually creates a Sphere! (you DO NOT have to write a new classmethod for that!) – pretty cool, eh?</p>
@@ -453,7 +453,7 @@ with the diameter:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 licence.
+        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>

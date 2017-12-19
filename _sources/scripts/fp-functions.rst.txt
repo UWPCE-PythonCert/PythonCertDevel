@@ -8,7 +8,10 @@ Functional Programming - Functions
 
 With Rick Riehle
 
+Status:  Filmed with Ryan on 2017-12-12
+
 [Required: some fancy weatherman style overlay for the math notation?]
+
 
 We have been working with functions since the early lessons of the curriculum. Let’s step back for a moment to frame them in the context of Functional Programming.
 
@@ -26,21 +29,21 @@ Python allows us to do a lot with functions. We can return two or more values fr
 
 Recall that when a "function" is defined within a class we no longer call it a function, but instead refer to it as a method. This is not an accident. The return values from methods can and indeed are typically based on data, or state information, that the class, or really, the object at this point, is carrying. That being the case we have clearly violated the textbook definition of a function. In other words, a method is explicitly not a function, even though they have the same structure and do the same sorts of things. The difference is that a method, which again is embedded in an object or class, is likely going to factor in the rest of the object's current state information when returning values, and thus we no longer have the property of a clean single input or set of inputs mapping to a single output.
 
-[Show: Function vs Method example]
+[Show: Function vs Method example] ::
 
-def my_function(x, y):
-    """ This is a function, because it is not a member of a class. """
-    return x + y
+    def my_function(x, y):
+        """ This is a function, because it is not a member of a class. """
+        return x + y
 
-class MyClass(object):
-    z = randint(0, 999)
-    def my_method(self, x, y):
-	    """
-	    This is not a function,
-	    because it is a member of a class,
-	    and thus will likely use the class's internal state in its calculations.
-	    """
-    	return x + y + self.z
+    class MyClass(object):
+        z = randint(0, 999)
+        def my_method(self, x, y):
+    	    """
+    	    This is not a function,
+    	    because it is a member of a class,
+    	    and thus will likely use the class's internal state in its calculations.
+    	    """
+        	return x + y + self.z
 
 [title: Scope]
 
@@ -51,7 +54,9 @@ Keep in mind also that Python has scoping rules that allow functions to see outs
 [title: Functional Programming in Python is a Discipline]
 
 In functional programming we avoid these sorts of situations. In Python, if we are to develop in a functional style, we need to be cognizant of our goals, we need to adopt the practices and habits of the culture, because Python does not force these habits upon us. It is up to us to adopt them.
+
 [title: Functions as First Class Language Constructs]
+
 What does it mean that this or that is a first-class language construct?
 
 Well, in Python what do we have that are first class language constructs?
@@ -62,7 +67,7 @@ Lists, Tuples, Dictionaries, Sets. These are all first class language constructs
 
 Likewise in Python you can define functions. You can name them with def or leave them unnamed with lambda. You can save them in lists or tuples. You can pass them around to other functions. They can become members of objects as methods when you define them inside of classes… notwithstanding the definitional caveats we’ve already discussed.
 
-Recognize that most of what we’re going to discuss in the rest of the material on functional programming would not be possible if functions were not first-class language constructs. When we’re using map, filter and reduce we’re passing functions to them. When we’re working with comprehensions we’ll be passing functions around. Closures and then especially Decorators rely on the ability to pass functions to other functions. It’s all based on the fact that Python supports functions as first class language constructs.
+Recognize that most of what we’re going to discuss in the rest of the material on functional programming would not be possible if functions were not first-class language constructs. When we’re using map, filter and reduce we’re passing functions to them. When we’re working with comprehensions we’ll be passing functions around. Closures and Decorators rely on the ability to pass functions to other functions. It’s all based on the fact that Python supports functions as first class language constructs.
 
 [title: Composition]
 

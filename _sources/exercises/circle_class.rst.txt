@@ -20,19 +20,19 @@ and the user can query the circle for either its radius or diameter.
 
 Other abilities of a Circle instance:
 
- * Compute the circle's area
- * Print the circle and get something nice
- * Be able to add two circles together
- * Be able to compare two circles to see which is bigger
- * Be able to compare to see if there are equal
- * (follows from above) be able to put them in a list and sort them
+ * Compute the circle's area.
+ * Print the circle and get something nice.
+ * Be able to add two circles together.
+ * Be able to compare two circles to see which is bigger.
+ * Be able to compare to see if they are are equal.
+ * (follows from above) be able to put them in a list and sort them.
 
 
 You will use:
 
-  - properties
-  - a bunch of "magic methods"
-  - a classmethod (after you've learned about them...)
+  - properties.
+  - a bunch of "magic methods".
+  - a classmethod (after you've learned about them...).
 
 
 General Instructions:
@@ -48,13 +48,13 @@ General Instructions:
 Step 1:
 -------
 
-create class called ``Circle`` -- it's signature should look like::
+Create class called ``Circle`` -- it's signature should look like::
 
   c = Circle(the_radius)
 
 The radius is a required parameter (can't have a circle without one!)
 
-The resulting circle should have a attribute for the radius::
+The resulting circle should have an attribute for the radius::
 
   c.radius
 
@@ -108,7 +108,7 @@ Add an ``area`` property so the user can get the area of the circle:
     >> print(c.area)
     12.566370
 
-(``pi`` can be found in the math module)
+(``pi`` can be found in the math module).
 
 The user should not be able to set the area:
 
@@ -174,7 +174,7 @@ You should be able to add two circles:
     In [9]: c1 + c2
     Out[9]: Circle(6)
 
-and multiply one times a number:
+and multiply one by a number:
 
 .. code-block:: ipython
 
@@ -243,7 +243,7 @@ Step 8: Optional Features:
 
   a_circle *= 2
 
-* look through all the "magic methods" and see what makes sense for circles
+* Look through all the "magic methods" and see what makes sense for circles.
 
 
 Step 9: Subclassing!
@@ -259,13 +259,8 @@ So we can get a pretty useful Sphere class by simply subclassing Circle, and add
 
 * Create a ``volume`` property that returns the volume (hint: volume of a sphere is: 4/3 pi r^3).
 
-* Override the area property so that it either computes the surface area of a sphere (what's the formula for that???), or have it raise an Exception: maybe ``NotImplementedError``.
+* Override the area property so that it either computes the surface area of a sphere (what's the formula for that???), or have it raise an exception: maybe ``NotImplementedError``.
 
 Make sure to write some tests -- maybe ahead of time! --  that confirm that all this works. And the other things like addition, and sorting...
 
 Check that the ``Sphere.from_diameter()`` alternate constructor actually creates a Sphere! (you DO NOT have to write a new classmethod for that!) -- pretty cool, eh?
-
-
-
-
-

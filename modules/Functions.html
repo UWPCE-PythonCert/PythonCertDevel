@@ -128,11 +128,14 @@
 <li class="toctree-l2"><a class="reference internal" href="Decorators.html">Decorators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="EnvironmentOverview.html">Introduction to the Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IPythonIntroduction.html">IPython Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IPythonParallel.html">IPython Parallel Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Lambda.html">Anonymous Functions: Lambda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MapFilterReduce.html">Map Filter and Reduce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MultipleInheritance.html">Multiple Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NamingThings.html">Style and Naming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ObjectOrientationOverview.html">Object Orientation Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OO_vs_functional.html">Object Oriented vs Functional Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Properties.html">Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Py2vsPy3.html">Python 2 verses Python 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PythonClasses.html">Python Classes</a></li>
@@ -143,6 +146,8 @@
 <li class="toctree-l2"><a class="reference internal" href="Testing.html">Unit Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tutorial.html">Python Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MoreOnMutability.html">A bit more on mutability (and copies)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Packaging.html#distributing">Distributing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/index.html">Quizzes</a></li>
@@ -217,7 +222,7 @@
             
   <div class="section" id="more-on-functions">
 <span id="id1"></span><h1>More on Functions<a class="headerlink" href="#more-on-functions" title="Permalink to this headline">¶</a></h1>
-<p>From various tutorials, etc, you should have the basics of writing functions down.</p>
+<p>From the materials you have covered up to this point you should have mastered the basics of writing functions.</p>
 <p>In particular, you know that functions can contain a chunk of code that can be written once, and used multiple times from other parts of the code.</p>
 <p>You know that you can pass values into the function, and that it can return values to the “calling” code.</p>
 <p>Now we will dig a bit deeper down into the specifics of functions in Python:</p>
@@ -259,9 +264,9 @@ given block.</p>
 </div>
 <p>No – they did not. The “y” and “z” names <em>inside</em> the function are completely separate from the “y” and “z” outside the function.</p>
 <p>The ones outside the function are “global” names.</p>
-<p><strong>NOTE:</strong> “global” in python means global to the module (generally a single file), not global to an entire program. Which is really good, as you have little way of knowing what names are being used in packages you are using, but are not writing yourself!</p>
+<p><strong>NOTE:</strong> “global” in Python means global to the module (generally a single file), not global to an entire program. Which is really good, as you have little way of knowing what names are being used in packages you are using, but are not writing yourself!</p>
 <p>In general, you should use global names mostly for constants.</p>
-<p>The python convention is to designate global constants by typing the
+<p>The Python convention is to designate global constants by typing the
 names we bind to them in ALL_CAPS:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">]</span>
 <span class="n">CONFIGURATION_KEY</span> <span class="o">=</span> <span class="s1">&#39;some secret value&#39;</span>
@@ -306,7 +311,7 @@ the global value already bound. So in the line that caused the error:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
 </pre></div>
 </div>
-<p>Python knows that x is a local name, as it is assigned on the next line.  But on this line,  x does has not yet been given a value – hence the error.</p>
+<p>Python knows that x is a local name, as it is assigned on the next line.  But on this line,  x has not yet been given a value – hence the error.</p>
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
@@ -317,14 +322,14 @@ the global value already bound. So in the line that caused the error:</p>
 </div>
 <p>These types of parameters are called <em>positional</em></p>
 <p>When you call a function, you <strong>must</strong> provide arguments for all <em>positional</em>
-parameters <em>in the order they are listed</em></p>
+parameters <em>in the order they are listed</em>.</p>
 <p>You can provide <em>default values</em> for parameters in a function definition:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [24]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
 <span class="gp">   ....:</span>
 </pre></div>
 </div>
-<p>When parameters are given with default values, they become <em>optional</em></p>
+<p>When parameters are given with default values, they become <em>optional</em>.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">fun</span><span class="p">()</span>
 <span class="go">1 2 3</span>
 </pre></div>
@@ -356,8 +361,8 @@ provide any <em>positional</em> arguments:</p>
 <div class="section" id="recursion">
 <h2>Recursion<a class="headerlink" href="#recursion" title="Permalink to this headline">¶</a></h2>
 <p>You’ve seen functions that call other functions.</p>
-<p>If a function calls <em>itself</em>, we call that <strong>recursion</strong></p>
-<p>Like with other functions, a call within a call establishes a <em>call stack</em></p>
+<p>If a function calls <em>itself</em>, we call that <strong>recursion</strong>.</p>
+<p>Like with other functions, a call within a call establishes a <em>call stack</em>.</p>
 <p>With recursion, if you are not careful, this stack can get <em>very</em> deep.</p>
 <p>Python has a maximum limit to how much it can recurse. This is intended to
 save your machine from running out of RAM.</p>
@@ -370,7 +375,7 @@ save your machine from running out of RAM.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>5! == 5 * 4 * 3 * 2 * 1
 </pre></div>
 </div>
-<p>We can use a recursive function nicely to model this mathematical function</p>
+<p>We can use a recursive function nicely to model this mathematical function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;compute the factorial of the input value, n&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -381,10 +386,10 @@ save your machine from running out of RAM.</p>
 </div>
 <p>This is a typical structure for a recursive function:</p>
 <ol class="upperalpha simple">
-<li>It starts with a check to see if there if the recursive process is “done” – can it simply return a simple value.</li>
-<li>If not, then it does a computation using the same function of another value.</li>
+<li>It starts with a check to see if the recursive process is “done” – can it simply return a simple value.</li>
+<li>If not, then it does a computation using the same function with another value.</li>
 </ol>
-<p>It is critical at that that first step be there, or the function will never terminate.</p>
+<p>It is critical at that the first check is there, or the function will never terminate.</p>
 </div>
 </div>
 
@@ -410,7 +415,7 @@ save your machine from running out of RAM.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 licence.
+        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>

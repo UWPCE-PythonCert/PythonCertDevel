@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>4. Dictionaries, Set and Files &mdash; PythonCert 4.0 documentation</title>
+  <title>Collecitons Video &mdash; PythonCert 4.0 documentation</title>
   
 
   
@@ -99,7 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/index.html">Resources for Specific Python Topics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../scripts/index.html">Video Scripts for the first two classes in Python Cert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Video Scripts for the first two classes in Python Cert</a></li>
 </ul>
 
             
@@ -144,13 +144,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>4. Dictionaries, Set and Files</li>
+      <li>Collecitons Video</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/lesson_templates/course1_lesson04.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/scripts/Collections.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -163,57 +163,128 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="dictionaries-set-and-files">
-<span id="course1-lesson04"></span><h1>4. Dictionaries, Set and Files<a class="headerlink" href="#dictionaries-set-and-files" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="learning-objectives">
-<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
-<p>After completing this lesson, students will:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li>Use dictionaries and sets to process related groups of structured data.</li>
-<li>Process files, including reading, writing and managing records.</li>
-</ol>
-</div></blockquote>
-</div>
-<div class="section" id="reading">
-<h2>Reading<a class="headerlink" href="#reading" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../modules/DictsAndSets.html#dicts-and-sets"><span class="std std-ref">Dictionaries and Sets</span></a></p>
-<p><a class="reference internal" href="../modules/Files.html#files"><span class="std std-ref">File Reading and Writing</span></a></p>
-<div class="section" id="supplemental-reading">
-<h3>Supplemental Reading<a class="headerlink" href="#supplemental-reading" title="Permalink to this headline">¶</a></h3>
+  <div class="section" id="collecitons-video">
+<span id="script-collections"></span><h1>Collecitons Video<a class="headerlink" href="#collecitons-video" title="Permalink to this headline">¶</a></h1>
+<p>With Rick Riehle</p>
+<div class="section" id="intro">
+<h2>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://docs.python.org/3/library/collections.html">https://docs.python.org/3/library/collections.html</a></p>
 <ul class="simple">
-<li>Think Python: Chapters 11, 13, 14</li>
-<li>Dive Into Python3: Sections 2.6, 2.7, 4, 11</li>
+<li>Built-in data typs plus Collections data typs</li>
+<li>Exploratory approach for this video</li>
 </ul>
-<p><a class="reference external" href="http://www.diveintopython3.net/native-datatypes.html#dictionaries">http://www.diveintopython3.net/native-datatypes.html#dictionaries</a></p>
+<p>(as brew user)</p>
+<p>$ mkvirtualenv -p python3 edu-collections
+$ pip install –upgrade pip
+$ pip install ipython</p>
 </div>
+<div class="section" id="counter">
+<h2>Counter<a class="headerlink" href="#counter" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://docs.python.org/3/library/collections.html?highlight=counter#counter-objects">https://docs.python.org/3/library/collections.html?highlight=counter#counter-objects</a></p>
+<p>$ workon edu-collections
+$ ipython</p>
+<p>from random import SystemRandom
+from string import ascii_letters as letters</p>
+<p>bigstring = ‘’.join(SystemRandom().choice(letters) for _ in range(9999))
+bigstring</p>
+<p>from collections import Counter
+counter = Counter(bigstring)
+counter.elements
+counter</p>
+<p>counter[‘a’]
+counter[‘A’]
+counter.elements
+counter.most_common</p>
+<p>counter.keys()
+counter.values()
+sorted(counter.keys())</p>
 </div>
-<div class="section" id="screencasts-videos">
-<h2>Screencasts / Videos<a class="headerlink" href="#screencasts-videos" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../modules/DictionaryAsSwitch.html#dict-as-switch"><span class="std std-ref">Using a Dictionary to switch</span></a></p>
-</div>
-<div class="section" id="graded-assignments">
-<h2>Graded Assignments<a class="headerlink" href="#graded-assignments" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference internal" href="../exercises/dict_lab.html#exercise-dict-lab"><span class="std std-ref">Dictionary and Set Lab</span></a></li>
-<li><a class="reference internal" href="../exercises/file_lab.html#exercise-file-lab"><span class="std std-ref">File LAB</span></a></li>
-<li>Update mailroom with dicts <a class="reference internal" href="../exercises/mailroom.html#exercise-mailroom-plus"><span class="std std-ref">Part 2: Adding dicts and Files</span></a></li>
-<li><a class="reference internal" href="../exercises/kata_fourteen.html#exercise-trigrams"><span class="std std-ref">Kata Fourteen: Tom Swift Under Milk Wood</span></a></li>
+<div class="section" id="named-tuple">
+<h2>Named Tuple<a class="headerlink" href="#named-tuple" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://docs.python.org/3/library/collections.html?highlight=counter#namedtuple-factory-function-for-tuples-with-named-fields">https://docs.python.org/3/library/collections.html?highlight=counter#namedtuple-factory-function-for-tuples-with-named-fields</a></p>
+<ul class="simple">
+<li>Tuples and databases</li>
 </ul>
-</div></blockquote>
+<p>$ workon edu-collections
+$ ipython</p>
+<p>from collections import namedtuple</p>
+<p>Contact = namedtuple(‘Contact’, ‘name, phone, email, city’)</p>
+<p>Contact?</p>
+<p>Contact&lt;tab&gt;</p>
+<p>Joe = Contact(‘Joe’, phone=‘5551212’, <a class="reference external" href="mailto:email='joe&#37;&#52;&#48;uw&#46;edu">email=’joe<span>&#64;</span>uw<span>&#46;</span>edu</a>’, city=’Seattle’)</p>
+<p>Joe.name</p>
+<p>Joe.city</p>
+<p># Will this work?
+Fred = Contact(‘Fred’, ‘1231234’, <a class="reference external" href="mailto:'fred&#37;&#52;&#48;uw&#46;edu">‘fred<span>&#64;</span>uw<span>&#46;</span>edu</a>’)</p>
+<p># If not, what will?
+Fred = Contact(‘Fred’, ‘1231234’, <a class="reference external" href="mailto:fred&#37;&#52;&#48;uw&#46;edu">fred<span>&#64;</span>uw<span>&#46;</span>edu</a>’, ‘Tacoma’)</p>
+<p>dir(Contact)</p>
+<ul class="simple">
+<li>We can see the fields we defined</li>
+<li>To prevent conflicts with field names, the method and attribute names start with an underscore.</li>
+</ul>
 </div>
-<div class="section" id="ungraded-exercises">
-<h2>Ungraded Exercises<a class="headerlink" href="#ungraded-exercises" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="deque-or-deck">
+<h2>Deque or deck<a class="headerlink" href="#deque-or-deck" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://docs.python.org/3/library/collections.html#deque-objects">https://docs.python.org/3/library/collections.html#deque-objects</a></p>
+<ul class="simple">
+<li>For when you need to impliment a stack or queue</li>
+<li>Perhaps my favorite</li>
+</ul>
+<p>from collections import deque</p>
+<p>deque?
+dir(deque)</p>
+<p>my_queue = deque(range(9))
+my_queue
+my_queue.pop()
+my_queue.popleft()
+my_queue
+my_queue.pop()
+my_queue.pop()
+my_queue
+my_queue.popleft()
+my_queue.popleft()
+my_queue
+my_queue.pop()
+my_queue.pop()
+my_queue.pop()
+my_queue.pop()</p>
 </div>
-<div class="section" id="quizzes-exams">
-<h2>Quizzes / Exams<a class="headerlink" href="#quizzes-exams" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ordered-dict">
+<h2>Ordered Dict<a class="headerlink" href="#ordered-dict" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://docs.python.org/3/library/collections.html?highlight=counter#ordereddict-objects">https://docs.python.org/3/library/collections.html?highlight=counter#ordereddict-objects</a></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ workon edu-collections
+$ ipython
+
+from collections import OrderedDict
+OrderedDict?
+dir(OrderedDict)
+
+OrderedDict.pop?
+OrderedDict.popitem?
+
+from random import SystemRandom
+from string import ascii_letters as letters
+bigstring = &#39;&#39;.join(SystemRandom().choice(letters) for _ in range(9999))
+bigstring
+
+my_dict = dict.fromkeys(bigstring, 0)
+for letter in bigstring:
+    my_dict[letter] += 1
+
+def by_value(x):
+    return x[1]
+
+my_ordered_dict = OrderedDict(sorted(letters.items(), key=by_value))
+my_ordered_dict
+</pre></div>
 </div>
-<div class="section" id="other-activities">
-<h2>Other activities<a class="headerlink" href="#other-activities" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="special-notes-instructions">
-<h2>Special notes/ instructions<a class="headerlink" href="#special-notes-instructions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>These collection types are handy and make your code more clear.</li>
+</ul>
 </div>
 </div>
 

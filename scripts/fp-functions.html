@@ -195,6 +195,7 @@
   <div class="section" id="functional-programming-functions">
 <span id="fp-functions"></span><h1>Functional Programming - Functions<a class="headerlink" href="#functional-programming-functions" title="Permalink to this headline">¶</a></h1>
 <p>With Rick Riehle</p>
+<p>Status:  Filmed with Ryan on 2017-12-12</p>
 <p>[Required: some fancy weatherman style overlay for the math notation?]</p>
 <p>We have been working with functions since the early lessons of the curriculum. Let’s step back for a moment to frame them in the context of Functional Programming.</p>
 <p>Remember from the mathematical definition that functions take arguments and return a single, deterministic output, and for a given set of arguments the same value is always returned.</p>
@@ -205,36 +206,33 @@
 <p>[Read]</p>
 <p>Recall that when a “function” is defined within a class we no longer call it a function, but instead refer to it as a method. This is not an accident. The return values from methods can and indeed are typically based on data, or state information, that the class, or really, the object at this point, is carrying. That being the case we have clearly violated the textbook definition of a function. In other words, a method is explicitly not a function, even though they have the same structure and do the same sorts of things. The difference is that a method, which again is embedded in an object or class, is likely going to factor in the rest of the object’s current state information when returning values, and thus we no longer have the property of a clean single input or set of inputs mapping to a single output.</p>
 <p>[Show: Function vs Method example]</p>
-<dl class="docutils">
-<dt>def my_function(x, y):</dt>
-<dd>“”” This is a function, because it is not a member of a class. “””
-return x + y</dd>
-<dt>class MyClass(object):</dt>
-<dd><p class="first">z = randint(0, 999)
-def my_method(self, x, y):</p>
-<blockquote class="last">
-<div><blockquote>
-<div>“””
-This is not a function,
-because it is a member of a class,
-and thus will likely use the class’s internal state in its calculations.
-“”“</div></blockquote>
-<p>return x + y + self.z</p>
-</div></blockquote>
-</dd>
-</dl>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; This is a function, because it is not a member of a class. &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">999</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">my_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This is not a function,</span>
+<span class="sd">        because it is a member of a class,</span>
+<span class="sd">        and thus will likely use the class&#39;s internal state in its calculations.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+            <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span>
+</pre></div>
+</div>
 <p>[title: Scope]</p>
 <p>[Show: Function Scope example]</p>
 <p>Keep in mind also that Python has scoping rules that allow functions to see outside of their definitions. Let’s say that a function adds i to one of its arguments before returning a value, and that i is not defined locally within the function. In that case something beyond the function could modify the value of i between calls and thus the function would return a different result. In other words your function doesn’t always return the same output for a given set of inputs. This is a violation of the one-output-per-set-of-inputs mathematical definition.</p>
 <p>[title: Functional Programming in Python is a Discipline]</p>
-<p>In functional programming we avoid these sorts of situations. In Python, if we are to develop in a functional style, we need to be cognizant of our goals, we need to adopt the practices and habits of the culture, because Python does not force these habits upon us. It is up to us to adopt them.
-[title: Functions as First Class Language Constructs]
-What does it mean that this or that is a first-class language construct?</p>
+<p>In functional programming we avoid these sorts of situations. In Python, if we are to develop in a functional style, we need to be cognizant of our goals, we need to adopt the practices and habits of the culture, because Python does not force these habits upon us. It is up to us to adopt them.</p>
+<p>[title: Functions as First Class Language Constructs]</p>
+<p>What does it mean that this or that is a first-class language construct?</p>
 <p>Well, in Python what do we have that are first class language constructs?</p>
 <p>Strings. You can create them and name them or leave them unnamed. You can save them in compound, higher-order data structures such as lists and sets. You can pass them around between functions.</p>
 <p>Lists, Tuples, Dictionaries, Sets. These are all first class language constructs.</p>
 <p>Likewise in Python you can define functions. You can name them with def or leave them unnamed with lambda. You can save them in lists or tuples. You can pass them around to other functions. They can become members of objects as methods when you define them inside of classes… notwithstanding the definitional caveats we’ve already discussed.</p>
-<p>Recognize that most of what we’re going to discuss in the rest of the material on functional programming would not be possible if functions were not first-class language constructs. When we’re using map, filter and reduce we’re passing functions to them. When we’re working with comprehensions we’ll be passing functions around. Closures and then especially Decorators rely on the ability to pass functions to other functions. It’s all based on the fact that Python supports functions as first class language constructs.</p>
+<p>Recognize that most of what we’re going to discuss in the rest of the material on functional programming would not be possible if functions were not first-class language constructs. When we’re using map, filter and reduce we’re passing functions to them. When we’re working with comprehensions we’ll be passing functions around. Closures and Decorators rely on the ability to pass functions to other functions. It’s all based on the fact that Python supports functions as first class language constructs.</p>
 <p>[title: Composition]</p>
 <p>Composition is one of those shared ideas between the two programming paradigms we’re discussing, yet it refers to completely different things depending on the paradigm we’re discussing.</p>
 <p>[title: Object Oriented Composition]</p>
@@ -281,7 +279,7 @@ What does it mean that this or that is a first-class language construct?</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 licence.
+        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>

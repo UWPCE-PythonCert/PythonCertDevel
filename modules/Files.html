@@ -243,7 +243,7 @@
             
   <div class="section" id="file-reading-and-writing">
 <span id="files"></span><h1>File Reading and Writing<a class="headerlink" href="#file-reading-and-writing" title="Permalink to this headline">¶</a></h1>
-<p>Saving and loading data</p>
+<p>Saving and loading data.</p>
 <div class="section" id="id1">
 <h2>Files<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="text-files">
@@ -254,7 +254,7 @@
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">secret_data</span></code> is a string</p>
-<p>NOTE: these days, you probably need to use Unicode for text – we’ll get to that later</p>
+<p>NOTE: these days, you probably need to use Unicode for text – we’ll get to that later…</p>
 </div>
 <div class="section" id="binary-files">
 <h3>Binary Files<a class="headerlink" href="#binary-files" title="Permalink to this headline">¶</a></h3>
@@ -263,8 +263,7 @@
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">secret_data</span></code> is a byte string</p>
-<p>(with arbitrary bytes in it – well, not arbitrary – whatever is in the file.)</p>
+<p><code class="docutils literal"><span class="pre">secret_data</span></code> is a byte string (with arbitrary bytes in it – well, not arbitrary – whatever is in the file!)</p>
 <p>(See the <code class="docutils literal"><span class="pre">struct</span></code>  module to unpack binary data )</p>
 </div>
 <div class="section" id="file-opening-modes">
@@ -279,11 +278,11 @@
 <p>These follow the Unix conventions, and aren’t all that well documented
 in the Python docs. But these BSD docs make it pretty clear:</p>
 <p><a class="reference external" href="http://www.manpagez.com/man/3/fopen/">http://www.manpagez.com/man/3/fopen/</a></p>
-<p><strong>Gotcha</strong> – ‘w’ modes always clear the file</p>
+<p><strong>Gotcha</strong> – ‘w’ modes always clear the file.</p>
 </div>
 <div class="section" id="text-file-notes">
 <h3>Text File Notes<a class="headerlink" href="#text-file-notes" title="Permalink to this headline">¶</a></h3>
-<p>Text is default</p>
+<p>Text is default:</p>
 <blockquote>
 <div><ul class="simple">
 <li>Newlines are translated: <code class="docutils literal"><span class="pre">\r\n</span> <span class="pre">-&gt;</span> <span class="pre">\n</span></code></li>
@@ -295,13 +294,13 @@ in the Python docs. But these BSD docs make it pretty clear:</p>
 <blockquote>
 <div><ul class="simple">
 <li>no difference between text and binary on *nix</li>
-<li>breaks on Windows</li>
+<li>but this is not true on Windows, and will cause an error.</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="file-reading">
 <h3>File Reading<a class="headerlink" href="#file-reading" title="Permalink to this headline">¶</a></h3>
-<p>Reading part of a file</p>
+<p>Reading part of a file:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">header_size</span> <span class="o">=</span> <span class="mi">4096</span>
 <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;secrets.txt&#39;</span><span class="p">)</span>
 <span class="n">secret_header</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">header_size</span><span class="p">)</span>
@@ -349,7 +348,7 @@ the syntax and the advantage over the try-finally block:</p>
 </div>
 <div class="section" id="file-methods">
 <h3>File Methods<a class="headerlink" href="#file-methods" title="Permalink to this headline">¶</a></h3>
-<p>Commonly Used Methods</p>
+<p>Commonly Used Methods:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>  <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 
 <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="n">f</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
@@ -372,7 +371,7 @@ the syntax and the advantage over the try-finally block:</p>
 <span class="n">Out</span><span class="p">[</span><span class="mi">425</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(handy for testing file handling code…)</p>
+<p>(This can be handy for testing file handling code…)</p>
 <p>There is also cStringIO – a bit faster.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cStringIO</span> <span class="kn">import</span> <span class="n">StringIO</span>
 </pre></div>
@@ -383,7 +382,7 @@ the syntax and the advantage over the try-finally block:</p>
 <h2>Paths and Directories<a class="headerlink" href="#paths-and-directories" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="paths">
 <h3>Paths<a class="headerlink" href="#paths" title="Permalink to this headline">¶</a></h3>
-<p>Paths are generally handled with simple strings (or Unicode strings)</p>
+<p>Paths are generally handled with simple strings (or Unicode strings).</p>
 <p>Relative paths:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="s1">&#39;secret.txt&#39;</span>
 <span class="s1">&#39;./secret.txt&#39;</span>
@@ -394,7 +393,7 @@ the syntax and the advantage over the try-finally block:</p>
 </pre></div>
 </div>
 <p>Either work with <code class="docutils literal"><span class="pre">open()</span></code> , etc.</p>
-<p>(working directory only makes sense with command-line programs…)</p>
+<p>(A working directory only makes sense with command-line programs.)</p>
 </div>
 <div class="section" id="os-module">
 <h3>os module<a class="headerlink" href="#os-module" title="Permalink to this headline">¶</a></h3>
@@ -423,7 +422,7 @@ the syntax and the advantage over the try-finally block:</p>
 <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>(higher level stuff in <code class="docutils literal"><span class="pre">shutil</span></code>  module)</p>
+<p>(Note the <code class="docutils literal"><span class="pre">shutil</span></code>  module provides higher level operations.)</p>
 </div>
 <div class="section" id="pathlib">
 <h3>pathlib<a class="headerlink" href="#pathlib" title="Permalink to this headline">¶</a></h3>
@@ -462,8 +461,8 @@ the syntax and the advantage over the try-finally block:</p>
 <p>As of Python 3.6, there is now a protocol for making arbitrary objects act like paths:</p>
 <p>Read about it in PEP 519:</p>
 <p><a class="reference external" href="https://www.python.org/dev/peps/pep-0519/">https://www.python.org/dev/peps/pep-0519/</a></p>
-<p>This we added because most built-in file handling modules, as well as any number of third party packages that needed a path worked only with paths string paths.</p>
-<p>Even after <code class="docutils literal"><span class="pre">pathlib</span></code> was added to the standard library, you couldn’t pass a <code class="docutils literal"><span class="pre">Path</span></code> object in where a path was needed –even the most common ones like <code class="docutils literal"><span class="pre">open()</span></code></p>
+<p>This was added because most built-in file handling modules, as well as any number of third party packages that needed a path, worked only with paths string paths.</p>
+<p>Even after <code class="docutils literal"><span class="pre">pathlib</span></code> was added to the standard library, you couldn’t pass a <code class="docutils literal"><span class="pre">Path</span></code> object in where a path was needed –even the most common ones like <code class="docutils literal"><span class="pre">open()</span></code>.</p>
 <p>So you could use the nifty path manipulation stuff, but still needed to call <code class="docutils literal"><span class="pre">str</span></code> on it:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="n">a_filename</span><span class="o">.</span><span class="n">txt</span>
 
@@ -471,7 +470,7 @@ the syntax and the advantage over the try-finally block:</p>
 </pre></div>
 </div>
 <p>Rather than add explicit support for <code class="docutils literal"><span class="pre">Path</span></code> objects, a new protocol was defined, and most of the standard library was updated to support the new protocol.</p>
-<p>This way third party path libraries could be used with the standard library as well.</p>
+<p>This way, third party path libraries could be used with the standard library as well.</p>
 </div>
 <div class="section" id="what-this-means-to-you">
 <h3>What this means to you<a class="headerlink" href="#what-this-means-to-you" title="Permalink to this headline">¶</a></h3>
@@ -557,7 +556,7 @@ just follow this pattern – it really is more robust.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 licence.
+        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>

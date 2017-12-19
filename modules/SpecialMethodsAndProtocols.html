@@ -237,8 +237,8 @@
             
   <div class="section" id="special-methods-protocols">
 <span id="special-methods"></span><h1>Special Methods &amp; Protocols<a class="headerlink" href="#special-methods-protocols" title="Permalink to this headline">¶</a></h1>
-<p>Special methods (also called <em>magic</em> methods) are the secret sauce to Python’s Duck typing.</p>
-<p>Defining the appropriate special methods in your classes is how you make your class act like standard classes.</p>
+<p>Special methods (also called <em>magic</em> methods) are the secret sauce to Python’s duck typing.</p>
+<p>Defining the appropriate special methods in your classes is how you make your class act like the standard classes.</p>
 <div class="section" id="what-s-in-a-name">
 <h2>What’s in a Name?<a class="headerlink" href="#what-s-in-a-name" title="Permalink to this headline">¶</a></h2>
 <p>We’ve seen at least one special method so far:</p>
@@ -259,7 +259,7 @@ the <em>informal</em> string representation of an object.</dd>
 <dt><code class="docutils literal"><span class="pre">object.__repr__</span></code>:</dt>
 <dd><p class="first">Called by the repr() built-in function to compute the <em>official</em> string representation of an object.</p>
 <p>Ideally: <code class="docutils literal"><span class="pre">eval(</span> <span class="pre">repr(something)</span> <span class="pre">)</span> <span class="pre">==</span> <span class="pre">something</span></code></p>
-<p>This means that the “repr” is what you type to create the object. IN practice, this is impractical for complex objects… but it is still a more “formal” form.</p>
+<p>This means that the “repr” is what you type to create the object. In practice, this is impractical for complex objects… but it is still a more “formal” form.</p>
 <p class="last">Note that is you don’t define a <code class="docutils literal"><span class="pre">__str__</span></code> method, than the __repr__ will be used. And the base class (<code class="docutils literal"><span class="pre">object</span></code>) has a __repr__ defined, so every class automatically gets one – but it’s ugly :-)</p>
 </dd>
 </dl>
@@ -268,7 +268,7 @@ the <em>informal</em> string representation of an object.</dd>
 <h2>Protocols<a class="headerlink" href="#protocols" title="Permalink to this headline">¶</a></h2>
 <p>The set of special methods needed to emulate a particular type of Python object is called a <em>protocol</em>.</p>
 <p>Your classes can “become” like Python built-in classes by implementing the methods in a given protocol.</p>
-<p>Remember, these are more <em>guidelines</em> than laws.  Implement what you need.</p>
+<p>Remember, these are more <em>guidelines</em> than laws.  Implement only what you need.</p>
 </div>
 <div class="section" id="the-numerics-protocol">
 <h2>The Numerics Protocol<a class="headerlink" href="#the-numerics-protocol" title="Permalink to this headline">¶</a></h2>
@@ -289,7 +289,7 @@ the <em>informal</em> string representation of an object.</dd>
 <span class="nb">object</span><span class="o">.</span><span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(or the fraction you actually need)</p>
+<p>(or the fraction you actually need).</p>
 </div>
 <div class="section" id="operator-overloading">
 <h2>Operator Overloading<a class="headerlink" href="#operator-overloading" title="Permalink to this headline">¶</a></h2>
@@ -345,13 +345,13 @@ the <em>informal</em> string representation of an object.</dd>
 </div>
 <div class="section" id="total-ordering">
 <h2>Total Ordering<a class="headerlink" href="#total-ordering" title="Permalink to this headline">¶</a></h2>
-<p>You may notice that those operators are kind of redundant – if <code class="docutils literal"><span class="pre">A</span> <span class="pre">&gt;</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">True</span></code> then we know that <code class="docutils literal"><span class="pre">A</span> <span class="pre">&lt;</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">False</span></code> and <code class="docutils literal"><span class="pre">A</span> <span class="pre">&lt;=</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">False</span></code></p>
-<p>in fact, there is a mathematical / computer science concept know as “Total Order”: (<a class="reference external" href="https://en.wikipedia.org/wiki/Total_order">https://en.wikipedia.org/wiki/Total_order</a>), which strictly defines “well behaved” objects in this regard.</p>
+<p>You may notice that those operators are kind of redundant – if <code class="docutils literal"><span class="pre">A</span> <span class="pre">&gt;</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">True</span></code> then we know that <code class="docutils literal"><span class="pre">A</span> <span class="pre">&lt;</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">False</span></code> and <code class="docutils literal"><span class="pre">A</span> <span class="pre">&lt;=</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">False</span></code>.</p>
+<p>In fact, there is a mathematical / computer science concept know as “Total Order”: (<a class="reference external" href="https://en.wikipedia.org/wiki/Total_order">https://en.wikipedia.org/wiki/Total_order</a>), which strictly defines “well behaved” objects in this regard.</p>
 <p>There may be some special cases, where these rules may not apply for your classes (though I can’t think of any :-) ), but for the most part, you want your classes, if they support comparisons at all, to be well behaved, or “total ordered”.</p>
 <p>Because this is the common case, Python comes with a nifty utility that implements total ordering for you:</p>
 <p><a class="reference external" href="https://docs.python.org/3.6/library/functools.html#functools.total_ordering">https://docs.python.org/3.6/library/functools.html#functools.total_ordering</a></p>
-<p>it can be found in the functools module, and allows you to specify __eq__ and only one of: <code class="docutils literal"><span class="pre">__lt__()</span></code>, <code class="docutils literal"><span class="pre">__le__()</span></code>, <code class="docutils literal"><span class="pre">__gt__()</span></code>, or <code class="docutils literal"><span class="pre">__ge__()</span></code>.  It will then fill in the others for you.</p>
-<p>Note: if you define only one, it should be <code class="docutils literal"><span class="pre">__lt__</span></code>, because this is the one used for sorting (see below for more about that)</p>
+<p>It can be found in the functools module, and allows you to specify __eq__ and only one of: <code class="docutils literal"><span class="pre">__lt__()</span></code>, <code class="docutils literal"><span class="pre">__le__()</span></code>, <code class="docutils literal"><span class="pre">__gt__()</span></code>, or <code class="docutils literal"><span class="pre">__ge__()</span></code>.  It will then fill in the others for you.</p>
+<p>Note: if you define only one, it should be <code class="docutils literal"><span class="pre">__lt__</span></code>, because this is the one used for sorting (see below for more about that).</p>
 <p>Here is the truncated example from the docs:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@total_ordering</span>
 <span class="k">class</span> <span class="nc">Student</span><span class="p">:</span>
@@ -368,9 +368,9 @@ the <em>informal</em> string representation of an object.</dd>
 <div class="section" id="sorting">
 <h2>Sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">¶</a></h2>
 <p>Python has a handful of sorting methods built in:</p>
-<p><code class="docutils literal"><span class="pre">list.sort()</span></code> – for sorting a list in place
-<code class="docutils literal"><span class="pre">sorted(iterable)</span></code> – for creating a sorted copy of an iterable (sequence)</p>
-<p>And a couple more obscure ones.</p>
+<p><code class="docutils literal"><span class="pre">list.sort()</span></code> – for sorting a list in place.
+<code class="docutils literal"><span class="pre">sorted(iterable)</span></code> – for creating a sorted copy of an iterable (sequence).</p>
+<p>And a couple of more obscure ones.</p>
 <p>In order for your custom objects to be sortable, they need the <code class="docutils literal"><span class="pre">__lt__</span></code> (less than) magic method defined – that’s about it.</p>
 <p>So if you are using the <code class="docutils literal"><span class="pre">total_ordering</span></code> decorator, it’s best to define <code class="docutils literal"><span class="pre">__eq__</span></code> and <code class="docutils literal"><span class="pre">__lt__</span></code> – that way sorting will be able to use a “native” method for sorting, and maybe get better performance.</p>
 </div>
@@ -378,7 +378,7 @@ the <em>informal</em> string representation of an object.</dd>
 <h2>Sort key methods<a class="headerlink" href="#sort-key-methods" title="Permalink to this headline">¶</a></h2>
 <p>By default, the sorting methods use <code class="docutils literal"><span class="pre">__lt__</span></code> for comparison, and that algorithm calls <code class="docutils literal"><span class="pre">__lt__</span></code> O(n log(n)) times. But if you pass a “key” function in to the sort call:</p>
 <p><code class="docutils literal"><span class="pre">a_list.sort(key=key_fun)</span></code></p>
-<p>Then the key_fun is only called n times, and if the key returns a simple type, like an integer or float, then the sorting will be faster.</p>
+<p>then the key_fun is only called n times, and if the key returns a simple type, like an integer or float, then the sorting will be faster.</p>
 <p>So it often helps to provide a sort_key() method on your class, so it can be passed in to the sort methods:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Simple</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -396,7 +396,7 @@ the <em>informal</em> string representation of an object.</dd>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">list_of_Simple_objects</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">Simple</span><span class="o">.</span><span class="n">sort_key</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See: <a class="reference download internal" href="../_downloads/sort_key.py" download=""><code class="xref download docutils literal"><span class="pre">sort_key.py</span></code></a> for complete example with timing. Here is an example of running it:</p>
+<p>See: <a class="reference download internal" href="../_downloads/sort_key.py" download=""><code class="xref download docutils literal"><span class="pre">sort_key.py</span></code></a> for a complete example with timing. Here is an example of running it:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Timing</span> <span class="k">for</span> <span class="mi">10000</span> <span class="n">items</span>
 <span class="n">regular</span> <span class="n">sort</span> <span class="n">took</span><span class="p">:</span> <span class="mf">0.04288</span><span class="n">s</span>
 <span class="n">key</span> <span class="n">sort</span> <span class="n">took</span><span class="p">:</span> <span class="mf">0.004779</span><span class="n">s</span>
@@ -420,7 +420,7 @@ implement <code class="docutils literal"><span class="pre">__add__</span></code>
 <p>[a slightly more complete example may be seen here <a class="reference download internal" href="../_downloads/vector.py" download=""><code class="xref download docutils literal"><span class="pre">vector.py</span></code></a>]</p>
 <div class="section" id="emulating-standard-types">
 <h3>Emulating Standard types<a class="headerlink" href="#emulating-standard-types" title="Permalink to this headline">¶</a></h3>
-<p>Making your classes behave like the built-ins</p>
+<p>Making your classes behave like the built-ins.</p>
 </div>
 </div>
 <div class="section" id="the-container-protocol">
@@ -482,12 +482,12 @@ implement <code class="docutils literal"><span class="pre">__add__</span></code>
 </div>
 <div class="section" id="callables">
 <h2>“Callables”<a class="headerlink" href="#callables" title="Permalink to this headline">¶</a></h2>
-<p>Various places in python expect a “callable” – something that you can
+<p>Various places in Python expect a “callable” – something that you can
 call like a function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a_result</span> <span class="o">=</span> <span class="n">something</span><span class="p">(</span><span class="n">some_arguments</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>“something” in this case is often a function, but can be anything else
+<p>“Something” in this case is often a function, but can be anything else
 that is “callable”.</p>
 <p>What have we been introduced to recently that is “callable”, but not a
 function object?</p>
@@ -515,7 +515,7 @@ code “calls” an instance of your class:</p>
 </div>
 <div class="section" id="callable-example">
 <h2>Callable example<a class="headerlink" href="#callable-example" title="Permalink to this headline">¶</a></h2>
-<p>And Example of writing a callable class:</p>
+<p>An example of writing a callable class:</p>
 <p>Write a class for a quadratic equation.</p>
 <ul class="simple">
 <li>The initializer for that class should take the parameters: <code class="docutils literal"><span class="pre">a,</span> <span class="pre">b,</span> <span class="pre">c</span></code></li>
@@ -570,7 +570,7 @@ code “calls” an instance of your class:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 licence.
+        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>

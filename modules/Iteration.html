@@ -142,11 +142,14 @@
 <li class="toctree-l2"><a class="reference internal" href="Decorators.html">Decorators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="EnvironmentOverview.html">Introduction to the Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IPythonIntroduction.html">IPython Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IPythonParallel.html">IPython Parallel Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Lambda.html">Anonymous Functions: Lambda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MapFilterReduce.html">Map Filter and Reduce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MultipleInheritance.html">Multiple Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NamingThings.html">Style and Naming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ObjectOrientationOverview.html">Object Orientation Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OO_vs_functional.html">Object Oriented vs Functional Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Properties.html">Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Py2vsPy3.html">Python 2 verses Python 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PythonClasses.html">Python Classes</a></li>
@@ -157,6 +160,8 @@
 <li class="toctree-l2"><a class="reference internal" href="Testing.html">Unit Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tutorial.html">Python Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MoreOnMutability.html">A bit more on mutability (and copies)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Packaging.html#distributing">Distributing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/index.html">Quizzes</a></li>
@@ -239,6 +244,7 @@
 <span class="gp">   .....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="gp">   .....:</span>
 <span class="go">a</span>
+
 <span class="go">s</span>
 <span class="go">t</span>
 <span class="go">r</span>
@@ -304,7 +310,7 @@
 <div class="section" id="loop-control">
 <h3>Loop Control<a class="headerlink" href="#loop-control" title="Permalink to this headline">¶</a></h3>
 <p>Sometimes you want to interrupt or alter the flow of control through a loop.</p>
-<p>Loops can be controlled in two ways, with <code class="docutils literal"><span class="pre">break</span></code> and <code class="docutils literal"><span class="pre">continue</span></code></p>
+<p>Loops can be controlled in two ways, with <code class="docutils literal"><span class="pre">break</span></code> and <code class="docutils literal"><span class="pre">continue</span></code>.</p>
 <p>The <code class="docutils literal"><span class="pre">break</span></code> keyword will cause a loop to immediately terminate:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [141]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">):</span>
 <span class="gp">   .....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
@@ -326,7 +332,7 @@ allow iteration to continue:</p>
 <span class="go">   25 26 27 28 29 ... 41 42 43 44 45 46 47 48 49 50</span>
 </pre></div>
 </div>
-<p>Take some time to look at these examples carefully, and make sure you uderstand them. It’s probably a good idea to write a bit of code to experiment as well.</p>
+<p>Take some time to look at these examples carefully, and make sure you understand them. It’s probably a good idea to write a bit of code to experiment as well.</p>
 </div>
 <div class="section" id="else">
 <h3>else<a class="headerlink" href="#else" title="Permalink to this headline">¶</a></h3>
@@ -348,8 +354,8 @@ allow iteration to continue:</p>
 <span class="go">5</span>
 </pre></div>
 </div>
-<p>This is a really nice unique Python feature!</p>
-<p>If python didn’t have <code class="docutils literal"><span class="pre">else</span></code> on loops, you’d need to set a flag, something like:</p>
+<p>This is a really nice, unique Python feature!</p>
+<p>If Python didn’t have <code class="docutils literal"><span class="pre">else</span></code> on loops, you’d need to set a flag, something like:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">it_did_break</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
@@ -367,7 +373,7 @@ allow iteration to continue:</p>
 <h2>While Loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">¶</a></h2>
 <p>While loops are different – they are not for iterating over a collection, but rather for repeating something an unknown number of times – and maybe even forever – or until the program terminates.</p>
 <p>The <code class="docutils literal"><span class="pre">while</span></code> keyword is for when you don’t know how many loops you need.</p>
-<p>It continues to execute the body until condition is not “Truthy”:</p>
+<p>It continues to execute the body until the associated condition does not evaluate to True:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">a_condition</span><span class="p">:</span>
    <span class="n">some_code</span>
    <span class="n">in_the_body</span>
@@ -377,9 +383,9 @@ allow iteration to continue:</p>
 <h3><code class="docutils literal"><span class="pre">while</span></code> vs. <code class="docutils literal"><span class="pre">for</span></code><a class="headerlink" href="#while-vs-for" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal"><span class="pre">while</span></code>  is more general than <code class="docutils literal"><span class="pre">for</span></code></p>
 <p>– you can always express <code class="docutils literal"><span class="pre">for</span></code> as <code class="docutils literal"><span class="pre">while</span></code>, but not always vice-versa.</p>
-<p><code class="docutils literal"><span class="pre">while</span></code>  is more error-prone – requires some care to terminate</p>
-<p>loop body must make progress, so condition can become <code class="docutils literal"><span class="pre">False</span></code></p>
-<p>potential error – infinite loops:</p>
+<p><code class="docutils literal"><span class="pre">while</span></code>  is more error-prone – requires some care to terminate.</p>
+<p>The loop body must make progress, so the associated condition can become <code class="docutils literal"><span class="pre">False</span></code>.</p>
+<p>Care must be taken to avoid an unintended error – infinite loops:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
@@ -423,9 +429,9 @@ allow iteration to continue:</p>
 <h3>Similarities<a class="headerlink" href="#similarities" title="Permalink to this headline">¶</a></h3>
 <p>Both <code class="docutils literal"><span class="pre">for</span></code> and <code class="docutils literal"><span class="pre">while</span></code> loops can use <code class="docutils literal"><span class="pre">break</span></code> and <code class="docutils literal"><span class="pre">continue</span></code> for
 internal flow control.</p>
-<p>Both <code class="docutils literal"><span class="pre">for</span></code> and <code class="docutils literal"><span class="pre">while</span></code> loops can have an optional <code class="docutils literal"><span class="pre">else</span></code> block</p>
+<p>Both <code class="docutils literal"><span class="pre">for</span></code> and <code class="docutils literal"><span class="pre">while</span></code> loops can have an optional <code class="docutils literal"><span class="pre">else</span></code> block.</p>
 <p>In both loops, the statements in the <code class="docutils literal"><span class="pre">else</span></code> block are only executed if the
-loop terminates normally (no <code class="docutils literal"><span class="pre">break</span></code>)</p>
+loop terminates normally (no <code class="docutils literal"><span class="pre">break</span></code>).</p>
 </div>
 </div>
 <div class="section" id="pythonic-iteration">
@@ -466,7 +472,7 @@ loop terminates normally (no <code class="docutils literal"><span class="pre">br
 <span class="go">i:3, j:5</span>
 </pre></div>
 </div>
-<p>Can be more than two:</p>
+<p>There can be more than two:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">l3</span><span class="p">,</span> <span class="n">l4</span><span class="p">):</span>
 </pre></div>
 </div>
@@ -510,7 +516,7 @@ loop terminates normally (no <code class="docutils literal"><span class="pre">br
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 licence.
+        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>

@@ -216,14 +216,14 @@
 <p>Since they are mostly zeros, it can be memory and computationally efficient to store only the value that are non-zero.</p>
 <p>But you want it to look like a regular array in user code.</p>
 <p>In the real world, these are usually 2 dimensional arrays. But to keep it a bit simpler, we’ll make a 1 dimensional sparse array in this class.</p>
-<p>(feel free to make it 2d for an extra challenge!)</p>
+<p>(feel free to make it 2d for an extra challenge!).</p>
 </div>
 <div class="section" id="a-sparse-array-class">
 <h3>A Sparse array class<a class="headerlink" href="#a-sparse-array-class" title="Permalink to this headline">¶</a></h3>
-<p>A spare array class should present to the user the same interface as a regular list.</p>
+<p>A sparse array class should present to the user the same interface as a regular list.</p>
 <p>Some ideas of how to do that:</p>
 <ul class="simple">
-<li>Internally, it can store the values in a dict, with the index as the keys. So that only the indexes with non-zero values will be stored.</li>
+<li>Internally, it can store the values in a dict, with the index as the keys, so that only the indexes with non-zero values will be stored.</li>
 <li>It should take a sequence of values as an initializer:</li>
 </ul>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sa</span> <span class="o">=</span> <span class="n">SparseArray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
@@ -253,7 +253,7 @@
 </div>
 <ul class="simple">
 <li>It should raise an <code class="docutils literal"><span class="pre">IndexError</span></code> if you try to access an index beyond the end.</li>
-<li>it should have an append() method</li>
+<li>it should have an append() method.</li>
 </ul>
 <ul class="simple">
 <li>Can you make it support slicing?</li>
@@ -292,7 +292,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 licence.
+        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>

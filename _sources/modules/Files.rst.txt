@@ -4,7 +4,7 @@
 File Reading and Writing
 ########################
 
-Saving and loading data
+Saving and loading data.
 
 
 Files
@@ -21,7 +21,7 @@ Text Files
 
 ``secret_data`` is a string
 
-NOTE: these days, you probably need to use Unicode for text -- we'll get to that later
+NOTE: these days, you probably need to use Unicode for text -- we'll get to that later...
 
 
 Binary Files
@@ -33,9 +33,7 @@ Binary Files
     secret_data = f.read()
     f.close()
 
-``secret_data`` is a byte string
-
-(with arbitrary bytes in it -- well, not arbitrary -- whatever is in the file.)
+``secret_data`` is a byte string (with arbitrary bytes in it -- well, not arbitrary -- whatever is in the file!)
 
 (See the ``struct``  module to unpack binary data )
 
@@ -57,12 +55,12 @@ in the Python docs. But these BSD docs make it pretty clear:
 
 http://www.manpagez.com/man/3/fopen/
 
-**Gotcha** -- 'w' modes always clear the file
+**Gotcha** -- 'w' modes always clear the file.
 
 Text File Notes
 ---------------
 
-Text is default
+Text is default:
 
   * Newlines are translated: ``\r\n -> \n``
   *   -- reading and writing!
@@ -72,13 +70,13 @@ Text is default
 Gotcha:
 
   * no difference between text and binary on \*nix
-  * breaks on Windows
+  * but this is not true on Windows, and will cause an error.
 
 
 File Reading
 ------------
 
-Reading part of a file
+Reading part of a file:
 
 .. code-block:: python
 
@@ -138,7 +136,7 @@ File Writing
 File Methods
 ------------
 
-Commonly Used Methods
+Commonly Used Methods:
 
 .. code-block:: python
 
@@ -164,7 +162,7 @@ StringIO
     Out[424]: stuff = f.getvalue()
     Out[425]: f.close()
 
-(handy for testing file handling code...)
+(This can be handy for testing file handling code...)
 
 There is also cStringIO -- a bit faster.
 
@@ -178,7 +176,7 @@ Paths and Directories
 Paths
 -----
 
-Paths are generally handled with simple strings (or Unicode strings)
+Paths are generally handled with simple strings (or Unicode strings).
 
 Relative paths:
 
@@ -196,7 +194,7 @@ Absolute paths:
 
 Either work with ``open()`` , etc.
 
-(working directory only makes sense with command-line programs...)
+(A working directory only makes sense with command-line programs.)
 
 os module
 ----------
@@ -232,7 +230,7 @@ Directories
     os.mkdir()
     os.walk()
 
-(higher level stuff in ``shutil``  module)
+(Note the ``shutil``  module provides higher level operations.)
 
 pathlib
 -------
@@ -284,9 +282,9 @@ Read about it in PEP 519:
 
 https://www.python.org/dev/peps/pep-0519/
 
-This we added because most built-in file handling modules, as well as any number of third party packages that needed a path worked only with paths string paths.
+This was added because most built-in file handling modules, as well as any number of third party packages that needed a path, worked only with paths string paths.
 
-Even after ``pathlib`` was added to the standard library, you couldn't pass a ``Path`` object in where a path was needed --even the most common ones like ``open()``
+Even after ``pathlib`` was added to the standard library, you couldn't pass a ``Path`` object in where a path was needed --even the most common ones like ``open()``.
 
 So you could use the nifty path manipulation stuff, but still needed to call ``str`` on it:
 
@@ -298,7 +296,7 @@ So you could use the nifty path manipulation stuff, but still needed to call ``s
 
 Rather than add explicit support for ``Path`` objects, a new protocol was defined, and most of the standard library was updated to support the new protocol.
 
-This way third party path libraries could be used with the standard library as well.
+This way, third party path libraries could be used with the standard library as well.
 
 What this means to you
 ----------------------

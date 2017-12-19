@@ -18,13 +18,13 @@ All of programming is really about manipulating values.
 
 * Values are pieces of unnamed data: ``42``, ``'Hello, world'``
 
-* In Python, all values are objects
+* In Python, all values are objects.
 
   - Try ``dir(42)``  - lots going on behind the curtain!
 
 * Every value has a type
 
-  - Try ``type(42)`` - the type of a value determines what it can do
+  - Try ``type(42)`` - the type of a value determines what it can do.
 
 .. ifslides::
 
@@ -43,7 +43,7 @@ Numbers:
 Text:
   -  ``"a bit of text"``
   -  ``'a bit of text'``
-  - (either single or double quotes work -- why?)
+  - (either single or double quotes work -- why? If you dont know try looking it up in one of the referenced sources!)
 
 Boolean values:
   -  ``True``
@@ -52,7 +52,7 @@ Boolean values:
 The nothing object:
   - ``None``
 
-(There are intricacies to all of these that we'll get into later)
+(There are intricacies to all of these that we'll get into later.)
 
 
 Code structure
@@ -108,7 +108,7 @@ You can print multiple things:
 
 .. nextslide::
 
-Any python object can be printed (though it might not be pretty...)
+Any Python object can be printed (though it might not be pretty...)
 
 .. code-block:: ipython
 
@@ -128,7 +128,7 @@ Blocks of code are delimited by a colon and indentation:
 
     def a_function():
         a_new_code_block
-    end_of_the_block
+    # end_of_the_block on previous line
 
 .. code-block:: python
 
@@ -144,11 +144,7 @@ Blocks of code are delimited by a colon and indentation:
 
 .. nextslide::
 
-Python uses indentation to delineate structure.
-
-This means that in Python, whitespace is **significant**.
-
-(but **ONLY** for newlines and indentation)
+Python uses indentation to delineate structure. This means that in Python, whitespace is **significant** (but **ONLY** for newlines and indentation).
 
 The standard is to indent with **4 spaces**.
 
@@ -156,6 +152,8 @@ The standard is to indent with **4 spaces**.
 
 **TABS ARE NOT SPACES**
 
+Python requires spaces for indents. You can probably set your editor to replace tabs with spaces.
+This is a good idea as it is easier to type one tab than 4 spaces.
 
 .. nextslide::
 
@@ -193,8 +191,6 @@ But they are not:
 
 .. rst-class:: center large
 
-NEVER INDENT WITH TABS
-
 Make sure your editor is set to use spaces only --
 
 Even when you hit the <tab> key
@@ -211,18 +207,18 @@ An *expression* is made up of values and operators.
 
 * An expression is evaluated to produce a new value:  ``2 + 2``
 
-  *  The Python interpreter can be used as a calculator to evaluate expressions
+  *  The Python interpreter can be used as a calculator to evaluate expressions.
 
 * Integer vs. float arithmetic
 
-  * (Python 3 smooths this out)
+  * (Python 3 smooths this out).
   * Always use ``/`` when you want division with float results, ``//`` when you want floored (integer) results (no remainder).
 
-* Type conversions
+* Type conversions.
 
-  * This is the source of many errors, especially in handling text
+  * This is the source of many errors, especially in handling text.
 
-* Type errors - checked at run time only
+* Type errors - checked at run time only.
 
 .. ifslides::
 
@@ -238,8 +234,8 @@ Symbols are how we give names to values (objects).
 
 .. rst-class:: build
 
-* Symbols must begin with an underscore or letter
-* Symbols can contain any number of underscores, letters and numbers
+* Symbols must begin with an underscore or letter.
+* Symbols can contain any number of underscores, letters and numbers.
 
   * this_is_a_symbol
   * this_is_2
@@ -247,9 +243,9 @@ Symbols are how we give names to values (objects).
   * 1butThisIsNot
   * nor-is-this
 
-* Symbols don't have a type; values do
+* Symbols don't have a type; values do.
 
-  * This is why Python is "Dynamic"
+  * This is why Python is "Dynamic".
 
 
 Symbols and Type
@@ -286,14 +282,10 @@ Assignment
 
 A *symbol* is **bound** to a *value* with the assignment operator: ``=``
 
-.. rst-class:: build
-
-* This attaches a name to a value
+* This attaches a name to a value.
 * A value can have many names (or none!)
-* Assignment is a statement, it returns no value
+* Assignment is a statement, it returns no value.
 
-
-.. nextslide::
 
 Evaluating the name will return the value to which it is bound
 
@@ -432,7 +424,7 @@ You can't actually directly delete values in Python...
 
 .. nextslide::
 
-The object is still there...python will only delete it if there are no
+The object is still there...Python will only delete it if there are no
 references to it.
 
 .. code-block:: ipython
@@ -542,7 +534,7 @@ To check if a name is bound to one of these, you use ``is``:
 
     x is None
 
-Note that in contrast to English -- "is" is asking a question, not making an assertion -- ``a is True`` means "is a the True value?"
+Note that in contrast to English -- "is" is asking a question, not making an assertion -- ``a is True`` means "is a set to the value True?"
 
 
 Operator Precedence
@@ -768,13 +760,15 @@ A function is a self-contained chunk of code.
 You use them when you need the same code to run multiple times,
 or in multiple parts of the program.
 
-(DRY) -- "Don't Repeat Yourself"
+Functions allow you to take code that would otherwise be duplicated potentially many times, and put it in once place. Then all you do is call that code to use it.
 
-Or just to keep the code clean.
+This is often referred to as "DRY" -- "Don't Repeat Yourself".
+
+It also helps to keep the code clean and maintainable, as there is only one place to make a change. This in trun helps reduce defects.
 
 Functions can take and return information.
 
-The minimal Function has at least one statement.
+The minimal function has at least one statement.
 
 .. code-block:: python
 
@@ -790,7 +784,9 @@ Pass Statement does nothing (Note the indentation!)
     def minimal():
         pass
 
-This, of course, is not useful -- you will generally have multiple statements in a function -- and they will do something.
+This, of course, has limited use -- you will generally have multiple statements in a function -- and they will do something.
+
+However, the pass statement can help you by allowing you to create placeholder functions that you will come back to later to develop and embelish.
 
 Functions: ``def``
 ------------------
@@ -894,7 +890,7 @@ Functions: Tracebacks
 
 The error occurred in the ``doer`` function -- but the traceback shows you where that was called from.
 
-Note that is listed in reverse order -- reverse of the order in which it was called.
+Note that this listed in reverse order -- reverse of the order in which the functions are called.
 
 In a more complex system, this can be VERY useful -- learn to read tracebacks!
 
@@ -1009,7 +1005,7 @@ Making a Decision
 
 **"Conditionals"**
 
-In order to do anything interesting at all, you need to be able to make a decision.
+In order to do anything interesting at all, you need to be able to write code to make a decision.
 
 ``if`` and ``elif`` (else if) allow you to make decisions:
 
@@ -1057,7 +1053,7 @@ A way to store a bunch of stuff in order.
 
 Pretty much like an "array" or "vector" in other languages.
 
-To make a list literal you use square brackets an commas between the items:
+To make a list literal you use square brackets and commas between the items:
 
 .. code-block:: python
 
@@ -1093,7 +1089,7 @@ When you need to do something to all the objects in a sequence:
 
 ``range`` builds sequences of numbers automatically
 
-Use it when you need to do something a set number of times
+Use it when you need to do something a set number of times:
 
 .. code-block:: ipython
 
@@ -1103,15 +1099,15 @@ Use it when you need to do something a set number of times
        ....:
     * * * *
 
-NOTE: ``range(n)`` creates an "iterable" -- something you can loop over
--- more on that later.
+NOTE: ``range(n)`` creates an "iterable" -- something you can loop over.
+We will cover iterables in greater depth in a later lesson.
 
 ``assert``
 ----------
 
 Writing ``tests`` that demonstrate that your program works is an important part of learning to program.
 
-The python ``assert`` statement is useful in writing simple tests
+The Python ``assert`` statement is useful in writing simple tests:
 for your code.
 
 .. code-block:: ipython
@@ -1137,7 +1133,7 @@ Intricacies
 
 This is enough to get you started.
 
-Each of these have intricacies special to Python
+Each of the feature we have covered has intricacies special to Python.
 
 We'll get to those over the next couple of lessons -- or really, the rest of the program!
 

@@ -10,6 +10,8 @@ With Rick Riehle
 
 Requires a feed to my laptop.
 
+Status:  Filmed w Ryan on 2017-12-12
+
 
 Introduction
 ============
@@ -18,7 +20,7 @@ Python has a unique way to manage access to object attributes.
 
 <Outline the talk>
 
-We are going to start with standard attributes, nothing fancy, simply define an attribute in your class and use it.  Then we're going to see some of the limitations of that.  Then we'll look at setters and getters and how they might be done in Python and the limitations of that.  Finally we'll look at Properties.  Once we get to Properties we'll see that in a sense we will have come full circle back to where we started, because accessing properties is just like accessing simple attributes.
+We are going to start with standard attributes, nothing fancy, simply define an attribute in your class and use it.  Then we're going to see some of the limitations of that.  Then we'll look at setters and getters and how they might be done in Python.  We will see limitations there too.  Finally we'll look at Properties.  Once we get to Properties we'll see that in a sense we will have come full circle back to where we started, because accessing properties is just like accessing simple attributes, yet we get the benefits of setters and getters.
 
 <Describe the game>
 

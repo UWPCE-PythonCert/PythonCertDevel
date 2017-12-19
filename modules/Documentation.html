@@ -128,11 +128,14 @@
 <li class="toctree-l2"><a class="reference internal" href="Decorators.html">Decorators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="EnvironmentOverview.html">Introduction to the Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IPythonIntroduction.html">IPython Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IPythonParallel.html">IPython Parallel Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Lambda.html">Anonymous Functions: Lambda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MapFilterReduce.html">Map Filter and Reduce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MultipleInheritance.html">Multiple Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NamingThings.html">Style and Naming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ObjectOrientationOverview.html">Object Orientation Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OO_vs_functional.html">Object Oriented vs Functional Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Properties.html">Properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Py2vsPy3.html">Python 2 verses Python 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PythonClasses.html">Python Classes</a></li>
@@ -143,6 +146,8 @@
 <li class="toctree-l2"><a class="reference internal" href="Testing.html">Unit Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tutorial.html">Python Tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MoreOnMutability.html">A bit more on mutability (and copies)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Packaging.html#distributing">Distributing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../quizzes/index.html">Quizzes</a></li>
@@ -219,7 +224,7 @@
 <span id="id1"></span><h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
 <p>It’s often helpful to leave information in your code about what you were
 thinking when you wrote it.</p>
-<p>This can help reduce the number of <a class="reference external" href="http://www.osnews.com/story/19266/WTFs_m">WTFs per minute</a> in reading it later.</p>
+<p>This can help reduce the number of <a class="reference external" href="http://www.osnews.com/story/19266/WTFs_m">WTFs per minute</a> when reading it later.</p>
 <p>There are two approaches to this in Python:</p>
 <ul class="simple">
 <li>Comments</li>
@@ -253,6 +258,7 @@ thinking when you wrote it.</p>
 <li>Be judicious in your use of comments.</li>
 <li>Use them when you need to.</li>
 <li>Make them useful.</li>
+<li>Do not use them merely to restate what the code is / should be doing. Make the code self explanatory!</li>
 </ul>
 </div></blockquote>
 <p>This is not useful:</p>
@@ -292,7 +298,7 @@ add more lines below for enhancement.</li>
 </ul>
 </li>
 <li>Be enclosed with triple-quotes.<ul>
-<li>This allows for easy expansion if required at a later date</li>
+<li>This allows for easy expansion if required at a later date.</li>
 <li>Always close on the same line if the docstring is only one line.</li>
 </ul>
 </li>
@@ -324,7 +330,7 @@ add more lines below for enhancement.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 licence.
+        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
