@@ -18,13 +18,13 @@ Other languages call it:
   * hash
   * key-value pair
 
-It is also known in python as a "mapping", as it "maps" keys to values.
+It is also known in Python as a "mapping", as it "maps" keys to values.
 
 It is like an array, in that it holds a number of items, and you can index into it to get at particular items. But it can use arbitrary indexes, rather than a sequence of numbers.
 
-These indexes are called "keys", and the items stored are called "values"
+These indexes are called "keys", and the items stored are called "values".
 
-So for any python sequence, you might do::
+So for any Python sequence, you might do::
 
   item = stuff[3]
 
@@ -122,12 +122,12 @@ Actually -- any "hashable" type.
 
 So, technically, it's not mutability, but hashability that matters.
 
-(though for most intents and purposes, you want to use immutable types as keys in dicts.)
+(Athough for most intents and purposes, you want to use immutable types as keys in dicts.)
 
 Hashing
 -------
 
-Hash functions convert arbitrarily large data to a small proxy (usually an int)
+Hash functions convert arbitrarily large data to a small proxy (usually an int).
 
 They always return the same proxy for the same input.
 
@@ -139,30 +139,30 @@ Key lookup is efficient because the hash function leads directly to a bucket wit
 
 What would happen if the proxy (hash) changed after storing a key?
 
-(you wouldn't be able to find it again!)
+(Answer: you wouldn't be able to find it again!)
 
 Hashability requires immutability.
 
-Key lookup is very efficient.
+Key lookup is very efficient:
 
-Same average time regardless of size of the dict.
+The access time is constant regardless of the size of the dict.
 
 Dictionary indexing
 -------------------
 
-Note: cPython name look-ups are implemented with the dicts -- it's highly optimized
+Note: cPython name look-ups are implemented with the dicts -- it's highly optimized.
 
 Key to value:
 
- * lookup is one way
+ * lookup is one way.
 
 Value to key:
 
- * requires visiting the whole dict
+ * requires visiting the whole dict.
 
-If you need to check dict values often, create another dict or set
+If you need to check dict values often, create another dict or set.
 
-(up to you to keep them in sync)
+(But note that it's then up to you to keep them in sync).
 
 
 Dictionary Ordering (not)
@@ -231,7 +231,6 @@ Dictionary Iterating
     name
     score
 
-
 dict keys and values
 --------------------
 
@@ -250,7 +249,7 @@ dict keys and values
 
 Notice that these are of type ``dict_keys`` and ``dict_values``. These are special types that provide iteration, printing and other features, but are tied to the underlying dict, rather than copies.
 
-(Python2 would simply create lists of keys and values -- but then you were making a copy when you probably didn't need one)
+(Python2 would simply create lists of keys and values -- but then you were making a copy when you probably didn't need one).
 
 
 dict keys and values
@@ -272,15 +271,15 @@ Iterating on everything
 Dictionary Performance
 -----------------------
 
-  * indexing is fast and constant time: O(1)
+  * indexing is fast and constant time: O(1).
 
-  * ``x in s`` constant time: O(1)
+  * ``x in s`` constant time: O(1).
 
-  * visiting all is proportional to n: O(n)
+  * visiting all is proportional to n: O(n).
 
-  * inserting is constant time: O(1)
+  * inserting is constant time: O(1).
 
-  * deleting is constant time: O(1)
+  * deleting is constant time: O(1).
 
 
  http://wiki.python.org/moin/TimeComplexity
@@ -308,7 +307,7 @@ Is it in there?
 
 Containment is on the keys.
 
-Think of it like  "real" dictionary, where the keys are the words, and the values are the definitions.
+Think of it like a "real" dictionary, where the keys are the words, and the values are the definitions.
 
 Is the word "gullible" in the dictionary? is asking if the key is in the dict.
 
@@ -321,14 +320,14 @@ Getting something: (like indexing)
   In [9]: d.get('this')
   Out[9]: 5
 
-But you can specify a default
+But you can specify a default:
 
 .. code-block:: ipython
 
   In [11]: d.get('something', 'a default')
   Out[11]: 'a default'
 
-Never raises an Exception (default default is None)
+never raises an Exception (default default is None).
 
 
 iterating
@@ -352,7 +351,7 @@ Which is equivalent to, but faster than:
   this
   that
 
-But to get values, must specify you want values:
+But to get values, you must specify you want values:
 
 .. code-block:: ipython
 
@@ -392,7 +391,7 @@ This one is handy:
 
 ``setdefault(key[, default])``
 
-gets the value if it's there, sets it if it's not
+gets the value if it's there, sets it if it's not.
 
 .. code-block:: ipython
 
@@ -429,7 +428,7 @@ And dicts are mutable -- so be careful!
   Out[50]: {'something': 'a value', 'something else': 'another value'}
 
 
-If you want a copy, use the explicit copy method to get a copy
+If you want a copy, use the explicit copy method to get a copy:
 
 .. code-block:: ipython
 
@@ -450,11 +449,11 @@ If you want a copy, use the explicit copy method to get a copy
 Sets
 ====
 
-``set``  is an unordered collection of distinct values
+``set``  is an unordered collection of distinct values.
 
-Essentially a dict with only keys
+Essentially a set is a dict with only keys.
 
-Set Constructors
+Set Constructors:
 
 .. code-block:: ipython
 
@@ -477,11 +476,9 @@ Set Constructors
 Set Properties
 ---------------
 
-``Set``  members must be hashable
+``Set``  members must be hashable, like dictionary keys -- and for same reason (efficient lookup).
 
-Like dictionary keys -- and for same reason (efficient lookup)
-
-No indexing (unordered)
+No indexing (unordered).
 
 .. code-block:: ipython
 
@@ -533,8 +530,7 @@ Frozen Set
 
 Another kind of set: ``frozenset``
 
-immutable -- for use as a key in a dict
-(or another set...)
+immutable -- for use as a key in a dict (or another set...):
 
 .. code-block:: python
 
@@ -614,5 +610,5 @@ Also other nifty stuff in the ``collections`` module:
 
 https://docs.python.org/3.6/library/collections.html
 
-**NOTE:** In Python 3.6, dicts were optimized in a way that happens to preserver order. But this is considered an implementation detail. Do not count on it! If you want order preserved, use OrderedDict.
+**NOTE:** In Python 3.6, dicts were optimized in a way that happens to preserve order. But this is considered an implementation detail. Do not count on it! If you want order preserved, use OrderedDict.
 

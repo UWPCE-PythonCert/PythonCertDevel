@@ -4,9 +4,9 @@
 Boolean Expressions
 ###################
 
-"Boolean" logic is the logic of binary values -- things that can be one of two values. Usually, the two values are considered to be true or false.
+"Boolean" logic is the logic of binary values -- things that can be ony one of two values. Usually, the two values are considered to be true or false.
 
-In programming languages, "booleans" are often a data type -- one that captures this notion of True and False.
+In programming languages, "booleans" are often a data type -- one that captures this notion of true and false.
 
 Python has a boolean type as well: the singletons ``True`` and ``False``.
 
@@ -24,7 +24,7 @@ What is true or false in Python?
 
 * The Booleans: ``True``  and ``False``
 
-* "Something or Nothing"
+* "Something or Nothing"; that is the presence or absence of a value.
 
 *  http://mail.python.org/pipermail/python-dev/2002-April/022107.html
 
@@ -55,7 +55,7 @@ What is False?
 
 * **Nothing:**
 
-    - Zero of any numeric type: ``0, 0.0, 0j``.
+    - The zero value of any numeric type: ``0, 0.0, 0j``.
 
     - Any empty sequence, for example, ``"", (), []``.
 
@@ -69,12 +69,12 @@ What is False?
 
 * http://docs.python.org/library/stdtypes.html
 
-(don't worry about that last one -- what that means is that user-defined types can control their truthiness behavior)
+(Don't worry about that last one -- what that means is that user-defined types can control their truthiness behavior).
 
 What is True?
 -------------
 
-Everything Else
+Everything else.
 
 
 Pythonic Booleans
@@ -127,8 +127,8 @@ operand if none are True:
     Out[36]: 456
 
 
-On the other hand, ``not`` is a unary expression and inverts the boolean value
-of its operand:
+On the other hand, ``not`` is a unary expression (takes one operand) and inverts the boolean value
+of this operand:
 
 .. code-block:: ipython
 
@@ -147,7 +147,7 @@ Think about ``and``: it is testing if *both* the operands are True. If the first
 
 Alternatively, ``or`` is trying to see if only one of the operands is True. So if the first one is True, it can stop, and does not need to evaluate the second.
 
-Also key is that if an operation is "shortcut" -- the second part of the expression will not be evaluated -- so it could be an invalid expression and never raise an error:
+Also key is that if an operation is "shortcut" -- the second part of the expression will not be evaluated -- so it could be an invalid expression that will never raise an error:
 
 .. code-block:: ipython
 
@@ -166,9 +166,9 @@ Since the expression was known to be true after the first value was checked (a n
 
     ZeroDivisionError: division by zero
 
-I this case, the second expression needs to be evaluated -- so it DID raise an error.
+In this case, the second expression needs to be evaluated -- so it DID raise an error.
 
-The can be exploited to provide compact logic -- but it also can hide bugs!
+This can be exploited to provide compact logic -- but it can also hide bugs!
 
 
 
@@ -222,7 +222,7 @@ In other languages, this can be compressed with a "ternary operator"::
 
 (this is the syntax from the C family of languages)
 
-In python, the same is accomplished with the conditional expression:
+In Python, the same is accomplished with the conditional expression:
 
 .. code-block:: python
 
@@ -268,7 +268,7 @@ And here's an even better one:
 bools are integers?
 -------------------
 
-In python, the boolean types are subclasses of integer:
+In Python, the boolean types are subclasses of integer:
 
 .. code-block:: ipython
 
@@ -285,7 +285,7 @@ And you can even do math with them (though it's a bit odd to do so):
     In [6]: 3 + True
     Out[6]: 4
 
-This is left over from history -- in early versions of Python, there were no boolean types -- folks used integers, with zero as false. ANd this is true of other languages as well, like classic C. To keep backward compatibility and allow some nifty tricks to still work, bools are subclassed from integers.
+This is left over from history -- in early versions of Python, there were no boolean types -- folks used integers, with zero as false. And this is true of other languages as well, like classic C. To keep backward compatibility and allow some nifty tricks to still work, bools are subclassed from integers.
 
 It's good to know this if you read others' code, but I do NOT recommend you use this feature!
 

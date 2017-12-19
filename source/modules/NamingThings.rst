@@ -42,7 +42,7 @@ Naming things...
 
 It matters what names you give your variables.
 
-Python has rules about what it *allows*
+Python has rules about what it *allows*.
 
 PEP8 has rules for style: capitalization, and underscores and all that.
 
@@ -53,6 +53,9 @@ So use names that make sense to the reader.
 Naming Guidelines
 -----------------
 
+Whenever possible, use strong, unambiguous names that relate to a concept in the business area applicable for your program.
+For example, cargo_weight is probably better than item_weight, current_fund_price is better than value.
+
 Only use single-letter names for things with limited scope: indexes and the like:
 
 .. code-block:: python
@@ -60,7 +63,7 @@ Only use single-letter names for things with limited scope: indexes and the like
     for i, item in enumerate(a_sequence):
         do_something(i, item)
 
-But **Don't** use a name like "item", when there is a meaning to what the item is:
+But **don't** use a name like "item", when there is a meaning to what the item is:
 
 .. code-block:: python
 

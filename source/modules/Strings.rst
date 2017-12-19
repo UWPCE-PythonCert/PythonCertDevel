@@ -14,7 +14,7 @@ A "String" is a computerese word for a piece of text -- a "string" of characters
 Creating strings:
 -----------------
 
-A string literal creates a string type
+A string literal creates a string type.
 
 (we've seen this already...)
 
@@ -58,9 +58,9 @@ Splitting and Joining Strings
     In [170]: psv
     Out[170]: 'comma|separated|values'
 
-It may seem odd at first that ``.join()`` is a string method, rather than, say, a method on lists. But, in fact it makes a lot of sense. Lists (and tuple, and other sequences) can hold any type of data -- and "joining" arbitrary data types doesn't make any sense.  Joining is strictly a string activity.
+It may seem odd at first that ``.join()`` is a string method, rather than, say, a method on lists. But, in fact it makes a lot of sense. Lists (and tuples, and other sequences) can hold any type of data -- and "joining" arbitrary data types doesn't make any sense.  Joining is strictly a string activity.
 
-And you need a string to join the parts with -- so we need a string object in there somewhere anyway.
+And you need a string so you can join the parts -- therefore, we need a string object in there somewhere anyway.
 
 Lastly, having join() be a string method means that it can join strings in ANY iterable object -- not just the built-in sequence types.
 
@@ -91,7 +91,7 @@ The obvious thing to do is something like:
   for piece in list_of_stuff:
       msg += piece
 
-But: strings are immutable -- python needs to create a new string each time you add a piece -- not efficient:
+But: strings are immutable -- Python needs to create a new string each time you add a piece -- not efficient:
 
 .. code-block:: python
 
@@ -211,13 +211,13 @@ To get the value:
        .....:     print(chr(i), end='')
     Chris
 
-For the English language, stick with ASCII, otherwise use full Unicode: it's easy with python3 -- more on that in a few weeks.
+For the English language, stick with ASCII, otherwise use full Unicode: it's easy with Python3 -- more on that in a later lesson.
 
 
 Building Strings from data
 --------------------------
 
-You can, but please don't do this:
+You could, but please don't(!), do this:
 
 .. code-block:: python
 
@@ -239,7 +239,7 @@ https://docs.python.org/3/library/string.html#string-formatting
 Old and New string formatting
 -----------------------------
 
-Back in early python days, there was the string formatting operator: ``%``
+Back in early Python days, there was the string formatting operator: ``%``
 
 .. code-block:: python
 

@@ -46,7 +46,7 @@ It uses a ``StringIO`` object (like a file, but in memory) to render to memory, 
 
 The html generated at each step will be in the files: ``test_html_ouput?.html``
 
-At each step, your results should look similar that those (maybe not identical...)
+At each step, your results should look similar to those (maybe not identical...)
 
 Unit tests
 ----------
@@ -90,7 +90,7 @@ Ask yourself -- does this make sense? an "Element *is* a list" -- no.
 
 But "An Element *uses* a list" makes perfect sense.
 
-If the *is* phrase makes sense, then subclassing makes sense. If the *uses* phrase makes sense, *then* you want to subclass.
+If the *is* phrase makes sense, then subclassing would makes sense. If the *uses* phrase makes sense, *then* you would want to subclass.
 
 So no -- you don't want ``Element`` to subclass from list.
 
@@ -100,7 +100,7 @@ It should have a ``render(file_out, cur_ind = "")`` method that renders the tag 
 
 ``cur_ind`` is a string with the current level of indentation in it: the amount that the entire tag should be indented for pretty printing.
 
- - This is a little tricky: ``cur_ind`` will be the amount that this element should be indented already. It will be from zero (an empty string) to a lot of spaces, depending on how deep it is in the tree. You could use an integer for the number of spaces to indent -- or keep it simple and simply use a string with 2, or 4 or ?? spaces in it.
+ - This is a little tricky: ``cur_ind`` will be the amount that this element should be indented already. It will be from zero (an empty string) to a lot of spaces, depending on how deep it is in the tree. You could use an integer for the number of spaces to indent -- or keep it simple and just use a string with 2, or 4 or ?? spaces in it.
 
 The amount of each level of indentation should be set by the class attribute: ``indent``
 
@@ -165,11 +165,11 @@ constructor, e.g. ``run_html_render.py``
 
     Element("some text content", id="TheList", style="line-height:200%")
 
-html elements can take essentially any attributes -- so you can't hard-code these particular ones. ( remember ``**kwargs``? )
+html elements can take essentially any attributes -- so you can't hard-code these particular ones (remember ``**kwargs``? )
 
 The render method will need to be extended to render the attributes properly.
 
-You can now render some ``<p>`` tags (and others) with attributes
+You can now render some ``<p>`` tags (and others) with attributes.
 
 See: :download:`test_html_output4.htm  <../examples/html_render/test_html_output4.html>`
 
@@ -219,9 +219,9 @@ Create a ``SelfClosingTag`` subclass of Element, to render tags like::
 You will need to override the render method to render just the one tag and
 attributes, if any.
 
-Note that self closing tags can't have any content. MAke sure that your SelfClosingTag element raises an exception if someone tries to put in any content -- probably a ``TypeError``.
+Note that self closing tags can't have any content. Make sure that your SelfClosingTag element raises an exception if someone tries to put in any content -- probably a ``TypeError``.
 
-Create a couple subclasses of ``SelfClosingTag`` for and <hr /> and <br />
+Create a couple subclasses of ``SelfClosingTag`` for <hr /> and <br />
 
 Note that you now have a couple render methods -- is there repeated code in them?
 
@@ -249,9 +249,9 @@ See: :download:`test_html_output6.htm  <../examples/html_render/test_html_output
 Step 7:
 --------
 
-Create ``Ul`` class for an unordered list (really simple subclass of ``Element``)
+Create ``Ul`` class for an unordered list (really simple subclass of ``Element``).
 
-Create ``Li`` class for an element in a list (also really simple)
+Create ``Li`` class for an element in a list (also really simple).
 
 Add a list to your web page.
 
@@ -262,7 +262,7 @@ header level. i.e <h1>, <h2>, <h3>, called like
 
    H(2, "The text of the header")
 
-for an <h2> header
+for an <h2> header.
 
 It can subclass from ``OneLineTag`` -- overriding the ``__init__``, then calling the superclass ``__init__``
 
@@ -307,12 +307,12 @@ So:
 
 * You have (at least) two options for how to indicate level of indentation:
 
-  - It could be a integer indicating number of levels of indentation
+  - It could be a integer indicating number of levels of indentation.
   - It could, more simply, be a bunch of spaces.
 
-* You want to have the amount of spaces per indentation defined as a class attribute of the base class (the ``Element`` class). That way, you could change it in one place, and it would change everywhere an remain consistent.
+* You want to have the amount of spaces per indentation defined as a class attribute of the base class (the ``Element`` class). That way, you could change it in one place, and it would change everywhere and remain consistent.
 
-* Be sure to test that the indentation of the result changes if you cahnge the class attribute!
+* Be sure to test that the indentation of the result changes if you change the class attribute!
 
 
 .. _notes_on_handling_duck_typing:
@@ -328,7 +328,7 @@ Notes on handling "duck typing"
 
   1) Make sure that the content only has renderable objects in it.
 
-  2) Make sure the render() method can handle either type on the fly
+  2) Make sure the render() method can handle either type on the fly.
 
   The difference is where you handle the multiple types -- in the render method itself, or ahead of time.
 
@@ -357,7 +357,7 @@ You could require your users to use the wrapper, so instead of just appending a 
 
 .. code-block:: python
 
-    an_element.append(TextWRapper("the string they want to add"))
+    an_element.append(TextWrapper("the string they want to add"))
 
 But this is not very Pythonic style -- it's OO heavy. Strings for text are so common you want to be able to simply use them:
 
@@ -386,7 +386,7 @@ You could check and see if the object being appended is an Element:
     else:
         self.content.append(TextWrapper(content))
 
-This would work well, but closes the door to using any other type that may not be a strict subclsss of Element, but can render itself. Not too bad in this case, but in general, frowned upon in Python.
+This would work well, but closes the door to using any other type that may not be a strict subclass of Element, but can render itself. Not too bad in this case, but in general, frowned upon in Python.
 
 .. nextslide::
 
@@ -399,7 +399,7 @@ Alternatively, you could check for the string type:
     else:
         self.content.append(content)
 
-I think this is a little better -- strings are a pretty core type in python, it's not likely that anyone is going to need to use a "string-like" object.
+I think this is a little better -- strings are a pretty core type in Python, so it's not likely that anyone is going to need to use a "string-like" object.
 
 Duck Typing
 -----------
@@ -536,7 +536,7 @@ Basic tags
 Attributes:
 ------------
 
-In addition to the tag name and the content, extra attributes can be attached to a tag. These are added to the "opening tag", with name="something", another_name="somethign else" format:
+In addition to the tag name and the content, extra attributes can be attached to a tag. These are added to the "opening tag", with name="something", another_name="something else" format:
 
 .. code-block:: html
 
