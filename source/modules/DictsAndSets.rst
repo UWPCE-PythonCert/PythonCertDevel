@@ -168,19 +168,53 @@ If you need to check dict values often, create another dict or set
 Dictionary Ordering (not)
 -------------------------
 
-Dictionaries have no defined order
+Traditionally, dictionaries have had no defined order. See this example from Python 3.5:
 
 .. code-block:: ipython
 
     In [352]: d = {'one':1, 'two':2, 'three':3}
-    In [353]: d
+    In [353]: str(d)
     Out[353]: {'one': 1, 'three': 3, 'two': 2}
     In [354]: d.keys()
     Out[354]: dict_keys(['three', 'two', 'one'])
 
-**Python 3.6 Note:** In cPython 3.6, the internal implementation was changed, and it *does* happen to preserve order. But that is considered an implementation detail -- do not count on it!
+Note how I defined the dict in a natural order, but when it gets printed, or you display the keys, they are in a different order.
 
-(the above demo was done on an earlier version of Python)
+However, In cPython 3.6, the internal implementation was changed, and it *does* happen to preserve order. In cPython 3.6, that is considered an implementation detail -- and you should not count on it! However, as of cPython 3.7, dictionaries preserving order will be part of the language specification. This was declared by Guido on the python-dev mailing list on
+`Dec 15, 2017 <https://mail.python.org/pipermail/python-dev/2017-December/151283.html>`
+
+.. code-block:: ipython
+
+    In Python 3.6, the above code results in:
+
+    In [9]: d = {'one':1, 'two':2, 'three':3}
+
+    In [10]: str(d)
+    Out[10]: "{'one': 1, 'two': 2, 'three': 3}"
+
+    In [11]: d.keys()
+    Out[11]: dict_keys(['one', 'two', 'three'])
+
+
+When new items are added to a dict, they go on the "end":
+
+.. code-block:: ipython
+
+    In [12]: d = {}
+
+    In [13]: d['one'] = 1
+
+    In [14]: d['two'] = 2
+
+    In [15]: d['three'] = 3
+
+    In [16]: str(d)
+    Out[16]: "{'one': 1, 'two': 2, 'three': 3}"
+
+and ``dict.popitem()`` will remove the "last" item in the dict.
+
+**CAUTION** This is new behavior in cPython 3.6 -- older versions of Python (notably including Python 2) do not preserve order.  In older versions, there is a special version of a dict in the collections module: ``Collections.OrderedDict`` which preserves order in all versions of Python, and has a couple extra features.
+
 
 Dictionary Iterating
 --------------------
@@ -189,36 +223,35 @@ Dictionary Iterating
 
 .. code-block:: ipython
 
-    In [15]: d = {'name': 'Brian', 'score': 42}
+    In [23]: d = {'name': 'Brian', 'score': 42}
 
-    In [16]: for x in d:
-        print(x)
-       ....:
-    score
+    In [24]: for x in d:
+        ...:     print(x)
+        ...:
     name
+    score
 
-
-(note the different order...)
 
 dict keys and values
 --------------------
 
 .. code-block:: ipython
 
-    In [20]: d = {'name': 'Brian', 'score': 42}
+    In [25]: d = {'name': 'Brian', 'score': 42}
 
-    In [21]: d.keys()
-    Out[21]: dict_keys(['score', 'name'])
+    In [26]: d.keys()
+    Out[26]: dict_keys(['name', 'score'])
 
-    In [22]: d.values()
-    Out[22]: dict_values([42, 'Brian'])
+    In [27]: d.values()
+    Out[27]: dict_values(['Brian', 42])
 
-    In [23]: d.items()
-    Out[23]: dict_items([('score', 42), ('name', 'Brian')])
+    In [28]: d.items()
+    Out[28]: dict_items([('name', 'Brian'), ('score', 42)])
 
-Notice that these are of type "dict_keys" and "dict_values". These are special types that provide iteration and printing, and other features, but are tied to the underlying dict, rather than copies.
+Notice that these are of type ``dict_keys`` and ``dict_values``. These are special types that provide iteration, printing and other features, but are tied to the underlying dict, rather than copies.
 
 (Python2 would simply create lists of keys and values -- but then you were making a copy when you probably didn't need one)
+
 
 dict keys and values
 --------------------
@@ -232,8 +265,8 @@ Iterating on everything
     In [27]: for k, v in d.items():
         print("%s: %s" % (k,v))
        ....:
-    score: 42
     name: Brian
+    score: 42
 
 
 Dictionary Performance
@@ -277,7 +310,8 @@ Containment is on the keys.
 
 Think of it like  "real" dictionary, where the keys are the words, and the values are the definitions.
 
-Is the word "gullible" in the dictionary is asking if the key is in the dict.
+Is the word "gullible" in the dictionary? is asking if the key is in the dict.
+
 
 Getting something: (like indexing)
 ----------------------------------
@@ -295,6 +329,7 @@ But you can specify a default
   Out[11]: 'a default'
 
 Never raises an Exception (default default is None)
+
 
 iterating
 ---------
@@ -326,6 +361,7 @@ But to get values, must specify you want values:
      ....:
   5
   7
+
 
 ``pop()``
 ---------

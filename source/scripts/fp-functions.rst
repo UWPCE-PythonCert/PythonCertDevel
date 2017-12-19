@@ -29,21 +29,21 @@ Python allows us to do a lot with functions. We can return two or more values fr
 
 Recall that when a "function" is defined within a class we no longer call it a function, but instead refer to it as a method. This is not an accident. The return values from methods can and indeed are typically based on data, or state information, that the class, or really, the object at this point, is carrying. That being the case we have clearly violated the textbook definition of a function. In other words, a method is explicitly not a function, even though they have the same structure and do the same sorts of things. The difference is that a method, which again is embedded in an object or class, is likely going to factor in the rest of the object's current state information when returning values, and thus we no longer have the property of a clean single input or set of inputs mapping to a single output.
 
-[Show: Function vs Method example]
+[Show: Function vs Method example] ::
 
-def my_function(x, y):
-    """ This is a function, because it is not a member of a class. """
-    return x + y
+    def my_function(x, y):
+        """ This is a function, because it is not a member of a class. """
+        return x + y
 
-class MyClass(object):
-    z = randint(0, 999)
-    def my_method(self, x, y):
-	    """
-	    This is not a function,
-	    because it is a member of a class,
-	    and thus will likely use the class's internal state in its calculations.
-	    """
-    	return x + y + self.z
+    class MyClass(object):
+        z = randint(0, 999)
+        def my_method(self, x, y):
+    	    """
+    	    This is not a function,
+    	    because it is a member of a class,
+    	    and thus will likely use the class's internal state in its calculations.
+    	    """
+        	return x + y + self.z
 
 [title: Scope]
 

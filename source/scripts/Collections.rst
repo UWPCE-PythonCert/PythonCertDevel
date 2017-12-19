@@ -121,32 +121,32 @@ my_queue.pop()
 Ordered Dict
 ------------
 
-https://docs.python.org/3/library/collections.html?highlight=counter#ordereddict-objects
+https://docs.python.org/3/library/collections.html?highlight=counter#ordereddict-objects ::
 
-$ workon edu-collections
-$ ipython
+    $ workon edu-collections
+    $ ipython
 
-from collections import OrderedDict
-OrderedDict?
-dir(OrderedDict)
+    from collections import OrderedDict
+    OrderedDict?
+    dir(OrderedDict)
 
-OrderedDict.pop?
-OrderedDict.popitem?
+    OrderedDict.pop?
+    OrderedDict.popitem?
 
-from random import SystemRandom
-from string import ascii_letters as letters
-bigstring = ''.join(SystemRandom().choice(letters) for _ in range(9999))
-bigstring
+    from random import SystemRandom
+    from string import ascii_letters as letters
+    bigstring = ''.join(SystemRandom().choice(letters) for _ in range(9999))
+    bigstring
 
-my_dict = dict.fromkeys(bigstring, 0)
-for letter in bigstring:
-    my_dict[letter] += 1
+    my_dict = dict.fromkeys(bigstring, 0)
+    for letter in bigstring:
+        my_dict[letter] += 1
 
-def by_value(x):
-    return x[1]
+    def by_value(x):
+        return x[1]
 
-my_ordered_dict = OrderedDict(sorted(letters.items(), key=by_value))
-my_ordered_dict
+    my_ordered_dict = OrderedDict(sorted(letters.items(), key=by_value))
+    my_ordered_dict
 
 
 Summary
