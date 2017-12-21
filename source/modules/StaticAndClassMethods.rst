@@ -43,7 +43,6 @@ A *static method* is a method that doesn't get self:
 .. [demo: :download:`static_method.py <../../Examples/Session08/static_method.py>`]
 
 
-.. nextslide:: Why?
 
 .. container::
 
@@ -131,7 +130,6 @@ keys:
     TypeError: cannot convert dictionary update sequence element #0 to a sequence
 
 
-.. nextslide:: ``dict.fromkeys()``
 
 The stock constructor for a dictionary won't work this way. So the dict object
 implements an alternate constructor that *can*.
@@ -152,7 +150,6 @@ implements an alternate constructor that *can*.
 
 See also datetime.datetime.now(), etc....
 
-.. nextslide:: Curious?
 
 Properties, Static Methods and Class Methods are powerful features of Python's
 OO model.

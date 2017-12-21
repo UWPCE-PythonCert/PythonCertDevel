@@ -121,7 +121,6 @@ Installing Packages
 * ``pip`` should find appropriate binary wheels if they are there.
 
 
-.. nextslide::
 
 In the beginning, there was the ``distutils``:
 
@@ -186,7 +185,6 @@ Dependencies:
 
   * Particularly on Windows
 
-.. nextslide::
 
 **Linux**
 
@@ -207,7 +205,6 @@ Pretty straightforward:
 (may need "something-devel" packages)
 
 
-.. nextslide::
 
 **Windows**
 
@@ -228,7 +225,6 @@ MS now has a compiler just for python!
 
 http://www.microsoft.com/en-us/download/details.aspx?id=44266
 
-.. nextslide::
 
 **OS-X**
 
@@ -241,7 +237,6 @@ Lots of Python versions:
 
 Binary Installers (dmg or wheel) have to match python version
 
-.. nextslide::
 
 **OS-X**
 

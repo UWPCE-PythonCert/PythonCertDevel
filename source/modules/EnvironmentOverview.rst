@@ -72,7 +72,6 @@ Try it out:
     one string plus another
     >>>
 
-.. nextslide:: Tools in the Interpreter
 
 When you are in an interpreter, there are a number of tools available to
 you.
@@ -93,7 +92,6 @@ There is a help system:
 
 You can type ``q`` to exit the help viewer.
 
-.. nextslide:: Tools in the Interpreter
 
 You can also use the ``dir`` builtin to find out about the attributes of a
 given object:
@@ -113,7 +111,6 @@ given object:
 
 This allows you quite a bit of latitude in exploring what Python is.
 
-.. nextslide:: Advanced Interpreters
 
 In addition to the built-in interpreter, there are several more advanced
 interpreters available to you.
@@ -133,7 +130,6 @@ fashion.
 
 This is where an Editor fits in.
 
-.. nextslide:: Text Editors Only
 
 Any good text editor will do.
 
@@ -148,7 +144,6 @@ You need a real "programmers text editor"
 A text editor saves only what it shows you, with no special formatting
 characters hidden behind the scenes.
 
-.. nextslide:: Minimum Requirements
 
 At a minimum, your editor should have:
 

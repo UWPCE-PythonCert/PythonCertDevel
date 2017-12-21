@@ -205,7 +205,6 @@ epub_exclude_files = ['search.html']
 
 # # -- Hieroglyph Slide Configuration ------------
 # #  Do we need this anymore??
-# #    Not really -- but we'd need to clean out all the "nextslide", etc directives...
 
 extensions += [
     'hieroglyph',

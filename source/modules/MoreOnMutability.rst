@@ -29,7 +29,6 @@ one way to make a copy of a list:
 
 they are different lists.
 
-.. nextslide::
 
 What if we set an element to a new value?
 
@@ -45,7 +44,6 @@ What if we set an element to a new value?
 
 So they are independent.
 
-.. nextslide::
 
 But what if we mutate an element?
 
@@ -61,7 +59,6 @@ But what if we mutate an element?
 
 uuh oh! mutating an element in one list mutated the one in the other list.
 
-.. nextslide::
 
 Why is that?
 
@@ -97,7 +94,6 @@ but if not, you can use the ``copy`` module to make a copy:
 
 This is also a shallow copy.
 
-.. nextslide::
 
 But there is another option:
 
@@ -118,7 +114,6 @@ But there is another option:
 
 ``deepcopy`` recurses through the object, making copies of everything as it goes.
 
-.. nextslide::
 
 
 I happened on this thread on stack overflow:

@@ -12,7 +12,6 @@ With recursion, if you are not careful, this stack can get *very* deep.
 Python has a maximum limit to how much it can recurse. This is intended to
 save your machine from running out of RAM.
 
-.. nextslide:: Recursion can be Useful
 
 Recursion is especially useful for a particular set of problems.
 

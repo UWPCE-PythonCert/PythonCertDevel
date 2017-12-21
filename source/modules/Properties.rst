@@ -37,7 +37,6 @@ But what if you need to add behavior later?
 * check data validity
 * keep things in sync
 
-.. nextslide::
 
 .. code-block:: ipython
 

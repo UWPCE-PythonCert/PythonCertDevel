@@ -73,7 +73,6 @@ Expressions:
     In [5]: 3 + 4
     Out[5]: 7
 
-.. nextslide::
 
 Statements:
 statements carry out an action, but do not evaluate to a value, that is you can't assign to them (or put them in a lamda, or...)
@@ -87,7 +86,6 @@ statements carry out an action, but do not evaluate to a value, that is you can'
     In [8]: return something
 
 
-.. nextslide:: The Print Function
 
 It is somewhat obvious, but handy when playing with code:
 
@@ -104,7 +102,6 @@ You can print multiple things:
     the value is 5
 
 
-.. nextslide::
 
 Any Python object can be printed (though it might not be pretty...)
 
@@ -118,7 +115,6 @@ Any Python object can be printed (though it might not be pretty...)
     <class '__main__.bar'>
 
 
-.. nextslide:: Code Blocks
 
 Blocks of code are delimited by a colon and indentation:
 
@@ -140,7 +136,6 @@ Blocks of code are delimited by a colon and indentation:
     except:
         fix_the_problem()
 
-.. nextslide::
 
 Python uses indentation to delineate structure. This means that in Python, whitespace is **significant** (but **ONLY** for newlines and indentation).
 
@@ -153,7 +148,6 @@ The standard is to indent with **4 spaces**.
 Python requires spaces for indents. You can probably set your editor to replace tabs with spaces.
 This is a good idea as it is easier to type one tab than 4 spaces.
 
-.. nextslide::
 
 These two blocks look the same:
 
@@ -168,7 +162,6 @@ These two blocks look the same:
         print(i**2)
 
 
-.. nextslide::
 
 But they are not:
 
@@ -185,7 +178,6 @@ But they are not:
 **ALWAYS INDENT WITH 4 SPACES**
 
 
-.. nextslide::
 
 
 Make sure your editor is set to use spaces only --
@@ -415,7 +407,6 @@ You can't actually directly delete values in Python...
 
     NameError: name 'a' is not defined
 
-.. nextslide::
 
 The object is still there...Python will only delete it if there are no
 references to it.
@@ -767,7 +758,6 @@ The minimal function has at least one statement.
     def a_name():
         a_statement
 
-.. nextslide::
 
 Pass Statement does nothing (Note the indentation!)
 
@@ -899,7 +889,6 @@ This is actually the simplest possible function:
     def fun():
         return None
 
-.. nextslide::
 
 If you don't explicitly put ``return``  there, Python will return ``None``:
 

@@ -251,7 +251,6 @@ Generator functions "yield" a value, rather than returning a value.
 State is preserved in between yields.
 
 
-.. nextslide:: generator functions
 
 A function with ``yield``  in it is a "factory" for a generator
 
@@ -266,7 +265,6 @@ Each instance keeps its own state.
 
 Really just a shorthand for an iterator class that does the book keeping for you.
 
-.. nextslide::
 
 An example: like ``range()``
 
@@ -283,7 +281,6 @@ Real World Example from FloatCanvas:
 https://github.com/svn2github/wxPython/blob/master/3rdParty/FloatCanvas/floatcanvas/FloatCanvas.py#L100
 
 
-.. nextslide::
 
 Note:
 

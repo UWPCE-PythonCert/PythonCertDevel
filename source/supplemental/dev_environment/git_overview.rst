@@ -62,7 +62,6 @@ A Picture of git
     The path from one point to the previous is represented by the *difference*
     between the two points.
 
-.. nextslide::
 
 .. figure:: /_static/git_head.png
     :width: 75%
@@ -75,7 +74,6 @@ A Picture of git
     One of these is *HEAD*, which always points to the place in the timeline
     that you are currently looking at.
 
-.. nextslide::
 
 .. figure:: /_static/git_master_branch.png
     :width: 75%
@@ -90,7 +88,6 @@ A Picture of git
 
     A *branch* is actually just a label for a certain set of points in time.
 
-.. nextslide::
 
 .. figure:: /_static/git_new_commit.png
     :width: 75%
@@ -109,7 +106,6 @@ A Picture of git
     The noun "commit" is a particular state of the repository -- it has been saved and has particular name (hash) -- it is one if the points on that timeline.
 
 
-.. nextslide:: Making a Branch
 
 .. figure:: /_static/git_new_branch.png
     :width: 75%
@@ -123,7 +119,6 @@ A Picture of git
 
     Notice that it *does not* check out that branch -- you will still be working in the current branch.
 
-.. nextslide:: Making a Branch
 
 .. figure:: /_static/git_checkout_branch.png
     :width: 75%
@@ -141,7 +136,6 @@ A Picture of git
           master
         * session01
 
-.. nextslide:: Making a Branch
 
 .. figure:: /_static/git_commit_on_branch.png
     :width: 75%
@@ -153,7 +147,6 @@ A Picture of git
 
     Notice that HEAD is *always* the same as "where you are now"
 
-.. nextslide:: Making a Branch
 
 You can use this to switch between branches and make changes in isolation.
 
@@ -167,7 +160,6 @@ You can use this to switch between branches and make changes in isolation.
         :width: 75%
         :class: center
 
-.. nextslide:: Merging Branches
 
 .. container::
 
@@ -186,7 +178,6 @@ You can use this to switch between branches and make changes in isolation.
 
     The final step in the process is merging your work.
 
-.. nextslide:: Merging Branches
 
 The ``merge`` command allows you to *combine* your work on one branch with the
 work on another.
@@ -202,7 +193,6 @@ work on another.
     Notice that this commit has **two** parents.
 
 
-.. nextslide:: Conflicts
 
 .. container::
 
@@ -223,7 +213,6 @@ work on another.
         * ========= (the pivot point between two branches' content)
         * >>>>>>>>> *hash2* (stuff from the branch being merged)
 
-.. nextslide:: Conflicts
 
 Your job in fixing a conflict is to decide exactly what to keep.
 
