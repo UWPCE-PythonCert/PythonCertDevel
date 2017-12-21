@@ -3,9 +3,7 @@ Introduction to the Environment
 
 There are three basic elements to your environment when working with Python:
 
-.. rst-class:: left
 
-.. rst-class:: build
 
 * The Command Line
 * The Interpreter
@@ -154,14 +152,12 @@ characters hidden behind the scenes.
 
 At a minimum, your editor should have:
 
-.. rst-class:: build
 
 * Syntax Colorization
 * Automatic Indentation
 
 In addition, great features to add include:
 
-.. rst-class:: build
 
 * Tab completion
 * Code linting

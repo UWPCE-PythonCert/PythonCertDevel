@@ -13,7 +13,6 @@ in the examples/Session06 dir, try::
 
 What we've just done here is the first step in what is called:
 
-.. rst-class:: centered
 
   **Test Driven Development**.
 
@@ -42,7 +41,6 @@ Copy both of these files into your home directory in the repo.
 
 Develop ``cigar_party.py`` until all the tests pass.
 
-.. rst-class:: left
 
   Pick an example from codingbat:
 

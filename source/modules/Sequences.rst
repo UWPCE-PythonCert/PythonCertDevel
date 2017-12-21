@@ -6,7 +6,6 @@
 Python Sequences
 ################
 
-.. rst-class:: center large
 
 Ordered collections of objects
 
@@ -460,7 +459,6 @@ There are some complexities about that -- but more on that in another lesson.
 Lists, Tuples...
 ================
 
-.. rst-class:: center large
 
 The *primary* sequence types.
 
@@ -644,7 +642,6 @@ Look familiar from lists??
 Lists vs. Tuples
 ----------------
 
-.. rst-class:: center large
 
     So why have both?
 
@@ -656,7 +653,6 @@ Mutability
    :width: 35%
    :alt: Presto change-o
 
-.. rst-class:: credit
 
 image from flickr by `illuminaut`_, (CC by-nc-sa)
 

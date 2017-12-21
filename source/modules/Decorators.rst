@@ -3,7 +3,6 @@ Decorators
 
 **A Short Reminder**
 
-.. rst-class:: left
 
     Functions are things that generate values based on input (arguments).
 
@@ -29,11 +28,9 @@ A Definition
 There are many things you can do with a simple pattern like this one.
 So many, that we give it a special name:
 
-.. rst-class:: centered medium
 
 **Decorator**
 
-.. rst-class:: build centered
 
     "A decorator is a function that takes a function as an argument and
     returns a function as a return value."
@@ -51,7 +48,6 @@ one:
     def add(a, b):
         return a + b
 
-.. rst-class:: build
 .. container::
 
     You want to see when each function is called, with what arguments and
@@ -106,7 +102,6 @@ Then, where we want to see the results, we can use the logged version:
          Result --> 7
     Out[37]: 7
 
-.. rst-class:: build
 .. container::
 
     This is nice, but we have to call the new function wherever we originally
@@ -128,7 +123,6 @@ statements* leads you to this form:
         return a + b
     add = logged_func(add)
 
-.. rst-class:: build
 .. container::
 
     And now you can simply use the code you've already written and calls to
@@ -181,7 +175,6 @@ or a class that implements the ``__call__`` special method.
 
 So in fact the definition should be updated as follows:
 
-.. rst-class:: centered medium
 
 A decorator is a callable that takes a callable as an argument and
 returns a callable as a return value.

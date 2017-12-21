@@ -9,7 +9,6 @@ https://en.wikipedia.org/wiki/Property_%28programming%29#Python
 Attributes are clear and concise
 --------------------------------
 
-.. rst-class:: left
 .. container::
 
     One of the strengths of Python is lack of clutter.
@@ -33,7 +32,6 @@ Getter and Setters
 
 But what if you need to add behavior later?
 
-.. rst-class:: build
 
 * do some calculation
 * check data validity

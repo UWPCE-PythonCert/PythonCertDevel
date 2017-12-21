@@ -2,12 +2,10 @@ Iterators and Generators
 =========================
 
 
-.. rst-class:: large centered
 
   The Tools of Pythonicity
 
 
-.. rst-class:: medium
 
     What goes on in those for loops?
 

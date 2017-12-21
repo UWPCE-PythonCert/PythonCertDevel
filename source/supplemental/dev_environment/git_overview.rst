@@ -49,7 +49,6 @@ A Picture of git
     :width: 80%
     :class: center
 
-.. rst-class:: build
 .. container::
 
     A git repository is a set of points in time, with history showing where
@@ -69,7 +68,6 @@ A Picture of git
     :width: 75%
     :class: center
 
-.. rst-class:: build
 .. container::
 
     Each point in time can also have a label that points to it.
@@ -83,7 +81,6 @@ A Picture of git
     :width: 75%
     :class: center
 
-.. rst-class:: build
 .. container::
 
     You may also be familiar with the label "master".
@@ -99,7 +96,6 @@ A Picture of git
     :width: 75%
     :class: center
 
-.. rst-class:: build
 .. container::
 
     When you make a *commit* in git, you add a new point to the timeline.
@@ -119,7 +115,6 @@ A Picture of git
     :width: 75%
     :class: center
 
-.. rst-class:: build
 .. container::
 
     You can make a new *branch* with the ``branch`` command.
@@ -134,7 +129,6 @@ A Picture of git
     :width: 75%
     :class: center
 
-.. rst-class:: build
 .. container::
 
     You can use the ``checkout`` command to switch to the new branch.
@@ -153,7 +147,6 @@ A Picture of git
     :width: 75%
     :class: center
 
-.. rst-class:: build
 .. container::
 
     While it is checked out, new commits move the *session01* label.
@@ -164,7 +157,6 @@ A Picture of git
 
 You can use this to switch between branches and make changes in isolation.
 
-.. rst-class:: build
 .. container::
 
     .. figure:: /_static/git_checkout_master.png
@@ -177,7 +169,6 @@ You can use this to switch between branches and make changes in isolation.
 
 .. nextslide:: Merging Branches
 
-.. rst-class:: build
 .. container::
 
     Branching allows you to keep related sets of work separate from each-other.
@@ -200,7 +191,6 @@ You can use this to switch between branches and make changes in isolation.
 The ``merge`` command allows you to *combine* your work on one branch with the
 work on another.
 
-.. rst-class:: build
 .. container::
 
     It creates a new commit which reconciles the differences:
@@ -214,7 +204,6 @@ work on another.
 
 .. nextslide:: Conflicts
 
-.. rst-class:: build
 .. container::
 
     Sometimes when you ``merge`` two branches, you get *conflicts*.

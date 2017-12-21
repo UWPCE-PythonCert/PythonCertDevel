@@ -6,7 +6,6 @@ Static and Class Methods
 ########################
 
 
-.. rst-class:: left build
 .. container::
 
     You've seen how methods of a class are *bound* to an instance when it is
@@ -20,7 +19,6 @@ Static and Class Methods
 
     |
 
-    .. rst-class:: centered
 
     **But what if you don't want or need an instance?**
 
@@ -41,14 +39,12 @@ A *static method* is a method that doesn't get self:
     In [37]: StaticAdder.add(3, 6)
     Out[37]: 9
 
-.. rst-class:: centered
 
 .. [demo: :download:`static_method.py <../../Examples/Session08/static_method.py>`]
 
 
 .. nextslide:: Why?
 
-.. rst-class:: build
 .. container::
 
     Where are static methods useful?
@@ -90,7 +86,6 @@ argument
     in a class method:  <class '__main__.Classy'>
     Out[42]: 16
 
-.. rst-class:: centered
 
 .. [demo: :download:`class_method.py <../../Examples/Session08/class_method.py>`]
 
@@ -98,7 +93,6 @@ argument
 Why?
 ----
 
-.. rst-class:: build
 .. container::
 
     Unlike static methods, class methods are quite common.

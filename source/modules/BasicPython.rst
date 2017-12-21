@@ -14,7 +14,6 @@ Values
 
 All of programming is really about manipulating values.
 
-.. rst-class:: build
 
 * Values are pieces of unnamed data: ``42``, ``'Hello, world'``
 
@@ -28,7 +27,6 @@ All of programming is really about manipulating values.
 
 .. ifslides::
 
-    .. rst-class:: centered
 
         [demo]
 
@@ -189,7 +187,6 @@ But they are not:
 
 .. nextslide::
 
-.. rst-class:: center large
 
 Make sure your editor is set to use spaces only --
 
@@ -203,7 +200,6 @@ Expressions
 
 An *expression* is made up of values and operators.
 
-.. rst-class:: build
 
 * An expression is evaluated to produce a new value:  ``2 + 2``
 
@@ -222,7 +218,6 @@ An *expression* is made up of values and operators.
 
 .. ifslides::
 
-    .. rst-class:: centered
 
         [demo]
 
@@ -232,7 +227,6 @@ Symbols
 
 Symbols are how we give names to values (objects).
 
-.. rst-class:: build
 
 * Symbols must begin with an underscore or letter.
 * Symbols can contain any number of underscores, letters and numbers.
@@ -309,7 +303,6 @@ Evaluating the name will return the value to which it is bound
 Variables?
 ----------
 
-.. rst-class:: build
 
 * In most languages, what Python calls symbols or names are called "variables".
 
@@ -737,7 +730,6 @@ Exceptions are how Python tells you that something has gone wrong.
 
 There are several exceptions that you are likely to see a lot of:
 
-.. rst-class:: build
 
 * ``NameError``: indicates that you have tried to use a symbol that is not bound to a value.
 

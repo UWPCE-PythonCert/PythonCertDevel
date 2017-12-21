@@ -7,7 +7,6 @@ lambda and keyword Magic
 Goals
 =====
 
-.. rst-class:: left
 
     * A bit of lambda
     * functions as objects

@@ -7,7 +7,6 @@ Sparse Array Exercise
 Sparse Array
 ============
 
-.. rst-class:: medium
 
     Goal:
 

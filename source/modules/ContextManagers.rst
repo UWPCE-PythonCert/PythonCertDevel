@@ -3,7 +3,6 @@ Context Managers
 
 **Repetition in code stinks (DRY!)**
 
-.. rst-class:: left build
 .. container::
 
 
@@ -50,7 +49,6 @@ remember to type all that **every** time you open a resource?
 Starting in version 2.5, Python provides a structure for reducing the
 repetition needed to handle resources like this.
 
-.. rst-class:: centered
 
 **Context Managers**
 
@@ -175,7 +173,6 @@ clarify the order in which things happen:
     This is in the context
     __exit__(<type 'exceptions.RuntimeError'>, this is the error message, <traceback object at 0x1049cca28>)
 
-.. rst-class:: build
 .. container::
 
     Because the exit method returns True, the raised error is 'handled'.

@@ -320,7 +320,6 @@ So:
 Notes on handling "duck typing"
 ===============================
 
-.. rst-class:: left
 
   In this exercise, we need to deal with the fact that XML (and thus HTML) allows *either* plain text *or* other tags to be the content of a tag. Our code also needs to handle the fact that there are two possible types that we need to be able to render.
 
@@ -475,11 +474,9 @@ If you have a unit test that calls every render method in your code -- then it s
 HTML Primer
 ============
 
-.. rst-class:: medium
 
     The very least you need to know about html to do this assignment.
 
-.. rst-class:: left
 
   If you are familiar with html, then this will all make sense to you. If you have never seen html before, this might be a bit intimidating, but you really don't need to know much to do this assignment.
 

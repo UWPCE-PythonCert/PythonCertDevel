@@ -102,7 +102,6 @@ http://pypi.python.org/pypi
 
 Installing Packages
 -------------------
-.. rst-class:: medium
 
     **From source**
 
@@ -110,7 +109,6 @@ Installing Packages
 
 * With the system installer (apt-get, yum, etc...)
 
-.. rst-class:: medium
 
     **From binaries:**
 

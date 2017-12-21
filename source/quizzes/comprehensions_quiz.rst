@@ -8,11 +8,9 @@ Playing with Comprehensions
 ============================
 
 
-.. rst-class:: large left
 
     Goal:
 
-.. rst-class:: medium left
 
     Getting Familiar with list, set and dict comprehensions
 
