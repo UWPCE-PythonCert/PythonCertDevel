@@ -46,7 +46,6 @@ students/marie_curie/mailroom
 
 Regardless of what you are working on, first make sure you don't have anything in your repository that you forgot to commit:
 
-.. rst-class:: build
 .. container::
 
     .. code-block:: bash
@@ -102,7 +101,6 @@ Now you can do your coding. For this example, that is simply adding a readme.
 
 Once you are done coding, always a good idea to look at what you have done.
 
-.. rst-class:: build
 .. container::
 
     Check the status

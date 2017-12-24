@@ -224,7 +224,7 @@
 <div class="figure">
 <a class="center reference internal image-reference" href="../../_images/git_simple_timeline.png"><img alt="../../_images/git_simple_timeline.png" class="center" src="../../_images/git_simple_timeline.png" style="width: 80%;" /></a>
 </div>
-<div class="build docutils container">
+<div class="docutils container">
 <p>A git repository is a set of points in time, with history showing where
 you’ve been.</p>
 <p>Each point has a <em>name</em> (here <em>A</em>, <em>B</em>, <em>C</em>) that uniquely identifies it,
@@ -236,7 +236,7 @@ between the two points.</p>
 <div class="figure">
 <a class="center reference internal image-reference" href="../../_images/git_head.png"><img alt="../../_images/git_head.png" class="center" src="../../_images/git_head.png" style="width: 75%;" /></a>
 </div>
-<div class="build docutils container">
+<div class="docutils container">
 <p>Each point in time can also have a label that points to it.</p>
 <p>One of these is <em>HEAD</em>, which always points to the place in the timeline
 that you are currently looking at.</p>
@@ -244,7 +244,7 @@ that you are currently looking at.</p>
 <div class="figure">
 <a class="center reference internal image-reference" href="../../_images/git_master_branch.png"><img alt="../../_images/git_master_branch.png" class="center" src="../../_images/git_master_branch.png" style="width: 75%;" /></a>
 </div>
-<div class="build docutils container">
+<div class="docutils container">
 <p>You may also be familiar with the label “master”.</p>
 <p>This is the name that git automatically gives to the first <em>branch</em> in a
 repository.</p>
@@ -253,7 +253,7 @@ repository.</p>
 <div class="figure">
 <a class="center reference internal image-reference" href="../../_images/git_new_commit.png"><img alt="../../_images/git_new_commit.png" class="center" src="../../_images/git_new_commit.png" style="width: 75%;" /></a>
 </div>
-<div class="build docutils container">
+<div class="docutils container">
 <p>When you make a <em>commit</em> in git, you add a new point to the timeline.</p>
 <p>The HEAD label moves to this new point.</p>
 <p>So does the label for the <em>branch</em> you are on.</p>
@@ -263,7 +263,7 @@ repository.</p>
 <div class="figure">
 <a class="center reference internal image-reference" href="../../_images/git_new_branch.png"><img alt="../../_images/git_new_branch.png" class="center" src="../../_images/git_new_branch.png" style="width: 75%;" /></a>
 </div>
-<div class="build docutils container">
+<div class="docutils container">
 <p>You can make a new <em>branch</em> with the <code class="docutils literal"><span class="pre">branch</span></code> command.</p>
 <p>This adds a new label to the current commit.</p>
 <p>Notice that it <em>does not</em> check out that branch – you will still be working in the current branch.</p>
@@ -271,7 +271,7 @@ repository.</p>
 <div class="figure">
 <a class="center reference internal image-reference" href="../../_images/git_checkout_branch.png"><img alt="../../_images/git_checkout_branch.png" class="center" src="../../_images/git_checkout_branch.png" style="width: 75%;" /></a>
 </div>
-<div class="build docutils container">
+<div class="docutils container">
 <p>You can use the <code class="docutils literal"><span class="pre">checkout</span></code> command to switch to the new branch.</p>
 <p>This associates the HEAD label with the <em>session01</em> label.</p>
 <p>Use <code class="docutils literal"><span class="pre">git</span> <span class="pre">branch</span></code> to see which branch is <em>active</em>:</p>
@@ -284,12 +284,12 @@ repository.</p>
 <div class="figure">
 <a class="center reference internal image-reference" href="../../_images/git_commit_on_branch.png"><img alt="../../_images/git_commit_on_branch.png" class="center" src="../../_images/git_commit_on_branch.png" style="width: 75%;" /></a>
 </div>
-<div class="build docutils container">
+<div class="docutils container">
 <p>While it is checked out, new commits move the <em>session01</em> label.</p>
 <p>Notice that HEAD is <em>always</em> the same as “where you are now”</p>
 </div>
 <p>You can use this to switch between branches and make changes in isolation.</p>
-<div class="build docutils container">
+<div class="docutils container">
 <div class="figure">
 <a class="center reference internal image-reference" href="../../_images/git_checkout_master.png"><img alt="../../_images/git_checkout_master.png" class="center" src="../../_images/git_checkout_master.png" style="width: 75%;" /></a>
 </div>
@@ -297,7 +297,7 @@ repository.</p>
 <a class="center reference internal image-reference" href="../../_images/git_new_commit_on_master.png"><img alt="../../_images/git_new_commit_on_master.png" class="center" src="../../_images/git_new_commit_on_master.png" style="width: 75%;" /></a>
 </div>
 </div>
-<div class="build docutils container">
+<div class="docutils container">
 <p>Branching allows you to keep related sets of work separate from each-other.</p>
 <p>In our lessons, you can use it to do each of your exercises.</p>
 <p>Simply create a new branch for each session from your repository master
@@ -310,14 +310,14 @@ here will help you.</p>
 </div>
 <p>The <code class="docutils literal"><span class="pre">merge</span></code> command allows you to <em>combine</em> your work on one branch with the
 work on another.</p>
-<div class="build docutils container">
+<div class="docutils container">
 <p>It creates a new commit which reconciles the differences:</p>
 <div class="figure">
 <a class="center reference internal image-reference" href="../../_images/git_merge_commit.png"><img alt="../../_images/git_merge_commit.png" class="center" src="../../_images/git_merge_commit.png" style="width: 75%;" /></a>
 </div>
 <p>Notice that this commit has <strong>two</strong> parents.</p>
 </div>
-<div class="build docutils container">
+<div class="docutils container">
 <p>Sometimes when you <code class="docutils literal"><span class="pre">merge</span></code> two branches, you get <em>conflicts</em>.</p>
 <p>This happens when the same file was changed in about the same place in two
 different ways.</p>

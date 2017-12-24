@@ -173,7 +173,6 @@ You can now render some ``<p>`` tags (and others) with attributes.
 
 See: :download:`test_html_output4.htm  <../examples/html_render/test_html_output4.html>`
 
-.. nextslide:: the "class" attribute.
 
 NOTE: if you do "proper" CSS+html, then you wouldn't specify style directly in element attributes.
 
@@ -320,7 +319,6 @@ So:
 Notes on handling "duck typing"
 ===============================
 
-.. rst-class:: left
 
   In this exercise, we need to deal with the fact that XML (and thus HTML) allows *either* plain text *or* other tags to be the content of a tag. Our code also needs to handle the fact that there are two possible types that we need to be able to render.
 
@@ -351,7 +349,6 @@ You can handle it ahead of time by creating a simple object that wraps a string 
           file_out.write(current_ind)
           file_out.write(self.text)
 
-.. nextslide::
 
 You could require your users to use the wrapper, so instead of just appending a string, they would do:
 
@@ -388,7 +385,6 @@ You could check and see if the object being appended is an Element:
 
 This would work well, but closes the door to using any other type that may not be a strict subclass of Element, but can render itself. Not too bad in this case, but in general, frowned upon in Python.
 
-.. nextslide::
 
 Alternatively, you could check for the string type:
 
@@ -445,7 +441,6 @@ If content is a simple string then it won't have a render method, and an ``Attri
 
 You can catch that, and simply write the content directly instead.
 
-.. nextslide::
 
 You may want to turn it into a string, first::
 
@@ -475,11 +470,9 @@ If you have a unit test that calls every render method in your code -- then it s
 HTML Primer
 ============
 
-.. rst-class:: medium
 
     The very least you need to know about html to do this assignment.
 
-.. rst-class:: left
 
   If you are familiar with html, then this will all make sense to you. If you have never seen html before, this might be a bit intimidating, but you really don't need to know much to do this assignment.
 

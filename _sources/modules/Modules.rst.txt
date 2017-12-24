@@ -53,7 +53,6 @@ An indent *could* be:
 
 If you want anyone to take you seriously as a Python developer:
 
-.. rst-class:: centered
 
 **Always use four spaces -- really!**
 
@@ -145,7 +144,6 @@ import \* ?
 
     from modulename import *
 
-.. rst-class:: centered large
 
 **Don't do this!**
 
@@ -184,7 +182,6 @@ In addition to importing modules, you can run them.
 
 There are a few ways to do this:
 
-.. rst-class:: build
 
 * ``$ python hello.py``   -- must be in current working directory
 * ``$ python -m hello``   -- any module on PYTHONPATH anywhere on the system

@@ -220,7 +220,7 @@
             
   <div class="section" id="static-and-class-methods">
 <span id="id1"></span><h1>Static and Class Methods<a class="headerlink" href="#static-and-class-methods" title="Permalink to this headline">¶</a></h1>
-<div class="left build docutils container">
+<div class="docutils container">
 <p>You’ve seen how methods of a class are <em>bound</em> to an instance when it is
 created.</p>
 <p>And you’ve seen how the argument <code class="docutils literal"><span class="pre">self</span></code> is then automatically passed to
@@ -230,7 +230,7 @@ long as you pass an instance of that class as the first argument.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p class="centered"><strong>But what if you don’t want or need an instance?</strong></p>
+<p><strong>But what if you don’t want or need an instance?</strong></p>
 </div>
 <div class="section" id="static-methods">
 <h2>Static Methods<a class="headerlink" href="#static-methods" title="Permalink to this headline">¶</a></h2>
@@ -246,7 +246,7 @@ long as you pass an instance of that class as the first argument.</p>
 <span class="gh">Out[37]: </span><span class="go">9</span>
 </pre></div>
 </div>
-<div class="build docutils container">
+<div class="docutils container">
 <p>Where are static methods useful?</p>
 <p>Usually they aren’t.  It is often better just to write a module-level function.</p>
 <p>An example from the Standard Library (tarfile.py):</p>
@@ -282,9 +282,9 @@ argument</p>
 </pre></div>
 </div>
 </div>
-<div class="centered section" id="why">
+<div class="section" id="why">
 <h2>Why?<a class="headerlink" href="#why" title="Permalink to this headline">¶</a></h2>
-<div class="build docutils container">
+<div class="docutils container">
 <p>Unlike static methods, class methods are quite common.</p>
 <p>They have the advantage of being friendly to subclassing.</p>
 <p>Consider this:</p>

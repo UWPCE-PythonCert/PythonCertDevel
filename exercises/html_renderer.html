@@ -447,13 +447,15 @@ new tags, etc….</p>
 </div>
 <div class="section" id="notes-on-handling-duck-typing">
 <span id="id1"></span><h2>Notes on handling “duck typing”<a class="headerlink" href="#notes-on-handling-duck-typing" title="Permalink to this headline">¶</a></h2>
-<p class="left">In this exercise, we need to deal with the fact that XML (and thus HTML) allows <em>either</em> plain text <em>or</em> other tags to be the content of a tag. Our code also needs to handle the fact that there are two possible types that we need to be able to render.</p>
-<p class="left">There are two primary ways to address this (and multiple ways to actually write the code for each of these).</p>
-<ol class="left arabic simple">
+<blockquote>
+<div><p>In this exercise, we need to deal with the fact that XML (and thus HTML) allows <em>either</em> plain text <em>or</em> other tags to be the content of a tag. Our code also needs to handle the fact that there are two possible types that we need to be able to render.</p>
+<p>There are two primary ways to address this (and multiple ways to actually write the code for each of these).</p>
+<ol class="arabic simple">
 <li>Make sure that the content only has renderable objects in it.</li>
 <li>Make sure the render() method can handle either type on the fly.</li>
 </ol>
-<p class="left">The difference is where you handle the multiple types – in the render method itself, or ahead of time.</p>
+<p>The difference is where you handle the multiple types – in the render method itself, or ahead of time.</p>
+</div></blockquote>
 <div class="section" id="the-ahead-of-time-option">
 <h3>The ahead of time option:<a class="headerlink" href="#the-ahead-of-time-option" title="Permalink to this headline">¶</a></h3>
 <p>You can handle it ahead of time by creating a simple object that wraps a string and gives it a render method. As simple as:</p>
@@ -548,9 +550,12 @@ new tags, etc….</p>
 </div>
 <div class="section" id="html-primer">
 <span id="id2"></span><h2>HTML Primer<a class="headerlink" href="#html-primer" title="Permalink to this headline">¶</a></h2>
-<p class="medium">The very least you need to know about html to do this assignment.</p>
-<p class="left">If you are familiar with html, then this will all make sense to you. If you have never seen html before, this might be a bit intimidating, but you really don’t need to know much to do this assignment.</p>
-<p class="left">First of all, sample output from each step is provided. So all you really need to do is look at that, and make your code do the same thing. But it does help understand a little bit about what you trying to do.</p>
+<blockquote>
+<div><blockquote>
+<div>The very least you need to know about html to do this assignment.</div></blockquote>
+<p>If you are familiar with html, then this will all make sense to you. If you have never seen html before, this might be a bit intimidating, but you really don’t need to know much to do this assignment.</p>
+<p>First of all, sample output from each step is provided. So all you really need to do is look at that, and make your code do the same thing. But it does help understand a little bit about what you trying to do.</p>
+</div></blockquote>
 <div class="section" id="html">
 <h3>HTML<a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h3>
 <p>HTML is “Hyper Text Markup Language”. Hypertext, because it can contain links

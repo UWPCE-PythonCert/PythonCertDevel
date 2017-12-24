@@ -7,7 +7,6 @@ Sparse Array Exercise
 Sparse Array
 ============
 
-.. rst-class:: medium
 
     Goal:
 
@@ -51,7 +50,6 @@ Some ideas of how to do that:
 
   This will give its "virtual" length --  with the zeros
 
-.. nextslide::
 
 * It should support getting and setting particular elements via indexing:
 
@@ -71,7 +69,6 @@ Some ideas of how to do that:
 
 * it should have an append() method.
 
-.. nextslide::
 
 * Can you make it support slicing?
 

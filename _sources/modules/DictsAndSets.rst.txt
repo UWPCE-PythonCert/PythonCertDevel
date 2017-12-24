@@ -507,7 +507,6 @@ Set Methods
       File "<stdin>", line 1, in <module>
     KeyError: 2
 
-.. nextslide::
 
 All the "set" operations from math class...
 

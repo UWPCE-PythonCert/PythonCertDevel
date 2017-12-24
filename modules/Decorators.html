@@ -225,26 +225,30 @@
   <div class="section" id="decorators">
 <h1>Decorators<a class="headerlink" href="#decorators" title="Permalink to this headline">¶</a></h1>
 <p><strong>A Short Reminder</strong></p>
-<p class="left">Functions are things that generate values based on input (arguments).</p>
-<p class="left">In Python, functions are first-class objects.</p>
-<p class="left">This means that you can bind names to them, pass them around, etc., just like
+<blockquote>
+<div><p>Functions are things that generate values based on input (arguments).</p>
+<p>In Python, functions are first-class objects.</p>
+<p>This means that you can bind names to them, pass them around, etc., just like
 other objects.</p>
-<p class="left">Because of this fact, you can write functions that take functions as
+<p>Because of this fact, you can write functions that take functions as
 arguments and/or return functions as values:</p>
-<div class="left highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">substitute</span><span class="p">(</span><span class="n">a_function</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">substitute</span><span class="p">(</span><span class="n">a_function</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">new_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;I&#39;m not that other function&quot;</span>
     <span class="k">return</span> <span class="n">new_function</span>
 </pre></div>
 </div>
+</div></blockquote>
 <div class="section" id="a-definition">
 <h2>A Definition<a class="headerlink" href="#a-definition" title="Permalink to this headline">¶</a></h2>
 <p>There are many things you can do with a simple pattern like this one.
 So many, that we give it a special name:</p>
-<p class="centered medium"><strong>Decorator</strong></p>
-<p class="build centered">“A decorator is a function that takes a function as an argument and
+<p><strong>Decorator</strong></p>
+<blockquote>
+<div><p>“A decorator is a function that takes a function as an argument and
 returns a function as a return value.”</p>
-<p class="build centered">That’s nice and all, but why is that useful?</p>
+<p>That’s nice and all, but why is that useful?</p>
+</div></blockquote>
 </div>
 <div class="section" id="an-example">
 <h2>An Example<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h2>
@@ -254,7 +258,7 @@ one:</p>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 </pre></div>
 </div>
-<div class="build docutils container">
+<div class="docutils container">
 <p>You want to see when each function is called, with what arguments and
 with what result. So you rewrite each function as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -294,7 +298,7 @@ in your module.</p>
 <span class="gh">Out[37]: </span><span class="go">7</span>
 </pre></div>
 </div>
-<div class="build docutils container">
+<div class="docutils container">
 <p>This is nice, but we have to call the new function wherever we originally
 had the old one.</p>
 <p>It’d be nicer if we could just call the old function and have it log.</p>
@@ -309,7 +313,7 @@ statements</em> leads you to this form:</p>
 <span class="n">add</span> <span class="o">=</span> <span class="n">logged_func</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="build docutils container">
+<div class="docutils container">
 <p>And now you can simply use the code you’ve already written and calls to
 <code class="docutils literal"><span class="pre">add</span></code> will be logged:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [41]: </span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
@@ -350,7 +354,7 @@ incomplete.</p>
 <p>Remember from last week, a <em>callable</em> is a function, a method on a class,
 or a class that implements the <code class="docutils literal"><span class="pre">__call__</span></code> special method.</p>
 <p>So in fact the definition should be updated as follows:</p>
-<p class="centered medium">A decorator is a callable that takes a callable as an argument and
+<p>A decorator is a callable that takes a callable as an argument and
 returns a callable as a return value.</p>
 </div>
 <div class="section" id="id1">

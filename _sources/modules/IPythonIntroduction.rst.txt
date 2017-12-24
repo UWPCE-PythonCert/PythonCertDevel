@@ -43,7 +43,6 @@ Start it up
     (live demo)
 
 
-.. nextslide:: IPython basics
 
 This is the stuff I use every day:
 
@@ -65,7 +64,6 @@ This is the stuff I use every day:
   - ``%paste`` (this keeps whitespace cleaner for you)
 
 
-.. nextslide:: IPython basics (cont)
 
 * getting help:
 
