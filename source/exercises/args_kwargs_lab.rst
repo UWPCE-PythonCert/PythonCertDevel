@@ -61,7 +61,6 @@ we are telling you it should do.
 
     - ``func(*regular, *links)``
 
-.. nextslide::
 
 **Generic parameters:**
 

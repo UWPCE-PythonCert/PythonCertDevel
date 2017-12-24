@@ -3,7 +3,6 @@ Decorators
 
 **A Short Reminder**
 
-.. rst-class:: left
 
     Functions are things that generate values based on input (arguments).
 
@@ -29,11 +28,9 @@ A Definition
 There are many things you can do with a simple pattern like this one.
 So many, that we give it a special name:
 
-.. rst-class:: centered medium
 
 **Decorator**
 
-.. rst-class:: build centered
 
     "A decorator is a function that takes a function as an argument and
     returns a function as a return value."
@@ -51,7 +48,6 @@ one:
     def add(a, b):
         return a + b
 
-.. rst-class:: build
 .. container::
 
     You want to see when each function is called, with what arguments and
@@ -65,7 +61,6 @@ one:
             print("\tResult --> {}".format(result))
             return result
 
-.. nextslide::
 
 That's not particularly nice, especially if you have lots of functions
 in your module.
@@ -88,7 +83,6 @@ Now imagine we defined the following, more generic *decorator*:
 
 (demo)
 
-.. nextslide::
 
 We could then make logging versions of our module functions:
 
@@ -106,7 +100,6 @@ Then, where we want to see the results, we can use the logged version:
          Result --> 7
     Out[37]: 7
 
-.. rst-class:: build
 .. container::
 
     This is nice, but we have to call the new function wherever we originally
@@ -114,7 +107,6 @@ Then, where we want to see the results, we can use the logged version:
 
     It'd be nicer if we could just call the old function and have it log.
 
-.. nextslide::
 
 Remembering that you can easily rebind symbols in Python using *assignment
 statements* leads you to this form:
@@ -128,7 +120,6 @@ statements* leads you to this form:
         return a + b
     add = logged_func(add)
 
-.. rst-class:: build
 .. container::
 
     And now you can simply use the code you've already written and calls to
@@ -181,7 +172,6 @@ or a class that implements the ``__call__`` special method.
 
 So in fact the definition should be updated as follows:
 
-.. rst-class:: centered medium
 
 A decorator is a callable that takes a callable as an argument and
 returns a callable as a return value.
@@ -210,7 +200,6 @@ function with given arguments:
             self.memoized[args] = self.function(*args)
             return self.memoized[args]
 
-.. nextslide::
 
 Let's try that out with a potentially expensive function:
 
@@ -248,7 +237,6 @@ decorator in order, from bottom to top:
         pass
     func = decorator_two(decorator_one(func))
 
-.. nextslide::
 
 Let's define another decorator that will time how long a given call takes:
 
@@ -264,7 +252,6 @@ Let's define another decorator that will time how long a given call takes:
             return result
         return timed
 
-.. nextslide::
 
 And now we can use this new decorator stacked along with our memoizing
 decorator:
@@ -291,7 +278,6 @@ for you to be writing your own.
 
 We've seen a few already:
 
-.. nextslide::
 
 For example, ``@staticmethod`` and ``@classmethod`` can also be used as simple
 callables, without the nifty decorator expression:
@@ -317,7 +303,6 @@ Note that the "``def``" binds the name ``add``, then the next line
 rebinds it.
 
 
-.. nextslide::
 
 The ``classmethod()`` builtin can do the same thing:
 
@@ -360,7 +345,6 @@ Two weeks ago we saw this code:
         def x(self):
             del self._x
 
-.. nextslide::
 
 But this could also be accomplished like so:
 
@@ -382,7 +366,6 @@ But this could also be accomplished like so:
 ``Examples/Session10/property_ugly.py``
 
 
-.. nextslide::
 
 Note that in this case, the decorator object returned by the property decorator
 itself implements additional decorators as attributes on the returned method

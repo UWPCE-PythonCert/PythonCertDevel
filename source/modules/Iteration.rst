@@ -295,7 +295,6 @@ You can do that in a for loop, also:
 Looping through two iterables at once:
 --------------------------------------
 
-.. rst-class:: mlarge
 
   ``zip``
 
@@ -322,7 +321,6 @@ There can be more than two:
 Need the index and the item?
 ----------------------------
 
-.. rst-class:: mlarge
 
   ``enumerate``
 

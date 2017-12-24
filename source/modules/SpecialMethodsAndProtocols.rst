@@ -316,7 +316,6 @@ And then we can call it:
 
     result = my_fun(some_arguments)
 
-.. nextslide::
 
 But what if we need to store some data to know how to evaluate that function?
 

@@ -3,7 +3,6 @@ Context Managers
 
 **Repetition in code stinks (DRY!)**
 
-.. rst-class:: left build
 .. container::
 
 
@@ -45,12 +44,10 @@ You can write more robust code for handling your resources:
 But what exceptions do you want to catch?  And do you really want to have to
 remember to type all that **every** time you open a resource?
 
-.. nextslide:: It Gets Better
 
 Starting in version 2.5, Python provides a structure for reducing the
 repetition needed to handle resources like this.
 
-.. rst-class:: centered
 
 **Context Managers**
 
@@ -78,7 +75,6 @@ when the code block ends.
 
 .. _pep343: http://legacy.python.org/dev/peps/pep-0343/
 
-.. nextslide:: A Growing Trend
 
 At this point in Python history, many functions you might expect to behave this
 way do:
@@ -160,7 +156,6 @@ Consider this code:
 ``Examples/Session10/context_managers.py``
 
 
-.. nextslide::
 
 This class doesn't do much of anything, but playing with it can help
 clarify the order in which things happen:
@@ -175,12 +170,10 @@ clarify the order in which things happen:
     This is in the context
     __exit__(<type 'exceptions.RuntimeError'>, this is the error message, <traceback object at 0x1049cca28>)
 
-.. rst-class:: build
 .. container::
 
     Because the exit method returns True, the raised error is 'handled'.
 
-.. nextslide::
 
 What if we try with ``False``?
 
@@ -226,7 +219,6 @@ Consider this code:
         finally:
             print("__exit__ cleanup goes here")
 
-.. nextslide::
 
 The code is similar to the class defined previously.
 
@@ -244,7 +236,6 @@ And using it has similar results.  We can handle errors:
     errors handled here
     __exit__ cleanup goes here
 
-.. nextslide::
 
 Or, we can allow them to propagate:
 

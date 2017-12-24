@@ -49,7 +49,6 @@ A Picture of git
     :width: 80%
     :class: center
 
-.. rst-class:: build
 .. container::
 
     A git repository is a set of points in time, with history showing where
@@ -63,13 +62,11 @@ A Picture of git
     The path from one point to the previous is represented by the *difference*
     between the two points.
 
-.. nextslide::
 
 .. figure:: /_static/git_head.png
     :width: 75%
     :class: center
 
-.. rst-class:: build
 .. container::
 
     Each point in time can also have a label that points to it.
@@ -77,13 +74,11 @@ A Picture of git
     One of these is *HEAD*, which always points to the place in the timeline
     that you are currently looking at.
 
-.. nextslide::
 
 .. figure:: /_static/git_master_branch.png
     :width: 75%
     :class: center
 
-.. rst-class:: build
 .. container::
 
     You may also be familiar with the label "master".
@@ -93,13 +88,11 @@ A Picture of git
 
     A *branch* is actually just a label for a certain set of points in time.
 
-.. nextslide::
 
 .. figure:: /_static/git_new_commit.png
     :width: 75%
     :class: center
 
-.. rst-class:: build
 .. container::
 
     When you make a *commit* in git, you add a new point to the timeline.
@@ -113,13 +106,11 @@ A Picture of git
     The noun "commit" is a particular state of the repository -- it has been saved and has particular name (hash) -- it is one if the points on that timeline.
 
 
-.. nextslide:: Making a Branch
 
 .. figure:: /_static/git_new_branch.png
     :width: 75%
     :class: center
 
-.. rst-class:: build
 .. container::
 
     You can make a new *branch* with the ``branch`` command.
@@ -128,13 +119,11 @@ A Picture of git
 
     Notice that it *does not* check out that branch -- you will still be working in the current branch.
 
-.. nextslide:: Making a Branch
 
 .. figure:: /_static/git_checkout_branch.png
     :width: 75%
     :class: center
 
-.. rst-class:: build
 .. container::
 
     You can use the ``checkout`` command to switch to the new branch.
@@ -147,24 +136,20 @@ A Picture of git
           master
         * session01
 
-.. nextslide:: Making a Branch
 
 .. figure:: /_static/git_commit_on_branch.png
     :width: 75%
     :class: center
 
-.. rst-class:: build
 .. container::
 
     While it is checked out, new commits move the *session01* label.
 
     Notice that HEAD is *always* the same as "where you are now"
 
-.. nextslide:: Making a Branch
 
 You can use this to switch between branches and make changes in isolation.
 
-.. rst-class:: build
 .. container::
 
     .. figure:: /_static/git_checkout_master.png
@@ -175,9 +160,7 @@ You can use this to switch between branches and make changes in isolation.
         :width: 75%
         :class: center
 
-.. nextslide:: Merging Branches
 
-.. rst-class:: build
 .. container::
 
     Branching allows you to keep related sets of work separate from each-other.
@@ -195,12 +178,10 @@ You can use this to switch between branches and make changes in isolation.
 
     The final step in the process is merging your work.
 
-.. nextslide:: Merging Branches
 
 The ``merge`` command allows you to *combine* your work on one branch with the
 work on another.
 
-.. rst-class:: build
 .. container::
 
     It creates a new commit which reconciles the differences:
@@ -212,9 +193,7 @@ work on another.
     Notice that this commit has **two** parents.
 
 
-.. nextslide:: Conflicts
 
-.. rst-class:: build
 .. container::
 
     Sometimes when you ``merge`` two branches, you get *conflicts*.
@@ -234,7 +213,6 @@ work on another.
         * ========= (the pivot point between two branches' content)
         * >>>>>>>>> *hash2* (stuff from the branch being merged)
 
-.. nextslide:: Conflicts
 
 Your job in fixing a conflict is to decide exactly what to keep.
 

@@ -8,17 +8,14 @@ Setting up OS-X for Python
 Getting The Tools
 ==================
 
-.. rst-class:: left
 
 OS-X comes with Python out of the box, but not the full setup you'll need for development or this class. It also doesn't have the latest version(s), and no version of Python 3.
 
 So we recommend installing a new version.
 
-.. rst-class:: left
 
 **Note**:
 
-.. rst-class:: left
 
 If you use ``macports`` or ``homebrew`` to manage \*nix software on your machine, feel free to use those for ``python``, ``git``, etc, as well. But make sure you have Python 3.6.*
 

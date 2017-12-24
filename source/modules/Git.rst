@@ -80,7 +80,6 @@ Working with Remotes
 
 With git, you work with *local* repositories and the *remotes* that they are connected to.
 
-.. rst-class:: build
 .. container::
 
    Git uses shortcuts to address *remotes*. Cloned repositories get an *origin* shortcut for free:
@@ -95,7 +94,6 @@ With git, you work with *local* repositories and the *remotes* that they are con
    the UWPCE-PythonCert GitHub account (it shows up twice, because there is
    a shortcut for both fetch from and push to this remote).
 
-.. rst-class:: build
 .. container::
 
     You can work on any project you wish to that has a public repository on GitHub. However, since you won't have permission to edit most projects directly, there is such a thing as *forking* a project.
@@ -152,7 +150,6 @@ original repository, so that you can get changes made by other contributors befo
 You can add *remotes* at will, to connect your *local* repository or to other
 copies of it in different remote locations.
 
-.. rst-class:: build
 .. container::
 
     This allows you to grab changes made to the repository in these other

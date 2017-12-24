@@ -6,7 +6,6 @@
 Python Sequences
 ################
 
-.. rst-class:: center large
 
 Ordered collections of objects
 
@@ -280,7 +279,6 @@ All sequences support the ``in`` and ``not in`` membership operators:
     In [18]: 42 not in s
     Out[18]: True
 
-.. nextslide:: Membership in Strings
 
 For strings, the membership operations are like ``substring`` operations in
 other languages:
@@ -460,7 +458,6 @@ There are some complexities about that -- but more on that in another lesson.
 Lists, Tuples...
 ================
 
-.. rst-class:: center large
 
 The *primary* sequence types.
 
@@ -644,7 +641,6 @@ Look familiar from lists??
 Lists vs. Tuples
 ----------------
 
-.. rst-class:: center large
 
     So why have both?
 
@@ -656,7 +652,6 @@ Mutability
    :width: 35%
    :alt: Presto change-o
 
-.. rst-class:: credit
 
 image from flickr by `illuminaut`_, (CC by-nc-sa)
 
@@ -708,7 +703,6 @@ Try this out:
     Out[31]: ['spam', 'raspberries', 'ham']
 
 
-.. nextslide:: Tuples are not
 
 We repeat the exercise with a Tuple:
 
@@ -941,7 +935,6 @@ Shrinking the List
     In [208]: food
     Out[208]: ['eggs']
 
-.. nextslide:: Removing Chunks of a List
 
 You can also delete *slices* of a list with the ``del`` keyword:
 

@@ -348,7 +348,6 @@ All data in all files is binary -- that's how computers work. So in Python3, "te
 
 But this too is complicated -- there are multiple ways that binary data can be mapped to Unicode text, known as "encodings". In Python, text files are by default opened with the "utf-8" encoding. These days, that mostly "just works".
 
-.. nextslide::
 
 But if you read a binary file as text, then Python will try to interpret the bytes as utf-8 encoded text -- and this will likely fail:
 
@@ -369,7 +368,6 @@ But if you read a binary file as text, then Python will try to interpret the byt
 
     UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte
 
-.. nextslide::
 
 In Python2, it's less likely that you'll get an error like this -- it doesn't try to decode the file as it's read -- even for text files -- so it's a bit tricky and more error prone.
 
