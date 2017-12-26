@@ -143,8 +143,6 @@ Python Concurrency From the Ground Up: LIVE!
 http://pyvideo.org/pycon-us-2015/python-concurrency-from-the-ground-up-live.html
 
 
-
-
 Logging
 -------
 
@@ -160,7 +158,7 @@ This is a nice collection of little bits of Python that may be surprising:
 Metaprogramming
 ===============
 
-Metaprogramming is writting porgrams that write programs... it is a large topic, starting with fairly simple things like the use of ``getattr`` or ``setattr``, through decorators, and all the way up to metaclasses.
+Metaprogramming is writing programs that write programs... it is a large topic, starting with fairly simple things like the use of ``getattr`` or ``setattr``, through decorators, and all the way up to metaclasses.
 
 This lecture by David Beazley is a great overview:
 
@@ -170,16 +168,16 @@ https://youtu.be/sPiWg5jSoZI
 Command Line Scripting
 ======================
 
-Python is a great tool for making command line programs. As soon as a command line program gets a bit belyond the basics, you need to provide an interface that allows users to set options, etc.
+Python is a great tool for making command line programs. As soon as a command line program gets a bit beyond the basics, you need to provide an interface that allows users to set options, etc.
 
-The built-in ``argparse`` module does a lot for you, and is a while lot better than writting a bunch of custom code, but there are a couple of third party parckages that make it even easier -- these are well worth checking out:
+The built-in ``argparse`` module does a lot for you, and is a while lot better than writing a bunch of custom code, but there are a couple of third party packages that make it even easier -- these are well worth checking out:
 
 ``docopt``
 ----------
 
 "Create *beautiful* command-line interfaces with Python"
 
-``docopt`` lets you write the docs for your interface, and it automatticaly builds the code to impiment it -- very cool.
+``docopt`` lets you write the docs for your interface, and it automatically builds the code to implement it -- very cool.
 
 http://docopt.org/
 
