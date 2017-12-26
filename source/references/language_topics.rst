@@ -167,3 +167,27 @@ This lecture by David Beazley is a great overview:
 https://youtu.be/sPiWg5jSoZI
 
 
+Command Line Scripting
+======================
+
+Python is a great tool for making command line programs. As soon as a command line program gets a bit belyond the basics, you need to provide an interface that allows users to set options, etc.
+
+The built-in ``argparse`` module does a lot for you, and is a while lot better than writting a bunch of custom code, but there are a couple of third party parckages that make it even easier -- these are well worth checking out:
+
+``docopt``
+----------
+
+"Create *beautiful* command-line interfaces with Python"
+
+``docopt`` lets you write the docs for your interface, and it automatticaly builds the code to impiment it -- very cool.
+
+http://docopt.org/
+
+
+``click``
+---------
+
+  Click is a Python package for creating beautiful command line interfaces in a composable way with as little code as necessary. It’s the “Command Line Interface Creation Kit”. It’s highly configurable but comes with sensible defaults out of the box.
+
+http://click.pocoo.org/
+
