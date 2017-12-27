@@ -1,31 +1,26 @@
 .. _exercise_string_formatting:
 
-#####################
-String Formatting Lab
-#####################
+##########################
+String Formatting Exercise
+##########################
 
-Building up strings
-===================
+Goal
+====
+In this excercise we will reinforce the important concepts of string formatting, so that these start to become second nature!
 
+Procedure
+=========
+Being sure to follow all the steps described in Procedure at:
 
-For reference:
+https://canvas.uw.edu/courses/1200526/assignments/3970003?module_item_id=7963708
 
-The official reference docs:
+but this time, creating a new file called stringf_lab.py in your student dir in the class repo.
 
-https://docs.python.org/3/library/string.html#format-string-syntax
-
-And a more human-readable intro:
-
-https://pyformat.info/
-
-And a nice "Cookbook":
-
-https://mkaz.tech/python-string-format.html
+When the empty script is available and runnable, complete the following tasks.
 
 
-A Couple of Exercises
----------------------
-
+Task One
+--------
 * Write a format string that will take the tuple:
 
     ``( 2, 123.4567, 10000, 12345.67)``
@@ -64,7 +59,8 @@ So you want to find a string formatting operator that will "pad" the number with
 
 4) The fourth value is a float with a lot of digits -- display it in scientific notation with 3 significant figures.
 
-
+Task Two
+--------
 Dynamically Building up format strings
 --------------------------------------
 
@@ -121,4 +117,33 @@ It will look like:
       return form_string.format(in_tuple)
 
 
+Task Three
+----------
+
+Task Four
+---------
+
+
+Tests
+-----
+
+
+
+Building up strings
+===================
+
+
+For reference:
+
+The official reference docs:
+
+https://docs.python.org/3/library/string.html#format-string-syntax
+
+And a more human-readable intro:
+
+https://pyformat.info/
+
+And a nice "Cookbook":
+
+https://mkaz.tech/python-string-format.html
 
