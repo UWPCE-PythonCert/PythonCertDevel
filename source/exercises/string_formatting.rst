@@ -10,18 +10,18 @@ In this excercise we will reinforce the important concepts of string formatting,
 
 Procedure
 =========
-Being sure to follow all the steps described in Procedure at:
+Be sure to follow all the steps described in the Procedure section at:
 
 https://canvas.uw.edu/courses/1200526/assignments/3970003?module_item_id=7963708
 
-but this time, creating a new file called stringf_lab.py in your student dir in the class repo.
+but this time, creating a new file called strformat_lab.py in your student dir in the class repo.
 
-When the empty script is available and runnable, complete the following tasks.
+When the empty script is available and runnable, complete the following four tasks.
 
 
 Task One
 --------
-* Write a format string that will take the tuple:
+* Write a format string that will take the following four element tuple:
 
     ``( 2, 123.4567, 10000, 12345.67)``
 
@@ -29,10 +29,12 @@ Task One
 
     ``'file_002 :   123.46, 1.00e+04, 1.23e+04'``
 
-1) The idea behind the "file_002" is that if you have a bunch of files that you want to name with numbers that can be sorted, you need to "pad" the numbers with zeros to get the right sort order.
 
+Let's look at each of the four tuple elements in turn:
 
-**Example:**
+1) The first element is used to generate a filename that can help with file sorting. The idea behind the "file_002" is that if you have a bunch of files that you want to name with numbers that can be sorted, you need to "pad" the numbers with zeros to get the right sort order.
+
+To illustrate this further let's look at an example:
 
 .. code-block:: ipython
 
@@ -41,7 +43,7 @@ Task One
     In [12]: fnames
     Out[12]: ['file1', 'file10', 'file11', 'file2']
 
-That is probably not what you want. However:
+That is probably not what you wanted. However:
 
 .. code-block:: ipython
 
@@ -51,7 +53,7 @@ That is probably not what you want. However:
 
 That works!
 
-So you want to find a string formatting operator that will "pad" the number with zeros for you.
+So you need to find a string formatting operator that will "pad" the number with zeros for you.
 
 2) The second element is a floating point number. You should display it with 2 decimal places shown.
 
@@ -59,8 +61,10 @@ So you want to find a string formatting operator that will "pad" the number with
 
 4) The fourth value is a float with a lot of digits -- display it in scientific notation with 3 significant figures.
 
+
 Task Two
 --------
+
 Dynamically Building up format strings
 --------------------------------------
 
@@ -68,9 +72,9 @@ Dynamically Building up format strings
 
 ``"the 3 numbers are: {:d}, {:d}, {:d}".format(1,2,3)``
 
-To take an arbitrary number of values.
+to take an arbitrary number of values.
 
-Trick: You can pass in a tuple of values to a function with a ``*``:
+Hint: You can pass in a tuple of values to a function with a ``*``:
 
 .. code-block:: ipython
 
@@ -79,9 +83,9 @@ Trick: You can pass in a tuple of values to a function with a ``*``:
     In [53]: "the 3 numbers are: {:d}, {:d}, {:d}".format(*t)
     Out[53]: 'the 3 numbers are: 1, 2, 3'
 
-The idea here is that you may have a tuple of three numbers, but might also have 4 or 5 or....
+The idea here is that you may have a tuple of three numbers, but might also have 4 or 5 or 2 or....
 
-So you can dynamically build up the format string to accommodate the length of the tuple.
+so you can dynamically build up the format string to accommodate the length of the tuple.
 
 The string object has the ``format()`` method, so you can call it with a string that is bound to a name, not just a string literal. For example:
 
@@ -94,7 +98,7 @@ The string object has the ``format()`` method, so you can call it with a string 
     In [18]: fstring.format(*nums)
     Out[18]: '34, 56'
 
-So how would you make a form_string that was the right length for an arbitrary tuple?
+So in the example above, how would you make a form_string that was the right length for an arbitrary tuple?
 
 
 Put your code in a function that will return the final string like so:
@@ -120,20 +124,25 @@ It will look like:
 Task Three
 ----------
 
-Task Four
+* Given a 5 element tuple:
+
+    ``( 4, 30, 2017, 2, 27)``
+
+    use string formating to print:
+
+    ``'02 27 2017 04 30``
+
+Hint: use index numbers to specify positions.
+
+
+Task four
 ---------
 
-
-Tests
------
+Using your results from task one, repeat the exercise, but this time using an alternate type of format string (hint: think about alternative ways to use .format() (keywords anyone?), and also consider f-strings if you've not used them already).
 
 
-
-Building up strings
-===================
-
-
-For reference:
+Resources on string formatting
+==============================
 
 The official reference docs:
 
@@ -143,7 +152,17 @@ And a more human-readable intro:
 
 https://pyformat.info/
 
-And a nice "Cookbook":
+A nice "Cookbook":
 
 https://mkaz.tech/python-string-format.html
 
+
+Submitting Your Work
+====================
+Put the file in your student directory in a new subdirectory named for this lesson, and add it to your clone early.
+
+Make frequent commits with good, clear messages about what you're doing and why.
+
+When you're done and ready for the instructors to review your work, push your changes to your gitHub fork and then go to the gitHub website and make a pull request.
+
+Copy the gitHub link to the pull request, and use the +Submit Assignment link located in the top right corner to submit the URL here.
