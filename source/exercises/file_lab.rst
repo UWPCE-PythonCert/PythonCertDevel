@@ -1,20 +1,19 @@
 .. _exercise_file_lab:
 
-********
-File LAB
-********
+#############
+File Exercise
+#############
 
 A bit of practice with files
-============================
 
 Goal:
------
+=====
 
 Get a little bit of practice with handling files and parsing simple text.
 
 
 Paths and File Processing
---------------------------
+=========================
 
 * Write a program which prints the full path for all files in the current
   directory, one per line
@@ -30,24 +29,36 @@ Paths and File Processing
     writing). Note that for binary files, you can't use ``readline()`` --
     lines don't have any meaning for binary files.
 
-  - Test it with both text and binary files (maybe jpeg or something of oyur chosing).
+  - Test it with both text and binary files (maybe jpeg or something of your choosing).
 
 
 File reading and parsing
-------------------------
+========================
 
-In the class repo, in:
+Download this text file:
 
-``Examples/Session01/students.txt``
+:download:`students.txt <../examples/file_exercise/students.txt>`
 
-you will find the list we generated in the first class of all the students in the class, and what programming languages they have used in the past.
+In it, you will find a list of names and what programming languages they have used in the past. This may be similar to a list generated at the beginning of this class.
 
-Write a little script that reads that file, and generates a list of all
-the languages that have been used.
+Write a little script that reads that file, and generates a list of all the languages that have been used.
 
-Extra credit: keep track of how many students specified each language.
+What might be the best data structure to use to keep track of bunch of values without duplication?
 
-If you've got git set up right, ``git pull upstream master`` should update
-your repo. Otherwise, you can get it from gitHub:
+The file format:
+----------------
 
-https://raw.githubusercontent.com/UWPCE-PythonCert/IntroPython-2017/master/examples/Session01/students.txt
+The first line of the file is:
+
+``Name: Nickname, languages``
+
+And each line looks something like this:
+
+``Jagger, Michael: Mick, shell, python``
+
+So a colon after the name, then the nickname, and then one or more languages.
+
+However, like real data files, the file is NOT well-formed. Only some lines have nicknames, and other small differences, so you will need to write some code to make sure you get it all correct.
+
+Extra challenge: keep track of how many students specified each language.
+
