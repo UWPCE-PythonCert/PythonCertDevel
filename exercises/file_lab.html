@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>File LAB &mdash; PythonCert 4.0 documentation</title>
+  <title>File Exercise &mdash; PythonCert 4.0 documentation</title>
   
 
   
@@ -109,11 +109,11 @@
 <li class="toctree-l2"><a class="reference internal" href="except_exercise.html">Exceptions Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comprehensions_lab.html">Comprehensions Lab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fib_and_lucas.html">Fibonacci Series Exercise</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">File LAB</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#a-bit-of-practice-with-files">A bit of practice with files</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#goal">Goal:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#paths-and-file-processing">Paths and File Processing</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#file-reading-and-parsing">File reading and parsing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">File Exercise</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#goal">Goal:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#paths-and-file-processing">Paths and File Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-reading-and-parsing">File reading and parsing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-file-format">The file format:</a></li>
 </ul>
 </li>
 </ul>
@@ -185,7 +185,7 @@
         
           <li><a href="index.html">Exercises</a> &raquo;</li>
         
-      <li>File LAB</li>
+      <li>File Exercise</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -204,16 +204,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="file-lab">
-<span id="exercise-file-lab"></span><h1>File LAB<a class="headerlink" href="#file-lab" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="a-bit-of-practice-with-files">
-<h2>A bit of practice with files<a class="headerlink" href="#a-bit-of-practice-with-files" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="file-exercise">
+<span id="exercise-file-lab"></span><h1>File Exercise<a class="headerlink" href="#file-exercise" title="Permalink to this headline">¶</a></h1>
+<p>A bit of practice with files</p>
 <div class="section" id="goal">
-<h3>Goal:<a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h3>
+<h2>Goal:<a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h2>
 <p>Get a little bit of practice with handling files and parsing simple text.</p>
 </div>
 <div class="section" id="paths-and-file-processing">
-<h3>Paths and File Processing<a class="headerlink" href="#paths-and-file-processing" title="Permalink to this headline">¶</a></h3>
+<h2>Paths and File Processing<a class="headerlink" href="#paths-and-file-processing" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Write a program which prints the full path for all files in the current
 directory, one per line</li>
@@ -225,22 +224,27 @@ contents of the file into memory at once.</li>
 the files in binary mode: <code class="docutils literal"><span class="pre">open(filename,</span> <span class="pre">'rb')</span></code> (or <code class="docutils literal"><span class="pre">'wb'</span></code> for
 writing). Note that for binary files, you can’t use <code class="docutils literal"><span class="pre">readline()</span></code> –
 lines don’t have any meaning for binary files.</li>
-<li>Test it with both text and binary files (maybe jpeg or something of oyur chosing).</li>
+<li>Test it with both text and binary files (maybe jpeg or something of your choosing).</li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="file-reading-and-parsing">
-<h3>File reading and parsing<a class="headerlink" href="#file-reading-and-parsing" title="Permalink to this headline">¶</a></h3>
-<p>In the class repo, in:</p>
-<p><code class="docutils literal"><span class="pre">Examples/Session01/students.txt</span></code></p>
-<p>you will find the list we generated in the first class of all the students in the class, and what programming languages they have used in the past.</p>
-<p>Write a little script that reads that file, and generates a list of all
-the languages that have been used.</p>
-<p>Extra credit: keep track of how many students specified each language.</p>
-<p>If you’ve got git set up right, <code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">upstream</span> <span class="pre">master</span></code> should update
-your repo. Otherwise, you can get it from gitHub:</p>
-<p><a class="reference external" href="https://raw.githubusercontent.com/UWPCE-PythonCert/IntroPython-2017/master/examples/Session01/students.txt">https://raw.githubusercontent.com/UWPCE-PythonCert/IntroPython-2017/master/examples/Session01/students.txt</a></p>
+<h2>File reading and parsing<a class="headerlink" href="#file-reading-and-parsing" title="Permalink to this headline">¶</a></h2>
+<p>Download this text file:</p>
+<p><a class="reference download internal" href="../_downloads/students.txt" download=""><code class="xref download docutils literal"><span class="pre">students.txt</span></code></a></p>
+<p>In it, you will find a list of names and what programming languages they have used in the past. This may be similar to a list generated at the beginning of this class.</p>
+<p>Write a little script that reads that file, and generates a list of all the languages that have been used.</p>
+<p>What might be the best data structure to use to keep track of bunch of values without duplication?</p>
+<div class="section" id="the-file-format">
+<h3>The file format:<a class="headerlink" href="#the-file-format" title="Permalink to this headline">¶</a></h3>
+<p>The first line of the file is:</p>
+<p><code class="docutils literal"><span class="pre">Name:</span> <span class="pre">Nickname,</span> <span class="pre">languages</span></code></p>
+<p>And each line looks something like this:</p>
+<p><code class="docutils literal"><span class="pre">Jagger,</span> <span class="pre">Michael:</span> <span class="pre">Mick,</span> <span class="pre">shell,</span> <span class="pre">python</span></code></p>
+<p>So a colon after the name, then the nickname, and then one or more languages.</p>
+<p>However, like real data files, the file is NOT well-formed. Only some lines have nicknames, and other small differences, so you will need to write some code to make sure you get it all correct.</p>
+<p>Extra challenge: keep track of how many students specified each language.</p>
 </div>
 </div>
 </div>

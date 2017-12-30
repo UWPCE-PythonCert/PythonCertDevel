@@ -131,6 +131,11 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#corners-of-python">Corners of Python</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#metaprogramming">Metaprogramming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-line-scripting">Command Line Scripting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docopt"><code class="docutils literal"><span class="pre">docopt</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#click"><code class="docutils literal"><span class="pre">click</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="scipy.html">The SciPy Stack</a></li>
@@ -304,9 +309,26 @@
 </div>
 <div class="section" id="metaprogramming">
 <h2>Metaprogramming<a class="headerlink" href="#metaprogramming" title="Permalink to this headline">¶</a></h2>
-<p>Metaprogramming is writting porgrams that write programs… it is a large topic, starting with fairly simple things like the use of <code class="docutils literal"><span class="pre">getattr</span></code> or <code class="docutils literal"><span class="pre">setattr</span></code>, through decorators, and all the way up to metaclasses.</p>
+<p>Metaprogramming is writing programs that write programs… it is a large topic, starting with fairly simple things like the use of <code class="docutils literal"><span class="pre">getattr</span></code> or <code class="docutils literal"><span class="pre">setattr</span></code>, through decorators, and all the way up to metaclasses.</p>
 <p>This lecture by David Beazley is a great overview:</p>
 <p><a class="reference external" href="https://youtu.be/sPiWg5jSoZI">https://youtu.be/sPiWg5jSoZI</a></p>
+</div>
+<div class="section" id="command-line-scripting">
+<h2>Command Line Scripting<a class="headerlink" href="#command-line-scripting" title="Permalink to this headline">¶</a></h2>
+<p>Python is a great tool for making command line programs. As soon as a command line program gets a bit beyond the basics, you need to provide an interface that allows users to set options, etc.</p>
+<p>The built-in <code class="docutils literal"><span class="pre">argparse</span></code> module does a lot for you, and is a while lot better than writing a bunch of custom code, but there are a couple of third party packages that make it even easier – these are well worth checking out:</p>
+<div class="section" id="docopt">
+<h3><code class="docutils literal"><span class="pre">docopt</span></code><a class="headerlink" href="#docopt" title="Permalink to this headline">¶</a></h3>
+<p>“Create <em>beautiful</em> command-line interfaces with Python”</p>
+<p><code class="docutils literal"><span class="pre">docopt</span></code> lets you write the docs for your interface, and it automatically builds the code to implement it – very cool.</p>
+<p><a class="reference external" href="http://docopt.org/">http://docopt.org/</a></p>
+</div>
+<div class="section" id="click">
+<h3><code class="docutils literal"><span class="pre">click</span></code><a class="headerlink" href="#click" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Click is a Python package for creating beautiful command line interfaces in a composable way with as little code as necessary. It’s the “Command Line Interface Creation Kit”. It’s highly configurable but comes with sensible defaults out of the box.</div></blockquote>
+<p><a class="reference external" href="http://click.pocoo.org/">http://click.pocoo.org/</a></p>
+</div>
 </div>
 </div>
 
