@@ -65,6 +65,12 @@ So you need to find a string formatting operator that will "pad" the number with
 Task Two
 --------
 
+Using your results from Task One, repeat the exercise, but this time using an alternate type of format string (hint: think about alternative ways to use .format() (keywords anyone?), and also consider f-strings if you've not used them already).
+
+
+Task Three
+----------
+
 Dynamically Building up format strings
 --------------------------------------
 
@@ -121,7 +127,7 @@ It will look like:
       return form_string.format(in_tuple)
 
 
-Task Three
+Task Four
 ----------
 
 * Given a 5 element tuple:
@@ -130,15 +136,63 @@ Task Three
 
     use string formating to print:
 
-    ``'02 27 2017 04 30``
+    ``'02 27 2017 04 30'``
 
 Hint: use index numbers to specify positions.
 
 
-Task four
+Task Five
 ---------
+f-strings are new to Python (version 3.6), but are very powerful and efficient. This means they are worth understanding and using. And this is made easier than it might be because they use the same, familiar formatting language that is conventionally used in Python (in .format()).
 
-Using your results from task one, repeat the exercise, but this time using an alternate type of format string (hint: think about alternative ways to use .format() (keywords anyone?), and also consider f-strings if you've not used them already).
+So in this exercise we are going to specifically use f-strings.
+
+Here's the simplest example, just to show the basic syntax:
+
+.. code-block:: ipython
+
+    In [1]: f'a simple f-string'
+    Out[1]: 'a simple f-string'
+
+And here's an example that shows how you can use available variables in a f-string:
+
+.. code-block:: ipython
+
+    In [2]: name = 'Andy'
+    In [3]: f'Your name is {name}'
+    Out[3]: 'Your name is Andy'
+
+* So here's a task for you. Given a four element list:
+
+    ``['oranges', 1.3, 'lemons', 1.1]``
+
+* Write an f-string that will display:
+
+    ``The weight of an orange is 1.3 and the weight of a lemon is 1.1``
+
+* Now see if you can change the f-string so that it displays the names of the fruit in upper case, and the weight 20% higher (that is 1.2 times higher).
+
+
+Task Six
+---------
+Often it's convenient to display data in columns. String formatting helps to make this straightforward.
+
+Suppose you'd like to display something like:
+
+     'First               $99.01    Second              $88.09  '
+
+One way to do that is:
+
+.. code-block:: ipython
+
+    '{:20}{:10}{:20}{:8}'.format('First', '$99.01', 'Second', '$88.09')
+
+In this simple example everything aligns nicely. But that will not be the case when the numbers to the left of the decimal place vary.
+Then you will need to use alignment specifiers. Do some research on this using the links below. Then:
+
+* Write some Python code to print a table of several rows, each with a name, an age and a cost. Make sure some of the costs are in the hunderds and thousands to test your alignment specifiers.
+
+* And for an extra task, given a tuple with 10 consecutive numbers, can you work how to quickly print the tuple in columns that are 5 charaters wide? It's easily done on one short line!
 
 
 Resources on string formatting
