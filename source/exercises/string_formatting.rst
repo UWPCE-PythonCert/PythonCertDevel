@@ -155,8 +155,6 @@ Here's the simplest example, to show how you can use available variables in a f-
     In [3]: f'Your name is {name}'
     Out[3]: 'Your name is Andy'
 
-Now let's add an example of evaluating an expression in an f-string:
-
 In addition to referencing variables in the local scope, f-strings can evaluate simple expressions in line like so:
 
 .. code-block:: ipython
