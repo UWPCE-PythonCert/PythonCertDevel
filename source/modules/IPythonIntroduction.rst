@@ -15,9 +15,6 @@ Specifically, you'll want to pay attention to the information about
 .. _official documentation: http://ipython.org/ipython-doc/stable/index.html
 .. _Using IPython for Interactive Work: http://ipython.org/ipython-doc/stable/interactive/index.html
 
-.. ifslides::
-
-
 The very basics of IPython
 --------------------------
 
@@ -37,11 +34,6 @@ Start it up
   %quickref -> Quick reference.
   help      -> Python's own help system.
   object?   -> Details about 'object', use 'object??' for extra details.
-
-.. ifslides::
-
-    (live demo)
-
 
 
 This is the stuff I use every day:

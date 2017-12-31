@@ -119,8 +119,6 @@ There are a few ways to import modules:
     import modulename as a_new_name
     from modulename import this as that
 
-    (demo)
-
 
 Importing from packages
 -----------------------
@@ -130,8 +128,6 @@ Importing from packages
     import packagename.modulename
     from packagename.modulename import this, that
     from package import modulename
-
-    (demo)
 
 Here's a nice reference:
 
@@ -171,8 +167,6 @@ It must be explicitly reloaded to be re-run
 
     import importlib
     importlib.reload(modulename)
-
-    (demo)
 
 
 Running a Module
@@ -215,9 +209,6 @@ You can put code here that lets your module be a utility *script*
 You can put code here that demonstrates the functions contained in your module
 
 You can put code here that proves that your module works.
-
-
-[demo]
 
 
 Import Interactions
