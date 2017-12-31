@@ -514,7 +514,31 @@ location in memory.</li>
 </pre></div>
 </div>
 <p>also: <code class="docutils literal"><span class="pre">-=,</span> <span class="pre">*=,</span> <span class="pre">/=,</span> <span class="pre">**=,</span> <span class="pre">\%=</span></code></p>
-<p>(not quite – really in-place assignment for mutables….)</p>
+<p><strong>Note:</strong> This is a bit tricky – if the value is mutable, it is in-place assignment – that is the object itself is changed. But if the value is immutable (can’t be changed), then it is replaced with a new object.</p>
+<p>Example with an immutable type:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># a is an integer -- an immutable type.</span>
+
+<span class="gp">In [12]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>  <span class="c1"># a and b are names for the SAME integer</span>
+
+<span class="gp">In [13]: </span><span class="n">a</span> <span class="o">+=</span> <span class="mi">5</span>
+
+<span class="gp">In [14]: </span><span class="n">a</span>
+<span class="gh">Out[14]: </span><span class="go">10  # a is changed</span>
+
+<span class="gp">In [15]: </span><span class="n">b</span>
+<span class="gh">Out[15]: </span><span class="go">5  # b is not.</span>
+</pre></div>
+</div>
+<p>Example with an immutable type:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>In [16]: a = [1, 2, 3] # a is a mutable list</p>
+<p>In [17]: b = a  # b is now another name for the same list</p>
+<p>In [18]: a += [4, 5, 6] # in-place add more to a</p>
+<p>In [19]: b
+Out[19]: [1, 2, 3, 4, 5, 6]</p>
+<p>In [20]: # b is changed –it’s the SAME list.</p>
 </div>
 <div class="section" id="multiple-assignment">
 <h2>Multiple Assignment<a class="headerlink" href="#multiple-assignment" title="Permalink to this headline">¶</a></h2>
