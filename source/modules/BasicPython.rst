@@ -334,7 +334,38 @@ You can also do "in-place" assignment with ``+=``.
 
 also: ``-=, *=, /=, **=, \%=``
 
-(not quite -- really in-place assignment for mutables....)
+**Note:** This is a bit tricky -- if the value is mutable, it is in-place assignment -- that is the object itself is changed. But if the value is immutable (can't be changed), then it is replaced with a new object.
+
+Example with an immutable type:
+
+.. code-block:: ipython
+
+    In [11]: a = 5  # a is an integer -- an immutable type.
+
+    In [12]: b = a  # a and b are names for the SAME integer
+
+    In [13]: a += 5
+
+    In [14]: a
+    Out[14]: 10  # a is changed
+
+    In [15]: b
+    Out[15]: 5  # b is not.
+
+Example with an immutable type:
+
+.. code-block:: ipython
+
+In [16]: a = [1, 2, 3] # a is a mutable list
+
+In [17]: b = a  # b is now another name for the same list
+
+In [18]: a += [4, 5, 6] # in-place add more to a
+
+In [19]: b
+Out[19]: [1, 2, 3, 4, 5, 6]
+
+In [20]: # b is changed --it's the SAME list.
 
 
 Multiple Assignment
