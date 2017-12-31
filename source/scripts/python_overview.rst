@@ -61,9 +61,9 @@ Dynamic typing means that type checking and dispatch happen at run-time
 
 For example, for a really simple line of code like:
 
-[code demo]
+.. code-block:: ipython
 
-x = a + b
+    x = a + b
 
 
 The interpreter, when the code is running, goes through a process somethign like this:
@@ -81,7 +81,7 @@ values in Python are Strongly typed.
 
 At any given moment, a particular python value will have one and only one type. And that type can be checked at run time.
 
-[code demo]
+.. code-block:: ipython
 
     In [1]: a = 5
 
@@ -101,13 +101,14 @@ And the type of the value thing determines what it can do.
 
 Watch what happens when I try to add a and b above:
 
-[code demo]
 
-In [5]: a + b
----------------------------------------------------------------------------
-TypeError                                 Traceback (most recent call last)
-<ipython-input-5-f96fb8f649b6> in <module>()
-----> 1 a + b
+.. code-block:: ipython
+
+    In [5]: a + b
+    ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+    <ipython-input-5-f96fb8f649b6> in <module>()
+    ----> 1 a + b
 
 TypeError: unsupported operand type(s) for +: 'int' and 'str'
 

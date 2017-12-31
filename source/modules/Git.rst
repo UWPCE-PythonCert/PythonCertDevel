@@ -126,7 +126,7 @@ So, everyone will commit to this repository, and everyone will have access to ev
 
 This will make it easier to collaborate. Weirdly enough, collaborating is important for developing code, both for class and in the *real world*.
 
-We will do a live demo of setting up a machine for working with this repository now.
+We will do a walkthrough of setting up a machine for working with this repository now.
 
 The first thing we have to do is on the GitHub website. We will create a fork of the class repository from the ``UWPCE-PythonCert`` account on GitHub into your personal account. Please create a GitHub account if you don't have one already.
 
@@ -138,7 +138,7 @@ Note: You do not have to use your real name to set up your git account.
 
 Everyone should now have a copy of the class repository in their account on the GitHub website.
 
-The next step is to make a *clone* of your fork on your own computer, which means that **your fork** in GitHub is the *origin* (Demo):
+The next step is to make a *clone* of your fork on your own computer, which means that **your fork** in GitHub is the *origin*:
 
 .. figure:: /_static/remotes_clone.png
    :width: 50%

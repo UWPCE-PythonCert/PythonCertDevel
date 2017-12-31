@@ -240,13 +240,11 @@ In that case, you can simply add more "dots" and follow the same rules as above.
 
 .. code-block:: python
 
-    import packagename.modulename
-    from packagename.modulename import this, that
-    from package import modulename
 
-Here's a nice reference:
+Here's a nice reference for more detail:
 
 http://effbot.org/zone/import-confusion.htm
+
 
 
 ``import``

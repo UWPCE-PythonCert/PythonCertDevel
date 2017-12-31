@@ -46,8 +46,6 @@ To make an object iterable, you simply have to implement the __getitem__ method.
             raise IndexError
         return position
 
-Demo
-
 
 ``iter()``
 -----------
