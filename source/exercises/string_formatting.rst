@@ -147,20 +147,36 @@ f-strings are new to Python (version 3.6), but are very powerful and efficient. 
 
 So in this exercise we are going to specifically use f-strings.
 
-Here's the simplest example, just to show the basic syntax:
-
-.. code-block:: ipython
-
-    In [1]: f'a simple f-string'
-    Out[1]: 'a simple f-string'
-
-And here's an example that shows how you can use available variables in a f-string:
+Here's the simplest example, to show how you can use available variables in a f-string:
 
 .. code-block:: ipython
 
     In [2]: name = 'Andy'
     In [3]: f'Your name is {name}'
     Out[3]: 'Your name is Andy'
+
+Now let's add an example of evaluating an expression in an f-string:
+
+In addition to referencing variables in the local scope, f-strings can evaluate simple expressions in line like so:
+
+.. code-block:: ipython
+
+    In [5]: f"Your name is {name.upper()}"
+    Out[5]: 'Your name is ANDY'
+
+    In [6]: name = "andy"
+
+    In [7]: f"Your name is {name.upper()}"
+    Out[7]: 'Your name is ANDY'
+or
+
+    In [8]: a = 5
+
+    In [9]: b = 10
+
+    In [10]: f"The sum is: {a+b}"
+    Out[10]: 'The sum is: 15'
+
 
 * So here's a task for you. Given a four element list:
 
@@ -190,7 +206,7 @@ One way to do that is:
 In this simple example everything aligns nicely. But that will not be the case when the numbers to the left of the decimal place vary.
 Then you will need to use alignment specifiers. Do some research on this using the links below. Then:
 
-* Write some Python code to print a table of several rows, each with a name, an age and a cost. Make sure some of the costs are in the hunderds and thousands to test your alignment specifiers.
+* Write some Python code to print a table of several rows, each with a name, an age and a cost. Make sure some of the costs are in the hundreds and thousands to test your alignment specifiers.
 
 * And for an extra task, given a tuple with 10 consecutive numbers, can you work how to quickly print the tuple in columns that are 5 charaters wide? It's easily done on one short line!
 
