@@ -178,7 +178,7 @@ or
     Out[10]: 'The sum is: 15'
 
 
-* So here's a task for you. Given a four element list:
+* So here's a task for you. Given the following four element list:
 
     ``['oranges', 1.3, 'lemons', 1.1]``
 
