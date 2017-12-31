@@ -6,7 +6,7 @@ String Formatting Exercise
 
 Goal
 ====
-In this excercise we will reinforce the important concepts of string formatting, so that these start to become second nature!
+In this exercise we will reinforce the important concepts of string formatting, so that these start to become second nature!
 
 Procedure
 =========
@@ -166,7 +166,10 @@ In addition to referencing variables in the local scope, f-strings can evaluate 
 
     In [7]: f"Your name is {name.upper()}"
     Out[7]: 'Your name is ANDY'
+
 or
+
+.. code-block:: ipython
 
     In [8]: a = 5
 
@@ -176,7 +179,7 @@ or
     Out[10]: 'The sum is: 15'
 
 
-* So here's a task for you. Given the following four element list:
+* Here's a task for you: Given the following four element list:
 
     ``['oranges', 1.3, 'lemons', 1.1]``
 

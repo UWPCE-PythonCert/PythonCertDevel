@@ -13,6 +13,8 @@ Read:
 
 :ref:`style_and_naming`
 
+:ref:`modules_and_namespaces`
+
 :ref:`documentation`
 
 :ref:`exceptions`
