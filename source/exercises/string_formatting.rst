@@ -208,7 +208,7 @@ Then you will need to use alignment specifiers. Do some research on this using t
 
 * Write some Python code to print a table of several rows, each with a name, an age and a cost. Make sure some of the costs are in the hundreds and thousands to test your alignment specifiers.
 
-* And for an extra task, given a tuple with 10 consecutive numbers, can you work how to quickly print the tuple in columns that are 5 charaters wide? It's easily done on one short line!
+* And for an extra task, given a tuple with 10 consecutive numbers, can you work how to quickly print the tuple in columns that are 5 characters wide? It's easily done on one short line!
 
 
 Resources on string formatting
