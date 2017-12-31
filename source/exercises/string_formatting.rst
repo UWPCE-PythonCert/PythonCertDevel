@@ -203,12 +203,13 @@ One way to do that is:
 
     '{:20}{:10}{:20}{:8}'.format('First', '$99.01', 'Second', '$88.09')
 
+
 In this simple example everything aligns nicely. But that will not be the case when the numbers to the left of the decimal place vary.
 Then you will need to use alignment specifiers. Do some research on this using the links below. Then:
 
 * Write some Python code to print a table of several rows, each with a name, an age and a cost. Make sure some of the costs are in the hundreds and thousands to test your alignment specifiers.
 
-* And for an extra task, given a tuple with 10 consecutive numbers, can you work how to quickly print the tuple in columns that are 5 characters wide? It's easily done on one short line!
+* And for an extra task, given a tuple with 10 consecutive numbers, can you work how to quickly print the tuple in columns that are 5 charaters wide? It's easily done on one short line!
 
 
 Resources on string formatting
