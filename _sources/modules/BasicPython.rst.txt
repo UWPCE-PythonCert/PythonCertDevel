@@ -25,11 +25,6 @@ All of programming is really about manipulating values.
 
   - Try ``type(42)`` - the type of a value determines what it can do.
 
-.. ifslides::
-
-
-        [demo]
-
 
 Literals for the Basic Value types:
 ------------------------------------
@@ -207,11 +202,6 @@ An *expression* is made up of values and operators.
   * This is the source of many errors, especially in handling text.
 
 * Type errors - checked at run time only.
-
-.. ifslides::
-
-
-        [demo]
 
 
 Symbols
@@ -504,8 +494,6 @@ object** using the ``is`` operator:
     In [76]: other_count is count
     Out[76]: False
 
-[demo]
-
 **NOTE:** Checking the id of an object, or using "is" to check if two objects are the same is rarely used except for debugging and understanding what's going on under the hood. They are not used regularly in production code.
 
 
@@ -530,7 +518,6 @@ You can test for the equality of certain values with the ``==`` operator
 
 A string is never equal to a number!
 
-[demo]
 
 Singletons
 ----------

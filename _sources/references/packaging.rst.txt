@@ -35,7 +35,6 @@ Modules and Packages
     for p in sys.path:
         print p
 
-(demo)
 
 Installing Python
 -----------------

@@ -109,7 +109,7 @@
 <li class="toctree-l2"><a class="reference internal" href="except_exercise.html">Exceptions Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comprehensions_lab.html">Comprehensions Lab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fib_and_lucas.html">Fibonacci Series Exercise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="file_lab.html">File LAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_lab.html">File Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fizz_buzz.html">Fizz Buzz Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grid_printer.html">Grid Printer Exercise</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">HTML Renderer Exercise</a><ul>
@@ -156,7 +156,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rot13.html">ROT13</a></li>
 <li class="toctree-l2"><a class="reference internal" href="slicing.html">Slicing Lab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sparse_array.html">Sparse Array Exercise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="string_formatting.html">String Formatting Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="string_formatting.html">String Formatting Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trapezoid.html">Trapezoidal Rule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mailroom-oo.html">Mailroom - Object Oriented</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mailroom-fp.html">Mailroom - Functional</a></li>
@@ -243,19 +243,19 @@
 <p>We’ll try to get to all the features required to render this file:</p>
 <p><a class="reference download internal" href="../_downloads/sample_html.html" download=""><code class="xref download docutils literal"><span class="pre">sample_html.html</span></code></a></p>
 <p>Take a look at it by opening it in your text editor. And also in a browser to see how it’s rendered.</p>
-<p>If you don’t know html – just look at the example and copy that. And you can read this: <a class="reference internal" href="#html-primer"><span class="std std-ref">HTML Primer</span></a> for enough to do this exercise.</p>
+<p>If you don’t know html – just look at the example and copy that. And you can read the: <a class="reference internal" href="#html-primer"><span class="std std-ref">HTML Primer</span></a> at the end of this page for enough to do this exercise.</p>
 <p>The exercise is broken down into a number of steps – each requiring a few more OO concepts in Python.</p>
 </div>
 <div class="section" id="general-instructions">
 <h3>General Instructions:<a class="headerlink" href="#general-instructions" title="Permalink to this headline">¶</a></h3>
+<p>You can start with the framework in:</p>
+<p><a class="reference download internal" href="../_downloads/html_render.py" download=""><code class="xref download docutils literal"><span class="pre">html_render.py</span></code></a></p>
 <p>For each step, add the required functionality. There is example code to run your code for each step in:</p>
 <p><a class="reference download internal" href="../_downloads/run_html_render.py" download=""><code class="xref download docutils literal"><span class="pre">run_html_render.py</span></code></a></p>
-<p>Name your file: <code class="docutils literal"><span class="pre">html_render.py</span></code> – so it can be imported by <code class="docutils literal"><span class="pre">run_html_render.py</span></code></p>
 <p>You should be able to run that code at each step, uncommenting each new step in <code class="docutils literal"><span class="pre">run_html_render.py</span></code> as you go.</p>
 <p>It builds up an html tree, and then calls the <code class="docutils literal"><span class="pre">render()</span></code> method of your element to render the page.</p>
-<p>It uses a <code class="docutils literal"><span class="pre">StringIO</span></code> object (like a file, but in memory) to render to memory, then dumps it to the console, and writes a file. Take a look at the code at the end to make sure you understand it.</p>
+<p>It uses a <code class="docutils literal"><span class="pre">StringIO</span></code> object (like a file, but in memory) to render to memory, then dumps it to the console, and writes a file. Take a look at the render_page function at the top of the file to make sure you understand it.</p>
 <p>The html generated at each step will be in the files: <code class="docutils literal"><span class="pre">test_html_ouput?.html</span></code></p>
-<p>At each step, your results should look similar to those (maybe not identical…)</p>
 </div>
 <div class="section" id="unit-tests">
 <h3>Unit tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline">¶</a></h3>
@@ -271,6 +271,11 @@
 <li>run the tests. If it still fails, go back to step 3…</li>
 </ol>
 </div></blockquote>
+<p>A start of a test file is provided here:</p>
+<p><a class="reference download internal" href="../_downloads/test_html_render.py" download=""><code class="xref download docutils literal"><span class="pre">test_html_render.py</span></code></a></p>
+<p>It has a few tests for the first few steps – uncomment them as you go along.</p>
+<p>But it is NOT comprehensive – you will need to add more tests at every step!</p>
+<p>You can run <code class="docutils literal"><span class="pre">pytest</span></code> on that test file first thing – it should pass two tests (that you can create an Element object –not that it works) and fail one – one that actually starts to test functionality.</p>
 </div>
 <div class="section" id="step-1">
 <h3>Step 1:<a class="headerlink" href="#step-1" title="Permalink to this headline">¶</a></h3>
@@ -280,8 +285,9 @@
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Element</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>where <code class="docutils literal"><span class="pre">content</span></code> is expected to be a string – and defaults to Nothing.</p>
+<p>where <code class="docutils literal"><span class="pre">content</span></code> is expected to be a string – and defaults to nothing.</p>
 <p>It should have an <code class="docutils literal"><span class="pre">append</span></code> method that can add another string to the content.</p>
+<p>(The <code class="docutils literal"><span class="pre">html_render.py</span></code> file you downloaded above should have a skeleton for this class in it.)</p>
 <p>So your class will need a way to store the content in a way that you can keep adding more to it.</p>
 <p>An <code class="docutils literal"><span class="pre">Element</span></code> object has to collect a bunch of sub-elements, in order, and you need to be able to append new ones to it – sounds like a like a <code class="docutils literal"><span class="pre">list</span></code>? So should it subclass from <code class="docutils literal"><span class="pre">list</span></code>?</p>
 <p>Ask yourself – does this make sense? an “Element <em>is</em> a list” – no.</p>
@@ -305,7 +311,7 @@
 </pre></div>
 </div>
 <p>You should now be able to render an html tag with text in it as content.</p>
-<p>See: step 1. in <code class="docutils literal"><span class="pre">run_html_render.py</span></code></p>
+<p>See: step 1. in <code class="docutils literal"><span class="pre">run_html_render.py</span></code> and the test code.</p>
 </div>
 <div class="section" id="step-2">
 <h3>Step 2:<a class="headerlink" href="#step-2" title="Permalink to this headline">¶</a></h3>
@@ -381,7 +387,7 @@ with one s, and you could tranlate it in the generated html.</p>
 <p>You will need to override the render method to render just the one tag and
 attributes, if any.</p>
 <p>Note that self closing tags can’t have any content. Make sure that your SelfClosingTag element raises an exception if someone tries to put in any content – probably a <code class="docutils literal"><span class="pre">TypeError</span></code>.</p>
-<p>Create a couple subclasses of <code class="docutils literal"><span class="pre">SelfClosingTag</span></code> for &lt;hr /&gt; and &lt;br /&gt;</p>
+<p>Create a couple subclasses of <code class="docutils literal"><span class="pre">SelfClosingTag</span></code> for <code class="docutils literal"><span class="pre">&lt;hr</span> <span class="pre">/&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;br</span> <span class="pre">/&gt;</span></code></p>
 <p>Note that you now have a couple render methods – is there repeated code in them?</p>
 <p>Can you refactor the common parts into a separate method that all the render methods can call? And do all your tests still pass (you do have tests for everything, don’t you?) after refactoring?</p>
 <p>See: <a class="reference download internal" href="../_downloads/test_html_output5.html" download=""><code class="xref download docutils literal"><span class="pre">test_html_output5.htm</span></code></a></p>
@@ -433,9 +439,9 @@ new tags, etc….</p>
 <p>There is also more than one way to indent html – so you have a bit of flexibility here.</p>
 <p>So:</p>
 <ul class="simple">
-<li>You probably  want <code class="docutils literal"><span class="pre">ind</span></code> to be an optional argument to render – so it will not indent if nothing is passed in. And that lets you write the code without indentation first if you like.</li>
-<li>But ultimately, you want your code to USE the ind parameter – it is supposed to indicate how much this entire tag is already indented.</li>
-<li>When this one gets rendered, you don’t know where it is in a potentially deeply nested hierarchy – it could be at the top level or ten levels deep. passing <code class="docutils literal"><span class="pre">ind</span></code> into the render method is how this is communicated.</li>
+<li>You probably  want <code class="docutils literal"><span class="pre">cur_ind</span></code> to be an optional argument to render – so it will not indent if nothing is passed in. And that lets you write the code without indentation first if you like.</li>
+<li>But ultimately, you want your code to USE the <code class="docutils literal"><span class="pre">cur_ind</span></code> parameter – it is supposed to indicate how much this entire tag is already indented.</li>
+<li>When a given element gets rendered, you don’t know where it is in a potentially deeply nested hierarchy – it could be at the top level or ten levels deep. passing <code class="docutils literal"><span class="pre">cur_ind</span></code> into the render method is how this is communicated.</li>
 <li>You have (at least) two options for how to indicate level of indentation:<ul>
 <li>It could be a integer indicating number of levels of indentation.</li>
 <li>It could, more simply, be a bunch of spaces.</li>
@@ -447,15 +453,13 @@ new tags, etc….</p>
 </div>
 <div class="section" id="notes-on-handling-duck-typing">
 <span id="id1"></span><h2>Notes on handling “duck typing”<a class="headerlink" href="#notes-on-handling-duck-typing" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>In this exercise, we need to deal with the fact that XML (and thus HTML) allows <em>either</em> plain text <em>or</em> other tags to be the content of a tag. Our code also needs to handle the fact that there are two possible types that we need to be able to render.</p>
+<p>In this exercise, we need to deal with the fact that XML (and thus HTML) allows <em>either</em> plain text <em>or</em> other tags to be the content of a tag. Our code also needs to handle the fact that there are two possible types that we need to be able to render.</p>
 <p>There are two primary ways to address this (and multiple ways to actually write the code for each of these).</p>
 <ol class="arabic simple">
 <li>Make sure that the content only has renderable objects in it.</li>
 <li>Make sure the render() method can handle either type on the fly.</li>
 </ol>
-<p>The difference is where you handle the multiple types – in the render method itself, or ahead of time.</p>
-</div></blockquote>
+<p>The difference is where you handle the multiple types – in the render method itself, or ahead of time, when you append new content to the Element.</p>
 <div class="section" id="the-ahead-of-time-option">
 <h3>The ahead of time option:<a class="headerlink" href="#the-ahead-of-time-option" title="Permalink to this headline">¶</a></h3>
 <p>You can handle it ahead of time by creating a simple object that wraps a string and gives it a render method. As simple as:</p>
@@ -510,7 +514,7 @@ new tags, etc….</p>
 <p>But in this case, we’re not actually rendering the object at this stage, so calling the method isn’t appropriate.</p>
 <p><strong>Checking for an attribute</strong></p>
 <p>Instead of calling the method, see if it’s there. You can do that with <code class="docutils literal"><span class="pre">hasattr()</span></code></p>
-<p>check if the passed-in object has a <code class="docutils literal"><span class="pre">render()</span></code> attribute:</p>
+<p>check if the passed-in object has a <code class="docutils literal"><span class="pre">render</span></code> attribute:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;render&#39;</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
@@ -518,7 +522,7 @@ new tags, etc….</p>
 </pre></div>
 </div>
 <p>Note that I added a <code class="docutils literal"><span class="pre">str()</span></code> call too – so you can pass in anything – it will get stringified – this will be ugly for many objects, but will work fine for numbers and other simple objects.</p>
-<p>This is my favorite. <code class="docutils literal"><span class="pre">html_render_wrap.py</span></code> in Solutions demonstrates some core bits of this approach.</p>
+<p>This is my favorite.</p>
 </div>
 <div class="section" id="duck-typing-on-the-fly">
 <h3>Duck Typing on the Fly<a class="headerlink" href="#duck-typing-on-the-fly" title="Permalink to this headline">¶</a></h3>
@@ -550,12 +554,9 @@ new tags, etc….</p>
 </div>
 <div class="section" id="html-primer">
 <span id="id2"></span><h2>HTML Primer<a class="headerlink" href="#html-primer" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><blockquote>
-<div>The very least you need to know about html to do this assignment.</div></blockquote>
+<p>The very least you need to know about html to do this assignment.</p>
 <p>If you are familiar with html, then this will all make sense to you. If you have never seen html before, this might be a bit intimidating, but you really don’t need to know much to do this assignment.</p>
 <p>First of all, sample output from each step is provided. So all you really need to do is look at that, and make your code do the same thing. But it does help understand a little bit about what you trying to do.</p>
-</div></blockquote>
 <div class="section" id="html">
 <h3>HTML<a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h3>
 <p>HTML is “Hyper Text Markup Language”. Hypertext, because it can contain links
@@ -566,7 +567,7 @@ instructions about how to format the text, etc.</p>
 <p>And there are countless others online.</p>
 <p>As html is XML – the XML intro is a good source of the XML syntax, too:</p>
 <p><a class="reference external" href="http://www.w3schools.com/xml/default.asp">http://www.w3schools.com/xml/default.asp</a></p>
-<p>But here is a tiny intro of just what you need to know for this project.</p>
+<p>But here is a tiny summary of just what you need to know for this project.</p>
 </div>
 <div class="section" id="elements">
 <h3>Elements<a class="headerlink" href="#elements" title="Permalink to this headline">¶</a></h3>
@@ -627,7 +628,7 @@ the element, and the end of the element is indicated by the same tag with a slas
 </div>
 <p>Note that the list itself <em>and</em> the list items can both take various attributes (all tags can…)</p>
 <p>Section Headers are created with “h” tags: &lt;h1&gt; is the biggest (highest level), and there is &lt;h2&gt;, &lt;h3&gt;, etc. for sections, sub sections, subsub sections…</p>
-<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>PythonClass - Class 7 example<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span> PythonClass -- Example <span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>I think that’s all you need to know!</p>

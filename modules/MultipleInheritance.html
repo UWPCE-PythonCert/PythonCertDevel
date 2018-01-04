@@ -137,7 +137,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#mro-method-resolution-order">MRO: Method Resolution Order</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#super-s-superpowers">Super’s Superpowers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#what-does-super-do">What does super() do?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dependency-injection">Dependency Injection</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#using-super">Using <code class="docutils literal"><span class="pre">super()</span></code></a><ul>
@@ -405,15 +404,6 @@ you call.</p>
 <p>You may not want that …</p>
 <p>But if you do, it’s kind of handy.</p>
 </div>
-<div class="section" id="dependency-injection">
-<h3>Dependency Injection<a class="headerlink" href="#dependency-injection" title="Permalink to this headline">¶</a></h3>
-<p>Super() is the right way to do dependency injection.</p>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Dependency_injection">https://en.wikipedia.org/wiki/Dependency_injection</a></p>
-<p>Compare with Monkey Patching as done in other languages.</p>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Monkey_patch">https://en.wikipedia.org/wiki/Monkey_patch</a></p>
-<p>This “Dependency_injection” works, because the MRO is defined at run time –ao anyting you add to a superclass will take effect the moment it is there.</p>
-<p>Read Hettinger’s “super() considered super” (below) to get an idea about that</p>
-</div>
 </div>
 <div class="section" id="using-super">
 <h2>Using <code class="docutils literal"><span class="pre">super()</span></code><a class="headerlink" href="#using-super" title="Permalink to this headline">¶</a></h2>
@@ -448,8 +438,8 @@ you call.</p>
 <p>That means that all the methods with the same name need to be able to accept the same arguments. In some cases, that’s straightforward – they are all the same. But sometimes it gets tricky.</p>
 <p>Remember that if you write a function that takes:</p>
 <p><code class="docutils literal"><span class="pre">def</span> <span class="pre">fun(self,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code></p>
-<p>It can accept ANY arguments. But if you find yourself needing to do that –maybe super isn’t the right thing to use??</p>
-<p>But a really common case, particularly for an <code class="docutils literal"><span class="pre">__init__</span></code>, is for it to take a bunch of keyword arguments. And a subclass make take one or two more, and then want to pass the rest on. So a common pattern is:</p>
+<p>It can accept ANY arguments. But if you find yourself needing to do that – maybe super isn’t the right thing to use??</p>
+<p>But a really common case, particularly for an <code class="docutils literal"><span class="pre">__init__</span></code>, is for it to take a bunch of keyword arguments. And a subclass may take one or two more, and then want to pass the rest on. So a common pattern is:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Subclass</span><span class="p">(</span><span class="n">Superclass</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extra_arg1</span><span class="p">,</span> <span class="n">extra_arg2</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>

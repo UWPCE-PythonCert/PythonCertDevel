@@ -103,10 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/index.html">Resources for Specific Python Topics</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Video Scripts for the first two classes in Python Cert</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#in-5-a-b">In [5]: a + b</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Booleans.html">Booleans Video</a></li>
 <li class="toctree-l2"><a class="reference internal" href="else_in_loops.html">Script: Else in loops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="how_to_run_python.html">How to run a Python File</a></li>
@@ -234,8 +231,9 @@
 <p>So other than not having to declare types, what really IS a Dynamic language?</p>
 <p>Dynamic typing means that type checking and dispatch happen at run-time</p>
 <p>For example, for a really simple line of code like:</p>
-<p>[code demo]</p>
-<p>x = a + b</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
 <p>The interpreter, when the code is running, goes through a process somethign like this:</p>
 <ul class="simple">
 <li>What type of thing is <code class="docutils literal"><span class="pre">a</span></code>?</li>
@@ -247,25 +245,28 @@
 <p>However, Python’s dynamic typing does not mean it is “weakly typed”. In fact,
 values in Python are Strongly typed.</p>
 <p>At any given moment, a particular python value will have one and only one type. And that type can be checked at run time.</p>
-<p>[code demo]</p>
-<blockquote>
-<div><p>In [1]: a = 5</p>
-<p>In [2]: type(a)
-Out[2]: int</p>
-<p>In [3]: b = ‘5’</p>
-<p>In [4]: type(b)
-Out[4]: str</p>
-</div></blockquote>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="gp">In [2]: </span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gh">Out[2]: </span><span class="go">int</span>
+
+<span class="gp">In [3]: </span><span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;5&#39;</span>
+
+<span class="gp">In [4]: </span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="gh">Out[4]: </span><span class="go">str</span>
+</pre></div>
+</div>
 <p>So you can see that even though b, in this case, holds text that happens to hold the digit five – python knows that it is text (the string type), and not a number.</p>
 <p>So EVERY value in Python has a type</p>
 <p>And the type of the value thing determines what it can do.</p>
 <p>Watch what happens when I try to add a and b above:</p>
-<p>[code demo]</p>
-<div class="section" id="in-5-a-b">
-<h2>In [5]: a + b<a class="headerlink" href="#in-5-a-b" title="Permalink to this headline">¶</a></h2>
-<p>TypeError                                 Traceback (most recent call last)
-&lt;ipython-input-5-f96fb8f649b6&gt; in &lt;module&gt;()
-—-&gt; 1 a + b</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-5-f96fb8f649b6&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
 <p>TypeError: unsupported operand type(s) for +: ‘int’ and ‘str’</p>
 <p>We get a type error – it’s an error because adding a number to a string is meaningless.  While a human could infer that I meant that string with teh digit 5 in it to be Interpreted as a number, and thus give me 10, Python will not change types for you.</p>
 <p>In fact, the Python language has a Philosophy of Sorts, known as the “zen of Python”, and one of its tenets is:</p>
@@ -296,7 +297,6 @@ Out[4]: str</p>
 <p><a class="reference external" href="https://wiki.python.org/moin/PortingPythonToPy3k">https://wiki.python.org/moin/PortingPythonToPy3k</a></p>
 <p>And here are some other notes:</p>
 <p><a class="reference external" href="https://uwpce-pythoncert.github.io/PythonCertDevel/modules/Py2vsPy3.html">https://uwpce-pythoncert.github.io/PythonCertDevel/modules/Py2vsPy3.html</a></p>
-</div>
 </div>
 
 

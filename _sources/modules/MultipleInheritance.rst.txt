@@ -233,20 +233,21 @@ You may not want that ...
 But if you do, it's kind of handy.
 
 
-Dependency Injection
---------------------
+.. Dependency Injection
+.. --------------------
 
-Super() is the right way to do dependency injection.
+.. Super() is the right way to do dependency injection.
 
-https://en.wikipedia.org/wiki/Dependency_injection
+.. https://en.wikipedia.org/wiki/Dependency_injection
 
-Compare with Monkey Patching as done in other languages.
+.. Compare with Monkey Patching as done in other languages.
 
-https://en.wikipedia.org/wiki/Monkey_patch
+.. https://en.wikipedia.org/wiki/Monkey_patch
 
-This "Dependency_injection" works, because the MRO is defined at run time --ao anyting you add to a superclass will take effect the moment it is there.
+.. This "Dependency_injection" works, because the MRO is defined at run time --ao anything you add to a superclass will take effect the moment it is there.
 
-Read Hettinger's "super() considered super" (below) to get an idea about that
+.. Read Hettinger's "super() considered super" (below) to get an idea about that
+
 
 Using ``super()``
 =================
@@ -281,6 +282,7 @@ This is a bit weird -- it means that if you have a method that may get called wi
 
 See the example later for this...
 
+
 Matching Argument Signature
 ---------------------------
 
@@ -296,9 +298,9 @@ Remember that if you write a function that takes:
 
 ``def fun(self, *args, **kwargs)``
 
-It can accept ANY arguments. But if you find yourself needing to do that --maybe super isn't the right thing to use??
+It can accept ANY arguments. But if you find yourself needing to do that -- maybe super isn't the right thing to use??
 
-But a really common case, particularly for an ``__init__``, is for it to take a bunch of keyword arguments. And a subclass make take one or two more, and then want to pass the rest on. So a common pattern is:
+But a really common case, particularly for an ``__init__``, is for it to take a bunch of keyword arguments. And a subclass may take one or two more, and then want to pass the rest on. So a common pattern is:
 
 .. code-block:: python
 

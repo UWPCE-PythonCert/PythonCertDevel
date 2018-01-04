@@ -81,8 +81,6 @@ Now imagine we defined the following, more generic *decorator*:
             return result
         return logged
 
-(demo)
-
 
 We could then make logging versions of our module functions:
 
@@ -157,7 +155,6 @@ that wierd `@` symbol:
 The declarative form (called a decorator expression) is far more common,
 but both have the identical result, and can be used interchangeably.
 
-(demo)
 
 Callables
 ---------
