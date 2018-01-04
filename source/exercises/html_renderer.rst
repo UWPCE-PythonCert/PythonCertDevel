@@ -24,7 +24,7 @@ We'll try to get to all the features required to render this file:
 
 Take a look at it by opening it in your text editor. And also in a browser to see how it's rendered.
 
-If you don't know html -- just look at the example and copy that. And you can read this: :ref:`html_primer` for enough to do this exercise.
+If you don't know html -- just look at the example and copy that. And you can read the: :ref:`html_primer` at the end of this page for enough to do this exercise.
 
 The exercise is broken down into a number of steps -- each requiring a few more OO concepts in Python.
 
@@ -32,21 +32,21 @@ The exercise is broken down into a number of steps -- each requiring a few more 
 General Instructions:
 ---------------------
 
+You can start with the framework in:
+
+:download:`html_render.py  <../examples/html_render/html_render.py>`
+
 For each step, add the required functionality. There is example code to run your code for each step in:
 
 :download:`run_html_render.py  <../examples/html_render/run_html_render.py>`
-
-Name your file: ``html_render.py`` -- so it can be imported by ``run_html_render.py``
 
 You should be able to run that code at each step, uncommenting each new step in ``run_html_render.py`` as you go.
 
 It builds up an html tree, and then calls the ``render()`` method of your element to render the page.
 
-It uses a ``StringIO`` object (like a file, but in memory) to render to memory, then dumps it to the console, and writes a file. Take a look at the code at the end to make sure you understand it.
+It uses a ``StringIO`` object (like a file, but in memory) to render to memory, then dumps it to the console, and writes a file. Take a look at the render_page function at the top of the file to make sure you understand it.
 
 The html generated at each step will be in the files: ``test_html_ouput?.html``
-
-At each step, your results should look similar to those (maybe not identical...)
 
 Unit tests
 ----------
@@ -64,6 +64,14 @@ That is:
   3. write your code...
   4. run the tests. If it still fails, go back to step 3...
 
+A start of a test file is provided here:
+
+:download:`test_html_render.py  <../examples/html_render/test_html_render.py>`
+
+It has a few tests for the first few steps -- uncomment them as you go along.
+
+But it is NOT comprehensive -- you will need to add more tests at every step!
+
 
 Step 1:
 -------
@@ -78,7 +86,7 @@ The initializer signature should look like
 
     Element(content=None)
 
-where ``content`` is expected to be a string -- and defaults to Nothing.
+where ``content`` is expected to be a string -- and defaults to nothing.
 
 It should have an ``append`` method that can add another string to the content.
 
@@ -114,7 +122,7 @@ So this ``render()`` method takes a file-like object, and calls its ``write()`` 
 
 You should now be able to render an html tag with text in it as content.
 
-See: step 1. in ``run_html_render.py``
+See: step 1. in ``run_html_render.py`` and the test code.
 
 Step 2:
 -------

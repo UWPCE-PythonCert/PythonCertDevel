@@ -4,7 +4,7 @@
 import os
 from io import StringIO
 
-from html_render import Element, Body, Para, HTML, Head, Title
+from html_render import Element, Body, P, Html, Head, Title
 
 
 # test utilities
@@ -127,7 +127,7 @@ def test_render():
 #    assert Body.tag == 'body'
 
 # def test_p_tag():
-#     assert Para.tag == 'p'
+#     assert P.tag == 'p'
 
 
 # def test_html_tag():
@@ -148,9 +148,9 @@ def test_render_body():
     assert more_stuff in contents
 
 
-def test_render_para():
+def test_render_P():
     my_stuff = 'spam, spam, spam'
-    p = Para(my_stuff)
+    p = P(my_stuff)
     more_stuff = 'eggs, eggs, eggs'
     p.append(more_stuff)
     contents = render_element(p).strip()
@@ -162,7 +162,7 @@ def test_render_para():
 
 def test_render_html():
     my_stuff = 'spam, spam, spam'
-    el_object = HTML(my_stuff)
+    el_object = Html(my_stuff)
     more_stuff = 'eggs, eggs, eggs'
     el_object.append(more_stuff)
     contents = render_element(el_object)
@@ -175,7 +175,7 @@ def test_render_html():
 def test_render_non_strings():
     # this is creating a html page with a single body() element in it
     # and a string inside that.
-    el_object = HTML(Body('any string I like'))
+    el_object = Html(Body('any string I like'))
 
     contents = render_element(el_object)
     # make sure extra whitespace at beginning or end doesn't mess things up.
@@ -206,13 +206,13 @@ def test_render_non_strings2():
     """
     Testing nested elements and text, in a more complex way
     """
-    html = HTML()
+    html = Html()
     body = Body()
     html.append(body)
-    p = Para('any string I like')
+    p = P('any string I like')
     p.append('even more random text')
     body.append(p)
-    body.append(Para('and this is a different string'))
+    body.append(P('and this is a different string'))
     contents = render_element(html).strip()
 
     print(contents)  # so we can see what's going on if a test fails
@@ -241,7 +241,7 @@ def test_indent():
     """
     Tests that the indentation gets passed through to the renderer
     """
-    html = HTML("some content")
+    html = Html("some content")
     cur_ind = 6 * " "
     file_contents = render_element(html, cur_ind=cur_ind)
 
@@ -258,7 +258,7 @@ def test_indent_contents():
     The contents in a element should be indented more than the tag
     by the amount in the indent class attribute
     """
-    html = HTML("some content")
+    html = Html("some content")
     file_contents = render_element(html, cur_ind="")
 
     print(file_contents)
@@ -271,9 +271,9 @@ def test_multiple_indent():
     make sure multiple levels get indented properly
     """
     body = Body()
-    body.append(Para("some text"))
-    body.append(Para("even more text"))
-    html = HTML(body)
+    body.append(P("some text"))
+    body.append(P("even more text"))
+    html = Html(body)
 
     file_contents = render_element(html)
 
@@ -328,7 +328,7 @@ def test_full_page_with_title():
 
     everything should have already been tested.
     """
-    page = HTML()
+    page = Html()
 
     head = Head()
     head.append(Title("PythonClass Example"))
@@ -337,9 +337,9 @@ def test_full_page_with_title():
 
     body = Body()
 
-    body.append(Para("Here is a paragraph of text -- there could be more of them, "
+    body.append(P("Here is a Pgraph of text -- there could be more of them, "
                      "but this is enough  to show that we can do some text"))
-    body.append(Para("And here is another piece of text -- you should be able to add any number"))
+    body.append(P("And here is another piece of text -- you should be able to add any number"))
 
     page.append(body)
 
@@ -353,9 +353,9 @@ def test_full_page_with_title():
 
 def test_single_attribute():
     # <p style="text-align: center; font-style: oblique;">
-    #             Here is a paragraph of text -- there could be more of them, but this is enough  to show that we can do some text
+    #             Here is a Pgraph of text -- there could be more of them, but this is enough  to show that we can do some text
     #         </p>
-    p = Para("Here is a paragraph of text", style="text-align: center; font-style: oblique;")
+    p = P("Here is a paragraph of text", style="text-align: center; font-style: oblique;")
 
     results = render_element(p)
 
@@ -367,7 +367,7 @@ def test_multiple_attributes():
     # <p style="text-align: center; font-style: oblique;">
     #             Here is a paragraph of text -- there could be more of them, but this is enough  to show that we can do some text
     #         </p>
-    p = Para("Here is a paragraph of text",
+    p = P("Here is a paragraph of text",
              id="fred",
              color="red",
              size="12px",
@@ -407,7 +407,7 @@ def test_class_attribute():
             "class": "special",
             "size": "12px",
             }
-    p = Para("Here is a paragraph of text",
+    p = P("Here is a paragraph of text",
               **atts)
 
     results = render_element(p)

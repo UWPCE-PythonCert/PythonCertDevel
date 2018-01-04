@@ -11,10 +11,6 @@ from io import StringIO
 
 # importing the html_rendering code with a short name for easy typing.
 import html_render as hr
-# reloading in case you are running this in iPython
-#  -- we want to make sure the latest version is used
-import importlib
-importlib.reload(hr)
 
 
 # writing the file out:
@@ -29,12 +25,9 @@ def render_page(page, filename):
     f = StringIO()
     page.render(f, "    ")
 
-    f.seek(0)
-
-    print(f.read())
-
-    f.seek(0)
-    open(filename, 'w').write(f.read())
+    print(f.getvalue())
+    with open(filename, 'w') as outfile:
+        outfile.write(f.getvalue())
 
 
 # Step 1
@@ -50,7 +43,7 @@ page.append("And here is another piece of text -- you should be able to add any 
 render_page(page, "test_html_output1.html")
 
 # The rest of the steps have been commented out.
-#  Uncomment them a you move along with the assignment.
+#  Uncomment them as you move along with the assignment.
 
 # ## Step 2
 # ##########
@@ -208,7 +201,7 @@ render_page(page, "test_html_output1.html")
 
 # body = hr.Body()
 
-# body.append( hr.H(2, "PythonClass - Class 6 example") )
+# body.append( hr.H(2, "PythonClass - Example") )
 
 # body.append(hr.P("Here is a paragraph of text -- there could be more of them, "
 #                  "but this is enough  to show that we can do some text",
