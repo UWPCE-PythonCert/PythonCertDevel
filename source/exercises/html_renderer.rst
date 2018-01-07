@@ -72,6 +72,7 @@ It has a few tests for the first few steps -- uncomment them as you go along.
 
 But it is NOT comprehensive -- you will need to add more tests at every step!
 
+You can run ``pytest`` on that test file first thing -- it should pass two tests (that you can create an Element object --not that it works) and fail one -- one that actually starts to test functionality.
 
 Step 1:
 -------
@@ -89,6 +90,8 @@ The initializer signature should look like
 where ``content`` is expected to be a string -- and defaults to nothing.
 
 It should have an ``append`` method that can add another string to the content.
+
+(The ``html_render.py`` file you downloaded above should have a skeleton for this class in it.)
 
 So your class will need a way to store the content in a way that you can keep adding more to it.
 
@@ -228,7 +231,7 @@ attributes, if any.
 
 Note that self closing tags can't have any content. Make sure that your SelfClosingTag element raises an exception if someone tries to put in any content -- probably a ``TypeError``.
 
-Create a couple subclasses of ``SelfClosingTag`` for <hr /> and <br />
+Create a couple subclasses of ``SelfClosingTag`` for ``<hr />`` and ``<br />``
 
 Note that you now have a couple render methods -- is there repeated code in them?
 
@@ -306,11 +309,11 @@ There is also more than one way to indent html -- so you have a bit of flexibili
 
 So:
 
-* You probably  want ``ind`` to be an optional argument to render -- so it will not indent if nothing is passed in. And that lets you write the code without indentation first if you like.
+* You probably  want ``cur_ind`` to be an optional argument to render -- so it will not indent if nothing is passed in. And that lets you write the code without indentation first if you like.
 
-* But ultimately, you want your code to USE the ind parameter -- it is supposed to indicate how much this entire tag is already indented.
+* But ultimately, you want your code to USE the ``cur_ind`` parameter -- it is supposed to indicate how much this entire tag is already indented.
 
-* When this one gets rendered, you don't know where it is in a potentially deeply nested hierarchy -- it could be at the top level or ten levels deep. passing ``ind`` into the render method is how this is communicated.
+* When a given element gets rendered, you don't know where it is in a potentially deeply nested hierarchy -- it could be at the top level or ten levels deep. passing ``cur_ind`` into the render method is how this is communicated.
 
 * You have (at least) two options for how to indicate level of indentation:
 
@@ -328,15 +331,15 @@ Notes on handling "duck typing"
 ===============================
 
 
-  In this exercise, we need to deal with the fact that XML (and thus HTML) allows *either* plain text *or* other tags to be the content of a tag. Our code also needs to handle the fact that there are two possible types that we need to be able to render.
+In this exercise, we need to deal with the fact that XML (and thus HTML) allows *either* plain text *or* other tags to be the content of a tag. Our code also needs to handle the fact that there are two possible types that we need to be able to render.
 
-  There are two primary ways to address this (and multiple ways to actually write the code for each of these).
+There are two primary ways to address this (and multiple ways to actually write the code for each of these).
 
-  1) Make sure that the content only has renderable objects in it.
+1) Make sure that the content only has renderable objects in it.
 
-  2) Make sure the render() method can handle either type on the fly.
+2) Make sure the render() method can handle either type on the fly.
 
-  The difference is where you handle the multiple types -- in the render method itself, or ahead of time.
+The difference is where you handle the multiple types -- in the render method itself, or ahead of time, when you append new content to the Element.
 
 The ahead of time option:
 -------------------------
@@ -416,7 +419,7 @@ But in this case, we're not actually rendering the object at this stage, so call
 
 Instead of calling the method, see if it's there. You can do that with ``hasattr()``
 
-check if the passed-in object has a ``render()`` attribute:
+check if the passed-in object has a ``render`` attribute:
 
 .. code-block:: python
 
@@ -428,7 +431,7 @@ check if the passed-in object has a ``render()`` attribute:
 
 Note that I added a ``str()`` call too -- so you can pass in anything -- it will get stringified -- this will be ugly for many objects, but will work fine for numbers and other simple objects.
 
-This is my favorite. ``html_render_wrap.py`` in Solutions demonstrates some core bits of this approach.
+This is my favorite.
 
 
 Duck Typing on the Fly
@@ -479,12 +482,12 @@ HTML Primer
 ============
 
 
-    The very least you need to know about html to do this assignment.
+The very least you need to know about html to do this assignment.
 
 
-  If you are familiar with html, then this will all make sense to you. If you have never seen html before, this might be a bit intimidating, but you really don't need to know much to do this assignment.
+If you are familiar with html, then this will all make sense to you. If you have never seen html before, this might be a bit intimidating, but you really don't need to know much to do this assignment.
 
-  First of all, sample output from each step is provided. So all you really need to do is look at that, and make your code do the same thing. But it does help understand a little bit about what you trying to do.
+First of all, sample output from each step is provided. So all you really need to do is look at that, and make your code do the same thing. But it does help understand a little bit about what you trying to do.
 
 HTML
 ----
@@ -503,7 +506,7 @@ As html is XML -- the XML intro is a good source of the XML syntax, too:
 
 http://www.w3schools.com/xml/default.asp
 
-But here is a tiny intro of just what you need to know for this project.
+But here is a tiny summary of just what you need to know for this project.
 
 Elements
 --------
@@ -584,6 +587,6 @@ Section Headers are created with "h" tags: <h1> is the biggest (highest level), 
 
 .. code-block:: html
 
-    <h2>PythonClass - Class 7 example</h2>
+    <h2> PythonClass -- Example </h2>
 
 I think that's all you need to know!
