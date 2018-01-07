@@ -56,9 +56,6 @@ Readings
 
 .. https://uwpce-pythoncert.github.io/PythonCertDevel/modules/Git.html
 
-:ref:`python_overview`
-
-.. https://uwpce-pythoncert.github.io/PythonCertDevel/modules/PythonOverview.html
 
 :ref:`basic_python_syntax`
 

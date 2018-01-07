@@ -1,7 +1,7 @@
 
-
+#######
 Modules
-=======
+#######
 
 These are assorted notes about particular python topics used in the certificate program.
 
@@ -11,11 +11,16 @@ More or less in order of presentation
     :maxdepth: 1
 
     Class_introduction
-    BasicPython
+    IPythonIntroduction
+    Py2vsPy3
+    EnvironmentOverview
     Git
     GitWorkflow
+    BasicPython
     Functions
+    Recursion
     Documentation
+    NamingThings
     Booleans
     Modules
     Sequences
@@ -25,30 +30,24 @@ More or less in order of presentation
     Files
     Exceptions
     Comprehensions
+    Testing
     AdvancedArgumentPassing
     DictionaryAsSwitch
-    Closures
-    ContextManagers
-    Decorators
-    EnvironmentOverview
-    IPythonIntroduction
-    IPythonParallel
-    IteratorsAndGenerators
+    MoreOnMutability
+    ObjectOrientationOverview
+    PythonClasses
+    SubclassingAndInheritance
+    Properties
+    StaticAndClassMethods
+    MultipleInheritance
+    SpecialMethodsAndProtocols
+    OO_vs_functional
     Lambda
     MapFilterReduce
-    MultipleInheritance
-    NamingThings
-    ObjectOrientationOverview
-    OO_vs_functional
-    Properties
-    Py2vsPy3
-    PythonClasses
-    Recursion
-    SpecialMethodsAndProtocols
-    StaticAndClassMethods
-    SubclassingAndInheritance
-    Testing
-    Tutorial
-    MoreOnMutability
+    IPythonParallel
+    IteratorsAndGenerators
+    ContextManagers
+    Decorators
+    Closures
     Packaging
 

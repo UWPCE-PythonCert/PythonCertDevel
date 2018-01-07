@@ -166,7 +166,7 @@ Create your new python file(s) in that new directory. Then add it to git before 
 
 Then as you work, each time you get to a good saving point, make a commit:
 
-``git commit -a -m "added the donation listing feature"
+``git commit -a -m "added the donation listing feature"``
 
 And when you are done, push it to gitHub:
 
