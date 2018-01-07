@@ -1,3 +1,4 @@
+:orphan:
 
 .. _index_to_scripts:
 

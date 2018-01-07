@@ -1,9 +1,8 @@
+###############################
 Introduction to the Environment
-===============================
+###############################
 
 There are three basic elements to your environment when working with Python:
-
-
 
 * The Command Line
 * The Interpreter

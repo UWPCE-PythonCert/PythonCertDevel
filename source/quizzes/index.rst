@@ -1,5 +1,8 @@
+:orphan:
+
+#######
 Quizzes
-=======
+#######
 
 .. toctree::
     :maxdepth: 1

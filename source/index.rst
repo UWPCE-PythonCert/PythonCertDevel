@@ -1,26 +1,21 @@
 
+###########################################
+Python Certificate Program Course Materials
+###########################################
 
-#########################################
-Welcome to the Python Certificate Program
-#########################################
 
-Class Schedule
-==============
+This site holds many of the materials for the University of Washington Professional and Continuing Education Python Certificate:
 
-.. toctree::
-    :maxdepth: 1
+https://www.pce.uw.edu/certificates/python-programming
 
-    class_schedule/index
 
 .. toctree::
     :maxdepth: 1
 
     modules/index
-    quizzes/index
     exercises/index
     supplemental/index
     references/index
-    scripts/index.rst
 
 .. There is no indexed material! We could add it, but it would have to be done my hand.
 .. Indices and tables
