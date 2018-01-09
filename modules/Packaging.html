@@ -145,21 +145,33 @@
 <li class="toctree-l3"><a class="reference internal" href="#current-state-of-packaging">Current State of Packaging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#compiled-packages">Compiled Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#final-recommendations">Final Recommendations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#virtualenv">virtualenv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#virtualenv">virtualenv</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#building-your-own-package">Building Your Own Package</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#distributing">Distributing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id5">Distributing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#scripts">Scripts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#libraries">Libraries</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#distutils">distutils</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#distutils-basics">distutils basics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">distutils basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-build-a-package">Why Build a Package?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-a-package">What is a Package?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-packaging-tools">Python packaging tools:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#where-do-i-go-to-figure-this-out">Where do I go to figure this out?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#packages-modules-imports-oh-my">Packages, modules, imports, oh my!</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-on-importing">More on Importing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#import"><code class="docutils literal"><span class="pre">import</span> <span class="pre">*</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#relative-imports">Relative imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sys-modules">sys.modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implications-of-module-import-process">Implications of module import process:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-package-structure">Basic Package Structure:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-setup-py-file">The <code class="docutils literal"><span class="pre">setup.py</span></code> File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setup-cfg"><code class="docutils literal"><span class="pre">setup.cfg</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-setup-py">Running <code class="docutils literal"><span class="pre">setup.py</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setuptools">setuptools</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#wheels">wheels</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#more-complex-packaging">More complex packaging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#develop-mode">develop mode</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#applications">Applications</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#bundles">Bundles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pypi">PyPi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#under-development">Under Development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-tests">Running tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handling-the-version-number">Handling the version number:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#semantic-versioning">Semantic Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tools-to-help">Tools to help:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-started">Getting Started</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#lab">LAB</a></li>
 </ul>
 </li>
@@ -488,148 +500,600 @@
 <p>Or deploying more than one app on one system</p>
 <p><a class="reference external" href="http://www.virtualenv.org/en/latest/index.html">http://www.virtualenv.org/en/latest/index.html</a>}</p>
 <p>Remember the notes from the beginning of class? <a class="reference internal" href="../supplemental/dev_environment/virtualenv.html#virtualenv-section"><span class="std std-ref">Working with Virtualenv</span></a></p>
-<p>(Cris will probably make you do this next class)</p>
+<div class="section" id="building-your-own-package">
+<h3>Building Your Own Package<a class="headerlink" href="#building-your-own-package" title="Permalink to this headline">¶</a></h3>
+<p>The very basics of what you need to know to make your own package.</p>
+<div class="toctree-wrapper compound">
 </div>
 </div>
-<div class="section" id="distributing">
-<h1>Distributing<a class="headerlink" href="#distributing" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id5">
-<h2>Distributing<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<p>What if you need to distribute you own:</p>
-<p>Scripts</p>
-<p>Libraries</p>
-<p>Applications</p>
 </div>
-<div class="section" id="scripts">
-<h2>Scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h2>
-<p>Often you can just copy, share, or check in the script to source
-control and call it good.</p>
-<p>But only if it’s a single file, and doesn’t need anything non-standard</p>
-<p>When the script needs more than just the stdlib</p>
-<p>(or your company standard environment)</p>
-<p>You have an application, not a script</p>
+<div class="section" id="why-build-a-package">
+<h2>Why Build a Package?<a class="headerlink" href="#why-build-a-package" title="Permalink to this headline">¶</a></h2>
+<p class="left">There are a bunch of nifty tools that help you build, install and
+distribute packages.</p>
+<p class="left">Using a well structured, standard layout for your package makes it
+easy to use those tools.</p>
+<p class="left">Even if you never want to give anyone else your code, a well
+structured package eases development.</p>
 </div>
-<div class="section" id="libraries">
-<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h2>
-<p>When you read the distutils docs, it’s usually libraries they’re talking about</p>
-<p>Scripts + library is the same…</p>
-<p>(<a class="reference external" href="http://docs.python.org/distutils/">http://docs.python.org/distutils/</a>)</p>
+<div class="section" id="what-is-a-package">
+<h2>What is a Package?<a class="headerlink" href="#what-is-a-package" title="Permalink to this headline">¶</a></h2>
+<p><strong>A collection of modules</strong></p>
+<ul class="simple">
+<li>… and the documentation</li>
+<li>… and the tests</li>
+<li>… and any top-level scripts</li>
+<li>… and any data files required</li>
+<li>… and a way to build and install it…</li>
+</ul>
 </div>
-<div class="section" id="distutils">
-<h2>distutils<a class="headerlink" href="#distutils" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">distutils</span></code>  makes it easy to do the easy stuff:</p>
-<p>Distribute and install to multiple platforms, etc.</p>
-<p>Even binaries, installers and compiled packages</p>
-<p>(Except dependencies)</p>
-<p>(<a class="reference external" href="http://docs.python.org/distutils/">http://docs.python.org/distutils/</a>)</p>
+<div class="section" id="python-packaging-tools">
+<h2>Python packaging tools:<a class="headerlink" href="#python-packaging-tools" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">distutils</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">distutils.core</span> <span class="k">import</span> <span class="n">setup</span>
+</pre></div>
 </div>
-<div class="section" id="distutils-basics">
-<h2>distutils basics<a class="headerlink" href="#distutils-basics" title="Permalink to this headline">¶</a></h2>
-<p>It’s all in the <code class="docutils literal"><span class="pre">setup.py</span> <span class="pre">file</span></code>:</p>
-<p>(<a class="reference external" href="http://docs.python.org/distutils/">http://docs.python.org/distutils/</a>)</p>
+<p>Getting klunky, hard to extend, maybe destined for deprication…</p>
+<p>But it gets the job done – and it does it well for the simple cases.</p>
+<p><code class="docutils literal"><span class="pre">setuptools</span></code>: for extra features</p>
+<p><code class="docutils literal"><span class="pre">pip</span></code>: for installing packages</p>
+<p><code class="docutils literal"><span class="pre">wheel</span></code>: for binary distributions</p>
+<p>These last three are pretty much the standard now – very well maintained by:</p>
+<p>“The Python Packaging Authority” – PaPA</p>
+<p><a class="reference external" href="https://www.pypa.io/en/latest/">https://www.pypa.io/en/latest/</a></p>
 </div>
-<div class="section" id="id6">
-<h2>distutils basics<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<p>Once your setup.py is written, you can:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">...</span>
-<span class="n">build</span>         <span class="n">build</span> <span class="n">everything</span> <span class="n">needed</span> <span class="n">to</span> <span class="n">install</span>
-<span class="n">install</span>       <span class="n">install</span> <span class="n">everything</span> <span class="kn">from</span> <span class="nn">build</span> <span class="n">directory</span>
-<span class="n">sdist</span>         <span class="n">create</span> <span class="n">a</span> <span class="n">source</span> <span class="n">distribution</span>
-              <span class="p">(</span><span class="n">tarball</span><span class="p">,</span> <span class="nb">zip</span> <span class="n">file</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span><span class="p">)</span>
-<span class="n">bdist</span>         <span class="n">create</span> <span class="n">a</span> <span class="n">built</span> <span class="p">(</span><span class="n">binary</span><span class="p">)</span> <span class="n">distribution</span>
-<span class="n">bdist_rpm</span>     <span class="n">create</span> <span class="n">an</span> <span class="n">RPM</span> <span class="n">distribution</span>
-<span class="n">bdist_wininst</span> <span class="n">create</span> <span class="n">an</span> <span class="n">executable</span> <span class="n">installer</span> <span class="k">for</span> <span class="n">MS</span> <span class="n">Windows</span>
-<span class="n">upload</span>        <span class="n">upload</span> <span class="n">binary</span> <span class="n">package</span> <span class="n">to</span> <span class="n">PyPI</span>
+<div class="section" id="where-do-i-go-to-figure-this-out">
+<h2>Where do I go to figure this out?<a class="headerlink" href="#where-do-i-go-to-figure-this-out" title="Permalink to this headline">¶</a></h2>
+<p>This is a really good guide:</p>
+<p>Python Packaging User Guide:</p>
+<p><a class="reference external" href="https://packaging.python.org/">https://packaging.python.org/</a></p>
+<p>and a more detailed tutorial:</p>
+<p><a class="reference external" href="http://python-packaging.readthedocs.io/en/latest/">http://python-packaging.readthedocs.io/en/latest/</a></p>
+<p><strong>Follow one of them</strong></p>
+<p>There is a sample project here:</p>
+<p><a class="reference external" href="https://github.com/pypa/sampleproject">https://github.com/pypa/sampleproject</a></p>
+<p>(this has all the complexity you might need…)</p>
+<p>You can use this as a template for your own packages.</p>
+<p>Here is an opinionated update – a little more fancy, but some good ideas:</p>
+<p><a class="reference external" href="https://blog.ionelmc.ro/2014/05/25/python-packaging/">https://blog.ionelmc.ro/2014/05/25/python-packaging/</a></p>
+<p>Rather than doing it by hand, you can use the nifty “cookie cutter” project:</p>
+<p><a class="reference external" href="https://cookiecutter.readthedocs.io/en/latest/">https://cookiecutter.readthedocs.io/en/latest/</a></p>
+<p>And there are a few templates that can be used with that.</p>
+<p>The core template written by the author:</p>
+<p><a class="reference external" href="https://github.com/audreyr/cookiecutter-pypackage">https://github.com/audreyr/cookiecutter-pypackage</a></p>
+<p>And one written by the author of the opinionated blog post above:</p>
+<p><a class="reference external" href="https://github.com/ionelmc/cookiecutter-pylibrary">https://github.com/ionelmc/cookiecutter-pylibrary</a></p>
+<p>Either are great starting points.</p>
+</div>
+<div class="section" id="packages-modules-imports-oh-my">
+<h2>Packages, modules, imports, oh my!<a class="headerlink" href="#packages-modules-imports-oh-my" title="Permalink to this headline">¶</a></h2>
+<p>Before we get started on making your own package – let’s remind
+ourselves about packages and modules, and importing….</p>
+<p><strong>Modules</strong></p>
+<p>A python “module” is a single namespace, with a collection of values:</p>
+<blockquote>
+<div><ul class="simple">
+<li>functions</li>
+<li>constants</li>
+<li>class definitions</li>
+<li>really any old value.</li>
+</ul>
+</div></blockquote>
+<p>A module usually corresponds to a single file: <code class="docutils literal"><span class="pre">something.py</span></code></p>
+<p><strong>Packages</strong></p>
+<p>A “package” is essentially a module, except it can have other modules (and indeed other packages) inside it.</p>
+<p>A module usually corresponds to a directory with a file in it called <code class="docutils literal"><span class="pre">__init__.py</span></code> and any number
+of python files or other package directories:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a_package</span>
+   <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+   <span class="n">module_a</span><span class="o">.</span><span class="n">py</span>
+   <span class="n">a_sub_package</span>
+     <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+     <span class="n">module_b</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">__init__.py</span></code> can be totally empty – or it can have arbitrary python code in it.
+The code will be run when the package is imported – just like a module,</p>
+<p>modules inside packages are <em>not</em> automatically imported. So, with the above sgructure:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">a_package</span>
+</pre></div>
+</div>
+<p>will run the code in <code class="docutils literal"><span class="pre">a_package/__init__.py</span></code>. Any names defined in the
+<code class="docutils literal"><span class="pre">__init__.py</span></code> will be available in:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a_package</span><span class="o">.</span><span class="n">a_name</span>
+</pre></div>
+</div>
+<p>but:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a_package</span><span class="o">.</span><span class="n">module_a</span>
+</pre></div>
+</div>
+<p>will not exist. To get submodules, you need to explicitly import them:</p>
+<blockquote>
+<div>import a_package.module_a</div></blockquote>
+</div>
+<div class="section" id="more-on-importing">
+<h2>More on Importing<a class="headerlink" href="#more-on-importing" title="Permalink to this headline">¶</a></h2>
+<p>You usually import a module like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">something</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">something</span> <span class="k">import</span> <span class="n">something_else</span>
+</pre></div>
+</div>
+<p>or a few names from a package:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">something</span> <span class="k">import</span> <span class="p">(</span><span class="n">name_1</span><span class="p">,</span>
+                       <span class="n">name_2</span><span class="p">,</span>
+                       <span class="n">name_3</span><span class="p">,</span>
+                       <span class="n">x</span><span class="p">,</span>
+                       <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And you can rename stuff as you import it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<p>This is a common pattern for using large packages and not having to type a lot…</p>
+</div>
+<div class="section" id="import">
+<h2><code class="docutils literal"><span class="pre">import</span> <span class="pre">*</span></code><a class="headerlink" href="#import" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">something</span> <span class="k">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>means: “import all the names in the module”</p>
+<p>You really don’t want to do that! It is an old pattern that is now an anti-pattern</p>
+<p>But if you do encounter it, it doesn’t actually import all the names –
+it imports the ones defined in teh module’s <code class="docutils literal"><span class="pre">_all__</span></code> variable.</p>
+<p><code class="docutils literal"><span class="pre">__all__</span></code> is a list of names that you want import * to import – so
+the module author can control it, and not expect all sorts of build ins
+and other modules.</p>
+<p>But really – don’t use it!</p>
+</div>
+<div class="section" id="relative-imports">
+<h2>Relative imports<a class="headerlink" href="#relative-imports" title="Permalink to this headline">¶</a></h2>
+<p>Relative imports were added with PEP 328:</p>
+<p><a class="reference external" href="https://www.python.org/dev/peps/pep-0328/">https://www.python.org/dev/peps/pep-0328/</a></p>
+<p>The final version is described here:</p>
+<p><a class="reference external" href="https://www.python.org/dev/peps/pep-0328/#guido-s-decision">https://www.python.org/dev/peps/pep-0328/#guido-s-decision</a></p>
+<p>This gets confusing! There is a good discussion on Stack Overflow here:</p>
+<p><a class="reference external" href="http://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time">http://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time</a></p>
+<p>Relative imports allow you to refer to other modules relative to where the existing module is in the package hierachy, rather than in the while thing. For instance, with the following pacakge structure:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span><span class="o">/</span>
+    <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">subpackage1</span><span class="o">/</span>
+        <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">moduleX</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">moduleY</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">subpackage2</span><span class="o">/</span>
+        <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">moduleZ</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">moduleA</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>You can do (in <code class="docutils literal"><span class="pre">moduleX.py</span></code>):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.moduleY</span> <span class="kn">import</span> <span class="n">spam</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">moduleY</span>
+<span class="kn">from</span> <span class="nn">..subpackage1</span> <span class="kn">import</span> <span class="n">moduleY</span>
+<span class="kn">from</span> <span class="nn">..subpackage2.moduleZ</span> <span class="kn">import</span> <span class="n">eggs</span>
+<span class="kn">from</span> <span class="nn">..moduleA</span> <span class="kn">import</span> <span class="n">foo</span>
+<span class="kn">from</span> <span class="nn">...package</span> <span class="kn">import</span> <span class="n">bar</span>
+<span class="kn">from</span> <span class="nn">...sys</span> <span class="kn">import</span> <span class="n">path</span>
+</pre></div>
+</div>
+<p>Similarly to *nix shells:</p>
+<p>“.” means “the current package”</p>
+<p>“..” means “the package above this one”</p>
+<p>Note that you have to use the “from” form when using relative imports.</p>
+<p><strong>Caveats:</strong></p>
+<ul class="simple">
+<li>you can only use relative imports from within a package</li>
+<li>you can not use relative imports from the interpreter</li>
+<li>you can not use reltaive imports from a top-level script</li>
+</ul>
+<p>The alternative is to always use absolute imports:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">package.subpackage</span> <span class="kn">import</span> <span class="n">moduleX</span>
+<span class="kn">from</span> <span class="nn">package.moduleA</span> <span class="kn">import</span> <span class="n">foo</span>
+</pre></div>
+</div>
+<p>Advantages of relative imports:</p>
+<ul class="simple">
+<li>Package does not have to be installed</li>
+<li>You can move things around, and not much has to change</li>
+</ul>
+<p>Advantages of absolute imports:</p>
+<ul class="simple">
+<li>explicit is better than implicit</li>
+<li>imports are the same regardless of where you put the package</li>
+<li>imports are the same in package code, command line, tests, scripts, etc.</li>
+</ul>
+<p>There is debate about which is the “one way to do it” – a bit unpythonic, but you’ll need to make your own decision.</p>
+</div>
+<div class="section" id="sys-modules">
+<h2>sys.modules<a class="headerlink" href="#sys-modules" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="nb">type</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">)</span>
+<span class="gh">Out[4]: </span><span class="go">dict</span>
+
+<span class="gp">In [6]: </span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;textwrap&#39;</span><span class="p">]</span>
+<span class="gh">Out[6]: </span><span class="go">&lt;module &#39;textwrap&#39; from &#39;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/textwrap.py&#39;&gt;</span>
+
+<span class="gp">In [10]: </span><span class="p">[</span><span class="n">var</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;textwrap&#39;</span><span class="p">])</span> <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">)]</span>
+<span class="gh">Out[10]:</span>
+<span class="go">[&#39;__spec__&#39;,</span>
+<span class="go"> &#39;__package__&#39;,</span>
+<span class="go"> &#39;__loader__&#39;,</span>
+<span class="go"> &#39;__doc__&#39;,</span>
+<span class="go"> &#39;__cached__&#39;,</span>
+<span class="go"> &#39;__name__&#39;,</span>
+<span class="go"> &#39;__all__&#39;,</span>
+<span class="go"> &#39;__file__&#39;,</span>
+<span class="go"> &#39;__builtins__&#39;]</span>
+</pre></div>
+</div>
+<p>you can access the module through the modules dict:</p>
+<p>In [12]: sys.modules[‘textwrap’].__file__
+Out[12]: ‘/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/textwrap.py’</p>
+<p>Which is the same as:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="kn">import</span> <span class="nn">textwrap</span>
+
+<span class="gp">In [14]: </span><span class="n">textwrap</span><span class="o">.</span><span class="vm">__file__</span>
+<span class="gh">Out[14]: </span><span class="go">&#39;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/textwrap.py&#39;</span>
+
+<span class="gp">In [15]: </span><span class="nb">type</span><span class="p">(</span><span class="n">textwrap</span><span class="p">)</span>
+<span class="gh">Out[15]: </span><span class="go">module</span>
+
+<span class="gp">In [16]: </span><span class="n">textwrap</span> <span class="ow">is</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;textwrap&#39;</span><span class="p">]</span>
+<span class="gh">Out[16]: </span><span class="go">True</span>
+</pre></div>
+</div>
+<p>So, more or less, when you import a module, the interpreter:</p>
+<ul class="simple">
+<li>Looks to see if the module is already in <code class="docutils literal"><span class="pre">sys.modules</span></code>.</li>
+<li>If it is, it binds a name to the existing module in the current
+module’s namespace.</li>
+<li>If it isn’t:</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>A module object is created</li>
+<li>The code in the file is run</li>
+<li>The module is added to sys.modules</li>
+<li>The module is added to the current namespace.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="implications-of-module-import-process">
+<h2>Implications of module import process:<a class="headerlink" href="#implications-of-module-import-process" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The code in a module only runs once per program run.</li>
+<li>Importing a module again is cheap and fast.</li>
+<li>Every place your code imports a module it gets the <em>same</em> object
+- You can use this to share “global” state where you want to.</li>
+<li>If you change the code in a module while the program is running – the
+change will <strong>not</strong> show up, even if re-imported.<ul>
+<li>That’s what <code class="docutils literal"><span class="pre">reload()</span></code> is for.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="basic-package-structure">
+<h2>Basic Package Structure:<a class="headerlink" href="#basic-package-structure" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package_name</span><span class="o">/</span>
+    <span class="nb">bin</span><span class="o">/</span>
+    <span class="n">CHANGES</span><span class="o">.</span><span class="n">txt</span>
+    <span class="n">docs</span><span class="o">/</span>
+    <span class="n">LICENSE</span><span class="o">.</span><span class="n">txt</span>
+    <span class="n">MANIFEST</span><span class="o">.</span><span class="ow">in</span>
+    <span class="n">README</span><span class="o">.</span><span class="n">txt</span>
+    <span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">package_name</span><span class="o">/</span>
+          <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+          <span class="n">module1</span><span class="o">.</span><span class="n">py</span>
+          <span class="n">module2</span><span class="o">.</span><span class="n">py</span>
+          <span class="n">test</span><span class="o">/</span>
+              <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+              <span class="n">test_module1</span><span class="o">.</span><span class="n">py</span>
+              <span class="n">test_module2</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">CHANGES.txt</span></code>: log of changes with each release</p>
+<p><code class="docutils literal"><span class="pre">LICENSE.txt</span></code>: text of the license you choose (do choose one!)</p>
+<p><code class="docutils literal"><span class="pre">MANIFEST.in</span></code>: description of what non-code files to include</p>
+<p><code class="docutils literal"><span class="pre">README.txt</span></code>: description of the package – should be written in ReST (for PyPi):</p>
+<p>(<a class="reference external" href="http://docutils.sourceforge.net/rst.html">http://docutils.sourceforge.net/rst.html</a>)</p>
+<p><code class="docutils literal"><span class="pre">setup.py</span></code>: distutils script for building/installing package.</p>
+<p><code class="docutils literal"><span class="pre">bin/</span></code>: This is where you put top-level scripts</p>
+<blockquote>
+<div>( some folks use <code class="docutils literal"><span class="pre">scripts</span></code> )</div></blockquote>
+<p><code class="docutils literal"><span class="pre">docs/</span></code>: the documentation</p>
+<p><code class="docutils literal"><span class="pre">package_name/</span></code>: The main package – this is where the code goes.</p>
+<p><code class="docutils literal"><span class="pre">test/</span></code>: your unit tests. Options here:</p>
+<p>Put it inside the package – supports</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pip install package_name
+&gt;&gt; import package_name.test
+&gt;&gt; package_name.test.runall()
+</pre></div>
+</div>
+<p>Or keep it at the top level.</p>
+</div>
+<div class="section" id="the-setup-py-file">
+<h2>The <code class="docutils literal"><span class="pre">setup.py</span></code> File<a class="headerlink" href="#the-setup-py-file" title="Permalink to this headline">¶</a></h2>
+<p>Your <code class="docutils literal"><span class="pre">setup.py</span></code> file is what describes your package, and tells the distutils how to pacakge, build and install it</p>
+<p>It is python code, so you can add anything custom you need to it</p>
+<p>But in the simple case, it is essentially declarative.</p>
+<p><code class="docutils literal"><span class="pre">http://docs.python.org/3/distutils/</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="kn">from</span> <span class="nn">setuptools</span> <span class="k">import</span> <span class="n">setup</span>
+
+ <span class="n">setup</span><span class="p">(</span>
+   <span class="n">name</span><span class="o">=</span><span class="s1">&#39;PackageName&#39;</span><span class="p">,</span>
+   <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.1.0&#39;</span><span class="p">,</span>
+   <span class="n">author</span><span class="o">=</span><span class="s1">&#39;An Awesome Coder&#39;</span><span class="p">,</span>
+   <span class="n">author_email</span><span class="o">=</span><span class="s1">&#39;aac@example.com&#39;</span><span class="p">,</span>
+   <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;package_name&#39;</span><span class="p">,</span> <span class="s1">&#39;package_name.test&#39;</span><span class="p">],</span>
+   <span class="n">scripts</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;bin/script1&#39;</span><span class="p">,</span><span class="s1">&#39;bin/script2&#39;</span><span class="p">],</span>
+   <span class="n">url</span><span class="o">=</span><span class="s1">&#39;http://pypi.python.org/pypi/PackageName/&#39;</span><span class="p">,</span>
+   <span class="n">license</span><span class="o">=</span><span class="s1">&#39;LICENSE.txt&#39;</span><span class="p">,</span>
+   <span class="n">description</span><span class="o">=</span><span class="s1">&#39;An awesome package that does something&#39;</span><span class="p">,</span>
+   <span class="n">long_description</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;README.txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span>
+   <span class="n">install_requires</span><span class="o">=</span><span class="p">[</span>
+       <span class="s2">&quot;Django &gt;= 1.1.1&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;pytest&quot;</span><span class="p">,</span>
+   <span class="p">],</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="wheels">
-<h2>wheels<a class="headerlink" href="#wheels" title="Permalink to this headline">¶</a></h2>
-<p>“wheels” are the “new” package format for python.</p>
-<p>A wheel is essentially a zip file of the entire package, ready to be
-unpacked in the right place on installation.</p>
-<p><code class="docutils literal"><span class="pre">pip</span></code> will look for wheels for OS-X and Windows on PyPi, and auto-install
-them if they exist</p>
-<p>This is particularly nice for packages with non-python dependencies.</p>
-</div>
-<div class="section" id="more-complex-packaging">
-<h2>More complex packaging<a class="headerlink" href="#more-complex-packaging" title="Permalink to this headline">¶</a></h2>
-<p>For a complex package:</p>
-<p>You want to use a well structured setup:</p>
-<p><a class="reference external" href="http://the-hitchhikers-guide-to-packaging.readthedocs.org/en/latest/">http://the-hitchhikers-guide-to-packaging.readthedocs.org/en/latest/</a></p>
-</div>
-<div class="section" id="develop-mode">
-<h2>develop mode<a class="headerlink" href="#develop-mode" title="Permalink to this headline">¶</a></h2>
-<p>While you are developing your package, Installing it is a pain.</p>
-<p>But you want your code to be able to import, etc. as though it were installed</p>
-<p><code class="docutils literal"><span class="pre">setup.py</span> <span class="pre">develop</span></code>  installs links to your code, rather than copies
-– so it looks like it’s installed, but it’s using the original source</p>
-<p><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span></code></p>
-<p>You need <code class="docutils literal"><span class="pre">setuptools</span></code> and a setup.py  to use it.</p>
-</div>
-<div class="section" id="applications">
-<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h2>
-<p>For a complete application:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Web apps</li>
-<li>GUI apps</li>
-</ul>
-</div></blockquote>
-<p>Multiple options:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Virtualenv + VCS</li>
-<li>zc.buildout ( <a class="reference external" href="http://www.buildout.org/">http://www.buildout.org/</a>}</li>
-<li>System packages (rpm, deb, …)</li>
-<li>Bundles…</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="bundles">
-<h2>Bundles<a class="headerlink" href="#bundles" title="Permalink to this headline">¶</a></h2>
-<p>Bundles are Python + all your code + plus all the dependencies –
-all in one single “bundle”</p>
-<p>Most popular on Windows and OS-X</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">py2exe</span>
-<span class="n">py2app</span>
-<span class="n">pyinstaller</span>
+<div class="section" id="setup-cfg">
+<h2><code class="docutils literal"><span class="pre">setup.cfg</span></code><a class="headerlink" href="#setup-cfg" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">setup.cfg</span></code> provides a way to give the end user some ability to customise the install</p>
+<p>It’s an <code class="docutils literal"><span class="pre">ini</span></code> style file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">command</span><span class="p">]</span>
+<span class="n">option</span><span class="o">=</span><span class="n">value</span>
 <span class="o">...</span>
 </pre></div>
 </div>
-<p>User doesn’t even have to know it’s python</p>
-<p>Examples:</p>
+<p>simple to read and write.</p>
+<p><code class="docutils literal"><span class="pre">command</span></code> is one of the Distutils commands (e.g. build_py, install)</p>
+<p><code class="docutils literal"><span class="pre">option</span></code> is one of the options that command supports.</p>
+<p>Note that an option spelled <code class="docutils literal"><span class="pre">--foo-bar</span></code> on the command-line is spelled f``foo_bar`` in configuration files.</p>
+</div>
+<div class="section" id="running-setup-py">
+<h2>Running <code class="docutils literal"><span class="pre">setup.py</span></code><a class="headerlink" href="#running-setup-py" title="Permalink to this headline">¶</a></h2>
+<p>With a <code class="docutils literal"><span class="pre">setup.py</span></code> script defined, the distutils can do a lot:</p>
+<ul>
+<li><p class="first">builds a source distribution (defaults to tar file):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">sdist</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">sdist</span> <span class="o">--</span><span class="nb">format</span><span class="o">=</span><span class="nb">zip</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">builds binary distributions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_rpm</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wininst</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>(other, more obscure ones, too….)</p>
+<p>But you probably want to use wheel for binary disributions now.</p>
+<ul>
+<li><p class="first">build from source:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">and install:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="setuptools">
+<h2>setuptools<a class="headerlink" href="#setuptools" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">setuptools</span></code> is an extension to <code class="docutils literal"><span class="pre">distutils</span></code> that provides a number of extensions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="k">import</span> <span class="n">setup</span>
+</pre></div>
+</div>
+<p>superset of the <code class="docutils literal"><span class="pre">distutils</span> <span class="pre">setup</span></code></p>
+<p>This buys you a bunch of additional functionality:</p>
 <blockquote>
-<div><p><a class="reference external" href="http://www.bitpim.org/">http://www.bitpim.org/</a></p>
-<p><a class="reference external" href="http://response.restoration.noaa.gov/nucos">http://response.restoration.noaa.gov/nucos</a></p>
+<div><ul class="simple">
+<li>auto-finding packages</li>
+<li>better script installation</li>
+<li>resource (non-code files) management</li>
+<li><strong>develop mode</strong></li>
+<li>a LOT more</li>
+</ul>
 </div></blockquote>
+<p><a class="reference external" href="http://pythonhosted.org//setuptools/">http://pythonhosted.org//setuptools/</a></p>
+</div>
+<div class="section" id="wheels">
+<h2>wheels<a class="headerlink" href="#wheels" title="Permalink to this headline">¶</a></h2>
+<p>Wheels are a new binary format for packages.</p>
+<p><a class="reference external" href="http://wheel.readthedocs.org/en/latest/">http://wheel.readthedocs.org/en/latest/</a></p>
+<p>Pretty simple, essentially an zip archive of all the stuff that gets put
+in</p>
+<p><code class="docutils literal"><span class="pre">site-packages</span></code></p>
+<p>Can be just pure python or binary with compiled extensions</p>
+<p>Compatible with virtualenv.</p>
+<p>Building a wheel:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_wheel</span>
+</pre></div>
+</div>
+<p>Create a set of wheels (a wheelhouse):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Build a directory of wheels for pyramid and all its dependencies</span>
+<span class="n">pip</span> <span class="n">wheel</span> <span class="o">--</span><span class="n">wheel</span><span class="o">-</span><span class="nb">dir</span><span class="o">=/</span><span class="n">tmp</span><span class="o">/</span><span class="n">wheelhouse</span> <span class="n">pyramid</span>
+
+<span class="c1"># Install from cached wheels</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">use</span><span class="o">-</span><span class="n">wheel</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">index</span> <span class="o">--</span><span class="n">find</span><span class="o">-</span><span class="n">links</span><span class="o">=/</span><span class="n">tmp</span><span class="o">/</span><span class="n">wheelhouse</span> <span class="n">pyramid</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">packagename</span></code> will find wheels for Windows and OS-X.</p>
+<p><code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--no-use-wheel</span></code> avoids that.</p>
+</div>
+<div class="section" id="pypi">
+<h2>PyPi<a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h2>
+<p>The Python package index:</p>
+<p><a class="reference external" href="https://pypi.python.org/pypi">https://pypi.python.org/pypi</a></p>
+<p>You’ve all used this – <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span></code> searches it.</p>
+<p>To upload your package to PyPi:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">register</span>
+
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">sdist</span> <span class="n">bdist_wheel</span> <span class="n">upload</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://docs.python.org/2/distutils/packageindex.html">http://docs.python.org/2/distutils/packageindex.html</a></p>
+</div>
+<div class="section" id="under-development">
+<h2>Under Development<a class="headerlink" href="#under-development" title="Permalink to this headline">¶</a></h2>
+<p>Develop mode is <em>really</em> <em>really</em> nice:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">develop</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">./</span>
+</pre></div>
+</div>
+<p>It puts links into the python installation to your code, so that your package is installed, but any changes will immediately take effect.</p>
+<p>This way all your test code, and client code, etc, can all import your package the usual way.</p>
+<p>No <code class="docutils literal"><span class="pre">sys.path</span></code> hacking</p>
+<p>Good idea to use it for anything more than a single file project.</p>
+<p>(requires <code class="docutils literal"><span class="pre">setuptools</span></code>)</p>
+</div>
+<div class="section" id="running-tests">
+<h2>Running tests<a class="headerlink" href="#running-tests" title="Permalink to this headline">¶</a></h2>
+<p>It can be a good idea to set up your tests to be run from <code class="docutils literal"><span class="pre">setup.py</span></code></p>
+<p>So that you (or your users) can:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pip install .
+$ python setup.py <span class="nb">test</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> there is debate about whether this is a good idea. But if you want to:</p>
+<p>Do do this, you need to add a <code class="docutils literal"><span class="pre">test_suite</span></code> stanza in setup.py.</p>
+<p><strong>nose</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">setup</span> <span class="p">(</span>
+    <span class="c1"># ...</span>
+    <span class="n">test_suite</span> <span class="o">=</span> <span class="s1">&#39;nose.collector&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>pytest</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">setup</span><span class="p">(</span>
+  <span class="c1">#...,</span>
+  <span class="n">setup_requires</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pytest-runner&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+  <span class="n">tests_require</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pytest&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+  <span class="c1">#...,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>And create an alias into setup.cfg file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aliases</span><span class="p">]</span>
+<span class="n">test</span><span class="o">=</span><span class="n">pytest</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://pytest.org/latest/goodpractices.html#integrating-with-setuptools-python-setup-py-test-pytest-runner">https://pytest.org/latest/goodpractices.html#integrating-with-setuptools-python-setup-py-test-pytest-runner</a></p>
+<p><strong>unittest</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">test_suite</span><span class="o">=</span><span class="s2">&quot;tests&quot;</span>
+</pre></div>
+</div>
+<p>(does py3 unittest have this??)</p>
+</div>
+<div class="section" id="handling-the-version-number">
+<h2>Handling the version number:<a class="headerlink" href="#handling-the-version-number" title="Permalink to this headline">¶</a></h2>
+<p>One key rule in software (and ANY computer use!):</p>
+<p>Never put the same information in more than one place!</p>
+<p>With a python package, you want:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">the_package</span>
+
+<span class="n">the_package</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+<p>To return the version string – something like:</p>
+<p>“1.2.3”</p>
+<p>But you also need to specify it in the <code class="docutils literal"><span class="pre">setup.py</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;package_name&#39;</span><span class="p">,</span>
+      <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.2.3&quot;</span><span class="p">,</span>
+      <span class="o">...</span>
+      <span class="p">)</span>
+</pre></div>
+</div>
+<p>Not Good.</p>
+<p>My solution:</p>
+<p>Put the version in the package __init__</p>
+<p>__version__ = “1.2.3”</p>
+<p>In the setup.py, you could import the package to get the version number
+… but it not a safe practice to import you package when installing
+it (or building it, or…)</p>
+<p>So: read the __version__ string yourself:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_version</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reads the version string from the package __init__ and returns it</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;capitalize&quot;</span><span class="p">,</span> <span class="s2">&quot;__init__.py&quot;</span><span class="p">))</span> <span class="k">as</span> <span class="n">init_file</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">init_file</span><span class="p">:</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;__version__&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">parts</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">None</span>
+</pre></div>
+</div>
+<p><strong>Alternative:</strong></p>
+<p>You can have a script that automatically updates the version number in whatever
+places it needs to. For instance:</p>
+<p><a class="reference external" href="https://pypi.python.org/pypi/bumpversion">https://pypi.python.org/pypi/bumpversion</a></p>
+</div>
+<div class="section" id="semantic-versioning">
+<h2>Semantic Versioning<a class="headerlink" href="#semantic-versioning" title="Permalink to this headline">¶</a></h2>
+<p>Another note on version numbers.</p>
+<p>The software development world (at least the open-source one…) has
+established a standard for what version numbers mean, known as semantic
+versioning. This is helpful to users, as they can know what to expect
+they upgrade.</p>
+<p>In short, with a x.y.z version number:</p>
+<p>x is the Major version – it could mean changes in API, major features, etc.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Likely to to be incompatible with previous versions</li>
+</ul>
+</div></blockquote>
+<p>y is the Minor version – added features, etc, that are backwards compatible.</p>
+<p>z is the “patch” version – bug fixes, etc. – should be compatible.</p>
+<p>Read all about it:</p>
+<p><a class="reference external" href="http://semver.org/">http://semver.org/</a></p>
+</div>
+<div class="section" id="tools-to-help">
+<h2>Tools to help:<a class="headerlink" href="#tools-to-help" title="Permalink to this headline">¶</a></h2>
+<p>Tox:</p>
+<p><a class="reference external" href="https://tox.readthedocs.io/en/latest/">https://tox.readthedocs.io/en/latest/</a></p>
+<p>Versioneer:</p>
+<p><a class="reference external" href="https://github.com/warner/python-versioneer">https://github.com/warner/python-versioneer</a></p>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>For anything but a single-file script (and maybe even then):</p>
+<ol class="arabic simple">
+<li>Create the basic package structure</li>
+<li>Write a <code class="docutils literal"><span class="pre">setup.py</span></code></li>
+<li><code class="docutils literal"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span></code></li>
+<li>Put some tests in <code class="docutils literal"><span class="pre">package/test</span></code></li>
+<li><code class="docutils literal"><span class="pre">py.test</span></code> or <code class="docutils literal"><span class="pre">nosetests</span></code></li>
+</ol>
+<p>or use “Cookie Cutter”:</p>
+<p><a class="reference external" href="https://cookiecutter.readthedocs.io/en/latest/">https://cookiecutter.readthedocs.io/en/latest/</a></p>
 </div>
 <div class="section" id="lab">
 <h2>LAB<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h2>
-<p>Write a setup.py for a script of yours</p>
-<blockquote>
-<div><ul class="simple">
-<li>Ideally, your script relies on at least one other module</li>
-<li>At a minimum, you’ll need to specify <code class="docutils literal"><span class="pre">scripts</span></code></li>
-<li>and probably <code class="docutils literal"><span class="pre">py_modules</span></code></li>
-<li>try:<ul>
-<li><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">build</span></code></li>
-<li><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></li>
-<li><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">sdist</span></code></li>
+<ul class="simple">
+<li>Create a small package<ul>
+<li>package structure</li>
+<li><code class="docutils literal"><span class="pre">setup.py</span></code></li>
+<li><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span></code></li>
+<li><code class="docutils literal"><span class="pre">at</span> <span class="pre">least</span> <span class="pre">one</span> <span class="pre">working</span> <span class="pre">test</span></code></li>
 </ul>
 </li>
-<li>EXTRA: install <code class="docutils literal"><span class="pre">setuptools</span></code><ul>
-<li>use: <code class="docutils literal"><span class="pre">from</span> <span class="pre">setuptools</span> <span class="pre">import</span> <span class="pre">setup</span></code></li>
-<li>try: `` python setup.py develop``</li>
+<li>If you are ready – it can be the start of your project package.</li>
 </ul>
-</li>
-<li>EXTRA2: install <code class="docutils literal"><span class="pre">wheel</span></code><ul>
-<li><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">bdist_wheel</span></code></li>
-</ul>
-</li>
-</ul>
-</div></blockquote>
-<p>(my example: <code class="docutils literal"><span class="pre">Examples/Session09/capitalize</span></code>)</p>
+<p>(otherwise you may start with the silly code in <code class="docutils literal"><span class="pre">Examples/capitalize</span></code>)</p>
 </div>
 </div>
 

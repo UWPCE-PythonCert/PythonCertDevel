@@ -45,7 +45,7 @@ screencasts/videos
 
 :ref:`script_booleans`
 
-:ref:`script_slicing`
+Slicing Video
 
 :ref:`script_dynamic_string_formatting`
 

@@ -1,5 +1,10 @@
+.. _decorators:
+
+##########
 Decorators
-==========
+##########
+
+.. NOTE: bring over some of the good stuff from the Py300 version
 
 **A Short Reminder**
 

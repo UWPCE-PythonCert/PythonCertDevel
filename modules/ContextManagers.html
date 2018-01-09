@@ -141,7 +141,6 @@
 <li class="toctree-l2"><a class="reference internal" href="Decorators.html">Decorators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Closures.html">Closures and function Currying</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Packaging.html#distributing">Distributing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
@@ -213,9 +212,8 @@
            <div itemprop="articleBody">
             
   <div class="section" id="context-managers">
-<h1>Context Managers<a class="headerlink" href="#context-managers" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Context Managers<a class="headerlink" href="#context-managers" title="Permalink to this headline">¶</a></h1>
 <p><strong>Repetition in code stinks (DRY!)</strong></p>
-<div class="docutils container">
 <p>A large source of repetition in code deals with the handling of external
 resources.</p>
 <p>As an example, how many times do you think you might type the following
@@ -228,7 +226,6 @@ code:</p>
 </div>
 <p>What happens if you forget to call <code class="docutils literal"><span class="pre">.close()</span></code>?</p>
 <p>What happens if reading the file raises an exception?</p>
-</div>
 <div class="section" id="resource-handling">
 <h2>Resource Handling<a class="headerlink" href="#resource-handling" title="Permalink to this headline">¶</a></h2>
 <p>Leaving an open file handle laying around is bad enough. What if the resource
@@ -263,8 +260,7 @@ lines of defensive code have been replaced with this simple form:</p>
 <p><code class="docutils literal"><span class="pre">open</span></code> builtin is defined as a <em>context manager</em>.</p>
 <p>The resource it returns (<code class="docutils literal"><span class="pre">file_handle</span></code>) is automatically and reliably closed
 when the code block ends.</p>
-<p>At this point in Python history, many functions you might expect to behave this
-way do:</p>
+<p>At this point in Python history, many functions you might expect to behave this way do:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">open</span></code> and works as a context manager.</li>
 <li>networks connections via <code class="docutils literal"><span class="pre">socket</span></code> do as well.</li>
@@ -325,7 +321,7 @@ happen is implemented here.</p>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">handle_error</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">Examples/Session10/context_managers.py</span></code></p>
+<p>:download:` &lt;../examples/context_managers/context_manger.py&gt;`</p>
 <p>This class doesn’t do much of anything, but playing with it can help
 clarify the order in which things happen:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [46]: </span><span class="k">with</span> <span class="n">Context</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">foo</span><span class="p">:</span>

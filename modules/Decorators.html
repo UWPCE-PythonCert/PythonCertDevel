@@ -135,7 +135,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#an-example">An Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#syntax">Syntax</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#callables">Callables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">An Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">An Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nested-decorators">Nested Decorators</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#examples-from-the-standard-library">Examples from the Standard Library</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#property">property()</a></li>
@@ -143,7 +143,6 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Closures.html">Closures and function Currying</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Packaging.html#distributing">Distributing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
@@ -215,7 +214,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="decorators">
-<h1>Decorators<a class="headerlink" href="#decorators" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Decorators<a class="headerlink" href="#decorators" title="Permalink to this headline">¶</a></h1>
 <p><strong>A Short Reminder</strong></p>
 <blockquote>
 <div><p>Functions are things that generate values based on input (arguments).</p>
@@ -347,8 +346,8 @@ or a class that implements the <code class="docutils literal"><span class="pre">
 <p>A decorator is a callable that takes a callable as an argument and
 returns a callable as a return value.</p>
 </div>
-<div class="section" id="id1">
-<h2>An Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2>An Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>Consider a decorator that would save the results of calling an expensive
 function with given arguments:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Memoize</span><span class="p">:</span>

@@ -129,6 +129,7 @@
 <li class="toctree-l2"><a class="reference internal" href="MapFilterReduce.html">Map Filter and Reduce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IPythonParallel.html">IPython Parallel Quickstart</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Iterators and Generators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#a-note-about-python-history">A note about Python History</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#iterators-and-iterables">Iterators and Iterables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#iterables">Iterables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#iter"><code class="docutils literal"><span class="pre">iter()</span></code></a></li>
@@ -147,7 +148,6 @@
 <li class="toctree-l2"><a class="reference internal" href="Decorators.html">Decorators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Closures.html">Closures and function Currying</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Packaging.html#distributing">Distributing</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
@@ -219,12 +219,67 @@
            <div itemprop="articleBody">
             
   <div class="section" id="iterators-and-generators">
-<h1>Iterators and Generators<a class="headerlink" href="#iterators-and-generators" title="Permalink to this headline">¶</a></h1>
+<span id="iterators-generators"></span><h1>Iterators and Generators<a class="headerlink" href="#iterators-and-generators" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>The Tools of Pythonicity</p>
 <blockquote>
 <div>What goes on in those for loops?</div></blockquote>
 </div></blockquote>
+<div class="section" id="a-note-about-python-history">
+<h2>A note about Python History<a class="headerlink" href="#a-note-about-python-history" title="Permalink to this headline">¶</a></h2>
+<p>Python used to be all about sequences – a good chunk of anything you did
+was stored in a sequence, oir involved manipulating a sequence.</p>
+<ul class="simple">
+<li>lists</li>
+<li>tuples</li>
+<li>strings</li>
+<li><code class="docutils literal"><span class="pre">dict.keys()</span></code></li>
+<li><code class="docutils literal"><span class="pre">dict.values()</span></code></li>
+<li><code class="docutils literal"><span class="pre">dict.items()</span></code></li>
+<li><code class="docutils literal"><span class="pre">zip()</span></code></li>
+<li>…</li>
+</ul>
+<p>In python2 – those are all sequences.</p>
+<p>But it turns out that the most common operation for sequences is to iterate through them:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">:</span>
+    <span class="n">do_something_with_item</span>
+</pre></div>
+</div>
+<p>So fairly early in Python2, Python introduced the idea of the “iterable”.</p>
+<p>More or less, an “iterable” is something you can, well, iterate over in
+a for loop, but often does not keep the whole sequence in memory at once.</p>
+<p>After all – why make a copy of something just to look at all its items?</p>
+<p>Example:</p>
+<p>In python2: <code class="docutils literal"><span class="pre">dict.keys()</span></code> returns a list of all the keys in the dict.
+But why make a full copy of all the keys, when all you want to do is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">do_something_with</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Even worse: <code class="docutils literal"><span class="pre">dict.items()</span></code> created a full list of <code class="docutils literal"><span class="pre">(key,value)</span></code> tuples.
+– a complete copy of all the data in the dict.</p>
+<p>Even worse: <code class="docutils literal"><span class="pre">enumerate(dict.items())</span></code> created a whole list of
+<code class="docutils literal"><span class="pre">(index,</span> <span class="pre">(key,</span> <span class="pre">value))</span></code> tuples – lots of copies of everything.</p>
+<p>Enter <code class="docutils literal"><span class="pre">iter*</span></code></p>
+<p>Python2 then introduced “iterable” versions of a number of functions and methods:</p>
+<p><code class="docutils literal"><span class="pre">itertools.izip</span></code>
+<code class="docutils literal"><span class="pre">dict.iteritems()</span></code>
+<code class="docutils literal"><span class="pre">dict.iterkeys()</span></code>
+<code class="docutils literal"><span class="pre">dict.itervalues()</span></code></p>
+<p>So you could now iterate through that stuff without copying anything.</p>
+<p><strong>Python3</strong></p>
+<p>Python3 embraces iterables – now everything that could be an iterator
+is already an iterator – no unnecessary copies.</p>
+<p>An iterator is an iterable that has been made more efficient by
+removing as much from memory as possible.</p>
+<p>You have to make a list out of them explicitly if you really want it:</p>
+<p><code class="docutils literal"><span class="pre">list(dict.keys())</span></code></p>
+<p>Then there is an entire module: <code class="docutils literal"><span class="pre">itertools</span></code> that provides nifty ways
+to iterate through stuff.</p>
+<p>We will visit this again soon.</p>
+<p>So while I used to say that python was all about sequences
+– it is now all about iterables.</p>
+</div>
 <div class="section" id="iterators-and-iterables">
 <h2>Iterators and Iterables<a class="headerlink" href="#iterators-and-iterables" title="Permalink to this headline">¶</a></h2>
 <p>Iteration is one of the main reasons Python code is so readable:</p>
@@ -233,7 +288,7 @@
 </pre></div>
 </div>
 <p>An iterable is anything that can be looped over sequentially, so it does not have to be
-a “sequence”: list, tuple, etc.  For example, a string is iterable.</p>
+a “sequence”: list, tuple, etc.  For example, a string is iterable. So is a set.</p>
 <p>An iterator is an iterable that remembers state. All sequences are iterable, but
 not all sequences are iterators. To make a sequence an iterator, you can call it with iter:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">my_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">my_sequence</span><span class="p">)</span>
@@ -247,9 +302,9 @@ not all sequences are iterators. To make a sequence an iterator, you can call it
 <p>To make an object iterable, you simply have to implement the __getitem__ method.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">T</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">position</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">IndexError</span>
-    <span class="k">return</span> <span class="n">position</span>
+        <span class="k">if</span> <span class="n">position</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span>
+        <span class="k">return</span> <span class="n">position</span>
 </pre></div>
 </div>
 </div>
@@ -296,15 +351,27 @@ method, and if none is found, uses get_item to create the iterator.</p>
 </div>
 <div class="section" id="using-iterators-when-you-can">
 <h2>Using iterators when you can<a class="headerlink" href="#using-iterators-when-you-can" title="Permalink to this headline">¶</a></h2>
-<p>Example: trigrams:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="n">triplets</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">words</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+<p>consider the example from the trigrams problem:</p>
+<p>(<a class="reference external" href="http://codekata.com/kata/kata14-tom-swift-under-the-milkwood/">http://codekata.com/kata/kata14-tom-swift-under-the-milkwood/</a>)</p>
+<p>You have a list of words: <code class="docutils literal"><span class="pre">words</span></code></p>
+<p>And you want to go through it, three at a time, and match up pairs with
+the following word.</p>
+<p>The <em>non-pythonic</em> way to do that is a loop through the indices:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">):</span>
+   <span class="n">triple</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>It works, and is fairly efficient, but what about:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">triple</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">words</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">words</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]):</span>
 </pre></div>
 </div>
 <p>zip() returns an iterable – it does not build up the whole list.
 So this is quite efficient.</p>
-<p>but slicing: ([1:]) produces a copy – so this does use three copies of
+<p>but we are still slicing: ([1:]), which produces a copy – so this does use three copies of
 the list – not so good if memory is tight. Note that they are shallow copies, so not <strong>that</strong> bad.</p>
 <p>Nevertheless, we can do better:</p>
+<p>The <code class="docutils literal"><span class="pre">itertools</span></code> module has a <code class="docutils literal"><span class="pre">islice()</span></code> (iterable slice) function.
+It returns an iterator over a slice of a sequence – so no more copies:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="go">from itertools import islice</span>
 
 <span class="gp">In [68]: </span><span class="n">triplets</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">islice</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">None</span><span class="p">),</span> <span class="n">islice</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">None</span><span class="p">))</span>
@@ -319,6 +386,8 @@ the list – not so good if memory is tight. Note that they are shallow copies, 
 <span class="go">(&#39;and&#39;, &#39;one&#39;, &#39;more&#39;)</span>
 </pre></div>
 </div>
+<p>There is much more in the itertools module:
+<a class="reference external" href="https://pymotw.com/3/itertools/index.html">https://pymotw.com/3/itertools/index.html</a></p>
 </div>
 <div class="section" id="the-iterator-protocol">
 <h2>The Iterator Protocol<a class="headerlink" href="#the-iterator-protocol" title="Permalink to this headline">¶</a></h2>

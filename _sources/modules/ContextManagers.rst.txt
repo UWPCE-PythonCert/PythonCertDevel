@@ -1,27 +1,27 @@
+.. _context_managers:
+
+################
 Context Managers
-=================
+################
 
 **Repetition in code stinks (DRY!)**
 
-.. container::
+A large source of repetition in code deals with the handling of external
+resources.
 
+As an example, how many times do you think you might type the following
+code:
 
-    A large source of repetition in code deals with the handling of external
-    resources.
+.. code-block:: python
 
-    As an example, how many times do you think you might type the following
-    code:
+    file_handle = open('filename.txt', 'r')
+    file_content = file_handle.read()
+    file_handle.close()
+    # do some stuff with the contents
 
-    .. code-block:: python
+What happens if you forget to call ``.close()``?
 
-        file_handle = open('filename.txt', 'r')
-        file_content = file_handle.read()
-        file_handle.close()
-        # do some stuff with the contents
-
-    What happens if you forget to call ``.close()``?
-
-    What happens if reading the file raises an exception?
+What happens if reading the file raises an exception?
 
 
 Resource Handling
@@ -76,8 +76,7 @@ when the code block ends.
 .. _pep343: http://legacy.python.org/dev/peps/pep-0343/
 
 
-At this point in Python history, many functions you might expect to behave this
-way do:
+At this point in Python history, many functions you might expect to behave this way do:
 
 * ``open`` and works as a context manager.
 * networks connections via ``socket`` do as well.
@@ -87,6 +86,7 @@ way do:
 
 * But what if you are working with a library that doesn't support this
   (``urllib``)?
+
 
 Close It Automatically
 ----------------------
@@ -153,9 +153,9 @@ Consider this code:
             print('__exit__({}, {}, {})'.format(exc_type, exc_val, exc_tb))
             return self.handle_error
 
-``Examples/Session10/context_managers.py``
+:download:` <../examples/context_managers/context_manger.py>`
 
-
+.. ``Examples/Session10/context_managers.py``
 
 This class doesn't do much of anything, but playing with it can help
 clarify the order in which things happen:

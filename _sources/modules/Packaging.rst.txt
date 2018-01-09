@@ -1,8 +1,8 @@
 .. _packaging:
 
-======================
+######################
 Packages and Packaging
-======================
+######################
 
 Modules and Packages
 --------------------
@@ -281,196 +281,788 @@ http://www.virtualenv.org/en/latest/index.html}
 
 Remember the notes from the beginning of class? :ref:`virtualenv_section`
 
-(Cris will probably make you do this next class)
+Building Your Own Package
+=========================
 
-============
-Distributing
-============
+The very basics of what you need to know to make your own package.
 
-Distributing
-------------
-What if you need to distribute you own:
+.. toctree::
+   :maxdepth: 2
 
-Scripts
+Why Build a Package?
+--------------------
 
-Libraries
+.. rst-class:: left
 
-Applications
+  There are a bunch of nifty tools that help you build, install and
+  distribute packages.
 
+  Using a well structured, standard layout for your package makes it
+  easy to use those tools.
 
-Scripts
--------
+  Even if you never want to give anyone else your code, a well
+  structured package eases development.
 
-Often you can just copy, share, or check in the script to source
-control and call it good.
+What is a Package?
+--------------------
 
-But only if it's a single file, and doesn't need anything non-standard
+**A collection of modules**
 
-When the script needs more than just the stdlib
+* ... and the documentation
 
-(or your company standard environment)
+* ... and the tests
 
-You have an application, not a script
+* ... and any top-level scripts
 
+* ... and any data files required
 
-Libraries
----------
+* ... and a way to build and install it...
 
-When you read the distutils docs, it's usually libraries they're talking about
+Python packaging tools:
+------------------------
 
-Scripts + library is the same...
-
-(http://docs.python.org/distutils/)
-
-distutils
----------
-
-``distutils``  makes it easy to do the easy stuff:
-
-Distribute and install to multiple platforms, etc.
-
-Even binaries, installers and compiled packages
-
-(Except dependencies)
-
-(http://docs.python.org/distutils/)
-
-distutils basics
-----------------
-
-It's all in the ``setup.py file``:
-
-.. code-block::python
+The ``distutils``::
 
     from distutils.core import setup
-    setup(name='Distutils',
-          version='1.0',
-          description='Python Distribution Utilities',
-          author='Greg Ward',
-          author_email='gward@python.net',
-          url='http://www.python.org/sigs/distutils-sig/',
-          packages=['distutils', 'distutils.command'],
-         )
 
-(http://docs.python.org/distutils/)
+Getting klunky, hard to extend, maybe destined for deprication...
 
-distutils basics
+But it gets the job done -- and it does it well for the simple cases.
+
+``setuptools``: for extra features
+
+``pip``: for installing packages
+
+``wheel``: for binary distributions
+
+These last three are pretty much the standard now -- very well maintained by:
+
+"The Python Packaging Authority" -- PaPA
+
+https://www.pypa.io/en/latest/
+
+Where do I go to figure this out?
+---------------------------------
+
+This is a really good guide:
+
+Python Packaging User Guide:
+
+https://packaging.python.org/
+
+and a more detailed tutorial:
+
+http://python-packaging.readthedocs.io/en/latest/
+
+**Follow one of them**
+
+There is a sample project here:
+
+https://github.com/pypa/sampleproject
+
+(this has all the complexity you might need...)
+
+You can use this as a template for your own packages.
+
+Here is an opinionated update -- a little more fancy, but some good ideas:
+
+https://blog.ionelmc.ro/2014/05/25/python-packaging/
+
+Rather than doing it by hand, you can use the nifty "cookie cutter" project:
+
+https://cookiecutter.readthedocs.io/en/latest/
+
+And there are a few templates that can be used with that.
+
+The core template written by the author:
+
+https://github.com/audreyr/cookiecutter-pypackage
+
+And one written by the author of the opinionated blog post above:
+
+https://github.com/ionelmc/cookiecutter-pylibrary
+
+Either are great starting points.
+
+Packages, modules, imports, oh my!
+----------------------------------
+
+Before we get started on making your own package -- let's remind
+ourselves about packages and modules, and importing....
+
+**Modules**
+
+A python "module" is a single namespace, with a collection of values:
+
+  * functions
+  * constants
+  * class definitions
+  * really any old value.
+
+A module usually corresponds to a single file: ``something.py``
+
+
+**Packages**
+
+A "package" is essentially a module, except it can have other modules (and indeed other packages) inside it.
+
+A module usually corresponds to a directory with a file in it called ``__init__.py`` and any number
+of python files or other package directories::
+
+  a_package
+     __init__.py
+     module_a.py
+     a_sub_package
+       __init__.py
+       module_b.py
+
+The ``__init__.py`` can be totally empty -- or it can have arbitrary python code in it.
+The code will be run when the package is imported -- just like a module,
+
+modules inside packages are *not* automatically imported. So, with the above sgructure::
+
+  import a_package
+
+will run the code in ``a_package/__init__.py``. Any names defined in the
+``__init__.py`` will be available in::
+
+  a_package.a_name
+
+but::
+
+ a_package.module_a
+
+will not exist. To get submodules, you need to explicitly import them:
+
+  import a_package.module_a
+
+More on Importing
+-----------------
+
+You usually import a module like this:
+
+.. code-block:: python
+
+  import something
+
+or::
+
+  from something import something_else
+
+or a few names from a package::
+
+  from something import (name_1,
+                         name_2,
+                         name_3,
+                         x,
+                         y)
+
+And you can rename stuff as you import it::
+
+  import numpy as np
+
+This is a common pattern for using large packages and not having to type a lot...
+
+
+``import *``
+------------
+
+::
+
+  from something import *
+
+means: "import all the names in the module"
+
+You really don't want to do that! It is an old pattern that is now an anti-pattern
+
+But if you do encounter it, it doesn't actually import all the names --
+it imports the ones defined in teh module's ``_all__`` variable.
+
+``__all__`` is a list of names that you want import * to import -- so
+the module author can control it, and not expect all sorts of build ins
+and other modules.
+
+But really -- don't use it!
+
+
+Relative imports
 ----------------
 
-Once your setup.py is written, you can:
+Relative imports were added with PEP 328:
+
+https://www.python.org/dev/peps/pep-0328/
+
+The final version is described here:
+
+https://www.python.org/dev/peps/pep-0328/#guido-s-decision
+
+This gets confusing! There is a good discussion on Stack Overflow here:
+
+http://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time
+
+Relative imports allow you to refer to other modules relative to where the existing module is in the package hierachy, rather than in the while thing. For instance, with the following pacakge structure::
+
+  package/
+      __init__.py
+      subpackage1/
+          __init__.py
+          moduleX.py
+          moduleY.py
+      subpackage2/
+          __init__.py
+          moduleZ.py
+      moduleA.py
+
+You can do (in ``moduleX.py``):
+
+.. code-block:: python
+
+  from .moduleY import spam
+  from . import moduleY
+  from ..subpackage1 import moduleY
+  from ..subpackage2.moduleZ import eggs
+  from ..moduleA import foo
+  from ...package import bar
+  from ...sys import path
+
+Similarly to \*nix shells:
+
+"." means "the current package"
+
+".." means "the package above this one"
+
+Note that you have to use the "from" form when using relative imports.
+
+**Caveats:**
+
+* you can only use relative imports from within a package
+
+* you can not use relative imports from the interpreter
+
+* you can not use reltaive imports from a top-level script
+
+
+The alternative is to always use absolute imports:
+
+.. code-block:: python
+
+  from package.subpackage import moduleX
+  from package.moduleA import foo
+
+Advantages of relative imports:
+
+* Package does not have to be installed
+
+* You can move things around, and not much has to change
+
+Advantages of absolute imports:
+
+* explicit is better than implicit
+* imports are the same regardless of where you put the package
+* imports are the same in package code, command line, tests, scripts, etc.
+
+There is debate about which is the "one way to do it" -- a bit unpythonic, but you'll need to make your own decision.
+
+
+sys.modules
+-----------
+
+.. code-block:: ipython
+
+  In [4]: type(sys.modules)
+  Out[4]: dict
+
+  In [6]: sys.modules['textwrap']
+  Out[6]: <module 'textwrap' from '/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/textwrap.py'>
+
+  In [10]: [var for var in vars(sys.modules['textwrap']) if var.startswith("__")]
+  Out[10]:
+  ['__spec__',
+   '__package__',
+   '__loader__',
+   '__doc__',
+   '__cached__',
+   '__name__',
+   '__all__',
+   '__file__',
+   '__builtins__']
+
+you can access the module through the modules dict:
+
+In [12]: sys.modules['textwrap'].__file__
+Out[12]: '/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/textwrap.py'
+
+Which is the same as:
+
+.. code-block:: ipython
+
+  In [13]: import textwrap
+
+  In [14]: textwrap.__file__
+  Out[14]: '/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/textwrap.py'
+
+  In [15]: type(textwrap)
+  Out[15]: module
+
+  In [16]: textwrap is sys.modules['textwrap']
+  Out[16]: True
+
+So, more or less, when you import a module, the interpreter:
+
+* Looks to see if the module is already in ``sys.modules``.
+
+* If it is, it binds a name to the existing module in the current
+  module's namespace.
+
+* If it isn't:
+
+ - A module object is created
+ - The code in the file is run
+ - The module is added to sys.modules
+ - The module is added to the current namespace.
+
+Implications of module import process:
+--------------------------------------
+
+* The code in a module only runs once per program run.
+* Importing a module again is cheap and fast.
+* Every place your code imports a module it gets the *same* object
+  - You can use this to share "global" state where you want to.
+
+* If you change the code in a module while the program is running -- the
+  change will **not** show up, even if re-imported.
+
+  - That's what ``reload()`` is for.
+
+
+
+Basic Package Structure:
+------------------------
 
 ::
 
-    python setup.py ...
-    build         build everything needed to install
-    install       install everything from build directory
-    sdist         create a source distribution
-                  (tarball, zip file, etc.)
-    bdist         create a built (binary) distribution
-    bdist_rpm     create an RPM distribution
-    bdist_wininst create an executable installer for MS Windows
-    upload        upload binary package to PyPI
-
-wheels
-------
-
-"wheels" are the "new" package format for python.
-
-A wheel is essentially a zip file of the entire package, ready to be
-unpacked in the right place on installation.
-
-``pip`` will look for wheels for OS-X and Windows on PyPi, and auto-install
-them if they exist
-
-This is particularly nice for packages with non-python dependencies.
+    package_name/
+        bin/
+        CHANGES.txt
+        docs/
+        LICENSE.txt
+        MANIFEST.in
+        README.txt
+        setup.py
+        package_name/
+              __init__.py
+              module1.py
+              module2.py
+              test/
+                  __init__.py
+                  test_module1.py
+                  test_module2.py
 
 
-More complex packaging
+.. nextslide::
+
+``CHANGES.txt``: log of changes with each release
+
+``LICENSE.txt``: text of the license you choose (do choose one!)
+
+``MANIFEST.in``: description of what non-code files to include
+
+``README.txt``: description of the package -- should be written in ReST (for PyPi):
+
+(http://docutils.sourceforge.net/rst.html)
+
+``setup.py``: distutils script for building/installing package.
+
+
+.. nextslide::
+
+``bin/``: This is where you put top-level scripts
+
+  ( some folks use ``scripts`` )
+
+``docs/``: the documentation
+
+``package_name/``: The main package -- this is where the code goes.
+
+``test/``: your unit tests. Options here:
+
+Put it inside the package -- supports ::
+
+     $ pip install package_name
+     >> import package_name.test
+     >> package_name.test.runall()
+
+Or keep it at the top level.
+
+The ``setup.py`` File
 ----------------------
 
-For a complex package:
+Your ``setup.py`` file is what describes your package, and tells the distutils how to pacakge, build and install it
 
-You want to use a well structured setup:
+It is python code, so you can add anything custom you need to it
 
-http://the-hitchhikers-guide-to-packaging.readthedocs.org/en/latest/
-
-develop mode
-------------
-
-While you are developing your package, Installing it is a pain.
-
-But you want your code to be able to import, etc. as though it were installed
-
-``setup.py develop``  installs links to your code, rather than copies
--- so it looks like it's installed, but it's using the original source
-
-``python setup.py develop``
-
-You need ``setuptools`` and a setup.py  to use it.
+But in the simple case, it is essentially declarative.
 
 
-Applications
-------------
-
-For a complete application:
-
-  * Web apps
-  * GUI apps
-
-Multiple options:
-
-  * Virtualenv + VCS
-  * zc.buildout ( http://www.buildout.org/}
-  * System packages (rpm, deb, ...)
-  * Bundles...
+``http://docs.python.org/3/distutils/``
 
 
-Bundles
--------
-
-Bundles are Python + all your code + plus all the dependencies --
-all in one single "bundle"
-
-Most popular on Windows and OS-X
+.. nextslide::
 
 ::
 
-     py2exe
-     py2app
-     pyinstaller
-     ...
+  from setuptools import setup
+
+  setup(
+    name='PackageName',
+    version='0.1.0',
+    author='An Awesome Coder',
+    author_email='aac@example.com',
+    packages=['package_name', 'package_name.test'],
+    scripts=['bin/script1','bin/script2'],
+    url='http://pypi.python.org/pypi/PackageName/',
+    license='LICENSE.txt',
+    description='An awesome package that does something',
+    long_description=open('README.txt').read(),
+    install_requires=[
+        "Django >= 1.1.1",
+        "pytest",
+    ],
+ )
+
+``setup.cfg``
+--------------
+
+``setup.cfg`` provides a way to give the end user some ability to customise the install
+
+It's an ``ini`` style file::
+
+  [command]
+  option=value
+  ...
+
+simple to read and write.
+
+``command`` is one of the Distutils commands (e.g. build_py, install)
+
+``option`` is one of the options that command supports.
+
+Note that an option spelled ``--foo-bar`` on the command-line is spelled f``foo_bar`` in configuration files.
 
 
-User doesn't even have to know it's python
+Running ``setup.py``
+---------------------
 
-Examples:
+With a ``setup.py`` script defined, the distutils can do a lot:
 
- http://www.bitpim.org/
+* builds a source distribution (defaults to tar file)::
 
- http://response.restoration.noaa.gov/nucos
+    python setup.py sdist
+    python setup.py sdist --format=zip
+
+* builds binary distributions::
+
+    python setup.py bdist_rpm
+    python setup.py bdist_wininst
+
+(other, more obscure ones, too....)
+
+But you probably want to use wheel for binary disributions now.
+
+.. nextslide::
+
+* build from source::
+
+    python setup.py build
+
+* and install::
+
+    python setup.py install
+
+setuptools
+-----------
+
+``setuptools`` is an extension to ``distutils`` that provides a number of extensions::
+
+    from setuptools import setup
+
+superset of the ``distutils setup``
+
+This buys you a bunch of additional functionality:
+
+  * auto-finding packages
+  * better script installation
+  * resource (non-code files) management
+  * **develop mode**
+  * a LOT more
+
+http://pythonhosted.org//setuptools/
+
+wheels
+-------
+
+Wheels are a new binary format for packages.
+
+http://wheel.readthedocs.org/en/latest/
+
+Pretty simple, essentially an zip archive of all the stuff that gets put
+in
+
+``site-packages``
+
+Can be just pure python or binary with compiled extensions
+
+Compatible with virtualenv.
+
+.. nextslide::
+
+Building a wheel::
+
+  python setup.py bdist_wheel
+
+Create a set of wheels (a wheelhouse)::
+
+  # Build a directory of wheels for pyramid and all its dependencies
+  pip wheel --wheel-dir=/tmp/wheelhouse pyramid
+
+  # Install from cached wheels
+  pip install --use-wheel --no-index --find-links=/tmp/wheelhouse pyramid
+
+``pip install packagename`` will find wheels for Windows and OS-X.
+
+``pip install --no-use-wheel`` avoids that.
+
+PyPi
+-----
+
+The Python package index:
+
+https://pypi.python.org/pypi
+
+You've all used this -- ``pip install`` searches it.
+
+To upload your package to PyPi::
+
+  python setup.py register
+
+  python setup.py sdist bdist_wheel upload
+
+
+http://docs.python.org/2/distutils/packageindex.html
+
+
+Under Development
+------------------
+
+Develop mode is *really* *really* nice::
+
+  python setup.py develop
+
+or::
+
+  pip install -e ./
+
+It puts links into the python installation to your code, so that your package is installed, but any changes will immediately take effect.
+
+This way all your test code, and client code, etc, can all import your package the usual way.
+
+No ``sys.path`` hacking
+
+Good idea to use it for anything more than a single file project.
+
+(requires ``setuptools``)
+
+Running tests
+-------------
+
+It can be a good idea to set up your tests to be run from ``setup.py``
+
+So that you (or your users) can:
+
+.. code-block:: bash
+
+  $ pip install .
+  $ python setup.py test
+
+**Note:** there is debate about whether this is a good idea. But if you want to:
+
+Do do this, you need to add a ``test_suite`` stanza in setup.py.
+
+**nose**
+
+.. code-block:: python
+
+  setup (
+      # ...
+      test_suite = 'nose.collector'
+  )
+
+**pytest**
+
+.. code-block:: python
+
+  setup(
+    #...,
+    setup_requires=['pytest-runner', ...],
+    tests_require=['pytest', ...],
+    #...,
+  )
+
+And create an alias into setup.cfg file::
+
+  [aliases]
+  test=pytest
+
+https://pytest.org/latest/goodpractices.html#integrating-with-setuptools-python-setup-py-test-pytest-runner
+
+**unittest**
+
+.. code-block:: python
+
+
+  test_suite="tests"
+
+(does py3 unittest have this??)
+
+
+Handling the version number:
+----------------------------
+
+One key rule in software (and ANY computer use!):
+
+Never put the same information in more than one place!
+
+With a python package, you want:
+
+.. code-block:: python
+
+  import the_package
+
+  the_package.__version__
+
+To return the version string -- something like:
+
+"1.2.3"
+
+But you also need to specify it in the ``setup.py``:
+
+.. code-block:: python
+
+  setup(name='package_name',
+        version="1.2.3",
+        ...
+        )
+
+Not Good.
+
+My solution:
+
+Put the version in the package __init__
+
+__version__ = "1.2.3"
+
+In the setup.py, you could import the package to get the version number
+... but it not a safe practice to import you package when installing
+it (or building it, or...)
+
+So: read the __version__ string yourself:
+
+.. code-block:: python
+
+  def get_version():
+      """
+      Reads the version string from the package __init__ and returns it
+      """
+      with open(os.path.join("capitalize", "__init__.py")) as init_file:
+          for line in init_file:
+              parts = line.strip().partition("=")
+              if parts[0].strip() == "__version__":
+                  return parts[2].strip().strip("'").strip('"')
+      return None
+
+**Alternative:**
+
+You can have a script that automatically updates the version number in whatever
+places it needs to. For instance:
+
+https://pypi.python.org/pypi/bumpversion
+
+
+Semantic Versioning
+-------------------
+
+Another note on version numbers.
+
+The software development world (at least the open-source one...) has
+established a standard for what version numbers mean, known as semantic
+versioning. This is helpful to users, as they can know what to expect
+they upgrade.
+
+In short, with a x.y.z version number:
+
+x is the Major version -- it could mean changes in API, major features, etc.
+
+  - Likely to to be incompatible with previous versions
+
+y is the Minor version -- added features, etc, that are backwards compatible.
+
+z is the "patch" version -- bug fixes, etc. -- should be compatible.
+
+Read all about it:
+
+http://semver.org/
+
+
+Tools to help:
+--------------
+
+Tox:
+
+https://tox.readthedocs.io/en/latest/
+
+Versioneer:
+
+https://github.com/warner/python-versioneer
+
+
+Getting Started
+----------------
+
+For anything but a single-file script (and maybe even then):
+
+1. Create the basic package structure
+
+2. Write a ``setup.py``
+
+3. ``python -m pip install -e .``
+
+4. Put some tests in ``package/test``
+
+5. ``py.test`` or ``nosetests``
+
+or use "Cookie Cutter":
+
+https://cookiecutter.readthedocs.io/en/latest/
+
 
 LAB
 ---
 
-Write a setup.py for a script of yours
+* Create a small package
 
-  * Ideally, your script relies on at least one other module
-  * At a minimum, you'll need to specify ``scripts``
-  * and probably ``py_modules``
-  * try:
+  - package structure
 
-    * ``python setup.py build``
-    * ``python setup.py install``
-    * ``python setup.py sdist``
+  - ``setup.py``
 
-  * EXTRA: install ``setuptools``
+  - ``python setup.py develop``
 
-    * use: ``from setuptools import setup``
-    * try: `` python setup.py develop``
+  - ``at least one working test``
 
-  * EXTRA2: install ``wheel``
+* If you are ready -- it can be the start of your project package.
 
-    * ``python setup.py bdist_wheel``
+(otherwise you may start with the silly code in ``Examples/capitalize``)
 
 
-(my example: ``Examples/Session09/capitalize``)
+
+
+
