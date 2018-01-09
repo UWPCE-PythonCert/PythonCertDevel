@@ -16,7 +16,7 @@ A note about Python History
 ---------------------------
 
 Python used to be all about sequences -- a good chunk of anything you did
-was stored in a sequence, oir involved manipulating a sequence.
+was stored in a sequence, or involved manipulating a sequence.
 
 - lists
 - tuples
@@ -40,7 +40,7 @@ But it turns out that the most common operation for sequences is to iterate thro
 So fairly early in Python2, Python introduced the idea of the "iterable".
 
 More or less, an "iterable" is something you can, well, iterate over in
-a for loop, but often does not keep the whole sequence in memory at once. 
+a for loop, but often does not keep the whole sequence in memory at once.
 
 After all -- why make a copy of something just to look at all its items?
 
@@ -76,7 +76,7 @@ So you could now iterate through that stuff without copying anything.
 Python3 embraces iterables -- now everything that could be an iterator
 is already an iterator -- no unnecessary copies.
 
-An iterator is an iterable that has been made more efficient by 
+An iterator is an iterable that has been made more efficient by
 removing as much from memory as possible.
 
 You have to make a list out of them explicitly if you really want it:
@@ -275,15 +275,15 @@ A simple version of ``range()``
             else:
                 raise StopIteration
 
-.. (demo: :download:`iterator_1.py <../../Examples/Session09/iterator_1.py>`)
+:download:`iterator_1.py <../examples/iterators_generators/iterator_1.py>`
+
 
 What does ``for`` do?
 ----------------------
 
 Now that we know the iterator protocol, we can write something like a for loop:
 
-
-.. :download:`my_for.py <../../Examples/Session09/my_for.py>`
+:download:`my_for.py <../examples/iterators_generators/my_for.py>`
 
 .. code-block:: python
 
@@ -410,10 +410,10 @@ More about iterators and generators:
 
 http://www.learningpython.com/2009/02/23/iterators-iterables-and-generators-oh-my/
 
-.. :download:`yield_example.py <../../Examples/Session09/yield_example.py>`
+:download:`yield_example.py <../examples/iterators_generators/yield_example.py>`
 
-generator comprehension
------------------------
+generator comprehensions
+------------------------
 
 yet another way to make a generator:
 

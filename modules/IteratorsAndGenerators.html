@@ -141,7 +141,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#itertools">Itertools</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#generators">Generators</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#yield">yield</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#generator-comprehension">generator comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generator-comprehensions">generator comprehensions</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ContextManagers.html">Context Managers</a></li>
@@ -228,7 +228,7 @@
 <div class="section" id="a-note-about-python-history">
 <h2>A note about Python History<a class="headerlink" href="#a-note-about-python-history" title="Permalink to this headline">¶</a></h2>
 <p>Python used to be all about sequences – a good chunk of anything you did
-was stored in a sequence, oir involved manipulating a sequence.</p>
+was stored in a sequence, or involved manipulating a sequence.</p>
 <ul class="simple">
 <li>lists</li>
 <li>tuples</li>
@@ -421,10 +421,12 @@ raises the <code class="docutils literal"><span class="pre">StopIteration</span>
             <span class="k">raise</span> <span class="ne">StopIteration</span>
 </pre></div>
 </div>
+<p><a class="reference download internal" href="../_downloads/iterator_1.py" download=""><code class="xref download docutils literal"><span class="pre">iterator_1.py</span></code></a></p>
 </div>
 <div class="section" id="what-does-for-do">
 <h2>What does <code class="docutils literal"><span class="pre">for</span></code> do?<a class="headerlink" href="#what-does-for-do" title="Permalink to this headline">¶</a></h2>
 <p>Now that we know the iterator protocol, we can write something like a for loop:</p>
+<p><a class="reference download internal" href="../_downloads/my_for.py" download=""><code class="xref download docutils literal"><span class="pre">my_for.py</span></code></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_for</span><span class="p">(</span><span class="n">an_iterable</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Emulation of a for loop.</span>
@@ -514,9 +516,10 @@ build an iterator that iterates over sequences in various common ways</p>
 <p>Note: A generator function can also be a method in a class</p>
 <p>More about iterators and generators:</p>
 <p><a class="reference external" href="http://www.learningpython.com/2009/02/23/iterators-iterables-and-generators-oh-my/">http://www.learningpython.com/2009/02/23/iterators-iterables-and-generators-oh-my/</a></p>
+<p><a class="reference download internal" href="../_downloads/yield_example.py" download=""><code class="xref download docutils literal"><span class="pre">yield_example.py</span></code></a></p>
 </div>
-<div class="section" id="generator-comprehension">
-<h2>generator comprehension<a class="headerlink" href="#generator-comprehension" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="generator-comprehensions">
+<h2>generator comprehensions<a class="headerlink" href="#generator-comprehensions" title="Permalink to this headline">¶</a></h2>
 <p>yet another way to make a generator:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
 <span class="go">[2, 4, 6]</span>
