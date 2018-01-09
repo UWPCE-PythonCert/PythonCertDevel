@@ -281,13 +281,6 @@ http://www.virtualenv.org/en/latest/index.html}
 
 Remember the notes from the beginning of class? :ref:`virtualenv_section`
 
-(Cris will probably make you do this next class)
-
-:orphan:
-
-.. _packaging:
-
-=========================
 Building Your Own Package
 =========================
 
