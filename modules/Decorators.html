@@ -216,8 +216,7 @@
   <div class="section" id="decorators">
 <span id="id1"></span><h1>Decorators<a class="headerlink" href="#decorators" title="Permalink to this headline">¶</a></h1>
 <p><strong>A Short Reminder</strong></p>
-<blockquote>
-<div><p>Functions are things that generate values based on input (arguments).</p>
+<p>Functions are things that generate values based on input (arguments).</p>
 <p>In Python, functions are first-class objects.</p>
 <p>This means that you can bind names to them, pass them around, etc., just like
 other objects.</p>
@@ -229,7 +228,6 @@ arguments and/or return functions as values:</p>
     <span class="k">return</span> <span class="n">new_function</span>
 </pre></div>
 </div>
-</div></blockquote>
 <div class="section" id="a-definition">
 <h2>A Definition<a class="headerlink" href="#a-definition" title="Permalink to this headline">¶</a></h2>
 <p>There are many things you can do with a simple pattern like this one.
@@ -249,7 +247,6 @@ one:</p>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 </pre></div>
 </div>
-<div class="docutils container">
 <p>You want to see when each function is called, with what arguments and
 with what result. So you rewrite each function as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -258,7 +255,6 @@ with what result. So you rewrite each function as follows:</p>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Result --&gt; {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">result</span>
 </pre></div>
-</div>
 </div>
 <p>That’s not particularly nice, especially if you have lots of functions
 in your module.</p>
@@ -288,11 +284,9 @@ in your module.</p>
 <span class="gh">Out[37]: </span><span class="go">7</span>
 </pre></div>
 </div>
-<div class="docutils container">
 <p>This is nice, but we have to call the new function wherever we originally
 had the old one.</p>
 <p>It’d be nicer if we could just call the old function and have it log.</p>
-</div>
 <p>Remembering that you can easily rebind symbols in Python using <em>assignment
 statements</em> leads you to this form:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">logged_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
@@ -303,7 +297,6 @@ statements</em> leads you to this form:</p>
 <span class="n">add</span> <span class="o">=</span> <span class="n">logged_func</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="docutils container">
 <p>And now you can simply use the code you’ve already written and calls to
 <code class="docutils literal"><span class="pre">add</span></code> will be logged:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [41]: </span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
@@ -314,15 +307,13 @@ statements</em> leads you to this form:</p>
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
 <p>Rebinding the name of a function to the result of calling a decorator on that
 function is called <strong>decoration</strong>.</p>
 <p>Because this is so common, Python provides a special operator to perform it
-more <em>declaratively</em>: the <code class="docutils literal"><span class="pre">&#64;</span></code> operator
-– I told you I’d eventually explain what was going on under the hood with
-that wierd <cite>&#64;</cite> symbol:</p>
+more <em>declaratively</em>: the <code class="docutils literal"><span class="pre">&#64;</span></code> operator – I told you I’d eventually explain what was going on under the hood with
+that weird <cite>&#64;</cite> symbol:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 <span class="n">add</span> <span class="o">=</span> <span class="n">logged_func</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>
@@ -340,7 +331,7 @@ but both have the identical result, and can be used interchangeably.</p>
 <p>Our original definition of a <em>decorator</em> was nice and simple, but a tiny bit
 incomplete.</p>
 <p>In reality, decorators can be used with anything that is <em>callable</em>.</p>
-<p>Remember from last week, a <em>callable</em> is a function, a method on a class,
+<p>Remember that a <em>callable</em> is a function, a method on a class,
 or a class that implements the <code class="docutils literal"><span class="pre">__call__</span></code> special method.</p>
 <p>So in fact the definition should be updated as follows:</p>
 <p>A decorator is a callable that takes a callable as an argument and
