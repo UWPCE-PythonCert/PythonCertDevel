@@ -1,3 +1,5 @@
+.. _iterators_generators:
+
 Iterators and Generators
 =========================
 
