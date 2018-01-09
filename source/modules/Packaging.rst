@@ -5,7 +5,7 @@ Packages and Packaging
 ######################
 
 Modules and Packages
---------------------
+====================
 
 A module is a file (``something.py``) with python code in it
 
@@ -28,8 +28,11 @@ And usually other modules, packages, etc...
 
 runs the code ``my_package/__init__.py`` (if there is any)
 
-Modules and Packages
---------------------
+
+The module search path
+----------------------
+
+The interpreter keeps a list of all the places that it looks for modules or packages when you do an import:
 
 .. code-block:: python
 
@@ -37,46 +40,51 @@ Modules and Packages
     for p in sys.path:
         print p
 
+you can manipulate that list to add or remove paths to let python find modules on a new place.
+
+And every module has a ``__file__`` name that points to the path it lives in. This lets you add paths relative to where you are, etc.
+
+*NOTE* it's usually better to use setuptools' "develop" mode instead -- see below.
+
+Reloading
+---------
+
+Once loaded, a module stays loaded.
+
+If you import it again (usually in another module) it will simply load up teh versions already there -- rather than re-running the code.
+
 (demo)
 
-Installing Python
------------------
+And you can access all the already loaded modules from ``sys.modules``. sys.modules is a dict with the module names as the keys, and the module objects as the values
 
-Linux:
+.. code-block:: ipython
 
-Usually part of the system -- just use it.
+  In [4]: import sys
 
-Windows:
+  In [5]: sys.modules.keys()
+  Out[5]: dict_keys(['builtins', 'sys', '_frozen_importlib', '_imp', '_warnings', '_thread', '_weakref', '_frozen_importlib_external', '_io', 'marshal', 'posix', 'zipimport', 'encodings', 'codecs', '_codecs'
 
-Use the python.org version:
+A lot there!
 
-* System Wide
+There's no reason too -- but you coud import an already imported module like so:
 
-* Can install multiple versions if need be
+.. code-block:: ipython
 
-* Third party binaries for it.
+  In [10]: math = sys.modules['math']
 
-Installing Python
------------------
-OS-X:
+  In [11]: math.sin(math.pi)
+  Out[11]: 1.2246467991473532e-16
 
-Comes with the system, but:
-
-    * Apple has never upgraded within a release
-    * There are non-open source components
-    * Third party packages may or may not support it
-    * Apple does use it -- so don't mess with it
-    * I usually recommend the ``python.org`` version
-
-(Also Macports, Fink, Home Brew...)
+  In [12]: math.sin(math.pi / 2)
+  Out[12]: 1.0
 
 
 Distributions
 -------------
 
-There are also a few "curated" distributions:
+So far in this class, we've used the Python from python.org. It works great, and supports a lots of packages via pip.
 
-These provide python and a package management system for hard-to-buid packages.
+But there are also a few "curated" distributions. These provide python and a package management system for hard-to-build packages.
 
 Widely used by the scipy community
 (lots of hard to build stuff that needs to work together...)
@@ -85,20 +93,19 @@ Widely used by the scipy community
   * Canopy (https://www.enthought.com/products/canopy/)
   * ActivePython (http://www.activestate.com/activepython)
 
+Anaconda has seen a LOT of growth recently -- it's based on the open-source conda packaging system, and provides both a commercial curated set of packages, and a community-developed collection of packages known as conda-forge:
+
+https://conda-forge.org/
+
+If you are doing data science or scientific development -- I recommend you take a look at Anaconda, conda and conda-forge.
+
 
 Installing Packages
 -------------------
+
 Every Python installation has its own stdlib and ``site-packages`` folder
 
 ``site-packages``  is the default place for third-party packages
-
-Finding Packages
-----------------
-The Python Package Index:
-
-**PyPi**
-
-http://pypi.python.org/pypi
 
 Installing Packages
 -------------------
@@ -112,15 +119,13 @@ Installing Packages
 
     **From binaries:**
 
-* Windows: MSI installers
 
-* OS-X: dmg installers (make sure to get compatible packages)
-
-* And now: binary wheels -- (More and more of those available)
+* Binary wheels -- (More and more of those available)
 
 * ``pip`` should find appropriate binary wheels if they are there.
 
-
+A bit of history:
+-----------------
 
 In the beginning, there was the ``distutils``:
 
@@ -132,7 +137,7 @@ But ``distutils``  is missing some key features:
 
 - And then came ``PyPi``
 
-- And then came ``setuptools``
+- And then came ``setuptools`` (with easy_install)
 
 - But that wasn't well maintained...
 
@@ -140,7 +145,8 @@ But ``distutils``  is missing some key features:
 
 - Which has now been merged back into ``setuptools``
 
-Now it's pretty stable: pip+setuptools: use them.
+Now it's pretty stable: pip+setuptools+wheel: use them.
+
 
 Installing Packages
 -------------------
@@ -149,16 +155,19 @@ Actually, it's still a bit of a mess
 
 But getting better, and the mess is *almost* cleaned up.
 
+
 Current State of Packaging
 --------------------------
 
 To build packages: distutils
 
-  * http://docs.python.org/2/distutils/
+  * http://docs.python.org/3/distutils/
 
 For more features: setuptools
 
   * https://pythonhosted.org/setuptools/
+
+(note that setuptools still can also install -- but don't let it)
 
 To install packages: pip
 
@@ -169,6 +178,7 @@ For binary packages: wheels
   * http://www.python.org/dev/peps/pep-0427/
 
 (installable by pip)
+
 
 Compiled Packages
 -----------------
@@ -184,7 +194,6 @@ Dependencies:
   * Here's were it gets really ugly
 
   * Particularly on Windows
-
 
 **Linux**
 
@@ -205,13 +214,13 @@ Pretty straightforward:
 (may need "something-devel" packages)
 
 
-
 **Windows**
 
 Sometimes simpler:
 
-1) A lot of packages have Windows binaries:
+1) A lot of packages have Windows wheels now.
 
+  - often installable with pip (pip will install a wheel for you if it exists)
   - Usually for python.org builds
   - Excellent source: http://www.lfd.uci.edu/~gohlke/pythonlibs/
   - Make sure you get 32 or 64 bit consistent
@@ -221,10 +230,11 @@ Sometimes simpler:
   - Hope the dependencies are available!
   - Set up the compiler
 
-MS now has a compiler just for python!
+MS now has a compiler just for python2!
 
 http://www.microsoft.com/en-us/download/details.aspx?id=44266
 
+.. NOTE: add info on Windows compiler for py3
 
 **OS-X**
 
@@ -235,7 +245,7 @@ Lots of Python versions:
   - Macports
   - Homebrew
 
-Binary Installers (dmg or wheel) have to match python version
+Binary wheels are pretty much compatible between them -- yeah!
 
 
 **OS-X**
@@ -266,7 +276,8 @@ Read the docs of the package you want to install
 
 Do what they say
 
-(Or use Anaconda or Canopy)
+(Or use conda!)
+
 
 virtualenv
 ----------
@@ -281,27 +292,26 @@ http://www.virtualenv.org/en/latest/index.html}
 
 Remember the notes from the beginning of class? :ref:`virtualenv_section`
 
+**NOTE:** conda also provides a similar isolated environment system.
+
+
 Building Your Own Package
 =========================
 
 The very basics of what you need to know to make your own package.
 
-.. toctree::
-   :maxdepth: 2
-
 Why Build a Package?
 --------------------
 
-.. rst-class:: left
+There are a bunch of nifty tools that help you build, install and
+distribute packages.
 
-  There are a bunch of nifty tools that help you build, install and
-  distribute packages.
+Using a well structured, standard layout for your package makes it
+easy to use those tools.
 
-  Using a well structured, standard layout for your package makes it
-  easy to use those tools.
+Even if you never want to give anyone else your code, a well
+structured package eases development.
 
-  Even if you never want to give anyone else your code, a well
-  structured package eases development.
 
 What is a Package?
 --------------------
@@ -318,6 +328,7 @@ What is a Package?
 
 * ... and a way to build and install it...
 
+
 Python packaging tools:
 ------------------------
 
@@ -325,7 +336,7 @@ The ``distutils``::
 
     from distutils.core import setup
 
-Getting klunky, hard to extend, maybe destined for deprication...
+Getting klunky, hard to extend, maybe destined for deprecation...
 
 But it gets the job done -- and it does it well for the simple cases.
 
