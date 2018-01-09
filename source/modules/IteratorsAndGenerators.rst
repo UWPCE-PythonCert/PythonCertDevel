@@ -11,6 +11,87 @@ Iterators and Generators
 
     What goes on in those for loops?
 
+
+A note about Python History
+---------------------------
+
+Python used to be all about sequences -- a good chunk of anything you did
+was stored in a sequence, oir involved manipulating a sequence.
+
+- lists
+- tuples
+- strings
+
+- ``dict.keys()``
+- ``dict.values()``
+- ``dict.items()``
+- ``zip()``
+- ...
+
+In python2 -- those are all sequences.
+
+But it turns out that the most common operation for sequences is to iterate through them:
+
+.. code-block:: python
+
+  for item in a_sequence:
+      do_something_with_item
+
+So fairly early in Python2, Python introduced the idea of the "iterable".
+
+More or less, an "iterable" is something you can, well, iterate over in
+a for loop, but often does not keep the whole sequence in memory at once. 
+
+After all -- why make a copy of something just to look at all its items?
+
+Example:
+
+In python2: ``dict.keys()`` returns a list of all the keys in the dict.
+But why make a full copy of all the keys, when all you want to do is:
+
+.. code-block:: python
+
+    for k in dict.keys():
+        do_something_with(k)
+
+Even worse: ``dict.items()`` created a full list of ``(key,value)`` tuples.
+-- a complete copy of all the data in the dict.
+
+Even worse: ``enumerate(dict.items())`` created a whole list of
+``(index, (key, value))`` tuples -- lots of copies of everything.
+
+Enter ``iter*``
+
+Python2 then introduced "iterable" versions of a number of functions and methods:
+
+``itertools.izip``
+``dict.iteritems()``
+``dict.iterkeys()``
+``dict.itervalues()``
+
+So you could now iterate through that stuff without copying anything.
+
+**Python3**
+
+Python3 embraces iterables -- now everything that could be an iterator
+is already an iterator -- no unnecessary copies.
+
+An iterator is an iterable that has been made more efficient by 
+removing as much from memory as possible.
+
+You have to make a list out of them explicitly if you really want it:
+
+``list(dict.keys())``
+
+Then there is an entire module: ``itertools`` that provides nifty ways
+to iterate through stuff.
+
+We will visit this again soon.
+
+So while I used to say that python was all about sequences
+-- it is now all about iterables.
+
+
 Iterators and Iterables
 -----------------------
 
@@ -22,7 +103,7 @@ Iteration is one of the main reasons Python code is so readable:
         do_stuff(x)
 
 An iterable is anything that can be looped over sequentially, so it does not have to be
-a "sequence": list, tuple, etc.  For example, a string is iterable.
+a "sequence": list, tuple, etc.  For example, a string is iterable. So is a set.
 
 An iterator is an iterable that remembers state. All sequences are iterable, but
 not all sequences are iterators. To make a sequence an iterator, you can call it with iter:
@@ -44,13 +125,13 @@ To make an object iterable, you simply have to implement the __getitem__ method.
 
     class T:
         def __getitem__(self, position):
-        if position > 5:
-            raise IndexError
-        return position
+            if position > 5:
+                raise IndexError
+            return position
 
 
 ``iter()``
------------
+----------
 
 How do you get the iterator object from an "iterable"?
 
@@ -99,19 +180,39 @@ List as an Iterator:
 Using iterators when you can
 ----------------------------
 
-Example: trigrams:
+consider the example from the trigrams problem:
 
-.. code-block:: ipython
+(http://codekata.com/kata/kata14-tom-swift-under-the-milkwood/)
 
-    triplets = zip(words, words[1:], words[2:])
+You have a list of words: ``words``
+
+And you want to go through it, three at a time, and match up pairs with
+the following word.
+
+The *non-pythonic* way to do that is a loop through the indices:
+
+.. code-block:: python
+
+  for i in range(len(words)-2):
+     triple = words[i:i+3]
+
+It works, and is fairly efficient, but what about:
+
+.. code-block:: python
+
+    for triple in zip(words[:-2], words[1:-1], words[2:-2]):
+
 
 zip() returns an iterable -- it does not build up the whole list.
 So this is quite efficient.
 
-but slicing: ([1:]) produces a copy -- so this does use three copies of
+but we are still slicing: ([1:]), which produces a copy -- so this does use three copies of
 the list -- not so good if memory is tight. Note that they are shallow copies, so not **that** bad.
 
 Nevertheless, we can do better:
+
+The ``itertools`` module has a ``islice()`` (iterable slice) function.
+It returns an iterator over a slice of a sequence -- so no more copies:
 
 .. code-block:: ipython
 
@@ -127,6 +228,9 @@ Nevertheless, we can do better:
     ('the', 'other', 'and')
     ('other', 'and', 'one')
     ('and', 'one', 'more')
+
+There is much more in the itertools module:
+https://pymotw.com/3/itertools/index.html
 
 
 The Iterator Protocol
