@@ -765,7 +765,7 @@ Functions allow you to take code that would otherwise be duplicated potentially 
 
 This is often referred to as "DRY" -- "Don't Repeat Yourself".
 
-It also helps to keep the code clean and maintainable, as there is only one place to make a change. This in trun helps reduce defects.
+It also helps to keep the code clean and maintainable, as there is only one place to make a change. This in turn helps reduce defects.
 
 Functions can take and return information.
 
