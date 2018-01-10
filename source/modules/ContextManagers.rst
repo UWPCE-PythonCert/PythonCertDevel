@@ -258,3 +258,21 @@ Or, we can allow them to propagate:
           4
     RuntimeError: error raised
 
+You can even use context managers with ``yield``:
+
+.. code-block:: python
+
+    @pytest.fixture
+    def example_fixture(request):
+        # setup code here
+        with open("a_test_filename") as test_file:
+            yield test_file  # provide the fixture value
+
+And that's it!
+
+When the fixture is first invoked, it will yield the test_file.
+It will then save the state, with the file open until ``next()``
+is called again - time for the teardown.
+
+But there is no more code after the yield -- so it falls out of the
+context manager, and the file is closed.

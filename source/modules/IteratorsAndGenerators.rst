@@ -206,7 +206,7 @@ It works, and is fairly efficient, but what about:
 zip() returns an iterable -- it does not build up the whole list.
 So this is quite efficient.
 
-but we are still slicing: ([1:]), which produces a copy -- so this does use three copies of
+but we are still slicing: ([1:]), which produces a copy -- so we are creating three copies of
 the list -- not so good if memory is tight. Note that they are shallow copies, so not **that** bad.
 
 Nevertheless, we can do better:
@@ -228,9 +228,6 @@ It returns an iterator over a slice of a sequence -- so no more copies:
     ('the', 'other', 'and')
     ('other', 'and', 'one')
     ('and', 'one', 'more')
-
-There is much more in the itertools module:
-https://pymotw.com/3/itertools/index.html
 
 
 The Iterator Protocol
@@ -311,13 +308,75 @@ build an iterator that iterates over sequences in various common ways
 
 http://docs.python.org/3/library/itertools.html
 
+https://pymotw.com/3/itertools/index.html
+
 NOTE:
 
 iteratables are not *only* for ``for``
 
 They can be used with anything that expects an iterable:
 
-``sum``, ``tuple``, ``sorted``, and ``list``
+``sum``, ``tuple``, ``sorted``, ``list``, ...
+
+Is an iterator a type?
+----------------------
+
+Iterators are not a type. An "iterable" is anything that has an ``__iter__``
+method that returns an iterator and/or has a ``__getitem__`` method that takes 0-based indexes.
+
+An "iterator" is anything that conforms to the "iterator protocol":
+
+ - Has a ``__next__()`` method that returns objects.
+ - Raises ``StopIteration`` when their are no more objects to be returned.
+ - Has a ``__iter__()`` method that returns an iterator -- usually itself.
+   - sometimes the __iter__() method re-sets the iteration...
+
+https://docs.python.org/3/glossary.html#term-iterator
+
+Lots of common iterators are different types:
+
+.. code-block:: ipython
+
+  In [23]: type(iter(range(5)))
+  Out[23]: range_iterator
+
+  In [24]: iter(list())
+  Out[24]: <list_iterator at 0x104437fd0>
+
+  In [27]: type(iter(zip([],[])))
+  Out[27]: zip
+
+Here's a nice overview:
+
+http://treyhunner.com/2016/12/python-iterator-protocol-how-for-loops-work/
+
+LAB
+----
+
+In the ``Examples/iterators`` dir, you will find: ``iterator_1.py``
+
+* Extend (``iterator_1.py`` ) to be more like ``range()`` -- add three input parameters: ``iterator_2(start, stop, step\
+=1)``
+
+* What happens if you break from a loop and try to pick it up again:
+
+.. code-block:: python
+
+    it = IterateMe_2(2, 20, 2)
+    for i in it:
+        if i > 10:  break
+        print(i)
+
+.. code-block:: python
+
+    for i in it:
+        print(i)
+
+* Does ``range()``  behave the same?
+
+  - make yours match ``range()``
+
+  - is range an iterator or an iteratable?
 
 
 Generators
@@ -339,6 +398,10 @@ Practically:
 
   Generators do some of the book-keeping for you -- simpler syntax.
 
+  Generators also can be used for times you want to pause a function
+  and pick it back up later where you left off.
+
+
 yield
 ------
 
@@ -352,9 +415,10 @@ yield
 
 Generator functions "yield" a value, rather than returning a value.
 
+It *does* 'return' a value, but rather than ending execution of the
+function -- it preserves the state so it can pick up where it left off.
+
 State is preserved in between yields.
-
-
 
 A function with ``yield``  in it is a "factory" for a generator
 
@@ -369,6 +433,13 @@ Each instance keeps its own state.
 
 Really just a shorthand for an iterator class that does the book keeping for you.
 
+To master yield, you must understand that when you call the function,
+the code you have written in the function body does not run. The function
+only returns the generator object. The actual code in the function is run
+when next() is called on the generator itself.
+
+And note that each time you call the "generator function" you get a new
+instance of a generator object that saves state separately from other instances.
 
 An example: like ``range()``
 
@@ -405,8 +476,14 @@ So the generator **is** an iterator
 
 Note: A generator function can also be a method in a class
 
+In fact, this is a nice way to provide different ways to iterate over
+the data in a class in multiple ways.
+
+This is done by the dict protocol with dict.keys() and dict.values().
 
 More about iterators and generators:
+
+Chapter 14 in Fluent Python by Luciano Ramalho
 
 http://www.learningpython.com/2009/02/23/iterators-iterables-and-generators-oh-my/
 
@@ -431,3 +508,100 @@ yet another way to make a generator:
 More interesting if [1, 2, 3] is also a generator
 
 Note that `map` and `filter` produce iterators.
+
+Keep in mind -- if all you need to do with the results is loop over it
+-- use a generator expression rather than a list comprehension.
+
+Other uses for ``yield``
+------------------------
+
+The yield keyword and generator functions were designed with classic "generators" in mind.
+
+That is -- objects that generate values on the fly.
+
+But, as we alluded to earlier, yield can be used for other things as well.
+
+Anytime you want to return a value, and then hold state until later,
+``yield`` can be used.
+
+**Example:** pytest fixtures:
+
+.. code-block:: python
+
+@pytest.fixture
+    def example_fixture(request):
+        # setup code here
+        value = something()
+        yield value  # provide the fixture value
+        # do the teardown
+        something_with(value)
+
+In this case, the yield isn't in any sort of loop or anything.
+It will only get run once. But the generator will maintain state,
+so the value can be used after the yield to do the teardown.
+
+How would this be done without yield? You'd need to store the value in a class:
+
+.. code-block:: python
+
+    class a_fixture():
+
+        def __call__(self):
+            # make it callable so it can provide the value
+            # setup code here
+            value = something()
+            self.value = value
+            return value
+
+        def teardown(self):
+            something_with(self.value)
+
+Not horrible, but not as clean and simple.
+
+LAB
+---
+
+Write a few generators:
+
+* Sum of integers
+* Doubler
+* Fibonacci sequence
+* Prime numbers
+
+Test code in:
+
+``Examples/iterators/test_generator.py``
+
+Descriptions:
+
+Sum of the integers:
+  keep adding the next integer
+
+  0 + 1 + 2 + 3 + 4 + 5 + ...
+
+  so the sequence is:
+
+  0, 1, 3, 6, 10, 15 .....
+
+.. nextslide::
+
+Doubler:
+  Each value is double the previous value:
+
+  1, 2, 4, 8, 16, 32,
+
+Fibonacci sequence:
+  The fibonacci sequence as a generator:
+
+  f(n) = f(n-1) + f(n-2)
+
+  1, 1, 2, 3, 5, 8, 13, 21, 34...
+
+Prime numbers:
+  Generate the prime numbers (numbers only divisible by them self and 1):
+
+  2, 3, 5, 7, 11, 13, 17, 19, 23...
+
+Others to try:
+  Try x^2, x^3, counting by threes, x^e, counting by minus seven, ...
+
