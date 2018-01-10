@@ -355,8 +355,7 @@ LAB
 
 In the ``Examples/iterators`` dir, you will find: ``iterator_1.py``
 
-* Extend (``iterator_1.py`` ) to be more like ``range()`` -- add three input parameters: ``iterator_2(start, stop, step\
-=1)``
+* Extend (``iterator_1.py`` ) to be more like ``range()`` -- add three input parameters: ``iterator_2(start, stop, step=1)``
 
 * What happens if you break from a loop and try to pick it up again:
 

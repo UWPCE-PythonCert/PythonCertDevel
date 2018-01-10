@@ -46,7 +46,7 @@ Making the top-level script runnable
 
 To get the script installed you have two options. I prefer the more straightforward one, `the scripts keyword argument <http://python-packaging.readthedocs.io/en/latest/command-line-scripts.html#the-scripts-keyword-argument>`_
 
-But if you want to get fancy, you can use ``setuptools``' `entry points <http://python-packaging.readthedocs.io/en/latest/command-line-scripts.html#the-console-scripts-entry-point>
+But if you want to get fancy, you can use ``setuptools``'s `entry points <http://python-packaging.readthedocs.io/en/latest/command-line-scripts.html#the-console-scripts-entry-point>`_
 
 
 Including data files
