@@ -767,7 +767,7 @@ module’s namespace.</li>
 - You can use this to share “global” state where you want to.</li>
 <li>If you change the code in a module while the program is running – the
 change will <strong>not</strong> show up, even if re-imported.<ul>
-<li>That’s what <code class="docutils literal"><span class="pre">reload()</span></code> is for.</li>
+<li>That’s what <code class="docutils literal"><span class="pre">imp.reload()</span></code> is for.</li>
 </ul>
 </li>
 </ul>
@@ -940,17 +940,19 @@ in</p>
 </pre></div>
 </div>
 <p><a class="reference external" href="http://docs.python.org/2/distutils/packageindex.html">http://docs.python.org/2/distutils/packageindex.html</a></p>
+<p>NOTE: only do this if you really want to share your package with the world!</p>
 </div>
 <div class="section" id="under-development">
 <h3>Under Development<a class="headerlink" href="#under-development" title="Permalink to this headline">¶</a></h3>
 <p>Develop mode is <em>really</em> <em>really</em> nice:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">develop</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python setup.py develop
 </pre></div>
 </div>
 <p>or:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">./</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pip install -e ./
 </pre></div>
 </div>
+<p>(the e stands for “editable” – it is the same thing)</p>
 <p>It puts links into the python installation to your code, so that your package is installed, but any changes will immediately take effect.</p>
 <p>This way all your test code, and client code, etc, can all import your package the usual way.</p>
 <p>No <code class="docutils literal"><span class="pre">sys.path</span></code> hacking</p>
@@ -1035,8 +1037,7 @@ it (or building it, or…)</p>
 </pre></div>
 </div>
 <p><strong>Alternative:</strong></p>
-<p>You can have a script that automatically updates the version number in whatever
-places it needs to. For instance:</p>
+<p>You can have a script that automatically updates the version number in whatever places it needs to. For instance:</p>
 <p><a class="reference external" href="https://pypi.python.org/pypi/bumpversion">https://pypi.python.org/pypi/bumpversion</a></p>
 </div>
 <div class="section" id="semantic-versioning">
@@ -1077,6 +1078,7 @@ they upgrade.</p>
 </ol>
 <p>or use “Cookie Cutter”:</p>
 <p><a class="reference external" href="https://cookiecutter.readthedocs.io/en/latest/">https://cookiecutter.readthedocs.io/en/latest/</a></p>
+<p>Example:</p>
 </div>
 <div class="section" id="lab">
 <h3>LAB<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h3>

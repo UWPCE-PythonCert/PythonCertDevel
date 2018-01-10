@@ -643,8 +643,7 @@ Implications of module import process:
 * If you change the code in a module while the program is running -- the
   change will **not** show up, even if re-imported.
 
-  - That's what ``reload()`` is for.
-
+  - That's what ``imp.reload()`` is for.
 
 
 Basic Package Structure:
@@ -670,8 +669,6 @@ Basic Package Structure:
                   test_module2.py
 
 
-.. nextslide::
-
 ``CHANGES.txt``: log of changes with each release
 
 ``LICENSE.txt``: text of the license you choose (do choose one!)
@@ -684,8 +681,6 @@ Basic Package Structure:
 
 ``setup.py``: distutils script for building/installing package.
 
-
-.. nextslide::
 
 ``bin/``: This is where you put top-level scripts
 
@@ -705,6 +700,7 @@ Put it inside the package -- supports ::
 
 Or keep it at the top level.
 
+
 The ``setup.py`` File
 ----------------------
 
@@ -717,8 +713,6 @@ But in the simple case, it is essentially declarative.
 
 ``http://docs.python.org/3/distutils/``
 
-
-.. nextslide::
 
 ::
 
@@ -825,8 +819,6 @@ Can be just pure python or binary with compiled extensions
 
 Compatible with virtualenv.
 
-.. nextslide::
-
 Building a wheel::
 
   python setup.py bdist_wheel
@@ -861,17 +853,21 @@ To upload your package to PyPi::
 
 http://docs.python.org/2/distutils/packageindex.html
 
+NOTE: only do this if you really want to share your package with the world!
+
 
 Under Development
 ------------------
 
 Develop mode is *really* *really* nice::
 
-  python setup.py develop
+  $ python setup.py develop
 
 or::
 
-  pip install -e ./
+  $ pip install -e ./
+
+(the e stands for "editable" -- it is the same thing)
 
 It puts links into the python installation to your code, so that your package is installed, but any changes will immediately take effect.
 
@@ -993,8 +989,7 @@ So: read the __version__ string yourself:
 
 **Alternative:**
 
-You can have a script that automatically updates the version number in whatever
-places it needs to. For instance:
+You can have a script that automatically updates the version number in whatever places it needs to. For instance:
 
 https://pypi.python.org/pypi/bumpversion
 
@@ -1055,6 +1050,7 @@ or use "Cookie Cutter":
 
 https://cookiecutter.readthedocs.io/en/latest/
 
+Example:
 
 LAB
 ---
