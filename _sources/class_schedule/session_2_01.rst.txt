@@ -51,8 +51,9 @@ http://www.artima.com/weblogs/viewpost.jsp?thread=101605
 In-class Activities
 ===================
 
+
 Exercises
----------
+.........
 
 :ref:`exercise_lambda_magic`
 
