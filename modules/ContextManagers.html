@@ -406,6 +406,20 @@ Because the exit method returns True, the raised error is ‘handled’.</div>
 <span class="ne">RuntimeError</span>: error raised
 </pre></div>
 </div>
+<p>You can even use context managers with <code class="docutils literal"><span class="pre">yield</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@pytest.fixture</span>
+<span class="k">def</span> <span class="nf">example_fixture</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="c1"># setup code here</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;a_test_filename&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">test_file</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">test_file</span>  <span class="c1"># provide the fixture value</span>
+</pre></div>
+</div>
+<p>And that’s it!</p>
+<p>When the fixture is first invoked, it will yield the test_file.
+It will then save the state, with the file open until <code class="docutils literal"><span class="pre">next()</span></code>
+is called again - time for the teardown.</p>
+<p>But there is no more code after the yield – so it falls out of the
+context manager, and the file is closed.</p>
 </div>
 </div>
 
