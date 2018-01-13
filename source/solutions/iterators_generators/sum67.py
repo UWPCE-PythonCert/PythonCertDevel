@@ -1,7 +1,7 @@
 """
 From codingbat: List2
 
-A student wondered if this execrxise could be done with a generator.
+A student wondered if this exercise could be done with a generator.
 
 Indeed is can
 
@@ -66,7 +66,7 @@ def test_simple():
 
 def test_gen():
     """
-    you need to call the sum function to use the generator
+    You need to call the sum function to use the generator
     """
     assert sum(sum67_gen([])) == 0
     assert sum(sum67_gen([1, 2, 2])) == 5
