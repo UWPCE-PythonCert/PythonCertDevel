@@ -147,6 +147,8 @@ But ``distutils``  is missing some key features:
 
 Now it's pretty stable: pip+setuptools+wheel: use them.
 
+**warning** -- setuptools still provides easy_install, but it hss mostly been deprecated, so you really want to use pip. And sometimes setuptools will invoke it for you under the hood by accident :-(
+
 
 Installing Packages
 -------------------
@@ -159,21 +161,25 @@ But getting better, and the mess is *almost* cleaned up.
 Current State of Packaging
 --------------------------
 
-To build packages: distutils
-
-  * http://docs.python.org/3/distutils/
-
-For more features: setuptools
+To build packages: setuptools
+.............................
 
   * https://pythonhosted.org/setuptools/
 
-(note that setuptools still can also install -- but don't let it)
+setuptools provides extensions to the build-in distutils:
+
+https://docs.python.org/3/library/distutils.html
+
+But there are a couple of those extensions that you really do need, so most folks use setuptools for everything. In fact, pip itself requires setuptools.
+
 
 To install packages: pip
+........................
 
   * https://pip.pypa.io/en/latest/installing.html
 
 For binary packages: wheels
+...........................
 
   * http://www.python.org/dev/peps/pep-0427/
 
