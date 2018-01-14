@@ -72,7 +72,7 @@ are quite personal, find ones that suit you.):
 .. code-block:: javascript
 
     {
-        "color_scheme": "Packages/User/Cobalt.tmTheme",
+        "color_scheme": "Packages/Color Scheme - Default/Cobalt.tmTheme",
         "theme": "Soda Light 3.sublime-theme",
         // A font face that helps distinguish between 0 (the number) and 'O' (the letter)
         // among other problem characters. You also want a "fixed width font"
