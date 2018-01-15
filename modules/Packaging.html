@@ -356,6 +356,7 @@
 <li>Which has now been merged back into <code class="docutils literal"><span class="pre">setuptools</span></code></li>
 </ul>
 <p>Now it’s pretty stable: pip+setuptools+wheel: use them.</p>
+<p><strong>warning</strong> – setuptools still provides easy_install, but it hss mostly been deprecated, so you really want to use pip. And sometimes setuptools will invoke it for you under the hood by accident :-(</p>
 </div>
 <div class="section" id="id2">
 <h3>Installing Packages<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
@@ -364,32 +365,34 @@
 </div>
 <div class="section" id="current-state-of-packaging">
 <h3>Current State of Packaging<a class="headerlink" href="#current-state-of-packaging" title="Permalink to this headline">¶</a></h3>
-<p>To build packages: distutils</p>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://docs.python.org/3/distutils/">http://docs.python.org/3/distutils/</a></li>
-</ul>
-</div></blockquote>
-<p>For more features: setuptools</p>
+<div class="section" id="to-build-packages-setuptools">
+<h4>To build packages: setuptools<a class="headerlink" href="#to-build-packages-setuptools" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference external" href="https://pythonhosted.org/setuptools/">https://pythonhosted.org/setuptools/</a></li>
 </ul>
 </div></blockquote>
-<p>(note that setuptools still can also install – but don’t let it)</p>
-<p>To install packages: pip</p>
+<p>setuptools provides extensions to the build-in distutils:</p>
+<p><a class="reference external" href="https://docs.python.org/3/library/distutils.html">https://docs.python.org/3/library/distutils.html</a></p>
+<p>But there are a couple of those extensions that you really do need, so most folks use setuptools for everything. In fact, pip itself requires setuptools.</p>
+</div>
+<div class="section" id="to-install-packages-pip">
+<h4>To install packages: pip<a class="headerlink" href="#to-install-packages-pip" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference external" href="https://pip.pypa.io/en/latest/installing.html">https://pip.pypa.io/en/latest/installing.html</a></li>
 </ul>
 </div></blockquote>
-<p>For binary packages: wheels</p>
+</div>
+<div class="section" id="for-binary-packages-wheels">
+<h4>For binary packages: wheels<a class="headerlink" href="#for-binary-packages-wheels" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference external" href="http://www.python.org/dev/peps/pep-0427/">http://www.python.org/dev/peps/pep-0427/</a></li>
 </ul>
 </div></blockquote>
 <p>(installable by pip)</p>
+</div>
 </div>
 <div class="section" id="compiled-packages">
 <h3>Compiled Packages<a class="headerlink" href="#compiled-packages" title="Permalink to this headline">¶</a></h3>
