@@ -52,27 +52,10 @@ def test_doubler():
 
 def test_fib():
     g = gen.fib()
-
-    assert next(g) == 1
-    assert next(g) == 1
-    assert next(g) == 2
-    assert next(g) == 3
-    assert next(g) == 5
-    assert next(g) == 8
-    assert next(g) == 13
-    assert next(g) == 21
+    assert [next(g) for i in range(9)] == [1, 1, 2, 3, 5, 8, 13, 21, 34]
 
 
 def test_prime():
     g = gen.prime()
-
-    assert next(g) == 2
-    assert next(g) == 3
-    assert next(g) == 5
-    assert next(g) == 7
-    assert next(g) == 11
-    assert next(g) == 13
-    assert next(g) == 17
-    assert next(g) == 19
-    assert next(g) == 23
-
+    for val in [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]:
+        assert next(g) == val
