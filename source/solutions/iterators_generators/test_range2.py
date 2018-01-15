@@ -65,3 +65,13 @@ def test_zero_step():
     with pytest.raises(ValueError):
         range2(2, 10, 0)
 
+
+def test_not_call_iter():
+    """
+    If you try to call next directly it should raise an error.
+    """
+    with pytest.raises(TypeError):
+        next(range2(3))
+
+
+

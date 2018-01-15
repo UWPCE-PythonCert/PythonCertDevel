@@ -19,14 +19,13 @@ class range3:
     def __init__(self, start, stop=None, step=1):
         # some logic to handle the optional parameters
         # if stop is None and step is None:
-        if stop is None:
-            self.stop = index(start)
-            self.start = 0
-        else:
-            self.start = index(start)
-            self.stop = index(stop)
         if step == 0:
             raise ValueError("range() arg 3 must not be zero")
+        if stop is None:
+            stop = start
+            start = 0
+        self.start = index(start)
+        self.stop = index(stop)
         self.step = index(step)
 
     def __getitem__(self, ind):
