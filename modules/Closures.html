@@ -37,8 +37,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
         <link rel="up" title="Modules" href="index.html"/>
-        <link rel="next" title="Packages and Packaging" href="Packaging.html"/>
-        <link rel="prev" title="Decorators" href="Decorators.html"/> 
+        <link rel="next" title="Decorators" href="Decorators.html"/>
+        <link rel="prev" title="Code Reviews" href="CodeReviews.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -129,11 +129,22 @@
 <li class="toctree-l2"><a class="reference internal" href="MapFilterReduce.html">Map Filter and Reduce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IPythonParallel.html">IPython Parallel Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ContextManagers.html">Context Managers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Decorators.html">Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CodeReviews.html">Code Reviews</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Closures and Function Currying</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#functions-within-functions">Functions within Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">Closures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scope">Scope</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#global">global</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#local">local</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#finding-names">Finding Names</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-global-keyword">The global keyword</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#functions-within-functions">Functions within Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#callbacks">Callbacks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#functools-partial"><code class="docutils literal"><span class="pre">functools.partial</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#real-world-example">Real world Example</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#using-a-curried-function">Using a Curried Function</a></li>
@@ -141,7 +152,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Decorators.html">Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ContextManagers.html">Context Managers</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
@@ -215,16 +227,192 @@
   <div class="section" id="closures-and-function-currying">
 <span id="closures"></span><h1>Closures and Function Currying<a class="headerlink" href="#closures-and-function-currying" title="Permalink to this headline">¶</a></h1>
 <p>Defining specialized functions on the fly.</p>
+<div class="section" id="id1">
+<h2>Closures<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>“Closures” is a cool CS terms for what is really just defining functions on the fly. You can find a “proper” definition here:</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Closure_(computer_programming)">Closures on Wikipedia</a></p>
+<p>But I even have trouble following that, so we’ll look at real world examples to get the idea – it’s actually pretty logical.</p>
+</div>
+<div class="section" id="scope">
+<h2>Scope<a class="headerlink" href="#scope" title="Permalink to this headline">¶</a></h2>
+<p>In order to get a handle in this, it’s important to understand variable scoping rules in Python.</p>
+<p>“Scope” is the word for where in the names in your code are accessible. Another word for a scope is namespace.</p>
+<div class="section" id="global">
+<h3>global<a class="headerlink" href="#global" title="Permalink to this headline">¶</a></h3>
+<p>The simplest is the global scope. This is the where all the names defined right in your code file are (or in the interpreter).</p>
+<p>You can get the global namespace with the <code class="docutils literal"><span class="pre">globals()</span></code> function, but …</p>
+<p>The Python interpreter defines a handful of names when it starts up, and iPython defines a whole bunch more.  Most of those start with an underscore, so you can filter them out for a more reasonable result:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_globals</span><span class="p">():</span>
+    <span class="n">ipy_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;In&#39;</span><span class="p">,</span> <span class="s1">&#39;Out&#39;</span><span class="p">,</span> <span class="s1">&#39;get_ipython&#39;</span><span class="p">,</span> <span class="s1">&#39;exit&#39;</span><span class="p">,</span> <span class="s1">&#39;quit&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">ipy_names</span><span class="p">):</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And run that in a raw interpreter:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span>    <span class="k">def</span> <span class="nf">print_globals</span><span class="p">():</span>
+<span class="gp">   ...: </span>        <span class="n">ipy_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;In&#39;</span><span class="p">,</span> <span class="s1">&#39;Out&#39;</span><span class="p">,</span> <span class="s1">&#39;get_ipython&#39;</span><span class="p">,</span> <span class="s1">&#39;exit&#39;</span><span class="p">,</span> <span class="s1">&#39;quit&#39;</span><span class="p">]</span>
+<span class="gp">   ...: </span>        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+<span class="gp">   ...: </span>            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">ipy_names</span><span class="p">):</span>
+<span class="gp">   ...: </span>                <span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="gp">   ...:</span>
+
+<span class="gp">In [4]: </span><span class="n">print_globals</span><span class="p">()</span>
+<span class="go">print_globals</span>
+</pre></div>
+</div>
+<p>The only name left is “print_globals” itself – created when we defined the function.</p>
+<p>If we add a name or two, they show up in the global scope:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="gp">In [7]: </span><span class="n">this</span> <span class="o">=</span> <span class="s2">&quot;that&quot;</span>
+
+<span class="gp">In [8]: </span><span class="n">print_globals</span><span class="p">()</span>
+<span class="go">print_globals</span>
+<span class="go">x</span>
+<span class="go">this</span>
+</pre></div>
+</div>
+<p>names are created by assignment, and by <code class="docutils literal"><span class="pre">def</span></code> and <code class="docutils literal"><span class="pre">class</span></code> statements. we already saw a <code class="docutils literal"><span class="pre">def</span></code>.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="k">class</span> <span class="nc">TestClass</span><span class="p">:</span>
+<span class="go">    ...:     pass</span>
+<span class="go">    ...:</span>
+
+<span class="gp">In [12]: </span><span class="n">print_globals</span><span class="p">()</span>
+<span class="go">print_globals</span>
+<span class="go">x</span>
+<span class="go">this</span>
+<span class="go">test</span>
+<span class="go">TestClass</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="local">
+<h3>local<a class="headerlink" href="#local" title="Permalink to this headline">¶</a></h3>
+<p>So that’s the global scope – what creates a new scope?</p>
+<p>A new, “local” scope is created by a function or class definition:</p>
+<p>And there is a build in function to get the names in the local scope, too, so we can use it to show us the names in a function’s local namespace. There isn’t a lot of cruft in the local namespace, so we don’t need a special function to print it.</p>
+<p>Note that <code class="docutils literal"><span class="pre">locals()</span></code> and <code class="docutils literal"><span class="pre">globals()</span></code> returns a dict of the names and the objects they are bound to, so we can print the keys to get the names:</p>
+<dl class="docutils">
+<dt>In [15]: def test():</dt>
+<dd>…:     x = 5
+…:     y = 6
+…:     print(locals().keys())
+…:</dd>
+</dl>
+<p>In [16]: test()
+dict_keys([‘y’, ‘x’])</p>
+<p>When a function is called, it creates a clean local namespace.</p>
+<p>Similarly a class definition does the same thing:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="k">class</span> <span class="nc">Test</span><span class="p">:</span>
+<span class="go">    ...:     this = &quot;that&quot;</span>
+<span class="go">    ...:     z = 54</span>
+<span class="go">    ...:     def __init__(self):</span>
+<span class="go">    ...:         pass</span>
+<span class="go">    ...:     print(locals().keys())</span>
+<span class="go">    ...:</span>
+<span class="go">dict_keys([&#39;__module__&#39;, &#39;__qualname__&#39;, &#39;this&#39;, &#39;z&#39;, &#39;__init__&#39;])</span>
+</pre></div>
+</div>
+<p>Interesting – that print statement ran when the class was defined…</p>
+<p>But you see that class attributes are there, as is the <code class="docutils literal"><span class="pre">__init__</span></code> function.</p>
+<p>So each function gets a local namespace (or scope), and so does each class. And it follows that each method (function) in the class gets its own namespace as well.</p>
+<p>Turns out that this holds true for functions defined within functions also:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="k">def</span> <span class="nf">outer</span><span class="p">():</span>
+<span class="go">    ...:     x = 5</span>
+<span class="go">    ...:     y = 6</span>
+<span class="go">    ...:     def inner():</span>
+<span class="go">    ...:         w = 7</span>
+<span class="go">    ...:         z = 8</span>
+<span class="go">    ...:         print(&quot;inner scope:&quot;, locals().keys())</span>
+<span class="go">    ...:     print(&quot;outer scope:&quot;, locals().keys())</span>
+<span class="go">    ...:     inner()</span>
+
+<span class="gp">In [24]: </span><span class="n">outer</span><span class="p">()</span>
+<span class="go">outer scope: dict_keys([&#39;inner&#39;, &#39;y&#39;, &#39;x&#39;])</span>
+<span class="go">inner scope: dict_keys([&#39;z&#39;, &#39;w&#39;])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="finding-names">
+<h2>Finding Names<a class="headerlink" href="#finding-names" title="Permalink to this headline">¶</a></h2>
+<p>So there are multiple scopes in play at any point – the local scope, and all the surrounding scopes. When you use a name, python checks in the local scope first, then moves out one by one until it finds the name. So if you define a new name inside a function, it “overrides” the name in any of the outer scopes. But the outer one will be found.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [33]: </span><span class="n">name1</span> <span class="o">=</span> <span class="s2">&quot;this is global&quot;</span>
+
+<span class="gp">In [34]: </span><span class="n">name2</span> <span class="o">=</span> <span class="s2">&quot;this is global&quot;</span>
+
+<span class="gp">In [35]: </span><span class="k">def</span> <span class="nf">outer</span><span class="p">():</span>
+<span class="go">    ...:     name2 = &quot;this is in outer&quot;</span>
+<span class="go">    ...:     def inner():</span>
+<span class="go">    ...:         name3 = &quot;this is in inner&quot;</span>
+<span class="go">    ...:         print(name1)</span>
+<span class="go">    ...:         print(name2)</span>
+<span class="go">    ...:         print(name3)</span>
+<span class="go">    ...:     inner()</span>
+<span class="go">    ...:</span>
+
+<span class="gp">In [36]: </span><span class="n">outer</span><span class="p">()</span>
+<span class="go">this is global</span>
+<span class="go">this is in outer</span>
+<span class="go">this is in inner</span>
+</pre></div>
+</div>
+<p>Look carefully to see where each of those names came from. All the print statements are in the inner function, so its local scope is seached first, and then the outer function’s scope, and then the global scope. name1 is only defined in the global scope, so that one is found.</p>
+<div class="section" id="the-global-keyword">
+<h3>The global keyword<a class="headerlink" href="#the-global-keyword" title="Permalink to this headline">¶</a></h3>
+<p>global names can be accessed from within functions, but not if that same name is created in the local scope.</p>
+</div>
+</div>
 <div class="section" id="functions-within-functions">
 <h2>Functions within Functions<a class="headerlink" href="#functions-within-functions" title="Permalink to this headline">¶</a></h2>
 <p>TODO: Preface this topic with basic scope rules, specifically that you can define functions within functions.  – rriehle</p>
 <p>and add nonlocal!</p>
 </div>
-<div class="section" id="id1">
-<h2>Closures<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>“Closures” and “Currying” are cool CS terms for what is really just defining functions on the fly. You can find a “proper” definition here:</p>
-<p><a class="reference external" href="http://en.wikipedia.org/wiki/Closure_(computer_programming">http://en.wikipedia.org/wiki/Closure_(computer_programming</a>)</p>
-<p>But I even have trouble following that.</p>
+<div class="section" id="id2">
+<h2>Scope<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Why do decorators usually have a function inside another function?</p>
+<p>Decorators are implemented using closures. Definition of closures from Wikipedia:</p>
+<p>Operationally, a closure is a record storing a function together with an environment: a mapping associating each free variable of the function (variables that are used locally, but defined in an enclosing scope) with the value or reference to which the name was bound when the closure was created. A closure—unlike a plain function—allows the function to access those captured variables through the closure’s copies of their values or references, even when the function is invoked outside their scope.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="k">def</span> <span class="nf">start_at</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="k">def</span> <span class="nf">increment_by</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+   <span class="o">...</span><span class="p">:</span>     <span class="k">return</span> <span class="n">increment_by</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">closure_1</span> <span class="o">=</span> <span class="n">start_at</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">closure_2</span> <span class="o">=</span> <span class="n">start_at</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">closure_1</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="mi">5</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">start_at</span><span class="p">(</span><span class="mi">2</span><span class="p">)(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<p>Let’s make this more explicit:</p>
+<p>Example/decorators/play_with_scope.py</p>
+<p>nonlocal declaration: allows you to flag a variable as a free variable even if it’s immutable.</p>
+</div>
+<div class="section" id="callbacks">
+<h2>Callbacks<a class="headerlink" href="#callbacks" title="Permalink to this headline">¶</a></h2>
+<p>In addition to decorators, closures are also useful for callbacks.</p>
+<p>Callbacks are functions handed off to another function, so that they can call the handed off function once they are done running their own code.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="k">def</span> <span class="nf">my_callback</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="o">...</span><span class="p">:</span>     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;function my_callback was called with {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="k">def</span> <span class="nf">make_call</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+             <span class="c1"># do some cool stuff here, and then call the callback</span>
+    <span class="o">...</span><span class="p">:</span>     <span class="n">func</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="o">...</span><span class="p">:</span>     <span class="n">make_call</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">my_callback</span><span class="p">)</span>
+
+<span class="n">function</span> <span class="n">my_callback</span> <span class="n">was</span> <span class="n">called</span> <span class="k">with</span> <span class="mi">0</span>
+<span class="n">function</span> <span class="n">my_callback</span> <span class="n">was</span> <span class="n">called</span> <span class="k">with</span> <span class="mi">1</span>
+<span class="n">function</span> <span class="n">my_callback</span> <span class="n">was</span> <span class="n">called</span> <span class="k">with</span> <span class="mi">2</span>
+</pre></div>
+</div>
 <p>So let’s go straight to an example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">counter</span><span class="p">(</span><span class="n">start_at</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="n">count</span> <span class="o">=</span> <span class="p">[</span><span class="n">start_at</span><span class="p">]</span>
@@ -269,6 +457,8 @@
 </div>
 <p>So each time <code class="docutils literal"><span class="pre">counter()</span></code> is called, a new function is created. And that function has its own copy of the <code class="docutils literal"><span class="pre">count</span></code> object. This is what makes in a “closure” – it carries with it the scope in which is was created.</p>
 <p>The returned <code class="docutils literal"><span class="pre">incr</span></code> function is a “curried” function – a function with some parameters pre-specified.</p>
+<p>“Currying” is a special case of closures:</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Currying">Currying on Wikipedia</a></p>
 </div>
 <div class="section" id="functools-partial">
 <h2><code class="docutils literal"><span class="pre">functools.partial</span></code><a class="headerlink" href="#functools-partial" title="Permalink to this headline">¶</a></h2>
@@ -374,10 +564,10 @@ cube = partial(power, exponent=3)</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Packaging.html" class="btn btn-neutral float-right" title="Packages and Packaging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Decorators.html" class="btn btn-neutral float-right" title="Decorators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Decorators.html" class="btn btn-neutral" title="Decorators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="CodeReviews.html" class="btn btn-neutral" title="Code Reviews" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
