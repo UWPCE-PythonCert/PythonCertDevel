@@ -10,28 +10,25 @@ This version has been made Object Oriented.
 # handy utility to make pretty printing easier
 from textwrap import dedent
 
-import json_save.json_save as js
+import json
 
 
 def get_sample_data():
     """
     returns a list of donor objects to use as sample data
     """
+    data_dir = pathlib.Path(__file__).parents[1] / "data"
+
     return [Donor("William Gates III", [653772.32, 12.17]),
             Donor("Jeff Bezos", [877.33]),
             Donor("Paul Allen", [663.23, 43.87, 1.32]),
             Donor("Mark Zuckerberg", [1663.23, 4300.87, 10432.0]),
             ]
 
-
-class Donor(js.JsonSavable):
+class Donor:
     """
     class to hold the information about a single donor
     """
-    name = js.String()
-    norm_name = js.String()
-    donations = js.List()
-
     def __init__(self, name, donations=None):
         """
         create a new Donor object
@@ -85,12 +82,10 @@ class Donor(js.JsonSavable):
         self.donations.append(amount)
 
 
-class DonorDB(js.JsonSavable):
+class DonorDB:
     """
     encapsulation of the entire database of donors and data associated with them.
     """
-
-    donor_data = js.Dict()
 
     def __init__(self, donors=None):
         """
@@ -109,9 +104,13 @@ class DonorDB(js.JsonSavable):
 
     @classmethod
     def load_from_file(cls, filename):
-        with open(filename, 'r') as infile:
-            obj = js.from_json(infile)
-        return obj
+        """
+        loads a donor database from a json file
+        """
+        with open(filename) as infile:
+            donors = json.load(infile)
+        db = cls([Donor(*d) for d in donors])
+        return db
 
     @property
     def donors(self):
@@ -212,8 +211,9 @@ class DonorDB(js.JsonSavable):
         """
         make a letter for each donor, and save it to disk.
         """
+        print("Saving letters:")
         for donor in self.donor_data.values():
-            print("donor:", donor)
+            print("donor:", donor.name)
             letter = self.gen_letter(donor)
             # I don't like spaces in filenames...
             filename = donor.name.replace(" ", "_") + ".txt"

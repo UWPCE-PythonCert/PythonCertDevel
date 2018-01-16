@@ -1,9 +1,9 @@
 """
 From codingbat: List2
 
-A student wondered if this execrxise could be done with a generator.
+A student wondered if this exercise could be done with a generator.
 
-Indeed is can
+Indeed it can
 
 Return the sum of the numbers in the array, except ignore sections of
 numbers starting with a 6 and extending to the next 7 (every 6 will be
@@ -66,7 +66,7 @@ def test_simple():
 
 def test_gen():
     """
-    you need to call the sum function to use the generator
+    You need to call the sum function to use the generator
     """
     assert sum(sum67_gen([])) == 0
     assert sum(sum67_gen([1, 2, 2])) == 5

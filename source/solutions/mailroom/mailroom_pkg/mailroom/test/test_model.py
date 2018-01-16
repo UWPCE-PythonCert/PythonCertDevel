@@ -18,15 +18,15 @@ will generate an html report.
 NOTE: when I first ran it, I got 97% coverage -- it was missing tests
       of creating a Donor and DonorDB empty.
 
-      This prompted me to write tests for thise, and then I discoverd
-      that I got an error when you tried to get thelast_donation from
+      This prompted me to write tests for these, and then I discoverd
+      that I got an error when you tried to get the last_donation from
       a Donor that did not have any donations.
 
 """
 
 import os
 import pytest
-from mailroom import model
+from mailroom import model, data_dir
 
 
 @pytest.fixture
@@ -34,7 +34,7 @@ def sample_db():
     """
     creates a clean sample database for the tests to use
     """
-    return model.DonorDB(model.get_sample_data())
+    return model.DonorDB.load_from_file(data_dir / "sample_data.json")
 
 
 def test_empty_db():
