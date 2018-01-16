@@ -13,11 +13,12 @@ import math
 # handy utility to make pretty printing easier
 from textwrap import dedent
 import pathlib
-from mailroom import model
+from mailroom import model, data_dir
 
 # create a DB with the sample data
-data_file = pathlib.Path(__file__).parent / "data" / "sample_data.json"
-db = model.DonorDB.load_from_file(data_file)
+# data_file = pathlib.Path(__file__).parent / "data" / "sample_data.json"
+print("***\nloading sample data\n***")
+db = model.DonorDB.load_from_file(data_dir / "sample_data.json")
 
 
 def main_menu_selection():

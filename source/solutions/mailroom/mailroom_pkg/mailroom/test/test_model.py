@@ -26,10 +26,7 @@ NOTE: when I first ran it, I got 97% coverage -- it was missing tests
 
 import os
 import pytest
-from mailroom import model
-import pathlib
-
-data_dir = pathlib.Path(__file__).parents[1] / "data"
+from mailroom import model, data_dir
 
 
 @pytest.fixture
