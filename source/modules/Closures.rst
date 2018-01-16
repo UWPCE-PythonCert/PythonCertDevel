@@ -1,11 +1,184 @@
 .. _closures:
 
-
 ##############################
 Closures and Function Currying
 ##############################
 
 Defining specialized functions on the fly.
+
+Closures
+--------
+
+"Closures" is a cool CS terms for what is really just defining functions on the fly. You can find a "proper" definition here:
+
+`Closures on Wikipedia <https://en.wikipedia.org/wiki/Closure_(computer_programming)>`_
+
+But I even have trouble following that, so we'll look at real world examples to get the idea -- it's actually pretty logical.
+
+Scope
+-----
+
+In order to get a handle in this, it's important to understand variable scoping rules in Python.
+
+"Scope" is the word for where in the names in your code are accessible. Another word for a scope is namespace.
+
+global
+......
+
+The simplest is the global scope. This is the where all the names defined right in your code file are (or in the interpreter).
+
+You can get the global namespace with the ``globals()`` function, but ...
+
+The Python interpreter defines a handful of names when it starts up, and iPython defines a whole bunch more.  Most of those start with an underscore, so you can filter them out for a more reasonable result:
+
+.. code-block:: python
+
+    def print_globals():
+        ipy_names = ['In', 'Out', 'get_ipython', 'exit', 'quit']
+        for name in globals().keys():
+            if not (name.startswith("_") or name in ipy_names):
+                print(name)
+
+And run that in a raw interpreter:
+
+.. code-block:: ipython
+
+    In [3]:     def print_globals():
+       ...:         ipy_names = ['In', 'Out', 'get_ipython', 'exit', 'quit']
+       ...:         for name in globals().keys():
+       ...:             if not (name.startswith("_") or name in ipy_names):
+       ...:                 print(name)
+       ...:
+
+    In [4]: print_globals()
+    print_globals
+
+The only name left is "print_globals" itself -- created when we defined the function.
+
+If we add a name or two, they show up in the global scope:
+
+.. code-block:: ipython
+
+    In [6]: x = 5
+
+    In [7]: this = "that"
+
+    In [8]: print_globals()
+    print_globals
+    x
+    this
+
+names are created by assignment, and by ``def`` and ``class`` statements. we already saw a ``def``.
+
+.. code-block:: ipython
+
+    In [11]: class TestClass:
+        ...:     pass
+        ...:
+
+    In [12]: print_globals()
+    print_globals
+    x
+    this
+    test
+    TestClass
+
+local
+.....
+
+So that's the global scope -- what creates a new scope?
+
+A new, "local" scope is created by a function or class definition:
+
+And there is a build in function to get the names in the local scope, too, so we can use it to show us the names in a function's local namespace. There isn't a lot of cruft in the local namespace, so we don't need a special function to print it.
+
+Note that ``locals()`` and ``globals()`` returns a dict of the names and the objects they are bound to, so we can print the keys to get the names:
+
+In [15]: def test():
+    ...:     x = 5
+    ...:     y = 6
+    ...:     print(locals().keys())
+    ...:
+
+In [16]: test()
+dict_keys(['y', 'x'])
+
+When a function is called, it creates a clean local namespace.
+
+Similarly a class definition does the same thing:
+
+.. code-block:: ipython
+
+    In [18]: class Test:
+        ...:     this = "that"
+        ...:     z = 54
+        ...:     def __init__(self):
+        ...:         pass
+        ...:     print(locals().keys())
+        ...:
+    dict_keys(['__module__', '__qualname__', 'this', 'z', '__init__'])
+
+Interesting -- that print statement ran when the class was defined...
+
+But you see that class attributes are there, as is the ``__init__`` function.
+
+So each function gets a local namespace (or scope), and so does each class. And it follows that each method (function) in the class gets its own namespace as well.
+
+Turns out that this holds true for functions defined within functions also:
+
+.. code-block:: ipython
+
+    In [23]: def outer():
+        ...:     x = 5
+        ...:     y = 6
+        ...:     def inner():
+        ...:         w = 7
+        ...:         z = 8
+        ...:         print("inner scope:", locals().keys())
+        ...:     print("outer scope:", locals().keys())
+        ...:     inner()
+
+    In [24]: outer()
+    outer scope: dict_keys(['inner', 'y', 'x'])
+    inner scope: dict_keys(['z', 'w'])
+
+Finding Names
+-------------
+
+So there are multiple scopes in play at any point -- the local scope, and all the surrounding scopes. When you use a name, python checks in the local scope first, then moves out one by one until it finds the name. So if you define a new name inside a function, it "overrides" the name in any of the outer scopes. But the outer one will be found.
+
+.. code-block:: ipython
+
+    In [33]: name1 = "this is global"
+
+    In [34]: name2 = "this is global"
+
+    In [35]: def outer():
+        ...:     name2 = "this is in outer"
+        ...:     def inner():
+        ...:         name3 = "this is in inner"
+        ...:         print(name1)
+        ...:         print(name2)
+        ...:         print(name3)
+        ...:     inner()
+        ...:
+
+    In [36]: outer()
+    this is global
+    this is in outer
+    this is in inner
+
+Look carefully to see where each of those names came from. All the print statements are in the inner function, so its local scope is seached first, and then the outer function's scope, and then the global scope. name1 is only defined in the global scope, so that one is found.
+
+The global keyword
+..................
+
+global names can be accessed from within functions, but not if that same name is created in the local scope.
+
+
+
+
+
 
 
 Functions within Functions
@@ -15,14 +188,65 @@ TODO: Preface this topic with basic scope rules, specifically that you can defin
 
 and add nonlocal!
 
-Closures
---------
+Scope
+-----
 
-"Closures" and "Currying" are cool CS terms for what is really just defining functions on the fly. You can find a "proper" definition here:
+Why do decorators usually have a function inside another function?
 
-http://en.wikipedia.org/wiki/Closure_(computer_programming)
+Decorators are implemented using closures. Definition of closures from Wikipedia:
 
-But I even have trouble following that.
+Operationally, a closure is a record storing a function together with an environment: a mapping associating each free variable of the function (variables that are used locally, but defined in an enclosing scope) with the value or reference to which the name was bound when the closure was created. A closure—unlike a plain function—allows the function to access those captured variables through the closure's copies of their values or references, even when the function is invoked outside their scope.
+
+
+.. code-block:: python
+
+
+    In [3]: def start_at(x):
+       ...:     def increment_by(y):
+       ...:     return x + y
+       ...:     return increment_by
+
+    In [4]: closure_1 = start_at(3)
+
+    In [5]: closure_2 = start_at(5)
+
+    In [6]: closure_1(2)
+    Out[6]: 5
+
+    In [7]: start_at(2)(4)
+    Out[7]: 6
+
+
+Let's make this more explicit:
+
+Example/decorators/play_with_scope.py
+
+nonlocal declaration: allows you to flag a variable as a free variable even if it's immutable.
+
+
+Callbacks
+---------
+In addition to decorators, closures are also useful for callbacks.
+
+Callbacks are functions handed off to another function, so that they can call the handed off function once they are done running their own code.
+
+.. code-block:: python
+
+
+    In [14]: def my_callback(val):
+        ...:     print("function my_callback was called with {0}".format(val))
+
+    In [15]: def make_call(val, func):
+                 # do some cool stuff here, and then call the callback
+        ...:     func(val)
+
+    In [16]: for i in range(3):
+        ...:     make_call(i, my_callback)
+
+    function my_callback was called with 0
+    function my_callback was called with 1
+    function my_callback was called with 2
+
 
 So let's go straight to an example:
 
@@ -86,6 +310,14 @@ But what happens if we call ``counter()`` multiple times?
 So each time ``counter()`` is called, a new function is created. And that function has its own copy of the ``count`` object. This is what makes in a "closure" -- it carries with it the scope in which is was created.
 
 The returned ``incr`` function is a "curried" function -- a function with some parameters pre-specified.
+
+Currying
+========
+
+"Currying" is a special case of closures:
+
+`Currying on Wikipedia <https://en.wikipedia.org/wiki/Currying>`_
+
 
 
 ``functools.partial``
