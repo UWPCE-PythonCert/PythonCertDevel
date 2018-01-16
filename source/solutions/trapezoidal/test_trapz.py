@@ -9,54 +9,7 @@ from trapz import trapz, frange, quadratic, curry_quadratic
 
 # need a function for testing approximate equality
 import math
-try:
-    from math import isclose
-except ImportError:  # only there in py3.5
-
-    def isclose(a, b, rel_tol=1e-09, abs_tol=0.0):
-        """
-        Determine whether two floating point numbers are close in value.
-
-        rel_tol
-           maximum difference for being considered "close", relative to the
-           magnitude of the input values
-        abs_tol
-           maximum difference for being considered "close", regardless of the
-           magnitude of the input values
-
-        Return True if a is close in value to b, and False otherwise.
-
-        For the values to be considered close, the difference between them
-        must be smaller than at least one of the tolerances.
-
-        -inf, inf and NaN behave similarly to the IEEE 754 Standard.  That
-        is, NaN is not close to anything, even itself.  inf and -inf are
-        only close to themselves.
-        """
-
-        if rel_tol < 0.0 or abs_tol < 0.0:
-            raise ValueError('error tolerances must be non-negative')
-
-        if a == b:  # short-circuit exact equality
-            return True
-        if math.isinf(a) or math.isinf(b):
-            # This includes the case of two infinities of opposite sign, or
-            # one infinity and one finite number. Two infinities of opposite sign
-            # would otherwise have an infinite relative tolerance.
-            return False
-        diff = abs(b - a)
-        return (((diff <= abs(rel_tol * b)) and
-                 (diff <= abs(rel_tol * a))) or
-                (diff <= abs_tol))
-
-
-def test_is_close():
-    ''' just to make sure '''
-    assert isclose(4.5, 4.5)
-    assert isclose(4.5, 4.499999999999999999)
-
-    assert not isclose(4.5, 4.6)
-    # of course, not comprehesive!
+from math import isclose
 
 
 # you need to compute a bunch of evenly spaced numbers from a to b
@@ -131,8 +84,6 @@ def test_quadratic_1(x, y):
 # this is a nifty trick to write multiple tests at once:
 # this will generate a test for each tuple passed in:
 #   each tuple is an x, and the expected y result
-#   don't worry about that weird "@" just yet -- we'll get to that!
-#   (but it's called a "decorator" if you're curious)
 @pytest.mark.parametrize(("x", "y"), [(0, 2),
                                       (1, 3),
                                       (2, 0),
@@ -212,6 +163,8 @@ def test_curry_quadratic_trapz():
 
 # testing the functools.partial version:
 from trapz import quad_partial_123
+
+
 def test_partial():
     a = 4
     b = 10

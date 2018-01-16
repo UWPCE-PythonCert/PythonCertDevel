@@ -30,7 +30,17 @@ http://www.programiz.com/python-programming/closure
 
 https://www.clear.rice.edu/comp130/12spring/curry/
 
+https://www.pydanny.com/python-partials-are-fun.html
+
 Decorators
 ..........
 
 *Fluent Python* -- Chapter 7: Function Decorators and Closures
+
+Exercises
+=========
+
+:ref: exercise_trapezoidal_rule
+
+
+
