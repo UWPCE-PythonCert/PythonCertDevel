@@ -29,8 +29,6 @@ def test_doubler():
 
 def test_fib():
     g = gs.fib()
-    # for val in [1, 1, 2, 3, 5, 8, 13, 21, 34]:
-    #     assert next(g) == val
     assert [next(g) for i in range(9)] == [1, 1, 2, 3, 5, 8, 13, 21, 34]
 
 
