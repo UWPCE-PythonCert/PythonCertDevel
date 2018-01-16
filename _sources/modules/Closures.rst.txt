@@ -6,24 +6,16 @@ Closures and Function Currying
 
 Defining specialized functions on the fly.
 
-Closures
---------
-
-"Closures" is a cool CS terms for what is really just defining functions on the fly. You can find a "proper" definition here:
-
-`Closures on Wikipedia <https://en.wikipedia.org/wiki/Closure_(computer_programming)>`_
-
-But I even have trouble following that, so we'll look at real world examples to get the idea -- it's actually pretty logical.
 
 Scope
------
+=====
 
-In order to get a handle in this, it's important to understand variable scoping rules in Python.
+In order to get a handle on all this, it's important to understand variable scoping rules in Python.
 
 "Scope" is the word for where in the names in your code are accessible. Another word for a scope is namespace.
 
 global
-......
+------
 
 The simplest is the global scope. This is the where all the names defined right in your code file are (or in the interpreter).
 
@@ -84,7 +76,7 @@ names are created by assignment, and by ``def`` and ``class`` statements. we alr
     TestClass
 
 local
-.....
+-----
 
 So that's the global scope -- what creates a new scope?
 
@@ -168,38 +160,74 @@ So there are multiple scopes in play at any point -- the local scope, and all th
     this is in outer
     this is in inner
 
-Look carefully to see where each of those names came from. All the print statements are in the inner function, so its local scope is seached first, and then the outer function's scope, and then the global scope. name1 is only defined in the global scope, so that one is found.
+Look carefully to see where each of those names came from. All the print statements are in the inner function, so its local scope is searched first, and then the outer function's scope, and then the global scope. name1 is only defined in the global scope, so that one is found.
 
 The global keyword
-..................
+------------------
 
-global names can be accessed from within functions, but not if that same name is created in the local scope.
+global names can be accessed from within functions, but not if that same name is created in the local scope. So you can't change an immutable object that it outside the local scope:
+
+.. code-block:: ipython
+
+    In [37]: x = 5
+
+    In [38]: def increment_x():
+        ...:     x += 5
+        ...:
+
+    In [39]: increment_x()
+    ---------------------------------------------------------------------------
+    UnboundLocalError                         Traceback (most recent call last)
+    <ipython-input-39-c9a57e8c0d14> in <module>()
+    ----> 1 increment_x()
+
+    <ipython-input-38-dc4f30fe2ac4> in increment_x()
+          1 def increment_x():
+    ----> 2     x += 5
+          3
+
+    UnboundLocalError: local variable 'x' referenced before assignment
+
+The problem here is that ``x += 5`` is the same as ``x = x + 5``, so it is creating a local name, but it can't be incremented, because it hasn't had a value set yet.
+
+The global keyword tells python that you want to use the global name, rather than create a new, local name:
+
+.. code-block:: ipython
+
+    In [40]: def increment_x():
+        ...:     global x
+        ...:     x += 5
+        ...:
+        ...:
+
+    In [41]: increment_x()
+
+    In [42]: x
+    Out[42]: 10
+
+**NOTE:** the use of global is frowned upon -- having global variables manipulated in arbitrary other scopes makes for buggy, hard to maintain code!
+
+nonlocal keyword
+----------------
+
+The other limitation with ``global`` is that there is only one global namespace, so what if you are in a nested namespace.
 
 
 
+Closures
+========
 
+"Closures" is a cool CS terms for what is really just defining functions on the fly. You can find a "proper" definition here:
 
+`Closures on Wikipedia <https://en.wikipedia.org/wiki/Closure_(computer_programming)>`_
+
+But I even have trouble following that, so we'll look at real world examples to get the idea -- it's actually pretty logical.
 
 
 Functions within Functions
 --------------------------
 
-TODO: Preface this topic with basic scope rules, specifically that you can define functions within functions.  -- rriehle
-
-and add nonlocal!
-
-Scope
------
-
-Why do decorators usually have a function inside another function?
-
-Decorators are implemented using closures. Definition of closures from Wikipedia:
-
-Operationally, a closure is a record storing a function together with an environment: a mapping associating each free variable of the function (variables that are used locally, but defined in an enclosing scope) with the value or reference to which the name was bound when the closure was created. A closure—unlike a plain function—allows the function to access those captured variables through the closure's copies of their values or references, even when the function is invoked outside their scope.
-
-
 .. code-block:: python
-
 
     In [3]: def start_at(x):
        ...:     def increment_by(y):
