@@ -244,7 +244,7 @@ Let's try that out with a potentially expensive function:
 
     In [56]: @Memoize
        ....: def sum2x(n):
-       ....:     return sum(2 * i for i in xrange(n))
+       ....:     return sum(2 * i for i in range(n))
        ....:
 
     In [57]: sum2x(10000000)
@@ -299,7 +299,7 @@ decorator:
     In [71]: @timed_func
        ....: @Memoize
        ....: def sum2x(n):
-       ....:     return sum(2 * i for i in xrange(n))
+       ....:     return sum(2 * i for i in range(n))
     In [72]: sum2x(10000000)
     time expired: 0.997071027756
     Out[72]: 99999990000000
@@ -363,7 +363,7 @@ callables, without the nifty decorator expression:
 
 .. code-block:: python
 
-    class C(object):
+    class C:
         @staticmethod
         def add(a, b):
             return a + b
@@ -372,7 +372,7 @@ Is exactly the same as:
 
 .. code-block:: python
 
-    class C(object):
+    class C:
         def add(a, b):
             return a + b
         add = staticmethod(add)
@@ -387,13 +387,13 @@ The ``classmethod()`` builtin can do the same thing:
 .. code-block:: python
 
     # in declarative style
-    class C(object):
+    class C:
         @classmethod
         def from_iterable(cls, seq):
             # method body
 
     # in imperative style:
-    class C(object):
+    class C:
         def from_iterable(cls, seq):
             # method body
         from_iterable = classmethod(from_iterable)
@@ -410,7 +410,7 @@ Previously, we saw this code:
 
 .. code-block:: python
 
-    class C(object):
+    class C:
         def __init__(self):
             self._x = None
         @property
@@ -428,7 +428,7 @@ But this could also be accomplished like so:
 
 .. code-block:: python
 
-    class C(object):
+    class C:
         def __init__(self):
             self._x = None
         def getx(self):
@@ -451,7 +451,7 @@ object. So you could actually do this:
 
 .. code-block:: python
 
-    class C(object):
+    class C:
         def __init__(self):
             self._x = None
         def x(self):
