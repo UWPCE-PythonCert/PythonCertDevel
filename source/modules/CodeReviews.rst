@@ -70,13 +70,13 @@ Types of code review
 When refactoring or doing code reviews in person
 ------------------------------------------------
 
-Write a comment explaining what the code is doing and/or questions about the code
+Write comments explaining what the code is doing (if unclear) and/or questions about the code
 
 Then, if time permits you can jointly:
 
 - work on making the code clearer
 - run tests after changes
-- goal to make it clear enough to get rid of the comment(s) that were added
+- goal is to make it clear enough to get rid of the comment(s) that were added
 
 Or do this yourself afterwards, as you would for written code reviews
 
@@ -95,3 +95,6 @@ How this will work in class
    - give a quick overview of the specific code we will look at
 
 - We will go over code together. Everyone is encouraged to make comments and ask questions.
+
+Feel free to ask your classmates in slack or on the mailing list about code you are writing. 
+This is why you have access to everyone's code, to share and learn from each other.
