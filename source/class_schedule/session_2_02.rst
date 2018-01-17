@@ -40,7 +40,8 @@ Decorators
 Exercises
 =========
 
-:ref: exercise_trapezoidal_rule
+:ref:`exercise_trapezoidal_rule`
 
+:ref:`exercise_mailroom_decorator`
 
 
