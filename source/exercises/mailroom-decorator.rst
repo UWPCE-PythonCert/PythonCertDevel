@@ -1,8 +1,8 @@
 .. _exercise_mailroom_decorator:
 
 
-Mailroom -- Adding some user control
-====================================
+Mailroom -- Decoratoring it
+===========================
 
 We want to know who is making changes to our database, so make a decorator that will ask for a user's name, before making any changes to our donor list. If you want to get really fancy, figure out how to cache the answer, so you don't have to ask more than once per session.
 
