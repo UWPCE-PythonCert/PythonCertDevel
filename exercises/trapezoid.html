@@ -108,13 +108,13 @@
 <li class="toctree-l2"><a class="reference internal" href="grid_printer.html">Grid Printer Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="html_renderer.html">HTML Renderer Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kata_fourteen.html">Kata Fourteen: Tom Swift Under Milk Wood</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lambda_magic.html">lambda and keyword Magic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="list_lab.html">List Lab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mailroom.html">Mailroom: A complete program</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Introduction To Unit Testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="roman.html">Roman/Arabic Numeral Converter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rot13.html">ROT13</a></li>
 <li class="toctree-l2"><a class="reference internal" href="slicing.html">Slicing Lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lambda_magic.html">lambda and keyword Magic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sparse_array.html">Sparse Array Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="string_formatting.html">String Formatting Exercise</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Trapezoidal Rule</a><ul>
@@ -129,11 +129,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#currying">Currying</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#partial">partial</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extra-credit">Extra credit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-bit-about-math-symbology">A bit about math symbology</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="mailroom-oo.html">Mailroom - Object Oriented</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mailroom-fp.html">Mailroom - Functional</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mailroom-pkg.html">Mailroom – as a Python Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mailroom-decorator.html">Mailroom – Decoratoring it</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
@@ -272,6 +274,7 @@
 <p>Note that the first and last values are not doubled, so it may be more efficient to rearrange it like this:</p>
 <div class="math">
 \[area = \frac{b-a}{N} \left( \frac{f(x_0) + f(x_{N})}{2} + \sum_{i=1}^{N-1} f(x_i) \right)\]</div>
+<p><strong>NOTE:</strong> for those of you confused by that weird big greek letter (no it’s a name for a fraternity…) – see: <a class="reference internal" href="#sum-explained"><span class="std std-ref">A bit about math symbology</span></a></p>
 <p>Can you use comprehensions for this?</p>
 <p>NOTE: <code class="docutils literal"><span class="pre">range()</span></code> only works for integers – how can you deal with that?</p>
 <p>Once you have that, it should work for any function that can be evaluated between a and b.</p>
@@ -365,6 +368,31 @@
 <p>How accurate it is depends on how small the chunks are that you break the function up into.</p>
 <p>See if you can think of a way to dynamically determine how small a step you should use.</p>
 <p>This is one for the math and computational programming geeks!</p>
+</div>
+<div class="section" id="a-bit-about-math-symbology">
+<span id="sum-explained"></span><h2>A bit about math symbology<a class="headerlink" href="#a-bit-about-math-symbology" title="Permalink to this headline">¶</a></h2>
+<p>Those of you without a lot of math background may be confused by the symbols. So here’s a quick intro to the “Summation Symbol” (Greek Capital sigma)</p>
+<div class="math">
+\[\sum_{i=a}^{b} x_i\]</div>
+<p>Is shorthand for “add up a bunch of values, with varying i from a to b”. where each x is a different value each time. Translating this into code you get:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">a_list_of_numbers</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>or, in more compact python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">an</span> <span class="n">iterable_of_numbers</span>
+<span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">a</span><span class="p">:</span><span class="n">b</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>So the full expression used above:</p>
+<div class="math">
+\[\sum_{i=1}^{N-1} fun(x_i)\]</div>
+<p>Can be written as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">fun</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">list_of_x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
 </div>
 </div>
 

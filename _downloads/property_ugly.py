@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-class C(object):
+class C:
     """
     Property defined in about the most ugly way possible
     """
