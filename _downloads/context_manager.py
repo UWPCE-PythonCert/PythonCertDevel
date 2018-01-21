@@ -1,3 +1,4 @@
+# Demo of a contextmanager
 
 class Context(object):
     """

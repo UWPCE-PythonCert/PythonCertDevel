@@ -170,7 +170,7 @@ clarify the order in which things happen:
     __exit__(<class 'RuntimeError'>, this is the error message,
              <traceback object at 0x1047873c8>)
 
-Because the exit method returns True, the raised error is 'handled'.
+Because the ``__exit__`` method returns ``True``, the raised error is 'handled'.
 
 What if we try with ``False``?
 
@@ -212,17 +212,22 @@ So the ``__exit__`` method takes all the information about the exception as para
 
 The type lets you check if this is a type you know how to handle::
 
+.. code-block:: python
+
     if exc_type is RuntimeError:
 
 The value is the exception object itself.
 
-And the traceback is a full traceback object.
+And the traceback is a full traceback object. Traceback objects hold all the information about the context in which and error occurred. It's pretty advanced stuff, so you can mostly ignore it, but if you want to know more, there are tools for working with them in the ``traceback`` module.
 
+https://docs.python.org/3/library/traceback.html
 
 The ``contextmanager`` decorator
 --------------------------------
 
-``contextlib.contextmanager`` turns generator functions into context managers.
+Similar to writing iterable classes, there's a fair bit of bookkeeping involved. It turns out you can take advantage of generator functions to do that bookkeeping for you.
+
+``contextlib.contextmanager`` decorator will turn a generator function into context manager.
 
 Consider this code:
 
@@ -242,7 +247,6 @@ Consider this code:
                 raise e
         finally:
             print("__exit__ cleanup goes here")
-
 
 The code is similar to the class defined previously.
 
@@ -282,21 +286,38 @@ Or, we can allow them to propagate:
           4
     RuntimeError: error raised
 
-You can even use context managers with ``yield``:
+Mixing context_managers with generators
+---------------------------------------
+
+You can put a ``yield`` inside a context manager as well.
+
+here is a generator function that gives yields all the files in a directory:
 
 .. code-block:: python
 
-    @pytest.fixture
-    def example_fixture(request):
-        # setup code here
-        with open("a_test_filename") as test_file:
-            yield test_file  # provide the fixture value
+    import pathlib
 
-And that's it!
+    def file_yielder(dir=".", pattern="*"):
+        """
+        iterate over all the files that match the pattern
 
-When the fixture is first invoked, it will yield the test_file.
-It will then save the state, with the file open until ``next()``
-is called again - time for the teardown.
+        pattern us a "glob" pattern, like: *.py
+        """
+        for filename in pathlib.Path(dir).glob(pattern):
+            with open(filename) as file_obj:
+                yield file_obj
 
-But there is no more code after the yield -- so it falls out of the
-context manager, and the file is closed.
+:download:`file_yielder.py <../examples/context_managers/file_yielder.py>`
+
+So the ``yield`` is inside the file context manager, so that state will be preserved while the file object is in use.
+
+This generator can be used like so:
+
+.. code-block:: ipython
+
+    In [20]: for f in file_yielder(pattern="*.py"):
+        ...:     print("The first line of: {} is:\n{}".format(f.name, f.readline()))
+
+Each iteration through the loop, the previous file gets closed, and the new one opened.  If there is an exception raised inside that loop, the last file will get properly closed.
+
+

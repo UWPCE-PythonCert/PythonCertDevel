@@ -142,6 +142,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#an-example">An Example</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#the-parameters-to-exit">The parameters to <code class="docutils literal"><span class="pre">__exit__</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#the-contextmanager-decorator">The <code class="docutils literal"><span class="pre">contextmanager</span></code> decorator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mixing-context-managers-with-generators">Mixing context_managers with generators</a></li>
 </ul>
 </li>
 </ul>
@@ -345,7 +346,7 @@ clarify the order in which things happen:</p>
 <span class="go">         &lt;traceback object at 0x1047873c8&gt;)</span>
 </pre></div>
 </div>
-<p>Because the exit method returns True, the raised error is ‘handled’.</p>
+<p>Because the <code class="docutils literal"><span class="pre">__exit__</span></code> method returns <code class="docutils literal"><span class="pre">True</span></code>, the raised error is ‘handled’.</p>
 <p>What if we try with <code class="docutils literal"><span class="pre">False</span></code>?</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="k">with</span> <span class="n">Context</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">foo</span><span class="p">:</span>
 <span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;this is in the context&quot;</span><span class="p">)</span>
@@ -376,15 +377,19 @@ clarify the order in which things happen:</p>
 <p><code class="docutils literal"><span class="pre">exc_val</span></code>: the value of the Exception</p>
 <p><code class="docutils literal"><span class="pre">exc_tb</span></code>: the Exception Traceback object</p>
 <p>The type lets you check if this is a type you know how to handle:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">exc_type</span> <span class="ow">is</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">python</span>
 </pre></div>
 </div>
+<blockquote>
+<div>if exc_type is RuntimeError:</div></blockquote>
 <p>The value is the exception object itself.</p>
-<p>And the traceback is a full traceback object.</p>
+<p>And the traceback is a full traceback object. Traceback objects hold all the information about the context in which and error occurred. It’s pretty advanced stuff, so you can mostly ignore it, but if you want to know more, there are tools for working with them in the <code class="docutils literal"><span class="pre">traceback</span></code> module.</p>
+<p><a class="reference external" href="https://docs.python.org/3/library/traceback.html">https://docs.python.org/3/library/traceback.html</a></p>
 </div>
 <div class="section" id="the-contextmanager-decorator">
 <h3>The <code class="docutils literal"><span class="pre">contextmanager</span></code> decorator<a class="headerlink" href="#the-contextmanager-decorator" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">contextlib.contextmanager</span></code> turns generator functions into context managers.</p>
+<p>Similar to writing iterable classes, there’s a fair bit of bookkeeping involved. It turns out you can take advantage of generator functions to do that bookkeeping for you.</p>
+<p><code class="docutils literal"><span class="pre">contextlib.contextmanager</span></code> decorator will turn a generator function into context manager.</p>
 <p>Consider this code:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
 
@@ -434,20 +439,32 @@ clarify the order in which things happen:</p>
 <span class="ne">RuntimeError</span>: error raised
 </pre></div>
 </div>
-<p>You can even use context managers with <code class="docutils literal"><span class="pre">yield</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@pytest.fixture</span>
-<span class="k">def</span> <span class="nf">example_fixture</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="c1"># setup code here</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;a_test_filename&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">test_file</span><span class="p">:</span>
-        <span class="k">yield</span> <span class="n">test_file</span>  <span class="c1"># provide the fixture value</span>
+</div>
+<div class="section" id="mixing-context-managers-with-generators">
+<h3>Mixing context_managers with generators<a class="headerlink" href="#mixing-context-managers-with-generators" title="Permalink to this headline">¶</a></h3>
+<p>You can put a <code class="docutils literal"><span class="pre">yield</span></code> inside a context manager as well.</p>
+<p>here is a generator function that gives yields all the files in a directory:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="k">def</span> <span class="nf">file_yielder</span><span class="p">(</span><span class="nb">dir</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    iterate over all the files that match the pattern</span>
+
+<span class="sd">    pattern us a &quot;glob&quot; pattern, like: *.py</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="nb">dir</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">pattern</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_obj</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">file_obj</span>
 </pre></div>
 </div>
-<p>And that’s it!</p>
-<p>When the fixture is first invoked, it will yield the test_file.
-It will then save the state, with the file open until <code class="docutils literal"><span class="pre">next()</span></code>
-is called again - time for the teardown.</p>
-<p>But there is no more code after the yield – so it falls out of the
-context manager, and the file is closed.</p>
+<p><a class="reference download internal" href="../_downloads/file_yielder.py" download=""><code class="xref download docutils literal"><span class="pre">file_yielder.py</span></code></a></p>
+<p>So the <code class="docutils literal"><span class="pre">yield</span></code> is inside the file context manager, so that state will be preserved while the file object is in use.</p>
+<p>This generator can be used like so:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">file_yielder</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;*.py&quot;</span><span class="p">):</span>
+<span class="go">    ...:     print(&quot;The first line of: {} is:\n{}&quot;.format(f.name, f.readline()))</span>
+</pre></div>
+</div>
+<p>Each iteration through the loop, the previous file gets closed, and the new one opened.  If there is an exception raised inside that loop, the last file will get properly closed.</p>
 </div>
 </div>
 </div>
