@@ -11,7 +11,8 @@ def quadratic(x, A=0, B=0, C=0):
     return A * x**2 + B * x + C
 
 
-def frange(a, b, n):
+# this version returns a list
+def frange(a, b, n=100):
     """
     kind of like a floating point range function
 
@@ -19,7 +20,7 @@ def frange(a, b, n):
     :param b: the end point
     :param n: the number of intervals you want.
 
-    :returns: a sequence of floating point nubers, evenly spaced between
+    :returns: a sequence of floating point numbers, evenly spaced between
     a and b
 
     result[0] == a
@@ -31,7 +32,37 @@ def frange(a, b, n):
 
     """
     delta = (float(b) - a) / n
-    return [a + i*delta for i in range(n+1)]
+    return [a + i * delta for i in range(n + 1)]
+
+
+# this version returns a generator
+def frange(a, b, n=100):
+    """
+    kind of like a floating point range function
+
+    :param a: the start point
+    :param b: the end point
+    :param n: the number of intervals you want.
+
+    :returns: a iterator of floating point numbers, evenly spaced between
+    a and b
+
+    The first value is a
+    The last value is b
+    The total number of values is n+1
+
+    n specifies the number of intervals, so you get a nice delta. i.e.
+    list(frange(1,10,100)) == [1.0, 1.1, 1.2, ..., 9.8, 9.9, 10.0]
+
+    """
+    delta = (float(b) - a) / int(n)
+    for i in range(n):
+        yield a + i * delta
+    yield b
+
+# the really fancy way to do it, so it can be sliced!
+
+
 
 
 def trapz(fun, a, b, *args, **kwargs):
@@ -52,9 +83,10 @@ def trapz(fun, a, b, *args, **kwargs):
     n = 100  # hard code that for now
     vals = frange(a, b, n)
 
-    s = sum([fun(x, *args, **kwargs) for x in vals[1:-1]])
+    next(vals)
+    s = sum([fun(next(vals), *args, **kwargs) for i in range(n - 1)])
     s += (fun(a, *args, **kwargs) + fun(b, *args, **kwargs)) / 2
-    s *= (b-a) / n
+    s *= (b - a) / n
 
     return s
 

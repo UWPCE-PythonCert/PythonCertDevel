@@ -19,7 +19,7 @@ def test_frange():
     '''
     tests the floating point range function
     '''
-    r = frange(10, 20, 100)
+    r = list(frange(10, 20, 100))
     assert len(r) == 101
     assert r[0] == 10
     assert r[-1] == 20
