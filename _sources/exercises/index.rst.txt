@@ -32,6 +32,9 @@ Exercises
     mailroom-fp.rst
     mailroom-pkg.rst
     mailroom-decorator.rst
+    context-managers-exercise.rst
+
+
 
 
 
