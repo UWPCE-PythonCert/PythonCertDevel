@@ -109,7 +109,7 @@ So in your context manager, you can raise an AssertionError, or force one with a
 either will work fine.
 
 See:
-:download:`raising_an_assert.py <../examples/context_managers/raising_an_assert>`
+:download:`raising_an_assert.py <../examples/context_managers/raising_an_assert.py>`
 
 
 

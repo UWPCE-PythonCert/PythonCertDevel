@@ -1,7 +1,8 @@
 """
-some simple tests for the function builder
+Some simple tests for the "lambda and keyword magic"
+function builder
 
-designed to run with py.test or nose.
+designed to run with py.test
 """
 
 from lambda_keyword import function_builder
