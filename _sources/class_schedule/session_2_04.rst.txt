@@ -4,29 +4,24 @@
 Session 4: Advanced Testing
 ###########################
 
+* unittest
+
 * Linting
 
 * Coverage
-
-* unittest
 
 * Fixtures
 
 * Mocking
 
+* Hypothesis Testing
+
 Reading
 =======
-
-:ref:`pep8`
-:ref:`advanced_testing`
-
 
 Supplemental Readings
 =====================
 
-
-
 Exercises
 =========
-
 

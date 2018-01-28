@@ -2,7 +2,6 @@
 
 import pathlib
 
-
 def file_yielder(dir=".", pattern="*"):
     """
     iterate over all the files that match the pattern
@@ -12,3 +11,4 @@ def file_yielder(dir=".", pattern="*"):
     for filename in pathlib.Path(dir).glob(pattern):
         with open(filename) as file_obj:
             yield file_obj
+

@@ -1,6 +1,5 @@
 # Demo of a contextmanager
 
-
 class Context(object):
     """
     from Doug Hellmann, PyMOTW
