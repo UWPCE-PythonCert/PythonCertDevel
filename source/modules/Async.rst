@@ -171,7 +171,7 @@ In fact, you can use generators and yield to make coroutines, and that was done 
 
 **Warning:** This is really hard stuff to wrap your head around!
 
-.. image:: images/coroutines_plot.png
+.. image:: /_static/coroutines_plot.png
 
 (from: http://www.dabeaz.com/coroutines/Coroutines.pdf -- which is a pretty good talk to read if you want to understand this stuff)
 
@@ -610,7 +610,7 @@ https://www.youtube.com/watch?v=lYe8W04ERnY
 When to use what
 ----------------
 
-.. image:: images/proc_thread_async.png
+.. image:: /_static/proc_thread_async.png
 
 
 

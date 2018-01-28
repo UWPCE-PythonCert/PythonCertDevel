@@ -52,7 +52,7 @@ Parallelization strategy for performance
 | 2. Execute chunks in parallel
 | 3. Reassemble output of chunks into result
 
-.. image:: images/OPP.0108.gif
+.. image:: /_static/OPP.0108.gif
       :align: right
       :height: 450px
       :alt: multitasking flow diagram
@@ -119,7 +119,7 @@ GIL
 This is a lock which must be obtained by each thread before it can
 execute, ensuring thread safety
 
-.. image:: images/gil.png
+.. image:: /_static/gil.png
     :width: 100.0%
 
 .. nextslide::
@@ -157,7 +157,7 @@ More about the gil
 
 Posted without comment
 ----------------------
-.. figure:: images/killGIL.jpg
+.. figure:: /_static/killGIL.jpg
    :class: fill
 
 
@@ -168,7 +168,7 @@ Numerically integrate the function
 :math:`y =x^2` from 0 to 10.
 http://www.wolframalpha.com/input/?i=x%5E2
 
-.. image:: images/x2.png
+.. image:: /_static/x2.png
   :height: 400px
 
 Solution: http://www.wolframalpha.com/input/?i=int(x%5E2,0,10)
@@ -422,7 +422,7 @@ resource simultaneously
 
 http://en.wikipedia.org/wiki/Semaphore_(programming)
 
-.. image:: images/flags.jpg
+.. image:: /_static/flags.jpg
   :height: 250px
 
 
