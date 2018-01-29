@@ -22,6 +22,17 @@ run all the code inside the context:
        ...:
     This code took 0.206805 seconds
 
+NOTE: the time module has what you need:
+
+.. code-block:: python
+    import time
+
+    start = time.clock()
+    # some code here
+    elapsed = time.clock() = start
+
+``time.clock()`` returns the number of seconds that this process has been running.  You can also use ``time.time()``, which gives the "wall time", rather than the process time. ``time()`` will vary more depending on how busy the system is. But you may want to use it if you want to measure how long it takes to download something, for instance.
+
 Extra Credit
 ------------
 
