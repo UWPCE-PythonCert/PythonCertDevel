@@ -51,3 +51,9 @@ More or less in order of presentation
     Closures
     Decorators
     ContextManagers
+    Pep8
+    Testing_advanced
+
+    Async
+
+

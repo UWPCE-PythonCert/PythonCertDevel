@@ -69,13 +69,7 @@ Unit-testing tools
 
    http://docs.python.org/3/library/unittest.html
 
--  nose2, a test runner which integrates with unittest, making it nicer and easier
-
-   http://nose2.readthedocs.org/en/latest/
-
-   NOTE: it's not clear how well maintained nose2 is...
-
--  pytest, an alternative to unittest, which you should be pretty familiar with now
+-  pytest, a test runner, and also an alternative to unittest, which you should be pretty familiar with now
 
    http://pytest.org/latest/
 
