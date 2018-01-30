@@ -219,6 +219,8 @@ run all the code inside the context:</p>
 <span class="go">This code took 0.206805 seconds</span>
 </pre></div>
 </div>
+<p>NOTE: the time module has what you need:</p>
+<p><code class="docutils literal"><span class="pre">time.clock()</span></code> returns the number of seconds that this process has been running.  You can also use <code class="docutils literal"><span class="pre">time.time()</span></code>, which gives the “wall time”, rather than the process time. <code class="docutils literal"><span class="pre">time()</span></code> will vary more depending on how busy the system is. But you may want to use it if you want to measure how long it takes to download something, for instance.</p>
 <div class="section" id="extra-credit">
 <h3>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h3>
 <p>Allow the <code class="docutils literal"><span class="pre">Timer</span></code> context manager to take a file-like

@@ -199,7 +199,7 @@ benefits before going parallel.</p>
 <div class="line">2. Execute chunks in parallel</div>
 <div class="line">3. Reassemble output of chunks into result</div>
 </div>
-<a class="reference internal image-reference" href="modules/images/OPP.0108.gif"><img alt="multitasking flow diagram" class="align-right" src="modules/images/OPP.0108.gif" style="height: 450px;" /></a>
+<a class="reference internal image-reference" href="../_images/OPP.0108.gif"><img alt="multitasking flow diagram" class="align-right" src="../_images/OPP.0108.gif" style="height: 450px;" /></a>
 </div>
 <div class="section" id="id1">
 <h3>Parallelization strategy for performance<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
@@ -244,7 +244,7 @@ independently, so processes do not share data!</p>
 <p><strong>Global Interpreter Lock</strong></p>
 <p>This is a lock which must be obtained by each thread before it can
 execute, ensuring thread safety</p>
-<a class="reference internal image-reference" href="modules/images/gil.png"><img alt="modules/images/gil.png" src="modules/images/gil.png" style="width: 100.0%;" /></a>
+<a class="reference internal image-reference" href="../_images/gil.png"><img alt="../_images/gil.png" src="../_images/gil.png" style="width: 100.0%;" /></a>
 <p>The GIL is released during IO operations, so threads which spend time
 waiting on network or disk access can enjoy performance gains</p>
 <p>The GIL is not unlike multitasking in humans, some things can truly be
@@ -268,7 +268,7 @@ have no GIL</p>
 <div class="section" id="posted-without-comment">
 <h3>Posted without comment<a class="headerlink" href="#posted-without-comment" title="Permalink to this headline">¶</a></h3>
 <div class="figure">
-<img alt="modules/images/killGIL.jpg" class="fill" src="modules/images/killGIL.jpg" />
+<img alt="../_images/killGIL.jpg" class="fill" src="../_images/killGIL.jpg" />
 </div>
 </div>
 <div class="section" id="a-cpu-bound-problem">
@@ -276,7 +276,7 @@ have no GIL</p>
 <p>Numerically integrate the function
 <span class="math">\(y =x^2\)</span> from 0 to 10.
 <a class="reference external" href="http://www.wolframalpha.com/input/?i=x%5E2">http://www.wolframalpha.com/input/?i=x%5E2</a></p>
-<a class="reference internal image-reference" href="modules/images/x2.png"><img alt="modules/images/x2.png" src="modules/images/x2.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/x2.png"><img alt="../_images/x2.png" src="../_images/x2.png" style="height: 400px;" /></a>
 <p>Solution: <a class="reference external" href="http://www.wolframalpha.com/input/?i=int(x%5E2,0,10">http://www.wolframalpha.com/input/?i=int(x%5E2,0,10</a>)</p>
 </div>
 <div class="section" id="parallel-execution-example">
@@ -542,7 +542,7 @@ until the Semaphore counter is greater than 0.</p>
 <p>Useful for controlling the maximum number of threads allowed to access a
 resource simultaneously</p>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/Semaphore_(programming">http://en.wikipedia.org/wiki/Semaphore_(programming</a>)</p>
-<a class="reference internal image-reference" href="modules/images/flags.jpg"><img alt="modules/images/flags.jpg" src="modules/images/flags.jpg" style="height: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/flags.jpg"><img alt="../_images/flags.jpg" src="../_images/flags.jpg" style="height: 250px;" /></a>
 </div>
 <div class="section" id="locking-exercise">
 <h3>Locking Exercise<a class="headerlink" href="#locking-exercise" title="Permalink to this headline">¶</a></h3>
