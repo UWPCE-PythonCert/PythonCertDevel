@@ -190,8 +190,6 @@ Then you need to break it. You can break it after a few arguments, when you run 
 
 Isn't that easier to read?
 
-
-
 Tools to help
 -------------
 
@@ -225,7 +223,13 @@ was adapted from `Doug Hellman <http://doughellmann.com/2008/03/01/static-code-a
 
 What can you spot as an error, bad practice, or poor style?
 
-Now let's see what pylint Listing1.py has to say
+Now let's see what pylint listing1.py has to say:
+
+.. code-block:: bash
+
+    $ pip install pylint
+
+    $ pylint listing1.py
 
 
 pyflakes
@@ -233,15 +237,20 @@ pyflakes
 
 Doesn't check style, just checks for functional errors, but does not run code.
 
-Now let's see what pyflakes Listing1.py has to say
+Now let's see what pyflakes listing1.py has to say
+
+.. code-block:: bash
+
+    $ pip install pyflakes
+
+    $ pyflakes listing1.py
 
 How much overlap with pylint?
-
 
 pycodestyle
 -----------
 
-used to be called "pep8"
+Used to be called "pep8" -- but Guido didn't like that it gave a tool apparent authority -- so they changed it.
 
 Only checks style
 
@@ -252,7 +261,13 @@ Interesting options:
     --statistics         count errors and warnings
     --count              print total number of errors and warnings to standard error and set exit code to 1 if total is not null
 
-Now let's see what pycodestyle Listing1.py has to say
+Now see what pycodestyle listing1.py has to say
+
+.. code-block:: bash
+
+    $ pip install pycodestyle
+
+    $ pycodestyle listing1.py
 
 What's the overlap in pycodestyle's output versus the other two tools?
 
@@ -261,10 +276,10 @@ flake8
 
 A tool which wraps pycodestyle, pyflakes, and mccabe
 
-`mccabe <http://nedbatchelder.com/blog/200803/python_code_complexity_microtool.html>`__
+`mccabe <http://nedbatchelder.com/blog/200803/python_code_complexity_microtool.html>`_
 is a "microtool" written by Ned Batchelder (author of coverage) for
-assessing `Cyclomatic
-Complexity <http://en.wikipedia.org/wiki/Cyclomatic_complexity>`__
+assessing
+`Cyclomatic Complexity <http://en.wikipedia.org/wiki/Cyclomatic_complexity>`__
 
 Interesting options:
 
@@ -272,30 +287,60 @@ Interesting options:
 
     --max-complexity=N    McCabe complexity threshold
 
-Now let's see what flake8 Listing1.py has to say
+Now see what flake8 listing1.py has to say
+
+.. code-block:: bash
+
+    $ pip install pycodestyle
+
+    $ pycodestyle listing1.py
 
 What's the overlap in flake8 output versus the other tools?
 
-analyzing-a-larger-codebase-in-the-wild
+Give them a try on your own code -- mailroom?
+
+skipping particular lines
+-------------------------
+
+Each of the tools has a way to mark particular lines to be ignored.
+
+For instance, flake8 has the ``# noqa`` marker. It's a comment as far as Python is concerned, but flake8 will skip that line if you mark it that way:
+
+.. code-block:: python
+
+  def functionName(self, int):
+      local = 5 + 5  # noqa
+      module_variable = 5*5
+      return module_variable
+
+This can be very nice to make the linter in your editor stop bugging you, and even nicer if you have an automated linter running -- like on a CI system.
+
+Analyzing a large codebase in the wild
 ---------------------------------------
 
-::
+It can be instructive to see what happens if you run these tools on a large established code base...
 
-    cd $HOME/virtualenvs/uwpce/lib/python3.5/site-packages
+.. code-block:: bash
+
+  $ pip install django
+
+    cd /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages
 
     flake8 django
 
     pylint django
 
-code-analysis-tool-battle-royale
+Code Analysis Tool Battle Royale
 --------------------------------
 
-::
+Try this!
 
-    pylint flake8
-    flake8 pylint
+.. code-block:: bash
 
-analysis-tool-summary
+    $ pylint flake8
+    $ flake8 pylint
+
+Analysis Tool Summary
 ---------------------
 
 -  There is no magic bullet that guarantees functional, beautiful code
@@ -303,3 +348,11 @@ analysis-tool-summary
 -  With the PEP-8 tools, it is easy to let rules such as line length
    slip by
 -  It's up to you to determine your thresholds
+
+Conclusion:
+-----------
+
+Personally, I use flake8 -- it gets most of it for me. Though a run with pylint isn't a bad idea once in a while....
+
+Also -- if you set up your editor with a linter -- you'll be encouraged to fix it a bit at a time as you write -- much better way to go.
+
