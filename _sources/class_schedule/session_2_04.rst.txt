@@ -25,6 +25,13 @@ Reading
 Supplemental Readings
 =====================
 
+* `Coverage <https://coverage.readthedocs.io>`_
+
+   - `pytest-cov <https://pytest-cov.readthedocs.io>`_
+
+Testing:
+--------
+
 * `Obey the Testing Goat <https://www.obeythetestinggoat.com/pages/book.html>`_
 
 * `monkey patching <https://holgerkrekel.net/2009/03/03/monkeypatching-in-unit-tests-done-right/>`_
