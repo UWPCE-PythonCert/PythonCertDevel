@@ -223,7 +223,7 @@ was adapted from `Doug Hellman <http://doughellmann.com/2008/03/01/static-code-a
 
 What can you spot as an error, bad practice, or poor style?
 
-Now let's see what pylint listing1.py has to say:
+Now see what pylint listing1.py has to say:
 
 .. code-block:: bash
 
@@ -237,7 +237,7 @@ pyflakes
 
 Doesn't check style, just checks for functional errors, but does not run code.
 
-Now let's see what pyflakes listing1.py has to say
+Now see what pyflakes listing1.py has to say
 
 .. code-block:: bash
 
