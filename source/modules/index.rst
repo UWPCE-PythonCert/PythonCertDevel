@@ -7,6 +7,9 @@ These are assorted notes about particular python topics used in the certificate 
 
 More or less in order of presentation
 
+First Class: Introduction to Python
+===================================
+
 .. toctree::
     :maxdepth: 1
 
@@ -45,6 +48,13 @@ More or less in order of presentation
     Lambda
     MapFilterReduce
     IPythonParallel
+
+Second Class: Advanced Python
+=============================
+
+.. toctree::
+    :maxdepth: 1
+
     IteratorsAndGenerators
     Packaging
     CodeReviews
