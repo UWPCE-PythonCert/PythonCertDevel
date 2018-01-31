@@ -595,14 +595,14 @@ https://pypi.python.org/pypi/parameterized
 
 .. code-block:: python
 
-@parameterized([
-    (2, 2, 4),
-    (2, 3, 8),
-    (1, 9, 1),
-    (0, 9, 0),
-])
-def test_pow(base, exponent, expected):
-    assert_equal(math.pow(base, exponent), expected)
+    @parameterized([
+        (2, 2, 4),
+        (2, 3, 8),
+        (1, 9, 1),
+        (0, 9, 0),])
+    def test_pow(base, exponent, expected):
+        assert_equal(math.pow(base, exponent), expected)
+
 
 Lots more examples on their website.
 
@@ -831,7 +831,8 @@ Useful for testing objects which depend on unimplemented code, resources
 which are expensive, or resources which are unavailable during test
 execution
 
-http://www.voidspace.org.uk/python/mock
+https://docs.python.org/3/library/unittest.mock-examples.html
+
 
 Mocks
 -----
