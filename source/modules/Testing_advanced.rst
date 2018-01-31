@@ -191,7 +191,7 @@ Call unittest.main() right in your module
 
 
 If it gets cumbersome with many TestCases, organize the tests into a
-test suite
+test suite (or use a test runner, which we get to soon).
 
 Test Suites
 -----------
@@ -216,8 +216,8 @@ Tests can also be organized into suites in the
 block
 
 
-pytest and Nose2
-----------------
+TestRunners: pytest and Nose2
+-----------------------------
 
 Nose2 is the new nose. Nose no longer maintained, and directs users to nose2.
 But Nose2 is not all that well maintained either.
@@ -884,7 +884,24 @@ Using patch
             mock_method.assert_called_once_with("Robot")
 
 
-http://www.voidspace.org.uk/python/mock/patch.html
+Mocking a builtin
+-----------------
+
+Say you would like to mock input in this function in a file called mock_input:
+
+::
+    def get_input():
+        color = input("What is your favorite color? ")
+        return color
+
+
+In your test file, you would do this:
+
+::
+    @mock.patch('builtins.input')
+    def test_get_more_input(self, new_mocked_input):
+        new_mocked_input.return_value = 'blue'
+        self.assertEqual(mock_input.get_input(), 'blue')
 
 
 Exercise
