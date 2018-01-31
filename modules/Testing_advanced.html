@@ -841,13 +841,13 @@ execution</p>
 <p>The MagicMock class will keep track of calls to it so we can verify
 that the class is being called correctly, without having to execute the
 code underneath</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mock</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">mock</span>
 
 <span class="n">mock_object</span> <span class="o">=</span> <span class="n">mock</span><span class="o">.</span><span class="n">MagicMock</span><span class="p">()</span>
 <span class="n">mock_object</span><span class="o">.</span><span class="n">foo</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="s2">&quot;foo return&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mock_object</span><span class="o">.</span><span class="n">foo</span><span class="o">.</span><span class="n">call_count</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mock_object</span><span class="o">.</span><span class="n">foo</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mock_object</span><span class="o">.</span><span class="n">foo</span><span class="o">.</span><span class="n">call_count</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">mock_object</span><span class="o">.</span><span class="n">foo</span><span class="o">.</span><span class="n">call_count</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">mock_object</span><span class="o">.</span><span class="n">foo</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">mock_object</span><span class="o">.</span><span class="n">foo</span><span class="o">.</span><span class="n">call_count</span><span class="p">)</span>
 <span class="c1"># raise an exception by assigning to the side_effect attribute</span>
 <span class="n">mock_object</span><span class="o">.</span><span class="n">foo</span><span class="o">.</span><span class="n">side_effect</span> <span class="o">=</span> <span class="ne">Exception</span>
 <span class="n">mock_object</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
@@ -893,6 +893,19 @@ undone</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">mock_input</span><span class="o">.</span><span class="n">get_input</span><span class="p">(),</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="mocking-with-pytest">
+<h3>mocking with pytest<a class="headerlink" href="#mocking-with-pytest" title="Permalink to this headline">¶</a></h3>
+<p>pytest uses the same mock library, but has a little different syntax.</p>
+<p>Here is an example of mocking <code class="docutils literal"><span class="pre">input()</span></code> with pytest:</p>
+<p><a class="reference download internal" href="../_downloads/test_mock_input.py" download=""><code class="xref download docutils literal"><span class="pre">test_mock_input.py</span></code></a></p>
+<p><cite>pytest-mock</cite> is a utility that makes it easier to mock
+with pytest.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pip install pytest-mock
+</pre></div>
+</div>
+<p>Here is a nice blog post about using it:</p>
+<p><a class="reference external" href="https://medium.com/&#64;bfortuner/python-unit-testing-with-pytest-and-mock-197499c4623c">https://medium.com/&#64;bfortuner/python-unit-testing-with-pytest-and-mock-197499c4623c</a></p>
 </div>
 <div class="section" id="exercise">
 <h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
