@@ -850,9 +850,9 @@ The MagicMock class will keep track of calls to it so we can verify
 that the class is being called correctly, without having to execute the
 code underneath
 
-::
+.. code-block:: python
 
-        import mock
+        from unittest import mock
 
         mock_object = mock.MagicMock()
         mock_object.foo.return_value = "foo return"
@@ -898,7 +898,8 @@ Mocking a builtin
 
 Say you would like to mock input in this function in a file called mock_input:
 
-::
+.. code-block:: python
+
     def get_input():
         color = input("What is your favorite color? ")
         return color
@@ -906,11 +907,32 @@ Say you would like to mock input in this function in a file called mock_input:
 
 In your test file, you would do this:
 
-::
+.. code-block:: python
+
     @mock.patch('builtins.input')
     def test_get_more_input(self, new_mocked_input):
         new_mocked_input.return_value = 'blue'
         self.assertEqual(mock_input.get_input(), 'blue')
+
+mocking with pytest
+-------------------
+
+pytest uses the same mock library, but has a little different syntax.
+
+Here is an example of mocking ``input()`` with pytest:
+
+:download:`test_mock_input.py </examples/testing/test_mock_input.py>`
+
+`pytest-mock` is a utility that makes it easier to mock
+with pytest.
+
+.. code-block:: bash
+
+   $ pip install pytest-mock
+
+Here is a nice blog post about using it:
+
+https://medium.com/@bfortuner/python-unit-testing-with-pytest-and-mock-197499c4623c
 
 
 Exercise
