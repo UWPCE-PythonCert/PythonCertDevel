@@ -549,7 +549,7 @@ Parameterized Tests
 
 Often you want to run exactly the same tests, but with different outputs and inputs.
 
-You can do this a really naive way, but putting multiple asserts into one test:
+You can do this a really naive way, by putting multiple asserts into one test:
 
 .. code-block:: python
 
@@ -752,9 +752,16 @@ http://www.python.org/dev/peps/pep-0257/
 
 http://epydoc.sourceforge.net/
 
+These days, most Python projects use Sphinx to do their documentation:
+
 http://sphinx-doc.org/
 
-http://www.doxygen.org
+Well worth checking out -- and you can have Sphinx run your doctests for you.
+
+My Take:
+........
+
+doctests are really cool -- but they are more a way to test your documentation, than a way to test your code. Which is pretty cool -- you can have examples in your docs, and know that they are still correct.
 
 
 Test Driven Development (TDD)
@@ -768,10 +775,15 @@ Once the collection of tests passes, the requirement is considered met.
 We don't always want to run the entire test suite. In order to run a
 single test with pytest:
 
-::
+.. code-block:: bash
 
-    pytest -k "test_divide"
+    $ pytest -k "test_divide"
 
+The -k means:
+
+  only run tests which match the given substring expression. An expression is a python evaluatable expression where all names are substring-matched against test names and their parent classes.
+
+So you can pretty easily select a subset of your tests if they have consistent naming scheme.
 
 Exercises
 ---------
@@ -787,21 +799,19 @@ or
 -  Fix any failures in the code
 -  Add doctests to calculator_functions.py
 
-
-
 Now we've got the tools to really test
 --------------------------------------
 
 Consider the application in the examples/wikidef directory. Give the
 command line utility a subject, and it will return a definition.
 
-::
+.. code-block:: bash
 
-        ./define.py Robot
-
+    ./define.py Robot
 
 How can we test our application code without abusing (and waiting for)
 Wikipedia?
+
 
 Using Mock objects
 ------------------
