@@ -2,15 +2,14 @@
 
 .. _advanced_testing:
 
-*******
+#######
 Testing
-*******
+#######
 
 Testing in Python
 
 UWPCE Python certificate advanced topic.
 
-================
 What is testing?
 ================
 
@@ -44,7 +43,6 @@ Unit testing
 -  Automatable
 -  Integrates with development process
 
-.. nextslide::
 
 What should be tested?
 ----------------------
@@ -59,8 +57,6 @@ what to test should take into account the volatility of the project.
 they may not be comprehensive! It is very hard to anticipate every wierd
 input some code may get.
 
-
-.. nextslide::
 
 Unit-testing tools
 ------------------
@@ -165,7 +161,6 @@ http://docs.python.org/3/library/unittest.html#assert-methods or
     [print(i) for i in dir(unittest.TestCase) if i.startswith('assert')]
 
 
-==================
 Running your tests
 ==================
 
@@ -198,7 +193,7 @@ Test Suites
 
 Test suites group test cases into a single testable unit
 
-::
+.. code-block:: python
 
     import unittest
 
@@ -207,7 +202,6 @@ Test suites group test cases into a single testable unit
     suite = unittest.TestLoader().loadTestsFromTestCase(TestCalculatorFunctions)
 
     unittest.TextTestRunner(verbosity=2).run(suite)
-
 
 Tests can also be organized into suites in the
 
@@ -219,13 +213,12 @@ block
 TestRunners: pytest and Nose2
 -----------------------------
 
-Nose2 is the new nose. Nose no longer maintained, and directs users to nose2.
-But Nose2 is not all that well maintained either.
+Nose2 is the new nose. Nose is no longer maintained, and directs users to nose2.
 
-Both pytest and Nose2 are test runners: they autodiscover test cases
+Both pytest and Nose2 are test runners: they auto-discover test cases.
 
 They will find tests for you so you can focus on writing tests, not
-maintaining test suites
+maintaining test suites.
 
 To find tests, pytest and nose look for modules (such as python files)
 whose names start with ‘test’. In those modules, they will load tests
@@ -234,12 +227,11 @@ start with ‘test’.
 
 So running your tests is as easy as
 
-::
+.. code-block:: bash
 
     $ pytest
     or
     $ nose2
-
 
 http://nose2.readthedocs.org/en/latest/getting_started.html#running-tests
 
@@ -247,7 +239,6 @@ https://docs.pytest.org/en/latest/index.html
 
 A number of projects use nose -- so you may encounter it, but we'll focus
 on pytest for now.
-
 
 
 Fixtures: Setting up your tests for success
@@ -260,6 +251,7 @@ also known as test context.
 
 Fixtures can be set up fresh before each test, once before each test
 case, or before an entire test suite.
+
 
 Fixtures in unittest
 --------------------
@@ -302,7 +294,7 @@ To use a fixture, you add it as a parameter to your test function:
         assert response == 250
         assert 0 # for demo purposes
 
-the parameter gets set to the value returned by the fixture function.
+The parameter gets set to the value returned by the fixture function.
 The fixture function is automatically run before each test.
 
 Let's see this in action:
@@ -315,15 +307,15 @@ The ``-s`` tells pytest not to capture stdout -- so we can see print statements)
 
 The ``-v`` is verbose mode -- so we can see a bit more what is going on.
 
-"teardown"
+"Teardown"
 ----------
 
 If your fixture needs to clean itself up after its done, this is known as
 "teardown"
 
-to accomplish this in pytest, you use "yield", rather than "return".
+To accomplish this in pytest, you use "yield", rather than "return".
 
-The teardowncode will run after the yield
+The teardown code will run after the yield
 
 .. code-block:: python
 
@@ -334,39 +326,36 @@ The teardowncode will run after the yield
       print("teardown smtp")
       smtp.close()
 
+Remember that putting a yield in a function makes is a generator function -- which provides a way to halt execution of the function, return a value, and then pick up where it left off. So in this case, you use whatever code you want to generate your object -- then after the yield, all those variables will be there, so you can do whatever clean up you need to do.
+
 See the example again for this...
 
-=============================
 Testing floating point values
 =============================
 
-.. rst-class:: left
+Why can't we just test if .5 == 1/2 ?
 
-    Why can't we just test if .5 == .5 ?
+.. code-block:: ipython
 
-    .. code-block:: ipython
+    In [1]: 3 * .15 == .45
+    Out[1]: False
 
-        In [1]: 3 * .15 == .45
-        Out[1]: False
+    In [2]: 3 * .15
+    Out[2]: 0.44999999999999996
 
-        In [2]: 3 * .15
-        Out[2]: 0.44999999999999996
+    In [3]: 3 * .15 * 10 / 10  == .45
+    Out[3]: True
 
-        In [3]: 3 * .15 * 10 / 10  == .45
-        Out[3]: True
+There are an infinite number of real numbers, so they are
+stored as an approximation in computing hardware.
 
-    There are an infinite number of floating point numbers, so they are
-    stored as an approximation in computing hardware.
+https://docs.python.org/3/tutorial/floatingpoint.html
 
-    https://docs.python.org/3/tutorial/floatingpoint.html
 
 levels of precision of floating point
 -------------------------------------
 
-Floating point numbers are stored in `IEEE
-754 <http://en.wikipedia.org/wiki/IEEE_floating_point>`__ 64-bit double
-precision format, so 1 bit for the sign, 11 bits for the exponent, and
-the remaining 52 for the fraction
+Python floating point numbers are stored in `IEEE 754 <http://en.wikipedia.org/wiki/IEEE_floating_point>`_ 64-bit double precision format, so 1 bit for the sign, 11 bits for the exponent, and the remaining 52 for the fraction.
 
 So we can count on up to 16 digits of precision in decimal:
 
@@ -387,10 +376,12 @@ So we can count on up to 16 digits of precision in decimal:
     In [69]: for i in range(10000000): x *= (.1 + .2)/.3
     Out [69]: 1.000000002220446
 
+
 assertAlmostEqual
 -----------------
 
-Verifies that two floating point values are close enough to each other.
+assertAlmostEqual is a custom assert in ``unittest`` that verifies that two floating point values are close enough to each other.
+
 Add a places keyword argument to specify the number of decimal places.
 
 .. code-block:: python
@@ -412,12 +403,9 @@ Add a places keyword argument to specify the number of decimal places.
 What is close?
 --------------
 
-.. rst-class:: medium
+**Warning**
 
-    **Warning**
-
-``assertAlmostEqual`` lets you specify *decimal places*,
-i.e. the number of digits after the decimal point.
+``assertAlmostEqual`` lets you specify *decimal places*, i.e. the number of digits after the decimal point.
 
 This works great for numbers that are about magnitude 1.0 (as above)
 
@@ -427,8 +415,6 @@ But what if you have numbers that are very large? (or small):
   - ``1.0000000000001e22``
 
 are they almost equal?
-
-.. nextslide::
 
 Remember that python floating point numbers store the exponent and up
 to 16 decimal digits.
@@ -472,8 +458,6 @@ https://www.python.org/dev/peps/pep-0485/
     Out[42]: True
 
 So this works for any magnitude number.
-
-.. nextslide::
 
 .. code-block:: python
 
@@ -545,11 +529,11 @@ Not that helpful -- is it?
 
 
 Parameterized Tests
---------------------
+===================
 
 Often you want to run exactly the same tests, but with different outputs and inputs.
 
-You can do this a really naive way, but putting multiple asserts into one test:
+You can do this a really naive way, by putting multiple asserts into one test:
 
 .. code-block:: python
 
@@ -570,7 +554,7 @@ You can write a separate test for each case:
 
 .. code-block:: python
 
-  def test_multiply_both_posative():
+  def test_multiply_both_positive():
       assert multiply(2, 2) == 4
 
   def test_multiply_one_negative):
@@ -606,10 +590,11 @@ https://pypi.python.org/pypi/parameterized
 
 Lots more examples on their website.
 
+
 ``pytest.mark.parametrize``
 ---------------------------
 
-Pytest does provide a nifty way to do it:
+Pytest does provide a nifty way built in way to do it:
 
 https://docs.pytest.org/en/latest/parametrize.html#parametrize-basics
 
@@ -626,7 +611,7 @@ https://docs.pytest.org/en/latest/parametrize.html#parametrize-basics
 
 I find this very, very, useful.
 
-See ``Examples/teseting/calculator/test_calculator_pytest.py``
+See ``examples/calculator/test_calculator_pytest.py`` in the class repo.
 
 Code Coverage
 -------------
@@ -634,15 +619,14 @@ Code Coverage
 "Coverage" is the fraction of your code that is run by your tests.
 That is, how much code is "covered" by the tests.
 
-It's usually reorted as a percentage of lines of code that were run.
+It's usually reported as a percentage of lines of code that were run.
 
 If a line of code is *not* run in your tests -- you can be pretty
 sure it hasn't been tested -- so how do you know it works?
 
 So 100% coverage is a good goal (though harder to achieve than you might think!)
 
-Keep in mind that 100% coverage does **NOT** mean that you code is fuly tested
--- you have no idea how many corner cases may not have been checked.
+Keep in mind that 100% coverage does **NOT** mean that you code is fully tested -- you have no idea how many corner cases may not have been checked.
 
 But it's a good start.
 
@@ -652,44 +636,46 @@ The coverage tool
 "Coverage.py" is a tool (written by Ned Batchelder) for checking code testing
 coverage in python:
 
-https://coverage.readthedocs.io/en/coverage-4.3.4/
+https://coverage.readthedocs.io
 
-It can be installed with ``pip``::
+It can be installed with ``pip``:
 
-  python -m pip install coverage
+.. code-block:: bash
+
+  $ python -m pip install coverage
 
 To run coverage on your test suite:
 
-::
+.. code-block:: bash
 
-    coverage run my_program.py arg1 arg2
+  $ coverage run my_program.py arg1 arg2
 
 This generates a .coverage file. To analyze it on the console:
 
-::
+.. code-block:: bash
 
-    coverage report
+  $ coverage report
 
 Else generate an HTML report in the current directory:
 
-::
+.. code-block:: bash
 
-    coverage html
+  $ coverage html
 
 To find out coverage across the standard library, add -L:
 
 ::
 
-      -L, --pylib           Measure coverage even inside the Python installed
-                            library, which isn't done by default.
+      -L, --pylib   Measure coverage even inside the Python installed
+                    library, which isn't done by default.
 
 
-branch coverage
+Branch Coverage
 ---------------
 
 consider the following code:
 
-::
+.. code-block:: python
 
     x = False  # 1
     if x:      # 2
@@ -700,9 +686,9 @@ We want to make sure the branch is being bypassed correctly in the False
 case
 
 Track which branch destinations were not visited with the --branch
-option to run
+option to run:
 
-::
+.. code-block:: bash
 
     coverage run --branch myprog.py
 
@@ -713,23 +699,26 @@ Using coverage with pytest
 
 There is a plug-in for pytest that will run coverage for you when you run your tests:
 
-::
+.. code-block:: bash
 
     $ pip install pytest-cov
+
     # now it can be used
-    $ py.test --cov test_file.py
+    $ py.test --cov code_module test_module.py
 
 https://pypi.python.org/pypi/pytest-cov
 
 There are a number of ways to invoke it and get different reports:
 
-To get a nifty html report::
+To get a nifty html report:
 
-  pytest --cov --cov-report html test_calculator_pytest.py
+.. code-block:: bash
+
+  pytest --cov code_module --cov-report html test_module.py
 
 
 Doctests
---------
+========
 
 Tests placed in docstrings to demonstrate usage of a component to a
 human in a machine testable way
@@ -747,17 +736,15 @@ human in a machine testable way
         """
         return x * x
 
-::
+.. code-block:: bash
 
         python -m doctest -v example.py
 
-.. nextslide::
-
 Now generate documentation, using epydoc for example:
 
-::
+.. code-block:: bash
 
-        $ epydoc example.py
+  $ epydoc example.py
 
 
 http://docs.python.org/3/library/doctest.html
@@ -766,29 +753,43 @@ http://www.python.org/dev/peps/pep-0257/
 
 http://epydoc.sourceforge.net/
 
+These days, most Python projects use Sphinx to do their documentation:
+
 http://sphinx-doc.org/
 
-http://www.doxygen.org
+Well worth checking out -- and you can have Sphinx run your doctests for you.
+
+My Take:
+--------
+
+doctests are really cool -- but they are more a way to test your documentation, than a way to test your code. Which is pretty cool -- you can have examples in your docs, and know that they are still correct.
 
 
 Test Driven Development (TDD)
------------------------------
+=============================
 
 In TDD, the tests are written the meet the requirements before the code
 exists.
 
 Once the collection of tests passes, the requirement is considered met.
 
+We've been trying to get you to do this from the beginning of this class :-)
+
 We don't always want to run the entire test suite. In order to run a
 single test with pytest:
 
-::
+.. code-block:: bash
 
-    pytest -k "test_divide"
+    $ pytest -k "test_divide"
 
+The -k means:
+
+  only run tests which match the given substring expression. An expression is a python evaluatable expression where all names are substring-matched against test names and their parent classes.
+
+So you can pretty easily select a subset of your tests if they have consistent naming scheme.
 
 Exercises
----------
+=========
 
 -  Add unit tests for each method in calculator_functions.py
 -  Add fixtures via setUp/tearDown methods and setUpClass/tearDownClass
@@ -801,21 +802,29 @@ or
 -  Fix any failures in the code
 -  Add doctests to calculator_functions.py
 
+YOu can find all that in:
 
+``examples/calculator``
+
+In the class repo.
+
+
+Mocking
+=======
 
 Now we've got the tools to really test
 --------------------------------------
 
-Consider the application in the examples/wikidef directory. Give the
+Consider the application in the ``examples/wikidef`` directory. Give the
 command line utility a subject, and it will return a definition.
 
-::
+.. code-block:: bash
 
-        ./define.py Robot
-
+    ./define.py Robot
 
 How can we test our application code without abusing (and waiting for)
 Wikipedia?
+
 
 Using Mock objects
 ------------------
@@ -908,10 +917,8 @@ Exercise
 --------
 
 When define.py is given the name of a non-existent article, an exception
-is thrown. This exception causes another exception to occur, and the whole thing
-is not very readable. Why does this happen?
+is thrown. This exception causes another exception to occur, and the whole thing is not very readable. Why does this happen?
 
 Use what you know about exceptions to throw a better exception, and
-then add a new test that confirms this behavior. Use mock for your test, so you
-are not hammering Wikipedia.
+then add a new test that confirms this behavior. Use mock for your test, so you are not hammering Wikipedia.
 
