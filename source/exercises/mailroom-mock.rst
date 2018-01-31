@@ -41,6 +41,8 @@ Fixtures are a really good way to make your tests cleaner and more independent. 
 
 Clean up your tests with fixtures -- and keep the coverage up!
 
+One possible use for a fixture is providing a file to write to for the code that writes files. Or maybe a directory to put the files in, and then it can clean up the dir in teardown.
+
 
 Mocking input
 -------------
