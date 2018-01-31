@@ -290,7 +290,7 @@ You use a decorator to create a fixture:
         import smtplib
         return smtplib.SMTP("smtp.gmail.com")
 
-A fixture is simply a function that will get run when it it used, and
+A fixture is simply a function that will get run when it is used, and
 returns *something* that your tests need:
 
 To use a fixture, you add it as a parameter to your test function:
