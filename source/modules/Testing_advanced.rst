@@ -8,7 +8,7 @@ Testing
 
 Testing in Python
 
-UWPCE Python certificate third quarter.
+UWPCE Python certificate advanced topic.
 
 ================
 What is testing?
@@ -124,7 +124,7 @@ unittest.TestCase anatomy
 .. code-block:: python
 
     import unittest
-    class TestTest(unittest.TestCase):
+    class TestMyStuff(unittest.TestCase):
 
         def setUp(self):
             self.x = 2
@@ -307,7 +307,7 @@ The fixture function is automatically run before each test.
 
 Let's see this in action:
 
-in: ``Examples\testing``::
+:download:`pytest_fixtures.py <../examples/testing/pytest_fixtures.py>`
 
     py.test -s -v pytest_fixtures.py
 
@@ -588,9 +588,23 @@ You can write a separate test for each case:
 But talk about tedious!!!
 
 Unfortunately, ``unittest`` does not have a built-in way to solve this
-problem. There are hacks to do it -- google them to find out how. Here is one:
+problem. There is a nifty library called parameterized, which does solve it,
+and they spell parameterize correctly. It works with nose, unittest, and pytest.
 
-http://eli.thegreenplace.net/2011/08/02/python-unit-testing-parametrized-test-cases
+https://pypi.python.org/pypi/parameterized
+
+.. code-block:: python
+
+@parameterized([
+    (2, 2, 4),
+    (2, 3, 8),
+    (1, 9, 1),
+    (0, 9, 0),
+])
+def test_pow(base, exponent, expected):
+    assert_equal(math.pow(base, exponent), expected)
+
+Lots more examples on their website.
 
 ``pytest.mark.parametrize``
 ---------------------------
