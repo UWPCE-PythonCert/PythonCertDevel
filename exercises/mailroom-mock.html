@@ -224,6 +224,7 @@ $ pytest --cov<span class="o">=</span>mailroom
 <h2>Fixtures<a class="headerlink" href="#fixtures" title="Permalink to this headline">¶</a></h2>
 <p>Fixtures are a really good way to make your tests cleaner and more independent. With mailroom, you should have a couple fixtures that set up a donor database with some data in it – and maybe one or two for <code class="docutils literal"><span class="pre">Donor</span></code> objects.</p>
 <p>Clean up your tests with fixtures – and keep the coverage up!</p>
+<p>One possible use for a fixture is providing a file to write to for the code that writes files. Or maybe a directory to put the files in, and then it can clean up the dir in teardown.</p>
 </div>
 <div class="section" id="mocking-input">
 <h2>Mocking input<a class="headerlink" href="#mocking-input" title="Permalink to this headline">¶</a></h2>
