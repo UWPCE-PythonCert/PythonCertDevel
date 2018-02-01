@@ -63,7 +63,8 @@ Second Class: Advanced Python
     ContextManagers
     Pep8
     Testing_advanced
-
+    Logging
+    Debugging
     Async
 
 
