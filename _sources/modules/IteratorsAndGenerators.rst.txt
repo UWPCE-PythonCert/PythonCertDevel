@@ -3,11 +3,7 @@
 Iterators and Generators
 =========================
 
-
-
   The Tools of Pythonicity
-
-
 
     What goes on in those for loops?
 

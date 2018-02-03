@@ -98,6 +98,8 @@ Note that the first and last values are not doubled, so it may be more efficient
 
   area = \frac{b-a}{N} \left( \frac{f(x_0) + f(x_{N})}{2} + \sum_{i=1}^{N-1} f(x_i) \right)
 
+**NOTE:** for those of you confused by that weird big greek letter (no it's a name for a fraternity...) -- see: :ref:`sum_explained`
+
 Can you use comprehensions for this?
 
 NOTE: ``range()`` only works for integers -- how can you deal with that?
@@ -257,7 +259,46 @@ See if you can think of a way to dynamically determine how small a step you shou
 This is one for the math and computational programming geeks!
 
 
+.. _sum_explained:
 
+A bit about math symbology
+--------------------------
+
+Those of you without a lot of math background may be confused by the symbols. So here's a quick intro to the "Summation Symbol" (Greek Capital sigma)
+
+.. math::
+
+    \sum_{i=a}^{b} x_i
+
+.. \sum_{i=1}^{N-1} f(x_i) \right)
+
+Is shorthand for "add up a bunch of values, with varying i from a to b". where each x is a different value each time. Translating this into code you get:
+
+.. code-block:: python
+
+    x = a_list_of_numbers
+    total = 0
+    for i in range(a, b+1):
+        total += x[i]
+
+or, in more compact python:
+
+.. code-block:: python
+
+    x = an iterable_of_numbers
+    total = sum(x[a:b+1])
+
+So the full expression used above:
+
+.. math::
+
+  \sum_{i=1}^{N-1} fun(x_i)
+
+Can be written as:
+
+.. code-block:: python
+
+    sum(fun(x) for x in list_of_x[1:-1])
 
 
 

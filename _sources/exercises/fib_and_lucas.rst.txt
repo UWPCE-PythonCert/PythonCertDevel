@@ -31,7 +31,8 @@ Step 1
 
   - The function should have one parameter ``n``.
 
-  - The function should return the ``nth`` value in the fibonacci series.
+  - The function should return the ``nth`` value in the fibonacci series
+    (starting with zero index).
 
 * Ensure that your function has a well-formed ``docstring``
 
@@ -53,7 +54,7 @@ values 2 and 1 rather than 0 and 1. The resulting series looks like this::
 
 
 In your ``series.py`` module, add a new function ``lucas`` that returns the
-``nth`` value in the *lucas numbers* series.
+``nth`` value in the *lucas numbers* series (starting with zero index).
 
 Ensure that your function has a well-formed ``docstring``
 
