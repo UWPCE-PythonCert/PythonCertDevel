@@ -15,6 +15,11 @@ Session 5: Logging and Debugging
 Reading
 =======
 
+:ref:`logging`
+
+:ref:`debugging`
+
+
 Supplemental Readings
 =====================
 
