@@ -311,7 +311,7 @@ A more complex logging setup
 
 See:
 
-see ``Examples/logging/example.py``
+``examples/logging/example.py``
 
 In there, a logging system is set up that logs to a file, and also the console.
 
