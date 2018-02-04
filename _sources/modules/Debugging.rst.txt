@@ -262,7 +262,7 @@ You already know what it looks like. Simple traceback:
         contents = json_response['parse']['text']['*']
     TypeError: 'method' object is not subscriptable
 
-But things can quickly get complicated, as we all ran into last quarter with web frameworks.
+But things can quickly get complicated. You may have already run into stacktraces that go on for a 50 lines or more.
 
 
 .. nextslide::
@@ -273,10 +273,12 @@ Some helpful hints with stacktraces:
 - May seem obvious, but... Read it carefully!
 - What is the error? Try reading it aloud.
 - The first place to look is the bottom.
-- More than likely the error is in your code, not established packages.
-- Sometimes that error was triggered by something else, and you need to look higher.
-- If error at bottom of stacktrace is not helpful, look first for other code of yours in stack.
-- Will show the line number and file of exception/calling functions.
+- Trace will show the line number and file of exception/calling functions.
+- More than likely the error is in your code, not established packages 
+  - look at lines in your code mentioned in the stacktrace first
+  - Sometimes that error was triggered by something else, and you need to look higher. (probably more than one file in t he stacktrace is your code)
+
+
 
 
 .. nextslide::
@@ -301,7 +303,7 @@ Write out an email that describes the problem:
 - include steps you have taken to find the bug
 - inlude the relative function of your code
 
-Often after writing out this email, you will realize what you forgot to check, and more often than not, this will happen just after you hit send. Good places to send these emails are other people on same project and mailing list for software package.
+Often after writing out this email, you will realize what you forgot to check, and more often than not, this will happen just after you hit send. Good places to send these emails are other people on same project and mailing list for software package. For the purpose of this class, of course, copy it into slack or the class email list.
 
 
 .. nextslide::
@@ -613,7 +615,7 @@ test to understand a certain failure situation::
 
 .. nextslide::
 
-Let's try some debugging!
+Try some debugging! Here is a fun tutorial intro to pdb that someone created:
 
 https://github.com/spiside/pdb-tutorial
 
@@ -686,41 +688,6 @@ or older package rpdb
 https://pypi.python.org/pypi/rpdb
 
 (only tested to Python 3.1)
-
-
-Debugging exercise
-------------------
-
-Find the wikidef app in the examples folder
-
-See if you can find the bug and get the app working. Use whatever debugging
-technique(s) you prefer.
-
-To run the app::
-
-    python define.py interesting_topic
-
-where interesting_topic is a topic of interest, like python. ;-)
-
-.. nextslide::
-
-Once it is working again:
-Using (i)pdb in module mode (python -m pdb ) to find the name of the server and the Content-Type that
-wikipedia is using by looking at response.headers in Wikipedia.article. What type of object is response.headers?
-
-You can enter the debugger by running::
-
-    python -m pdb ./define.py robot
-
-(define.py takes the first sys arg and finds articles on wikipedia on that topic)
-
-You can get to the code by walking through each line with 's'tep and
-'n'ext commands, or by setting a breakpoint and 'c'ontinuing.
-
-What's the result?
-
-
-You may also want to take a look at long_loop.py and see if you can answer the questions there.
 
 Questions?
 ----------
