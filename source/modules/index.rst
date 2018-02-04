@@ -60,11 +60,17 @@ Second Class: Advanced Python
     CodeReviews
     Closures
     Decorators
+
     ContextManagers
+
     Pep8
     Testing_advanced
+
     Logging
     Debugging
+
+    MetaProgramming
+
     Async
 
 
