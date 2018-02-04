@@ -317,8 +317,6 @@ In there, a logging system is set up that logs to a file, and also the console.
 
 It calls a fake "application" that does things in random order, logging as it goes...
 
-Let's go check it out!
-
 
 References
 ----------
