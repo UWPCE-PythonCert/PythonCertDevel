@@ -26,3 +26,4 @@ Supplemental Readings
 Exercises
 =========
 
+Add logging using the logging module to Mailman.
