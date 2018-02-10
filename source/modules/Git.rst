@@ -95,7 +95,7 @@ Working with Remotes
 
 With git, you work with *local* repositories and the *remotes* that they are connected to.
 
-Git uses shortcuts to address *remotes*. Cloned repositories get an *origin* shortcut for free:
+Git uses shortcuts to address *remotes*. When you *clone* a repository from its remote location to your local machine, you get an *origin* shortcut for free:
 
 .. code-block:: bash
 
@@ -123,9 +123,9 @@ The class repositories are on *GitHub* in the *UWPCE-PythonCert-ClassRepos* orga
    :width: 50%
    :class: center
 
-Each class with have repository created specifically for it, called something like: "Wi2018-Online".
+Each class will have a repository created specifically for it, called something like: "Wi2018-Online".
 
-In examples below it is called IntroToPython, so replace that in your head with the name of your classes repository.
+In examples below it is called IntroToPython, so replace that in your head with the name of your class's repository.
 
 This class repository will include examples and relevant materials (and some exercise solutions) will be added throughout the class.
 
@@ -162,10 +162,23 @@ The next step is to make a *clone* of your fork on your own computer, which mean
    :width: 50%
    :class: center
 
-Since you are working on a repository that you do not own, you will need to make a git shortcut to the original repository, so that you can get changes made by other contributors (i.e. the instructors and other students) before you start working.
+Begin in a directory on your computer where you want to keep your cloned version of the class repository.
+This can live anywhere on your file system but this outer directory should not be tracked in git.
+
+From that directory, run
+
+.. code-block:: bash
+
+    $ git clone https://github.com/your_github_id/IntroToPython
+
+Be sure to replace "IntroToPython" with the name of your class repository (you can get the url by going to the class repo on gitHub and clicking “clone or download”).
+
+This will download the repository from your GitHub account into the local directory that you ran the git *clone* command from.
 
 Adding a remote
 ...............
+
+Since you are working on a repository that you do not own, you will need to make a git shortcut to the original repository, so that you can get changes made by other contributors (i.e. the instructors and other students) before you start working.
 
 You can add *remotes* at will, to connect your *local* repository to other
 copies of it in different remote locations.
@@ -174,23 +187,22 @@ This allows you to grab changes made to the repository in these other
 locations.
 
 For this class, you will add an *upstream* remote to our local copy that points to the original copy of the material in the
-``UWPCE-PythonCert-ClassRepos`` account, and we will call it, appropriately, "upstream"
+``UWPCE-PythonCert-ClassRepos`` account, and we will call it, appropriately, "upstream". Change directories into your local version of the class
+repository and run (remembering to use the name of your class):
 
 .. code-block:: bash
 
-    $ git remote add upstream https://github.com/UWPCE-PythonCert-ClassRepos/ClassRepoTemplate
-
-remember to use the name of your class -- you can get the url by going to the class repo on gitHub and clicking "clone or download"
+    $ git remote add upstream https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython
 
 Your local setup should now look something like this:
 
 .. code-block:: bash
 
     $ git remote -v
-    origin  https://github.com/your_github_id/ClassRepoTemplate (fetch)
-    origin  https://github.com/your_github_id/ClassRepoTemplate (push)
-    upstream    https://github.com/UWPCE-PythonCert-ClassRepos/ClassRepoTemplate (fetch)
-    upstream    https://github.com/UWPCE-PythonCert-ClassRepos/ClassRepoTemplate (push)
+    origin  https://github.com/your_github_id/IntroToPython (fetch)
+    origin  https://github.com/your_github_id/IntroToPython (push)
+    upstream    https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython (fetch)
+    upstream    https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython (push)
 
 This should leave you in a situation that looks like this:
 
@@ -292,6 +304,8 @@ Absolutely, do NOT set up a git repository in your home root directory.
 This will put everything in your home directory up on GitHub, and you do not want that.
 
 Setting up new repositories can be confusing because when you clone a git repository it creates the directory that will be the repository, but when you are creating a new repository, you need to first be **IN** the directory in which you want the repository to be rooted. Please ask if this does not make sense.
+
+It’s also important to note that you do not run the ``$ git init`` command at any point in the process of cloning and configuring your local copy of a remote repo. The ``init`` git command is used to initialize a git repository on your local machine and is not necessary in our case because the cloned repository has already been initialized.
 
 Additional Resources:
 
