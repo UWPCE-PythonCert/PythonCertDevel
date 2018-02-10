@@ -217,7 +217,7 @@ program exits</li>
 </div>
 <div class="section" id="visualize-the-stack">
 <h3>Visualize the stack!<a class="headerlink" href="#visualize-the-stack" title="Permalink to this headline">¶</a></h3>
-<a class="reference internal image-reference" href="_static/program_callstack.png"><img alt="_static/program_callstack.png" src="_static/program_callstack.png" style="height: 580px;" /></a>
+<a class="reference internal image-reference" href="../_images/program_callstack.png"><img alt="../_images/program_callstack.png" src="../_images/program_callstack.png" style="height: 580px;" /></a>
 <p class="rubric" id="how-deep-can-that-stack-be">How deep can that stack be?</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 
@@ -366,16 +366,16 @@ Traceback (most recent call last):
 TypeError: &#39;method&#39; object is not subscriptable
 </pre></div>
 </div>
-<p>But things can quickly get complicated, as we all ran into last quarter with web frameworks.</p>
+<p>But things can quickly get complicated. You may have already run into stacktraces that go on for a 50 lines or more.</p>
 <p>Some helpful hints with stacktraces:</p>
 <ul class="simple">
 <li>May seem obvious, but… Read it carefully!</li>
 <li>What is the error? Try reading it aloud.</li>
 <li>The first place to look is the bottom.</li>
-<li>More than likely the error is in your code, not established packages.</li>
-<li>Sometimes that error was triggered by something else, and you need to look higher.</li>
-<li>If error at bottom of stacktrace is not helpful, look first for other code of yours in stack.</li>
-<li>Will show the line number and file of exception/calling functions.</li>
+<li>Trace will show the line number and file of exception/calling functions.</li>
+<li>More than likely the error is in your code, not established packages
+- look at lines in your code mentioned in the stacktrace first
+- Sometimes that error was triggered by something else, and you need to look higher. (probably more than one file in t he stacktrace is your code)</li>
 </ul>
 <p>If that fails you…</p>
 <ul class="simple">
@@ -392,7 +392,7 @@ TypeError: &#39;method&#39; object is not subscriptable
 <li>include steps you have taken to find the bug</li>
 <li>inlude the relative function of your code</li>
 </ul>
-<p>Often after writing out this email, you will realize what you forgot to check, and more often than not, this will happen just after you hit send. Good places to send these emails are other people on same project and mailing list for software package.</p>
+<p>Often after writing out this email, you will realize what you forgot to check, and more often than not, this will happen just after you hit send. Good places to send these emails are other people on same project and mailing list for software package. For the purpose of this class, of course, copy it into slack or the class email list.</p>
 <p>Print</p>
 <ul class="simple">
 <li>print(“my_module.py: my_variable: “, my_variable)</li>
@@ -586,7 +586,7 @@ test to understand a certain failure situation:</p>
 <span class="n">pytest</span> <span class="o">--</span><span class="n">pdb</span> <span class="o">--</span><span class="n">maxfail</span><span class="o">=</span><span class="mi">3</span>  <span class="c1"># drop to PDB for first three failures</span>
 </pre></div>
 </div>
-<p>Let’s try some debugging!</p>
+<p>Try some debugging! Here is a fun tutorial intro to pdb that someone created:</p>
 <p><a class="reference external" href="https://github.com/spiside/pdb-tutorial">https://github.com/spiside/pdb-tutorial</a></p>
 </div>
 <div class="section" id="python-ides">
@@ -624,29 +624,6 @@ provided you look in the right places!</p>
 <p>or older package rpdb</p>
 <p><a class="reference external" href="https://pypi.python.org/pypi/rpdb">https://pypi.python.org/pypi/rpdb</a></p>
 <p>(only tested to Python 3.1)</p>
-</div>
-<div class="section" id="debugging-exercise">
-<h3>Debugging exercise<a class="headerlink" href="#debugging-exercise" title="Permalink to this headline">¶</a></h3>
-<p>Find the wikidef app in the examples folder</p>
-<p>See if you can find the bug and get the app working. Use whatever debugging
-technique(s) you prefer.</p>
-<p>To run the app:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">define</span><span class="o">.</span><span class="n">py</span> <span class="n">interesting_topic</span>
-</pre></div>
-</div>
-<p>where interesting_topic is a topic of interest, like python. ;-)</p>
-<p>Once it is working again:
-Using (i)pdb in module mode (python -m pdb ) to find the name of the server and the Content-Type that
-wikipedia is using by looking at response.headers in Wikipedia.article. What type of object is response.headers?</p>
-<p>You can enter the debugger by running:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pdb</span> <span class="o">./</span><span class="n">define</span><span class="o">.</span><span class="n">py</span> <span class="n">robot</span>
-</pre></div>
-</div>
-<p>(define.py takes the first sys arg and finds articles on wikipedia on that topic)</p>
-<p>You can get to the code by walking through each line with ‘s’tep and
-‘n’ext commands, or by setting a breakpoint and ‘c’ontinuing.</p>
-<p>What’s the result?</p>
-<p>You may also want to take a look at long_loop.py and see if you can answer the questions there.</p>
 </div>
 <div class="section" id="questions">
 <h3>Questions?<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h3>
