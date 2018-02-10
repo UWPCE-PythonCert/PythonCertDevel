@@ -107,7 +107,8 @@
 <li class="toctree-l3"><a class="reference internal" href="Debugging.html">Debugging</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Metaprogramming</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">Metaprogramming</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#introspeciton-and-manipulation-tools">Introspeciton and manipulation tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#introspection-and-manipulation-tools">Introspection and manipulation tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#namespaces-are-dictionaries">Namespaces are dictionaries!</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#metaclasses">metaclasses</a></li>
 </ul>
 </li>
@@ -186,32 +187,35 @@
             
   <div class="section" id="metaprogramming">
 <span id="id1"></span><h1>Metaprogramming<a class="headerlink" href="#metaprogramming" title="Permalink to this headline">¶</a></h1>
-<p>NOTE: These notes are due for an updated – stay tuned!</p>
-<p>programs that write programs….</p>
+<p><strong>Programs that write programs….</strong></p>
 <div class="section" id="id2">
 <h2>Metaprogramming<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p class="left"><strong>Metaprogramming:</strong></p>
-<p class="left">“Metaprogramming is a programming technique in which computer programs have the ability to treat programs as their data. It means that a program can be designed to read, generate, analyse or transform other programs, and even modify itself while running.”</p>
-<p class="left">– <code class="docutils literal"><span class="pre">https://en.wikipedia.org/wiki/Metaprogramming</span></code></p>
-<p class="left">In other words: A metaprogram is a program that writes (or maodifies) programs.</p>
-<p class="left">As a dynamic language, Python is very well suited to metaprograming, as it allows objects to be modified at run time. It also provides excellent tools for <strong>“Introspection”</strong>:</p>
-<p class="left">“The ability of a program to examine the type or properties of an object at runtime.”</p>
-<div class="section" id="a-class-is-just-an-object">
-<h3>A class is just an object<a class="headerlink" href="#a-class-is-just-an-object" title="Permalink to this headline">¶</a></h3>
-<p>A class is a first-class object:</p>
-<p>Can be created at runtime</p>
-<p>Passed as a parameter</p>
-<p>Returned from a function</p>
-<p>Assigned to a variable</p>
-<p>(sound familiar from when we were talking about functions?)</p>
+<blockquote>
+<div>“Metaprogramming is a programming technique in which computer programs have the ability to treat programs as their data. It means that a program can be designed to read, generate, analyze or transform other programs, and even modify itself while running.”</div></blockquote>
+<p><code class="docutils literal"><span class="pre">https://en.wikipedia.org/wiki/Metaprogramming</span></code></p>
+<p>In other words: A metaprogram is a program that writes (or modifies) programs.</p>
+<p>As a dynamic language, Python is very well suited to metaprograming, as it allows objects to be modified at run time. It also provides excellent tools for</p>
+<p><strong>Introspection:</strong></p>
+<blockquote>
+<div>“The ability of a program to examine the type or properties of an object at runtime.”</div></blockquote>
+<div class="section" id="everything-is-an-object">
+<h3>Everything  is an object<a class="headerlink" href="#everything-is-an-object" title="Permalink to this headline">¶</a></h3>
+<p>Everything is an object in python: simple types like numbers and strings, as well as functions, classes, etc.</p>
+<p>That means that everything:</p>
+<ul class="simple">
+<li>Can be created at runtime</li>
+<li>Passed as a parameter</li>
+<li>Returned from a function</li>
+<li>Assigned to a variable</li>
+</ul>
 <p>This “everything is an object” is what allows full introspection and metaprogramming.</p>
 </div>
 </div>
-<div class="section" id="introspeciton-and-manipulation-tools">
-<h2>Introspeciton and manipulation tools<a class="headerlink" href="#introspeciton-and-manipulation-tools" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="introspection-and-manipulation-tools">
+<h2>Introspection and manipulation tools<a class="headerlink" href="#introspection-and-manipulation-tools" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="getattr-and-setattr">
 <h3><code class="docutils literal"><span class="pre">getattr()</span></code> and <code class="docutils literal"><span class="pre">setattr()</span></code><a class="headerlink" href="#getattr-and-setattr" title="Permalink to this headline">¶</a></h3>
-<p>these allow you to get and set attributes of an object by name:</p>
+<p>These are the basic tools for, well, getting and setting attributes. They allow you to get and set attributes of an object by name:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="k">class</span> <span class="nc">Dummy</span><span class="p">():</span>
 <span class="gp">   ...: </span>    <span class="sd">&quot;&quot;&quot;A class with nothing in it&quot;&quot;&quot;</span>
 <span class="gp">   ...: </span>    <span class="k">pass</span>
@@ -234,6 +238,10 @@
 <p>Let’s play with this: (demo)</p>
 <p>NOTE: Do attributes have to be python legal python names??</p>
 </div>
+</div>
+<div class="section" id="namespaces-are-dictionaries">
+<h2>Namespaces are dictionaries!<a class="headerlink" href="#namespaces-are-dictionaries" title="Permalink to this headline">¶</a></h2>
+<p>Another cool feature of python is that namespaces are (often) dictionaries. That means that you can directly manipulate the names and associated values of many objects directly.</p>
 <div class="section" id="what-s-in-a-class">
 <h3>What’s in a Class?<a class="headerlink" href="#what-s-in-a-class" title="Permalink to this headline">¶</a></h3>
 <p>A class (and instance) object stores its attributes in a dictionary – yes, a regular old python dict. You can access that dict with the <code class="docutils literal"><span class="pre">__dict__</span></code> attribute:</p>
@@ -549,19 +557,13 @@ are a clearer solution??</p>
 <p>But there is a lot of other nifty, magic with classes in there
 – so let’s take a look.</p>
 </div>
+<div class="section" id="json">
+<h3>JSON<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.json.org/">JavaScript Object Notation (JSON)</a> is a format borrowed from the Web – Javascript being the de-facto scripting language in browsers.  It is a great format for communicating with browsers, but it has become a common serialization format for many other uses: it is simple, flexible, and human-readable and writable.</p>
+<p>It also maps pretty much directly to (some of) the core Python datatypes: lists, dictionaries, strings, and numbers.</p>
+</div>
 <div class="section" id="reference-reading">
 <h3>Reference reading<a class="headerlink" href="#reference-reading" title="Permalink to this headline">¶</a></h3>
-<p>About metaclasses (Python 3):</p>
-<p class="small"><a class="reference external" href="http://blog.thedigitalcatonline.com/blog/2014/09/01/python-3-oop-part-5-metaclasses">http://blog.thedigitalcatonline.com/blog/2014/09/01/python-3-oop-part-5-metaclasses</a></p>
-<p>Python 2 (mostly the same):</p>
-<p>What is a metaclass in Python?</p>
-<p class="small"><a class="reference external" href="http://stackoverflow.com/a/6581949/747729">http://stackoverflow.com/a/6581949/747729</a></p>
-<p>Python metaclasses by example:</p>
-<p class="small"><a class="reference external" href="http://eli.thegreenplace.net/2011/08/14/python-metaclasses-by-example/">http://eli.thegreenplace.net/2011/08/14/python-metaclasses-by-example/</a></p>
-<p>A Primer on Python Metaclasses:</p>
-<p class="small"><a class="reference external" href="http://jakevdp.github.io/blog/2012/12/01/a-primer-on-python-metaclasses/">http://jakevdp.github.io/blog/2012/12/01/a-primer-on-python-metaclasses/</a></p>
-<p>And some even more advanced tricks:</p>
-<p class="small"><a class="reference external" href="http://blog.thedigitalcatonline.com/blog/2014/10/14/decorators-and-metaclasses">http://blog.thedigitalcatonline.com/blog/2014/10/14/decorators-and-metaclasses</a></p>
 </div>
 <div class="section" id="notes-on-vars">
 <h3>Notes on <code class="docutils literal"><span class="pre">vars</span></code>:<a class="headerlink" href="#notes-on-vars" title="Permalink to this headline">¶</a></h3>

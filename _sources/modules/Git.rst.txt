@@ -52,7 +52,7 @@ Editor
 * git needs an editor occasionally
 * default is VI, which is not very intuitive to non-Unix Geeks
 * Nano is simple, easy solution for Macs and Linux
-* Nano no longer available for windows, use Sublime or Notepad++
+* Nano no longer available for windows, use Sublime Text or Notepad++ or Atom
 
 For windows users: :ref:`install_nano_win`
 
@@ -64,11 +64,11 @@ Once you have chosen/installed an editor, configure git to use it:
 
 ``$ git config --global core.editor "nano -w"``
 
-**sublime (mac):**
+**Sublime Text (mac):**
 
 ``$ git config --global core.editor "subl -n -w"``
 
-**sublime (win):**
+**Sublime Text(win):**
 
 ``$ git config --global core.editor "'c:/program files/sublime text 2/sublime_text.exe' -w"``
 

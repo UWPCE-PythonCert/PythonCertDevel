@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Exercises &mdash; PythonCert 4.0 documentation</title>
+  <title>Mailroom – metaprogramming it! &mdash; PythonCert 4.0 documentation</title>
   
 
   
@@ -36,8 +36,9 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="next" title="Submitting your work to gitHub" href="submitting_to_gitHub.html"/>
-        <link rel="prev" title="Asychronous Programing" href="../modules/Async.html"/> 
+        <link rel="up" title="Exercises" href="index.html"/>
+        <link rel="next" title="Supplemental Materials" href="../supplemental/index.html"/>
+        <link rel="prev" title="Mocking Mailroom" href="mailroom-mock.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -92,7 +93,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Modules</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Exercises</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Exercises</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="submitting_to_gitHub.html">Submitting your work to gitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_pushups.html">Python Pushups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="args_kwargs_lab.html">Args and Kwargs LAB</a></li>
@@ -123,7 +124,11 @@
 <li class="toctree-l2"><a class="reference internal" href="mailroom-decorator.html">Mailroom – Decoratoring it</a></li>
 <li class="toctree-l2"><a class="reference internal" href="context-managers-exercise.html">A Couple Handy Context Managers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mailroom-mock.html">Mocking Mailroom</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mailroom-meta.html">Mailroom – metaprogramming it!</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Mailroom – metaprogramming it!</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#json">JSON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#goal">Goal</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
@@ -172,13 +177,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Exercises</li>
+          <li><a href="index.html">Exercises</a> &raquo;</li>
+        
+      <li>Mailroom – metaprogramming it!</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/exercises/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/exercises/mailroom-meta.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -191,42 +198,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="exercises">
-<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="submitting_to_gitHub.html">Submitting your work to gitHub</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python_pushups.html">Python Pushups</a></li>
-<li class="toctree-l1"><a class="reference internal" href="args_kwargs_lab.html">Args and Kwargs LAB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="circle_class.html">Circle Class Exercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dict_lab.html">Dictionary and Set Lab</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exceptions_lab.html">Exceptions Lab</a></li>
-<li class="toctree-l1"><a class="reference internal" href="except_exercise.html">Exceptions Exercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="comprehensions_lab.html">Comprehensions Lab</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fib_and_lucas.html">Fibonacci Series Exercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="file_lab.html">File Exercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fizz_buzz.html">Fizz Buzz Exercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="grid_printer.html">Grid Printer Exercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="html_renderer.html">HTML Renderer Exercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kata_fourteen.html">Kata Fourteen: Tom Swift Under Milk Wood</a></li>
-<li class="toctree-l1"><a class="reference internal" href="list_lab.html">List Lab</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mailroom.html">Mailroom: A complete program</a></li>
-<li class="toctree-l1"><a class="reference internal" href="unit_testing.html">Introduction To Unit Testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="roman.html">Roman/Arabic Numeral Converter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rot13.html">ROT13</a></li>
-<li class="toctree-l1"><a class="reference internal" href="slicing.html">Slicing Lab</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lambda_magic.html">lambda and keyword Magic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sparse_array.html">Sparse Array Exercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="string_formatting.html">String Formatting Exercise</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trapezoid.html">Trapezoidal Rule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mailroom-oo.html">Mailroom - Object Oriented</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mailroom-fp.html">Mailroom - Functional</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mailroom-pkg.html">Mailroom – as a Python Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mailroom-decorator.html">Mailroom – Decoratoring it</a></li>
-<li class="toctree-l1"><a class="reference internal" href="context-managers-exercise.html">A Couple Handy Context Managers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mailroom-mock.html">Mocking Mailroom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mailroom-meta.html">Mailroom – metaprogramming it!</a></li>
-</ul>
+  <div class="section" id="mailroom-metaprogramming-it">
+<span id="exercise-mailroom-meta"></span><h1>Mailroom – metaprogramming it!<a class="headerlink" href="#mailroom-metaprogramming-it" title="Permalink to this headline">¶</a></h1>
+<p>So far, your mailroom program may not have anyway to save or re-load the donor data. Some of you may have added code to save and load the data in a text file or JSON, but even if you have, you might want a more flexivle and extensible system once your data gets more complicated.</p>
+<div class="section" id="json">
+<h2>JSON<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.json.org/">JavaScript Object Notation (JSON)</a> is a format borrowed from the Web – Javascript being the de-facto scripting language in browsers.  It is a great format for communicating with browsers, but it has become a common serialization format for many other uses: it is simple, flexible, and human-readable and writable.</p>
+<p>It also maps pretty much directly to (some of) the core Python datatypes: lists, dictionaries, strings, and numbers.</p>
+<p>So JSON is a nice way to save data for a program like Mailman.</p>
+</div>
+<div class="section" id="goal">
+<h2>Goal<a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h2>
+<p>Your goal is to use a JSON-save system started in the Metaprogramming Lesson (<a class="reference internal" href="../modules/MetaProgramming.html#metaprogramming"><span class="std std-ref">Metaprogramming</span></a>) to make your model classes saveable and loadable as JSON.</p>
+<p>You can use either the decorator-based or meta-class based approach.</p>
+<p>You may need to extend the JSON-save module a bit to make it work for you!</p>
+<p>When you are done, your class that holds the database of donors and their data should have <code class="docutils literal"><span class="pre">save</span></code> and <code class="docutils literal"><span class="pre">load</span></code> methods that will, naturally, save and load the entire dataset.</p>
+<p><strong>make sure it’s tested!</strong></p>
 </div>
 </div>
 
@@ -240,10 +227,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="submitting_to_gitHub.html" class="btn btn-neutral float-right" title="Submitting your work to gitHub" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../supplemental/index.html" class="btn btn-neutral float-right" title="Supplemental Materials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../modules/Async.html" class="btn btn-neutral" title="Asychronous Programing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mailroom-mock.html" class="btn btn-neutral" title="Mocking Mailroom" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

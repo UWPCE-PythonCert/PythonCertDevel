@@ -2,57 +2,54 @@
 
 .. _metaprogramming:
 
-
 ################
 Metaprogramming
 ################
 
-NOTE: These notes are due for an updated -- stay tuned!
 
-programs that write programs....
+**Programs that write programs....**
 
 Metaprogramming
 ===============
 
-.. rst-class:: left
+  "Metaprogramming is a programming technique in which computer programs have the ability to treat programs as their data. It means that a program can be designed to read, generate, analyze or transform other programs, and even modify itself while running."
 
-  **Metaprogramming:**
+``https://en.wikipedia.org/wiki/Metaprogramming``
 
-  "Metaprogramming is a programming technique in which computer programs have the ability to treat programs as their data. It means that a program can be designed to read, generate, analyse or transform other programs, and even modify itself while running."
+In other words: A metaprogram is a program that writes (or modifies) programs.
 
-  -- ``https://en.wikipedia.org/wiki/Metaprogramming``
+As a dynamic language, Python is very well suited to metaprograming, as it allows objects to be modified at run time. It also provides excellent tools for
 
-  In other words: A metaprogram is a program that writes (or maodifies) programs.
-
-  As a dynamic language, Python is very well suited to metaprograming, as it allows objects to be modified at run time. It also provides excellent tools for **"Introspection"**:
+**Introspection:**
 
   "The ability of a program to examine the type or properties of an object at runtime."
 
 
-A class is just an object
--------------------------
+Everything  is an object
+------------------------
 
-A class is a first-class object:
+Everything is an object in python: simple types like numbers and strings, as well as functions, classes, etc.
 
-Can be created at runtime
+That means that everything:
 
-Passed as a parameter
+* Can be created at runtime
 
-Returned from a function
+* Passed as a parameter
 
-Assigned to a variable
+* Returned from a function
 
-(sound familiar from when we were talking about functions?)
+* Assigned to a variable
 
 This "everything is an object" is what allows full introspection and metaprogramming.
 
-Introspeciton and manipulation tools
+
+Introspection and manipulation tools
 ====================================
 
 ``getattr()`` and ``setattr()``
 -------------------------------
 
-these allow you to get and set attributes of an object by name:
+These are the basic tools for, well, getting and setting attributes. They allow you to get and set attributes of an object by name:
 
 .. code-block:: ipython
 
@@ -77,6 +74,13 @@ these allow you to get and set attributes of an object by name:
 Let's play with this: (demo)
 
 NOTE: Do attributes have to be python legal python names??
+
+Namespaces are dictionaries!
+============================
+
+Another cool feature of python is that namespaces are (often) dictionaries. That means that you can directly manipulate the names and associated values of many objects directly.
+
+
 
 What's in a Class?
 ------------------
@@ -499,41 +503,19 @@ It turns out that the metaclass part of the code is pretty simple and small.
 But there is a lot of other nifty, magic with classes in there
 -- so let's take a look.
 
+JSON
+----
+
+`JavaScript Object Notation (JSON) <https://www.json.org/>`_ is a format borrowed from the Web -- Javascript being the de-facto scripting language in browsers.  It is a great format for communicating with browsers, but it has become a common serialization format for many other uses: it is simple, flexible, and human-readable and writable.
+
+It also maps pretty much directly to (some of) the core Python datatypes: lists, dictionaries, strings, and numbers.
+
+
 
 Reference reading
 -----------------
 
-About metaclasses (Python 3):
 
-.. rst-class:: small
-
-  http://blog.thedigitalcatonline.com/blog/2014/09/01/python-3-oop-part-5-metaclasses
-
-Python 2 (mostly the same):
-
-What is a metaclass in Python?
-
-.. rst-class:: small
-
-  http://stackoverflow.com/a/6581949/747729
-
-Python metaclasses by example:
-
-.. rst-class:: small
-
-  http://eli.thegreenplace.net/2011/08/14/python-metaclasses-by-example/
-
-A Primer on Python Metaclasses:
-
-.. rst-class:: small
-
-  http://jakevdp.github.io/blog/2012/12/01/a-primer-on-python-metaclasses/
-
-And some even more advanced tricks:
-
-.. rst-class:: small
-
-  http://blog.thedigitalcatonline.com/blog/2014/10/14/decorators-and-metaclasses
 
 Notes on ``vars``:
 ------------------

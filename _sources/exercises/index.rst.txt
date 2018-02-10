@@ -34,6 +34,7 @@ Exercises
     mailroom-decorator.rst
     context-managers-exercise.rst
     mailroom-mock.rst
+    mailroom-meta.rst
 
 
 
