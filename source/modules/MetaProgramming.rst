@@ -46,7 +46,7 @@ Assigned to a variable
 
 This "everything is an object" is what allows full introspection and metaprogramming.
 
-Introspeciton and manipulation tools
+Introspection and manipulation tools
 ====================================
 
 ``getattr()`` and ``setattr()``
@@ -77,6 +77,12 @@ these allow you to get and set attributes of an object by name:
 Let's play with this: (demo)
 
 NOTE: Do attributes have to be python legal python names??
+
+Namespaces are dictionaries!
+============================
+
+
+
 
 What's in a Class?
 ------------------

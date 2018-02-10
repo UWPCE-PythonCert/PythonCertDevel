@@ -47,7 +47,7 @@ Letting git know your identity
 (using your email and name, of course)
 
 Editor
-------
+......
 
 * git needs an editor occasionally
 * default is VI, which is not very intuitive to non-Unix Geeks
@@ -60,23 +60,23 @@ Once you have chosen/installed an editor, configure git to use it:
 
 (full notes here: `GitHub help on Editors <https://help.github.com/articles/associating-text-editors-with-git/>`_)
 
-nano:
+**nano:**
 
 ``$ git config --global core.editor "nano -w"``
 
-sublime (mac):
+**sublime (mac):**
 
 ``$ git config --global core.editor "subl -n -w"``
 
-sublime (win):
+**sublime (win):**
 
 ``$ git config --global core.editor "'c:/program files/sublime text 2/sublime_text.exe' -w"``
 
-Notepad++ (Win):
+**Notepad++ (Win):**
 
 ``$ git config --global core.editor "'c:/program files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"``
 
-Atom:
+**Atom:**
 
 ``git config --global core.editor "atom --wait"``
 
@@ -85,10 +85,11 @@ Repositories
 
 A repository is just a collection of files that 'belong together'.
 
-Since ``git`` is a *distributed* versioning system, there is no **central**
+Since ``git`` is a *distributed* versioning system, there is no **primary**
 repository that serves as the one to rule them all. This simply means that all repositories should look the same.
 
-However, to keep things sane, there is generally one "central" repository chosen that users check with for changes. For us this is the one hosted on GitHub.
+However, to keep things sane, there is generally one "central" repository chosen that users check with for changes. For us this is the one hosted on GitHub in the UWPCE-PythonCert-ClassRepos organization.
+
 
 Working with Remotes
 --------------------
@@ -100,11 +101,11 @@ Git uses shortcuts to address *remotes*. When you *clone* a repository from its 
 .. code-block:: bash
 
   $ git remote -v
-  origin  https://github.com/UWPCE-PythonCert-ClassRepos/ClassRepoTemplate.git (fetch)
-  origin  https://github.com/UWPCE-PythonCert-ClassRepos/ClassRepoTemplate.git (push)
+  origin  https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython.git (fetch)
+  origin  https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython.git (push)
 
 This shows that the local repo on my machine *originated* from one in
-the UWPCE-PythonCert-ClassRepos GitHub account (it shows up twice, because there is a shortcut for both fetch from and push to this remote).
+the UWPCE-PythonCert-ClassRepos GitHub account (it shows up twice, because there is a shortcut for both ``fetch`` from and ``push`` to this remote).
 
 GitHub forks
 ------------
