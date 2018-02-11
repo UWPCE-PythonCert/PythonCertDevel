@@ -108,8 +108,7 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Metaprogramming</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">Metaprogramming</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#introspection-and-manipulation-tools">Introspection and manipulation tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#namespaces-are-dictionaries">Namespaces are dictionaries!</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#metaclasses">metaclasses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metaclasses">Metaclasses</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programing</a></li>
@@ -236,12 +235,63 @@
 </pre></div>
 </div>
 <p>Let’s play with this: (demo)</p>
-<p>NOTE: Do attributes have to be python legal python names??</p>
-</div>
+<p>NOTE: Do attributes have to be legal python names?? Try it!</p>
 </div>
 <div class="section" id="namespaces-are-dictionaries">
-<h2>Namespaces are dictionaries!<a class="headerlink" href="#namespaces-are-dictionaries" title="Permalink to this headline">¶</a></h2>
+<h3>Namespaces are Dictionaries<a class="headerlink" href="#namespaces-are-dictionaries" title="Permalink to this headline">¶</a></h3>
 <p>Another cool feature of python is that namespaces are (often) dictionaries. That means that you can directly manipulate the names and associated values of many objects directly.</p>
+<p>You can get the dict of a namespace with the <code class="docutils literal"><span class="pre">vars()</span></code> builtin:</p>
+<p>From a note on python-ideas:</p>
+<blockquote>
+<div>“… It isn’t to be
+a slightly different version of dir(), instead vars() should return the
+object’s namespace. Not a copy of the namespace, but the actual
+namespace used by the object.”</div></blockquote>
+<p>This is not always true, e.g. for classes vars() returns a mappingproxy.</p>
+<p>From the Python Docs:</p>
+<p>“Objects such as modules and instances have an updateable <code class="docutils literal"><span class="pre">__dict__</span></code> attribute; however, other objects may have write restrictions on their <code class="docutils literal"><span class="pre">__dict__</span></code> attributes (for example, classes use a types.MappingProxyType to prevent direct dictionary updates).”</p>
+<p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#vars">https://docs.python.org/3.6/library/functions.html#vars</a></p>
+</div>
+<div class="section" id="dict">
+<h3><code class="docutils literal"><span class="pre">__dict__</span></code><a class="headerlink" href="#dict" title="Permalink to this headline">¶</a></h3>
+<p>An object’s <code class="docutils literal"><span class="pre">__dict__</span></code> special attribute is used as the namesapce of an updateable object – it’s what you might expect, an actual dictionary used to hold the names in the namespace.</p>
+<p>For the most part, <code class="docutils literal"><span class="pre">vars()</span></code> will return the <code class="docutils literal"><span class="pre">__dict__</span></code> of an object. It’s kind of like <code class="docutils literal"><span class="pre">len()</span></code> and the <code class="docutils literal"><span class="pre">__len__</span></code> attribute.  But it’s a bit better to use <code class="docutils literal"><span class="pre">vars()</span></code> to access an objects namespace.</p>
+</div>
+<div class="section" id="manipulating-a-namespace">
+<h3>Manipulating a namespace<a class="headerlink" href="#manipulating-a-namespace" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">vars()</span></code> with no argument returns the local namespace (same as <code class="docutils literal"><span class="pre">locals()</span></code>). So you can manipulate even the local module namespace directly:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">fred</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-1-08b622ddf7eb&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">fred</span>
+
+<span class="ne">NameError</span>: name &#39;fred&#39; is not defined
+</pre></div>
+</div>
+<p>Of course it’s not – we haven’t defined it. But id access the locals namespace with vars, and then add a name:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="n">local_ns</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">()</span>
+
+<span class="gp">In [3]: </span><span class="n">local_ns</span><span class="p">[</span><span class="s1">&#39;fred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;This is a new name in the local namespace&quot;</span>
+
+<span class="gp">In [4]: </span><span class="n">fred</span>
+<span class="gh">Out[4]: </span><span class="go">&#39;This is a new name in the local namespace&#39;</span>
+</pre></div>
+</div>
+<p>Now the name <code class="docutils literal"><span class="pre">fred</span></code> is there, just as if we had assigned the name in the normal way:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">fred</span> <span class="o">=</span> <span class="s2">&quot;now a different value&quot;</span>
+
+<span class="gp">In [6]: </span><span class="n">fred</span>
+<span class="gh">Out[6]: </span><span class="go">&#39;now a different value&#39;</span>
+</pre></div>
+</div>
+<p>and we can access names that way too:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">local_ns</span><span class="p">[</span><span class="s1">&#39;fred&#39;</span><span class="p">]</span>
+<span class="gh">Out[7]: </span><span class="go">&#39;now a different value&#39;</span>
+</pre></div>
+</div>
+<p>Note that not all namespaces are writable. class objects, for instance, return a <code class="docutils literal"><span class="pre">mappingproxy</span></code>, which is the namespace of the class object, but it is not a regular dict – it’s essentially a read-only dict.</p>
+</div>
 <div class="section" id="what-s-in-a-class">
 <h3>What’s in a Class?<a class="headerlink" href="#what-s-in-a-class" title="Permalink to this headline">¶</a></h3>
 <p>A class (and instance) object stores its attributes in a dictionary – yes, a regular old python dict. You can access that dict with the <code class="docutils literal"><span class="pre">__dict__</span></code> attribute:</p>
@@ -274,7 +324,7 @@
 <span class="gh">Out[16]: </span><span class="go">__main__.Simple</span>
 </pre></div>
 </div>
-<p>and that is the actuall class object:</p>
+<p>and that is the actual class object:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [17]: </span><span class="n">obj</span><span class="o">.</span><span class="vm">__class__</span> <span class="ow">is</span> <span class="n">Simple</span>
 <span class="gh">Out[17]: </span><span class="go">True</span>
 </pre></div>
@@ -282,7 +332,8 @@
 </div>
 </div>
 <div class="section" id="metaclasses">
-<h2>metaclasses<a class="headerlink" href="#metaclasses" title="Permalink to this headline">¶</a></h2>
+<h2>Metaclasses<a class="headerlink" href="#metaclasses" title="Permalink to this headline">¶</a></h2>
+<p>Meta programing is all about creating an manipulating programs. Classes are one important part of programming in Python, so naturally, to do proper meta programming, we need to be able to create and manipulate class objects as well.</p>
 <div class="section" id="creating-a-class-from-scratch">
 <h3>Creating a class from scratch<a class="headerlink" href="#creating-a-class-from-scratch" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">create_a_class</span><span class="p">(</span><span class="o">**</span><span class="n">kw</span><span class="p">):</span>
