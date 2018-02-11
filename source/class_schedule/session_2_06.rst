@@ -13,6 +13,7 @@ Session 6: Metaprogramming
 Reading
 =======
 
+:ref:`metaprogramming`
 
 
 Supplemental Readings
@@ -22,7 +23,7 @@ Supplemental Readings
 
 `About metaclasses <http://blog.thedigitalcatonline.com/blog/2014/09/01/python-3-oop-part-5-metaclasses>`_
 
-`What is a metaclass in Python?<http://stackoverflow.com/a/6581949/747729>`_
+`What is a metaclass in Python? <http://stackoverflow.com/a/6581949/747729>`_
 
 `Python metaclasses by example: <http://eli.thegreenplace.net/2011/08/14/python-metaclasses-by-example/>`_
 
@@ -35,4 +36,3 @@ Exercises
 =========
 
 :ref:`exercise_mailroom_meta`
-

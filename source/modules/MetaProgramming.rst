@@ -2,49 +2,46 @@
 
 .. _metaprogramming:
 
-
 ################
 Metaprogramming
 ################
 
-NOTE: These notes are due for an updated -- stay tuned!
 
-programs that write programs....
+**Programs that write programs....**
 
 Metaprogramming
 ===============
 
-.. rst-class:: left
+  "Metaprogramming is a programming technique in which computer programs have the ability to treat programs as their data. It means that a program can be designed to read, generate, analyze or transform other programs, and even modify itself while running."
 
-  **Metaprogramming:**
+``https://en.wikipedia.org/wiki/Metaprogramming``
 
-  "Metaprogramming is a programming technique in which computer programs have the ability to treat programs as their data. It means that a program can be designed to read, generate, analyse or transform other programs, and even modify itself while running."
+In other words: A metaprogram is a program that writes (or modifies) programs.
 
-  -- ``https://en.wikipedia.org/wiki/Metaprogramming``
+As a dynamic language, Python is very well suited to metaprograming, as it allows objects to be modified at run time. It also provides excellent tools for
 
-  In other words: A metaprogram is a program that writes (or maodifies) programs.
-
-  As a dynamic language, Python is very well suited to metaprograming, as it allows objects to be modified at run time. It also provides excellent tools for **"Introspection"**:
+**Introspection:**
 
   "The ability of a program to examine the type or properties of an object at runtime."
 
 
-A class is just an object
--------------------------
+Everything  is an object
+------------------------
 
-A class is a first-class object:
+Everything is an object in python: simple types like numbers and strings, as well as functions, classes, etc.
 
-Can be created at runtime
+That means that everything:
 
-Passed as a parameter
+* Can be created at runtime
 
-Returned from a function
+* Passed as a parameter
 
-Assigned to a variable
+* Returned from a function
 
-(sound familiar from when we were talking about functions?)
+* Assigned to a variable
 
 This "everything is an object" is what allows full introspection and metaprogramming.
+
 
 Introspection and manipulation tools
 ====================================
@@ -52,7 +49,7 @@ Introspection and manipulation tools
 ``getattr()`` and ``setattr()``
 -------------------------------
 
-these allow you to get and set attributes of an object by name:
+These are the basic tools for, well, getting and setting attributes. They allow you to get and set attributes of an object by name:
 
 .. code-block:: ipython
 
@@ -76,12 +73,81 @@ these allow you to get and set attributes of an object by name:
 
 Let's play with this: (demo)
 
-NOTE: Do attributes have to be python legal python names??
+NOTE: Do attributes have to be legal python names?? Try it!
 
-Namespaces are dictionaries!
-============================
+Namespaces are Dictionaries
+---------------------------
+
+Another cool feature of python is that namespaces are (often) dictionaries. That means that you can directly manipulate the names and associated values of many objects directly.
+
+You can get the dict of a namespace with the ``vars()`` builtin:
+
+From a note on python-ideas:
+
+  "... It isn't to be
+  a slightly different version of dir(), instead vars() should return the
+  object's namespace. Not a copy of the namespace, but the actual
+  namespace used by the object."
+
+This is not always true, e.g. for classes vars() returns a mappingproxy.
+
+From the Python Docs:
+
+"Objects such as modules and instances have an updateable ``__dict__`` attribute; however, other objects may have write restrictions on their ``__dict__`` attributes (for example, classes use a types.MappingProxyType to prevent direct dictionary updates)."
+
+https://docs.python.org/3.6/library/functions.html#vars
 
 
+``__dict__``
+------------
+
+An object's ``__dict__`` special attribute is used as the namesapce of an updateable object -- it's what you might expect, an actual dictionary used to hold the names in the namespace.
+
+For the most part, ``vars()`` will return the ``__dict__`` of an object. It's kind of like ``len()`` and the ``__len__`` attribute.  But it's a bit better to use ``vars()`` to access an objects namespace.
+
+Manipulating a namespace
+------------------------
+
+``vars()`` with no argument returns the local namespace (same as ``locals()``). So you can manipulate even the local module namespace directly:
+
+.. code-block:: ipython
+
+  In [1]: fred
+  ---------------------------------------------------------------------------
+  NameError                                 Traceback (most recent call last)
+  <ipython-input-1-08b622ddf7eb> in <module>()
+  ----> 1 fred
+
+  NameError: name 'fred' is not defined
+
+Of course it's not -- we haven't defined it. But id access the locals namespace with vars, and then add a name:
+
+.. code-block:: ipython
+
+  In [2]: local_ns = vars()
+
+  In [3]: local_ns['fred'] = "This is a new name in the local namespace"
+
+  In [4]: fred
+  Out[4]: 'This is a new name in the local namespace'
+
+Now the name ``fred`` is there, just as if we had assigned the name in the normal way:
+
+.. code-block:: ipython
+
+  In [5]: fred = "now a different value"
+
+  In [6]: fred
+  Out[6]: 'now a different value'
+
+and we can access names that way too:
+
+.. code-block:: ipython
+
+  In [7]: local_ns['fred']
+  Out[7]: 'now a different value'
+
+Note that not all namespaces are writable. class objects, for instance, return a ``mappingproxy``, which is the namespace of the class object, but it is not a regular dict -- it's essentially a read-only dict.
 
 
 What's in a Class?
@@ -122,15 +188,18 @@ every object has a ``__class__`` attribute specifying what class the object belo
     In [16]: obj.__class__
     Out[16]: __main__.Simple
 
-and that is the actuall class object:
+and that is the actual class object:
 
 .. code-block:: ipython
 
   In [17]: obj.__class__ is Simple
   Out[17]: True
 
-metaclasses
+Metaclasses
 ===========
+
+Meta programing is all about creating an manipulating programs. Classes are one important part of programming in Python, so naturally, to do proper meta programming, we need to be able to create and manipulate class objects as well.
+
 
 Creating a class from scratch
 -----------------------------
@@ -163,7 +232,6 @@ Equivalent to:
 
 
 But it was created at runtime, returned from a function and assigned to a variable.
-
 
 http://eli.thegreenplace.net/2011/08/14/python-metaclasses-by-example
 
@@ -505,41 +573,19 @@ It turns out that the metaclass part of the code is pretty simple and small.
 But there is a lot of other nifty, magic with classes in there
 -- so let's take a look.
 
+JSON
+----
+
+`JavaScript Object Notation (JSON) <https://www.json.org/>`_ is a format borrowed from the Web -- Javascript being the de-facto scripting language in browsers.  It is a great format for communicating with browsers, but it has become a common serialization format for many other uses: it is simple, flexible, and human-readable and writable.
+
+It also maps pretty much directly to (some of) the core Python datatypes: lists, dictionaries, strings, and numbers.
+
+
 
 Reference reading
 -----------------
 
-About metaclasses (Python 3):
 
-.. rst-class:: small
-
-  http://blog.thedigitalcatonline.com/blog/2014/09/01/python-3-oop-part-5-metaclasses
-
-Python 2 (mostly the same):
-
-What is a metaclass in Python?
-
-.. rst-class:: small
-
-  http://stackoverflow.com/a/6581949/747729
-
-Python metaclasses by example:
-
-.. rst-class:: small
-
-  http://eli.thegreenplace.net/2011/08/14/python-metaclasses-by-example/
-
-A Primer on Python Metaclasses:
-
-.. rst-class:: small
-
-  http://jakevdp.github.io/blog/2012/12/01/a-primer-on-python-metaclasses/
-
-And some even more advanced tricks:
-
-.. rst-class:: small
-
-  http://blog.thedigitalcatonline.com/blog/2014/10/14/decorators-and-metaclasses
 
 Notes on ``vars``:
 ------------------
