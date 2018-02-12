@@ -6,7 +6,6 @@
 Metaprogramming
 ################
 
-
 **Programs that write programs....**
 
 Metaprogramming
@@ -42,6 +41,10 @@ That means that everything:
 
 This "everything is an object" is what allows full introspection and metaprogramming.
 
+**Wait!** didn't we use these features with decorators??
+
+yes, indeed we did. And decorators are one of Python's metaprogramming tools. IN this case, it's manipulating functions (and methods, which are just functions in a class) with code. Now we're going to learn how to manipulate other objects as well.
+
 
 Introspection and manipulation tools
 ====================================
@@ -74,6 +77,8 @@ These are the basic tools for, well, getting and setting attributes. They allow 
 Let's play with this: (demo)
 
 NOTE: Do attributes have to be legal python names?? Try it!
+
+Note: there is also ``delattr`` to remove an attribute.
 
 Namespaces are Dictionaries
 ---------------------------
@@ -150,23 +155,40 @@ and we can access names that way too:
 Note that not all namespaces are writable. class objects, for instance, return a ``mappingproxy``, which is the namespace of the class object, but it is not a regular dict -- it's essentially a read-only dict.
 
 
+Example of Manipulating Instance Attributes
+-------------------------------------------
+
+Check out the code here:
+:download:`get_set_attr.py </examples/metaprogramming/get_set_attr.py>`
+
+It uses ``vars()`` in the str method to dynamically create a nice printable class.
+
+Then there is a simple function that lets the user manipulate that class, changing and adding attributes.
+
+Can you add code to let the user delete an attribute?
+
+Class Objects
+=============
+
+Metaprograming is all about creating and manipulating programs. Classes are a very important part of programming in Python, so naturally, to do proper metaprograming, we need to be able to create and manipulate class objects as well.
+
+And classes can have a lot more complexity than simple objects (or instances).
+
 What's in a Class?
 ------------------
 
-A class (and instance) object stores its attributes in a dictionary -- yes, a regular old python dict. You can access that dict with the ``__dict__`` attribute:
+A class (and instance) object stores its attributes in a dictionary, or dictionary-like object. instances use a regular old python dict. You can access that dict with the ``__dict__`` attribute or ``vars()`` function:
 
 .. code-block:: ipython
 
-  In [11]: class Simple():
-      ...:     this = "a class attribute"
-      ...:     def __init__(self):
-      ...:         self.that = "an instance attribute"
+  In [56]: class Simple():
+      ...:       ...:     this = "a class attribute"
+      ...:       ...:     def __init__(self):
+      ...:       ...:         self.that = "an instance attribute"
       ...:
 
-  In [12]: obj = Simple()
-
-  In [13]: Simple.__dict__
-  Out[13]:
+  In [57]: vars(Simple)
+  Out[57]:
   mappingproxy({'__dict__': <attribute '__dict__' of 'Simple' objects>,
                 '__doc__': None,
                 '__init__': <function __main__.Simple.__init__>,
@@ -174,14 +196,20 @@ A class (and instance) object stores its attributes in a dictionary -- yes, a re
                 '__weakref__': <attribute '__weakref__' of 'Simple' objects>,
                 'this': 'a class attribute'})
 
-  In [15]: obj.__dict__
-  Out[15]: {'that': 'an instance attribute'}
+And an instance of that object.
+
+.. code-block:: ipython
+
+  In [59]: obj = Simple()
+
+  In [60]: obj.__dict__
+  Out[60]: {'that': 'an instance attribute'}
 
 
 What class does this object belong to?
 --------------------------------------
 
-every object has a ``__class__`` attribute specifying what class the object belongs to:
+Every object has a ``__class__`` attribute specifying what class the object belongs to:
 
 .. code-block:: ipython
 
@@ -195,11 +223,14 @@ and that is the actual class object:
   In [17]: obj.__class__ is Simple
   Out[17]: True
 
-Metaclasses
-===========
+what is the class of a class object itself?
 
-Meta programing is all about creating an manipulating programs. Classes are one important part of programming in Python, so naturally, to do proper meta programming, we need to be able to create and manipulate class objects as well.
+.. code-block:: ipython
 
+  In [61]: Simple.__class__
+  Out[61]: type
+
+Interesting -- we've seen ``type`` as a function that tells you what type an object is (which is it's ``__class__``, by the way...). But it turns out ``type()`` is so much more...
 
 Creating a class from scratch
 -----------------------------
@@ -244,9 +275,9 @@ In python, "type" and "class" are essentially the same thing.
 
 So why the two names?
 
-History: in teheraly days of python, a "type" was a built-in object, and a "class" was an object crated with code.
+History: in the early days of python, a "type" was a built-in object, and a "class" was an object created with code:
 
-type - class unifiation began in python 2.2:
+type - class unification began in python 2.2:
 
 ``https://www.python.org/download/releases/2.2/descrintro/``
 
@@ -256,13 +287,13 @@ In python3, the unification is complete -- types *are* classes and vice-versa.
 More on Classes
 ---------------
 
-  Objects get created from classes. So what is the class of a class?
+Objects get created from classes. So what is the class of a class?
 
-  The class of a Class is a metaclass
+The class of a Class is a metaclass
 
-  The metaclass can be used to dynamically create a class
+The metaclass can be used to dynamically create a class
 
-  The metaclass, being a class, also has a metaclass
+The metaclass, being a class, also has a metaclass
 
 
 What is a metaclass?
@@ -273,7 +304,7 @@ What is a metaclass?
 -  A metaclass is most commonly used as a class factory
 -  Metaclasses allow you to do 'extra things' when creating a class,
    like registering the new class with some registry, adding methods
-   dynamically, or even replace the class with something else entirely
+   dynamically, or even replace the class with something else entirely (sound familiar from decorators?)
 -  Every object in Python has a metaclass
 -  The default metaclass is ``type()``
 
@@ -300,7 +331,7 @@ With 3 arguments, ``type()`` returns a new class
     dict: dict containing attribute names and values
 
 
-using type() to build a class
+Using type() to build a class
 -----------------------------
 
 The ``class`` keyword is syntactic sugar, we can get by without it by
@@ -308,7 +339,7 @@ using type
 
 .. code-block:: python
 
-    class MyClass(object):
+    class MyClass:
         x = 1
 
 or
@@ -363,7 +394,7 @@ Setting a class' metaclass:
       pass
 
 
-the class assigned to the ``metaclass`` keyword argument will be used to create the object class ``Foo``.
+The class assigned to the ``metaclass`` keyword argument will be used to create the object class ``Foo``.
 
 If the ``metaclass`` kwarg is not defined, it will use type to create the class.
 
@@ -387,7 +418,7 @@ Useful when creating an API or framework
 
 Whenever you need to manage object creation for one or more classes
 
-For example, see ``Examples/metclasses/singleton.py``
+For example, see :download:`singleton.py </examples/metaprogramming/singleton.py>`
 
 Or consider the Django ORM:
 
@@ -405,7 +436,6 @@ integrate with the database configured backend. Thus, different
 configurations will lead to different class definitions. This is
 abstracted from the user of the Model class.
 
-.. nextslide::
 
 Here is the Django Model metaclass:
 
@@ -423,9 +453,6 @@ __new__  vs  __init__ in Metaclasses
 ``__new__`` and ``__init__`` are both called when the module containing the class is imported for the first time.
 
 ``__call__`` is used when you want to control how a class (object) is called (instantiation)
-
-
-.. nextslide::
 
 
 .. code-block:: python

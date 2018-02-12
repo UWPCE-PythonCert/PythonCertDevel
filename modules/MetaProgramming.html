@@ -108,7 +108,7 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Metaprogramming</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id2">Metaprogramming</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#introspection-and-manipulation-tools">Introspection and manipulation tools</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#metaclasses">Metaclasses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-objects">Class Objects</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programing</a></li>
@@ -208,6 +208,8 @@
 <li>Assigned to a variable</li>
 </ul>
 <p>This “everything is an object” is what allows full introspection and metaprogramming.</p>
+<p><strong>Wait!</strong> didn’t we use these features with decorators??</p>
+<p>yes, indeed we did. And decorators are one of Python’s metaprogramming tools. IN this case, it’s manipulating functions (and methods, which are just functions in a class) with code. Now we’re going to learn how to manipulate other objects as well.</p>
 </div>
 </div>
 <div class="section" id="introspection-and-manipulation-tools">
@@ -236,6 +238,7 @@
 </div>
 <p>Let’s play with this: (demo)</p>
 <p>NOTE: Do attributes have to be legal python names?? Try it!</p>
+<p>Note: there is also <code class="docutils literal"><span class="pre">delattr</span></code> to remove an attribute.</p>
 </div>
 <div class="section" id="namespaces-are-dictionaries">
 <h3>Namespaces are Dictionaries<a class="headerlink" href="#namespaces-are-dictionaries" title="Permalink to this headline">¶</a></h3>
@@ -292,34 +295,49 @@ namespace used by the object.”</div></blockquote>
 </div>
 <p>Note that not all namespaces are writable. class objects, for instance, return a <code class="docutils literal"><span class="pre">mappingproxy</span></code>, which is the namespace of the class object, but it is not a regular dict – it’s essentially a read-only dict.</p>
 </div>
+<div class="section" id="example-of-manipulating-instance-attributes">
+<h3>Example of Manipulating Instance Attributes<a class="headerlink" href="#example-of-manipulating-instance-attributes" title="Permalink to this headline">¶</a></h3>
+<p>Check out the code here:
+<a class="reference download internal" href="../_downloads/get_set_attr.py" download=""><code class="xref download docutils literal"><span class="pre">get_set_attr.py</span></code></a></p>
+<p>It uses <code class="docutils literal"><span class="pre">vars()</span></code> in the str method to dynamically create a nice printable class.</p>
+<p>Then there is a simple function that lets the user manipulate that class, changing and adding attributes.</p>
+<p>Can you add code to let the user delete an attribute?</p>
+</div>
+</div>
+<div class="section" id="class-objects">
+<h2>Class Objects<a class="headerlink" href="#class-objects" title="Permalink to this headline">¶</a></h2>
+<p>Metaprograming is all about creating and manipulating programs. Classes are a very important part of programming in Python, so naturally, to do proper metaprograming, we need to be able to create and manipulate class objects as well.</p>
+<p>And classes can have a lot more complexity than simple objects (or instances).</p>
 <div class="section" id="what-s-in-a-class">
 <h3>What’s in a Class?<a class="headerlink" href="#what-s-in-a-class" title="Permalink to this headline">¶</a></h3>
-<p>A class (and instance) object stores its attributes in a dictionary – yes, a regular old python dict. You can access that dict with the <code class="docutils literal"><span class="pre">__dict__</span></code> attribute:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="k">class</span> <span class="nc">Simple</span><span class="p">():</span>
-<span class="go">    ...:     this = &quot;a class attribute&quot;</span>
-<span class="go">    ...:     def __init__(self):</span>
-<span class="go">    ...:         self.that = &quot;an instance attribute&quot;</span>
+<p>A class (and instance) object stores its attributes in a dictionary, or dictionary-like object. instances use a regular old python dict. You can access that dict with the <code class="docutils literal"><span class="pre">__dict__</span></code> attribute or <code class="docutils literal"><span class="pre">vars()</span></code> function:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [56]: </span><span class="k">class</span> <span class="nc">Simple</span><span class="p">():</span>
+<span class="go">    ...:       ...:     this = &quot;a class attribute&quot;</span>
+<span class="go">    ...:       ...:     def __init__(self):</span>
+<span class="go">    ...:       ...:         self.that = &quot;an instance attribute&quot;</span>
 <span class="go">    ...:</span>
 
-<span class="gp">In [12]: </span><span class="n">obj</span> <span class="o">=</span> <span class="n">Simple</span><span class="p">()</span>
-
-<span class="gp">In [13]: </span><span class="n">Simple</span><span class="o">.</span><span class="vm">__dict__</span>
-<span class="gh">Out[13]:</span>
+<span class="gp">In [57]: </span><span class="nb">vars</span><span class="p">(</span><span class="n">Simple</span><span class="p">)</span>
+<span class="gh">Out[57]:</span>
 <span class="go">mappingproxy({&#39;__dict__&#39;: &lt;attribute &#39;__dict__&#39; of &#39;Simple&#39; objects&gt;,</span>
 <span class="go">              &#39;__doc__&#39;: None,</span>
 <span class="go">              &#39;__init__&#39;: &lt;function __main__.Simple.__init__&gt;,</span>
 <span class="go">              &#39;__module__&#39;: &#39;__main__&#39;,</span>
 <span class="go">              &#39;__weakref__&#39;: &lt;attribute &#39;__weakref__&#39; of &#39;Simple&#39; objects&gt;,</span>
 <span class="go">              &#39;this&#39;: &#39;a class attribute&#39;})</span>
+</pre></div>
+</div>
+<p>And an instance of that object.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [59]: </span><span class="n">obj</span> <span class="o">=</span> <span class="n">Simple</span><span class="p">()</span>
 
-<span class="gp">In [15]: </span><span class="n">obj</span><span class="o">.</span><span class="vm">__dict__</span>
-<span class="gh">Out[15]: </span><span class="go">{&#39;that&#39;: &#39;an instance attribute&#39;}</span>
+<span class="gp">In [60]: </span><span class="n">obj</span><span class="o">.</span><span class="vm">__dict__</span>
+<span class="gh">Out[60]: </span><span class="go">{&#39;that&#39;: &#39;an instance attribute&#39;}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="what-class-does-this-object-belong-to">
 <h3>What class does this object belong to?<a class="headerlink" href="#what-class-does-this-object-belong-to" title="Permalink to this headline">¶</a></h3>
-<p>every object has a <code class="docutils literal"><span class="pre">__class__</span></code> attribute specifying what class the object belongs to:</p>
+<p>Every object has a <code class="docutils literal"><span class="pre">__class__</span></code> attribute specifying what class the object belongs to:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">obj</span><span class="o">.</span><span class="vm">__class__</span>
 <span class="gh">Out[16]: </span><span class="go">__main__.Simple</span>
 </pre></div>
@@ -329,11 +347,13 @@ namespace used by the object.”</div></blockquote>
 <span class="gh">Out[17]: </span><span class="go">True</span>
 </pre></div>
 </div>
+<p>what is the class of a class object itself?</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [61]: </span><span class="n">Simple</span><span class="o">.</span><span class="vm">__class__</span>
+<span class="gh">Out[61]: </span><span class="go">type</span>
+</pre></div>
 </div>
+<p>Interesting – we’ve seen <code class="docutils literal"><span class="pre">type</span></code> as a function that tells you what type an object is (which is it’s <code class="docutils literal"><span class="pre">__class__</span></code>, by the way…). But it turns out <code class="docutils literal"><span class="pre">type()</span></code> is so much more…</p>
 </div>
-<div class="section" id="metaclasses">
-<h2>Metaclasses<a class="headerlink" href="#metaclasses" title="Permalink to this headline">¶</a></h2>
-<p>Meta programing is all about creating an manipulating programs. Classes are one important part of programming in Python, so naturally, to do proper meta programming, we need to be able to create and manipulate class objects as well.</p>
 <div class="section" id="creating-a-class-from-scratch">
 <h3>Creating a class from scratch<a class="headerlink" href="#creating-a-class-from-scratch" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">create_a_class</span><span class="p">(</span><span class="o">**</span><span class="n">kw</span><span class="p">):</span>
@@ -367,19 +387,17 @@ namespace used by the object.”</div></blockquote>
 <p>We talk about “classes”, and yet we create them with <code class="docutils literal"><span class="pre">type()</span></code>.</p>
 <p>In python, “type” and “class” are essentially the same thing.</p>
 <p>So why the two names?</p>
-<p>History: in teheraly days of python, a “type” was a built-in object, and a “class” was an object crated with code.</p>
-<p>type - class unifiation began in python 2.2:</p>
+<p>History: in the early days of python, a “type” was a built-in object, and a “class” was an object created with code:</p>
+<p>type - class unification began in python 2.2:</p>
 <p><code class="docutils literal"><span class="pre">https://www.python.org/download/releases/2.2/descrintro/</span></code></p>
 <p>In python3, the unification is complete – types <em>are</em> classes and vice-versa.</p>
 </div>
 <div class="section" id="more-on-classes">
 <h3>More on Classes<a class="headerlink" href="#more-on-classes" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>Objects get created from classes. So what is the class of a class?</p>
+<p>Objects get created from classes. So what is the class of a class?</p>
 <p>The class of a Class is a metaclass</p>
 <p>The metaclass can be used to dynamically create a class</p>
 <p>The metaclass, being a class, also has a metaclass</p>
-</div></blockquote>
 </div>
 <div class="section" id="what-is-a-metaclass">
 <h3>What is a metaclass?<a class="headerlink" href="#what-is-a-metaclass" title="Permalink to this headline">¶</a></h3>
@@ -389,7 +407,7 @@ namespace used by the object.”</div></blockquote>
 <li>A metaclass is most commonly used as a class factory</li>
 <li>Metaclasses allow you to do ‘extra things’ when creating a class,
 like registering the new class with some registry, adding methods
-dynamically, or even replace the class with something else entirely</li>
+dynamically, or even replace the class with something else entirely (sound familiar from decorators?)</li>
 <li>Every object in Python has a metaclass</li>
 <li>The default metaclass is <code class="docutils literal"><span class="pre">type()</span></code></li>
 </ul>
@@ -413,10 +431,10 @@ dynamically, or even replace the class with something else entirely</li>
 </div>
 </div>
 <div class="section" id="using-type-to-build-a-class">
-<h3>using type() to build a class<a class="headerlink" href="#using-type-to-build-a-class" title="Permalink to this headline">¶</a></h3>
+<h3>Using type() to build a class<a class="headerlink" href="#using-type-to-build-a-class" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal"><span class="pre">class</span></code> keyword is syntactic sugar, we can get by without it by
 using type</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">:</span>
     <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
 </div>
@@ -459,7 +477,7 @@ dictionary</p>
     <span class="k">pass</span>
 </pre></div>
 </div>
-<p>the class assigned to the <code class="docutils literal"><span class="pre">metaclass</span></code> keyword argument will be used to create the object class <code class="docutils literal"><span class="pre">Foo</span></code>.</p>
+<p>The class assigned to the <code class="docutils literal"><span class="pre">metaclass</span></code> keyword argument will be used to create the object class <code class="docutils literal"><span class="pre">Foo</span></code>.</p>
 <p>If the <code class="docutils literal"><span class="pre">metaclass</span></code> kwarg is not defined, it will use type to create the class.</p>
 <p>Whatever is assigned to <code class="docutils literal"><span class="pre">metaclass</span></code> should be a callable with the
 same signature as type()</p>
@@ -474,7 +492,7 @@ same signature as type()</p>
 <h3>Why use metaclasses?<a class="headerlink" href="#why-use-metaclasses" title="Permalink to this headline">¶</a></h3>
 <p>Useful when creating an API or framework</p>
 <p>Whenever you need to manage object creation for one or more classes</p>
-<p>For example, see <code class="docutils literal"><span class="pre">Examples/metclasses/singleton.py</span></code></p>
+<p>For example, see <a class="reference download internal" href="../_downloads/singleton.py" download=""><code class="xref download docutils literal"><span class="pre">singleton.py</span></code></a></p>
 <p>Or consider the Django ORM:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
