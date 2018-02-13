@@ -35,7 +35,7 @@ branch while you're in it.
 .. image:: feature_branching_img1.png
    :height: 858
    :width: 428
-   :scale: 10
+   :scale: 2
 
 
 Workflow
