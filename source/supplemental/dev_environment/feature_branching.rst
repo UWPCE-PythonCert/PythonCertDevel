@@ -33,9 +33,6 @@ main branch. No commits to master will affect your work in your feature
 branch while you're in it.
 
 .. image:: feature_branching_img1.png
-   :height: 858
-   :width: 428
-   :scale: 2
 
 
 Workflow
@@ -112,9 +109,7 @@ type the name of the new feature branch, for this example we will call
 it lesson1/assignment1
 
 .. image:: feature_branching_img3.png
-      :height: 498
-      :width: 694
-      :scale: 30
+
 
 Once you start typing the name of the branch, and if it does not
 currently exist, you will get a prompt to create new branch. Click into
