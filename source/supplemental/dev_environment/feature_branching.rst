@@ -34,6 +34,9 @@ branch while you're in it.
 
 |/C:/0bf0c7c043a7eccd259ad90f33abec53|
 
+.. image:: feature_branching_img1.png
+
+
 Workflow
 ========
 
