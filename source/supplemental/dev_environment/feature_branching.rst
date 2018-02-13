@@ -33,7 +33,7 @@ main branch. No commits to master will affect your work in your feature
 branch while you're in it.
 
 .. image:: feature_branching_img1.png
-      :scale: 80
+      :scale: 50
 
 
 Workflow
@@ -103,12 +103,14 @@ Creating feature branch via github UI
 Navigate to your forked github repo and identify Branch dropdown:
 
 .. image:: feature_branching_img2.png
+      :scale: 50
 
 Initially you should only see master branch listed. Within that dropdown
 type the name of the new feature branch, for this example we will call
 it lesson1/assignment1
 
 .. image:: feature_branching_img3.png
+      :scale: 50
 
 Once you start typing the name of the branch, and if it does not
 currently exist, you will get a prompt to create new branch. Click into
@@ -162,25 +164,33 @@ command line
 note that you can always verify you are in your forked version by
 running below command which should show URL of origin
 
-git remote show origin
+      .. code-block::
+
+            git remote show origin
 
 now check out master and make sure it is up to date
 
-git checkout master
+      .. code-block::
 
-git pull
+            git checkout master
+
+            git pull
 
 next merge your feature branch (in our example lesson1/assignment1
 into master
 
-git merge --no-ff lesson1/assignment1
+      .. code-block::
+
+            git merge --no-ff lesson1/assignment1
 
 next you will be prompted to commit with pre-populated commit message,
 then save and close.
 
 finish up with
 
-git push origin master
+      .. code-block::
+
+            git push origin master
 
 github UI
 ^^^^^^^^^
