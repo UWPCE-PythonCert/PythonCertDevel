@@ -1,35 +1,5 @@
-Feature Branching
-=================
+.. _Feature Branching:
 
--  `Why use Feature
-   Branches? <#FeatureBranching-WhyuseFeatureBranches?>`__
-
--  `Workflow <#FeatureBranching-Workflow>`__
-
-   -  `1. Feature / Assignment
-      Branch <#FeatureBranching-1.Feature/AssignmentBr>`__
-
-      -  `Creating feature branch via Command
-         Line <#FeatureBranching-Creatingfeaturebranchv>`__
-
-      -  `Creating feature branch via github
-         UI <#FeatureBranching-Creatingfeaturebranchv>`__
-
-   -  `2. When Feature Work is
-      Complete <#FeatureBranching-2.WhenFeatureWorkisCom>`__
-
-      -  `Create PR into main
-         repo <#FeatureBranching-CreatePRintomainrepo>`__
-
-      -  `Merge your feature branch into your forked  master
-         branch <#FeatureBranching-Mergeyourfeaturebranch>`__
-
-         -  `command line <#FeatureBranching-commandline>`__
-
-         -  `github UI <#FeatureBranching-githubUI>`__
-
--  `Extensive Explanation of Feature
-   Branching <#FeatureBranching-ExtensiveExplanationof>`__
 
 Why use Feature Branches?
 =========================
