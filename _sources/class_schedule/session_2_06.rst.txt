@@ -21,9 +21,12 @@ Supplemental Readings
 
 *Fluent Python*: Chapters 19 -- 21
 
-Metaprogramming tools
----------------------
+Metaprogramming overview
+------------------------
 
+David Beazley Tutorial on metaprogramming:
+
+https://youtu.be/sPiWg5jSoZI
 
 
 Descriptors:

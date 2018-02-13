@@ -109,6 +109,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id2">Metaprogramming</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#introspection-and-manipulation-tools">Introspection and manipulation tools</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#class-objects">Class Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#json-save">Json_save</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programing</a></li>
@@ -482,7 +483,8 @@ dictionary</p>
 <p>Whatever is assigned to <code class="docutils literal"><span class="pre">metaclass</span></code> should be a callable with the
 same signature as type()</p>
 <p><strong>Python2 NOTE:</strong></p>
-<p>In Python 2, instead of the keyword argument, a special class attribute: <code class="docutils literal"><span class="pre">__metaclass__</span></code> is used:</p>
+<p>In Python 2, instead of the keyword argument, a special class attribute:
+<code class="docutils literal"><span class="pre">__metaclass__</span></code> is used:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Foo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
   <span class="vm">__metaclass__</span> <span class="o">=</span> <span class="n">MyMetaClass</span>
 </pre></div>
@@ -571,11 +573,11 @@ provide uppercase and lower case attributes</p>
 </div>
 <div class="section" id="exercise-working-with-namemangler">
 <h3>Exercise: Working with NameMangler<a class="headerlink" href="#exercise-working-with-namemangler" title="Permalink to this headline">¶</a></h3>
-<p>In the repository, find and run <code class="docutils literal"><span class="pre">Examples/metaclasses/mangler.py</span></code></p>
+<p>Download: <a class="reference download internal" href="../_downloads/mangler.py" download=""><code class="xref download docutils literal"><span class="pre">mangler.py</span></code></a></p>
 <p>Modify the NameMangler metaclass such that setting an attribute f.x also
 sets f.xx</p>
-<p>Now create a new metaclass, MangledSingleton, composed of the
-NameMangler and Singleton classes in the <code class="docutils literal"><span class="pre">Examples/metaclasses</span></code> directory.</p>
+<p>Now create a new metaclass, MangledSingleton, composed of the <code class="docutils literal"><span class="pre">NameMangler</span></code> class you just worked with, and the <code class="docutils literal"><span class="pre">Singleton</span></code> class here:
+<a class="reference download internal" href="../_downloads/singleton.py" download=""><code class="xref download docutils literal"><span class="pre">singleton.py</span></code></a></p>
 <p>Assign it to the <code class="docutils literal"><span class="pre">metaclass</span></code> keyword argument of a new class and verify that it works.</p>
 <p>Your code should look like this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">MangledSingleton</span><span class="p">)</span> <span class="c1"># define this</span>
@@ -590,79 +592,64 @@ NameMangler and Singleton classes in the <code class="docutils literal"><span cl
 </div>
 <div class="section" id="the-singleton">
 <h3>The Singleton<a class="headerlink" href="#the-singleton" title="Permalink to this headline">¶</a></h3>
-<p>One common use of metaclasses is to create a singleton. There is an example of this called singleton.py in the Examples directory. However, metaclasses are not the only way to create a singleton. It really depends on what you are trying to do with your singleton.</p>
+<p>One common use of metaclasses is to create a singleton:</p>
+<blockquote>
+<div>“The singleton pattern is a software design pattern that restricts the instantiation of a class to one object.”</div></blockquote>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Singleton_pattern">https://en.wikipedia.org/wiki/Singleton_pattern</a></p>
+<p>The above exercise provided an example of this
+(<a class="reference download internal" href="../_downloads/singleton.py" download=""><code class="xref download docutils literal"><span class="pre">singleton.py</span></code></a>)</p>
+<p>However, metaclasses are not the only way to create a singleton. It really depends on what you are trying to do with your singleton.</p>
 <p><a class="reference external" href="http://python-3-patterns-idioms-test.readthedocs.io/en/latest/Singleton.html">http://python-3-patterns-idioms-test.readthedocs.io/en/latest/Singleton.html</a></p>
 <p><a class="reference external" href="http://stackoverflow.com/questions/6760685/creating-a-singleton-in-python">http://stackoverflow.com/questions/6760685/creating-a-singleton-in-python</a></p>
 </div>
 <div class="section" id="class-decorators">
-<h3>class decorators?<a class="headerlink" href="#class-decorators" title="Permalink to this headline">¶</a></h3>
-<p>We touched last week a bit about class decorators:</p>
+<h3>Class decorators?<a class="headerlink" href="#class-decorators" title="Permalink to this headline">¶</a></h3>
+<p>We touched on class decorators at a bit when decorators were introduced:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@a_decorator</span>
 <span class="k">class</span> <span class="nc">MyClass</span><span class="p">():</span>
     <span class="o">...</span>
 </pre></div>
 </div>
-<p>A decorator is a “callable” that returns a “callable” – usually a modified
-version of he one passed in.</p>
+<p>A decorator is a “callable” that returns a “callable” – usually a modified (or “wrapped”) version of the one passed in.</p>
 <p>Class objects are callable – you call them when you instantiate a instance:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">an_inst</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>So you can decorate a class as well as functions and methods.</p>
-<p>In fact, you can do many of the same things that you can do with metaclasses:</p>
-<p>When you decorate a class, you can cahnge it in some way, and then the
-changed version replaces the one in the definiton.</p>
+<p>In fact, you can do many of the same things that you can do with metaclasses.</p>
+<p>When you decorate a class, you can change it in some way, and then the
+changed version replaces the one in the definition.</p>
 <p>This also happens at compile time, rather than run time, just like metaclasses.</p>
 <p>class decorators were actually introduced AFTER metaclasses – maybe they
-are a clearer solution??</p>
+are a clearer solution to some problems?</p>
+<p>As an example, in Python 3.7 (which is in beta release as of this writing), there is a new feature in the standard library: <code class="docutils literal"><span class="pre">Data</span> <span class="pre">Classes</span></code>, introduced in
+<a class="reference external" href="https://www.python.org/dev/peps/pep-0557/">PEP 557</a></p>
+<p>They are a quick way to make a simple class that’s prime purpose is to store a set of fields – kind of like a database record. What the new tool provides as auto-generation of all the boilerplate code for the <code class="docutils literal"><span class="pre">__init__</span></code>, etc. They could have been implemented with a metaclass, but it was decided to use a class decorator instead. From the PEP:</p>
+<blockquote>
+<div>“No base classes or metaclasses are used by Data Classes. Users of these classes are free to use inheritance and metaclasses without any interference from Data Classes. The decorated classes are truly “normal” Python classes. The Data Class decorator should not interfere with any usage of the class.”</div></blockquote>
+<p>Here is a bit of discussion of metaclasses vs decorators:</p>
+<p><a class="reference external" href="http://jfine-python-classes.readthedocs.io/en/latest/decorators-versus-metaclass.html">Decorators versus __metaclass__</a></p>
+</div>
 </div>
 <div class="section" id="json-save">
-<h3>Json_save<a class="headerlink" href="#json-save" title="Permalink to this headline">¶</a></h3>
-<p>For a more involved (and useful!) example, see:</p>
-<p><code class="docutils literal"><span class="pre">Examples/metaclasses/Json_save</span></code></p>
-<p>It is a meta-class based system for saving and re-loading objects.</p>
-<p>It works a bit like the ORMs.</p>
-<p>It turns out that the metaclass part of the code is pretty simple and small.</p>
-<p>But there is a lot of other nifty, magic with classes in there
-– so let’s take a look.</p>
-</div>
+<h2>Json_save<a class="headerlink" href="#json-save" title="Permalink to this headline">¶</a></h2>
+<p>For a more involved (and useful!) example, see json_save in the Solutions directory in the class repo:</p>
+<p><code class="docutils literal"><span class="pre">solutions/metaprogramming/json_save/</span></code></p>
+<p>It is a system for saving and re-loading objects.</p>
+<p>It works a bit like the ORMs – you specify what attributes you want to save, and what their types are.</p>
 <div class="section" id="json">
 <h3>JSON<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h3>
+<p>If you are not familiar with JSON:</p>
 <p><a class="reference external" href="https://www.json.org/">JavaScript Object Notation (JSON)</a> is a format borrowed from the Web – Javascript being the de-facto scripting language in browsers.  It is a great format for communicating with browsers, but it has become a common serialization format for many other uses: it is simple, flexible, and human-readable and writable.</p>
 <p>It also maps pretty much directly to (some of) the core Python datatypes: lists, dictionaries, strings, and numbers.</p>
+<p>But it does not directly support more complex objects – that is what json_save is all about.</p>
 </div>
-<div class="section" id="reference-reading">
-<h3>Reference reading<a class="headerlink" href="#reference-reading" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="notes-on-vars">
-<h3>Notes on <code class="docutils literal"><span class="pre">vars</span></code>:<a class="headerlink" href="#notes-on-vars" title="Permalink to this headline">¶</a></h3>
-<p>Notes from python-ideas:</p>
-<p>“””
-I think you may have misunderstood the purpose of vars(). It isn’t to be
-a slightly different version of dir(), instead vars() should return the
-object’s namespace. Not a copy of the namespace, but the actual
-namespace used by the object.</p>
-<p>This is how vars() currently works:</p>
-<p>py&gt; class X:
-…     pass
-…
-py&gt; obj = X()
-py&gt; ns = vars(obj)
-py&gt; ns[‘spam’] = 999
-py&gt; obj.spam
-999</p>
-<p>If vars() can return a modified copy of the namespace, that will break
-this functionality.</p>
-<p>This is not always true, e.g. for classes vars() returns a mappingproxy.</p>
-<p>From Doc:</p>
-<p>“Objects such as modules and instances have an updateable <code class="docutils literal"><span class="pre">__dict__</span></code> attribute; however, other objects may have write restrictions on their __dict__ attributes (for example, classes use a types.MappingProxyType to prevent direct dictionary updates).”</p>
-<p><a class="reference external" href="https://docs.python.org/3.6/library/functions.html#vars">https://docs.python.org/3.6/library/functions.html#vars</a></p>
-<p>But you’re right: it’s misleading to return a RW mapping which is a fake namespace…</p>
-<p>In the above examples you could just return a <code class="docutils literal"><span class="pre">mappingproxy</span></code>.</p>
-<p>If you want to support this feature you could use composition:</p>
-<p>This namespace will be updateable, and it let you distinguish between the namespace you want to expose to your clients without compromosing the real one.
-Of course, the real one could always be accessible via __dict__ (if present).
-“”“</p>
+<div class="section" id="metaclass-json-save">
+<h3>metaclass json_save<a class="headerlink" href="#metaclass-json-save" title="Permalink to this headline">¶</a></h3>
+<p>The first solution uses a metaclass.</p>
+<p>It turns out that the metaclass part of the code is pretty simple and small.</p>
+<p>But there is a lot of other nifty magic with classes in there
+– so let’s take a look.</p>
 </div>
 </div>
 </div>

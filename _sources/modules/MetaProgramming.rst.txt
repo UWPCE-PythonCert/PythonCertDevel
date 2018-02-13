@@ -403,7 +403,8 @@ same signature as type()
 
 **Python2 NOTE:**
 
-In Python 2, instead of the keyword argument, a special class attribute: ``__metaclass__`` is used:
+In Python 2, instead of the keyword argument, a special class attribute:
+``__metaclass__`` is used:
 
 .. code-block:: python
 
@@ -518,13 +519,13 @@ NameMangler
 Exercise: Working with NameMangler
 ----------------------------------
 
-In the repository, find and run ``Examples/metaclasses/mangler.py``
+Download: :download:`mangler.py </examples/metaprogramming/mangler.py>`
 
 Modify the NameMangler metaclass such that setting an attribute f.x also
 sets f.xx
 
-Now create a new metaclass, MangledSingleton, composed of the
-NameMangler and Singleton classes in the ``Examples/metaclasses`` directory.
+Now create a new metaclass, MangledSingleton, composed of the ``NameMangler`` class you just worked with, and the ``Singleton`` class here:
+:download:`singleton.py </examples/metaprogramming/singleton.py>`
 
 Assign it to the ``metaclass`` keyword argument of a new class and verify that it works.
 
@@ -544,17 +545,25 @@ Your code should look like this:
 The Singleton
 -------------
 
-One common use of metaclasses is to create a singleton. There is an example of this called singleton.py in the Examples directory. However, metaclasses are not the only way to create a singleton. It really depends on what you are trying to do with your singleton.
+One common use of metaclasses is to create a singleton:
 
+   "The singleton pattern is a software design pattern that restricts the instantiation of a class to one object."
+
+https://en.wikipedia.org/wiki/Singleton_pattern
+
+The above exercise provided an example of this
+(:download:`singleton.py </examples/metaprogramming/singleton.py>`)
+
+However, metaclasses are not the only way to create a singleton. It really depends on what you are trying to do with your singleton.
 
 http://python-3-patterns-idioms-test.readthedocs.io/en/latest/Singleton.html
 
 http://stackoverflow.com/questions/6760685/creating-a-singleton-in-python
 
-class decorators?
+Class decorators?
 -----------------
 
-We touched last week a bit about class decorators:
+We touched on class decorators at a bit when decorators were introduced:
 
 .. code-block:: python
 
@@ -562,8 +571,7 @@ We touched last week a bit about class decorators:
     class MyClass():
         ...
 
-A decorator is a "callable" that returns a "callable" -- usually a modified
-version of he one passed in.
+A decorator is a "callable" that returns a "callable" -- usually a modified (or "wrapped") version of the one passed in.
 
 Class objects are callable -- you call them when you instantiate a instance:
 
@@ -573,98 +581,58 @@ Class objects are callable -- you call them when you instantiate a instance:
 
 So you can decorate a class as well as functions and methods.
 
-In fact, you can do many of the same things that you can do with metaclasses:
+In fact, you can do many of the same things that you can do with metaclasses.
 
-When you decorate a class, you can cahnge it in some way, and then the
-changed version replaces the one in the definiton.
+When you decorate a class, you can change it in some way, and then the
+changed version replaces the one in the definition.
 
 This also happens at compile time, rather than run time, just like metaclasses.
 
 class decorators were actually introduced AFTER metaclasses -- maybe they
-are a clearer solution??
+are a clearer solution to some problems?
+
+As an example, in Python 3.7 (which is in beta release as of this writing), there is a new feature in the standard library: ``Data Classes``, introduced in
+`PEP 557 <https://www.python.org/dev/peps/pep-0557/>`_
+
+They are a quick way to make a simple class that's prime purpose is to store a set of fields -- kind of like a database record. What the new tool provides as auto-generation of all the boilerplate code for the ``__init__``, etc. They could have been implemented with a metaclass, but it was decided to use a class decorator instead. From the PEP:
+
+  "No base classes or metaclasses are used by Data Classes. Users of these classes are free to use inheritance and metaclasses without any interference from Data Classes. The decorated classes are truly "normal" Python classes. The Data Class decorator should not interfere with any usage of the class."
+
+Here is a bit of discussion of metaclasses vs decorators:
+
+`Decorators versus __metaclass__ <http://jfine-python-classes.readthedocs.io/en/latest/decorators-versus-metaclass.html>`_
 
 
 Json_save
----------
+=========
 
-For a more involved (and useful!) example, see:
+For a more involved (and useful!) example, see json_save in the Solutions directory in the class repo:
 
-``Examples/metaclasses/Json_save``
+``solutions/metaprogramming/json_save/``
 
-It is a meta-class based system for saving and re-loading objects.
+It is a system for saving and re-loading objects.
 
-It works a bit like the ORMs.
-
-It turns out that the metaclass part of the code is pretty simple and small.
-
-But there is a lot of other nifty, magic with classes in there
--- so let's take a look.
+It works a bit like the ORMs -- you specify what attributes you want to save, and what their types are.
 
 JSON
 ----
+
+If you are not familiar with JSON:
 
 `JavaScript Object Notation (JSON) <https://www.json.org/>`_ is a format borrowed from the Web -- Javascript being the de-facto scripting language in browsers.  It is a great format for communicating with browsers, but it has become a common serialization format for many other uses: it is simple, flexible, and human-readable and writable.
 
 It also maps pretty much directly to (some of) the core Python datatypes: lists, dictionaries, strings, and numbers.
 
+But it does not directly support more complex objects -- that is what json_save is all about.
+
+metaclass json_save
+-------------------
+
+The first solution uses a metaclass.
 
 
-Reference reading
------------------
+It turns out that the metaclass part of the code is pretty simple and small.
 
+But there is a lot of other nifty magic with classes in there
+-- so let's take a look.
 
-
-Notes on ``vars``:
-------------------
-
-Notes from python-ideas:
-
-"""
-I think you may have misunderstood the purpose of vars(). It isn't to be
-a slightly different version of dir(), instead vars() should return the
-object's namespace. Not a copy of the namespace, but the actual
-namespace used by the object.
-
-This is how vars() currently works:
-
-py> class X:
-...     pass
-...
-py> obj = X()
-py> ns = vars(obj)
-py> ns['spam'] = 999
-py> obj.spam
-999
-
-
-If vars() can return a modified copy of the namespace, that will break
-this functionality.
-
-
-This is not always true, e.g. for classes vars() returns a mappingproxy.
-
-From Doc:
-
-"Objects such as modules and instances have an updateable ``__dict__`` attribute; however, other objects may have write restrictions on their __dict__ attributes (for example, classes use a types.MappingProxyType to prevent direct dictionary updates)."
-
-https://docs.python.org/3.6/library/functions.html#vars
-
-But you're right: it's misleading to return a RW mapping which is a fake namespace...
-
-In the above examples you could just return a ``mappingproxy``.
-
-
-If you want to support this feature you could use composition:
-
-.. code-block::python
-
-  class C:
-     def __init__(self):
-         self.publicns = {}  # or: self.proxyattr = MyProxyClass()
-     def __vars__(self):
-         return self.publicns  # or: return self.proxyattr.__dict__
-
-
-This namespace will be updateable, and it let you distinguish between the namespace you want to expose to your clients without compromosing the real one.
-Of course, the real one could always be accessible via __dict__ (if present).
-"""
