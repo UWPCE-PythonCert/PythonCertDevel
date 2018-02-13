@@ -155,7 +155,7 @@ button, you should now see options for source/target and branches
 In the far right dropdown you will want to select your feature branch.
 Create the PR.
 
-Merge your feature branch into \ **your forked ** master branch
+Merge your feature branch into *your forked* master branch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 command line
