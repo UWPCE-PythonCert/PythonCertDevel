@@ -33,6 +33,7 @@ main branch. No commits to master will affect your work in your feature
 branch while you're in it.
 
 .. image:: feature_branching_img1.png
+      :scale: 80
 
 
 Workflow
