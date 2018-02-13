@@ -1,4 +1,6 @@
-.. _Feature Branching:
+*******************
+Feature Branching
+*******************
 
 
 Why use Feature Branches?
