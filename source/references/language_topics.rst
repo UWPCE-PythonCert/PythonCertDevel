@@ -164,6 +164,19 @@ This lecture by David Beazley is a great overview:
 
 https://youtu.be/sPiWg5jSoZI
 
+decorators
+----------
+
+Decorators are a way to "wrap" functions to alter their behavior one way or another. THere are lot of resources out there about them, but here's some stuff from a guy that really wants to get it right:
+
+The ``wrapt`` package that does a lot for you:
+
+https://github.com/GrahamDumpleton/wrapt
+
+And the author's blog posts about it all:
+
+https://github.com/GrahamDumpleton/wrapt/tree/develop/blog
+
 
 Command Line Scripting
 ======================

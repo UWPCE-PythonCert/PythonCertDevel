@@ -19,7 +19,24 @@ Reading
 Supplemental Readings
 =====================
 
-*Fluent Python*: Chapters 19 and 21
+*Fluent Python*: Chapters 19 -- 21
+
+Metaprogramming overview
+------------------------
+
+David Beazley Tutorial on metaprogramming:
+
+https://youtu.be/sPiWg5jSoZI
+
+
+Descriptors:
+------------
+
+https://docs.python.org/3/howto/descriptor.html
+
+
+Metaclasses:
+------------
 
 `About metaclasses <http://blog.thedigitalcatonline.com/blog/2014/09/01/python-3-oop-part-5-metaclasses>`_
 
