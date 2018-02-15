@@ -102,6 +102,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#what-is-git">What is Git?</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#why-version-control">Why Version Control?</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#setting-up-git">Setting up Git</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editor">Editor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#repositories">Repositories</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#working-with-remotes">Working with Remotes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#github-forks">GitHub forks</a></li>
@@ -243,47 +244,47 @@ $ git config --global user.email <span class="s2">&quot;marie@radioactive.com&qu
 </div>
 <p>(using your email and name, of course)</p>
 </div>
+</div>
 <div class="section" id="editor">
-<h3>Editor<a class="headerlink" href="#editor" title="Permalink to this headline">¶</a></h3>
+<h2>Editor<a class="headerlink" href="#editor" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>git needs an editor occasionally</li>
 <li>default is VI, which is not very intuitive to non-Unix Geeks</li>
 <li>Nano is simple, easy solution for Macs and Linux</li>
-<li>Nano no longer available for windows, use Sublime Text or Notepad++ or Atom</li>
+<li>Nano no longer available for windows, use Sublime or Notepad++</li>
 </ul>
 <p>For windows users: <a class="reference internal" href="../supplemental/installing/git_editor_windows.html#install-nano-win"><span class="std std-ref">Making your text Editor work with git on Windows</span></a></p>
 <p>Once you have chosen/installed an editor, configure git to use it:</p>
 <p>(full notes here: <a class="reference external" href="https://help.github.com/articles/associating-text-editors-with-git/">GitHub help on Editors</a>)</p>
-<p><strong>nano:</strong></p>
+<p>nano:</p>
 <p><code class="docutils literal"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;nano</span> <span class="pre">-w&quot;</span></code></p>
-<p><strong>Sublime Text (mac):</strong></p>
+<p>sublime (mac):</p>
 <p><code class="docutils literal"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;subl</span> <span class="pre">-n</span> <span class="pre">-w&quot;</span></code></p>
-<p><strong>Sublime Text(win):</strong></p>
+<p>sublime (win):</p>
 <p><code class="docutils literal"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;'c:/program</span> <span class="pre">files/sublime</span> <span class="pre">text</span> <span class="pre">2/sublime_text.exe'</span> <span class="pre">-w&quot;</span></code></p>
-<p><strong>Notepad++ (Win):</strong></p>
+<p>Notepad++ (Win):</p>
 <p><code class="docutils literal"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;'c:/program</span> <span class="pre">files</span> <span class="pre">(x86)/Notepad++/notepad++.exe'</span> <span class="pre">-multiInst</span> <span class="pre">-notabbar</span> <span class="pre">-nosession</span> <span class="pre">-noPlugin&quot;</span></code></p>
-<p><strong>Atom:</strong></p>
+<p>Atom:</p>
 <p><code class="docutils literal"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">core.editor</span> <span class="pre">&quot;atom</span> <span class="pre">--wait&quot;</span></code></p>
-</div>
 </div>
 <div class="section" id="repositories">
 <h2>Repositories<a class="headerlink" href="#repositories" title="Permalink to this headline">¶</a></h2>
 <p>A repository is just a collection of files that ‘belong together’.</p>
-<p>Since <code class="docutils literal"><span class="pre">git</span></code> is a <em>distributed</em> versioning system, there is no <strong>primary</strong>
+<p>Since <code class="docutils literal"><span class="pre">git</span></code> is a <em>distributed</em> versioning system, there is no <strong>central</strong>
 repository that serves as the one to rule them all. This simply means that all repositories should look the same.</p>
-<p>However, to keep things sane, there is generally one “central” repository chosen that users check with for changes. For us this is the one hosted on GitHub in the UWPCE-PythonCert-ClassRepos organization.</p>
+<p>However, to keep things sane, there is generally one “central” repository chosen that users check with for changes. For us this is the one hosted on GitHub.</p>
 </div>
 <div class="section" id="working-with-remotes">
 <h2>Working with Remotes<a class="headerlink" href="#working-with-remotes" title="Permalink to this headline">¶</a></h2>
 <p>With git, you work with <em>local</em> repositories and the <em>remotes</em> that they are connected to.</p>
-<p>Git uses shortcuts to address <em>remotes</em>. When you <em>clone</em> a repository from its remote location to your local machine, you get an <em>origin</em> shortcut for free:</p>
+<p>Git uses shortcuts to address <em>remotes</em>. Cloned repositories get an <em>origin</em> shortcut for free:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ git remote -v
-origin  https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython.git <span class="o">(</span>fetch<span class="o">)</span>
-origin  https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython.git <span class="o">(</span>push<span class="o">)</span>
+origin  https://github.com/UWPCE-PythonCert-ClassRepos/ClassRepoTemplate.git <span class="o">(</span>fetch<span class="o">)</span>
+origin  https://github.com/UWPCE-PythonCert-ClassRepos/ClassRepoTemplate.git <span class="o">(</span>push<span class="o">)</span>
 </pre></div>
 </div>
 <p>This shows that the local repo on my machine <em>originated</em> from one in
-the UWPCE-PythonCert-ClassRepos GitHub account (it shows up twice, because there is a shortcut for both <code class="docutils literal"><span class="pre">fetch</span></code> from and <code class="docutils literal"><span class="pre">push</span></code> to this remote).</p>
+the UWPCE-PythonCert-ClassRepos GitHub account (it shows up twice, because there is a shortcut for both fetch from and push to this remote).</p>
 </div>
 <div class="section" id="github-forks">
 <h2>GitHub forks<a class="headerlink" href="#github-forks" title="Permalink to this headline">¶</a></h2>
@@ -295,8 +296,8 @@ the UWPCE-PythonCert-ClassRepos GitHub account (it shows up twice, because there
 <div class="figure">
 <a class="center reference internal image-reference" href="../_images/remotes_start.png"><img alt="../_images/remotes_start.png" class="center" src="../_images/remotes_start.png" style="width: 50%;" /></a>
 </div>
-<p>Each class will have a repository created specifically for it, called something like: “Wi2018-Online”.</p>
-<p>In examples below it is called IntroToPython, so replace that in your head with the name of your class’s repository.</p>
+<p>Each class with have repository created specifically for it, called something like: “Wi2018-Online”.</p>
+<p>In examples below it is called IntroToPython, so replace that in your head with the name of your classes repository.</p>
 <p>This class repository will include examples and relevant materials (and some exercise solutions) will be added throughout the class.</p>
 <p>There will be a folder called students at the top level, and everyone will create their own directory within it.</p>
 <p>Note that you can use any name you want for your personal working directory – it can be your first name, you full name, or maybe your gitHub handle if you want to remain anonymous. Just make sure you let your instructors know what name you’ve used so that they can credit you for your work.</p>
@@ -318,33 +319,25 @@ the UWPCE-PythonCert-ClassRepos GitHub account (it shows up twice, because there
 <div class="figure">
 <a class="center reference internal image-reference" href="../_images/remotes_clone.png"><img alt="../_images/remotes_clone.png" class="center" src="../_images/remotes_clone.png" style="width: 50%;" /></a>
 </div>
-<p>Begin in a directory on your computer where you want to keep your cloned version of the class repository.
-This can live anywhere on your file system but this outer directory should not be tracked in git.</p>
-<p>From that directory, run</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git clone https://github.com/your_github_id/IntroToPython
-</pre></div>
-</div>
-<p>Be sure to replace “IntroToPython” with the name of your class repository (you can get the url by going to the class repo on gitHub and clicking “clone or download”).</p>
-<p>This will download the repository from your GitHub account into the local directory that you ran the git <em>clone</em> command from.</p>
+<p>Since you are working on a repository that you do not own, you will need to make a git shortcut to the original repository, so that you can get changes made by other contributors (i.e. the instructors and other students) before you start working.</p>
 <div class="section" id="adding-a-remote">
 <h3>Adding a remote<a class="headerlink" href="#adding-a-remote" title="Permalink to this headline">¶</a></h3>
-<p>Since you are working on a repository that you do not own, you will need to make a git shortcut to the original repository, so that you can get changes made by other contributors (i.e. the instructors and other students) before you start working.</p>
 <p>You can add <em>remotes</em> at will, to connect your <em>local</em> repository to other
 copies of it in different remote locations.</p>
 <p>This allows you to grab changes made to the repository in these other
 locations.</p>
 <p>For this class, you will add an <em>upstream</em> remote to our local copy that points to the original copy of the material in the
-<code class="docutils literal"><span class="pre">UWPCE-PythonCert-ClassRepos</span></code> account, and we will call it, appropriately, “upstream”. Change directories into your local version of the class
-repository and run (remembering to use the name of your class):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git remote add upstream https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython
+<code class="docutils literal"><span class="pre">UWPCE-PythonCert-ClassRepos</span></code> account, and we will call it, appropriately, “upstream”</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git remote add upstream https://github.com/UWPCE-PythonCert-ClassRepos/ClassRepoTemplate
 </pre></div>
 </div>
+<p>remember to use the name of your class – you can get the url by going to the class repo on gitHub and clicking “clone or download”</p>
 <p>Your local setup should now look something like this:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ git remote -v
-origin  https://github.com/your_github_id/IntroToPython <span class="o">(</span>fetch<span class="o">)</span>
-origin  https://github.com/your_github_id/IntroToPython <span class="o">(</span>push<span class="o">)</span>
-upstream    https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython <span class="o">(</span>fetch<span class="o">)</span>
-upstream    https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython <span class="o">(</span>push<span class="o">)</span>
+origin  https://github.com/your_github_id/ClassRepoTemplate <span class="o">(</span>fetch<span class="o">)</span>
+origin  https://github.com/your_github_id/ClassRepoTemplate <span class="o">(</span>push<span class="o">)</span>
+upstream    https://github.com/UWPCE-PythonCert-ClassRepos/ClassRepoTemplate <span class="o">(</span>fetch<span class="o">)</span>
+upstream    https://github.com/UWPCE-PythonCert-ClassRepos/ClassRepoTemplate <span class="o">(</span>push<span class="o">)</span>
 </pre></div>
 </div>
 <p>This should leave you in a situation that looks like this:</p>
@@ -422,7 +415,6 @@ not seen. This directory is how git keeps track of everything. Leave it alone. :
 <p>Absolutely, do NOT set up a git repository in your home root directory.
 This will put everything in your home directory up on GitHub, and you do not want that.</p>
 <p>Setting up new repositories can be confusing because when you clone a git repository it creates the directory that will be the repository, but when you are creating a new repository, you need to first be <strong>IN</strong> the directory in which you want the repository to be rooted. Please ask if this does not make sense.</p>
-<p>It’s also important to note that you do not run the <code class="docutils literal"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">init</span></code> command at any point in the process of cloning and configuring your local copy of a remote repo. The <code class="docutils literal"><span class="pre">init</span></code> git command is used to initialize a git repository on your local machine and is not necessary in our case because the cloned repository has already been initialized.</p>
 <p>Additional Resources:</p>
 <p>git tutorial:
 <a class="reference external" href="https://try.github.io/levels/1/challenges/1">https://try.github.io/levels/1/challenges/1</a></p>

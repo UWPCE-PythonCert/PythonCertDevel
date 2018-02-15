@@ -240,7 +240,6 @@ In that case, you can simply add more "dots" and follow the same rules as above.
 
 .. code-block:: python
 
-    from modulename import my_funcs.this_func
 
 Here's a nice reference for more detail:
 
@@ -265,14 +264,14 @@ Re-import
 
 The code in a module is NOT re-run when imported again. This makes it efficient to import the same module multiple places in a program. But it means that if you change the code in a module after importing it, that change will not be reflected when it is imported again.
 
-If you DO want a change to be reflected, you can explicitly reload a module:
+I you DO want ca change to be reflected, you can explicitly reload a module:
 
 .. code-block:: python
 
     import importlib
     importlib.reload(modulename)
 
-This is rarely needed (which is why it's a bit buried in the ``importlib`` module), but is good to keep in mind when you are interactively working on code under development.
+This is rarely needed (why it's a bit buried in the ``importlib`` module), but is good to keep in mind when you are interactively working on code under development.
 
 Import Interactions
 -------------------
