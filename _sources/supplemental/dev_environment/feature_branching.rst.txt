@@ -218,19 +218,3 @@ Here are a couple nice references that explain the feature branching workflow:
 https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow
 
 https://blog.landscape.io/use-feature-branches-for-everything.html
-
-.. |/C:/0bf0c7c043a7eccd259ad90f33abec53| image:: media/image1.tmp
-..   :width: 6.5in
-..   :height: 3.23611in
-.. |/C:/04c75be7248dba75f46e74caa1b1475d| image:: media/image2.tmp
-..   :width: 6.5in
-..   :height: 5.44444in
-.. |/C:/8a2f0b6bbca774cd67feef216634bebb| image:: media/image3.tmp
-..   :width: 6.5in
-..   :height: 4.65278in
-.. |/C:/149b8431478db0a08549eb2e1a8edf45| image:: media/image4.tmp
-..   :width: 6.5in
-..   :height: 1.79167in
-.. |/C:/389742fb1b53a8d44e040c5525a1ad05| image:: media/image5.tmp
-..   :width: 6.5in
-..   :height: 2.59722in
