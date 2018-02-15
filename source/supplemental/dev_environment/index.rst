@@ -410,5 +410,6 @@ Specific Documentation
     windows_bash
 
     git_overview
+    feature_branching
 
     virtualenv
