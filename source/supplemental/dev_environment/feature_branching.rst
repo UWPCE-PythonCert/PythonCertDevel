@@ -1,7 +1,6 @@
-*******************
+*****************
 Feature Branching
-*******************
-
+*****************
 
 Why use Feature Branches?
 =========================
@@ -33,83 +32,85 @@ main branch. No commits to master will affect your work in your feature
 branch while you're in it.
 
 .. image:: feature_branching_img1.png
+  :scale: 75
 
 
 Workflow
 ========
 
-**1. Feature / Assignment Branch**
-----------------------------------
+1. Feature / Assignment Branch
+------------------------------
 
 Below explains the process for creating your feature branch. You can
-either use command line or the UI.
+either use the command line or the UI.
 
 Creating feature branch via Command Line
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+........................................
 
 First make sure you're on master and make sure you have the latest
 changes
 
-      .. code-block::  
-      
-         git checkout master
-      
-         git pull
-        
-next you will create a new branch (-b flag) based of master
+.. code-block:: bash
 
-      .. code-block::
+   git checkout master
 
-         git checkout -b <new_feature_branch_name>
+   git pull
+
+Next you will create a new branch (-b flag) based of master
+
+.. code-block:: bash
+
+   git checkout -b <new_feature_branch_name>
 
 Here is the full example:
 
-      .. code-block:;
+.. code-block:: bash
 
-         $ git checkout master
+   $ git checkout master
 
-         Already on 'master'
+   Already on 'master'
 
-         Your branch is up to date with 'origin/master'.
+   Your branch is up to date with 'origin/master'.
 
-         $ git pull
+   $ git pull
 
-         $
+   $ git checkout -b lesson1/assignment1
 
-         $ git checkout -b lesson1/assignment1
+   Switched to a new branch 'lesson1/assignment1'
 
-         Switched to a new branch 'lesson1/assignment1'
+.. code-block:: bash
 
-         $ git branch
+   $ git branch
+     branch_name1
+     another_branch
+   * lesson1/assignment1 <------- The asterisk here indicates your current branch
+     master
 
-         feature_branch
-
-         \* lesson1/assignment1 <------- { \* } asterisk here indicates your current branch
-
-         master
 
 That's it. You are now on an isolated feature branch, do your work and
 make commits to this branch. There should be no difference.. when you're
 ready to push your changes you would now push to your feature branch
 instead of master:
 
-      .. code-block::
-         git push origin <new_feature_branch_name>
+.. code-block:: bash
 
-Creating feature branch via github UI
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   git push origin <new_feature_branch_name>
 
-Navigate to your forked github repo and identify Branch dropdown:
+
+Creating feature branch via GitHub UI
+.....................................
+
+Navigate to your forked GitHub repo and identify Branch dropdown:
 
 .. image:: feature_branching_img2.png
-      :scale: 50
+    :scale: 50
 
 Initially you should only see master branch listed. Within that dropdown
 type the name of the new feature branch, for this example we will call
-it lesson1/assignment1
+it ``lesson1/assignment1``
 
 .. image:: feature_branching_img3.png
-
+    :scale: 50
 
 Once you start typing the name of the branch, and if it does not
 currently exist, you will get a prompt to create new branch. Click into
@@ -118,114 +119,118 @@ you have a new branch!
 
 Go into command line and check out this new branch:
 
-      .. code-block::
-      
-         $ git pull
+.. code-block:: bash
 
-         $ git checkout lesson1/assignment1
+   $ git pull
 
-         Switched to branch 'lesson1/assignment1'
+   $ git checkout lesson1/assignment1
 
-         $ git branch
+   Switched to branch 'lesson1/assignment1'
 
-         feature_branch
+   $ git branch
 
-         \* lesson1/assignment1 <------- { \* } asterisk here indicates your current branch
+   feature_branch
 
-         master
+   * lesson1/assignment1 <------- asterisk here indicates your current branch
 
-         $
+   master
 
-**2. When Feature Work is Complete**
-------------------------------------
+   $
+
+2. When Feature Work is Complete
+--------------------------------
 
 When you're done working on your feature branch it is time to create a
 Pull Request to get your changes into master branch (both main class
 repo and fork)
 
 Create PR into main repo
-~~~~~~~~~~~~~~~~~~~~~~~~
+........................
 
-In github UI navigate to Pull Requests and select New pull request
+In GitHub UI navigate to Pull Requests and select New pull request
 button, you should now see options for source/target and branches
 
 .. image:: feature_branching_img4.png
+      :scale: 50
 
 In the far right dropdown you will want to select your feature branch.
 Create the PR.
 
 Merge your feature branch into *your forked* master branch
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+..........................................................
 
-command line
+Command Line
 ^^^^^^^^^^^^
 
 note that you can always verify you are in your forked version by
-running below command which should show URL of origin
+running the command below which should show URL of origin
 
-      .. code-block::
+.. code-block:: bash
 
-            git remote show origin
+   git remote show origin
 
-now check out master and make sure it is up to date
+Now check out master and make sure it is up to date
 
-      .. code-block::
+.. code-block:: bash
 
-            git checkout master
+    git checkout master
 
-            git pull
+    git pull
 
-next merge your feature branch (in our example lesson1/assignment1
+Next merge your feature branch (in our example ``lesson1/assignment1``
 into master
 
-      .. code-block::
+.. code-block:: bash
 
-            git merge --no-ff lesson1/assignment1
+   git merge --no-ff lesson1/assignment1
 
-next you will be prompted to commit with pre-populated commit message,
+Next you will be prompted to commit with pre-populated commit message,
 then save and close.
 
-finish up with
+Finish up with
 
-      .. code-block::
+.. code-block:: bash
 
-            git push origin master
+      git push origin master
 
-github UI
+GitHub UI
 ^^^^^^^^^
 
 If you're not comfortable with command line, it is very easy to do in
-the github UI!
+the GitHub UI!
 
 Navigate to Pull Requests again, and press New Pull request button, you
 will now select your fork on the far left with master branch, and your
 feature branch on the far right.
 
 .. image:: feature_branching_img5.png
+      :scale: 50
 
 Create your pull request, then merge it and delete feature branch.
 
 Extensive Explanation of Feature Branching
 ==========================================
 
-Highly recommend to read:
+It has been said that git is not a Revision Control System, but rather, a tool you can use to make a Revision Control System. What this means is that git provides a huge number of features for managing your source code, but you still need to decide how to use it for your particular project. This is often referred to as the git "workflow". The "feature-branch" workflow is one such approach to managing a project.
+
+Here are a couple nice references that explain the feature branching workflow:
 
 https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow
 
 https://blog.landscape.io/use-feature-branches-for-everything.html
 
 .. |/C:/0bf0c7c043a7eccd259ad90f33abec53| image:: media/image1.tmp
-   :width: 6.5in
-   :height: 3.23611in
+..   :width: 6.5in
+..   :height: 3.23611in
 .. |/C:/04c75be7248dba75f46e74caa1b1475d| image:: media/image2.tmp
-   :width: 6.5in
-   :height: 5.44444in
+..   :width: 6.5in
+..   :height: 5.44444in
 .. |/C:/8a2f0b6bbca774cd67feef216634bebb| image:: media/image3.tmp
-   :width: 6.5in
-   :height: 4.65278in
+..   :width: 6.5in
+..   :height: 4.65278in
 .. |/C:/149b8431478db0a08549eb2e1a8edf45| image:: media/image4.tmp
-   :width: 6.5in
-   :height: 1.79167in
+..   :width: 6.5in
+..   :height: 1.79167in
 .. |/C:/389742fb1b53a8d44e040c5525a1ad05| image:: media/image5.tmp
-   :width: 6.5in
-   :height: 2.59722in
+..   :width: 6.5in
+..   :height: 2.59722in
