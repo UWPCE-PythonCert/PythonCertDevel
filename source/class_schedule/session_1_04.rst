@@ -49,7 +49,7 @@ Exercises:
 
  * :ref:`exercise_file_lab`
 
- * Update mailroom with dicts :ref:`exercise_mailroom_plus`
+ * Update mailroom with dicts and files:  :ref:`exercise_mailroom_plus`
 
  * :ref:`exercise_trigrams`
 
@@ -62,4 +62,3 @@ Finish the exercises
 Look at the next session for reading, etc:
 
 :ref:`session_1_05`
-
