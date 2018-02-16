@@ -11,9 +11,20 @@ If you find yourself confused about any of terms in this document or elsewhere, 
 
 https://docs.python.org/3/glossary.html#term-parameter
 
+Names and Values
+================
+
+Python is all about names and values. But it can get a bit confusing sometimes.
+
+Ned Batchelder's talk: `Facts and Myths about Python names and values  <https://www.youtube.com/watch?v=_AEJHKGk9ns>`_
+
+And a related note about mutability:
+`Python Tuples are Immutable Except when they're Mutable <https://inventwithpython.com/blog/2018/02/05/python-tuples-are-immutable-except-when-theyre-mutable/>`_
 
 Sequences and Slicing
-======================
+=====================
+
+
 
 Working with text
 =================
@@ -122,6 +133,9 @@ https://hackernoon.com/async-through-the-looking-glass-d69a0a88b661#.sd3xk0ru0
 How the heck does ``asyc-await`` Work in Python?
 
 https://snarky.ca/how-the-heck-does-async-await-work-in-python-3-5/
+
+Nicholas Tollervey `Lessons Learned with asyncio <https://speakerdeck.com/pycon2015/nicholas-tollervey-lessons-learned-with-asyncio-look-ma-i-wrote-a-distributed-hash-table>`_
+
 
 Asyncio for the working Python developer
 ----------------------------------------

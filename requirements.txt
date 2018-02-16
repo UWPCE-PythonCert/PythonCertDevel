@@ -3,6 +3,5 @@ MarkupSafe
 Pygments
 Sphinx
 docutils
-hieroglyph
 ipython
 libsass
