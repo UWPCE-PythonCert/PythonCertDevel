@@ -858,10 +858,10 @@ whatever condition caused it to be updated.</p>
 <div class="section" id="mutable-default-argument">
 <h3>Mutable Default Argument<a class="headerlink" href="#mutable-default-argument" title="Permalink to this headline">¶</a></h3>
 <p>Watch out especially for passing mutable objects as default values for function parameters:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [71]: </span><span class="k">def</span> <span class="nf">accumulator</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="nb">list</span><span class="o">=</span><span class="p">[]):</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [71]: </span><span class="k">def</span> <span class="nf">accumulator</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">ac_list</span><span class="o">=</span><span class="p">[]):</span>
 <span class="gp">   ....: </span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
-<span class="gp">   ....: </span>        <span class="nb">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="gp">   ....: </span>    <span class="k">return</span> <span class="nb">list</span>
+<span class="gp">   ....: </span>        <span class="n">ac_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">   ....: </span>    <span class="k">return</span> <span class="n">ac_list</span>
 <span class="gp">   ....:</span>
 <span class="gp">In [72]: </span><span class="n">accumulator</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="gh">Out[72]: </span><span class="go">[0, 1, 2, 3, 4]</span>
@@ -870,18 +870,18 @@ whatever condition caused it to be updated.</p>
 </pre></div>
 </div>
 <p>What is going on here???</p>
-<p>It turns out that that code: <code class="docutils literal"><span class="pre">list=[]</span></code> is evaluated <em>when the function is defined</em> – <strong>not</strong> when the function is called.</p>
-<p>So the name “list” in the local scope of that function always refers to the same list. So every time the function is called, more is added to that same list.</p>
+<p>It turns out that that code: <code class="docutils literal"><span class="pre">ac_list=[]</span></code> is evaluated <em>when the function is defined</em> – <strong>not</strong> when the function is called.</p>
+<p>So the name “ac_list” in the local scope of that function always refers to the same list. So every time the function is called, more is added to that same list.</p>
 <p>The moral of the story here is:</p>
 <p><strong>Do not use mutable objects for default arguments!</strong></p>
 <p>It turns out that this early evaluation can be useful – but for now, just remember not to use mutables as default arguments.</p>
 <p>By the way –this is how you <em>should</em> write that code:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [21]: </span><span class="k">def</span> <span class="nf">accumulator</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="nb">list</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-<span class="go">    ...:     if list is None:</span>
-<span class="go">    ...:         list = []</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [21]: </span><span class="k">def</span> <span class="nf">accumulator</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">ac_list</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="go">    ...:     if ac_list is None:</span>
+<span class="go">    ...:         ac_list = []</span>
 <span class="go">    ...:     for i in range(count):</span>
-<span class="go">    ...:         list.append(i)</span>
-<span class="go">    ...:     return list</span>
+<span class="go">    ...:         ac_list.append(i)</span>
+<span class="go">    ...:     return ac_list</span>
 
 <span class="gp">In [22]: </span><span class="n">accumulator</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="gh">Out[22]: </span><span class="go">[0, 1, 2, 3, 4]</span>
@@ -895,17 +895,16 @@ whatever condition caused it to be updated.</p>
 </div>
 <div class="section" id="mutable-sequence-methods">
 <h2>Mutable Sequence Methods<a class="headerlink" href="#mutable-sequence-methods" title="Permalink to this headline">¶</a></h2>
-<p>In addition to all the methods supported by sequences we’ve seen above, mutable sequences (the List), have a number of other methods that are
-used to change it in place.</p>
+<p>In addition to all the methods supported by sequences we’ve seen above, mutable sequences (the List), have a number of other methods that are used to change it in place.</p>
 <p>You can find all these in the Standard Library Documentation:</p>
 <p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#typesseq-mutable">https://docs.python.org/3/library/stdtypes.html#typesseq-mutable</a></p>
 <div class="section" id="assignment">
 <h3>Assignment<a class="headerlink" href="#assignment" title="Permalink to this headline">¶</a></h3>
 <p>You’ve already seen changing a single element of a list by assignment.</p>
 <p>Pretty much the same as “arrays” in most languages:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [100]: </span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="gp">In [101]: </span><span class="nb">list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="gp">In [102]: </span><span class="nb">list</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [100]: </span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">In [101]: </span><span class="n">my_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">In [102]: </span><span class="n">my_list</span>
 <span class="gh">Out[102]: </span><span class="go">[1, 2, 10]</span>
 </pre></div>
 </div>

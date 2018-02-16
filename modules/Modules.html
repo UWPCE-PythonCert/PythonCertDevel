@@ -374,7 +374,7 @@
 <h3>Importing from packages<a class="headerlink" href="#importing-from-packages" title="Permalink to this headline">¶</a></h3>
 <p>Packages can contain modules, which can be nested – ideally not very deeply.</p>
 <p>In that case, you can simply add more “dots” and follow the same rules as above.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">modulename</span> <span class="kn">import</span> <span class="n">my_funcs</span><span class="o">.</span><span class="n">this_func</span>
 </pre></div>
 </div>
 <p>Here’s a nice reference for more detail:</p>
@@ -390,12 +390,12 @@
 <div class="section" id="re-import">
 <h3>Re-import<a class="headerlink" href="#re-import" title="Permalink to this headline">¶</a></h3>
 <p>The code in a module is NOT re-run when imported again. This makes it efficient to import the same module multiple places in a program. But it means that if you change the code in a module after importing it, that change will not be reflected when it is imported again.</p>
-<p>I you DO want ca change to be reflected, you can explicitly reload a module:</p>
+<p>If you DO want a change to be reflected, you can explicitly reload a module:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">importlib</span>
 <span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">modulename</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This is rarely needed (why it’s a bit buried in the <code class="docutils literal"><span class="pre">importlib</span></code> module), but is good to keep in mind when you are interactively working on code under development.</p>
+<p>This is rarely needed (which is why it’s a bit buried in the <code class="docutils literal"><span class="pre">importlib</span></code> module), but is good to keep in mind when you are interactively working on code under development.</p>
 </div>
 <div class="section" id="import-interactions">
 <h3>Import Interactions<a class="headerlink" href="#import-interactions" title="Permalink to this headline">¶</a></h3>

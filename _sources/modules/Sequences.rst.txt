@@ -813,10 +813,10 @@ Watch out especially for passing mutable objects as default values for function 
 
 .. code-block:: ipython
 
-    In [71]: def accumulator(count, list=[]):
+    In [71]: def accumulator(count, ac_list=[]):
        ....:     for i in range(count):
-       ....:         list.append(i)
-       ....:     return list
+       ....:         ac_list.append(i)
+       ....:     return ac_list
        ....:
     In [72]: accumulator(5)
     Out[72]: [0, 1, 2, 3, 4]
@@ -825,9 +825,9 @@ Watch out especially for passing mutable objects as default values for function 
 
 What is going on here???
 
-It turns out that that code: ``list=[]`` is evaluated *when the function is defined* -- **not** when the function is called.
+It turns out that that code: ``ac_list=[]`` is evaluated *when the function is defined* -- **not** when the function is called.
 
-So the name "list" in the local scope of that function always refers to the same list. So every time the function is called, more is added to that same list.
+So the name "ac_list" in the local scope of that function always refers to the same list. So every time the function is called, more is added to that same list.
 
 The moral of the story here is:
 
@@ -839,12 +839,12 @@ By the way --this is how you *should* write that code:
 
 .. code-block:: ipython
 
-    In [21]: def accumulator(count, list=None):
-        ...:     if list is None:
-        ...:         list = []
+    In [21]: def accumulator(count, ac_list=None):
+        ...:     if ac_list is None:
+        ...:         ac_list = []
         ...:     for i in range(count):
-        ...:         list.append(i)
-        ...:     return list
+        ...:         ac_list.append(i)
+        ...:     return ac_list
 
     In [22]: accumulator(5)
     Out[22]: [0, 1, 2, 3, 4]
@@ -858,8 +858,7 @@ This will ensure that a new list will be created if one is not passed-in.
 Mutable Sequence Methods
 ========================
 
-In addition to all the methods supported by sequences we've seen above, mutable sequences (the List), have a number of other methods that are
-used to change it in place.
+In addition to all the methods supported by sequences we've seen above, mutable sequences (the List), have a number of other methods that are used to change it in place.
 
 You can find all these in the Standard Library Documentation:
 
@@ -874,9 +873,9 @@ Pretty much the same as "arrays" in most languages:
 
 .. code-block:: ipython
 
-    In [100]: list = [1, 2, 3]
-    In [101]: list[2] = 10
-    In [102]: list
+    In [100]: my_list = [1, 2, 3]
+    In [101]: my_list[2] = 10
+    In [102]: my_list
     Out[102]: [1, 2, 10]
 
 

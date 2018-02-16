@@ -25,6 +25,7 @@ run all the code inside the context:
 NOTE: the time module has what you need:
 
 .. code-block:: python
+
     import time
 
     start = time.clock()
@@ -121,12 +122,3 @@ either will work fine.
 
 See:
 :download:`raising_an_assert.py <../examples/context_managers/raising_an_assert.py>`
-
-
-
-
-
-
-
-
-
