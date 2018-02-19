@@ -93,6 +93,11 @@ demonstrate that your three functions work properly.
 
 Use comments in this block to inform the observer what your tests do.
 
+We have created a template for you to use, to clarify what we mean by these
+tests:
+
+:download:`series_template.py <../exercises/series_template.py>`
+
 Add your new module to your git clone and commit frequently while working on
 your implementation. Include good commit messages that explain concisely both
 *what* you are doing and *why*.
