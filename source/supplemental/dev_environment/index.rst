@@ -109,7 +109,8 @@ Windows provides the "DOS" command line, which is OK, but pretty old and limited
 
 If you are comfortable with either of these -- go for it.
 
-If not, you can use the "git Bash" shell -- which is much like the bash shell on OS-X and Linux.
+If not, you can use the "git Bash" shell -- which is much like the bash shell
+on OS-X and Linux: :ref:`git_bash`
 
 Or, on Windows 10, look into the "bash shell for Windows" otherwise known as the "Linux subsystem for Windows" - - more info here: :ref:`windows_bash`
 
@@ -409,6 +410,6 @@ Specific Documentation
     windows_bash
 
     git_overview
+    feature_branching
 
     virtualenv
-

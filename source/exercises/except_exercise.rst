@@ -23,7 +23,8 @@ Run ``except_exercise.py``::
 
 You will find that it crashes with an exception.
 
-Your job is to write the proper exception handler so that the code can run.
+Your job is to write the proper exception handler in the except_exercise.py
+code, so that the code can run.
 
 It will then crash again.
 
@@ -75,5 +76,3 @@ Why are you doing this?
 -----------------------
 
 This is a kind of silly exercise, but in real life, this is a common workflow -- you call a library, and find that in certain circumstances it raises an exception.  As the code in the library is out of your hands, you need to decide how to handle that exception in your code instead.
-
-

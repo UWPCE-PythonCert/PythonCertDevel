@@ -11,9 +11,20 @@ If you find yourself confused about any of terms in this document or elsewhere, 
 
 https://docs.python.org/3/glossary.html#term-parameter
 
+Names and Values
+================
+
+Python is all about names and values. But it can get a bit confusing sometimes.
+
+Ned Batchelder's talk: `Facts and Myths about Python names and values  <https://www.youtube.com/watch?v=_AEJHKGk9ns>`_
+
+And a related note about mutability:
+`Python Tuples are Immutable Except when they're Mutable <https://inventwithpython.com/blog/2018/02/05/python-tuples-are-immutable-except-when-theyre-mutable/>`_
 
 Sequences and Slicing
-======================
+=====================
+
+
 
 Working with text
 =================
@@ -123,6 +134,9 @@ How the heck does ``asyc-await`` Work in Python?
 
 https://snarky.ca/how-the-heck-does-async-await-work-in-python-3-5/
 
+Nicholas Tollervey `Lessons Learned with asyncio <https://speakerdeck.com/pycon2015/nicholas-tollervey-lessons-learned-with-asyncio-look-ma-i-wrote-a-distributed-hash-table>`_
+
+
 Asyncio for the working Python developer
 ----------------------------------------
 This one talks about why you might want to do async development.
@@ -163,6 +177,19 @@ Metaprogramming is writing programs that write programs... it is a large topic, 
 This lecture by David Beazley is a great overview:
 
 https://youtu.be/sPiWg5jSoZI
+
+decorators
+----------
+
+Decorators are a way to "wrap" functions to alter their behavior one way or another. THere are lot of resources out there about them, but here's some stuff from a guy that really wants to get it right:
+
+The ``wrapt`` package that does a lot for you:
+
+https://github.com/GrahamDumpleton/wrapt
+
+And the author's blog posts about it all:
+
+https://github.com/GrahamDumpleton/wrapt/tree/develop/blog
 
 
 Command Line Scripting
