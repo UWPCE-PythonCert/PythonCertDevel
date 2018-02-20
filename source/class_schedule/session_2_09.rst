@@ -15,8 +15,11 @@ Reading
 =======
 
 :ref:`concurrency`
+
 :ref:`threading`
+
 :ref:`async`
+
 
 Supplemental Readings
 =====================
