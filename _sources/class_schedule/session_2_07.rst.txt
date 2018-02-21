@@ -19,6 +19,10 @@ Session 7: Relational Databases
 Reading
 =======
 
+Andy Miles' slides:
+
+https://gitpitch.com/milesak60/rdbms-slides#/
+
 Supplemental Readings
 =====================
 
@@ -26,4 +30,6 @@ Christine Spang (PyCon 2016) `To ORM or not to ORM <https://speakerdeck.com/pyco
 
 Exercises
 =========
+
+Add a database back-end to mailroom -- your choice.
 

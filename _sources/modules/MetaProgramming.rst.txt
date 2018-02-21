@@ -17,7 +17,7 @@ Metaprogramming
 
 In other words: A metaprogram is a program that writes (or modifies) programs.
 
-As a dynamic language, Python is very well suited to metaprograming, as it allows objects to be modified at run time. It also provides excellent tools for:
+As a dynamic language, Python is very well suited to metaprogramming, as it allows objects to be modified at run time. It also provides excellent tools for:
 
 **Introspection:**
 
@@ -234,7 +234,7 @@ Can you add code to let the user delete an attribute?
 Class Objects
 =============
 
-Metaprograming is all about creating and manipulating programs. Classes are a very important part of programming in Python, so naturally, to do proper metaprograming, we need to be able to create and manipulate class objects as well.
+Metaprogramming is all about creating and manipulating programs. Classes are a very important part of programming in Python, so naturally, to do proper metaprogramming, we need to be able to create and manipulate class objects as well.
 
 And classes can have a lot more complexity than simple objects (or instances).
 
