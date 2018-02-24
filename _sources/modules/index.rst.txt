@@ -71,6 +71,8 @@ Second Class: Advanced Python
 
     MetaProgramming
 
+    NoSQL
+
     Async
 
 
