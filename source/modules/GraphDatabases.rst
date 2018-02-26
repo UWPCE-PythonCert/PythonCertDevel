@@ -73,7 +73,9 @@ Getting an account:
 
 2. Click on the "Sign up" button in the upper right to get signed up for an account.
 
-Follow the instructions, and be sure to record your user name and password.
+3. Once you have created an account, you need to create a database. YOu can create a small (but not that small!) "Hobby" database for free.
+
+4. Once you create the database, it will create a username (the name of the database you gave it) and generated password. Be sure to record your user name and password.
 
 Managing your password:
 .......................
@@ -104,34 +106,43 @@ Edit the ``config`` file using your preferred editor, creating lines as follows:
     neo4juser =
     neo4jpw =
 
-At the end of the line containing ``neo4juser =`` enter a space after the =, and then the user name you created in step TBD above. It will look something like this:
+At the end of the lines, enter a space after the =, and then the user name and password created in step 4. above. Your config file will look something like this:
 
 ::
 
-    neo4juser = andy
+    [configuration]
 
-Now, enter the password from that same step on the next line. Save the file.
+    neo4juser = example1
+    neo4jpw = f.wJRVveeeg9LL.CyWKF4RbGf2SWTKp
+
+Save that config file
 
 Your user name and password are now safely stored where Python can access them. The ``.gitignore`` change will prevent the ``.config`` files from being accidentally pushed to github.
 
-So now we need to setup access to Neo4j from Python. To do that we need to install 2 modules, as follows:
-
-
-.. pip install configparser
+So now we need to setup access to Neo4j from Python. To do that we need to install the neo4j driver, which wires up Python to Neo4j.
 
 .. code-block:: bash
 
     pip install neo4j-driver
-
-
-The configparser module helps us to manage our secrets. The ``neo4j-driver`` module wires up Python to Neo4j.
 
 Now, we are ready to start using our database!
 
 Quick test
 ..........
 
+You can find example code here:
+
+https://github.com/PythonCHB/dbs-neo4j
+
+You can download or clone (or fork and clone) that repo, and then take a look:
+
+In the repo, you'll find a few "housekeeping" files -- readme, ``setup.py``, etc, and then the real code in the ``src`` dir.
+
 We are now going to create a Python program that will create and read some data into our Neo4j database. Let’s take a look at this program:
+
+
+
+
 
 
 
