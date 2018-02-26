@@ -31,7 +31,12 @@ Here is a nice Python based tutorial about graph databases and neo4j:
 
 And `here are the docs <https://neo4j.com/developer/python/>`_ for the python driver: https://neo4j.com/developer/python/
 
+And the Python API documentation: `python-driver API  <https://neo4j.com/docs/api/python-driver/current/>`_
+
 There are a lot of other great docs and tutorial on the neo4j web site -- well worth checking out if you want to really learn how to use it.
+
+And here is the "official" :download:`neo4j developer manual: Python </examples/graph_databases/neo4j-developer-manual-3.3-python.pdf>`
+
 
 neo4j example
 =============
@@ -73,9 +78,14 @@ Getting an account:
 
 2. Click on the "Sign up" button in the upper right to get signed up for an account.
 
-3. Once you have created an account, you need to create a database. YOu can create a small (but not that small!) "Hobby" database for free.
+3. Once you have created an account, you need to create a database. You can create a small (but not that small!) "Hobby" database for free.
 
 4. Once you create the database, it will create a username (the name of the database you gave it) and generated password. Be sure to record your user name and password.
+
+Note that when your database is set up, you also get connection strings for both "bolt" and http REST interfaces. originally designed for neo4j, Bolt is a highly efficient, lightweight client-server protocol designed for database applications.
+
+https://boltprotocol.org/
+
 
 Managing your password:
 .......................
@@ -92,6 +102,8 @@ First, edit your ``.gitignore`` file and add the following 2 lines at the end of
     .config/
 
 This will ensure that you don't accidentally add your password to git.
+
+NOTE: this still puts your password in plain text on your computer! So not really secure for really critical use!
 
 Now, in the parent directory of your local project, make a new directory called ``.config``. Note the leading period.
 
@@ -141,6 +153,33 @@ In the repo, you'll find a few "housekeeping" files -- readme, ``setup.py``, etc
 We are now going to create a Python program that will create and read some data into our Neo4j database. Let’s take a look at this program:
 
 
+Cypher
+------
+
+Neo4j uses a query language called Cypher. It plays the same role as SQL for RDMSs -- and the official driver uses it to "talk" to the database.
+
+
+
+Other interfaces for neo4j
+==========================
+
+neo4j-client is the default Pyhto ninterface developed by the neo4j team. There are other options:
+
+neomodel
+--------
+
+Is a Django ORM-like Object Mapper for neo4j
+
+http://neomodel.readthedocs.io/en/latest/
+
+Py2neo
+------
+
+Py2neo is a client library and toolkit for working with Neo4j from within Python applications and from the command line. The core library has no external dependencies and has been carefully designed to be easy and intuitive to use.
+
+It "speaks" the bolt protocol directly.
+
+http://py2neo.org/v3/
 
 
 
