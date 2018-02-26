@@ -199,8 +199,9 @@
 <ol class="arabic simple">
 <li>Go to <a class="reference external" href="https://www.graphenedb.com/">https://www.graphenedb.com/</a></li>
 <li>Click on the “Sign up” button in the upper right to get signed up for an account.</li>
+<li>Once you have created an account, you need to create a database. YOu can create a small (but not that small!) “Hobby” database for free.</li>
+<li>Once you create the database, it will create a username (the name of the database you gave it) and generated password. Be sure to record your user name and password.</li>
 </ol>
-<p>Follow the instructions, and be sure to record your user name and password.</p>
 </div>
 <div class="section" id="managing-your-password">
 <h4>Managing your password:<a class="headerlink" href="#managing-your-password" title="Permalink to this headline">¶</a></h4>
@@ -221,21 +222,27 @@
 <span class="n">neo4jpw</span> <span class="o">=</span>
 </pre></div>
 </div>
-<p>At the end of the line containing <code class="docutils literal"><span class="pre">neo4juser</span> <span class="pre">=</span></code> enter a space after the =, and then the user name you created in step TBD above. It will look something like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">neo4juser</span> <span class="o">=</span> <span class="n">andy</span>
+<p>At the end of the lines, enter a space after the =, and then the user name and password created in step 4. above. Your config file will look something like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">configuration</span><span class="p">]</span>
+
+<span class="n">neo4juser</span> <span class="o">=</span> <span class="n">example1</span>
+<span class="n">neo4jpw</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">wJRVveeeg9LL</span><span class="o">.</span><span class="n">CyWKF4RbGf2SWTKp</span>
 </pre></div>
 </div>
-<p>Now, enter the password from that same step on the next line. Save the file.</p>
+<p>Save that config file</p>
 <p>Your user name and password are now safely stored where Python can access them. The <code class="docutils literal"><span class="pre">.gitignore</span></code> change will prevent the <code class="docutils literal"><span class="pre">.config</span></code> files from being accidentally pushed to github.</p>
-<p>So now we need to setup access to Neo4j from Python. To do that we need to install 2 modules, as follows:</p>
+<p>So now we need to setup access to Neo4j from Python. To do that we need to install the neo4j driver, which wires up Python to Neo4j.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>pip install neo4j-driver
 </pre></div>
 </div>
-<p>The configparser module helps us to manage our secrets. The <code class="docutils literal"><span class="pre">neo4j-driver</span></code> module wires up Python to Neo4j.</p>
 <p>Now, we are ready to start using our database!</p>
 </div>
 <div class="section" id="quick-test">
 <h4>Quick test<a class="headerlink" href="#quick-test" title="Permalink to this headline">¶</a></h4>
+<p>You can find example code here:</p>
+<p><a class="reference external" href="https://github.com/PythonCHB/dbs-neo4j">https://github.com/PythonCHB/dbs-neo4j</a></p>
+<p>You can download or clone (or fork and clone) that repo, and then take a look:</p>
+<p>In the repo, you’ll find a few “housekeeping” files – readme, <code class="docutils literal"><span class="pre">setup.py</span></code>, etc, and then the real code in the <code class="docutils literal"><span class="pre">src</span></code> dir.</p>
 <p>We are now going to create a Python program that will create and read some data into our Neo4j database. Let’s take a look at this program:</p>
 </div>
 </div>
