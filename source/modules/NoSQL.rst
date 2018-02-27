@@ -334,9 +334,37 @@ mongoDB is separate program. Installers here:
 
 http://www.mongodb.org/downloads
 
+**NOTE:** mongo is also available as a service, with a free "sandbox" to try it out:
+
+https://www.mongodb.com/cloud/atlas
+
+Installing Mongo
+................
+
 Simple copy and paste install or use homebrew (at least on OS-X)
 
-(drop the files from ``bin`` into ``usr/local/bin`` or similar)
+Drop the files from ``bin`` into ``usr/local/bin`` or similar, or in your home dir somewhere you can find them.
+
+ - I put it in a "mongo" dib in my home dir. Then added it to me PATH for now:
+
+Editing ``~/.bash_profile``, and adding:
+
+::
+
+  # Adding PATH for mongo local install
+  PATH="~/mongo/bin:${PATH}
+  export PATH
+
+Anaconda Install
+................
+
+If you are using the Anaconda Python distribution (or miniconda) Mongo is available from conda::
+
+  conda install mongodb pymongo
+
+
+Starting Mongo
+..............
 
 Create a dir for the database:
 
@@ -346,8 +374,18 @@ And start it up:
 
 ``$ mongod --dbpath=mongo_data/``
 
+It will give you a bunch of startup messages, and then end by indicating which port it is listening on::
+
+  I NETWORK  [initandlisten] waiting for connections on port 27017
+
+So you know you can connect to it on port 27017
+
 Creating a DB:
 --------------
+
+Make sure you've got the mongo drivers installed:
+
+pip install pymongo
 
 .. code-block:: python
 
@@ -358,14 +396,14 @@ Creating a DB:
   store = client.store_name # creates a Database
   people = store.people # creates a collection
 
-mongo will link to the given database and collection, or create new ones if they don't exist.
+Mongo will link to the given database and collection, or create new ones if they don't exist.
 
 Adding some stuff:
 
 .. code-block:: python
 
-    people.insert({'first_name': 'Fred',
-                   'last_name': 'Jones'})
+    people.insert_one({'first_name': 'Fred',
+                       'last_name': 'Jones'})
 
 Pulling Stuff Out:
 ------------------
@@ -383,6 +421,12 @@ And reading it back:
 Note that it adds an ObjectID for you.
 
 :download:`/examples/nosql/address_book_mongo.py`
+
+and
+
+:download:`/examples/nosql/test_address_book_mongo.py`
+
+(or in the class repo in : ``examples/nosql``)
 
 
 

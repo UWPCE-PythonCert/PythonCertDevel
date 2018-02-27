@@ -11,14 +11,17 @@ $ mongod --dbpath=mongo_data/
 
 """
 
-from bson.objectid import ObjectId
+# ObjectID provides a new unique ID when you need one.
+from bson import ObjectId
 
 
-class PersistObject(object):
+class PersistObject:
     """
     mix-in class for object you want to be able to put in a mongoDB
 
     defines the basic to_dict and from_dict methods
+
+    This could be a metaclass, or class decorator, or...
     """
     def to_dict(self):
         """
@@ -28,12 +31,13 @@ class PersistObject(object):
         for a more complicated class
         """
         return self.__dict__
+
     @classmethod
     def from_dict(cls, dct):
         """
         Returns a new object initialized from the values in dct
 
-        just calls the usual __init__ in this case. but could be more
+        Just calls the usual __init__ in this case. but could be more
         to it in a more complex case.
         """
         return cls(**dct)
@@ -61,7 +65,6 @@ class Person(PersistObject):
         self.email = email.strip()
         self._id = ObjectId() if _id is None else _id
 
-
     @property
     def name(self):
         return " ".join([self.first_name, self.middle_name, self.last_name])
@@ -69,12 +72,12 @@ class Person(PersistObject):
     def __str__(self):
         msg = '{first_name} {middle_name} {last_name}'.format(**self.__dict__)
         return msg
+
     def __repr__(self):
         """
-        not a good ___repr__, but want to have something here
+        Not a good ___repr__, but want to have something here
         """
         return self.__str__()
-
 
 
 class Address(PersistObject):
@@ -87,21 +90,22 @@ class Address(PersistObject):
                  city='',
                  state='',
                  zip_code='',
-                 **kwargs
+#                  **kwargs
                  ):
         """
-        initialize an address
+        Initialize an address
         """
 
-        self.line_1=line_1.strip()
-        self.line_2=line_2.strip()
-        self.city=city.strip()
-        self.state=state.strip().upper()
-        self.zip_code=str(zip_code).strip()
+        self.line_1 = line_1.strip()
+        self.line_2 = line_2.strip()
+        self.city = city.strip()
+        self.state = state.strip().upper()
+        self.zip_code = str(zip_code).strip()
 
     def __str__(self):
         msg = "{line_1}\n{line_2}\n{city} {state} {zip_code}\n".format(**self.__dict__)
         return msg
+
 
 class Household(PersistObject):
     """
@@ -117,8 +121,9 @@ class Household(PersistObject):
                  phone='',
                  **kwargs
                  ):
+
         self.name = name.strip()
-        ##if it's already a ObjectID, then do'nt need to extract it.
+        # if it's already a ObjectID, then don't need to extract it.
         try:
             self.people = [p._id for p in people]
         except AttributeError:
@@ -143,13 +148,14 @@ class Household(PersistObject):
         dct['address'] = Address(**dct['address'])
         return cls(**dct)
 
-
     def __str__(self):
-        msg =  [self.name+":"]
+        msg = [self.name + ":"]
         msg += [str(self.address)]
         return "\n".join(msg)
+
     def __repr__(self):
         return self.__str__()
+
 
 class Business(Household):
     """
@@ -164,17 +170,18 @@ class Business(Household):
 
 class AddressBook(object):
     """
-    And address book -- has people, households, businesses.
+    An address book -- has people, households, businesses.
 
-    All cross-referenced
+    All cross-referenced (normalized)
     """
 
     def __init__(self,
                  people=(),
                  businesses=(),
                  households=(),
-                 fresh = True,
+                 fresh=True,
                  ):
+
         # create the DB
         from pymongo import MongoClient
 
@@ -195,7 +202,6 @@ class AddressBook(object):
         self.people.insert(person.to_dict())
 
     def add_household(self, household):
-        print("adding a household")
         self.households.insert(household.to_dict())
 
     def add_business(self, business):
@@ -204,34 +210,33 @@ class AddressBook(object):
     def __str__(self):
         msg = ["An Address Book:"]
         msg += ["People:"]
-        msg += ["  "+person.name for person in self.find_people()]
+        msg += ["  " + person.name for person in self.find_people()]
         msg += ["Households:"]
-        msg += ["  "+house.name for house in self.find_households()]
+        msg += ["  " + house.name for house in self.find_households()]
         msg += ["Businesses:"]
-        msg += ["  "+bus.name for bus in self.find_businesses()]
+        msg += ["  " + bus.name for bus in self.find_businesses()]
 
         return "\n".join(msg)
 
     def find_people(self, name=''):
         """
-        find all the people with name in their name somewhere
+        Find all the people with name in their name somewhere
         """
-        ## fixme -- can this query be combined?
-        ## like this: db.inventory.find( { $or: [ { qty: { $lt: 20 } }, { sale: true } ] } )
+        # fixme -- can this query be combined?
+        # like this: db.inventory.find( { $or: [ { qty: { $lt: 20 } }, { sale: true } ] } )
 
-        cursor = self.people.find({"first_name": {'$regex' : '.*' + name + '.*',
-                                                  '$options':'i'}})
+        cursor = self.people.find({"first_name": {'$regex': '.*' + name + '.*',
+                                                  '$options': 'i'}})
         results = [Person.from_dict(p) for p in cursor]
 
-        cursor = self.people.find({"last_name": {'$regex' : '.*' + name + '.*',
-                                                  '$options':'i'}})
+        cursor = self.people.find({"last_name": {'$regex': '.*' + name + '.*',
+                                                 '$options': 'i'}})
 
         return results + [Person.from_dict(p) for p in cursor]
 
     def find_households(self):
         cursor = self.households.find()
         return [Household.from_dict(p) for p in cursor]
-
 
     def find_businesses(self):
         cursor = self.businesses.find()
@@ -242,10 +247,10 @@ class AddressBook(object):
         find all the locations with this zip_code
         """
         zip_code = str(zip_code).strip()
-        cursor = self.households.find({"addresses.zip_code":zip_code})
+        cursor = self.households.find({"addresses.zip_code": zip_code})
         results = [Household.from_dict(dct) for dct in cursor]
 
-        cursor = self.businesses.find({"address.zip_code":zip_code})
+        cursor = self.businesses.find({"address.zip_code": zip_code})
         results += [Business.from_dict(dct) for dct in cursor]
 
         return results
@@ -255,10 +260,10 @@ class AddressBook(object):
         find all the locations in this state
         """
         state = state.strip().upper()
-        cursor = self.households.find({"address.state":state})
+        cursor = self.households.find({"address.state": state})
         results = [Household.from_dict(dct) for dct in cursor]
 
-        cursor = self.businesses.find({"address.state":state})
+        cursor = self.businesses.find({"address.state": state})
         results += [Business.from_dict(dct) for dct in cursor]
 
         return results
@@ -268,55 +273,53 @@ def create_sample():
     """
     Create a sample Address Book
     """
-
-    chris = Person(last_name = 'Barker',
+    chris = Person(last_name='Barker',
                    first_name='Chris',
                    middle_name='H',
                    cell_phone='(123) 555-7890',
-                   email = 'PythonCHB@gmail.com',
+                   email='PythonCHB@gmail.com',
                    )
 
-    emma = Person(last_name = 'Barker',
-                   first_name='Emma',
-                   middle_name='L',
-                   cell_phone='(345) 555-9012',
-                   email = 'emma@something.com',
-                   )
+    emma = Person(last_name='Barker',
+                  first_name='Emma',
+                  middle_name='L',
+                  cell_phone='(345) 555-9012',
+                  email='emma@something.com',
+                  )
 
-    donna = Person(last_name = 'Barker',
+    donna = Person(last_name='Barker',
                    first_name='Donna',
                    middle_name='L',
                    cell_phone='(111) 555-1111',
-                   email = 'dbarker@something.com',
+                   email='dbarker@something.com',
                    )
 
     barker_address = Address(line_1='123 Some St',
-                 line_2='Apt 1234',
-                 city='Seattle',
-                 state='WA',
-                 zip_code='98000',)
+                             line_2='Apt 1234',
+                             city='Seattle',
+                             state='WA',
+                             zip_code='98000',)
 
     the_barkers = Household(name="The Barkers",
                             people=(chris, donna, emma),
-                            address = barker_address)
+                            address=barker_address)
 
-
-    joseph = Person(last_name = 'Sheedy',
+    joseph = Person(last_name='Sheedy',
                     first_name='Joseph',
                     cell_phone='(234) 555-8910',
-                    email = 'js@some_thing.com',
+                    email='js@some_thing.com',
                     )
 
-    cris = Person(last_name = 'Ewing',
+    cris = Person(last_name='Ewing',
                   first_name='Cris',
                   cell_phone='(345) 555-6789',
-                  email = 'cris@a_fake_domain.com',
+                  email='cris@a_fake_domain.com',
                   )
 
-    fulvio = Person(last_name = 'Casali',
-                    first_name= 'Fulvio',
+    fulvio = Person(last_name='Casali',
+                    first_name='Fulvio',
                     cell_phone='(345) 555-1234',
-                    email = 'fulvio@a_fake_domain.com',
+                    email='fulvio@a_fake_domain.com',
                     )
 
     fred = Person(first_name="Fred",
@@ -332,14 +335,9 @@ def create_sample():
                                   zip_code='98105',
                                   )
 
-    python_cert = Business(name = 'Python Certification Program',
+    python_cert = Business(name='Python Certification Program',
                            people=(chris, joseph, cris, fulvio),
-                           address = Address('UW Professional and Continuing Education',
-                                             line_2='4333 Brooklyn Ave. NE',
-                                             city='Seattle',
-                                             state='WA',
-                                             zip_code='98105',
-                                             )
+                           address=python_cert_address
                            )
 
 
@@ -351,11 +349,14 @@ def create_sample():
     address_book.add_person(cris)
     address_book.add_person(joseph)
     address_book.add_person(fulvio)
+    address_book.add_person(fred)
 
     address_book.add_household(the_barkers)
+
     address_book.add_business(python_cert)
 
     return address_book
+
 
 if __name__ == "__main__":
     address_book = create_sample()

@@ -6,6 +6,7 @@ sample data for NOSQL examples
 This version has a not completely-trival data model
 """
 
+
 class Person(object):
     """
     class to represent an individual person
@@ -58,15 +59,16 @@ class Address(object):
         initialize an address
         """
 
-        self.line_1=line_1.strip()
-        self.line_2=line_2.strip()
-        self.city=city.strip()
-        self.state=state.strip()
-        self.zip_code=str(zip_code).strip()
+        self.line_1 = line_1.strip()
+        self.line_2 = line_2.strip()
+        self.city = city.strip()
+        self.state = state.strip()
+        self.zip_code = str(zip_code).strip()
 
     def __str__(self):
         msg = "{line_1}\n{line_2}\n{city} {state} {zip_code}\n".format(**self.__dict__)
         return msg
+
 
 class Household(object):
     """
@@ -76,7 +78,7 @@ class Household(object):
     """
 
     def __init__(self,
-                 name = '',
+                 name='',
                  people=(),
                  address=None,
                  phone=''
@@ -87,12 +89,13 @@ class Household(object):
         self.phone = phone.strip()
 
     def __str__(self):
-        msg =  [self.name+":"]
-        msg += ["  "+ person.name for person in self.people]
+        msg = [self.name + ":"]
         msg += [str(self.address)]
         return "\n".join(msg)
+
     def __repr__(self):
         return self.__str__()
+
 
 class Business(Household):
     """
@@ -121,20 +124,29 @@ class AddressBook(object):
         self.businesses = list(businesses)
         self.households = list(households)
 
+    def add_person(self, person):
+        self.people.append(person)
+
+    def add_household(self, household):
+        self.households.append(household)
+
+    def add_business(self, business):
+        self.businesses.append(business)
+
     def __str__(self):
         msg = ["An Address Book:"]
         msg += ["People:"]
-        msg += ["  "+person.name for person in self.people]
+        msg += ["  " + person.name for person in self.find_people()]
         msg += ["Households:"]
-        msg += ["  "+house.name for house in self.households]
+        msg += ["  " + house.name for house in self.find_households()]
         msg += ["Businesses:"]
-        msg += ["  "+bus.name for bus in self.businesses]
+        msg += ["  " + bus.name for bus in self.find_businesses()]
 
         return "\n".join(msg)
 
     @property
     def locations(self):
-        return self.households+self.businesses
+        return self.households + self.businesses
 
     def find_people(self, name=''):
         """
@@ -146,7 +158,8 @@ class AddressBook(object):
         """
         find all the locations with this zip_code
         """
-        return [location for location in self.locations if location.address.zip_code == str(zip_code).strip()]
+        zip_code = str(zip_code).strip()
+        return [loc for loc in self.locations if loc.address.zip_code == zip_code]
 
     def find_state(self, state):
         """
@@ -159,55 +172,53 @@ def create_sample():
     """
     Create a sample Address Book
     """
-
-    chris = Person(last_name = 'Barker',
+    chris = Person(last_name='Barker',
                    first_name='Chris',
                    middle_name='H',
                    cell_phone='(123) 555-7890',
-                   email = 'PythonCHB@gmail.com',
+                   email='PythonCHB@gmail.com',
                    )
 
-    emma = Person(last_name = 'Barker',
-                   first_name='Emma',
-                   middle_name='L',
-                   cell_phone='(345) 555-9012',
-                   email = 'emma@something.com',
-                   )
+    emma = Person(last_name='Barker',
+                  first_name='Emma',
+                  middle_name='L',
+                  cell_phone='(345) 555-9012',
+                  email='emma@something.com',
+                  )
 
-    donna = Person(last_name = 'Barker',
+    donna = Person(last_name='Barker',
                    first_name='Donna',
                    middle_name='L',
                    cell_phone='(111) 555-1111',
-                   email = 'dbarker@something.com',
+                   email='dbarker@something.com',
                    )
 
     barker_address = Address(line_1='123 Some St',
-                 line_2='Apt 1234',
-                 city='Seattle',
-                 state='WA',
-                 zip_code='98000',)
+                             line_2='Apt 1234',
+                             city='Seattle',
+                             state='WA',
+                             zip_code='98000',)
 
     the_barkers = Household(name="The Barkers",
-                                 people=(chris, donna, emma),
-                                 address = barker_address)
+                            people=(chris, donna, emma),
+                            address=barker_address)
 
-
-    joseph = Person(last_name = 'Sheedy',
+    joseph = Person(last_name='Sheedy',
                     first_name='Joseph',
                     cell_phone='(234) 555-8910',
-                    email = 'js@some_thing.com',
+                    email='js@some_thing.com',
                     )
 
-    cris = Person(last_name = 'Ewing',
+    cris = Person(last_name='Ewing',
                   first_name='Cris',
                   cell_phone='(345) 555-6789',
-                  email = 'cris@a_fake_domain.com',
+                  email='cris@a_fake_domain.com',
                   )
 
-    fulvio = Person(last_name = 'Casali',
-                    first_name= 'Fulvio',
+    fulvio = Person(last_name='Casali',
+                    first_name='Fulvio',
                     cell_phone='(345) 555-1234',
-                    email = 'fulvio@a_fake_domain.com',
+                    email='fulvio@a_fake_domain.com',
                     )
 
     fred = Person(first_name="Fred",
@@ -223,30 +234,28 @@ def create_sample():
                                   zip_code='98105',
                                   )
 
-    python_cert = Business(name = 'Python Certification Program',
+    python_cert = Business(name='Python Certification Program',
                            people=(chris, joseph, cris, fulvio),
-                           address = Address('UW Professional and Continuing Education',
-                                             line_2='4333 Brooklyn Ave. NE',
-                                             city='Seattle',
-                                             state='WA',
-                                             zip_code='98105',
-                                             )
+                           address=python_cert_address
                            )
 
 
     address_book = AddressBook()
 
-    address_book.people.append(chris)
-    address_book.people.append(donna)
-    address_book.people.append(emma)
-    address_book.people.append(cris)
-    address_book.people.append(joseph)
-    address_book.people.append(fulvio)
+    address_book.add_person(chris)
+    address_book.add_person(donna)
+    address_book.add_person(emma)
+    address_book.add_person(cris)
+    address_book.add_person(joseph)
+    address_book.add_person(fulvio)
+    address_book.add_person(fred)
 
-    address_book.households.append(the_barkers)
-    address_book.businesses.append(python_cert)
+    address_book.add_household(the_barkers)
+
+    address_book.add_business(python_cert)
 
     return address_book
+
 
 if __name__ == "__main__":
     address_book = create_sample()

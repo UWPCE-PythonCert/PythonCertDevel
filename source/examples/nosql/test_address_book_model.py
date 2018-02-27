@@ -6,7 +6,7 @@ if testing mongo, remember to start database first
 $ mongod --dbpath=mongo_data/
 """
 
-# import address_book_model as model
+import address_book_model as model
 # import address_book_zodb as model
 # import address_book_mongo as model
 
