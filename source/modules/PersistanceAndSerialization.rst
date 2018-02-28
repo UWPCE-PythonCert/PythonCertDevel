@@ -6,7 +6,7 @@
 Persistence and Serialization
 *****************************
 
-========
+
 Overview
 ========
 
@@ -80,7 +80,7 @@ https://docs.python.org/3.5/library/pprint.html
 
 
 Python Literal Example
-----------------------
+......................
 
 .. code-block:: ipython
 
@@ -98,7 +98,6 @@ You can save the string to a file and even use ``import``.
 
 In fact, using a python file and importing it is a great way to handle configuration for your app -- very powerful and flexible.
 
-.. nextslide::
 
 NOTE: ``eval()`` is **DANGEROUS**:
 
@@ -112,6 +111,7 @@ Not so bad if you know where your data is coming from, but ``eval()`` will run a
 You really don't want that run on your machine!
 
 The alternative:
+
    ``ast.literal_eval`` is safer than eval:
 
    https://docs.python.org/3.5/library/ast.html#ast-helpers
@@ -161,11 +161,8 @@ You can essentially dump any python object to disk (or string, or socket, or...
 
 https://docs.python.org/3.5/library/pickle.html
 
-.. nextslide::
 
-.. rst-class:: medium
-
-  **Warning**
+**Warning**
 
 The pickle module is **not secure** against erroneous or maliciously constructed data. Never unpickle data received from an untrusted or unauthenticated source.
 
@@ -192,7 +189,6 @@ If less that 100s of MB -- just use a dict and pickle it.
 
 https://docs.python.org/3.5/library/shelve.html
 
-.. nextslide::
 
 ``shelve``  presents a ``dict``  interface:
 
@@ -215,13 +211,10 @@ LAB
 
 Here are two datasets embedded in Python:
 
-:download:`add_book_data.py <../Examples/persistence/add_book_data.py>`
+:download:`add_book_data.py </examples/persistence/add_book_data.py>`
 and
-:download:`add_book_data_flat.py <../Examples/persistence/add_book_data_flat.py>`
+:download:`add_book_data_flat.py </examples/persistence/add_book_data_flat.py>`
 
-[also available in the class repo: ``Examples/persistence``]
-
-.. nextslide::
 
 They can be loaded with::
 
@@ -243,9 +236,9 @@ They have address book data -- one with a nested dict, one "flat". Use the neste
 
 **Write some tests to make sure its working!**
 
+
 Interchange Formats
 ===================
-
 
 These are formats suitable for interchanging data with other systems -- written in arbitrary other languages.
 
@@ -271,7 +264,7 @@ INI files
 Good for configuration data, etc.
 
 ConfigParser
-------------
+............
 
 The ``configparser`` module provides tools for working with INI files:
 
@@ -309,7 +302,7 @@ Reading ``ini``  files:
 https://docs.python.org/3/library/configparser.html
 
 CSV
----
+===
 
 CSV (Comma Separated Values) format is the most common import and export format for spreadsheets and databases.
 
@@ -342,13 +335,11 @@ The ``csv``  module takes care of string quoting, etc. for you.
 - This is a pretty big deal -- that can be a real pain!
 
 NOTE: ``skipinitialspace`` is False by default, which can mess up
-interpretting quotes correctly.
+interpreting quotes correctly.
 
 https://docs.python.org/3/library/csv.html
 
-.. nextslide::
-
-Writing ``CSV``  files:
+Writing ``CSV`` files:
 
 .. code-block:: python
 
@@ -369,7 +360,7 @@ https://docs.python.org/3/library/csv.html
 
 
 JSON
-----
+====
 
 JSON (JavaScript Object Notation) is a subset of JavaScript syntax used as a lightweight data interchange format.
 
@@ -435,7 +426,7 @@ Use the same addressbook data:
    - and reads it back in
 
 XML
----
+===
 
 XML is a standardized version of SGML, designed for use as a data storage / interchange format.
 
@@ -478,7 +469,7 @@ https://docs.python.org/3/library/xml.etree.elementtree.html
 
 (NEED a good example here!)
 
-=========
+
 DataBases
 =========
 
@@ -524,7 +515,6 @@ flag options are:
 
 https://docs.python.org/3/library/dbm.html
 
-.. nextslide::
 
 ``dbm``  provides a dict-like interface:
 
@@ -675,9 +665,6 @@ A few more things you could do:
 
 
 
-
-
-=============
 Other Options
 =============
 
