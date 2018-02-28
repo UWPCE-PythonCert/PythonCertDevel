@@ -195,7 +195,7 @@
 <p>This is in contrast to RDBMSs, where the data are stored in individual tables, with the relationships between the tables maintained via primary and foreign keys, and the actual relationships determined on the fly by searching multiple tables during “join” queries. RDBMSs are well optimized for these kinds of queries, but Graph Databases can be much more efficient for data retrieval when the records have complex relationships.</p>
 <p>I find it a bit ironic that “relational” databases, aren’t directly storing the relationships :-)</p>
 <p>The wikipedia page has a pretty good description / example of how that works.</p>
-<p>There are a number of commercial and open source Graph databases out there, and a more than a few have Python drivers.</p>
+<p>There are a number of commercial and open source Graph databases out there, and more than a few have Python drivers.</p>
 <div class="section" id="neo4j">
 <h2>neo4j<a class="headerlink" href="#neo4j" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://neo4j.com/">neo4j</a> is perhaps the most <a class="reference external" href="https://db-engines.com/en/ranking/graph+dbms">popular</a> graph database as of this writing, and it comes with Python drives and good documentation, so we’ll use that one for examples.</p>
@@ -282,17 +282,10 @@
 <p><a class="reference external" href="https://www.airpair.com/neo4j/posts/getting-started-with-neo4j-and-cypher">https://www.airpair.com/neo4j/posts/getting-started-with-neo4j-and-cypher</a></p>
 <div class="section" id="quick-test">
 <h4>Quick test<a class="headerlink" href="#quick-test" title="Permalink to this headline">¶</a></h4>
-<p>You can find example code here:</p>
-<p><a class="reference external" href="https://github.com/PythonCHB/dbs-neo4j">https://github.com/PythonCHB/dbs-neo4j</a></p>
-<p>You can download or clone (or fork and clone) that repo, and then take a look:</p>
-<p>In the repo, you’ll find a few “housekeeping” files – readme, <code class="docutils literal"><span class="pre">setup.py</span></code>, etc, and then the real code in the <code class="docutils literal"><span class="pre">src</span></code> dir.</p>
-<p>We are now going to create a Python program that will create and read some data into our Neo4j database.</p>
+<p>You can find example code in the class repo in:</p>
+<p>IntroPython-2017/examples/nosql/neo4j</p>
+<p>We are going to play with the code to get a feel for neo4j.</p>
 </div>
-</div>
-<div class="section" id="id4">
-<h3>Cypher<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>Neo4j uses a query language called Cypher. It plays the same role as SQL for RDMSs – and the official driver uses it to “talk” to the database.</p>
-<p><a class="reference external" href="https://neo4j.com/developer/cypher-query-language/">https://neo4j.com/developer/cypher-query-language/</a></p>
 </div>
 </div>
 <div class="section" id="other-interfaces-for-neo4j">

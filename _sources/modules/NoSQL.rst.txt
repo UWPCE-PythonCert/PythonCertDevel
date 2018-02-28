@@ -58,7 +58,7 @@ Database Schema
 
 A database schema is the organization of data, and description of how a database is constructed: Divided into database tables, and relationships: foreign keys, etc...
 
-Includes what fields in what tables, what data types each field is, normalization of shared data, etc.
+Includes what fields in which tables, what data type each field is, normalization of shared data, etc.
 
 This requires a fair bit of work up-front, and can be hard to adapt as the system requirements changes.
 
@@ -106,14 +106,18 @@ Three Categories:
 
 * Generally stores arbitrary collections of data (but not classes)
 
-* Can be simple key-value stores
+* Can be simple key-value stores:
 
   - Redis, etc...
 
-* Or a more full featured document database: In-database searching, etc.
+* Or a more full featured document database:
+
+  - In-database searching, etc.
+
   - mongoDB, etc...
 
 * "Graph" databases (:ref:`graph_databases`):
+
   - neo4j, etc.
 
 * Or a Map/Reduce engine:
@@ -191,7 +195,7 @@ Auto-Sharding
 Querying
  * Rich, document-based queries.
 
-` MongoDB Web Site <https://www.mongodb.org/>`_
+`MongoDB Web Site <https://www.mongodb.org/>`_
 
 
 Other Options to Consider:
@@ -216,7 +220,7 @@ Apache Cassandra: A more schema-based NoSQL solution
 
 This is a nice page with a summary:
 
- - https://www.fullstackpython.com/no-sql-datastore.html
+- https://www.fullstackpython.com/no-sql-datastore.html
 
 (there are some good links to other resources on that page, too)
 
@@ -256,7 +260,7 @@ Using ZODB
 
 ZODB stored Python objects.
 
-To make an object persistent:
+To make an object persistent (persistent should be installed with zodb):
 
 .. code-block:: python
 
@@ -268,8 +272,6 @@ To make an object persistent:
           self.another_field ''
 
 When a change is made to the fields, the DB will keep it updated.
-
-:download:`/examples/nosql/address_book_zodb.py`
 
 
 Mutable Attributes
@@ -317,7 +319,9 @@ For Python: ``PyMongo``
 
 http://api.mongodb.org/python/current/tutorial.html
 
-(``pip install pymongo`` - binary wheels available!)
+To install the python api for mongoDB:
+
+``pip install pymongo`` - binary wheels available!
 
 There are also various tools for integrating mongoDB with Frameworks:
 
@@ -330,7 +334,7 @@ There are also various tools for integrating mongoDB with Frameworks:
 Getting started with mongoDB
 ----------------------------
 
-mongoDB is separate program. Installers here:
+The mongoDB (database) is a separate program. Installers here:
 
 http://www.mongodb.org/downloads
 
@@ -345,9 +349,9 @@ Simple copy and paste install or use homebrew (at least on OS-X)
 
 Drop the files from ``bin`` into ``usr/local/bin`` or similar, or in your home dir somewhere you can find them.
 
- - I put it in a "mongo" dib in my home dir. Then added it to me PATH for now:
+- I put it in a "mongo" dir in my home dir. Then added it to my PATH for now:
 
-Editing ``~/.bash_profile``, and adding:
+  - Editing ``~/.bash_profile``, and adding:
 
 ::
 
@@ -427,15 +431,3 @@ and
 :download:`/examples/nosql/test_address_book_mongo.py`
 
 (or in the class repo in : ``examples/nosql``)
-
-
-
-
-
-
-
-
-
-
-
-

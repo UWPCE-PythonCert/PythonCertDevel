@@ -229,7 +229,7 @@
 <h3>Database Schema<a class="headerlink" href="#database-schema" title="Permalink to this headline">¶</a></h3>
 <p><strong>Schema:</strong></p>
 <p>A database schema is the organization of data, and description of how a database is constructed: Divided into database tables, and relationships: foreign keys, etc…</p>
-<p>Includes what fields in what tables, what data types each field is, normalization of shared data, etc.</p>
+<p>Includes what fields in which tables, what data type each field is, normalization of shared data, etc.</p>
 <p>This requires a fair bit of work up-front, and can be hard to adapt as the system requirements changes.</p>
 <p>It also can be a bit ugly to map your programming data model to the schema.</p>
 </div>
@@ -267,16 +267,21 @@
 </li>
 <li><p class="first">Generally stores arbitrary collections of data (but not classes)</p>
 </li>
-<li><p class="first">Can be simple key-value stores</p>
+<li><p class="first">Can be simple key-value stores:</p>
 <ul class="simple">
 <li>Redis, etc…</li>
 </ul>
 </li>
-<li><p class="first">Or a more full featured document database: In-database searching, etc.
-- mongoDB, etc…</p>
+<li><p class="first">Or a more full featured document database:</p>
+<ul class="simple">
+<li>In-database searching, etc.</li>
+<li>mongoDB, etc…</li>
+</ul>
 </li>
-<li><p class="first">“Graph” databases (<a class="reference internal" href="GraphDatabases.html#graph-databases"><span class="std std-ref">Graph Databases</span></a>):
-- neo4j, etc.</p>
+<li><p class="first">“Graph” databases (<a class="reference internal" href="GraphDatabases.html#graph-databases"><span class="std std-ref">Graph Databases</span></a>):</p>
+<ul class="simple">
+<li>neo4j, etc.</li>
+</ul>
 </li>
 <li><p class="first">Or a Map/Reduce engine:</p>
 <blockquote>
@@ -354,7 +359,7 @@
 </ul>
 </dd>
 </dl>
-<p>` MongoDB Web Site &lt;<a class="reference external" href="https://www.mongodb.org/">https://www.mongodb.org/</a>&gt;`_</p>
+<p><a class="reference external" href="https://www.mongodb.org/">MongoDB Web Site</a></p>
 </div>
 <div class="section" id="other-options-to-consider">
 <h3>Other Options to Consider:<a class="headerlink" href="#other-options-to-consider" title="Permalink to this headline">¶</a></h3>
@@ -376,11 +381,9 @@
 <li><a class="reference external" href="http://pycassa.github.io/pycassa/">http://pycassa.github.io/pycassa/</a></li>
 </ul>
 <p>This is a nice page with a summary:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><a class="reference external" href="https://www.fullstackpython.com/no-sql-datastore.html">https://www.fullstackpython.com/no-sql-datastore.html</a></li>
 </ul>
-</div></blockquote>
 <p>(there are some good links to other resources on that page, too)</p>
 </div>
 </div>
@@ -412,7 +415,7 @@
 <div class="section" id="using-zodb">
 <h3>Using ZODB<a class="headerlink" href="#using-zodb" title="Permalink to this headline">¶</a></h3>
 <p>ZODB stored Python objects.</p>
-<p>To make an object persistent:</p>
+<p>To make an object persistent (persistent should be installed with zodb):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">persistent</span>
 
 <span class="k">class</span> <span class="nc">Something</span><span class="p">(</span><span class="n">persistent</span><span class="o">.</span><span class="n">Persistent</span><span class="p">):</span>
@@ -422,7 +425,6 @@
 </pre></div>
 </div>
 <p>When a change is made to the fields, the DB will keep it updated.</p>
-<p><a class="reference download internal" href="../_downloads/address_book_zodb.py" download=""><code class="xref download docutils literal"><span class="pre">/examples/nosql/address_book_zodb.py</span></code></a></p>
 </div>
 <div class="section" id="mutable-attributes">
 <h3>Mutable Attributes<a class="headerlink" href="#mutable-attributes" title="Permalink to this headline">¶</a></h3>
@@ -458,7 +460,8 @@
 <p><a class="reference external" href="http://docs.mongodb.org/manual/applications/drivers/">http://docs.mongodb.org/manual/applications/drivers/</a></p>
 <p>For Python: <code class="docutils literal"><span class="pre">PyMongo</span></code></p>
 <p><a class="reference external" href="http://api.mongodb.org/python/current/tutorial.html">http://api.mongodb.org/python/current/tutorial.html</a></p>
-<p>(<code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pymongo</span></code> - binary wheels available!)</p>
+<p>To install the python api for mongoDB:</p>
+<p><code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pymongo</span></code> - binary wheels available!</p>
 <p>There are also various tools for integrating mongoDB with Frameworks:</p>
 <ul class="simple">
 <li>Django MongoDB Engine</li>
@@ -470,7 +473,7 @@
 </div>
 <div class="section" id="getting-started-with-mongodb">
 <h3>Getting started with mongoDB<a class="headerlink" href="#getting-started-with-mongodb" title="Permalink to this headline">¶</a></h3>
-<p>mongoDB is separate program. Installers here:</p>
+<p>The mongoDB (database) is a separate program. Installers here:</p>
 <p><a class="reference external" href="http://www.mongodb.org/downloads">http://www.mongodb.org/downloads</a></p>
 <p><strong>NOTE:</strong> mongo is also available as a service, with a free “sandbox” to try it out:</p>
 <p><a class="reference external" href="https://www.mongodb.com/cloud/atlas">https://www.mongodb.com/cloud/atlas</a></p>
@@ -478,12 +481,12 @@
 <h4>Installing Mongo<a class="headerlink" href="#installing-mongo" title="Permalink to this headline">¶</a></h4>
 <p>Simple copy and paste install or use homebrew (at least on OS-X)</p>
 <p>Drop the files from <code class="docutils literal"><span class="pre">bin</span></code> into <code class="docutils literal"><span class="pre">usr/local/bin</span></code> or similar, or in your home dir somewhere you can find them.</p>
-<blockquote>
-<div><ul class="simple">
-<li>I put it in a “mongo” dib in my home dir. Then added it to me PATH for now:</li>
+<ul class="simple">
+<li>I put it in a “mongo” dir in my home dir. Then added it to my PATH for now:<ul>
+<li>Editing <code class="docutils literal"><span class="pre">~/.bash_profile</span></code>, and adding:</li>
 </ul>
-</div></blockquote>
-<p>Editing <code class="docutils literal"><span class="pre">~/.bash_profile</span></code>, and adding:</p>
+</li>
+</ul>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Adding PATH for mongo local install</span>
 <span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;~/mongo/bin:$</span><span class="si">{PATH}</span>
 <span class="n">export</span> <span class="n">PATH</span>

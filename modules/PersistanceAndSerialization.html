@@ -203,7 +203,7 @@
 <p><em>Serialization</em> means taking a potentially complex data structure and converting it into a single string of bytes.</p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Serialization">https://en.wikipedia.org/wiki/Serialization</a></p>
 <p><em>Persistence</em> is storing data in a way that it will persist beyond the run-time of your program.</p>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Persistence_(computer_science">https://en.wikipedia.org/wiki/Persistence_(computer_science</a>)</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Persistence_(computer_science)">Persistance on Wikipedia</a></p>
 <p>They are closely related, because most forms of persistent storage – simple text files, databases, etc., require that it be turned into a simple string of bytes first. After all, at the end of the day, everything done with computers is ultimately a serial string of bytes.</p>
 <p>Serialization is also very useful for transmitting information between systems – over the network, etc.</p>
 </div>
@@ -315,7 +315,6 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS, etc.)</p>
 <p>The values (not the keys!) can be essentially arbitrary Python objects (anything picklable)</p>
 <p><strong>NOTE:</strong> it will not reflect changes in mutable objects without re-writing them to the db. (or use <code class="docutils literal"><span class="pre">writeback=True</span></code>)</p>
 <p>If less that 100s of MB – just use a dict and pickle it.</p>
-<p><a class="reference external" href="https://docs.python.org/3.5/library/shelve.html">https://docs.python.org/3.5/library/shelve.html</a></p>
 <p><code class="docutils literal"><span class="pre">shelve</span></code>  presents a <code class="docutils literal"><span class="pre">dict</span></code>  interface:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shelve</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
@@ -416,7 +415,7 @@ and
 <div class="section" id="the-csv-module">
 <h3>The CSV module<a class="headerlink" href="#the-csv-module" title="Permalink to this headline">¶</a></h3>
 <p>Reading <code class="docutils literal"><span class="pre">CSV</span></code>  files:</p>
-<p>(uses: <code class="xref download docutils literal"><span class="pre">eggs.csv</span></code>)</p>
+<p>(uses: <a class="reference download internal" href="../_downloads/eggs.csv" download=""><code class="xref download docutils literal"><span class="pre">eggs.csv</span></code></a>)</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="kn">import</span> <span class="nn">csv</span>
 <span class="gp">In [17]: </span><span class="n">spam_reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eggs.csv&#39;</span><span class="p">),</span>
 <span class="go">                                  skipinitialspace=True)</span>
@@ -432,7 +431,6 @@ and
 </ul>
 <p>NOTE: <code class="docutils literal"><span class="pre">skipinitialspace</span></code> is False by default, which can mess up
 interpreting quotes correctly.</p>
-<p><a class="reference external" href="https://docs.python.org/3/library/csv.html">https://docs.python.org/3/library/csv.html</a></p>
 <p>Writing <code class="docutils literal"><span class="pre">CSV</span></code> files:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">csv</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eggs2.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
@@ -456,8 +454,6 @@ interpreting quotes correctly.</p>
 <p>Can handle the standard Python data types</p>
 <p>Specializable encoding/decoding for other types – but I wouldn’t do that!</p>
 <p>Commonly used for configuration files, etc.</p>
-<p><a class="reference external" href="http://www.json.org/">http://www.json.org/</a></p>
-<p><a class="reference external" href="https://docs.python.org/3/library/json.html">https://docs.python.org/3/library/json.html</a></p>
 <div class="section" id="python-json-module">
 <h3>Python json module<a class="headerlink" href="#python-json-module" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [93]: </span><span class="kn">import</span> <span class="nn">json</span>
@@ -475,6 +471,7 @@ interpreting quotes correctly.</p>
 </div>
 <p>(also <code class="docutils literal"><span class="pre">json.dump()</span> <span class="pre">and</span> <span class="pre">json.load()</span></code> for files)</p>
 <p><strong>NOTE:</strong> JSON is less “rich” than python – no tuples, no distinction between integers and floats, no comments! And keys can only be strings.</p>
+<p><a class="reference external" href="http://www.json.org/">http://www.json.org/</a></p>
 <p><a class="reference external" href="https://docs.python.org/3/library/json.html">https://docs.python.org/3/library/json.html</a></p>
 </div>
 <div class="section" id="id2">
@@ -522,7 +519,7 @@ interpreting quotes correctly.</p>
 <p><code class="docutils literal"><span class="pre">xml.sax</span></code></p>
 <p><code class="docutils literal"><span class="pre">xml.parsers.expat</span></code></p>
 <p><code class="docutils literal"><span class="pre">xml.etree</span></code></p>
-<p><a class="reference external" href="https://docs.python.org/3/library/xml.etree.elementtree.html">https://docs.python.org/3/library/xml.etree.elementtree.html</a></p>
+<p><a class="reference external" href="https://docs.python.org/3/library/xml.html">https://docs.python.org/3/library/xml.html</a></p>
 </div>
 <div class="section" id="elementtree">
 <h3>elementtree<a class="headerlink" href="#elementtree" title="Permalink to this headline">¶</a></h3>
@@ -574,7 +571,6 @@ interpreting quotes correctly.</p>
 <li>‘n’ – Always create a new, empty database, open for reading and writing</li>
 </ul>
 <p><strong>caution</strong> – these are different than the file open modes!</p>
-<p><a class="reference external" href="https://docs.python.org/3/library/dbm.html">https://docs.python.org/3/library/dbm.html</a></p>
 <p><code class="docutils literal"><span class="pre">dbm</span></code>  provides a dict-like interface:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dbm</span>
 <span class="n">db</span> <span class="o">=</span> <span class="n">dbm</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;dbm&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">)</span>
@@ -606,7 +602,6 @@ interpreting quotes correctly.</p>
 <p><code class="docutils literal"><span class="pre">sqlite3</span></code>  Python module wraps C lib – provides standard DB-API interface</p>
 <p>Allows (and requires) SQL queries</p>
 <p>Can provide high performance, flexible, portable storage for your app</p>
-<p><a class="reference external" href="https://docs.python.org/3/library/sqlite3.html">https://docs.python.org/3/library/sqlite3.html</a></p>
 <div class="section" id="example">
 <h4>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
@@ -618,7 +613,6 @@ interpreting quotes correctly.</p>
 <span class="n">c</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="https://docs.python.org/3/library/sqlite3.html">https://docs.python.org/3/library/sqlite3.html</a></p>
 </div>
 <div class="section" id="execute-sql-with-the-cursor">
 <h4>Execute SQL with the cursor:<a class="headerlink" href="#execute-sql-with-the-cursor" title="Permalink to this headline">¶</a></h4>
@@ -632,7 +626,6 @@ interpreting quotes correctly.</p>
 <span class="n">c</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="https://docs.python.org/3/library/sqlite3.html">https://docs.python.org/3/library/sqlite3.html</a></p>
 <p><code class="docutils literal"><span class="pre">SELECT</span></code>  creates an cursor that can be iterated:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM stocks ORDER BY price&#39;</span><span class="p">):</span>
 <span class="go">        print row</span>
@@ -658,6 +651,7 @@ interpreting quotes correctly.</p>
 <span class="n">c</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s1">&#39;INSERT INTO stocks VALUES (?,?,?,?,?)&#39;</span><span class="p">,</span> <span class="n">purchases</span><span class="p">)</span>
 </pre></div>
 </div>
+<p><a class="reference external" href="https://docs.python.org/3/library/sqlite3.html">https://docs.python.org/3/library/sqlite3.html</a></p>
 <p><a class="reference external" href="http://xkcd.com/327/">http://xkcd.com/327/</a></p>
 </div>
 </div>
