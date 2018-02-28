@@ -113,7 +113,7 @@ Three Categories:
 * Or a more full featured document database: In-database searching, etc.
   - mongoDB, etc...
 
-* "Graph" databases:
+* "Graph" databases (:ref:`graph_databases`):
   - neo4j, etc.
 
 * Or a Map/Reduce engine:

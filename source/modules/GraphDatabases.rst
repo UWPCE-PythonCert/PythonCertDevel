@@ -29,7 +29,7 @@ Here is a nice Python based tutorial about graph databases and neo4j:
 
 `Talking About your Data Relationships <https://medium.com/labcodes/graph-databases-talking-about-your-data-relationships-with-python-b438c689dc89>`_
 
-And `here are the docs <https://neo4j.com/developer/python/>`_ for the python driver: https://neo4j.com/developer/python/
+And `here are the docs <https://neo4j.com/developer/python/>`_ for the python driver.
 
 And the Python API documentation: `python-driver API  <https://neo4j.com/docs/api/python-driver/current/>`_
 
@@ -139,6 +139,18 @@ So now we need to setup access to Neo4j from Python. To do that we need to insta
 
 Now, we are ready to start using our database!
 
+Cypher
+------
+
+Neo4j uses a query language called Cypher. It plays the same role as SQL for RDMSs -- and the official driver uses it to "talk" to the database.
+
+https://neo4j.com/developer/cypher-query-language/
+
+And here is a nice introduction:
+
+https://www.airpair.com/neo4j/posts/getting-started-with-neo4j-and-cypher
+
+
 Quick test
 ..........
 
@@ -150,7 +162,7 @@ You can download or clone (or fork and clone) that repo, and then take a look:
 
 In the repo, you'll find a few "housekeeping" files -- readme, ``setup.py``, etc, and then the real code in the ``src`` dir.
 
-We are now going to create a Python program that will create and read some data into our Neo4j database. Let’s take a look at this program:
+We are now going to create a Python program that will create and read some data into our Neo4j database.
 
 
 Cypher
@@ -158,6 +170,7 @@ Cypher
 
 Neo4j uses a query language called Cypher. It plays the same role as SQL for RDMSs -- and the official driver uses it to "talk" to the database.
 
+https://neo4j.com/developer/cypher-query-language/
 
 
 Other interfaces for neo4j
