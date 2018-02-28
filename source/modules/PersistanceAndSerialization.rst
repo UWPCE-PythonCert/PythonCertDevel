@@ -18,7 +18,7 @@ https://en.wikipedia.org/wiki/Serialization
 
 *Persistence* is storing data in a way that it will persist beyond the run-time of your program.
 
-https://en.wikipedia.org/wiki/Persistence_(computer_science)
+`Persistance on Wikipedia <https://en.wikipedia.org/wiki/Persistence_(computer_science)>`_
 
 They are closely related, because most forms of persistent storage -- simple text files, databases, etc., require that it be turned into a simple string of bytes first. After all, at the end of the day, everything done with computers is ultimately a serial string of bytes.
 
@@ -187,8 +187,6 @@ The values (not the keys!) can be essentially arbitrary Python objects (anything
 
 If less that 100s of MB -- just use a dict and pickle it.
 
-https://docs.python.org/3.5/library/shelve.html
-
 
 ``shelve``  presents a ``dict``  interface:
 
@@ -337,7 +335,6 @@ The ``csv``  module takes care of string quoting, etc. for you.
 NOTE: ``skipinitialspace`` is False by default, which can mess up
 interpreting quotes correctly.
 
-https://docs.python.org/3/library/csv.html
 
 Writing ``CSV`` files:
 
@@ -374,9 +371,6 @@ Specializable encoding/decoding for other types -- but I wouldn't do that!
 
 Commonly used for configuration files, etc.
 
-http://www.json.org/
-
-https://docs.python.org/3/library/json.html
 
 Python json module
 ------------------
@@ -398,6 +392,8 @@ Python json module
 (also ``json.dump() and json.load()`` for files)
 
 **NOTE:** JSON is less "rich" than python -- no tuples, no distinction between integers and floats, no comments! And keys can only be strings.
+
+http://www.json.org/
 
 https://docs.python.org/3/library/json.html
 
@@ -443,7 +439,7 @@ XML in the python std lib
 
 ``xml.etree``
 
-https://docs.python.org/3/library/xml.etree.elementtree.html
+https://docs.python.org/3/library/xml.html
 
 elementtree
 -----------
@@ -513,8 +509,6 @@ flag options are:
 
 **caution** -- these are different than the file open modes!
 
-https://docs.python.org/3/library/dbm.html
-
 
 ``dbm``  provides a dict-like interface:
 
@@ -562,8 +556,6 @@ Allows (and requires) SQL queries
 
 Can provide high performance, flexible, portable storage for your app
 
-https://docs.python.org/3/library/sqlite3.html
-
 
 Example:
 ........
@@ -577,8 +569,6 @@ Example:
     conn = sqlite3.connect(':memory:')
     # create a cursor
     c = conn.cursor()
-
-https://docs.python.org/3/library/sqlite3.html
 
 
 Execute SQL with the cursor:
@@ -594,9 +584,6 @@ Execute SQL with the cursor:
     conn.commit()
     # Close the cursor if we are done with it
     c.close()
-
-
-https://docs.python.org/3/library/sqlite3.html
 
 
 ``SELECT``  creates an cursor that can be iterated:
@@ -632,6 +619,8 @@ Good idea to use the DB-API’s parameter substitution:
                 ]
     c.executemany('INSERT INTO stocks VALUES (?,?,?,?,?)', purchases)
 
+
+https://docs.python.org/3/library/sqlite3.html
 
 http://xkcd.com/327/
 
@@ -744,4 +733,3 @@ Load data with:
 Optional:
 
 * Do the same with a ORM of your choice.
-
