@@ -106,6 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="Logging.html">Logging and the logging module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Debugging.html">Debugging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MetaProgramming.html">Metaprogramming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PersistanceAndSerialization.html">Persistence and Serialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NoSQL.html">No SQL Databases</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Graph Databases</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#neo4j">neo4j</a></li>
@@ -200,7 +201,7 @@
 <p><a class="reference external" href="https://neo4j.com/">neo4j</a> is perhaps the most <a class="reference external" href="https://db-engines.com/en/ranking/graph+dbms">popular</a> graph database as of this writing, and it comes with Python drives and good documentation, so we’ll use that one for examples.</p>
 <p>Here is a nice Python based tutorial about graph databases and neo4j:</p>
 <p><a class="reference external" href="https://medium.com/labcodes/graph-databases-talking-about-your-data-relationships-with-python-b438c689dc89">Talking About your Data Relationships</a></p>
-<p>And <a class="reference external" href="https://neo4j.com/developer/python/">here are the docs</a> for the python driver: <a class="reference external" href="https://neo4j.com/developer/python/">https://neo4j.com/developer/python/</a></p>
+<p>And <a class="reference external" href="https://neo4j.com/developer/python/">here are the docs</a> for the python driver.</p>
 <p>And the Python API documentation: <a class="reference external" href="https://neo4j.com/docs/api/python-driver/current/">python-driver API</a></p>
 <p>There are a lot of other great docs and tutorial on the neo4j web site – well worth checking out if you want to really learn how to use it.</p>
 <p>And here is the “official” <a class="reference download internal" href="../_downloads/neo4j-developer-manual-3.3-python.pdf" download=""><code class="xref download docutils literal"><span class="pre">neo4j</span> <span class="pre">developer</span> <span class="pre">manual:</span> <span class="pre">Python</span></code></a></p>
@@ -272,18 +273,26 @@
 </div>
 <p>Now, we are ready to start using our database!</p>
 </div>
+</div>
+<div class="section" id="cypher">
+<h3>Cypher<a class="headerlink" href="#cypher" title="Permalink to this headline">¶</a></h3>
+<p>Neo4j uses a query language called Cypher. It plays the same role as SQL for RDMSs – and the official driver uses it to “talk” to the database.</p>
+<p><a class="reference external" href="https://neo4j.com/developer/cypher-query-language/">https://neo4j.com/developer/cypher-query-language/</a></p>
+<p>And here is a nice introduction:</p>
+<p><a class="reference external" href="https://www.airpair.com/neo4j/posts/getting-started-with-neo4j-and-cypher">https://www.airpair.com/neo4j/posts/getting-started-with-neo4j-and-cypher</a></p>
 <div class="section" id="quick-test">
 <h4>Quick test<a class="headerlink" href="#quick-test" title="Permalink to this headline">¶</a></h4>
 <p>You can find example code here:</p>
 <p><a class="reference external" href="https://github.com/PythonCHB/dbs-neo4j">https://github.com/PythonCHB/dbs-neo4j</a></p>
 <p>You can download or clone (or fork and clone) that repo, and then take a look:</p>
 <p>In the repo, you’ll find a few “housekeeping” files – readme, <code class="docutils literal"><span class="pre">setup.py</span></code>, etc, and then the real code in the <code class="docutils literal"><span class="pre">src</span></code> dir.</p>
-<p>We are now going to create a Python program that will create and read some data into our Neo4j database. Let’s take a look at this program:</p>
+<p>We are now going to create a Python program that will create and read some data into our Neo4j database.</p>
 </div>
 </div>
-<div class="section" id="cypher">
-<h3>Cypher<a class="headerlink" href="#cypher" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>Cypher<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>Neo4j uses a query language called Cypher. It plays the same role as SQL for RDMSs – and the official driver uses it to “talk” to the database.</p>
+<p><a class="reference external" href="https://neo4j.com/developer/cypher-query-language/">https://neo4j.com/developer/cypher-query-language/</a></p>
 </div>
 </div>
 <div class="section" id="other-interfaces-for-neo4j">

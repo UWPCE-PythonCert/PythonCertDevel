@@ -37,8 +37,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
         <link rel="up" title="Modules" href="index.html"/>
-        <link rel="next" title="Asychronous Programing" href="Async.html"/>
-        <link rel="prev" title="Metaprogramming" href="MetaProgramming.html"/> 
+        <link rel="next" title="Graph Databases" href="GraphDatabases.html"/>
+        <link rel="prev" title="Persistence and Serialization" href="PersistanceAndSerialization.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -106,11 +106,13 @@
 <li class="toctree-l3"><a class="reference internal" href="Logging.html">Logging and the logging module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Debugging.html">Debugging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MetaProgramming.html">Metaprogramming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PersistanceAndSerialization.html">Persistence and Serialization</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">No SQL Databases</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#no-sql">“No SQL”?</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#an-example">An Example</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="GraphDatabases.html">Graph Databases</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programing</a></li>
 </ul>
 </li>
@@ -273,7 +275,7 @@
 <li><p class="first">Or a more full featured document database: In-database searching, etc.
 - mongoDB, etc…</p>
 </li>
-<li><p class="first">“Graph” databases:
+<li><p class="first">“Graph” databases (<a class="reference internal" href="GraphDatabases.html#graph-databases"><span class="std std-ref">Graph Databases</span></a>):
 - neo4j, etc.</p>
 </li>
 <li><p class="first">Or a Map/Reduce engine:</p>
@@ -470,15 +472,48 @@
 <h3>Getting started with mongoDB<a class="headerlink" href="#getting-started-with-mongodb" title="Permalink to this headline">¶</a></h3>
 <p>mongoDB is separate program. Installers here:</p>
 <p><a class="reference external" href="http://www.mongodb.org/downloads">http://www.mongodb.org/downloads</a></p>
+<p><strong>NOTE:</strong> mongo is also available as a service, with a free “sandbox” to try it out:</p>
+<p><a class="reference external" href="https://www.mongodb.com/cloud/atlas">https://www.mongodb.com/cloud/atlas</a></p>
+<div class="section" id="installing-mongo">
+<h4>Installing Mongo<a class="headerlink" href="#installing-mongo" title="Permalink to this headline">¶</a></h4>
 <p>Simple copy and paste install or use homebrew (at least on OS-X)</p>
-<p>(drop the files from <code class="docutils literal"><span class="pre">bin</span></code> into <code class="docutils literal"><span class="pre">usr/local/bin</span></code> or similar)</p>
+<p>Drop the files from <code class="docutils literal"><span class="pre">bin</span></code> into <code class="docutils literal"><span class="pre">usr/local/bin</span></code> or similar, or in your home dir somewhere you can find them.</p>
+<blockquote>
+<div><ul class="simple">
+<li>I put it in a “mongo” dib in my home dir. Then added it to me PATH for now:</li>
+</ul>
+</div></blockquote>
+<p>Editing <code class="docutils literal"><span class="pre">~/.bash_profile</span></code>, and adding:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Adding PATH for mongo local install</span>
+<span class="n">PATH</span><span class="o">=</span><span class="s2">&quot;~/mongo/bin:$</span><span class="si">{PATH}</span>
+<span class="n">export</span> <span class="n">PATH</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="anaconda-install">
+<h4>Anaconda Install<a class="headerlink" href="#anaconda-install" title="Permalink to this headline">¶</a></h4>
+<p>If you are using the Anaconda Python distribution (or miniconda) Mongo is available from conda:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">mongodb</span> <span class="n">pymongo</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="starting-mongo">
+<h4>Starting Mongo<a class="headerlink" href="#starting-mongo" title="Permalink to this headline">¶</a></h4>
 <p>Create a dir for the database:</p>
 <p><code class="docutils literal"><span class="pre">$</span> <span class="pre">mkdir</span> <span class="pre">mongo_data</span></code></p>
 <p>And start it up:</p>
 <p><code class="docutils literal"><span class="pre">$</span> <span class="pre">mongod</span> <span class="pre">--dbpath=mongo_data/</span></code></p>
+<p>It will give you a bunch of startup messages, and then end by indicating which port it is listening on:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">NETWORK</span>  <span class="p">[</span><span class="n">initandlisten</span><span class="p">]</span> <span class="n">waiting</span> <span class="k">for</span> <span class="n">connections</span> <span class="n">on</span> <span class="n">port</span> <span class="mi">27017</span>
+</pre></div>
+</div>
+<p>So you know you can connect to it on port 27017</p>
+</div>
 </div>
 <div class="section" id="creating-a-db">
 <h3>Creating a DB:<a class="headerlink" href="#creating-a-db" title="Permalink to this headline">¶</a></h3>
+<p>Make sure you’ve got the mongo drivers installed:</p>
+<p>pip install pymongo</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># create the DB</span>
 <span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
 
@@ -487,10 +522,10 @@
 <span class="n">people</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">people</span> <span class="c1"># creates a collection</span>
 </pre></div>
 </div>
-<p>mongo will link to the given database and collection, or create new ones if they don’t exist.</p>
+<p>Mongo will link to the given database and collection, or create new ones if they don’t exist.</p>
 <p>Adding some stuff:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">people</span><span class="o">.</span><span class="n">insert</span><span class="p">({</span><span class="s1">&#39;first_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Fred&#39;</span><span class="p">,</span>
-               <span class="s1">&#39;last_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Jones&#39;</span><span class="p">})</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">people</span><span class="o">.</span><span class="n">insert_one</span><span class="p">({</span><span class="s1">&#39;first_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Fred&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;last_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Jones&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -506,6 +541,9 @@
 </div>
 <p>Note that it adds an ObjectID for you.</p>
 <p><a class="reference download internal" href="../_downloads/address_book_mongo.py" download=""><code class="xref download docutils literal"><span class="pre">/examples/nosql/address_book_mongo.py</span></code></a></p>
+<p>and</p>
+<p><a class="reference download internal" href="../_downloads/test_address_book_mongo.py" download=""><code class="xref download docutils literal"><span class="pre">/examples/nosql/test_address_book_mongo.py</span></code></a></p>
+<p>(or in the class repo in : <code class="docutils literal"><span class="pre">examples/nosql</span></code>)</p>
 </div>
 </div>
 </div>
@@ -520,10 +558,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Async.html" class="btn btn-neutral float-right" title="Asychronous Programing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="GraphDatabases.html" class="btn btn-neutral float-right" title="Graph Databases" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="MetaProgramming.html" class="btn btn-neutral" title="Metaprogramming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PersistanceAndSerialization.html" class="btn btn-neutral" title="Persistence and Serialization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

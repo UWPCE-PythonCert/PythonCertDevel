@@ -71,6 +71,7 @@ Second Class: Advanced Python
 
     MetaProgramming
 
+    PersistanceAndSerialization
     NoSQL
     GraphDatabases
 
