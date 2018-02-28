@@ -18,7 +18,7 @@ I find it a bit ironic that "relational" databases, aren't directly storing the 
 
 The wikipedia page has a pretty good description / example of how that works.
 
-There are a number of commercial and open source Graph databases out there, and a more than a few have Python drivers.
+There are a number of commercial and open source Graph databases out there, and more than a few have Python drivers.
 
 neo4j
 =====
@@ -165,14 +165,6 @@ In the repo, you'll find a few "housekeeping" files -- readme, ``setup.py``, etc
 We are now going to create a Python program that will create and read some data into our Neo4j database.
 
 
-Cypher
-------
-
-Neo4j uses a query language called Cypher. It plays the same role as SQL for RDMSs -- and the official driver uses it to "talk" to the database.
-
-https://neo4j.com/developer/cypher-query-language/
-
-
 Other interfaces for neo4j
 ==========================
 
@@ -193,8 +185,3 @@ Py2neo is a client library and toolkit for working with Neo4j from within Python
 It "speaks" the bolt protocol directly.
 
 http://py2neo.org/v3/
-
-
-
-
-
