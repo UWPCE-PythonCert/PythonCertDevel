@@ -154,15 +154,11 @@ https://www.airpair.com/neo4j/posts/getting-started-with-neo4j-and-cypher
 Quick test
 ..........
 
-You can find example code here:
+You can find example code in the class repo in:
 
-https://github.com/PythonCHB/dbs-neo4j
+IntroPython-2017/examples/nosql/neo4j
 
-You can download or clone (or fork and clone) that repo, and then take a look:
-
-In the repo, you'll find a few "housekeeping" files -- readme, ``setup.py``, etc, and then the real code in the ``src`` dir.
-
-We are now going to create a Python program that will create and read some data into our Neo4j database.
+We are going to play with the code to get a feel for neo4j.
 
 
 Cypher
