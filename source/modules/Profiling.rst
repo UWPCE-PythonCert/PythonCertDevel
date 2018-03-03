@@ -26,7 +26,7 @@ of your application
 -  frequency or duration of function calls
 -  wall clock execution time of part or all of your application
 
-Collecting this data involves instrumentating the code. In Python, this
+Collecting this data involves instrumenting the code. In Python, this
 happens at runtime.
 
 The instrumentation creates overhead, so it has a performance cost
@@ -102,14 +102,10 @@ O(log(n)) - goes up with the log of number of items
 - Example: bisection search
 
 
-.. nextslide::
-
-.. image:: images/big_o.png
+.. image:: /_static/big_o.png
 ..      :align: right
 ..      :height: 450px
       :alt: big O notation plot
-
-.. nextslide::
 
 **log?** you expect me to remember that math???
 
@@ -146,7 +142,7 @@ For instance a run on a machine with fast network and slow disk may
 produce much different results on a system with slow network and fast
 disk
 
-``time.clock()`` / ``time.time()``
+``time.clock()`` : ``time.time()``
 ----------------------------------
 
 Using the time module as a profiling decorator
@@ -157,11 +153,9 @@ Using the time module as a profiling decorator
 
 Precision is system dependent
 
-Quite course, but can capture the big picture
+Quite coarse, but can capture the big picture
 
-See ``Examples/profiling/timer/timer_test.py``
-
-.. nextslide::
+See :download:`/examples/profiling/timer/timer_test.py`
 
 .. code-block:: python
 
@@ -232,8 +226,6 @@ options
     $ python -m timeit -n 1000 -t "len([x**2 for x in range(1000)])"
 
 
-.. nextslide::
-
 ``timeit`` can also be imported as a module
 
 http://docs.python.org/3/library/timeit.html#timeit.timeit
@@ -273,6 +265,7 @@ iPython has your back (again)
     %timeit -r 4 u == None
 
     import time
+
     %timeit -n1 time.sleep(2)
 
     %timeit -n 10000 "f" in "food"
@@ -282,6 +275,7 @@ http://ipython.readthedocs.io/en/stable/interactive/magics.html?#magic-timeit
 
 Exercise
 --------
+
 We just tried determining if a character exists in a string:
 
 .. code-block:: python
@@ -314,7 +308,6 @@ You really need to profile to be sure.
 
 Also: take into account the entire run-time: does it make sense to optimize an initialization routine that takes a few seconds before a multi-hour run?
 
-.. nextslide::
 
 A profiler takes measurements of runtime performance and summarizes results into a profile report
 
@@ -325,6 +318,7 @@ Reported metrics could include
 -  Frequency of function calls
 -  Duration of function calls
 -  Cumulative time spent in subfunction calls
+
 
 Python's built-in profilers
 ---------------------------
@@ -338,7 +332,7 @@ Python comes with a couple profiling modules
 
 **You almost always want to use ``cProfile``**
 
-https://docs.python.org/3.5/library/profile.html
+https://docs.python.org/3/library/profile.html
 
 
 cProfile
@@ -407,7 +401,6 @@ Gives you a command line interface
     # show results again:
     prof_dump% stats 5
 
-.. nextslide::
 
 pstats also has method calls:
 
@@ -465,12 +458,11 @@ Let's try that out now.
 Some other tools to consider
 ============================
 
-.. rst-class:: left
-  For better visualizing
+* For better visualizing
 
-  For C extensions
+* For C extensions
 
-  For memory Profiling
+* For memory Profiling
 
 
 SNAKEVIZ
@@ -480,7 +472,7 @@ A graphical profile viewer for Python
 
 https://jiffyclub.github.io/snakeviz/
 
-::
+.. code-block:: python
 
   pip install snakeviz
 
@@ -488,7 +480,7 @@ Inspired by "Run Snake Run": http://www.vrplumber.com/programming/runsnakerun/
 
 (which only works with Python 2.* for now)
 
-.. image:: images/snakeviz.png
+.. image:: /_static/snakeviz.png
 ..      :align: right
 ..      :height: 450px
       :alt: snakeviz visualization
@@ -559,7 +551,6 @@ can be used to profile C extensions
 Just call ProfilerStart and ProfilerStop with ctypes around the code you
 want to profile
 
-.. nextslide::
 
 .. code-block:: python
 
@@ -577,6 +568,7 @@ want to profile
     # convert the profile to qcachegrind's format with google's pprof tool
     $ pprof --callgrind  ~/virtualenvs/uwpce/lib/python2.7/site-packages/numpy/core/multiarray.so out.prof > output.callgrind
     $ qcachegrind output.callgrind
+
 
 memory profilers
 ----------------
@@ -629,7 +621,7 @@ A few key approaches
    for loops can be faster (see ``data_aggregation/loops.py``)
 
 -  Leverage existing domain specific C extension libraries, for instance
-   Numpy for fast array operations.
+   numpy for fast array operations.
 
 -  Rewrite expensive code as C modules. Use ctypes, Cython, SWIG, ...
 

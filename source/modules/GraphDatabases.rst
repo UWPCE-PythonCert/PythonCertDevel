@@ -181,3 +181,28 @@ Py2neo is a client library and toolkit for working with Neo4j from within Python
 It "speaks" the bolt protocol directly.
 
 http://py2neo.org/v3/
+
+A bit more about Graphs
+=======================
+
+Graph data structures can be very useful certain catagories of problems:
+
+If you Google something like: "applications of graph data structure in computer science" you will get a lot of pages to explore, like this one:
+
+http://www.cs.cmu.edu/afs/cs/academic/class/15210-s14/www/lectures/graphs.pdf
+
+I encourage you to read up about them.
+
+If you do find a use-case, or simply want to explore the topic experimentally with Python, the main package for working with graphs in python is `networkx`:
+
+https://networkx.github.io/
+
+It provides a pretty fully featured set of graph data structures, and the common algorithms for manipulating and exploring them.
+
+There is even a package for storing networkx graphs in neo4j:
+
+https://neonx.readthedocs.io
+
+So you can store your graph in the neo4j database, and work with it with networkx. This may even give you a nicer, more pythonic interface to neo4j.
+
+
