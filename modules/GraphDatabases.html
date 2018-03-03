@@ -112,6 +112,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#neo4j">neo4j</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#neo4j-example">neo4j example</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#other-interfaces-for-neo4j">Other interfaces for neo4j</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-bit-more-about-graphs">A bit more about Graphs</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programing</a></li>
@@ -302,6 +303,19 @@
 <p>It “speaks” the bolt protocol directly.</p>
 <p><a class="reference external" href="http://py2neo.org/v3/">http://py2neo.org/v3/</a></p>
 </div>
+</div>
+<div class="section" id="a-bit-more-about-graphs">
+<h2>A bit more about Graphs<a class="headerlink" href="#a-bit-more-about-graphs" title="Permalink to this headline">¶</a></h2>
+<p>Graph data structures can be very useful certain catagories of problems:</p>
+<p>If you Google something like: “applications of graph data structure in computer science” you will get a lot of pages to explore, like this one:</p>
+<p><a class="reference external" href="http://www.cs.cmu.edu/afs/cs/academic/class/15210-s14/www/lectures/graphs.pdf">http://www.cs.cmu.edu/afs/cs/academic/class/15210-s14/www/lectures/graphs.pdf</a></p>
+<p>I encourage you to read up about them.</p>
+<p>If you do find a use-case, or simply want to explore the topic experimentally with Python, the main package for working with graphs in python is <cite>networkx</cite>:</p>
+<p><a class="reference external" href="https://networkx.github.io/">https://networkx.github.io/</a></p>
+<p>It provides a pretty fully featured set of graph data structures, and the common algorithms for manipulating and exploring them.</p>
+<p>There is even a package for storing networkx graphs in neo4j:</p>
+<p><a class="reference external" href="https://neonx.readthedocs.io">https://neonx.readthedocs.io</a></p>
+<p>So you can store your graph in the neo4j database, and work with it with networkx. This may even give you a nicer, more pythonic interface to neo4j.</p>
 </div>
 </div>
 

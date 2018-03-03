@@ -433,6 +433,7 @@
 <p><code class="docutils literal"><span class="pre">Something.a_list.append</span></code> will not trigger anything.</p>
 <p>The DB doesn’t know that that the list has been altered.</p>
 <p>Solution:</p>
+<p><code class="docutils literal"><span class="pre">from</span> <span class="pre">persistent.list</span> <span class="pre">import</span> <span class="pre">PersistentList</span></code></p>
 <p><code class="docutils literal"><span class="pre">self.a_list</span> <span class="pre">=</span> <span class="pre">PersistentList()</span></code></p>
 <p>(also <code class="docutils literal"><span class="pre">PersistantDict()</span></code> )</p>
 <p>(or write getters and setters…)</p>

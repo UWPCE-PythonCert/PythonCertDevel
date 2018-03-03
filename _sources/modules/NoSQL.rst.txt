@@ -287,6 +287,8 @@ The DB doesn't know that that the list has been altered.
 
 Solution:
 
+``from persistent.list import PersistentList``
+
 ``self.a_list = PersistentList()``
 
 (also ``PersistantDict()`` )

@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
         <link rel="up" title="Modules" href="index.html"/>
-        <link rel="next" title="No SQL Databases" href="NoSQL.html"/>
+        <link rel="next" title="Persistence and Serialization" href="PersistanceAndSerialization.html"/>
         <link rel="prev" title="Debugging" href="Debugging.html"/> 
 
   
@@ -112,7 +112,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#json-save">Json_save</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="PersistanceAndSerialization.html">Persistence and Serialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NoSQL.html">No SQL Databases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GraphDatabases.html">Graph Databases</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programing</a></li>
 </ul>
 </li>
@@ -506,8 +508,8 @@ using type</p>
 </div>
 <p>Hmm, so type is a a type –this is the special case – it has to stop somewhere!</p>
 </div>
-<div class="section" id="more-on-classes">
-<h3>More on Classes<a class="headerlink" href="#more-on-classes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="metaclasses">
+<h3>Metaclasses<a class="headerlink" href="#metaclasses" title="Permalink to this headline">¶</a></h3>
 <p>Objects get created from classes. So what is the class of a class?</p>
 <p>The class of a Class is a metaclass</p>
 <p>The metaclass can be used to dynamically create a class</p>
@@ -583,7 +585,7 @@ abstracted from the user of the Model class. And the user doesn’t have to know
 </pre></div>
 </div>
 <p>What’s that self thing? That’s the instance that is being initialized – but it already exists – it has to already have been created.</p>
-<p>Most of the time, that’s all you need – you want the instance crated in the usual default way, and then you can initialize it. But if you need to do something before the object is initialized – you can define a <code class="docutils literal"><span class="pre">__new__</span></code> method.</p>
+<p>Most of the time, that’s all you need – you want the instance created in the usual default way, and then you can initialize it. But if you need to do something before the object is initialized – you can define a <code class="docutils literal"><span class="pre">__new__</span></code> method.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Class</span><span class="p">():</span>
     <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
         <span class="n">some_code_here</span>
@@ -631,7 +633,7 @@ go right.</p>
 </div>
 <div class="section" id="new-vs-init-in-metaclasses">
 <h3><code class="docutils literal"><span class="pre">__new__</span></code>  vs  <code class="docutils literal"><span class="pre">__init__</span></code> in Metaclasses<a class="headerlink" href="#new-vs-init-in-metaclasses" title="Permalink to this headline">¶</a></h3>
-<p>Remember that metclasses are used to create new class objects (instances of type) – so <code class="docutils literal"><span class="pre">__new__</span></code> is critical to creating that class.</p>
+<p>Remember that metaclasses are used to create new class objects (instances of type) – so <code class="docutils literal"><span class="pre">__new__</span></code> is critical to creating that class.</p>
 <p><code class="docutils literal"><span class="pre">__new__</span></code> is used when you want to control the creation of the class (object)</p>
 <p><code class="docutils literal"><span class="pre">__init__</span></code> is used when you want to control the initialization of the class (object)</p>
 <p><code class="docutils literal"><span class="pre">__new__</span></code> and <code class="docutils literal"><span class="pre">__init__</span></code> are both called when the module containing the class is imported for the first time. i.e. at compile time.</p>
@@ -755,6 +757,30 @@ are a clearer solution to some problems?</p>
 <p>And another one:</p>
 <p><a class="reference external" href="http://sahandsaba.com/python-classes-metaclasses.html">A Study of Python’s More Advanced Features Part III: Classes and Metaclasses</a></p>
 </div>
+<div class="section" id="namemangler-decorator-edition">
+<h3>NameMangler Decorator Edition<a class="headerlink" href="#namemangler-decorator-edition" title="Permalink to this headline">¶</a></h3>
+<p>For a simple example, let’s see how to make NameMangler with a decorator.</p>
+<p>Here is the code:
+<a class="reference download internal" href="../_downloads/mangler_dec.py" download=""><code class="xref download docutils literal"><span class="pre">mangler_dec.py</span></code></a></p>
+<p>It is well commented, but a couple of key points to consider:</p>
+<ol class="arabic simple">
+<li>A class decorator takes a class object as an argument:</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">name_mangler</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>As a class object, you can get its attribute dict (__dict__) with:</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">attr_dict</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Class attribute dictionaries are not writable, so you need to use
+<code class="docutils literal"><span class="pre">setattr()</span></code> (and potentially <code class="docutils literal"><span class="pre">delattr()</span></code>) to change the class
+attributes.</li>
+</ol>
+</div>
 </div>
 <div class="section" id="json-save">
 <h2>Json_save<a class="headerlink" href="#json-save" title="Permalink to this headline">¶</a></h2>
@@ -796,7 +822,7 @@ are a clearer solution to some problems?</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="NoSQL.html" class="btn btn-neutral float-right" title="No SQL Databases" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="PersistanceAndSerialization.html" class="btn btn-neutral float-right" title="Persistence and Serialization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Debugging.html" class="btn btn-neutral" title="Debugging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
