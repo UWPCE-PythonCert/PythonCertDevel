@@ -13,10 +13,9 @@ UWPCE Python certificate advanced topic.
 What is testing?
 ================
 
-.. rst-class:: medium
 
-    Code which runs your application in as close to a real environment as
-    feasible and validates its behavior
+Code which runs your application in as close to a real environment as
+feasible and validates its behavior
 
 
 Terminology of testing
@@ -32,6 +31,7 @@ Terminology of testing
 "V" model and tests levels
 --------------------------
 .. image:: /_static/test_v_model.png
+
 
 Unit testing
 ------------
@@ -164,9 +164,7 @@ http://docs.python.org/3/library/unittest.html#assert-methods or
 Running your tests
 ==================
 
-.. rst-class:: medium
-
-    How do you actually run your tests?
+How do you actually run your tests?
 
 
 running tests in a single module
@@ -174,16 +172,20 @@ running tests in a single module
 
 Call unittest.main() right in your module
 
-::
+.. code-block:: python
 
         if __name__ == "__main__":
             unittest.main()
 
-  # or from the command line:
-  python -m unittest test_my_module  # with or without .py on end
-  python -m unittest test_my_module.TestClass  # particular class in a module
-  python -m unittest test_my_module.TestClass.test_method  # particular test
+# or from the command line:
 
+.. code-block:: bash
+
+  python -m unittest test_my_module  # with or without .py on end
+
+  python -m unittest test_my_module.TestClass  # particular class in a module
+
+  python -m unittest test_my_module.TestClass.test_method  # particular test
 
 If it gets cumbersome with many TestCases, organize the tests into a
 test suite (or use a test runner, which we get to soon).
@@ -230,7 +232,11 @@ So running your tests is as easy as
 .. code-block:: bash
 
     $ pytest
+
     or
+
+.. code-block:: bash
+
     $ nose2
 
 http://nose2.readthedocs.org/en/latest/getting_started.html#running-tests
@@ -352,7 +358,7 @@ stored as an approximation in computing hardware.
 https://docs.python.org/3/tutorial/floatingpoint.html
 
 
-levels of precision of floating point
+Levels of precision of floating point
 -------------------------------------
 
 Python floating point numbers are stored in `IEEE 754 <http://en.wikipedia.org/wiki/IEEE_floating_point>`_ 64-bit double precision format, so 1 bit for the sign, 11 bits for the exponent, and the remaining 52 for the fraction.
@@ -371,7 +377,7 @@ So we can count on up to 16 digits of precision in decimal:
     Out[41]: 16
 
     # with repeated operations, the errors eventually build up:
-    # here's multiplying by '1' 10 million times:
+    # here's multiplying by "1" 10 million times:
     In [64]: x=1
     In [69]: for i in range(10000000): x *= (.1 + .2)/.3
     Out [69]: 1.000000002220446
@@ -572,8 +578,8 @@ You can write a separate test for each case:
 But talk about tedious!!!
 
 Unfortunately, ``unittest`` does not have a built-in way to solve this
-problem. There is a nifty library called parameterized, which does solve it,
-and they spell parameterize correctly. It works with nose, unittest, and pytest.
+problem. There is a nifty library called parameterized, which does solve it
+(and they spell parameterize correctly). It works with nose, unittest, and pytest.
 
 https://pypi.python.org/pypi/parameterized
 
@@ -611,7 +617,7 @@ https://docs.pytest.org/en/latest/parametrize.html#parametrize-basics
 
 I find this very, very, useful.
 
-See ``examples/calculator/test_calculator_pytest.py`` in the class repo.
+See :download:`test_calculator_pytest.py </examples/testing/calculator/test_calculator_pytest.py>` in the class repo.
 
 Code Coverage
 -------------

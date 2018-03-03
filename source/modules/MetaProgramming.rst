@@ -439,8 +439,8 @@ What type is type?
 
 Hmm, so type is a a type --this is the special case -- it has to stop somewhere!
 
-More on Classes
----------------
+Metaclasses
+-----------
 
 Objects get created from classes. So what is the class of a class?
 
@@ -550,7 +550,7 @@ Not really -- ``__init__`` is the *initializer* -- it initializes the instance -
 
 What's that self thing? That's the instance that is being initialized -- but it already exists -- it has to already have been created.
 
-Most of the time, that's all you need -- you want the instance crated in the usual default way, and then you can initialize it. But if you need to do something before the object is initialized -- you can define a ``__new__`` method.
+Most of the time, that's all you need -- you want the instance created in the usual default way, and then you can initialize it. But if you need to do something before the object is initialized -- you can define a ``__new__`` method.
 
 .. code-block:: python
 
@@ -613,7 +613,7 @@ https://docs.python.org/3/reference/datamodel.html#object.__new__
 ``__new__``  vs  ``__init__`` in Metaclasses
 --------------------------------------------
 
-Remember that metclasses are used to create new class objects (instances of type) -- so ``__new__`` is critical to creating that class.
+Remember that metaclasses are used to create new class objects (instances of type) -- so ``__new__`` is critical to creating that class.
 
 ``__new__`` is used when you want to control the creation of the class (object)
 
@@ -781,6 +781,32 @@ Here is a bit of discussion of metaclasses vs decorators:
 And another one:
 
 `A Study of Python's More Advanced Features Part III: Classes and Metaclasses <http://sahandsaba.com/python-classes-metaclasses.html>`_
+
+NameMangler Decorator Edition
+-----------------------------
+
+For a simple example, let's see how to make NameMangler with a decorator.
+
+Here is the code:
+:download:`mangler_dec.py </examples/metaprogramming/mangler_dec.py>`
+
+It is well commented, but a couple of key points to consider:
+
+1) A class decorator takes a class object as an argument:
+
+.. code-block:: python
+
+    def name_mangler(cls):
+
+2) As a class object, you can get its attribute dict (__dict__) with:
+
+.. code-block:: python
+
+    attr_dict = vars(cls)
+
+3) Class attribute dictionaries are not writable, so you need to use
+   ``setattr()`` (and potentially ``delattr()``) to change the class
+   attributes.
 
 
 Json_save
