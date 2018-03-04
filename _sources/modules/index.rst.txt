@@ -75,6 +75,8 @@ Py220: Advanced Python
     NoSQL
     GraphDatabases
 
+    Concurrency
+    ThreadingMultiprocessing
     Async
 
 
