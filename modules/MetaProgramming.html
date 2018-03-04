@@ -784,7 +784,9 @@ attributes.</li>
 </div>
 <div class="section" id="json-save">
 <h2>Json_save<a class="headerlink" href="#json-save" title="Permalink to this headline">¶</a></h2>
-<p>For a more involved (and useful!) example, see json_save in the Solutions directory in the class repo:</p>
+<p>For a more involved (and useful!) example, see the json_save package:</p>
+<p>:download:` json_save.zip &lt;examplesmetaprogrammingjson_save.zip&gt;`</p>
+<p>It may also be in your class repo solutions dir:</p>
 <p><code class="docutils literal"><span class="pre">solutions/metaprogramming/json_save/</span></code></p>
 <p>It is a system for saving and re-loading objects.</p>
 <p>It works a bit like the ORMs – you specify what attributes you want to save, and what their types are.</p>
@@ -796,18 +798,18 @@ attributes.</li>
 <p>But it does not directly support more complex objects – that is what json_save is all about.</p>
 </div>
 <div class="section" id="metaclass-json-save">
-<h3>metaclass json_save<a class="headerlink" href="#metaclass-json-save" title="Permalink to this headline">¶</a></h3>
+<h3>Metaclass json_save<a class="headerlink" href="#metaclass-json-save" title="Permalink to this headline">¶</a></h3>
 <p>The first solution uses a metaclass: <code class="docutils literal"><span class="pre">json_save_meta.py</span></code></p>
 <p>It turns out that the metaclass part of the code is pretty simple and small.</p>
 <p>But there is a lot of other nifty magic with classes in there
-– so let’s take a look.</p>
+– so let’s take a look:</p>
 </div>
 <div class="section" id="decorator-json-save">
-<h3>decorator json_save<a class="headerlink" href="#decorator-json-save" title="Permalink to this headline">¶</a></h3>
+<h3>Decorator json_save<a class="headerlink" href="#decorator-json-save" title="Permalink to this headline">¶</a></h3>
 <p>The second solution uses a decorator: <code class="docutils literal"><span class="pre">json_save_dec.py</span></code></p>
 <p>As the in the metaclass case, the actual decorator is pretty simple.</p>
 <p>And it can use much of the code from the metaclass solution – since not much really had anything specific to metaclasses.</p>
-<p>Let’s take a look at that, too.</p>
+<p>Let’s take a look at that, too:</p>
 </div>
 </div>
 </div>
