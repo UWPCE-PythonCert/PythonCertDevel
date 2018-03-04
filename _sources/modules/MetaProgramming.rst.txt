@@ -814,7 +814,7 @@ Json_save
 
 For a more involved (and useful!) example, see the json_save package:
 
-:download:` json_save.zip <\examples\metaprogramming\json_save.zip>`
+:download:`json_save.zip </examples/metaprogramming/json_save.zip>`
 
 It may also be in your class repo solutions dir:
 

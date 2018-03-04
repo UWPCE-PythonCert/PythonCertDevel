@@ -7,8 +7,8 @@ These are assorted notes about particular python topics used in the certificate 
 
 More or less in order of presentation
 
-First Class: Introduction to Python
-===================================
+Py210: Introduction to Python
+=============================
 
 .. toctree::
     :maxdepth: 1
@@ -49,8 +49,8 @@ First Class: Introduction to Python
     MapFilterReduce
     IPythonParallel
 
-Second Class: Advanced Python
-=============================
+Py220: Advanced Python
+======================
 
 .. toctree::
     :maxdepth: 1
