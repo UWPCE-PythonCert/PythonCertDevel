@@ -21,6 +21,14 @@ Goal
 
 Your goal is to use a JSON-save system started in the Metaprogramming Lesson (:ref:`metaprogramming`) to make your model classes saveable and loadable as JSON.
 
+YOu can download the package here:
+
+:download:`json_save.zip </examples/metaprogramming/json_save.zip>`
+
+And it may also be in your class repo solutions dir:
+
+``solutions/metaprogramming/json_save/``
+
 You can use either the decorator-based or meta-class based approach.
 
 You may need to extend the JSON-save module a bit to make it work for you!
