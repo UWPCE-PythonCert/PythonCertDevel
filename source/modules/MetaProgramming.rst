@@ -812,7 +812,11 @@ It is well commented, but a couple of key points to consider:
 Json_save
 =========
 
-For a more involved (and useful!) example, see json_save in the Solutions directory in the class repo:
+For a more involved (and useful!) example, see the json_save package:
+
+:download:`json_save.zip </examples/metaprogramming/json_save.zip>`
+
+It may also be in your class repo solutions dir:
 
 ``solutions/metaprogramming/json_save/``
 
@@ -831,7 +835,7 @@ It also maps pretty much directly to (some of) the core Python datatypes: lists,
 
 But it does not directly support more complex objects -- that is what json_save is all about.
 
-metaclass json_save
+Metaclass json_save
 -------------------
 
 The first solution uses a metaclass: ``json_save_meta.py``
@@ -839,10 +843,10 @@ The first solution uses a metaclass: ``json_save_meta.py``
 It turns out that the metaclass part of the code is pretty simple and small.
 
 But there is a lot of other nifty magic with classes in there
--- so let's take a look.
+-- so let's take a look:
 
 
-decorator json_save
+Decorator json_save
 -------------------
 
 The second solution uses a decorator: ``json_save_dec.py``
@@ -851,5 +855,6 @@ As the in the metaclass case, the actual decorator is pretty simple.
 
 And it can use much of the code from the metaclass solution -- since not much really had anything specific to metaclasses.
 
-Let's take a look at that, too.
+Let's take a look at that, too:
+
 

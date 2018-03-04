@@ -46,7 +46,7 @@ All configuration in Sublime Text is done via `JSON <http://www.json.org>`_. It'
 
 There are a number of `different levels of configuration <http://www.sublimetext.com/docs/3/settings.html>`_ in Sublime Text. You will most often work on settings at the user level.
 
-Open ``Preferences`` -> ``Settings ``
+Open ``Preferences`` -> ``Settings``
 
 On a Mac, you can find it under:
 
