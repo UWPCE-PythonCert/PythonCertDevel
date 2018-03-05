@@ -2,12 +2,11 @@
 
 .. _async:
 
-######################
-Asychronous Programing
-######################
+#######################
+Asychronous Programming
+#######################
 
 **Async:** Not knowing what is happening when...
-
 
 Asynchronous Programming
 ========================
@@ -320,13 +319,13 @@ Let's make that a tiny bit more interesting with multiple events:
     print("done with loop")
     loop.close()
 
-(``Examples/async/ultra_simple``)
+:download:`ultra_simple.py </examples/async/ultra_simple.py>`
 
 Still not very interesting -- technically async, but with only one coroutine, not much to it.
 
 So let's see an even more interesting example:
 
-(``Examples/async/async_timer.py``)
+:download:`async_time.py </examples/async/async_timer.py>`
 
 .. code-block:: python
 

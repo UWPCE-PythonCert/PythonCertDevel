@@ -3,7 +3,7 @@
 .. _concurrency:
 
 ######################
-Concurrent Programing
+Concurrent Programming
 ######################
 
 What does it mean to do something in parallel?
