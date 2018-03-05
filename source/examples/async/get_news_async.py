@@ -18,13 +18,14 @@ import requests
 
 WORD = "trump"
 
-NEWS_API_KEY = "1fabc23bb9bc485ca59b3966cbd6ea26"
+NEWS_API_KEY = "84d0483394c44f288965d7b366e54a74"
 
 base_url = 'https://newsapi.org/v1/'
 
-# use one session fpr the whole script
+# use one session for the whole script
 #  recommended by the docs
 session = aiohttp.ClientSession()
+
 
 # this has to run first, so doesn't really need async
 # but why use two reuests libraries ?
@@ -37,7 +38,7 @@ async def get_sources(sources):
     url = base_url + "sources"
     params = {"language": "en"}
     print("about to make the request for the sources")
-    async with session.get(url, params=params) as resp:
+    async with session.get(url, ssl=False, params=params) as resp:
         data = await resp.json()
         print("got the sources")
     sources.extend([src['id'].strip() for src in data['sources']])
@@ -55,7 +56,7 @@ async def get_articles(source):
               # "sortBy": "popular",
               }
     print("requesting:", source)
-    async with session.get(url, params=params) as resp:
+    async with session.get(url, ssl=False, params=params) as resp:
         if resp.status != 200:  # aiohttpp has "status"
             print("something went wrong with: {}".format(source))
             await asyncio.sleep(0)
@@ -85,7 +86,7 @@ loop = asyncio.get_event_loop()
 sources = []
 titles = []
 
-# get the sources -- this is synchronous
+# get the sources -- this is essentially synchronous
 loop.run_until_complete(get_sources(sources))
 
 # running the loop for the articles

@@ -33,7 +33,9 @@ def get_players(player_args):
 
     """
     endpoint = '/commonallplayers'
-    params = {'leagueid': '00', 'season': '2016-17', 'isonlycurrentseason': '1'}
+    params = {'leagueid': '00',
+              'season': '2016-17',
+              'isonlycurrentseason': '1'}
     url = base_url + endpoint
     print('Getting all players...')
     resp = requests.get(url,

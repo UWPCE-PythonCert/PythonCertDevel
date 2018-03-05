@@ -11,6 +11,7 @@ import time
 import datetime
 import random
 
+
 # using "async" makes this a coroutine:
 # its code can be run by the event loop
 async def display_date(num):
@@ -22,6 +23,7 @@ async def display_date(num):
             break
         # pause for a random amount of time
         await asyncio.sleep(random.randint(0, 3))
+
 
 def shutdown():
     print("shutdown called")

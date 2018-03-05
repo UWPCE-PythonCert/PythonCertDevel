@@ -1,19 +1,19 @@
 #!/usr/bin/env python
 
 """
-Ultra simple async
+Ultra Simple async example
 """
 
 import asyncio
 
+
 async def say_lots(num):
     for i in range(num):
-        print('This was run by the loop:')
+        print(f'This was run by the loop ({i}) :')
         await asyncio.sleep(0.2)
 
-# getting an event loop
+# getting the event loop
 loop = asyncio.get_event_loop()
 # run it:
 loop.run_until_complete(say_lots(5))
 print("done with loop")
-loop.close()

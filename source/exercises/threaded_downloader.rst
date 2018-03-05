@@ -21,7 +21,20 @@ So you'll probably want to use a job Queue -- and then launch a handfull of thre
 
 Experiment a bit -- how many threads give you maximum performance?
 
+Hints
+=====
 
+Making requests
+---------------
+Python has a built-in client http lib (urllib).
+But almost everyone uses the "requests" package:
 
+`Requests: HTTP for Humans <http://docs.python-requests.org/>`_
+
+.. code-block:: bash
+
+    $ pip install requests
+
+Should do it.
 
 
