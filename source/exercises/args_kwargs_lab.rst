@@ -17,7 +17,7 @@ Note:
 This is not all that clearly specified -- the goal is for you to
 experiment with various ways to define and call functions, so you
 can understand what's possible, and what happens with each call.
-It is also entirely silly, since the function does not do anything 
+It is also entirely silly, since the function does not do anything
 at all, but it will teach you about using parameters effectively.
 
 Procedure
@@ -40,7 +40,7 @@ we are telling you it should do.
 
 * Call it with a couple different parameters set
   IOW, write tests that verify that all of the following work as advertised:
-  
+
   - using just positional arguments:
 
     - ``func('red', 'blue', 'yellow', 'chartreuse')``
@@ -59,7 +59,7 @@ we are telling you it should do.
 
     - ``links = {'link_color': 'chartreuse'}``
 
-    - ``func(*regular, *links)``
+    - ``func(*regular, **links)``
 
 
 **Generic parameters:**

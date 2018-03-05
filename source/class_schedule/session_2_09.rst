@@ -24,6 +24,12 @@ Reading
 Supplemental Readings
 =====================
 
+*Fluent Python:*
+
+ - Ch. 16: Coroutines
+ - Ch. 17: Concurrency with Futures
+ - Ch. 18: Concurrency with asyncio
+
 Threading
 ---------
 
