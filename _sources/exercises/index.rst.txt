@@ -23,20 +23,32 @@ Exercises
     unit_testing.rst
     roman.rst
     rot13.rst
+
     slicing.rst
+
     lambda_magic.rst
+
     sparse_array.rst
+
     string_formatting.rst
+
     trapezoid.rst
+
     mailroom-oo.rst
+
     mailroom-fp.rst
+
     mailroom-pkg.rst
+
     mailroom-decorator.rst
+
     context-managers-exercise.rst
+
     mailroom-mock.rst
+
     mailroom-meta.rst
 
-
+    threaded_downloader.rst
 
 
 

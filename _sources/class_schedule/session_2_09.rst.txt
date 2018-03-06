@@ -59,3 +59,5 @@ https://github.com/python-trio/trio
 Exercises
 =========
 
+:ref:`exercise_downloader`
+

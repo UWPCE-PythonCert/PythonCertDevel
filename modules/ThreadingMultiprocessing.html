@@ -37,8 +37,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
         <link rel="up" title="Modules" href="index.html"/>
-        <link rel="next" title="Asychronous Programing" href="Async.html"/>
-        <link rel="prev" title="Concurrent Programing" href="Concurrency.html"/> 
+        <link rel="next" title="Asychronous Programming" href="Async.html"/>
+        <link rel="prev" title="Concurrent Programming" href="Concurrency.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -109,12 +109,12 @@
 <li class="toctree-l3"><a class="reference internal" href="PersistanceAndSerialization.html">Persistence and Serialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NoSQL.html">No SQL Databases</a></li>
 <li class="toctree-l3"><a class="reference internal" href="GraphDatabases.html">Graph Databases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Concurrency.html">Concurrent Programing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Concurrency.html">Concurrent Programming</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Threading and multiprocessing</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#threading-multiprocessing">Threading / multiprocessing</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programming</a></li>
 </ul>
 </li>
 </ul>
@@ -208,7 +208,7 @@
 </ul>
 </li>
 <li>Event handling<ul>
-<li>If a system handles asynchronous events, a seperate thread of
+<li>If a system handles asynchronous events, a separate thread of
 execution could handle those events and let other threads do other
 work</li>
 <li>Examples:<ul>
@@ -308,11 +308,12 @@ have no GIL</p>
 <span class="math">\(y =x^2\)</span> from 0 to 10.
 <a class="reference external" href="http://www.wolframalpha.com/input/?i=x%5E2">http://www.wolframalpha.com/input/?i=x%5E2</a></p>
 <a class="reference internal image-reference" href="../_images/x2.png"><img alt="../_images/x2.png" src="../_images/x2.png" style="height: 400px;" /></a>
-<p>Solution: <a class="reference external" href="http://www.wolframalpha.com/input/?i=int(x%5E2,0,10">http://www.wolframalpha.com/input/?i=int(x%5E2,0,10</a>)</p>
+<p><a class="reference external" href="http://www.wolframalpha.com/input/?i=int(x%5E2,0,10)">Solution</a></p>
 </div>
 <div class="section" id="parallel-execution-example">
 <h3>Parallel execution example<a class="headerlink" href="#parallel-execution-example" title="Permalink to this headline">¶</a></h3>
-<p>Consider the following code from: <code class="docutils literal"><span class="pre">Examples/integrate/integrate.py</span></code></p>
+<p>Consider the following code in
+<a class="reference download internal" href="../_downloads/integrate.py" download=""><code class="xref download docutils literal"><span class="pre">integrate.py</span></code></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
 
@@ -380,7 +381,7 @@ things like garbage collection, network keepalives, ..</li>
 an unexpected race condition</p>
 <p>Race conditions occur when multiple statements need to execute
 atomically, but get interrupted midway</p>
-<p>See <code class="docutils literal"><span class="pre">Examples/race_condition.py</span></code></p>
+<p><a class="reference download internal" href="../_downloads/race_condition.py" download=""><code class="xref download docutils literal"><span class="pre">race_condition.py</span></code></a></p>
 </div>
 <div class="section" id="no-race-condition">
 <h3>No race condition<a class="headerlink" href="#no-race-condition" title="Permalink to this headline">¶</a></h3>
@@ -572,12 +573,13 @@ by that thread</p>
 until the Semaphore counter is greater than 0.</p>
 <p>Useful for controlling the maximum number of threads allowed to access a
 resource simultaneously</p>
-<p><a class="reference external" href="http://en.wikipedia.org/wiki/Semaphore_(programming">http://en.wikipedia.org/wiki/Semaphore_(programming</a>)</p>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Semaphore_(programming)">Semaphore</a></p>
 <a class="reference internal image-reference" href="../_images/flags.jpg"><img alt="../_images/flags.jpg" src="../_images/flags.jpg" style="height: 250px;" /></a>
 </div>
 <div class="section" id="locking-exercise">
 <h3>Locking Exercise<a class="headerlink" href="#locking-exercise" title="Permalink to this headline">¶</a></h3>
-<p>In: <code class="docutils literal"><span class="pre">Examples/lock/stdout_writer.py</span></code></p>
+<p><a class="reference download internal" href="../_downloads/lock_exercise.zip" download=""><code class="xref download docutils literal"><span class="pre">lock_exercise.zip</span></code></a></p>
+<p>In: <code class="docutils literal"><span class="pre">lock/stdout_writer.py</span></code></p>
 <p>Multiple threads in the script write to stdout, and their output gets
 jumbled</p>
 <ol class="arabic simple">
@@ -628,7 +630,7 @@ inserting the tuple:</p>
 </div>
 <div class="section" id="threading-example">
 <h3>Threading example<a class="headerlink" href="#threading-example" title="Permalink to this headline">¶</a></h3>
-<p>See Examples/threading/integrate_main.py</p>
+<p><a class="reference download internal" href="../_downloads/integrate_main.py" download=""><code class="xref download docutils literal"><span class="pre">integrate_main.py</span></code></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 
 <span class="kn">import</span> <span class="nn">argparse</span>
@@ -684,7 +686,7 @@ inserting the tuple:</p>
 </div>
 <div class="section" id="threading-on-a-cpu-bound-problem">
 <h3>Threading on a CPU bound problem<a class="headerlink" href="#threading-on-a-cpu-bound-problem" title="Permalink to this headline">¶</a></h3>
-<p>Try running the code in examples/threading/integrate_main.py</p>
+<p>Try running the code in integrate_main.py</p>
 <p>It accepts 4 arguments:</p>
 <p><code class="docutils literal"><span class="pre">./integrate_main.py</span> <span class="pre">0</span> <span class="pre">10</span> <span class="pre">1000000</span> <span class="pre">4</span></code></p>
 <p>What happens when you change the thread count? What thread count gives
@@ -773,8 +775,9 @@ number running at one time</p>
 </div>
 <div class="section" id="threading-versus-multiprocessing-networking-edition">
 <h3>Threading versus multiprocessing, networking edition<a class="headerlink" href="#threading-versus-multiprocessing-networking-edition" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference download internal" href="../_downloads/server.zip" download=""><code class="xref download docutils literal"><span class="pre">server.zip</span></code></a></p>
 <p>We’re going to test making concurrent connections to a web service in:</p>
-<p><code class="docutils literal"><span class="pre">Examples/server/app.py</span></code></p>
+<p><code class="docutils literal"><span class="pre">server/app.py</span></code></p>
 <p>It is a WSGI application which can be run with Green Unicorn or another
 WSGI server</p>
 <p><code class="docutils literal"><span class="pre">$</span> <span class="pre">gunicorn</span> <span class="pre">app:app</span> <span class="pre">--bind</span> <span class="pre">0.0.0.0:37337</span></code></p>
@@ -794,7 +797,7 @@ and a scheduler</p>
 <p>A coroutine is a generalization of a subroutine which allows multiple
 entry points for suspending and resuming execution</p>
 <p>The threading and the multiprocessing modules follow a preemptive
-multitasking model: <a class="reference external" href="http://en.wikipedia.org/wiki/Preemption_(computing">http://en.wikipedia.org/wiki/Preemption_(computing</a>)</p>
+<a class="reference external" href="http://en.wikipedia.org/wiki/Preemption_(computing)">multitasking model</a></p>
 <p>Coroutine based solutions follow a cooperative multitasking
 model: <a class="reference external" href="http://en.wikipedia.org/wiki/Computer_multitasking#Cooperative_multitasking.2Ftime-sharing">http://en.wikipedia.org/wiki/Computer_multitasking#Cooperative_multitasking.2Ftime-sharing</a></p>
 <p>A Curious Course on Coroutines and Concurrency</p>
@@ -913,6 +916,7 @@ farms jobs out to them:</p>
 </div>
 <div class="section" id="questions">
 <h3>Questions?<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h3>
+<p>There are many code samples for various techniques and libraries mentioned in lecture <a class="reference external" href="https://github.com/UWPCE-PythonCert/PythonCertDevel/tree/master/source/examples/threading-multiprocessing">here</a></p>
 </div>
 </div>
 </div>
@@ -927,10 +931,10 @@ farms jobs out to them:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Async.html" class="btn btn-neutral float-right" title="Asychronous Programing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Async.html" class="btn btn-neutral float-right" title="Asychronous Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Concurrency.html" class="btn btn-neutral" title="Concurrent Programing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Concurrency.html" class="btn btn-neutral" title="Concurrent Programming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

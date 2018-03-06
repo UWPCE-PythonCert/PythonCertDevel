@@ -2,12 +2,11 @@
 
 .. _async:
 
-######################
-Asychronous Programing
-######################
+#######################
+Asychronous Programming
+#######################
 
 **Async:** Not knowing what is happening when...
-
 
 Asynchronous Programming
 ========================
@@ -72,7 +71,7 @@ When you make an http request, there is often a substantial lag time between mak
 
 The server receives the request, and it may have to do a fair bit of processing before it can return something -- and it takes time for the response to travel over the wire.
 
-with "regular" requests -- the program is halted while it's waiting for the server to do its thing. ("Blocking" -- see below)
+With "regular" requests -- the program is halted while it's waiting for the server to do its thing. ("Blocking" -- see below)
 
 With async, the program can do other things while the request is waiting for the server to respond.
 
@@ -92,8 +91,7 @@ But what if:
 - That function will take a while?
 - And it's mostly just waiting for the network or database, or....
 
-Maybe your application needs to be responsive to user input, or do other
-work while that function is working. How do you deal with that?
+Maybe your application needs to be responsive to user input, or you want it to do other work while that function is doing it's thing. Especially if it's mostly jsut waiting for a response to return. How do you deal with that?
 
 Event Loops
 -----------
@@ -115,13 +113,13 @@ This is all handled by an "event loop", essentially code like this:
 
 That's it -- it is an infinite loop that continually looks to see if there are any events to handle, and if there are, it calls the event handler for that event. Meanwhile, the system is putting events on the event queue as they occur: someone moving the mouse, typing in a control, etc.
 
-It's important is that event handlers run quickly -- if they take a long time to run, then the GUI is "locked up", or not responsive to user input.
+It's important that event handlers run quickly -- if they take a long time to run, then the GUI is "locked up", or not responsive to user input.
 
 If the program does need to do some work that takes time, it needs to do that work in another thread or processes, and then put an event on the event queue when it is done.
 
 For some examples of this, see:
 
-https://www.blog.pythonlibrary.org/2013/06/27/wxpython-how-to-communicate-with-your-gui-via-sockets/
+`How To Communicate With Your GUI Via Sockets <https://www.blog.pythonlibrary.org/2013/06/27/wxpython-how-to-communicate-with-your-gui-via-sockets/>`_
 
 
 Callbacks
@@ -152,6 +150,8 @@ Contrast with the "normal" python request library:
 
 The difference here is that the program will wait for ``requests.get()`` call to return, and that won't happen until the request is complete. If you are making a lot of requests and they take a while, that is a lot of time sitting around waiting for the server when your computer isn't doing anything.
 
+Note that javascript began as a way to automate stuff on web pages -- it lets you attach actions to various events in the browser: clicking button or what have you. The "callback" approach is natural for this. And once that structure was there, it made sense to keep it when making requests directly from code, that is doing: *Asychronous Javascript and XML* -- i.e. AJAX. That that's why callback-based async is "built in" to Javascript.
+
 Async programming usually (always?) involves an event loop to schedule operations.
 
 But callbacks are only one way to communicate with the event loop.
@@ -180,9 +180,10 @@ In fact, you can use generators and yield to make coroutines, and that was done 
 
 In Python 3.5, the ``async`` and ``await`` keywords were added to make coroutines "native" and more clear.
 
-**NOTE:** ``async`` and ``await`` are still pretty new to Python. So if you look for tutorials, blog posts, etc. about asynchronous programming, they mostly either use or refer to the "old" way to do it (Including David Beazley's talk above). In this presentation, I am ONLY talking about the new way. I hope that's less confusing. But it can be confusing to read older materials.
+**NOTE:** ``async`` and ``await`` are still pretty new to Python. So if you look for tutorials, blog posts, etc. about asynchronous programming, they mostly either use or refer to the "old" way to do it (Including David Beazley's talk above). In these notes, I am ONLY talking about the new way. I hope that's less confusing. But it can be confusing to read older materials.
 
-**NOTE2:** IN addition to older documentation, the ``asyncio`` package in the standard library pre-dates ``async`` and ``await`` -- so it supports the older style as well as the new style -- antoher source of confusion.  The Trio project:  https://github.com/python-trio/trio is worth a look for a cleaner API.
+**NOTE2:** In addition to older documentation, the ``asyncio`` package in the standard library pre-dates ``async`` and ``await`` -- so it supports the older style as well as the new style -- another source of confusion.
+`The Trio project <https://github.com/python-trio/trio>`_ is worth a look for a cleaner API.
 
 Using ``async/await``
 ---------------------
@@ -216,7 +217,7 @@ It's kind of like yield (from generators), but instead it returns the next value
 
 ``await`` suspends the execution (letting other code run) until the object called returns.
 
-When you call await on an object, it needs to be an "awaitable" object: an object that defines an ``__await__()`` method which returns an iterator which is not a coroutine itself. Coroutines themselves are also considered awaitable objects.
+When you call await on an object, it needs to be an "awaitable" object: an object that defines an ``__await__()`` method which returns either an iterator which is not a coroutine itself, or a coroutines -- which are considered awaitable objects.
 
 Scheduling it to run
 ....................
@@ -233,34 +234,29 @@ or
 Think of ``async/await`` as an API for asynchronous programming
 -------------------------------------------------------------------
 
-``async/await`` is really an API for asynchronous programming: People shouldn't think that ``async/await`` as synonymous with asyncio, but instead think that asyncio is a framework that can utilize the ``async/await`` API for asynchronous programming.
+``async/await`` is really an API for asynchronous programming: People shouldn't think that ``async/await`` as synonymous with asyncio, but instead think that asyncio is a framework that can utilize the ``async/await`` API for asynchronous programming. IN fact, this view is supported by the fact that there are other async frameworks that use async/await -- like the Trio package mentioned above.
 
 
-Future object
+Future objects
 --------------
 
 A Future object encapsulates the asynchronous execution of a callable -- it "holds" the code to be run later.
 
 It also contains methods like:
 
-* cancel()
-
+``cancel()``:
   Cancel the future and schedule callbacks.
 
-* done()
-
+``done()``:
   Return True if the future is done.
 
-* result()
-
+``result()``:
   Return the result this future represents.
 
-* add_done_callback(fn)
-
+``add_done_callback(fn)``:
   Add a callback to be run when the future becomes done.
 
- * set_result(result)
-
+``set_result(result)``:
    Mark the future done and set its result.
 
 A coroutine isn't a future, but they can be wrapped in one by the event loop.
@@ -268,6 +264,7 @@ A coroutine isn't a future, but they can be wrapped in one by the event loop.
 For the most part, you don't need to work directly with futures.
 
 **NOTE:** there is also the ``concurrent.futures`` module, which provides "future" objects that work with threads or processes, rather than an async event loop.
+
 
 The Event Loop
 --------------
@@ -296,7 +293,6 @@ But the simple option is to use it to run coroutines:
     loop = asyncio.get_event_loop()
     # run it:
     loop.run_until_complete(say_something())
-    loop.close()
 
 Note that ``asyncio.get_event_loop()`` will create an event loop in the main thread if one doesn't exist -- and return the existing loop if one does exist. So you can use it to get the already existing, and maybe running, loop from anywhere.
 
@@ -318,15 +314,20 @@ Let's make that a tiny bit more interesting with multiple events:
     # run it:
     loop.run_until_complete(say_lots(5))
     print("done with loop")
-    loop.close()
 
-(``Examples/async/ultra_simple``)
+:download:`ultra_simple.py </examples/async/ultra_simple.py>`
 
 Still not very interesting -- technically async, but with only one coroutine, not much to it.
 
+**NOTE:** The event loop requires some setup, and it' snot very happy when you stop and try to restart it. So you may have issues if you run this kind of code firm iPython -- each time you run it, you're still in the same Python process, so the event loop is whatever state it was left by the previous code. If you get add errors, simply restart iPython, or just run the scripts by themselves:
+
+.. code-block:: bash
+
+  $ python ultra_simple.py
+
 So let's see an even more interesting example:
 
-(``Examples/async/async_timer.py``)
+:download:`async_time.py </examples/async/async_timer.py>`
 
 .. code-block:: python
 
@@ -375,7 +376,7 @@ So let's see an even more interesting example:
 Calling a regular function
 --------------------------
 
-The usual way to use the event loop is to schedule "awaitable" tasks -- i.e. corotuines.
+The usual way to use the event loop is to schedule "awaitable" tasks -- i.e. coroutines.
 
 But sometimes you need to call a regular old function.
 
@@ -428,7 +429,7 @@ https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.Exe
 
 If Executor is None -- the default is used.
 
-``Examples/async/async_executor.py``
+:download:`async_executor.py </examples/async/async_executor.py>`
 
 .. code-block:: python
 
@@ -497,15 +498,15 @@ Sometimes you have a bunch of individual tasks to complete, but it does not matt
 
 Remember that they are now run in arbitrary order.
 
-``Examples/async/gather.py``
+:download:`gather.py </examples/async/gather.py>`
 
 
 Doing real work with async
 ==========================
 
-So what kinds of real things can you do with asychronous programming?
+So what kinds of real things can you do with asynchronous programming?
 
-``asyncio`` provides the core tools to write asychronous programs:
+``asyncio`` provides the core tools to write asynchronous programs:
 
 * An event loop with a lot of features
 * Asynchronous versions of core network protocols: i.e. sockets.
@@ -513,6 +514,7 @@ So what kinds of real things can you do with asychronous programming?
 * ...
 
 But chances are, if you want to do something real, you'll use a library..
+
 
 Web servers and clients
 -----------------------
@@ -537,7 +539,7 @@ Once the asyncio package was added to the standard lib the tools are there to bu
 http://aiohttp.readthedocs.io/
 
 (Twisted, Tornado, and the others have their own implementation of much
-of what is in asycio)
+of what is in asyncio, as they existed before asyncio existed)
 
 As it's the most "modern" implementation -- we will use it for examples in the rest of this class:
 
@@ -563,7 +565,7 @@ This is where async shines!
 
 This example borrowed from:
 
-http://terriblecode.com/blog/asynchronous-http-requests-in-python/
+`Asynchronous HTTP Requests in Python <http://terriblecode.com/blog/asynchronous-http-requests-in-python/>`_
 
 It's a really nice example.
 
@@ -571,19 +573,38 @@ The goal is to collect statistics for various NBA players. It turns out the NBA 
 
 http://stats.nba.com/
 
-It's kinda slow, but has a lot of great data.
+It's kinda slow, but has a lot of great data -- if you're into that kind of thing.
 
-Turns out that it's a picky API -- and I can't get the async version to work!!
+Turns out that it's a picky API -- and I can't get the async version to work -- maybe the server gets upset when you hit it too hard?
 
-But I made a similar example here:
+Can you get it to work?
 
-``Examples/async/get_news_sync.py``
+Synchronous version:
+:download:`nba_stats_sync.py </examples/async/nba_stats_sync.py>`
 
-and
+And the Asynchronous version:
+:download:`nba_stats_async.py </examples/async/nba_stats_async.py>`
 
-``Examples/async/get_news_async.py``
+One that works:
+...............
+
+Here is a similar example that works:
+
+This is a "classic" regular old synchronous version:
+
+:download:`get_news_sync.py </examples/async/get_news_sync.py>`
+
+and here is an async version
+
+:download:`get_news_async.py </examples/async/get_news_async.py>`
 
 Let's take a look.
+
+When to use What
+================
+
+.. image:: /_static/proc_thread_async.png
+
 
 References:
 ===========
@@ -591,7 +612,6 @@ References:
 The Asyncio Cheat Sheet: This is a pretty helpful, how to do it guide.
 
 http://cheat.readthedocs.io/en/latest/python/asyncio.html
-
 
 David Beazley: Concurrency from the ground Up.
 
@@ -607,10 +627,6 @@ https://youtu.be/ZzfHjytDceU
 https://www.youtube.com/watch?v=lYe8W04ERnY
 
 
-When to use what
-----------------
-
-.. image:: /_static/proc_thread_async.png
 
 
 

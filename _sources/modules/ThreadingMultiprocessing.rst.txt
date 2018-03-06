@@ -29,7 +29,7 @@ Motivations for parallel execution
 
 -  Event handling
 
-   - If a system handles asynchronous events, a seperate thread of
+   - If a system handles asynchronous events, a separate thread of
      execution could handle those events and let other threads do other
      work
 
@@ -171,12 +171,13 @@ http://www.wolframalpha.com/input/?i=x%5E2
 .. image:: /_static/x2.png
   :height: 400px
 
-Solution: http://www.wolframalpha.com/input/?i=int(x%5E2,0,10)
+`Solution <http://www.wolframalpha.com/input/?i=int(x%5E2,0,10)>`_
 
 Parallel execution example
 --------------------------
 
-Consider the following code from: ``Examples/integrate/integrate.py``
+Consider the following code in
+:download:`integrate.py <../examples/threading-multiprocessing/integrate/integrate.py>`
 
 .. code-block:: python
 
@@ -262,7 +263,7 @@ an unexpected race condition
 Race conditions occur when multiple statements need to execute
 atomically, but get interrupted midway
 
-See ``Examples/race_condition.py``
+:download:`race_condition.py <../examples/threading-multiprocessing/race_condition.py>`
 
 No race condition
 ------------------
@@ -420,7 +421,7 @@ until the Semaphore counter is greater than 0.
 Useful for controlling the maximum number of threads allowed to access a
 resource simultaneously
 
-http://en.wikipedia.org/wiki/Semaphore_(programming)
+`Semaphore <http://en.wikipedia.org/wiki/Semaphore_(programming)>`_
 
 .. image:: /_static/flags.jpg
   :height: 250px
@@ -430,7 +431,9 @@ http://en.wikipedia.org/wiki/Semaphore_(programming)
 Locking Exercise
 ----------------
 
-In: ``Examples/lock/stdout_writer.py``
+:download:`lock_exercise.zip <../examples/threading-multiprocessing/lock_exercise.zip>`
+
+In: ``lock/stdout_writer.py``
 
 Multiple threads in the script write to stdout, and their output gets
 jumbled
@@ -489,7 +492,7 @@ inserting the tuple:
 Threading example
 -----------------
 
-See Examples/threading/integrate_main.py
+:download:`integrate_main.py <../examples/threading-multiprocessing/threading/integrate_main.py>`
 
 .. code-block:: python
 
@@ -554,7 +557,7 @@ See Examples/threading/integrate_main.py
 Threading on a CPU bound problem
 --------------------------------
 
-Try running the code in examples/threading/integrate\_main.py
+Try running the code in integrate\_main.py
 
 It accepts 4 arguments:
 
@@ -683,9 +686,11 @@ Confusingly, it lives in the multiprocessing module
 Threading versus multiprocessing, networking edition
 ----------------------------------------------------
 
+:download:`server.zip <../examples/threading-multiprocessing/server.zip>`
+
 We're going to test making concurrent connections to a web service in:
 
-``Examples/server/app.py``
+``server/app.py``
 
 It is a WSGI application which can be run with Green Unicorn or another
 WSGI server
@@ -716,7 +721,7 @@ A coroutine is a generalization of a subroutine which allows multiple
 entry points for suspending and resuming execution
 
 The threading and the multiprocessing modules follow a preemptive
-multitasking model: http://en.wikipedia.org/wiki/Preemption_(computing)
+`multitasking model <http://en.wikipedia.org/wiki/Preemption_(computing)>`_
 
 Coroutine based solutions follow a cooperative multitasking
 model: http://en.wikipedia.org/wiki/Computer_multitasking#Cooperative_multitasking.2Ftime-sharing
@@ -839,4 +844,6 @@ Celery in one minute
 
 Questions?
 ----------
+
+There are many code samples for various techniques and libraries mentioned in lecture `here <https://github.com/UWPCE-PythonCert/PythonCertDevel/tree/master/source/examples/threading-multiprocessing>`_
 
