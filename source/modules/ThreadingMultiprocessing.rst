@@ -29,13 +29,12 @@ Motivations for parallel execution
 
 -  Event handling
 
-   - If a system handles asynchronous events, a seperate thread of
+   - If a system handles asynchronous events, a separate thread of
      execution could handle those events and let other threads do other
      work
 
    - Examples:
-
-     -  Network applications
+      -  Network applications
 
      -  User interfaces
 
@@ -45,7 +44,7 @@ If your problem can be solved sequentially, consider the costs and
 benefits before going parallel.
 
 
-Parallelization strategy for performance
+Parallelization Strategy for Performance
 ----------------------------------------
 
 | 1. Break problem down into chunks
@@ -58,8 +57,11 @@ Parallelization strategy for performance
       :alt: multitasking flow diagram
 
 
-Parallelization strategy for performance
-----------------------------------------
+.. Parallelization strategy for performance
+.. ----------------------------------------
+
+|
+|
 
 -  Not every problem is parallelizable
 -  There is an optimal number of threads for each problem in each
