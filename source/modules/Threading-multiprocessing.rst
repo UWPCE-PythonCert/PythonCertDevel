@@ -844,3 +844,5 @@ Celery in one minute
 
 Questions?
 ----------
+
+There are many code samples for various techniques and libraries mentioned in lecture `here <https://github.com/UWPCE-PythonCert/PythonCertDevel/tree/master/source/examples/threading-multiprocessing>`_

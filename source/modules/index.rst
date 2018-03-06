@@ -74,7 +74,7 @@ Py220: Advanced Python
     PersistanceAndSerialization
     NoSQL
     GraphDatabases
-
+    Threading-multiprocessing
     Async
 
 
