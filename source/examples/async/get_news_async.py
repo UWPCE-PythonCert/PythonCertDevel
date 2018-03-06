@@ -37,10 +37,9 @@ async def get_sources(sources):
     """
     url = base_url + "sources"
     params = {"language": "en"}
-    print("about to make the request for the sources")
     async with session.get(url, ssl=False, params=params) as resp:
         data = await resp.json()
-        print("got the sources")
+        print("Got the sources")
     sources.extend([src['id'].strip() for src in data['sources']])
 
 
@@ -93,7 +92,7 @@ loop.run_until_complete(get_sources(sources))
 jobs = asyncio.gather(*(get_articles(source) for source in sources))
 loop.run_until_complete(jobs)
 loop.close()
-#session.close()
+session.close()
 
 art_count = len(titles)
 word_count = count_word(WORD, titles)
