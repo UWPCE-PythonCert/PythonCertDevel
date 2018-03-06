@@ -200,19 +200,28 @@
 </ul>
 <div class="section" id="motivations-for-parallel-execution">
 <h3>Motivations for parallel execution<a class="headerlink" href="#motivations-for-parallel-execution" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Performance</p>
 <ul class="simple">
-<li>Performance<ul>
 <li>Limited by “Amdahl’s Law”
 <a class="reference external" href="http://en.wikipedia.org/wiki/Amdahl%27s_law">http://en.wikipedia.org/wiki/Amdahl%27s_law</a></li>
 <li>CPUs aren’t getting much faster</li>
 </ul>
 </li>
-<li>Event handling<ul>
-<li>If a system handles asynchronous events, a separate thread of
+<li><p class="first">Event handling</p>
+<ul>
+<li><p class="first">If a system handles asynchronous events, a separate thread of
 execution could handle those events and let other threads do other
-work</li>
-<li>Examples:<ul>
+work</p>
+</li>
+<li><dl class="first docutils">
+<dt>Examples:</dt>
+<dd><ul class="first last simple">
 <li>Network applications</li>
+</ul>
+</dd>
+</dl>
+<ul class="simple">
 <li>User interfaces</li>
 </ul>
 </li>
@@ -224,16 +233,17 @@ work</li>
 benefits before going parallel.</p>
 </div>
 <div class="section" id="parallelization-strategy-for-performance">
-<h3>Parallelization strategy for performance<a class="headerlink" href="#parallelization-strategy-for-performance" title="Permalink to this headline">¶</a></h3>
+<h3>Parallelization Strategy for Performance<a class="headerlink" href="#parallelization-strategy-for-performance" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line">1. Break problem down into chunks</div>
 <div class="line">2. Execute chunks in parallel</div>
 <div class="line">3. Reassemble output of chunks into result</div>
 </div>
 <a class="reference internal image-reference" href="../_images/OPP.0108.gif"><img alt="multitasking flow diagram" class="align-right" src="../_images/OPP.0108.gif" style="height: 450px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
 </div>
-<div class="section" id="id1">
-<h3>Parallelization strategy for performance<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Not every problem is parallelizable</li>
 <li>There is an optimal number of threads for each problem in each
@@ -258,8 +268,8 @@ due to the Global Interpreter Lock (GIL)</p>
 <p>But the GIL is released during IO, allowing IO bound processes to
 benefit from threading</p>
 </div>
-<div class="section" id="id2">
-<h3>Processes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>Processes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>A process contains all the instructions and data required to execute
 independently, so processes do not share data!</p>
 <p>Mulitple processes best to speed up CPU bound operations.</p>
