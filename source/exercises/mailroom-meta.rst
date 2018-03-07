@@ -4,7 +4,7 @@
 Mailroom -- metaprogramming it!
 ===============================
 
-So far, your mailroom program may not have anyway to save or re-load the donor data. Some of you may have added code to save and load the data in a text file or JSON, but even if you have, you might want a more flexivle and extensible system once your data gets more complicated.
+So far, your mailroom program may not have any way to save or re-load the donor data. Some of you may have added code to save and load the data in a text file or JSON, but even if you have, you might want a more flexivle and extensible system once your data gets more complicated.
 
 
 JSON

@@ -50,15 +50,15 @@ Types of Concurrency
 
 **Asyncronous programming:**
 
-  multiple "jobs" run at "arbitrary" times.
+  Multiple "jobs" run at "arbitrary" times.
 
 Lots of different packages for both in the standard library and 3rd party libraries.
 
 How to know what to choose?
 
  - IO bound vs. CPU bound
- - Event driven cooperative multitasking vs preemptive multitasking
- - callbacks vs coroutines + scheduler/event loop
+ - Event driven cooperative multitasking vs. preemptive multitasking
+ - Callbacks vs coroutines + scheduler/event loop
 
 
 Concurrency in the standard library:
