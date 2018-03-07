@@ -24,7 +24,7 @@ base_url = 'https://newsapi.org/v1/'
 
 def get_sources():
     """
-    get all the english language sources of news
+    Get all the english language sources of news
 
     'https://newsapi.org/v1/sources?language=en'
     """
@@ -33,6 +33,8 @@ def get_sources():
     resp = requests.get(url, params=params)
     data = resp.json()
     sources = [src['id'].strip() for src in data['sources']]
+    print("all the sources")
+    print(sources)
     return sources
 
 
