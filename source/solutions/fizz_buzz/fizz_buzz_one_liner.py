@@ -7,7 +7,7 @@ for i in range(1,101): print([i,'Fizz','Buzz','FizzBuzz'][(i%3==0)+2*(i%5==0)])
 
 # this is a good example of why the most compact code is not always the
 # best -- readability counts!
-# And this is pretty impenatrable.
+# And this is pretty impenetrable.
 # but it's also pretty nifty logic, so below,
 # It's unpacked to make it easeir to understand.
 
