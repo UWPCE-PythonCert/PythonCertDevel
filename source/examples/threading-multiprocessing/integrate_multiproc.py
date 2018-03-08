@@ -4,9 +4,8 @@ import os
 import sys
 import multiprocessing
 
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-
 from integrate.integrate import integrate, f
+# from integrate.integrate import f, integrate_numpy as integrate
 from decorators import timer
 
 

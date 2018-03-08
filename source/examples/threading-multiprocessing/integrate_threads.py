@@ -21,14 +21,12 @@ def threading_integrate(f, a, b, N, thread_count=2):
     def worker(*args):
         results.put(integrate(*args))
 
-    threads = []
     for i in range(thread_count):
         x0 = dx * i
         x1 = x0 + dx
         thread = threading.Thread(target=worker, args=(f, x0, x1, N_chunk))
         thread.start()
         print("Thread %s started" % thread.name)
-        # thread1.join()
 
     return sum((results.get() for i in range(thread_count)))
 

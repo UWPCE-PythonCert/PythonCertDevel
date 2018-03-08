@@ -15,6 +15,9 @@ def integrate_f_with_functional_tools(f, a, b, N):
     return sum(map(f, ((a + y * dx) for y in range(N)))) * dx
 
 
+# imported here so the rest of the code can run without it
+import numpy as np
+
 def integrate_numpy(f, a, b, N):
     """
     numpy can be used to "vectorize" the problem
@@ -22,8 +25,6 @@ def integrate_numpy(f, a, b, N):
     f must be "numpy comaptible"
 
     """
-    # imported here so the rest of the code can run without it
-    import numpy as np
     dx = (b - a) / N
     i = np.arange(N)
     s = np.sum(f(a + (i * dx)))
