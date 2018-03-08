@@ -39,7 +39,7 @@ if __name__ == "__main__":
     parser.add_argument('a', nargs='?', type=float, default=0.0)
     parser.add_argument('b', nargs='?', type=float, default=10.0)
     parser.add_argument('N', nargs='?', type=int, default=10**7)
-    parser.add_argument('thread_count', nargs='?', type=int, default=4)
+    parser.add_argument('thread_count', nargs='?', type=int, default=2)
 
     args = parser.parse_args()
     a = args.a

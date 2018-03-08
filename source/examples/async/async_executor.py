@@ -26,12 +26,12 @@ async def slow_task():
         # This will block for 2-10 seconds!
         # result = slow_function(random.random() * 8 + 2)
         # uncomment to put it on a different thread:
-        result = slow_function(random.random() * 8 + 2)
-        #result = await loop.run_in_executor(None,
-        #                                    slow_function,
-        #                                    random.random() * 8 + 2)
+        # result = slow_function(random.random() * 8 + 2)
+        result = await loop.run_in_executor(None,
+                                           slow_function,
+                                           random.random() * 8 + 2)
         print("slow function done: result", result)
-        await asyncio.sleep(0.0)  # to release the loop
+        # await asyncio.sleep(0.0)  # to release the loop
 
 
 def slow_function(duration):

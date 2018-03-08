@@ -186,11 +186,11 @@ async def corout2():
 #          do_a_few_things(2, "third task"),
 #          ]
 
-# # First start tem all off:
+# # First start them all off:
 # for task in tasks:
 #     task.send(None)
 
-# # now keep a lop going until all the tasks are gone:
+# # now keep a loop going until all the tasks are gone:
 # i = 0
 # while tasks:
 #     i += 1
