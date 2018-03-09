@@ -3,10 +3,8 @@
 import threading
 import queue
 
-# sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-
-from integrate.integrate import integrate, f
-# from integrate.integrate import f, integrate_numpy as integrate
+# from integrate.integrate import integrate, f
+from integrate.integrate import f, integrate_numpy as integrate
 from decorators import timer
 
 
@@ -36,8 +34,8 @@ if __name__ == "__main__":
     # parameters of the integration
     a = 0.0
     b = 10.0
-    N = 10**7
-    thread_count = 1
+    N = 10**8
+    thread_count = 8
 
     print("Numerical solution with N=%(N)d : %(x)f" %
           {'N': N, 'x': threading_integrate(f, a, b, N, thread_count=thread_count)})

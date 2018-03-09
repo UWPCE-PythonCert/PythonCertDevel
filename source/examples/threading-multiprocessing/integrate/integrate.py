@@ -15,6 +15,16 @@ def integrate_f_with_functional_tools(f, a, b, N):
     return sum(map(f, ((a + y * dx) for y in range(N)))) * dx
 
 
+
+
+
+
+
+
+
+
+
+
 # imported here so the rest of the code can run without it
 import numpy as np
 
