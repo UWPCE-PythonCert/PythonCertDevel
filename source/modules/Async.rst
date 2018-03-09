@@ -1,5 +1,3 @@
-:orphan:
-
 .. _async:
 
 #######################
@@ -600,10 +598,8 @@ and here is an async version
 
 Let's take a look.
 
-When to use What
-================
 
-.. image:: /_static/proc_thread_async.png
+TODO: Look at async example in multi-threading server example.
 
 
 References:

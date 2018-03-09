@@ -1,4 +1,3 @@
-:orphan:
 
 .. _concurrency:
 
@@ -6,10 +5,11 @@
 Concurrent Programming
 ######################
 
-What does it mean to do something in parallel?
+What does it mean to do something "Concurrently" ? It means multiple things
+are happening at the same time. But what are those "things"?
 
- - Parallelism is about doing things at the same time;
- - Concurrency is about dealing with multiple things at the same time.
+ - Parallelism is about the processor(s) things at the same time -- true parallelism requires multiple processors (or cores).
+ - Concurrency is about handling multiple things at the same time -- which may or may not be actually running in the processor at the same time (like network requests for instance).
  - Parallelism needs concurrency, but concurrency need not be in parallel.
 
 
@@ -30,11 +30,9 @@ Asynchrony and Concurrency are really two different things -- you can do either 
 
 Despite Rob Pike using an example about burning books, I recommend listening to at least the first half of his talk.
 
-In "Concurrency is not parallelism" Rob Pike makes a key point:
-Breaking down tasks into concurrent subtasks only allows parallelism,
-it’s the scheduling of these subtasks that creates it.
+In that talk Rob Pike makes a key point: Breaking down tasks into concurrent subtasks only allows parallelism, it’s the scheduling of these subtasks that creates it.
 
-And, indeed, once you have a set of subtasks, they can be scheduled in a truly parallel fashion, or managed asynchronously in a single thread.
+And, indeed, once you have a set of subtasks, they can be scheduled in a truly parallel fashion, or managed asynchronously in a single thread (concurrent, but not parallel)
 
 
 Types of Concurrency
@@ -42,21 +40,21 @@ Types of Concurrency
 
 **Multithreading:**
 
-  Multiple code paths sharing memory
+  Multiple code paths sharing memory -- one Python interpreter, one set of Python objects.
 
 **Multiprocessing:**
 
-  Multiple code paths with separate memory space.
+  Multiple code paths with separate memory space -- completely separate Python interpreter.
 
 **Asyncronous programming:**
 
-  Multiple "jobs" run at "arbitrary" times.
+  Multiple "jobs" run at "arbitrary" times -- but usually in one thread -- i.e. only one code path, one interpreter.
 
 Lots of different packages for both in the standard library and 3rd party libraries.
 
 How to know what to choose?
 
- - IO bound vs. CPU bound
+ - IO bound vs. CPU bound -- CPU bound requires multiprocessing (at least with pure Python)
  - Event driven cooperative multitasking vs. preemptive multitasking
  - Callbacks vs coroutines + scheduler/event loop
 
@@ -70,18 +68,33 @@ Concurrency in the standard library:
 
    - ``queue``: The queue module implements multi-producer, multi-consumer queues. It is especially useful in threaded programming when information must be exchanged safely between multiple threads.
 
- - ``multiprocessing``: processing is parallel (someone else does the dishes while you cook). Duplicates the current Python process and runs code in it.
+ - ``multiprocessing``: processing is parallel (someone else does the dishes while you cook). Duplicates the current Python process and runs code in it. Follows a similar API to threading.
 
  - ``subprocess``: allows you to spawn new processes (entirely different programs), connect to their input/output/error pipes, and obtain their return codes.  Parallel, hands to OS (usually running command line programs)
 
- - ``concurrent.futures``: https://www.blog.pythonlibrary.org/2016/08/03/python-3-concurrency-the-concurrent-futures-module/ This is also in the ``asyncio`` package, and we go into it in more depth there)
+ - ``concurrent.futures``: https://www.blog.pythonlibrary.org/2016/08/03/python-3-concurrency-the-concurrent-futures-module/ This has mostly been superseded by the ``asyncio`` package.
+
+  - ``asyncio``: an asynchronous event loop, designed primarily for IO (networked) applications.
 
 
-Concurrency outside the standard library:
+Concurrency Outside the Standard Library
+----------------------------------------
+
+Async Web Frameworks
+....................
+
+These are Frameworks for making web APIs with an asynchronous approach. They pre-date the built in asyncio package, and the latest language syntax.
+
+ - Twisted
+ - Tornado
+
+Job Schedulers
+..............
+
+These are for scheduling jobs (not only Python jobs) on larger Multiprocessing and multi-machine systems -- think the cloud.
 
  - Celery + Rabbitmq
  - Redis + RQ
- - Twisted
 
 
 Advantages / Disadvantages of Threads
@@ -92,9 +105,9 @@ Advantages:
 
 They share memory space:
 
- - Threads are light-weight, shared memory means they can be created fairly quickly without much memory use.
+ - Threads are relatively lightweight -- shared memory means they can be created fairly quickly without much memory use.
 
- - Easy and cheap to pass data around (you are only passing a reference)
+ - Easy and cheap to pass data around (you are only passing a reference).
 
 Disadvantages:
 ..............
@@ -105,15 +118,15 @@ They share memory space:
  - Operations often take several steps and may be interrupted mid-stream
  - Thus, access to shared data is also non-deterministic
 
+   (race conditions)
+
 Creating threads is easy, but programming with threads is difficult.
 
+  Q: Why did the multithreaded chicken cross the road?
 
-Q: Why did the multithreaded chicken cross the road?
+  A: to To other side. get the
 
-A: to To other side. get the
-
--- Jason Whittington
-
+  -- Jason Whittington
 
 
 **Global Interpreter Lock**
@@ -399,6 +412,13 @@ Other features of the multiprocessing package
  - Connections
 
 Add references!
+
+When to use What
+================
+
+.. image:: /_static/proc_thread_async.png
+
+
 
 
 

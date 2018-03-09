@@ -5,7 +5,7 @@ Modules
 
 These are assorted notes about particular python topics used in the certificate program.
 
-More or less in order of presentation
+More or less in order of lessons:
 
 Py210: Introduction to Python
 =============================
@@ -77,6 +77,7 @@ Py220: Advanced Python
 
     Concurrency
     ThreadingMultiprocessing
+    Coroutines
     Async
 
 

@@ -1,4 +1,3 @@
-:orphan:
 
 .. _threading:
 
@@ -178,8 +177,8 @@ http://www.wolframalpha.com/input/?i=x%5E2
 Parallel execution example
 --------------------------
 
-Consider the following code in
-:download:`integrate.py <../examples/threading-multiprocessing/integrate/integrate.py>`
+Consider the following code in:
+:download:`integrate.py <../examples/threading-multiprocessing/integrate.py>`
 
 .. code-block:: python
 
@@ -494,97 +493,73 @@ inserting the tuple:
 Threading example
 -----------------
 
-:download:`integrate_main.py <../examples/threading-multiprocessing/threading/integrate_main.py>`
+:download:`integrate_main.py <../examples/threading-multiprocessing/integrate_threads.py>`
 
 .. code-block:: python
 
     #!/usr/bin/env python
 
-    import argparse
-    import os
-    import sys
     import threading
-    import Queue
+    import queue
 
-    sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-    from integrate.integrate import integrate, f
-    from decorators.decorators import timer
+    # from integrate.integrate import integrate, f
+    from integrate import f, integrate_numpy as integrate
+    from decorators import timer
 
-.. nextslide::
-
-.. code-block:: python
 
     @timer
     def threading_integrate(f, a, b, N, thread_count=2):
-        """break work into two chunks"""
+        """break work into N chunks"""
         N_chunk = int(float(N) / thread_count)
-        dx = float(b-a) / thread_count
+        dx = float(b - a) / thread_count
 
-        results = Queue.Queue()
+        results = queue.Queue()
 
         def worker(*args):
             results.put(integrate(*args))
 
-        threads = []
-        for i in xrange(thread_count):
-            x0 = dx*i
+        for i in range(thread_count):
+            x0 = dx * i
             x1 = x0 + dx
             thread = threading.Thread(target=worker, args=(f, x0, x1, N_chunk))
             thread.start()
-            print "Thread %s started" % thread.name
-            # thread1.join()
-        return sum( (results.get() for i in xrange(thread_count) ))
+            print("Thread %s started" % thread.name)
 
-.. nextslide::
+        return sum((results.get() for i in range(thread_count)))
 
-.. code-block:: python
 
     if __name__ == "__main__":
-        parser = argparse.ArgumentParser(description='integrator')
-        parser.add_argument('a', nargs='?', type=float, default=0.0)
-        parser.add_argument('b', nargs='?', type=float, default=10.0)
-        parser.add_argument('N', nargs='?', type=int, default=10**7)
-        parser.add_argument('thread_count', nargs='?', type=int, default=2)
 
-        args = parser.parse_args()
-        a = args.a
-        b = args.b
-        N = args.N
-        thread_count = args.thread_count
+        # parameters of the integration
+        a = 0.0
+        b = 10.0
+        N = 10**8
+        thread_count = 8
 
-        print("Numerical solution with N=%(N)d : %(x)f" % \
-                {'N': N, 'x': threading_integrate(f, a, b, N, thread_count=thread_count)})
+        print("Numerical solution with N=%(N)d : %(x)f" %
+              {'N': N, 'x': threading_integrate(f, a, b, N, thread_count=thread_count)})
 
 
 Threading on a CPU bound problem
 --------------------------------
 
-Try running the code in integrate\_main.py
+Try running the code in :download:`integrate_main.py <examples/threading-multiprocessing/integrate_threads.py>`
 
-It accepts 4 arguments:
+It has a couple tunable parameters:
 
-.. code-block:; python
+.. code-block:: python
 
-    ./integrate_main.py -h
-    usage: integrate_main.py [-h] [a] [b] [N] [thread_count]
+    a = 0.0  # the start of the integration
+    b = 10.0  # the end point of the integration
+    N = 10**8 # the number of steps to use in the integration
+    thread_count = 8  # the number of threads to use
 
-    integrator
-
-    positional arguments:
-      a
-      b
-      N
-      thread_count
-
-``./integrate_main.py 0 10 1000000 4``
-
-What happens when you change the thread count? What thread count gives
-the maximum speed?
+What happens when you change the thread count? What thread count gives the maximum speed?
 
 Multiprocessing
 ---------------
 
-multiprocessing provides an API very similar to threading, so the
+Multiprocessing provides an API very similar to threading, so the
 transition is easy
 
 use ``multiprocessing.Process`` instead of ``threading.Thread``
@@ -605,7 +580,7 @@ use ``multiprocessing.Process`` instead of ``threading.Thread``
     proc.start()
 
 
-Differences with threading
+Differences with Threading
 --------------------------
 
 Multiprocessing has its own ``multiprocessing.Queue`` which handles
@@ -679,35 +654,32 @@ Threading also has a pool
 
 Confusingly, it lives in the multiprocessing module
 
-::
+.. code-block:: python
 
-          from multiprocessing.pool import ThreadPool
-          pool = ThreadPool(processes=4)
+    from multiprocessing.pool import ThreadPool
+    pool = ThreadPool(processes=4)
 
 
-Threading versus multiprocessing, networking edition
-----------------------------------------------------
+.. Threading versus multiprocessing, networking edition
+.. ----------------------------------------------------
 
-:download:`server.zip <../examples/threading-multiprocessing/server.zip>`
+.. :download:`server.zip <../examples/threading-multiprocessing/server.zip>`
 
-We're going to test making concurrent connections to a web service in:
+.. We're going to test making concurrent connections to a web service in:
 
-``server/app.py``
+.. ``server/app.py``
 
-It is a WSGI application which can be run with Green Unicorn or another
-WSGI server
+.. It is a WSGI application which can be run with Green Unicorn or another WSGI server
 
-``$ gunicorn app:app --bind 0.0.0.0:37337``
+.. ``$ gunicorn app:app --bind 0.0.0.0:37337``
 
-``client-threading.py`` makes 100 threads to contact the web service
+.. ``client-threading.py`` makes 100 threads to contact the web service
 
-``client-mp.py`` makes 100 processes to contact the web service
+.. ``client-mp.py`` makes 100 processes to contact the web service
 
-``client-pooled.py`` creates a ThreadPool
+.. ``client-pooled.py`` creates a ThreadPool
 
-``client-pooled.py`` contains a results Queue, but doesn't use it. Can you
-collect all the output from the pool into a single data structure using
-this Queue?
+.. ``client-pooled.py`` contains a results Queue, but doesn't use it. Can you collect all the output from the pool into a single data structure using this Queue?
 
 
 Other options

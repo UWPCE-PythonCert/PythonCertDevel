@@ -9,6 +9,7 @@ import queue
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from decorators.decorators import timer
 
+
 @timer
 def threading_client(number_of_requests=10, thread_count=2):
 
@@ -29,4 +30,5 @@ def threading_client(number_of_requests=10, thread_count=2):
 if __name__ == "__main__":
     number_of_requests = 100
     thread_count = 10
-    threading_client(number_of_requests=number_of_requests, thread_count = thread_count)
+    threading_client(number_of_requests=number_of_requests,
+                     thread_count=thread_count)

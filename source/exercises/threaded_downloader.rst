@@ -23,11 +23,12 @@ Did you find it easier or harder to write / understand the code?
 A Queue?
 ========
 
-You will need a way to launch a bunch of threads at once, but probably not one for each request you want to make -- that could be a lot of threads! In this case, 100 or so threads would probably work OK, but if you want the code to be extensible to larger numbers, you may want to pre-define a maximum number of threads.
+You will need a way to launch a bunch of threads at once, but probably not one for each request you want to make -- that could be a lot of threads! In this case, 100 or so threads would probably work OK, but if you want the code to be extensible to larger numbers, you may want to pre-define a maximum number of threads in a thread pool.
 
-So you'll probably want to use a job Queue -- and then launch a handful of threads to process those jobs.
+Then you'll want to use a job Queue -- and then launch a handful of threads to process those jobs.
 
 Experiment a bit -- how many threads give you maximum performance?
+
 
 Hints
 =====
