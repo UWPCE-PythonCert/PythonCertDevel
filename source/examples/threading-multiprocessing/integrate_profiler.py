@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
-from integrate.integrate import (f,
-                                 integrate_numpy as _integrate_numpy,
-                                 integrate as _integrate
-                                 )
+from integrate import (f,
+                       integrate_numpy as _integrate_numpy,
+                       integrate as _integrate
+                       )
 from decorators import timer
 
 

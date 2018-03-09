@@ -4,7 +4,7 @@ import threading
 import queue
 
 # from integrate.integrate import integrate, f
-from integrate.integrate import f, integrate_numpy as integrate
+from integrate import f, integrate_numpy as integrate
 from decorators import timer
 
 
