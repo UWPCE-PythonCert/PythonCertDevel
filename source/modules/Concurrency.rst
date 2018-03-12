@@ -58,6 +58,59 @@ How to know what to choose?
  - Event driven cooperative multitasking vs. preemptive multitasking
  - Callbacks vs coroutines + scheduler/event loop
 
+Motivations for parallel execution
+----------------------------------
+
+-  Performance
+
+   -  Limited by "Amdahl's Law"
+      http://en.wikipedia.org/wiki/Amdahl%27s_law
+
+   -  CPUs aren't getting much faster
+
+-  Event handling
+
+   - If a system handles asynchronous events, a separate thread of
+     execution could handle those events and let other threads do other
+     work
+
+   - Examples:
+      -  Network applications
+
+     -  User interfaces
+
+Parallel programming can be hard!
+
+If your problem can be solved sequentially, consider the costs and
+benefits before going parallel.
+
+
+Parallelization Strategy for Performance
+----------------------------------------
+
+| 1. Break problem down into chunks
+| 2. Execute chunks in parallel
+| 3. Reassemble output of chunks into result
+
+.. image:: /_static/OPP.0108.gif
+      :align: right
+      :height: 450px
+      :alt: multitasking flow diagram
+
+
+|
+|
+
+-  Not every problem is parallelizable
+-  There is an optimal number of threads for each problem in each
+   environment, so make it tunable
+-  Working concurrently opens up synchronization issues
+-  Methods for synchronizing threads:
+
+   -  locks
+   -  queues
+   -  signaling/messaging mechanisms
+
 
 Concurrency in the standard library:
 ------------------------------------
@@ -96,6 +149,44 @@ These are for scheduling jobs (not only Python jobs) on larger Multiprocessing a
  - Celery + Rabbitmq
  - Redis + RQ
 
+Threads versus processes in Python
+----------------------------------
+
+Threads are lightweight processes_, run in the address space of an OS
+process, true OS level threads.
+
+Therefor, a component of a process.
+
+.. _processes: https://en.wikipedia.org/wiki/Light-weight_process
+
+This allows multiple threads access to data in the same scope.
+
+Threads can not gain the performance advantage of multiple processors
+due to the Global Interpreter Lock (GIL)
+
+But the GIL is released during IO, allowing IO bound processes to
+benefit from threading
+
+Processes
+---------
+
+A process contains all the instructions and data required to execute
+independently, so processes do not share data!
+
+Mulitple processes best to speed up CPU bound operations.
+
+The Python interpreter isn't lightweight!
+
+Communication between processes can be achieved via:
+
+``multiprocessing.Queue``
+
+``multiprocessing.Pipe``
+
+and regular IPC (inter-process communication)
+
+Data moved between processes must be pickleable
+
 
 Advantages / Disadvantages of Threads
 -------------------------------------
@@ -128,12 +219,30 @@ Creating threads is easy, but programming with threads is difficult.
 
   -- Jason Whittington
 
+GIL
+---
 
 **Global Interpreter Lock**
 
 (**GIL**)
 
-The GIL locks the interpreter so that only a single thread can run at once, assuring that one thread doesn't make a mess of the python objects that another thread needs. The upshot:
+This is a lock which must be obtained by each thread before it can
+execute, ensuring thread safety
+
+.. image:: /_static/gil.png
+    :width: 100.0%
+
+.. nextslide::
+
+The GIL is released during IO operations, so threads which spend time
+waiting on network or disk access can enjoy performance gains
+
+The GIL is not unlike multitasking in humans, some things can truly be
+done in parallel, others have to be done by time slicing.
+
+Note that potentially blocking or long-running operations, such as I/O, image processing, and NumPy number crunching, happen outside the GIL. Therefore it is only in multithreaded programs that spend a lot of time inside the GIL, interpreting CPython bytecode, that the GIL becomes a bottleneck. But: it can still cause performance degradation.
+
+Not only will threads not help cpu-bound problems, but it can actually make things *worse*, especially on multi-core machines!
 
 Python threads do not work well for computationally intensive work.
 
@@ -143,6 +252,14 @@ Python threads work well if the threads are spending time waiting for something:
  - Network Access
  - File I/O
 
+
+Some alternative Python implementations such as Jython and IronPython
+have no GIL
+
+cPython and PyPy have one
+
+More about the gil
+
 More on the GIL:
 
 https://emptysqua.re/blog/grok-the-gil-fast-thread-safe-python/
@@ -151,9 +268,27 @@ If you really want to understand the GIL -- and get blown away -- watch this one
 
 http://pyvideo.org/pycon-us-2010/pycon-2010--understanding-the-python-gil---82.html
 
+
+-  http://wiki.python.org/moin/GlobalInterpreterLock
+
+-  https://docs.python.org/3.5/c-api/init.html#threads
+
+-  http://hg.python.org/cpython/file/05e8dde3229c/Python/pystate.c#l761
+
+
 **NOTE:** The GIL *seems* like such an obvious limitation that you've got to wonder why it's there. And there have been multiple efforts to remove it. But it turns out that Python's design makes that very hard (impossible?) without severely reducing performance on single threaded programs.
 
-Personal Opinion: Python is not really (directly) suited to the kind of computationally intensive work that the GIL really hampers. And extension modules (i.e. numpy) can release the GIL!
+The current "Best effort is Larry Hastings' `"gilectomy <https://speakerdeck.com/pycon2017/larry-hastings-the-gilectomy-hows-it-going>`_
+
+But that may be stalled out at this point, too. No one should count on it going away in cPython.
+
+But: **Personal Opinion:** Python is not really (directly) suited to the kind of computationally intensive work that the GIL really hampers. And extension modules (i.e. numpy) can release the GIL!
+
+
+Posted without comment
+----------------------
+.. figure:: /_static/killGIL.jpg
+   :class: fill
 
 
 Advantages / Disadvantages of Processes
@@ -171,7 +306,9 @@ But as the entire python process is copied, each subprocess is working with the 
 
 Multiprocessing is suitable for computationally intensive work.
 
-Works best for "large" problems with not much data
+Works best for "large" problems with not much data to pass back and forth, as that's what's expensive.
+
+Note that there are ways to share memory between processes, if you have a lot of read-only data that needs to be used. (see `Memory Maps <https://docs.python.org/3/library/mmap.html>`)
 
 
 The mechanics: how do you use threads and/or processes

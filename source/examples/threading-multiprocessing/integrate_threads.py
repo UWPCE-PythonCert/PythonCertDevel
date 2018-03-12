@@ -35,7 +35,7 @@ if __name__ == "__main__":
     a = 0.0
     b = 10.0
     N = 10**8
-    thread_count = 8
+    thread_count = 1
 
     print("Numerical solution with N=%(N)d : %(x)f" %
           {'N': N, 'x': threading_integrate(f, a, b, N, thread_count=thread_count)})
