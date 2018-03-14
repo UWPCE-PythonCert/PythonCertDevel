@@ -17,6 +17,8 @@ https://www.pce.uw.edu/certificates/python-programming
     supplemental/index
     references/index
 
+`Examples <https://github.com/UWPCE-PythonCert/PythonCertDevel/tree/master/source/examples>`_
+
 .. There is no indexed material! We could add it, but it would have to be done my hand.
 .. Indices and tables
 .. ==================

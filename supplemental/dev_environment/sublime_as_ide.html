@@ -113,6 +113,7 @@
 <li class="toctree-l4"><a class="reference internal" href="ipython.html">iPython Interpreter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="windows_bash.html">Using Windows Bash for Python Development</a></li>
 <li class="toctree-l4"><a class="reference internal" href="git_overview.html">git Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="feature_branching.html">Feature Branching</a></li>
 <li class="toctree-l4"><a class="reference internal" href="virtualenv.html">Working with Virtualenv</a></li>
 </ul>
 </li>
@@ -204,7 +205,7 @@ to do it.</p>
 <ul class="simple">
 <li>It should provide excellent, configurable syntax colorization.</li>
 <li>It should allow for robust tab completion.</li>
-<li>It should perform automatic code linting to help avoid silly mistakes.</li>
+<li>It should perform automatic code linting to help avoid silly mistakes and conform to good style.</li>
 </ul>
 <p>And some more advanced features that you may want later:</p>
 <ul class="simple">
@@ -216,82 +217,55 @@ debugging, the editor will follow along with the debugger.</li>
 </div>
 <div class="section" id="which-version">
 <h2>Which Version?<a class="headerlink" href="#which-version" title="Permalink to this headline">¶</a></h2>
-<p>Use version 3 – there is a recent update to build 3143, so make sure to get the latest.</p>
+<p>Use version 3 – it is updated now and again, so make sure to get the latest.</p>
 <p><em>Use Sublime Version 3</em></p>
 </div>
 <div class="section" id="basic-settings">
 <h2>Basic Settings<a class="headerlink" href="#basic-settings" title="Permalink to this headline">¶</a></h2>
-<p>All configuration in Sublime Text is done via <a class="reference external" href="http://www.json.org">JSON</a>. It’s simple to learn. go
-and read that link then return here. [Note that JSON is very similar to Python
-dict and list literals]</p>
-<p>There are a number of <a class="reference external" href="http://www.sublimetext.com/docs/3/settings.html">different levels of configuration</a> in Sublime Text. You
-will most often work on settings at the user level.</p>
-<p>Open <code class="docutils literal"><span class="pre">Preferences</span></code> -&gt; <code class="docutils literal"><span class="pre">Settings</span> <span class="pre">-</span> <span class="pre">Default</span></code> to see all the default settings
-and choose which to override.</p>
-<p>On the Mac, you can find it under:</p>
+<p>All configuration in Sublime Text is done via <a class="reference external" href="http://www.json.org">JSON</a>. It’s simple to learn. go and read that link then return here. [Note that JSON is very similar to Python dict and list literals]</p>
+<p>There are a number of <a class="reference external" href="http://www.sublimetext.com/docs/3/settings.html">different levels of configuration</a> in Sublime Text. You will most often work on settings at the user level.</p>
+<p>Open <code class="docutils literal"><span class="pre">Preferences</span></code> -&gt; <code class="docutils literal"><span class="pre">Settings</span></code></p>
+<p>On a Mac, you can find it under:</p>
 <p><code class="docutils literal"><span class="pre">Sublime</span> <span class="pre">Text</span></code> -&gt; <code class="docutils literal"><span class="pre">Preferences</span></code> -&gt; <code class="docutils literal"><span class="pre">Settings</span></code></p>
+<p>Sublime will open up a split window – “default” and “user” – you can look through the default ones to see all the setting you might want to override, and then copy things from default by putting them in the user file.</p>
 <p>The preferences file is simply a JSON text file you edit like any other text file.</p>
-<p>Create your own set of preferences by opening the user preferences file.
-This will create an empty file. You can then copy the settings you want
-to override from the default set into your personal settings.</p>
-<p>Here’s a reasonable set of preliminary settings (theme, color scheme and font
-are quite personal, find ones that suit you.):</p>
+<p>Here’s a reasonable set of preliminary settings (theme, color scheme and font are quite personal, find ones that suit you.):</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;color_scheme&quot;</span><span class="o">:</span> <span class="s2">&quot;Packages/Color Scheme - Default/Cobalt.tmTheme&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;theme&quot;</span><span class="o">:</span> <span class="s2">&quot;Soda Light 3.sublime-theme&quot;</span><span class="p">,</span>
-    <span class="c1">// A font face that helps distinguish between 0 (the number) and &#39;O&#39; (the letter)</span>
-    <span class="c1">// among other problem characters. You also want a &quot;fixed width font&quot;</span>
-    <span class="c1">// Monaco is a nice option that comes with all Macs.</span>
-    <span class="c1">// Not sure what&#39;s best on Windows.</span>
-    <span class="s2">&quot;font_face&quot;</span><span class="o">:</span> <span class="s2">&quot;Monaco&quot;</span><span class="p">,</span>
-    <span class="c1">// getting older. I wonder if comfy font size increases as a linear</span>
-    <span class="c1">//  function of age?</span>
-    <span class="s2">&quot;font_size&quot;</span><span class="o">:</span> <span class="mi">15</span><span class="p">,</span>
-    <span class="s2">&quot;ignored_packages&quot;</span><span class="o">:</span>
-    <span class="p">[</span>
-        <span class="c1">// I&#39;m not a vi user, so this is of no use to me.</span>
-        <span class="s2">&quot;Vintage&quot;</span>
-    <span class="p">],</span>
+    <span class="s2">&quot;auto_indent&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;color_scheme&quot;</span><span class="o">:</span> <span class="s2">&quot;Packages/User/Monokai (Flake8Lint).tmTheme&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;draw_white_space&quot;</span><span class="o">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;font_face&quot;</span><span class="o">:</span> <span class="s2">&quot;inconsolata&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;font_size&quot;</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span>
+    <span class="s2">&quot;indent_to_bracket&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="s2">&quot;rulers&quot;</span><span class="o">:</span>
     <span class="p">[</span>
-        <span class="c1">// set text rulers so I can judge line length for pep8</span>
-        <span class="mi">72</span><span class="p">,</span> <span class="c1">// docstrings</span>
-        <span class="mi">79</span><span class="p">,</span> <span class="c1">// optimum code line length</span>
-        <span class="mi">100</span>  <span class="c1">// maximum allowable length</span>
+        <span class="mi">79</span><span class="p">,</span>
+        <span class="mi">95</span>
     <span class="p">],</span>
-    <span class="s2">&quot;word_wrap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// I hate auto-wrapped text.</span>
-    <span class="s2">&quot;wrap_width&quot;</span><span class="o">:</span> <span class="mi">79</span><span class="p">,</span> <span class="c1">// This is used by a plugin elsewhere</span>
+    <span class="s2">&quot;theme&quot;</span><span class="o">:</span> <span class="s2">&quot;Adaptive.sublime-theme&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;smart_indent&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="s2">&quot;tab_size&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
     <span class="s2">&quot;translate_tabs_to_spaces&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="s2">&quot;use_tab_stops&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="s2">&quot;draw_white_space&quot;</span><span class="o">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="c1">// I like so see spaces and tabs -- makes it easier to debug</span>
+    <span class="s2">&quot;trailing_spaces_modified_lines_only&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;trim_automatic_white_space&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;trim_trailing_white_space_on_save&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;word_wrap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;wrap_width&quot;</span><span class="o">:</span> <span class="mi">95</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Especially important is the setting <code class="docutils literal"><span class="pre">translate_tabs_to_spaces</span></code>, which ensures
-that any time you hit a tab key, the single <code class="docutils literal"><span class="pre">\t</span></code> character is replaced by four
-<code class="docutils literal"><span class="pre">\s</span></code> characters.  In Python this is <strong>vital</strong>!</p>
+<p><strong>NOTE:</strong> Especially important is the setting <code class="docutils literal"><span class="pre">translate_tabs_to_spaces</span></code>, which ensures that any time you hit a tab key, the single &lt;tab&gt; character is replaced by four &lt;space&gt; characters.  In Python this is <strong>vital</strong>!</p>
+<p>If you do nothing else, add this for your config!</p>
 </div>
 <div class="section" id="extending-the-editor">
 <h2>Extending the Editor<a class="headerlink" href="#extending-the-editor" title="Permalink to this headline">¶</a></h2>
 <p>Most of the requirements above go beyond basic editor functionality. So we’ll use Plugins.</p>
-<p>Sublime Text comes with a great system for <a class="reference external" href="https://sublime.wbond.net">Package Control</a>. It handles
-installing and uninstalling plugins, and even updates installed plugins for
-you. You can also manually install plugins that haven’t made it to the big-time
-yet, including <a class="reference external" href="http://docs.sublimetext.info/en/latest/extensibility/plugins.html">ones you write yourself</a>. Happily, the plugin system is based on
+<p>Sublime Text comes with a great system for <a class="reference external" href="https://sublime.wbond.net">Package Control</a>. It handles installing and uninstalling plugins, and even updates installed plugins for you. You can also manually install plugins that haven’t made it to the big-time yet, including <a class="reference external" href="http://docs.sublimetext.info/en/latest/extensibility/plugins.html">ones you write yourself</a>. Happily, the plugin system is based on
 Python!</p>
-<p>To install a plugin using Package Control, open the <code class="docutils literal"><span class="pre">command</span> <span class="pre">palette</span></code> with
-<code class="docutils literal"><span class="pre">shift-super-P</span></code> (<code class="docutils literal"><span class="pre">ctrl-shift-P</span></code> on Windows/Linux). The <code class="docutils literal"><span class="pre">super</span></code> key is
-<code class="docutils literal"><span class="pre">command</span></code> or <code class="docutils literal"><span class="pre">⌘</span></code> on OS X. When the palette opens, typing <code class="docutils literal"><span class="pre">install</span></code> will
-bring up the <code class="docutils literal"><span class="pre">Package</span> <span class="pre">Control:</span> <span class="pre">Install</span> <span class="pre">Package</span></code> command. Hit <code class="docutils literal"><span class="pre">enter</span></code> to
-select it.</p>
+<p>To install a plugin using Package Control, open the <code class="docutils literal"><span class="pre">command</span> <span class="pre">palette</span></code> with <code class="docutils literal"><span class="pre">shift-super-P</span></code> (<code class="docutils literal"><span class="pre">ctrl-shift-P</span></code> on Windows/Linux). The <code class="docutils literal"><span class="pre">super</span></code> key is <code class="docutils literal"><span class="pre">command</span></code> or <code class="docutils literal"><span class="pre">⌘</span></code> on OS X. When the palette opens, typing <code class="docutils literal"><span class="pre">install</span></code> will bring up the <code class="docutils literal"><span class="pre">Package</span> <span class="pre">Control:</span> <span class="pre">Install</span> <span class="pre">Package</span></code> command. Hit <code class="docutils literal"><span class="pre">enter</span></code> to select it.</p>
 <a class="reference internal image-reference" href="../../_images/pc_menu.png"><img alt="The package control command in the command palette." class="align-center" src="../../_images/pc_menu.png" style="width: 600px;" /></a>
-<p>After you select the command, Sublime Text fetches an updated list of packages
-from the network. It might take a second or two for the list to appear. When it
-does, start to type the name of the package you want. Sublime Text filters the
-list and shows you what you want to see. To install a plugin, select it with
-the mouse, or use arrow keys to navigate the list and hit <code class="docutils literal"><span class="pre">enter</span></code> when your
-plugin is highlighted.</p>
+<p>After you select the command, Sublime Text fetches an updated list of packages from the network. It might take a second or two for the list to appear. When it does, start to type the name of the package you want. Sublime Text filters the list and shows you what you want to see. To install a plugin, select it with the mouse, or use arrow keys to navigate the list and hit <code class="docutils literal"><span class="pre">enter</span></code> when your plugin is highlighted.</p>
 <a class="reference internal image-reference" href="../../_images/plugin_list.png"><img alt="../../_images/plugin_list.png" class="align-center" src="../../_images/plugin_list.png" style="width: 600px;" /></a>
 </div>
 <div class="section" id="useful-plugins">
@@ -303,25 +277,22 @@ plugin is highlighted.</p>
 <p>Not to be confused with the Scientific Python distribution – the Anaconda sublime plugin is a full featured package to turn Sublime into a pretty full IDE:</p>
 <p><a class="reference external" href="http://damnwidget.github.io/anaconda/">http://damnwidget.github.io/anaconda/</a></p>
 <p>There are nifty instructions on that page.</p>
-<p>By default, Anaconda uses the python interpreter that is in your PATH environment variable. So, the most important configuration option is the python_interpreter option that allows you to use a different Python interpreter, for example, one that resides in a virtual environment.</p>
+<p>By default, Anaconda uses the python interpreter that is in your <code class="docutils literal"><span class="pre">PATH</span></code> environment variable. So, the most important configuration option is the python_interpreter option that allows you to use a different Python interpreter, for example, one that resides in a virtual environment, or python3 vs python2.</p>
 <p>If you get the right Python when you type “python” at a raw command line, then you are OK. But if not you may need to re-configure it.</p>
+<p>{“python_interpreter”: “~/.virtualenvs/myproject/bin/python”}</p>
 <blockquote>
-<div><p>{“python_interpreter”: “~/.virtualenvs/myproject/bin/python”}</p>
-<p>Note: for detailed information about how to properly configure Anaconda to get the maximum of it, follow the “Configure Anaconda the Right Way” section:</p>
-<p><a class="reference external" href="http://damnwidget.github.io/anaconda/anaconda_settings/">http://damnwidget.github.io/anaconda/anaconda_settings/</a></p>
-</div></blockquote>
+<div>Note: for detailed information about how to properly configure Anaconda to get the maximum of it, follow <a class="reference external" href="http://damnwidget.github.io/anaconda/anaconda_settings/">“Configure Anaconda the Right Way”</a>.</div></blockquote>
 </div>
 <div class="section" id="a-few-settings-you-ll-want-to-change">
 <h3>A few settings you’ll want to change<a class="headerlink" href="#a-few-settings-you-ll-want-to-change" title="Permalink to this headline">¶</a></h3>
 <p>There are a few setting you may want to change:</p>
 <ul class="simple">
-<li>max line length for the linter: default is 72, which is pretty short these day. I use 90</li>
+<li>max line length for the linter: default is 72, which is pretty short these day. I use 95</li>
 </ul>
 </div>
 <div class="section" id="white-space-management">
 <h3>White Space Management<a class="headerlink" href="#white-space-management" title="Permalink to this headline">¶</a></h3>
-<p>One of the issues highlighted by code linters is trailing spaces.  Sublime Text
-provides a setting that allows you to remove them every time you save a file:</p>
+<p>One of the issues highlighted by code linters is trailing spaces.  Sublime Text provides a setting that allows you to remove them every time you save a file:</p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;trim_trailing_whitespace_on_save&quot;</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
@@ -329,23 +300,18 @@ provides a setting that allows you to remove them every time you save a file:</p
 </div>
 <p>This is a useful setting, but be careful if you are working with existing code: removing trailing whitespace by default causes a <em>ton</em> of noise in git commits.</p>
 <p>But if you use it from the start with your code, it will keep it clean from the beginning.</p>
+<p>It is suggested in the above settings.</p>
 </div>
 <div class="section" id="debugging-support">
 <h3>Debugging Support<a class="headerlink" href="#debugging-support" title="Permalink to this headline">¶</a></h3>
 <p>You’ll probably want to wait on this until you start using a debugger, but it’s a nifty feature when you get there.</p>
-<p>The final requirement for a reasonable IDE experience is to be able to follow a
-debugging session in the file where the code exists.</p>
-<p>There is no plugin for Sublime Text that supports this. But there is a Python
-package you can install into the virtualenv for each of your projects that does
-it.</p>
+<p>The final requirement for a reasonable IDE experience is to be able to follow a debugging session in the file where the code exists.</p>
+<p>There is no plugin for Sublime Text that supports this. But there is a Python package you can install.</p>
 <p>The package is called <a class="reference external" href="https://pypi.python.org/pypi/PdbSublimeTextSupport">PDBSublimeTextSupport</a> and its simple to install with <code class="docutils literal"><span class="pre">pip</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>projectenv<span class="o">)</span>$ pip install PDBSublimeTextSupport
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python -m  pip install PDBSublimeTextSupport
 </pre></div>
 </div>
-<p>With that package installed in the Python that is used for your project, any
-breakpoint you set will automatically pop to the surface in Sublime Text.  And
-as you step through the code, you will see the current line in your Sublime
-Text file move along with you.</p>
+<p>With that package installed in the Python that is used for your project, any breakpoint you set will automatically pop to the surface in Sublime Text.  And as you step through the code, you will see the current line in your Sublime Text file move along with you.</p>
 </div>
 </div>
 </div>

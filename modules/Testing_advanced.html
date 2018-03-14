@@ -93,8 +93,8 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#first-class-introduction-to-python">First Class: Introduction to Python</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#second-class-advanced-python">Second Class: Advanced Python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#py210-introduction-to-python">Py210: Introduction to Python</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CodeReviews.html">Code Reviews</a></li>
@@ -115,7 +115,15 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Logging.html">Logging and the logging module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Debugging.html">Debugging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MetaProgramming.html">Metaprogramming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PersistanceAndSerialization.html">Persistence and Serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NoSQL.html">No SQL Databases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GraphDatabases.html">Graph Databases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Concurrency.html">Concurrent Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ThreadingMultiprocessing.html">Threading and multiprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Coroutines.html">Notes on Coroutines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Profiling.html">Performance and Profiling</a></li>
 </ul>
 </li>
 </ul>
@@ -194,7 +202,7 @@
 <p>UWPCE Python certificate advanced topic.</p>
 <div class="section" id="what-is-testing">
 <h2>What is testing?<a class="headerlink" href="#what-is-testing" title="Permalink to this headline">¶</a></h2>
-<p class="medium">Code which runs your application in as close to a real environment as
+<p>Code which runs your application in as close to a real environment as
 feasible and validates its behavior</p>
 <div class="section" id="terminology-of-testing">
 <h3>Terminology of testing<a class="headerlink" href="#terminology-of-testing" title="Permalink to this headline">¶</a></h3>
@@ -324,17 +332,20 @@ for validation, here are a few common ones:</p>
 </div>
 <div class="section" id="running-your-tests">
 <h2>Running your tests<a class="headerlink" href="#running-your-tests" title="Permalink to this headline">¶</a></h2>
-<p class="medium">How do you actually run your tests?</p>
+<p>How do you actually run your tests?</p>
 <div class="section" id="running-tests-in-a-single-module">
 <h3>running tests in a single module<a class="headerlink" href="#running-tests-in-a-single-module" title="Permalink to this headline">¶</a></h3>
 <p>Call unittest.main() right in your module</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>      <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-          <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p># or from the command line:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python -m unittest test_my_module  <span class="c1"># with or without .py on end</span>
 
-<span class="c1"># or from the command line:</span>
-<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">unittest</span> <span class="n">test_my_module</span>  <span class="c1"># with or without .py on end</span>
-<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">unittest</span> <span class="n">test_my_module</span><span class="o">.</span><span class="n">TestClass</span>  <span class="c1"># particular class in a module</span>
-<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">unittest</span> <span class="n">test_my_module</span><span class="o">.</span><span class="n">TestClass</span><span class="o">.</span><span class="n">test_method</span>  <span class="c1"># particular test</span>
+python -m unittest test_my_module.TestClass  <span class="c1"># particular class in a module</span>
+
+python -m unittest test_my_module.TestClass.test_method  <span class="c1"># particular test</span>
 </pre></div>
 </div>
 <p>If it gets cumbersome with many TestCases, organize the tests into a
@@ -368,8 +379,11 @@ from all unittest.TestCase subclasses, as well as functions whose names
 start with ‘test’.</p>
 <p>So running your tests is as easy as</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ pytest
+
 or
-$ nose2
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ nose2
 </pre></div>
 </div>
 <p><a class="reference external" href="http://nose2.readthedocs.org/en/latest/getting_started.html#running-tests">http://nose2.readthedocs.org/en/latest/getting_started.html#running-tests</a></p>
@@ -462,7 +476,7 @@ The fixture function is automatically run before each test.</p>
 stored as an approximation in computing hardware.</p>
 <p><a class="reference external" href="https://docs.python.org/3/tutorial/floatingpoint.html">https://docs.python.org/3/tutorial/floatingpoint.html</a></p>
 <div class="section" id="levels-of-precision-of-floating-point">
-<h3>levels of precision of floating point<a class="headerlink" href="#levels-of-precision-of-floating-point" title="Permalink to this headline">¶</a></h3>
+<h3>Levels of precision of floating point<a class="headerlink" href="#levels-of-precision-of-floating-point" title="Permalink to this headline">¶</a></h3>
 <p>Python floating point numbers are stored in <a class="reference external" href="http://en.wikipedia.org/wiki/IEEE_floating_point">IEEE 754</a> 64-bit double precision format, so 1 bit for the sign, 11 bits for the exponent, and the remaining 52 for the fraction.</p>
 <p>So we can count on up to 16 digits of precision in decimal:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [39]: </span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">52</span><span class="p">))</span>
@@ -475,7 +489,7 @@ stored as an approximation in computing hardware.</p>
 <span class="gh">Out[41]: </span><span class="go">16</span>
 
 <span class="go"># with repeated operations, the errors eventually build up:</span>
-<span class="go"># here&#39;s multiplying by &#39;1&#39; 10 million times:</span>
+<span class="go"># here&#39;s multiplying by &quot;1&quot; 10 million times:</span>
 <span class="gp">In [64]: </span><span class="n">x</span><span class="o">=</span><span class="mi">1</span>
 <span class="gp">In [69]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000000</span><span class="p">):</span> <span class="n">x</span> <span class="o">*=</span> <span class="p">(</span><span class="o">.</span><span class="mi">1</span> <span class="o">+</span> <span class="o">.</span><span class="mi">2</span><span class="p">)</span><span class="o">/.</span><span class="mi">3</span>
 <span class="go">Out [69]: 1.000000002220446</span>
@@ -644,8 +658,8 @@ complex than a single function call.</p>
 </div>
 <p>But talk about tedious!!!</p>
 <p>Unfortunately, <code class="docutils literal"><span class="pre">unittest</span></code> does not have a built-in way to solve this
-problem. There is a nifty library called parameterized, which does solve it,
-and they spell parameterize correctly. It works with nose, unittest, and pytest.</p>
+problem. There is a nifty library called parameterized, which does solve it
+(and they spell parameterize correctly). It works with nose, unittest, and pytest.</p>
 <p><a class="reference external" href="https://pypi.python.org/pypi/parameterized">https://pypi.python.org/pypi/parameterized</a></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@parameterized</span><span class="p">([</span>
     <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
@@ -672,7 +686,7 @@ and they spell parameterize correctly. It works with nose, unittest, and pytest.
 </pre></div>
 </div>
 <p>I find this very, very, useful.</p>
-<p>See <code class="docutils literal"><span class="pre">examples/calculator/test_calculator_pytest.py</span></code> in the class repo.</p>
+<p>See <a class="reference download internal" href="../_downloads/test_calculator_pytest.py" download=""><code class="xref download docutils literal"><span class="pre">test_calculator_pytest.py</span></code></a> in the class repo.</p>
 </div>
 <div class="section" id="code-coverage">
 <h3>Code Coverage<a class="headerlink" href="#code-coverage" title="Permalink to this headline">¶</a></h3>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Concurrent Programing &mdash; PythonCert 4.0 documentation</title>
+  <title>Concurrent Programming &mdash; PythonCert 4.0 documentation</title>
   
 
   
@@ -35,7 +35,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/> 
+    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
+        <link rel="up" title="Modules" href="index.html"/>
+        <link rel="next" title="Threading and multiprocessing" href="ThreadingMultiprocessing.html"/>
+        <link rel="prev" title="Graph Databases" href="GraphDatabases.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -88,8 +91,38 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Modules</a></li>
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#py210-introduction-to-python">Py210: Introduction to Python</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CodeReviews.html">Code Reviews</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Closures.html">Closures and Function Currying</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Decorators.html">Decorators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ContextManagers.html">Context Managers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Pep8.html">Coding Style and Linting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Testing_advanced.html">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Logging.html">Logging and the logging module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Debugging.html">Debugging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MetaProgramming.html">Metaprogramming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PersistanceAndSerialization.html">Persistence and Serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NoSQL.html">No SQL Databases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GraphDatabases.html">Graph Databases</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Concurrent Programming</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#whirlwind-tour-of-concurrency">Whirlwind Tour of Concurrency</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-mechanics-how-do-you-use-threads-and-or-processes">The mechanics: how do you use threads and/or processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#when-to-use-what">When to use What</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ThreadingMultiprocessing.html">Threading and multiprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Coroutines.html">Notes on Coroutines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Profiling.html">Performance and Profiling</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/index.html">Resources for Specific Python Topics</a></li>
@@ -137,7 +170,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Concurrent Programing</li>
+          <li><a href="index.html">Modules</a> &raquo;</li>
+        
+      <li>Concurrent Programming</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -156,13 +191,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="concurrent-programing">
-<span id="concurrency"></span><h1>Concurrent Programing<a class="headerlink" href="#concurrent-programing" title="Permalink to this headline">¶</a></h1>
-<p>What does it mean to do something in parallel?</p>
+  <div class="section" id="concurrent-programming">
+<span id="concurrency"></span><h1>Concurrent Programming<a class="headerlink" href="#concurrent-programming" title="Permalink to this headline">¶</a></h1>
+<p>What does it mean to do something “Concurrently” ? It means multiple things
+are happening at the same time. But what are those “things”?</p>
 <blockquote>
 <div><ul class="simple">
-<li>Parallelism is about doing things at the same time;</li>
-<li>Concurrency is about dealing with multiple things at the same time.</li>
+<li>Parallelism is about the processor(s) things at the same time – true parallelism requires multiple processors (or cores).</li>
+<li>Concurrency is about handling multiple things at the same time – which may or may not be actually running in the processor at the same time (like network requests for instance).</li>
 <li>Parallelism needs concurrency, but concurrency need not be in parallel.</li>
 </ul>
 </div></blockquote>
@@ -175,30 +211,87 @@
 <p>Asynchrony and Concurrency are really two different things – you can do either one without the other – but they are closely related, and often used together. They solve different problems, but the problems and the solutions overlap.</p>
 <p>“Concurrency is not parallelism” – Rob Pike:  <a class="reference external" href="https://vimeo.com/49718712">https://vimeo.com/49718712</a></p>
 <p>Despite Rob Pike using an example about burning books, I recommend listening to at least the first half of his talk.</p>
-<p>In “Concurrency is not parallelism” Rob Pike makes a key point:
-Breaking down tasks into concurrent subtasks only allows parallelism,
-it’s the scheduling of these subtasks that creates it.</p>
-<p>And, indeed, once you have a set of subtasks, they can be scheduled in a truly parallel fashion, or managed asynchronously in a single thread.</p>
+<p>In that talk Rob Pike makes a key point: Breaking down tasks into concurrent subtasks only allows parallelism, it’s the scheduling of these subtasks that creates it.</p>
+<p>And, indeed, once you have a set of subtasks, they can be scheduled in a truly parallel fashion, or managed asynchronously in a single thread (concurrent, but not parallel)</p>
 <div class="section" id="types-of-concurrency">
 <h3>Types of Concurrency<a class="headerlink" href="#types-of-concurrency" title="Permalink to this headline">¶</a></h3>
 <p><strong>Multithreading:</strong></p>
 <blockquote>
-<div>Multiple code paths sharing memory</div></blockquote>
+<div>Multiple code paths sharing memory – one Python interpreter, one set of Python objects.</div></blockquote>
 <p><strong>Multiprocessing:</strong></p>
 <blockquote>
-<div>Multiple code paths with separate memory space.</div></blockquote>
+<div>Multiple code paths with separate memory space – completely separate Python interpreter.</div></blockquote>
 <p><strong>Asyncronous programming:</strong></p>
 <blockquote>
-<div>multiple “jobs” run at “arbitrary” times.</div></blockquote>
+<div>Multiple “jobs” run at “arbitrary” times – but usually in one thread – i.e. only one code path, one interpreter.</div></blockquote>
 <p>Lots of different packages for both in the standard library and 3rd party libraries.</p>
 <p>How to know what to choose?</p>
 <blockquote>
 <div><ul class="simple">
-<li>IO bound vs. CPU bound</li>
-<li>Event driven cooperative multitasking vs preemptive multitasking</li>
-<li>callbacks vs coroutines + scheduler/event loop</li>
+<li>IO bound vs. CPU bound – CPU bound requires multiprocessing (at least with pure Python)</li>
+<li>Event driven cooperative multitasking vs. preemptive multitasking</li>
+<li>Callbacks vs coroutines + scheduler/event loop</li>
 </ul>
 </div></blockquote>
+</div>
+<div class="section" id="motivations-for-parallel-execution">
+<h3>Motivations for parallel execution<a class="headerlink" href="#motivations-for-parallel-execution" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Performance</p>
+<ul class="simple">
+<li>Limited by “Amdahl’s Law”
+<a class="reference external" href="http://en.wikipedia.org/wiki/Amdahl%27s_law">http://en.wikipedia.org/wiki/Amdahl%27s_law</a></li>
+<li>CPUs aren’t getting much faster</li>
+</ul>
+</li>
+<li><p class="first">Event handling</p>
+<ul>
+<li><p class="first">If a system handles asynchronous events, a separate thread of
+execution could handle those events and let other threads do other
+work</p>
+</li>
+<li><dl class="first docutils">
+<dt>Examples:</dt>
+<dd><ul class="first last simple">
+<li>Network applications</li>
+</ul>
+</dd>
+</dl>
+<ul class="simple">
+<li>User interfaces</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Parallel programming can be hard!</p>
+<p>If your problem can be solved sequentially, consider the costs and
+benefits before going parallel.</p>
+</div>
+<div class="section" id="parallelization-strategy-for-performance">
+<h3>Parallelization Strategy for Performance<a class="headerlink" href="#parallelization-strategy-for-performance" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">1. Break problem down into chunks</div>
+<div class="line">2. Execute chunks in parallel</div>
+<div class="line">3. Reassemble output of chunks into result</div>
+</div>
+<a class="reference internal image-reference" href="../_images/OPP.0108.gif"><img alt="multitasking flow diagram" class="align-right" src="../_images/OPP.0108.gif" style="height: 450px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li>Not every problem is parallelizable</li>
+<li>There is an optimal number of threads for each problem in each
+environment, so make it tunable</li>
+<li>Working concurrently opens up synchronization issues</li>
+<li>Methods for synchronizing threads:<ul>
+<li>locks</li>
+<li>queues</li>
+<li>signaling/messaging mechanisms</li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="concurrency-in-the-standard-library">
 <h3>Concurrency in the standard library:<a class="headerlink" href="#concurrency-in-the-standard-library" title="Permalink to this headline">¶</a></h3>
@@ -209,19 +302,62 @@ it’s the scheduling of these subtasks that creates it.</p>
 <li><code class="docutils literal"><span class="pre">queue</span></code>: The queue module implements multi-producer, multi-consumer queues. It is especially useful in threaded programming when information must be exchanged safely between multiple threads.</li>
 </ul>
 </li>
-<li><code class="docutils literal"><span class="pre">multiprocessing</span></code>: processing is parallel (someone else does the dishes while you cook). Duplicates the current Python process and runs code in it.</li>
+<li><code class="docutils literal"><span class="pre">multiprocessing</span></code>: processing is parallel (someone else does the dishes while you cook). Duplicates the current Python process and runs code in it. Follows a similar API to threading.</li>
 <li><code class="docutils literal"><span class="pre">subprocess</span></code>: allows you to spawn new processes (entirely different programs), connect to their input/output/error pipes, and obtain their return codes.  Parallel, hands to OS (usually running command line programs)</li>
-<li><code class="docutils literal"><span class="pre">concurrent.futures</span></code>: <a class="reference external" href="https://www.blog.pythonlibrary.org/2016/08/03/python-3-concurrency-the-concurrent-futures-module/">https://www.blog.pythonlibrary.org/2016/08/03/python-3-concurrency-the-concurrent-futures-module/</a> This is also in the <code class="docutils literal"><span class="pre">asyncio</span></code> package, and we go into it in more depth there)</li>
+<li><code class="docutils literal"><span class="pre">concurrent.futures</span></code>: <a class="reference external" href="https://www.blog.pythonlibrary.org/2016/08/03/python-3-concurrency-the-concurrent-futures-module/">https://www.blog.pythonlibrary.org/2016/08/03/python-3-concurrency-the-concurrent-futures-module/</a> This has mostly been superseded by the <code class="docutils literal"><span class="pre">asyncio</span></code> package.</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">asyncio</span></code>: an asynchronous event loop, designed primarily for IO (networked) applications.</li>
 </ul>
 </div></blockquote>
-<p>Concurrency outside the standard library:</p>
+</div></blockquote>
+</div>
+<div class="section" id="concurrency-outside-the-standard-library">
+<h3>Concurrency Outside the Standard Library<a class="headerlink" href="#concurrency-outside-the-standard-library" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="async-web-frameworks">
+<h4>Async Web Frameworks<a class="headerlink" href="#async-web-frameworks" title="Permalink to this headline">¶</a></h4>
+<p>These are Frameworks for making web APIs with an asynchronous approach. They pre-date the built in asyncio package, and the latest language syntax.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Twisted</li>
+<li>Tornado</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="job-schedulers">
+<h4>Job Schedulers<a class="headerlink" href="#job-schedulers" title="Permalink to this headline">¶</a></h4>
+<p>These are for scheduling jobs (not only Python jobs) on larger Multiprocessing and multi-machine systems – think the cloud.</p>
 <blockquote>
 <div><ul class="simple">
 <li>Celery + Rabbitmq</li>
 <li>Redis + RQ</li>
-<li>Twisted</li>
 </ul>
 </div></blockquote>
+</div>
+</div>
+<div class="section" id="threads-versus-processes-in-python">
+<h3>Threads versus processes in Python<a class="headerlink" href="#threads-versus-processes-in-python" title="Permalink to this headline">¶</a></h3>
+<p>Threads are lightweight <a class="reference external" href="https://en.wikipedia.org/wiki/Light-weight_process">processes</a>, run in the address space of an OS
+process, true OS level threads.</p>
+<p>Therefor, a component of a process.</p>
+<p>This allows multiple threads access to data in the same scope.</p>
+<p>Threads can not gain the performance advantage of multiple processors
+due to the Global Interpreter Lock (GIL)</p>
+<p>But the GIL is released during IO, allowing IO bound processes to
+benefit from threading</p>
+</div>
+<div class="section" id="id1">
+<h3>Processes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>A process contains all the instructions and data required to execute
+independently, so processes do not share data!</p>
+<p>Mulitple processes best to speed up CPU bound operations.</p>
+<p>The Python interpreter isn’t lightweight!</p>
+<p>Communication between processes can be achieved via:</p>
+<p><code class="docutils literal"><span class="pre">multiprocessing.Queue</span></code></p>
+<p><code class="docutils literal"><span class="pre">multiprocessing.Pipe</span></code></p>
+<p>and regular IPC (inter-process communication)</p>
+<p>Data moved between processes must be pickleable</p>
 </div>
 <div class="section" id="advantages-disadvantages-of-threads">
 <h3>Advantages / Disadvantages of Threads<a class="headerlink" href="#advantages-disadvantages-of-threads" title="Permalink to this headline">¶</a></h3>
@@ -230,8 +366,8 @@ it’s the scheduling of these subtasks that creates it.</p>
 <p>They share memory space:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Threads are light-weight, shared memory means they can be created fairly quickly without much memory use.</li>
-<li>Easy and cheap to pass data around (you are only passing a reference)</li>
+<li>Threads are relatively lightweight – shared memory means they can be created fairly quickly without much memory use.</li>
+<li>Easy and cheap to pass data around (you are only passing a reference).</li>
 </ul>
 </div></blockquote>
 </div>
@@ -239,19 +375,37 @@ it’s the scheduling of these subtasks that creates it.</p>
 <h4>Disadvantages:<a class="headerlink" href="#disadvantages" title="Permalink to this headline">¶</a></h4>
 <p>They share memory space:</p>
 <blockquote>
-<div><ul class="simple">
-<li>Each thread is working with the <em>same</em> python objects.</li>
-<li>Operations often take several steps and may be interrupted mid-stream</li>
-<li>Thus, access to shared data is also non-deterministic</li>
+<div><ul>
+<li><p class="first">Each thread is working with the <em>same</em> python objects.</p>
+</li>
+<li><p class="first">Operations often take several steps and may be interrupted mid-stream</p>
+</li>
+<li><p class="first">Thus, access to shared data is also non-deterministic</p>
+<p>(race conditions)</p>
+</li>
 </ul>
 </div></blockquote>
 <p>Creating threads is easy, but programming with threads is difficult.</p>
-<p>Q: Why did the multithreaded chicken cross the road?</p>
+<blockquote>
+<div><p>Q: Why did the multithreaded chicken cross the road?</p>
 <p>A: to To other side. get the</p>
-<p>– Jason Whittington</p>
+<p class="attribution">&mdash;Jason Whittington</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="gil">
+<h3>GIL<a class="headerlink" href="#gil" title="Permalink to this headline">¶</a></h3>
 <p><strong>Global Interpreter Lock</strong></p>
 <p>(<strong>GIL</strong>)</p>
-<p>The GIL locks the interpreter so that only a single thread can run at once, assuring that one thread doesn’t make a mess of the python objects that another thread needs. The upshot:</p>
+<p>This is a lock which must be obtained by each thread before it can
+execute, ensuring thread safety</p>
+<a class="reference internal image-reference" href="../_images/gil.png"><img alt="../_images/gil.png" src="../_images/gil.png" style="width: 100.0%;" /></a>
+<p>The GIL is released during IO operations, so threads which spend time
+waiting on network or disk access can enjoy performance gains</p>
+<p>The GIL is not unlike multitasking in humans, some things can truly be
+done in parallel, others have to be done by time slicing.</p>
+<p>Note that potentially blocking or long-running operations, such as I/O, image processing, and NumPy number crunching, happen outside the GIL. Therefore it is only in multithreaded programs that spend a lot of time inside the GIL, interpreting CPython bytecode, that the GIL becomes a bottleneck. But: it can still cause performance degradation.</p>
+<p>Not only will threads not help cpu-bound problems, but it can actually make things <em>worse</em>, especially on multi-core machines!</p>
 <p>Python threads do not work well for computationally intensive work.</p>
 <p>Python threads work well if the threads are spending time waiting for something:</p>
 <blockquote>
@@ -261,12 +415,28 @@ it’s the scheduling of these subtasks that creates it.</p>
 <li>File I/O</li>
 </ul>
 </div></blockquote>
+<p>Some alternative Python implementations such as Jython and IronPython
+have no GIL</p>
+<p>cPython and PyPy have one</p>
+<p>More about the gil</p>
 <p>More on the GIL:</p>
 <p><a class="reference external" href="https://emptysqua.re/blog/grok-the-gil-fast-thread-safe-python/">https://emptysqua.re/blog/grok-the-gil-fast-thread-safe-python/</a></p>
 <p>If you really want to understand the GIL – and get blown away – watch this one:</p>
 <p><a class="reference external" href="http://pyvideo.org/pycon-us-2010/pycon-2010--understanding-the-python-gil---82.html">http://pyvideo.org/pycon-us-2010/pycon-2010–understanding-the-python-gil—82.html</a></p>
+<ul class="simple">
+<li><a class="reference external" href="http://wiki.python.org/moin/GlobalInterpreterLock">http://wiki.python.org/moin/GlobalInterpreterLock</a></li>
+<li><a class="reference external" href="https://docs.python.org/3.5/c-api/init.html#threads">https://docs.python.org/3.5/c-api/init.html#threads</a></li>
+<li><a class="reference external" href="http://hg.python.org/cpython/file/05e8dde3229c/Python/pystate.c#l761">http://hg.python.org/cpython/file/05e8dde3229c/Python/pystate.c#l761</a></li>
+</ul>
 <p><strong>NOTE:</strong> The GIL <em>seems</em> like such an obvious limitation that you’ve got to wonder why it’s there. And there have been multiple efforts to remove it. But it turns out that Python’s design makes that very hard (impossible?) without severely reducing performance on single threaded programs.</p>
-<p>Personal Opinion: Python is not really (directly) suited to the kind of computationally intensive work that the GIL really hampers. And extension modules (i.e. numpy) can release the GIL!</p>
+<p>The current “Best effort is Larry Hastings’ <a class="reference external" href="https://speakerdeck.com/pycon2017/larry-hastings-the-gilectomy-hows-it-going">“gilectomy</a></p>
+<p>But that may be stalled out at this point, too. No one should count on it going away in cPython.</p>
+<p>But: <strong>Personal Opinion:</strong> Python is not really (directly) suited to the kind of computationally intensive work that the GIL really hampers. And extension modules (i.e. numpy) can release the GIL!</p>
+</div>
+<div class="section" id="posted-without-comment">
+<h3>Posted without comment<a class="headerlink" href="#posted-without-comment" title="Permalink to this headline">¶</a></h3>
+<div class="figure">
+<img alt="../_images/killGIL.jpg" class="fill" src="../_images/killGIL.jpg" />
 </div>
 </div>
 <div class="section" id="advantages-disadvantages-of-processes">
@@ -278,7 +448,8 @@ it’s the scheduling of these subtasks that creates it.</p>
 <blockquote>
 <div><strong>no GIL</strong></div></blockquote>
 <p>Multiprocessing is suitable for computationally intensive work.</p>
-<p>Works best for “large” problems with not much data</p>
+<p>Works best for “large” problems with not much data to pass back and forth, as that’s what’s expensive.</p>
+<p>Note that there are ways to share memory between processes, if you have a lot of read-only data that needs to be used. (see <cite>Memory Maps &lt;https://docs.python.org/3/library/mmap.html&gt;</cite>)</p>
 </div>
 </div>
 <div class="section" id="the-mechanics-how-do-you-use-threads-and-or-processes">
@@ -526,6 +697,10 @@ it’s the scheduling of these subtasks that creates it.</p>
 </div>
 </div>
 </div>
+<div class="section" id="when-to-use-what">
+<h2>When to use What<a class="headerlink" href="#when-to-use-what" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/proc_thread_async.png" src="../_images/proc_thread_async.png" />
+</div>
 </div>
 
 
@@ -535,6 +710,15 @@ it’s the scheduling of these subtasks that creates it.</p>
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ThreadingMultiprocessing.html" class="btn btn-neutral float-right" title="Threading and multiprocessing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="GraphDatabases.html" class="btn btn-neutral" title="Graph Databases" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

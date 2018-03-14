@@ -26,7 +26,12 @@ should be able to run the script directly like so:
 
 (at least on OS-X and Linux).
 
--- you do that with this command:
+To make this work you, make sure you include the 'shebang' on the first line of your file.
+
+    #!/usr/bin/env python3
+
+
+Finally you need to make the file executable; do that with this command:
 
 .. code-block:: bash
 

@@ -46,7 +46,7 @@ Create a file called ``install_test.py``, with the following content:
 
 .. code-block:: python
 
-    #!/usr/bin/env python
+    #!/usr/bin/env python3
 
     import sys
     print("This is my first python program")

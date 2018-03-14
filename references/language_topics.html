@@ -96,12 +96,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Resources for Specific Python Topics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python_community.html">Python Community</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learning.html">Useful Python Learning Resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git_hints.html">Handy hints for using git</a></li>
 <li class="toctree-l2"><a class="reference internal" href="packaging.html">Packages and Packaging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="packaging.html#distributing">Distributing</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Python Language Topics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#the-python-glossary">The Python Glossary:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#names-and-values">Names and Values</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sequences-and-slicing">Sequences and Slicing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#working-with-text">Working with text</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#string-formatting">String Formatting</a></li>
@@ -124,7 +126,10 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#corners-of-python">Corners of Python</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#metaprogramming">Metaprogramming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metaprogramming">Metaprogramming</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#decorators">decorators</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#command-line-scripting">Command Line Scripting</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#docopt"><code class="docutils literal"><span class="pre">docopt</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#click"><code class="docutils literal"><span class="pre">click</span></code></a></li>
@@ -208,6 +213,13 @@
 <p>If you find yourself confused about any of terms in this document or elsewhere, the python glossary is a good place to start:</p>
 <p><a class="reference external" href="https://docs.python.org/3/glossary.html#term-parameter">https://docs.python.org/3/glossary.html#term-parameter</a></p>
 </div>
+<div class="section" id="names-and-values">
+<h2>Names and Values<a class="headerlink" href="#names-and-values" title="Permalink to this headline">¶</a></h2>
+<p>Python is all about names and values. But it can get a bit confusing sometimes.</p>
+<p>Ned Batchelder’s talk: <a class="reference external" href="https://www.youtube.com/watch?v=_AEJHKGk9ns">Facts and Myths about Python names and values</a></p>
+<p>And a related note about mutability:
+<a class="reference external" href="https://inventwithpython.com/blog/2018/02/05/python-tuples-are-immutable-except-when-theyre-mutable/">Python Tuples are Immutable Except when they’re Mutable</a></p>
+</div>
 <div class="section" id="sequences-and-slicing">
 <h2>Sequences and Slicing<a class="headerlink" href="#sequences-and-slicing" title="Permalink to this headline">¶</a></h2>
 </div>
@@ -276,6 +288,7 @@
 <p><a class="reference external" href="https://hackernoon.com/async-through-the-looking-glass-d69a0a88b661#.sd3xk0ru0">https://hackernoon.com/async-through-the-looking-glass-d69a0a88b661#.sd3xk0ru0</a></p>
 <p>How the heck does <code class="docutils literal"><span class="pre">asyc-await</span></code> Work in Python?</p>
 <p><a class="reference external" href="https://snarky.ca/how-the-heck-does-async-await-work-in-python-3-5/">https://snarky.ca/how-the-heck-does-async-await-work-in-python-3-5/</a></p>
+<p>Nicholas Tollervey <a class="reference external" href="https://speakerdeck.com/pycon2015/nicholas-tollervey-lessons-learned-with-asyncio-look-ma-i-wrote-a-distributed-hash-table">Lessons Learned with asyncio</a></p>
 </div>
 <div class="section" id="asyncio-for-the-working-python-developer">
 <h3>Asyncio for the working Python developer<a class="headerlink" href="#asyncio-for-the-working-python-developer" title="Permalink to this headline">¶</a></h3>
@@ -305,6 +318,14 @@
 <p>Metaprogramming is writing programs that write programs… it is a large topic, starting with fairly simple things like the use of <code class="docutils literal"><span class="pre">getattr</span></code> or <code class="docutils literal"><span class="pre">setattr</span></code>, through decorators, and all the way up to metaclasses.</p>
 <p>This lecture by David Beazley is a great overview:</p>
 <p><a class="reference external" href="https://youtu.be/sPiWg5jSoZI">https://youtu.be/sPiWg5jSoZI</a></p>
+<div class="section" id="decorators">
+<h3>decorators<a class="headerlink" href="#decorators" title="Permalink to this headline">¶</a></h3>
+<p>Decorators are a way to “wrap” functions to alter their behavior one way or another. THere are lot of resources out there about them, but here’s some stuff from a guy that really wants to get it right:</p>
+<p>The <code class="docutils literal"><span class="pre">wrapt</span></code> package that does a lot for you:</p>
+<p><a class="reference external" href="https://github.com/GrahamDumpleton/wrapt">https://github.com/GrahamDumpleton/wrapt</a></p>
+<p>And the author’s blog posts about it all:</p>
+<p><a class="reference external" href="https://github.com/GrahamDumpleton/wrapt/tree/develop/blog">https://github.com/GrahamDumpleton/wrapt/tree/develop/blog</a></p>
+</div>
 </div>
 <div class="section" id="command-line-scripting">
 <h2>Command Line Scripting<a class="headerlink" href="#command-line-scripting" title="Permalink to this headline">¶</a></h2>

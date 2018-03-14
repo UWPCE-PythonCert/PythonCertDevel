@@ -65,9 +65,10 @@ zip() with comprehensions
 
 If you want them paired up instead, you can use ``zip()``:
 
-In [31]: [(a, b) for a, b in zip(list1, list2)]
-Out[31]: [(1, 4), (2, 5), (3, 6)]
+.. code-block:: ipython
 
+    In [31]: [(a, b) for a, b in zip(list1, list2)]
+    Out[31]: [(1, 4), (2, 5)]
 
 
 Comprehensions and map()

@@ -136,6 +136,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="mailroom-mock.html">Mocking Mailroom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mailroom-meta.html">Mailroom – metaprogramming it!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="threaded_downloader.html">Threaded Web Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
@@ -221,6 +223,13 @@ run all the code inside the context:</p>
 </pre></div>
 </div>
 <p>NOTE: the time module has what you need:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+<span class="c1"># some code here</span>
+<span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span> <span class="o">=</span> <span class="n">start</span>
+</pre></div>
+</div>
 <p><code class="docutils literal"><span class="pre">time.clock()</span></code> returns the number of seconds that this process has been running.  You can also use <code class="docutils literal"><span class="pre">time.time()</span></code>, which gives the “wall time”, rather than the process time. <code class="docutils literal"><span class="pre">time()</span></code> will vary more depending on how busy the system is. But you may want to use it if you want to measure how long it takes to download something, for instance.</p>
 <div class="section" id="extra-credit">
 <h3>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h3>

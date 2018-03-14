@@ -5,10 +5,10 @@ Modules
 
 These are assorted notes about particular python topics used in the certificate program.
 
-More or less in order of presentation
+More or less in order of lessons:
 
-First Class: Introduction to Python
-===================================
+Py210: Introduction to Python
+=============================
 
 .. toctree::
     :maxdepth: 1
@@ -49,8 +49,8 @@ First Class: Introduction to Python
     MapFilterReduce
     IPythonParallel
 
-Second Class: Advanced Python
-=============================
+Py220: Advanced Python
+======================
 
 .. toctree::
     :maxdepth: 1
@@ -71,6 +71,13 @@ Second Class: Advanced Python
 
     MetaProgramming
 
+    PersistanceAndSerialization
+    NoSQL
+    GraphDatabases
+
+    Concurrency
+    ThreadingMultiprocessing
+    Coroutines
     Async
 
-
+    Profiling

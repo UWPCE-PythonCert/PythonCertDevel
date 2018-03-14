@@ -26,6 +26,7 @@ There is essentially no difference for the purposes of this course.
 
 Double click and install.
 
+.. _git_bash:
 
 Terminal
 ---------
