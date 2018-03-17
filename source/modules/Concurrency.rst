@@ -271,7 +271,7 @@ http://pyvideo.org/pycon-us-2010/pycon-2010--understanding-the-python-gil---82.h
 
 -  http://wiki.python.org/moin/GlobalInterpreterLock
 
--  https://docs.python.org/3.5/c-api/init.html#threads
+-  https://docs.python.org/3/c-api/init.html#threads
 
 -  http://hg.python.org/cpython/file/05e8dde3229c/Python/pystate.c#l761
 

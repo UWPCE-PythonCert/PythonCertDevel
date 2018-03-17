@@ -26,7 +26,7 @@ Simply provide more than one parent.
 
 Calls to the parent class ``__init__``  are optional and case dependent. (and maybe you can use super()...stay tuned)
 
-The Combined class now has ALL the attribute and methods of the multiple parent classes. You can bring a lot of functionality into a class that way.
+The Combined class now has ALL the attributes and methods of the multiple parent classes. You can bring a lot of functionality into a class that way.
 
 
 Purpose
@@ -34,19 +34,19 @@ Purpose
 
 What was the purpose behind inheritance?
 
-*Code reuse.*
+*Code reuse*
 
 What is the purpose behind multiple inheritance?
 
-*Code reuse.*
+*Code reuse*
 
 What wasn't the purpose of inheritance?
 
-*Building massive class hierarchies for their own sake.*
+*Building massive class hierarchies for their own sake*
 
 What isn't the purpose of multiple inheritance?
 
-*Building massive class hierarchies for their own sake.*
+*Building massive class hierarchies for their own sake*
 
 Mix-ins
 -------
@@ -66,6 +66,7 @@ Hierarchies are not always simple:
     * lay_eggs()
 
 Where do you put a Platypus or Spiny Anteater?
+
 [http://www.ucmp.berkeley.edu/mammal/monotreme.html]
 
 "mix-ins" can solve this problem. A mix-in is a class that can't do anything by itself, but rather, provides functionality that can be mixed into other classes.
@@ -83,7 +84,7 @@ In the above contrived example, we could put "give_birth" (and associated method
     class Duck(Animal, EggLayer):
        ...
 
-But this is pretty darn contrived .. where do you use these for real?
+But this is pretty darn contrived ... where do you use these for real?
 
 Real World Example: The wxPython FloatCanvas:
 
@@ -102,7 +103,9 @@ Once the system was set up, all you needed to write was a ``__init__`` and a dra
 FloatCanvas has a lot of complications with handling mouse events, and managing pens and brushes, and what have you, so a very trimmed down version, using the Python Imaging Library, is here to check out and modify:
 
 :download:`object_canvas.py <../examples/object_oriented/object_canvas.py>`
+
 and
+
 :download:`test_object_canvas.py <../examples/object_oriented/test_object_canvas.py>`
 
 
@@ -149,12 +152,14 @@ You can do:
 
     class A(B):
         def __init__(self, *args, **kwargs)
-            super().__init__(*argw, **kwargs)
+            super().__init__(*args, **kwargs)
             ...
 
 
 MRO: Method Resolution Order
 ----------------------------
+
+How does python decide which method to call, when multiple superclasses may have the *same* method ?
 
 .. code-block:: python
 
@@ -166,8 +171,8 @@ Attributes are located bottom-to-top, left-to-right
 * Is it a class attribute ?
 * Is it a superclass attribute ?
 
-  - Is  it an attribute of the left-most superclass?
-  - Is  it an attribute of the next superclass?
+  - Is it an attribute of the left-most superclass?
+  - Is it an attribute of the next superclass?
   - and so on up the hierarchy...
 
 * Is it a super-superclass attribute ?
@@ -179,7 +184,9 @@ http://python-history.blogspot.com/2010/06/method-resolution-order.html
 Super's Superpowers
 -------------------
 
-It works out -- dynamically at runtime -- which classes are in the delegation order.
+The above system is clear when the hierarchy is simple -- but when you have the "diamond problem" -- or even more compexity, we need somethign smarter. Enter ``super()``.
+
+``super`` works out -- dynamically at runtime -- which classes are in the delegation order.
 
 Do not be afraid.  And be very afraid.
 
@@ -201,7 +208,7 @@ http://stackoverflow.com/questions/576169/understanding-python-super-with-init-m
 
 ``super`` returns a "proxy object" that delegates method calls.
 
-It's not returning the object itself -- but you can call methods on it.
+It's not returning the object itself -- but you can call methods on it as thought it were a class object.
 
 It runs through the method resolution order (MRO) to find the method
 you call.
@@ -210,7 +217,9 @@ Key point: the MRO is determined *at run time*
 
 https://docs.python.org/3.6/library/functions.html#super
 
-Not the same as calling one superclass method: ``super()`` will call all the sibling superclass methods:
+But it's not a simple as finding and calling the first superclass method it finds: ``super()`` will call all the sibling superclass methods:
+
+Here is an example of of class that inherits from three superclasses:
 
 .. code-block:: python
 
@@ -218,7 +227,7 @@ Not the same as calling one superclass method: ``super()`` will call all the sib
         def __init__(self):
            super().__init__()
 
-same as:
+Since you have called __init__ on the ``super()`` object, this is essentially the same as calling all three super class ``__init__`` methods:
 
 .. code-block:: python
 
@@ -228,10 +237,9 @@ same as:
            B.__init__()
            A.__init__()
 
-You may not want that ...
+Keep in mind that ``super()`` can be used for any method, not just ``__init__`` -- while you usually *do* want to initiallize all the superclasses, you may not want the call the same method on every superclass if it's a more specialized method.
 
 But if you do, it's kind of handy.
-
 
 .. Dependency Injection
 .. --------------------
@@ -267,7 +275,7 @@ Raymond Hettinger's rules for ``super()``
 
 (2) we'll get into in a moment
 
-(3) This is a tricky one -- you jsut need to remember it. What it means is that, for isntance, if you are using super() to call __init__ in the superclass(s), then all teh superclasses __init__ methods msut ALSO call it:
+(3) This is a tricky one -- you just need to remember it. What it means is that, for instance, if you are using super() to call ``__init__`` in the superclass(s), then all the superclasses ``__init__`` methods msut ALSO call it:
 
 .. code-block:: python
 
