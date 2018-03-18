@@ -12,7 +12,7 @@ Inheriting from more than one class.
 The mechanics of multiple inheritance
 -------------------------------------
 
-Simply provide more than one parent.
+Simply provide more than one parent:
 
 .. code-block:: python
 
@@ -24,7 +24,7 @@ Simply provide more than one parent.
             Parent3.__init__(self, ......)
             # possibly more custom initialization
 
-Calls to the parent class ``__init__``  are optional and case dependent. (and maybe you can use super()...stay tuned)
+Calls to the parent class ``__init__``  are optional and case dependent. (and maybe you can use ``super()``...stay tuned)
 
 The Combined class now has ALL the attributes and methods of the multiple parent classes. You can bring a lot of functionality into a class that way.
 
@@ -67,7 +67,7 @@ Hierarchies are not always simple:
 
 Where do you put a Platypus or Spiny Anteater?
 
-[http://www.ucmp.berkeley.edu/mammal/monotreme.html]
+`Egg Laying Mammals <http://www.ucmp.berkeley.edu/mammal/monotreme.html>`_
 
 "mix-ins" can solve this problem. A mix-in is a class that can't do anything by itself, but rather, provides functionality that can be mixed into other classes.
 
@@ -86,7 +86,14 @@ In the above contrived example, we could put "give_birth" (and associated method
 
 But this is pretty darn contrived ... where do you use these for real?
 
+Here is a nice discussion:
+
+`mixins in Python ... <https://andrewbrookins.com/technology/mixins-in-python-and-ruby-compared/>`_
+
+(Ignore the second part about Ruby...)
+
 Real World Example: The wxPython FloatCanvas:
+.............................................
 
 https://github.com/wxWidgets/Phoenix/blob/master/wx/lib/floatcanvas/FCObjects.py
 
@@ -100,13 +107,50 @@ In order to not write a lot of repeated code -- remember, "classes are for code 
 
 Once the system was set up, all you needed to write was a ``__init__`` and a draw method to make a whole new graphic object.
 
+Take alook at the code --quite a bit in the ``DrawObject`` base class, then a bunch of ``*Mixin`` classes that define specific functionality.
+
+Now look at the real DrawObject classes, e.g. Line and Polygon. Not much code there:
+
+.. code-block:: python
+
+    class Polygon(PointsObjectMixin, LineAndFillMixin, DrawObject):
+        ...
+
+        def __init__(self,
+        ...
+
+        def _Draw(self,
+        ...
+
+and:
+
+.. code-block:: python
+
+    class Line(PointsObjectMixin, LineOnlyMixin, DrawObject):
+        ...
+
+        def __init__(self,
+        ...
+
+        def _Draw(self,
+        ...
+
+There is some real code in the ``__init__`` and ``_Draw`` -- but those are still the only two methods that need to be defined to make a fuly functional drawobject.
+
+
 FloatCanvas has a lot of complications with handling mouse events, and managing pens and brushes, and what have you, so a very trimmed down version, using the Python Imaging Library, is here to check out and modify:
 
-:download:`object_canvas.py <../examples/object_oriented/object_canvas.py>`
+:download:`object_canvas.py <../examples/multiple_inheritance/object_canvas.py>`
 
 and
 
-:download:`test_object_canvas.py <../examples/object_oriented/test_object_canvas.py>`
+:download:`test_object_canvas.py <../examples/multiple_inheritance/test_object_canvas.py>`
+
+This code requires the Python Imaging Library to do the rendering.  You can get it by installing the "pillow" package from PyPi::
+
+    python -m pip install pillow
+
+Can you add other types of ``DrawObjects`` ? Maybe a polygon or ??
 
 
 Python's Multiple Inheritance Model
@@ -128,6 +172,12 @@ The Diamond Problem
 In Python, everything is descended from 'object'.  Thus, the moment you invoke multiple inheritance you have the diamond problem.
 
 https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem
+
+Here is a toy Python example:
+
+:download:`diamond.py </examples/multiple_inheritance/diamond.py>`
+
+Take a look at that code -- run it, and notice that class ``A``'s method gets run twice. Make sure you know why it is doing what it is doing.
 
 
 ``super()``
@@ -271,11 +321,11 @@ Raymond Hettinger's rules for ``super()``
 
 3. Every occurrence of the method needs to use super()
 
-(1) is pretty obvious :-)
+(1) Is pretty obvious :-)
 
-(2) we'll get into in a moment
+(2) We'll get into in a moment
 
-(3) This is a tricky one -- you just need to remember it. What it means is that, for instance, if you are using super() to call ``__init__`` in the superclass(s), then all the superclasses ``__init__`` methods msut ALSO call it:
+(3) This is a tricky one -- you just need to remember it. What it means is that, for instance, if you are using super() to call ``__init__`` in the superclass(s), then all the superclasses ``__init__`` methods must ALSO call it:
 
 .. code-block:: python
 
@@ -318,7 +368,6 @@ But a really common case, particularly for an ``__init__``, is for it to take a 
 
 Now your subclass doesn't really need to think about all the arguments the superclass can take.
 
-
 Two seminal articles
 --------------------
 
@@ -347,9 +396,33 @@ If you follow these rules, then it really can be *super*
 Example:
 --------
 
+First, let's look at the diamond problem again -- this time using super:
 
+:download:`diamond_super.py </examples/multiple_inheritance/diamond_super.py>`
 
+in this case, we are using ``super()``, rather than specifically calling the methods of the superclasses:
 
+.. code-block:: python
 
+    class D(B, C):
+        def do_your_stuff(self):
+            super().do_your_stuff()
+            print("doing D's stuff")
 
+And when we run it, we see that calling ``super().do_your_stuff()`` once in D results in the method being called on all the superclasses, with no duplication::
+
+    calling D's method
+    doing A's stuff
+    doing C's stuff
+    doing B's stuff
+    doing D's stuff
+
+Some more experiments with ``super``
+------------------------------------
+
+``super`` takes a while to wrap your head around -- try running the code in:
+
+:download:`super_test.py </examples/multiple_inheritance/super_test.py>`
+
+See if you can follow all that!
 

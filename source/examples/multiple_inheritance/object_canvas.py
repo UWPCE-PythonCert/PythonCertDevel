@@ -54,7 +54,7 @@ class ObjectCanvas():
         self.background = background
 
     def add_object(self, draw_object, position="top"):
-        # maybe overload the in=place addition operator?
+        #fixme: maybe overload the inplace addition operator?
         """
         Add a new object to the canvas.
 
