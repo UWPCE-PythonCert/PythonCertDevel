@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
         <link rel="up" title="Modules" href="index.html"/>
-        <link rel="next" title="Asychronous Programming" href="Async.html"/>
+        <link rel="next" title="Notes on Coroutines" href="Coroutines.html"/>
         <link rel="prev" title="Concurrent Programming" href="Concurrency.html"/> 
 
   
@@ -114,6 +114,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#threading-multiprocessing">Threading / multiprocessing</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="Coroutines.html">Notes on Coroutines</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programming</a></li>
 </ul>
 </li>
@@ -257,61 +258,6 @@ environment, so make it tunable</li>
 </li>
 </ul>
 </div>
-<div class="section" id="threads-versus-processes-in-python">
-<h3>Threads versus processes in Python<a class="headerlink" href="#threads-versus-processes-in-python" title="Permalink to this headline">¶</a></h3>
-<p>Threads are lightweight <a class="reference external" href="https://en.wikipedia.org/wiki/Light-weight_process">processes</a>, run in the address space of an OS
-process, true OS level threads.</p>
-<p>Therefor, a component of a a process.</p>
-<p>This allows multiple threads access to data in the same scope.</p>
-<p>Threads can not gain the performance advantage of multiple processors
-due to the Global Interpreter Lock (GIL)</p>
-<p>But the GIL is released during IO, allowing IO bound processes to
-benefit from threading</p>
-</div>
-<div class="section" id="id1">
-<h3>Processes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>A process contains all the instructions and data required to execute
-independently, so processes do not share data!</p>
-<p>Mulitple processes best to speed up CPU bound operations.</p>
-<p>The Python interpreter isn’t lightweight!</p>
-<p>Communication between processes can be achieved via:</p>
-<p><code class="docutils literal"><span class="pre">multiprocessing.Queue</span></code></p>
-<p><code class="docutils literal"><span class="pre">multiprocessing.Pipe</span></code></p>
-<p>and regular IPC (inter-process communication)</p>
-<p>Data moved between processes must be pickleable</p>
-</div>
-<div class="section" id="gil">
-<h3>GIL<a class="headerlink" href="#gil" title="Permalink to this headline">¶</a></h3>
-<p><strong>Global Interpreter Lock</strong></p>
-<p>This is a lock which must be obtained by each thread before it can
-execute, ensuring thread safety</p>
-<a class="reference internal image-reference" href="../_images/gil.png"><img alt="../_images/gil.png" src="../_images/gil.png" style="width: 100.0%;" /></a>
-<p>The GIL is released during IO operations, so threads which spend time
-waiting on network or disk access can enjoy performance gains</p>
-<p>The GIL is not unlike multitasking in humans, some things can truly be
-done in parallel, others have to be done by time slicing.</p>
-<p>Note that potentially blocking or long-running operations, such as I/O, image processing, and NumPy number crunching, happen outside the GIL. Therefore it is only in multithreaded programs that spend a lot of time inside the GIL, interpreting CPython bytecode, that the GIL becomes a bottleneck. But: it can still cause performance degradation.</p>
-<p>Not only will threads not help cpu-bound problems, but it can actually make things <em>worse</em>, especially on multi-core machines!</p>
-<p>Some alternative Python implementations such as Jython and IronPython
-have no GIL</p>
-<p>cPython and PyPy have one</p>
-<p>David Beazley’s talk on the gil</p>
-<ul class="simple">
-<li><a class="reference external" href="https://www.youtube.com/watch?v=Obt-vMVdM8s">https://www.youtube.com/watch?v=Obt-vMVdM8s</a></li>
-</ul>
-<p>More about the gil</p>
-<ul class="simple">
-<li><a class="reference external" href="http://wiki.python.org/moin/GlobalInterpreterLock">http://wiki.python.org/moin/GlobalInterpreterLock</a></li>
-<li><a class="reference external" href="https://docs.python.org/3.5/c-api/init.html#threads">https://docs.python.org/3.5/c-api/init.html#threads</a></li>
-<li><a class="reference external" href="http://hg.python.org/cpython/file/05e8dde3229c/Python/pystate.c#l761">http://hg.python.org/cpython/file/05e8dde3229c/Python/pystate.c#l761</a></li>
-</ul>
-</div>
-<div class="section" id="posted-without-comment">
-<h3>Posted without comment<a class="headerlink" href="#posted-without-comment" title="Permalink to this headline">¶</a></h3>
-<div class="figure">
-<img alt="../_images/killGIL.jpg" class="fill" src="../_images/killGIL.jpg" />
-</div>
-</div>
 <div class="section" id="a-cpu-bound-problem">
 <h3>A CPU bound problem<a class="headerlink" href="#a-cpu-bound-problem" title="Permalink to this headline">¶</a></h3>
 <p>Numerically integrate the function
@@ -322,7 +268,7 @@ have no GIL</p>
 </div>
 <div class="section" id="parallel-execution-example">
 <h3>Parallel execution example<a class="headerlink" href="#parallel-execution-example" title="Permalink to this headline">¶</a></h3>
-<p>Consider the following code in
+<p>Consider the following code in:
 <a class="reference download internal" href="../_downloads/integrate.py" download=""><code class="xref download docutils literal"><span class="pre">integrate.py</span></code></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
@@ -335,9 +281,9 @@ have no GIL</p>
     <span class="k">return</span> <span class="n">s</span> <span class="o">*</span> <span class="n">dx</span>
 </pre></div>
 </div>
+<p>We can do better than this</p>
 <p>Break down the problem into parallelizable chunks, then add the results
 together:</p>
-<p>We can do better than this</p>
 </div>
 <div class="section" id="the-threading-module">
 <h3>The threading module<a class="headerlink" href="#the-threading-module" title="Permalink to this headline">¶</a></h3>
@@ -524,31 +470,36 @@ both repeatedly move the same way at the same time.</em></p>
 <h3>Locks<a class="headerlink" href="#locks" title="Permalink to this headline">¶</a></h3>
 <p>Lock objects allow threads to control access to a resource until they’re
 done with it</p>
-<p>This is known as mutual exclusion, often called mutex</p>
-<p>Python 2 has a deprecated module called mutex for this. Use a Lock
-instead.</p>
+<p>This is known as mutual exclusion, often called “mutex”.</p>
 <p>A Lock has two states: locked and unlocked</p>
 <p>If multiple threads have access to the same Lock, they can police
 themselves by calling its <code class="docutils literal"><span class="pre">.acquire()</span></code> and <code class="docutils literal"><span class="pre">.release()</span></code> methods</p>
 <p>If a Lock is locked, .acquire will block until it becomes unlocked</p>
 <p>These threads will wait in line politely for access to the statements in
 f()</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span>
-<span class="kn">import</span> <span class="nn">time</span>
+</div>
+<div class="section" id="mutex-locks-threading-lock">
+<h3>Mutex locks (<code class="docutils literal"><span class="pre">threading.Lock</span></code>)<a class="headerlink" href="#mutex-locks-threading-lock" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>Probably most common</li>
+<li>Only one thread can modify shared data a any given time</li>
+<li>Thread determines when unlocked</li>
+<li>Must put lock/unlock around critical code in ALL threads</li>
+<li>Difficult to manage</li>
+</ul>
+</div></blockquote>
+<p>Easiest with context manager:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
 
-<span class="n">lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
-    <span class="n">lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> got lock&quot;</span> <span class="o">%</span> <span class="n">threading</span><span class="o">.</span><span class="n">current_thread</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-
-<span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-<span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-<span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="c1"># Example critical section</span>
+<span class="k">with</span> <span class="n">x_lock</span><span class="p">:</span>
+    <span class="c1"># statements using x</span>
 </pre></div>
 </div>
+<p>Only one lock per thread! (or risk mysterious deadlocks)</p>
+<p>Or use RLock for code-based locking (locking function/method execution rather than data access)</p>
 </div>
 <div class="section" id="nonblocking-locking">
 <h3>Nonblocking Locking<a class="headerlink" href="#nonblocking-locking" title="Permalink to this headline">¶</a></h3>
@@ -638,73 +589,68 @@ safely</p>
 inserting the tuple:</p>
 <p><code class="docutils literal"><span class="pre">(priority_number,</span> <span class="pre">data)</span></code></p>
 </div>
-<div class="section" id="threading-example">
-<h3>Threading example<a class="headerlink" href="#threading-example" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference download internal" href="../_downloads/integrate_main.py" download=""><code class="xref download docutils literal"><span class="pre">integrate_main.py</span></code></a></p>
+<div class="section" id="threading-example-with-a-queue">
+<h3>Threading example with a queue<a class="headerlink" href="#threading-example-with-a-queue" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference download internal" href="../_downloads/integrate_threads.py" download=""><code class="xref download docutils literal"><span class="pre">integrate_main.py</span></code></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 
-<span class="kn">import</span> <span class="nn">argparse</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">threading</span>
-<span class="kn">import</span> <span class="nn">Queue</span>
+<span class="kn">import</span> <span class="nn">queue</span>
 
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;..&quot;</span><span class="p">))</span>
-<span class="kn">from</span> <span class="nn">integrate.integrate</span> <span class="kn">import</span> <span class="n">integrate</span><span class="p">,</span> <span class="n">f</span>
-<span class="kn">from</span> <span class="nn">decorators.decorators</span> <span class="kn">import</span> <span class="n">timer</span>
-</pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@timer</span>
+<span class="c1"># from integrate.integrate import integrate, f</span>
+<span class="kn">from</span> <span class="nn">integrate</span> <span class="kn">import</span> <span class="n">f</span><span class="p">,</span> <span class="n">integrate_numpy</span> <span class="k">as</span> <span class="n">integrate</span>
+<span class="kn">from</span> <span class="nn">decorators</span> <span class="kn">import</span> <span class="n">timer</span>
+
+
+<span class="nd">@timer</span>
 <span class="k">def</span> <span class="nf">threading_integrate</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">thread_count</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;break work into two chunks&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;break work into N chunks&quot;&quot;&quot;</span>
     <span class="n">N_chunk</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">/</span> <span class="n">thread_count</span><span class="p">)</span>
-    <span class="n">dx</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">thread_count</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">thread_count</span>
 
-    <span class="n">results</span> <span class="o">=</span> <span class="n">Queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">worker</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="n">results</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">integrate</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">))</span>
 
-    <span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">thread_count</span><span class="p">):</span>
-        <span class="n">x0</span> <span class="o">=</span> <span class="n">dx</span><span class="o">*</span><span class="n">i</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">thread_count</span><span class="p">):</span>
+        <span class="n">x0</span> <span class="o">=</span> <span class="n">dx</span> <span class="o">*</span> <span class="n">i</span>
         <span class="n">x1</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">+</span> <span class="n">dx</span>
         <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">N_chunk</span><span class="p">))</span>
         <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-        <span class="k">print</span> <span class="s2">&quot;Thread </span><span class="si">%s</span><span class="s2"> started&quot;</span> <span class="o">%</span> <span class="n">thread</span><span class="o">.</span><span class="n">name</span>
-        <span class="c1"># thread1.join()</span>
-    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">thread_count</span><span class="p">)</span> <span class="p">))</span>
-</pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;integrator&#39;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="o">**</span><span class="mi">7</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;thread_count&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Thread </span><span class="si">%s</span><span class="s2"> started&quot;</span> <span class="o">%</span> <span class="n">thread</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
-    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">a</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">b</span>
-    <span class="n">N</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">N</span>
-    <span class="n">thread_count</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">thread_count</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">((</span><span class="n">results</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">thread_count</span><span class="p">)))</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Numerical solution with N=</span><span class="si">%(N)d</span><span class="s2"> : </span><span class="si">%(x)f</span><span class="s2">&quot;</span> <span class="o">%</span> \
-            <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="n">N</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">threading_integrate</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">thread_count</span><span class="o">=</span><span class="n">thread_count</span><span class="p">)})</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="c1"># parameters of the integration</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mf">10.0</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">8</span>
+    <span class="n">thread_count</span> <span class="o">=</span> <span class="mi">8</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Numerical solution with N=</span><span class="si">%(N)d</span><span class="s2"> : </span><span class="si">%(x)f</span><span class="s2">&quot;</span> <span class="o">%</span>
+          <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="n">N</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">threading_integrate</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">thread_count</span><span class="o">=</span><span class="n">thread_count</span><span class="p">)})</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="threading-on-a-cpu-bound-problem">
 <h3>Threading on a CPU bound problem<a class="headerlink" href="#threading-on-a-cpu-bound-problem" title="Permalink to this headline">¶</a></h3>
-<p>Try running the code in integrate_main.py</p>
-<p>It accepts 4 arguments:</p>
-<p><code class="docutils literal"><span class="pre">./integrate_main.py</span> <span class="pre">0</span> <span class="pre">10</span> <span class="pre">1000000</span> <span class="pre">4</span></code></p>
-<p>What happens when you change the thread count? What thread count gives
-the maximum speed?</p>
+<p>Try running the code in <a class="reference download internal" href="../_downloads/integrate_threads.py" download=""><code class="xref download docutils literal"><span class="pre">integrate_threads.py</span></code></a></p>
+<p>It has a couple of tunable parameters:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># the start of the integration</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">10.0</span>  <span class="c1"># the end point of the integration</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">8</span> <span class="c1"># the number of steps to use in the integration</span>
+<span class="n">thread_count</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># the number of threads to use</span>
+</pre></div>
+</div>
+<p>What happens when you change the thread count? What thread count gives the maximum speed?</p>
 </div>
 <div class="section" id="multiprocessing">
 <h3>Multiprocessing<a class="headerlink" href="#multiprocessing" title="Permalink to this headline">¶</a></h3>
-<p>multiprocessing provides an API very similar to threading, so the
+<p>Multiprocessing provides an API very similar to threading, so the
 transition is easy</p>
 <p>use <code class="docutils literal"><span class="pre">multiprocessing.Process</span></code> instead of <code class="docutils literal"><span class="pre">threading.Thread</span></code></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span>
@@ -723,7 +669,7 @@ transition is easy</p>
 </div>
 </div>
 <div class="section" id="differences-with-threading">
-<h3>Differences with threading<a class="headerlink" href="#differences-with-threading" title="Permalink to this headline">¶</a></h3>
+<h3>Differences with Threading<a class="headerlink" href="#differences-with-threading" title="Permalink to this headline">¶</a></h3>
 <p>Multiprocessing has its own <code class="docutils literal"><span class="pre">multiprocessing.Queue</span></code> which handles
 interprocess communication</p>
 <p>Also has its own versions of <code class="docutils literal"><span class="pre">Lock</span></code>, <code class="docutils literal"><span class="pre">RLock</span></code>, <code class="docutils literal"><span class="pre">Semaphore</span></code></p>
@@ -752,7 +698,7 @@ number running at one time</p>
 </div>
 <div class="section" id="pooling-example">
 <h3>Pooling example<a class="headerlink" href="#pooling-example" title="Permalink to this headline">¶</a></h3>
-<div class="small highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
@@ -772,44 +718,29 @@ number running at one time</p>
     <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
-<p class="small"><a class="reference external" href="http://docs.python.org/3/library/multiprocessing.html#module-multiprocessing.pool">http://docs.python.org/3/library/multiprocessing.html#module-multiprocessing.pool</a></p>
+<p><a class="reference external" href="http://docs.python.org/3/library/multiprocessing.html#module-multiprocessing.pool">http://docs.python.org/3/library/multiprocessing.html#module-multiprocessing.pool</a></p>
 </div>
 <div class="section" id="threadpool">
 <h3>ThreadPool<a class="headerlink" href="#threadpool" title="Permalink to this headline">¶</a></h3>
 <p>Threading also has a pool</p>
 <p>Confusingly, it lives in the multiprocessing module</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">multiprocessing.pool</span> <span class="k">import</span> <span class="n">ThreadPool</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">multiprocessing.pool</span> <span class="kn">import</span> <span class="n">ThreadPool</span>
 <span class="n">pool</span> <span class="o">=</span> <span class="n">ThreadPool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="threading-versus-multiprocessing-networking-edition">
-<h3>Threading versus multiprocessing, networking edition<a class="headerlink" href="#threading-versus-multiprocessing-networking-edition" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference download internal" href="../_downloads/server.zip" download=""><code class="xref download docutils literal"><span class="pre">server.zip</span></code></a></p>
-<p>We’re going to test making concurrent connections to a web service in:</p>
-<p><code class="docutils literal"><span class="pre">server/app.py</span></code></p>
-<p>It is a WSGI application which can be run with Green Unicorn or another
-WSGI server</p>
-<p><code class="docutils literal"><span class="pre">$</span> <span class="pre">gunicorn</span> <span class="pre">app:app</span> <span class="pre">--bind</span> <span class="pre">0.0.0.0:37337</span></code></p>
-<p><code class="docutils literal"><span class="pre">client-threading.py</span></code> makes 100 threads to contact the web service</p>
-<p><code class="docutils literal"><span class="pre">client-mp.py</span></code> makes 100 processes to contact the web service</p>
-<p><code class="docutils literal"><span class="pre">client-pooled.py</span></code> creates a ThreadPool</p>
-<p><code class="docutils literal"><span class="pre">client-pooled.py</span></code> contains a results Queue, but doesn’t use it. Can you
-collect all the output from the pool into a single data structure using
-this Queue?</p>
-</div>
 <div class="section" id="other-options">
 <h3>Other options<a class="headerlink" href="#other-options" title="Permalink to this headline">¶</a></h3>
 <p>Traditionally, concurency has been achieved through multiple process
-communication and in-process threads, as we’ve seen</p>
+communication and in-process threads, as we’ve seen.</p>
 <p>Another strategy is through micro-threads, implemented via coroutines
-and a scheduler</p>
+and a scheduler.</p>
 <p>A coroutine is a generalization of a subroutine which allows multiple
-entry points for suspending and resuming execution</p>
-<p>The threading and the multiprocessing modules follow a preemptive
-<a class="reference external" href="http://en.wikipedia.org/wiki/Preemption_(computing)">multitasking model</a></p>
-<p>Coroutine based solutions follow a cooperative multitasking
-model: <a class="reference external" href="http://en.wikipedia.org/wiki/Computer_multitasking#Cooperative_multitasking.2Ftime-sharing">http://en.wikipedia.org/wiki/Computer_multitasking#Cooperative_multitasking.2Ftime-sharing</a></p>
+entry points for suspending and resuming execution.</p>
+<p>The threading and the multiprocessing modules follow a
+<a class="reference external" href="http://en.wikipedia.org/wiki/Preemption_(computing)">preemptive multitasking model</a></p>
+<p>Coroutine based solutions follow a
+<a class="reference external" href="http://en.wikipedia.org/wiki/Computer_multitasking#Cooperative_multitasking.2Ftime-sharing">cooperative multitasking model:</a></p>
 <p>A Curious Course on Coroutines and Concurrency</p>
 <blockquote>
 <div><ul class="simple">
@@ -941,7 +872,7 @@ farms jobs out to them:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Async.html" class="btn btn-neutral float-right" title="Asychronous Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Coroutines.html" class="btn btn-neutral float-right" title="Notes on Coroutines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Concurrency.html" class="btn btn-neutral" title="Concurrent Programming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

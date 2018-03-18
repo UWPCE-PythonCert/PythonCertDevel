@@ -63,7 +63,7 @@ Results
 
 When you are done, running except_exercise.py should result in output something like this::
 
-    Whoops! there is no joke for: spam
+    Spam, Spam, Spam, Spam, Beautiful Spam
 
     Customer: Not much of a cheese shop really, is it?
     Shopkeeper: Finest in the district, sir.

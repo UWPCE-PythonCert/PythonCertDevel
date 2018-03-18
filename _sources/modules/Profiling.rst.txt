@@ -270,7 +270,7 @@ iPython has your back (again)
 
     %timeit -n 10000 "f" in "food"
 
-http://ipython.readthedocs.io/en/stable/interactive/magics.html?#magic-timeit
+`timeit magic <http://ipython.readthedocs.io/en/stable/interactive/magics.html?#magic-timeit>`_
 
 
 Exercise

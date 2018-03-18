@@ -14,7 +14,7 @@ https://newsapi.org
 import time
 import asyncio
 import aiohttp
-import requests
+#import requests
 
 WORD = "trump"
 
@@ -24,7 +24,7 @@ base_url = 'https://newsapi.org/v1/'
 
 # use one session for the whole script
 #  recommended by the docs
-session = aiohttp.ClientSession()
+# session = aiohttp.ClientSession()
 
 
 # this has to run first, so doesn't really need async
@@ -37,9 +37,11 @@ async def get_sources(sources):
     """
     url = base_url + "sources"
     params = {"language": "en"}
-    async with session.get(url, ssl=False, params=params) as resp:
-        data = await resp.json()
-        print("Got the sources")
+    session = aiohttp.ClientSession()
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url, ssl=False, params=params) as resp:
+            data = await resp.json()
+            print("Got the sources")
     sources.extend([src['id'].strip() for src in data['sources']])
 
 
@@ -55,13 +57,14 @@ async def get_articles(source):
               # "sortBy": "popular",
               }
     print("requesting:", source)
-    async with session.get(url, ssl=False, params=params) as resp:
-        if resp.status != 200:  # aiohttpp has "status"
-            print("something went wrong with: {}".format(source))
-            await asyncio.sleep(0)
-            return
-        data = await resp.json()
-        print("got the articles from {}".format(source))
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url, ssl=False, params=params) as resp:
+            if resp.status != 200:  # aiohttpp has "status"
+                print("something went wrong with: {}".format(source))
+                await asyncio.sleep(0)
+                return
+            data = await resp.json()
+            print("got the articles from {}".format(source))
     # the url to the article itself is in data['articles'][i]['url']
     titles.extend([str(art['title']) + str(art['description'])
                    for art in data['articles']])
@@ -92,7 +95,7 @@ loop.run_until_complete(get_sources(sources))
 jobs = asyncio.gather(*(get_articles(source) for source in sources))
 loop.run_until_complete(jobs)
 loop.close()
-session.close()
+# session.close()
 
 art_count = len(titles)
 word_count = count_word(WORD, titles)

@@ -1,4 +1,3 @@
-:orphan:
 
 .. _concurrency:
 
@@ -6,10 +5,11 @@
 Concurrent Programming
 ######################
 
-What does it mean to do something in parallel?
+What does it mean to do something "Concurrently" ? It means multiple things
+are happening at the same time. But what are those "things"?
 
- - Parallelism is about doing things at the same time;
- - Concurrency is about dealing with multiple things at the same time.
+ - Parallelism is about the processor(s) things at the same time -- true parallelism requires multiple processors (or cores).
+ - Concurrency is about handling multiple things at the same time -- which may or may not be actually running in the processor at the same time (like network requests for instance).
  - Parallelism needs concurrency, but concurrency need not be in parallel.
 
 
@@ -30,11 +30,9 @@ Asynchrony and Concurrency are really two different things -- you can do either 
 
 Despite Rob Pike using an example about burning books, I recommend listening to at least the first half of his talk.
 
-In "Concurrency is not parallelism" Rob Pike makes a key point:
-Breaking down tasks into concurrent subtasks only allows parallelism,
-it’s the scheduling of these subtasks that creates it.
+In that talk Rob Pike makes a key point: Breaking down tasks into concurrent subtasks only allows parallelism, it’s the scheduling of these subtasks that creates it.
 
-And, indeed, once you have a set of subtasks, they can be scheduled in a truly parallel fashion, or managed asynchronously in a single thread.
+And, indeed, once you have a set of subtasks, they can be scheduled in a truly parallel fashion, or managed asynchronously in a single thread (concurrent, but not parallel)
 
 
 Types of Concurrency
@@ -42,23 +40,76 @@ Types of Concurrency
 
 **Multithreading:**
 
-  Multiple code paths sharing memory
+  Multiple code paths sharing memory -- one Python interpreter, one set of Python objects.
 
 **Multiprocessing:**
 
-  Multiple code paths with separate memory space.
+  Multiple code paths with separate memory space -- completely separate Python interpreter.
 
 **Asyncronous programming:**
 
-  multiple "jobs" run at "arbitrary" times.
+  Multiple "jobs" run at "arbitrary" times -- but usually in one thread -- i.e. only one code path, one interpreter.
 
 Lots of different packages for both in the standard library and 3rd party libraries.
 
 How to know what to choose?
 
- - IO bound vs. CPU bound
- - Event driven cooperative multitasking vs preemptive multitasking
- - callbacks vs coroutines + scheduler/event loop
+ - IO bound vs. CPU bound -- CPU bound requires multiprocessing (at least with pure Python)
+ - Event driven cooperative multitasking vs. preemptive multitasking
+ - Callbacks vs coroutines + scheduler/event loop
+
+Motivations for parallel execution
+----------------------------------
+
+-  Performance
+
+   -  Limited by "Amdahl's Law"
+      http://en.wikipedia.org/wiki/Amdahl%27s_law
+
+   -  CPUs aren't getting much faster
+
+-  Event handling
+
+   - If a system handles asynchronous events, a separate thread of
+     execution could handle those events and let other threads do other
+     work
+
+   - Examples:
+      -  Network applications
+
+     -  User interfaces
+
+Parallel programming can be hard!
+
+If your problem can be solved sequentially, consider the costs and
+benefits before going parallel.
+
+
+Parallelization Strategy for Performance
+----------------------------------------
+
+| 1. Break problem down into chunks
+| 2. Execute chunks in parallel
+| 3. Reassemble output of chunks into result
+
+.. image:: /_static/OPP.0108.gif
+      :align: right
+      :height: 450px
+      :alt: multitasking flow diagram
+
+
+|
+|
+
+-  Not every problem is parallelizable
+-  There is an optimal number of threads for each problem in each
+   environment, so make it tunable
+-  Working concurrently opens up synchronization issues
+-  Methods for synchronizing threads:
+
+   -  locks
+   -  queues
+   -  signaling/messaging mechanisms
 
 
 Concurrency in the standard library:
@@ -70,18 +121,71 @@ Concurrency in the standard library:
 
    - ``queue``: The queue module implements multi-producer, multi-consumer queues. It is especially useful in threaded programming when information must be exchanged safely between multiple threads.
 
- - ``multiprocessing``: processing is parallel (someone else does the dishes while you cook). Duplicates the current Python process and runs code in it.
+ - ``multiprocessing``: processing is parallel (someone else does the dishes while you cook). Duplicates the current Python process and runs code in it. Follows a similar API to threading.
 
  - ``subprocess``: allows you to spawn new processes (entirely different programs), connect to their input/output/error pipes, and obtain their return codes.  Parallel, hands to OS (usually running command line programs)
 
- - ``concurrent.futures``: https://www.blog.pythonlibrary.org/2016/08/03/python-3-concurrency-the-concurrent-futures-module/ This is also in the ``asyncio`` package, and we go into it in more depth there)
+ - ``concurrent.futures``: https://www.blog.pythonlibrary.org/2016/08/03/python-3-concurrency-the-concurrent-futures-module/ This has mostly been superseded by the ``asyncio`` package.
+
+  - ``asyncio``: an asynchronous event loop, designed primarily for IO (networked) applications.
 
 
-Concurrency outside the standard library:
+Concurrency Outside the Standard Library
+----------------------------------------
+
+Async Web Frameworks
+....................
+
+These are Frameworks for making web APIs with an asynchronous approach. They pre-date the built in asyncio package, and the latest language syntax.
+
+ - Twisted
+ - Tornado
+
+Job Schedulers
+..............
+
+These are for scheduling jobs (not only Python jobs) on larger Multiprocessing and multi-machine systems -- think the cloud.
 
  - Celery + Rabbitmq
  - Redis + RQ
- - Twisted
+
+Threads versus processes in Python
+----------------------------------
+
+Threads are lightweight processes_, run in the address space of an OS
+process, true OS level threads.
+
+Therefor, a component of a process.
+
+.. _processes: https://en.wikipedia.org/wiki/Light-weight_process
+
+This allows multiple threads access to data in the same scope.
+
+Threads can not gain the performance advantage of multiple processors
+due to the Global Interpreter Lock (GIL)
+
+But the GIL is released during IO, allowing IO bound processes to
+benefit from threading
+
+Processes
+---------
+
+A process contains all the instructions and data required to execute
+independently, so processes do not share data!
+
+Mulitple processes best to speed up CPU bound operations.
+
+The Python interpreter isn't lightweight!
+
+Communication between processes can be achieved via:
+
+``multiprocessing.Queue``
+
+``multiprocessing.Pipe``
+
+and regular IPC (inter-process communication)
+
+Data moved between processes must be pickleable
 
 
 Advantages / Disadvantages of Threads
@@ -92,9 +196,9 @@ Advantages:
 
 They share memory space:
 
- - Threads are light-weight, shared memory means they can be created fairly quickly without much memory use.
+ - Threads are relatively lightweight -- shared memory means they can be created fairly quickly without much memory use.
 
- - Easy and cheap to pass data around (you are only passing a reference)
+ - Easy and cheap to pass data around (you are only passing a reference).
 
 Disadvantages:
 ..............
@@ -105,22 +209,40 @@ They share memory space:
  - Operations often take several steps and may be interrupted mid-stream
  - Thus, access to shared data is also non-deterministic
 
+   (race conditions)
+
 Creating threads is easy, but programming with threads is difficult.
 
+  Q: Why did the multithreaded chicken cross the road?
 
-Q: Why did the multithreaded chicken cross the road?
+  A: to To other side. get the
 
-A: to To other side. get the
+  -- Jason Whittington
 
--- Jason Whittington
-
-
+GIL
+---
 
 **Global Interpreter Lock**
 
 (**GIL**)
 
-The GIL locks the interpreter so that only a single thread can run at once, assuring that one thread doesn't make a mess of the python objects that another thread needs. The upshot:
+This is a lock which must be obtained by each thread before it can
+execute, ensuring thread safety
+
+.. image:: /_static/gil.png
+    :width: 100.0%
+
+.. nextslide::
+
+The GIL is released during IO operations, so threads which spend time
+waiting on network or disk access can enjoy performance gains
+
+The GIL is not unlike multitasking in humans, some things can truly be
+done in parallel, others have to be done by time slicing.
+
+Note that potentially blocking or long-running operations, such as I/O, image processing, and NumPy number crunching, happen outside the GIL. Therefore it is only in multithreaded programs that spend a lot of time inside the GIL, interpreting CPython bytecode, that the GIL becomes a bottleneck. But: it can still cause performance degradation.
+
+Not only will threads not help cpu-bound problems, but it can actually make things *worse*, especially on multi-core machines!
 
 Python threads do not work well for computationally intensive work.
 
@@ -130,6 +252,14 @@ Python threads work well if the threads are spending time waiting for something:
  - Network Access
  - File I/O
 
+
+Some alternative Python implementations such as Jython and IronPython
+have no GIL
+
+cPython and PyPy have one
+
+More about the gil
+
 More on the GIL:
 
 https://emptysqua.re/blog/grok-the-gil-fast-thread-safe-python/
@@ -138,9 +268,27 @@ If you really want to understand the GIL -- and get blown away -- watch this one
 
 http://pyvideo.org/pycon-us-2010/pycon-2010--understanding-the-python-gil---82.html
 
+
+-  http://wiki.python.org/moin/GlobalInterpreterLock
+
+-  https://docs.python.org/3/c-api/init.html#threads
+
+-  http://hg.python.org/cpython/file/05e8dde3229c/Python/pystate.c#l761
+
+
 **NOTE:** The GIL *seems* like such an obvious limitation that you've got to wonder why it's there. And there have been multiple efforts to remove it. But it turns out that Python's design makes that very hard (impossible?) without severely reducing performance on single threaded programs.
 
-Personal Opinion: Python is not really (directly) suited to the kind of computationally intensive work that the GIL really hampers. And extension modules (i.e. numpy) can release the GIL!
+The current "Best effort is Larry Hastings' `"gilectomy <https://speakerdeck.com/pycon2017/larry-hastings-the-gilectomy-hows-it-going>`_
+
+But that may be stalled out at this point, too. No one should count on it going away in cPython.
+
+But: **Personal Opinion:** Python is not really (directly) suited to the kind of computationally intensive work that the GIL really hampers. And extension modules (i.e. numpy) can release the GIL!
+
+
+Posted without comment
+----------------------
+.. figure:: /_static/killGIL.jpg
+   :class: fill
 
 
 Advantages / Disadvantages of Processes
@@ -158,7 +306,9 @@ But as the entire python process is copied, each subprocess is working with the 
 
 Multiprocessing is suitable for computationally intensive work.
 
-Works best for "large" problems with not much data
+Works best for "large" problems with not much data to pass back and forth, as that's what's expensive.
+
+Note that there are ways to share memory between processes, if you have a lot of read-only data that needs to be used. (see `Memory Maps <https://docs.python.org/3/library/mmap.html>`)
 
 
 The mechanics: how do you use threads and/or processes
@@ -399,6 +549,13 @@ Other features of the multiprocessing package
  - Connections
 
 Add references!
+
+When to use What
+================
+
+.. image:: /_static/proc_thread_async.png
+
+
 
 
 

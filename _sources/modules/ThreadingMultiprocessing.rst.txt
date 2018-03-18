@@ -1,4 +1,3 @@
-:orphan:
 
 .. _threading:
 
@@ -74,94 +73,6 @@ Parallelization Strategy for Performance
    -  signaling/messaging mechanisms
 
 
-Threads versus processes in Python
-----------------------------------
-
-Threads are lightweight processes_, run in the address space of an OS
-process, true OS level threads.
-
-Therefor, a component of a a process.
-
-.. _processes: https://en.wikipedia.org/wiki/Light-weight_process
-
-This allows multiple threads access to data in the same scope.
-
-Threads can not gain the performance advantage of multiple processors
-due to the Global Interpreter Lock (GIL)
-
-But the GIL is released during IO, allowing IO bound processes to
-benefit from threading
-
-Processes
----------
-
-A process contains all the instructions and data required to execute
-independently, so processes do not share data!
-
-Mulitple processes best to speed up CPU bound operations.
-
-The Python interpreter isn't lightweight!
-
-Communication between processes can be achieved via:
-
-``multiprocessing.Queue``
-
-``multiprocessing.Pipe``
-
-and regular IPC (inter-process communication)
-
-Data moved between processes must be pickleable
-
-
-GIL
----
-
-**Global Interpreter Lock**
-
-This is a lock which must be obtained by each thread before it can
-execute, ensuring thread safety
-
-.. image:: /_static/gil.png
-    :width: 100.0%
-
-.. nextslide::
-
-The GIL is released during IO operations, so threads which spend time
-waiting on network or disk access can enjoy performance gains
-
-The GIL is not unlike multitasking in humans, some things can truly be
-done in parallel, others have to be done by time slicing.
-
-Note that potentially blocking or long-running operations, such as I/O, image processing, and NumPy number crunching, happen outside the GIL. Therefore it is only in multithreaded programs that spend a lot of time inside the GIL, interpreting CPython bytecode, that the GIL becomes a bottleneck. But: it can still cause performance degradation.
-
-Not only will threads not help cpu-bound problems, but it can actually make things *worse*, especially on multi-core machines!
-
-
-.. nextslide::
-
-
-Some alternative Python implementations such as Jython and IronPython
-have no GIL
-
-cPython and PyPy have one
-
-David Beazley's talk on the gil
-
--  https://www.youtube.com/watch?v=Obt-vMVdM8s
-
-More about the gil
-
--  http://wiki.python.org/moin/GlobalInterpreterLock
-
--  https://docs.python.org/3.5/c-api/init.html#threads
-
--  http://hg.python.org/cpython/file/05e8dde3229c/Python/pystate.c#l761
-
-Posted without comment
-----------------------
-.. figure:: /_static/killGIL.jpg
-   :class: fill
-
 
 A CPU bound problem
 -------------------
@@ -178,8 +89,8 @@ http://www.wolframalpha.com/input/?i=x%5E2
 Parallel execution example
 --------------------------
 
-Consider the following code in
-:download:`integrate.py <../examples/threading-multiprocessing/integrate/integrate.py>`
+Consider the following code in:
+:download:`integrate.py <../examples/threading-multiprocessing/integrate.py>`
 
 .. code-block:: python
 
@@ -193,10 +104,10 @@ Consider the following code in
             s += f(a+i*dx)
         return s * dx
 
+We can do better than this
+
 Break down the problem into parallelizable chunks, then add the results
 together:
-
-We can do better than this
 
 The threading module
 --------------------
@@ -219,9 +130,6 @@ Starting threads doesn't take much:
         thread = threading.Thread(target=func, args=())
         thread.start()
         threads.append(thread)
-
-
-.. nextslide::
 
 
 -  The process will exit when the last non-daemon thread exits.
@@ -341,10 +249,7 @@ Locks
 Lock objects allow threads to control access to a resource until they're
 done with it
 
-This is known as mutual exclusion, often called mutex
-
-Python 2 has a deprecated module called mutex for this. Use a Lock
-instead.
+This is known as mutual exclusion, often called "mutex".
 
 A Lock has two states: locked and unlocked
 
@@ -356,24 +261,48 @@ If a Lock is locked, .acquire will block until it becomes unlocked
 These threads will wait in line politely for access to the statements in
 f()
 
-.. nextslide::
+Mutex locks (``threading.Lock``)
+--------------------------------
+
+ - Probably most common
+ - Only one thread can modify shared data a any given time
+ - Thread determines when unlocked
+ - Must put lock/unlock around critical code in ALL threads
+ - Difficult to manage
+
+Easiest with context manager:
 
 .. code-block:: python
 
-    import threading
-    import time
+    x = 0
+    x_lock = threading.Lock()
 
-    lock = threading.Lock()
+    # Example critical section
+    with x_lock:
+        # statements using x
 
-    def f():
-        lock.acquire()
-        print("%s got lock" % threading.current_thread().name)
-        time.sleep(1)
-        lock.release()
 
-    threading.Thread(target=f).start()
-    threading.Thread(target=f).start()
-    threading.Thread(target=f).start()
+Only one lock per thread! (or risk mysterious deadlocks)
+
+Or use RLock for code-based locking (locking function/method execution rather than data access)
+
+
+.. .. code-block:: python
+
+..    import threading
+..    import time
+
+..    lock = threading.Lock()
+
+..    def f():
+..        lock.acquire()
+..        print("%s got lock" % threading.current_thread().name)
+..        time.sleep(1)
+..        lock.release()
+
+..    threading.Thread(target=f).start()
+..    threading.Thread(target=f).start()
+..    threading.Thread(target=f).start()
 
 
 Nonblocking Locking
@@ -461,8 +390,6 @@ It will block consumers if empty and block producers if full
 
 If maxsize is less than or equal to zero, the queue size is infinite
 
-.. nextslide::
-
 .. code-block:: python
 
     from Queue import Queue
@@ -491,100 +418,77 @@ inserting the tuple:
 
 ``(priority_number, data)``
 
-Threading example
------------------
+Threading example with a queue
+------------------------------
 
-:download:`integrate_main.py <../examples/threading-multiprocessing/threading/integrate_main.py>`
+:download:`integrate_main.py <../examples/threading-multiprocessing/integrate_threads.py>`
 
 .. code-block:: python
 
     #!/usr/bin/env python
 
-    import argparse
-    import os
-    import sys
     import threading
-    import Queue
+    import queue
 
-    sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-    from integrate.integrate import integrate, f
-    from decorators.decorators import timer
+    # from integrate.integrate import integrate, f
+    from integrate import f, integrate_numpy as integrate
+    from decorators import timer
 
-.. nextslide::
-
-.. code-block:: python
 
     @timer
     def threading_integrate(f, a, b, N, thread_count=2):
-        """break work into two chunks"""
+        """break work into N chunks"""
         N_chunk = int(float(N) / thread_count)
-        dx = float(b-a) / thread_count
+        dx = float(b - a) / thread_count
 
-        results = Queue.Queue()
+        results = queue.Queue()
 
         def worker(*args):
             results.put(integrate(*args))
 
-        threads = []
-        for i in xrange(thread_count):
-            x0 = dx*i
+        for i in range(thread_count):
+            x0 = dx * i
             x1 = x0 + dx
             thread = threading.Thread(target=worker, args=(f, x0, x1, N_chunk))
             thread.start()
-            print "Thread %s started" % thread.name
-            # thread1.join()
-        return sum( (results.get() for i in xrange(thread_count) ))
+            print("Thread %s started" % thread.name)
 
-.. nextslide::
+        return sum((results.get() for i in range(thread_count)))
 
-.. code-block:: python
 
     if __name__ == "__main__":
-        parser = argparse.ArgumentParser(description='integrator')
-        parser.add_argument('a', nargs='?', type=float, default=0.0)
-        parser.add_argument('b', nargs='?', type=float, default=10.0)
-        parser.add_argument('N', nargs='?', type=int, default=10**7)
-        parser.add_argument('thread_count', nargs='?', type=int, default=2)
 
-        args = parser.parse_args()
-        a = args.a
-        b = args.b
-        N = args.N
-        thread_count = args.thread_count
+        # parameters of the integration
+        a = 0.0
+        b = 10.0
+        N = 10**8
+        thread_count = 8
 
-        print("Numerical solution with N=%(N)d : %(x)f" % \
-                {'N': N, 'x': threading_integrate(f, a, b, N, thread_count=thread_count)})
+        print("Numerical solution with N=%(N)d : %(x)f" %
+              {'N': N, 'x': threading_integrate(f, a, b, N, thread_count=thread_count)})
 
 
 Threading on a CPU bound problem
 --------------------------------
 
-Try running the code in integrate\_main.py
+Try running the code in :download:`integrate_threads.py </examples/threading-multiprocessing/integrate_threads.py>`
 
-It accepts 4 arguments:
+It has a couple of tunable parameters:
 
-.. code-block:; python
+.. code-block:: python
 
-    ./integrate_main.py -h
-    usage: integrate_main.py [-h] [a] [b] [N] [thread_count]
+    a = 0.0  # the start of the integration
+    b = 10.0  # the end point of the integration
+    N = 10**8 # the number of steps to use in the integration
+    thread_count = 8  # the number of threads to use
 
-    integrator
+What happens when you change the thread count? What thread count gives the maximum speed?
 
-    positional arguments:
-      a
-      b
-      N
-      thread_count
-
-``./integrate_main.py 0 10 1000000 4``
-
-What happens when you change the thread count? What thread count gives
-the maximum speed?
 
 Multiprocessing
 ---------------
 
-multiprocessing provides an API very similar to threading, so the
+Multiprocessing provides an API very similar to threading, so the
 transition is easy
 
 use ``multiprocessing.Process`` instead of ``threading.Thread``
@@ -605,7 +509,7 @@ use ``multiprocessing.Process`` instead of ``threading.Thread``
     proc.start()
 
 
-Differences with threading
+Differences with Threading
 --------------------------
 
 Multiprocessing has its own ``multiprocessing.Queue`` which handles
@@ -647,30 +551,29 @@ The Pool module has several methods for adding jobs to the pool
 Pooling example
 ---------------
 
-.. rst-class:: small
+.. code-block:: python
 
-  .. code-block:: python
+    from multiprocessing import Pool
+    def f(x):
+        return x*x
+    if __name__ == '__main__':
+        pool = Pool(processes=4)
 
-      from multiprocessing import Pool
-      def f(x):
-          return x*x
-      if __name__ == '__main__':
-          pool = Pool(processes=4)
+        result = pool.apply_async(f, (10,))
+        print(result.get(timeout=1))
+        print(pool.map(f, range(10)))
 
-          result = pool.apply_async(f, (10,))
-          print(result.get(timeout=1))
-          print(pool.map(f, range(10)))
+        it = pool.imap(f, range(10))
+        print(it.next())
+        print(it.next())
+        print(it.next(timeout=1))
 
-          it = pool.imap(f, range(10))
-          print(it.next())
-          print(it.next())
-          print(it.next(timeout=1))
+        import time
+        result = pool.apply_async(time.sleep, (10,))
+        print(result.get(timeout=1))
 
-          import time
-          result = pool.apply_async(time.sleep, (10,))
-          print(result.get(timeout=1))
+http://docs.python.org/3/library/multiprocessing.html#module-multiprocessing.pool
 
-  http://docs.python.org/3/library/multiprocessing.html#module-multiprocessing.pool
 
 ThreadPool
 ----------
@@ -679,54 +582,51 @@ Threading also has a pool
 
 Confusingly, it lives in the multiprocessing module
 
-::
+.. code-block:: python
 
-          from multiprocessing.pool import ThreadPool
-          pool = ThreadPool(processes=4)
+    from multiprocessing.pool import ThreadPool
+    pool = ThreadPool(processes=4)
 
 
-Threading versus multiprocessing, networking edition
-----------------------------------------------------
+.. Threading versus multiprocessing, networking edition
+.. ----------------------------------------------------
 
-:download:`server.zip <../examples/threading-multiprocessing/server.zip>`
+.. :download:`server.zip <../examples/threading-multiprocessing/server.zip>`
 
-We're going to test making concurrent connections to a web service in:
+.. We're going to test making concurrent connections to a web service in:
 
-``server/app.py``
+.. ``server/app.py``
 
-It is a WSGI application which can be run with Green Unicorn or another
-WSGI server
+.. It is a WSGI application which can be run with Green Unicorn or another WSGI server
 
-``$ gunicorn app:app --bind 0.0.0.0:37337``
+.. ``$ gunicorn app:app --bind 0.0.0.0:37337``
 
-``client-threading.py`` makes 100 threads to contact the web service
+.. ``client-threading.py`` makes 100 threads to contact the web service
 
-``client-mp.py`` makes 100 processes to contact the web service
+.. ``client-mp.py`` makes 100 processes to contact the web service
 
-``client-pooled.py`` creates a ThreadPool
+.. ``client-pooled.py`` creates a ThreadPool
 
-``client-pooled.py`` contains a results Queue, but doesn't use it. Can you
-collect all the output from the pool into a single data structure using
-this Queue?
+.. ``client-pooled.py`` contains a results Queue, but doesn't use it. Can you collect all the output from the pool into a single data structure using this Queue?
 
 
 Other options
 -------------
 
 Traditionally, concurency has been achieved through multiple process
-communication and in-process threads, as we've seen
+communication and in-process threads, as we've seen.
 
 Another strategy is through micro-threads, implemented via coroutines
-and a scheduler
+and a scheduler.
 
 A coroutine is a generalization of a subroutine which allows multiple
-entry points for suspending and resuming execution
+entry points for suspending and resuming execution.
 
-The threading and the multiprocessing modules follow a preemptive
-`multitasking model <http://en.wikipedia.org/wiki/Preemption_(computing)>`_
+The threading and the multiprocessing modules follow a
+`preemptive multitasking model <http://en.wikipedia.org/wiki/Preemption_(computing)>`_
 
-Coroutine based solutions follow a cooperative multitasking
-model: http://en.wikipedia.org/wiki/Computer_multitasking#Cooperative_multitasking.2Ftime-sharing
+Coroutine based solutions follow a
+`cooperative multitasking model: <http://en.wikipedia.org/wiki/Computer_multitasking#Cooperative_multitasking.2Ftime-sharing>`_
 
 A Curious Course on Coroutines and Concurrency
 
