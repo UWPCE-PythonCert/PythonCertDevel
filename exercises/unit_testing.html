@@ -92,7 +92,7 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Topic Notes</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Exercises</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="submitting_to_gitHub.html">Submitting your work to gitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_pushups.html">Python Pushups</a></li>
@@ -113,6 +113,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction To Unit Testing</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#test-driven-development">Test Driven Development</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">Test Driven development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#doing-your-own">Doing your own:</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="roman.html">Roman/Arabic Numeral Converter</a></li>
@@ -129,6 +130,7 @@
 <li class="toctree-l2"><a class="reference internal" href="context-managers-exercise.html">A Couple Handy Context Managers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mailroom-mock.html">Mocking Mailroom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mailroom-meta.html">Mailroom – metaprogramming it!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="threaded_downloader.html">Threaded Web Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
@@ -202,11 +204,17 @@
 <span id="exercise-unit-testing"></span><h1>Introduction To Unit Testing<a class="headerlink" href="#introduction-to-unit-testing" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="test-driven-development">
 <h2>Test Driven Development<a class="headerlink" href="#test-driven-development" title="Permalink to this headline">¶</a></h2>
-<p>in the examples/Session06 dir, try:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ py.test test_cigar_party
+<p>Download this module:</p>
+<p><a class="reference download internal" href="../_downloads/cigar_party.py" download=""><code class="xref download docutils literal"><span class="pre">cigar_party.py</span></code></a></p>
+<p>(This is the <a class="reference external" href="http://codingbat.com/prob/p195669">“cigar party”</a> problem from the codingbat site)</p>
+<p>and this test file:</p>
+<p><a class="reference download internal" href="../_downloads/test_cigar_party.py" download=""><code class="xref download docutils literal"><span class="pre">test_cigar_party.py</span></code></a></p>
+<p>Put them in the same directory, and make that directory your working directory.</p>
+<p>Then then try running the test file with pytest:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pytest test_cigar_party
 </pre></div>
 </div>
-<p>What we’ve just done here is the first step in what is called:</p>
+<p>What you’ve done here is the first step in what is called:</p>
 <blockquote>
 <div><strong>Test Driven Development</strong>.</div></blockquote>
 <p>A bunch of tests exist, but the code to make them pass does not yet exist.</p>
@@ -216,28 +224,31 @@
 <div class="section" id="id1">
 <h2>Test Driven development<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Open:</p>
-<p><code class="docutils literal"><span class="pre">exercises/test_cigar_party.py</span></code></p>
+<p><code class="docutils literal"><span class="pre">test_cigar_party.py</span></code></p>
 <p>and:</p>
-<p><code class="docutils literal"><span class="pre">exercises/cigar_party.py</span></code></p>
-<p>and run:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ py.test test_cigar_party.py
-</pre></div>
+<p><code class="docutils literal"><span class="pre">cigar_party.py</span></code></p>
+<p>In your editor.</p>
+<p>Now edit <code class="docutils literal"><span class="pre">cigar_party.py</span></code>, and each time you make a change, run teh tests again. Continue until all the tests pass.</p>
 </div>
-<p>Copy both of these files into your home directory in the repo.</p>
-<p>Develop <code class="docutils literal"><span class="pre">cigar_party.py</span></code> until all the tests pass.</p>
-<blockquote>
-<div><p>Pick an example from codingbat:</p>
+<div class="section" id="doing-your-own">
+<h2>Doing your own:<a class="headerlink" href="#doing-your-own" title="Permalink to this headline">¶</a></h2>
+<p>Pick another example from codingbat:</p>
 <p><code class="docutils literal"><span class="pre">http://codingbat.com</span></code></p>
 <p>Do a bit of test-driven development on it:</p>
 <blockquote>
 <div><ul class="simple">
 <li>run something on the web site.</li>
 <li>write a few tests using the examples from the site.</li>
+</ul>
+</div></blockquote>
+<p>These tests should be in a file names <code class="docutils literal"><span class="pre">test_something.py</span></code> – I usually name the test file the same as the module it tests, with <code class="docutils literal"><span class="pre">test_</span></code> prepended.</p>
+<blockquote>
+<div><ul class="simple">
 <li>then write the function, and fix it ‘till it passes the tests.</li>
 </ul>
 </div></blockquote>
-<p>Do at least two of these…</p>
-</div></blockquote>
+<p>Do at least two of these to get the hang of the process.</p>
+<p>Also – once you have the tests passing, look at your solution – is there a way it could be refactored to be cleaner? Give it a shot – you’ll know if it still works if the tests still pass!</p>
 </div>
 </div>
 

@@ -176,7 +176,7 @@ For more reading.
 
 This: http://python.net/crew/mwh/hacks/objectthink.html#question
 
-Is a link to a discussion on comp.lang.python from over 15 years ago -- but the issues are still the same. IN particular, Alex Martelli's answer is brilliant.
+Is a link to a discussion on comp.lang.python from over 15 years ago -- but the issues are still the same. In particular, Alex Martelli's answer is brilliant.
 
 Go read it....
 

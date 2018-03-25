@@ -356,3 +356,11 @@ Personally, I use flake8 -- it gets most of it for me. Though a run with pylint 
 
 Also -- if you set up your editor with a linter -- you'll be encouraged to fix it a bit at a time as you write -- much better way to go.
 
+Pythonic Style
+==============
+
+Good "Pythonic" style goes beyond style guides and things linters can figure out for you.
+
+The `Hitchhiker's Guide to Python: Code Style <http://docs.python-guide.org/en/latest/writing/style/>`_ is a good read that gets into a nice level of detail.
+
+
