@@ -24,7 +24,7 @@ Defining a function:
 
 ``x``, ``y``, ``z`` are *local* names.
 
-``x`` and ``y`` because there are function *parameters*
+``x`` and ``y`` because they are function *parameters*
 
 ``z`` because it was "bound" inside the function.
 
@@ -231,7 +231,7 @@ A) It starts with a check to see if the recursive process is "done" -- can it si
 
 B) If not, then it does a computation using the same function with another value.
 
-It is critical at that the first check is there, or the function will never terminate.
+It is critical that the first check is there, or the function will never terminate.
 
 
 

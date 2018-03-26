@@ -141,7 +141,7 @@ of this operand:
 Shortcutting
 ------------
 
-If you think about it, what ``and`` and ``or`` are doing is as little work as possible. They will only evaluate as much as they need to to get the answer.
+If you think about it, what ``and`` and ``or`` are doing is as little work as possible. They will only evaluate as much as they need to get the answer.
 
 Think about ``and``: it is testing if *both* the operands are True. If the first one is False, there is no need to bother checking the second.
 
@@ -177,17 +177,17 @@ statements:
 
 ::
 
-                      if x is false,
-    x or y               return y,
-                         else return x
+                      if x is fFlse:
+    x or y               return y
+                      else: return x
 
-                      if x is false,
-    x and y              return  x
-                         else return y
+                      if x is False:
+    x and y              return x
+                      else: return y
 
-                      if x is false,
-    not x                return True,
-                         else return False
+                      if x is False:
+    not x                return True
+                      else: return False
 
 Chaining
 --------

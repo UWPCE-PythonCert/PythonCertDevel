@@ -245,7 +245,7 @@ differences:
 
 * Indexing will always return one single object (a scalar), whereas slicing will return a sequence of objects.
 
-So if you start with, say, a list of numbers, indexing will return a single number.  Slicing, on the other hand, will return list of numbers -- even is that list only has one number in it -- or zero!
+So if you start with, say, a list of numbers, indexing will return a single number.  Slicing, on the other hand, will return list of numbers -- even if that list only has one number in it -- or zero!
 
 Note that strings are a bit of an exception -- there is no character type in Python -- so a single character is a string -- a sequence of length-1.
 
@@ -764,7 +764,7 @@ What does the line: ``altered = original`` do?
 
 It binds the name: "altered" to the same object that "original" is bound to.
 
-That is, there is only one list, even though is is referred to by two names. So when you mutate (or change) that list from *either* name, the changes show up when you refer to it by the other name.
+That is, there is only one list, even though it is referred to by two names. So when you mutate (or change) that list from *either* name, the changes show up when you refer to it by the other name.
 
 Other Gotchas
 -------------
@@ -1118,7 +1118,7 @@ Choosing Lists or Tuples
 
 Here are a few guidelines on when to choose a list or a tuple:
 
-* If it needs to mutable: list
+* If it needs to be mutable: list
 
 * If it needs to be immutable: tuple
 

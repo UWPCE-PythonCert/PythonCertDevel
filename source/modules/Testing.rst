@@ -149,7 +149,7 @@ There are several other options for running tests in Python.
 
 Nose was the most common test runner when I first started learning testing, but it has been in maintaince mode for a while.
 
-pytest has become the defacto standard for test runners those that want a and a more "pythonic" test framework.
+pytest has become the defacto standard for test runners those that want a more "pythonic" test framework.
 
 It is very capable and widely used.
 
@@ -231,7 +231,7 @@ It follows some simple rules:
 
 ( don't worry about "classes" part just yet ;-) )
 
-* Any ``unitest`` test cases are run.
+* Any ``unittest`` test cases are run.
 
 pytest
 ------
@@ -242,7 +242,7 @@ Read the documentation for more information:
 
 http://pytest.org/latest/getting-started.html#getstarted
 
-It will run ``unittest`` tests for you, so an be used as a test runner.
+It will run ``unittest`` tests for you, so can be used as a test runner.
 
 But in addition to finding and running tests, it makes writing tests simple, and provides a bunch of nifty utilities to support more complex testing.
 
@@ -283,7 +283,7 @@ A totally do nothing function!
 
 Put real code in  ``cigar_party.py`` until all the tests pass.
 
-When the tests pass -- you are done! That's the beauty of test-drive development.
+When the tests pass -- you are done! That's the beauty of test-driven development.
 
 Trying it yourself
 ------------------

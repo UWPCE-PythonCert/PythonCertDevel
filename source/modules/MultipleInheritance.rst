@@ -107,7 +107,7 @@ In order to not write a lot of repeated code -- remember, "classes are for code 
 
 Once the system was set up, all you needed to write was a ``__init__`` and a draw method to make a whole new graphic object.
 
-Take alook at the code --quite a bit in the ``DrawObject`` base class, then a bunch of ``*Mixin`` classes that define specific functionality.
+Take a look at the code --quite a bit in the ``DrawObject`` base class, then a bunch of ``*Mixin`` classes that define specific functionality.
 
 Now look at the real DrawObject classes, e.g. Line and Polygon. Not much code there:
 
@@ -135,7 +135,7 @@ and:
         def _Draw(self,
         ...
 
-There is some real code in the ``__init__`` and ``_Draw`` -- but those are still the only two methods that need to be defined to make a fuly functional drawobject.
+There is some real code in the ``__init__`` and ``_Draw`` -- but those are still the only two methods that need to be defined to make a fully functional drawobject.
 
 
 FloatCanvas has a lot of complications with handling mouse events, and managing pens and brushes, and what have you, so a very trimmed down version, using the Python Imaging Library, is here to check out and modify:
@@ -258,7 +258,7 @@ http://stackoverflow.com/questions/576169/understanding-python-super-with-init-m
 
 ``super`` returns a "proxy object" that delegates method calls.
 
-It's not returning the object itself -- but you can call methods on it as thought it were a class object.
+It's not returning the object itself -- but you can call methods on it as though it were a class object.
 
 It runs through the method resolution order (MRO) to find the method
 you call.
@@ -267,9 +267,9 @@ Key point: the MRO is determined *at run time*
 
 https://docs.python.org/3.6/library/functions.html#super
 
-But it's not a simple as finding and calling the first superclass method it finds: ``super()`` will call all the sibling superclass methods:
+But it's not as simple as finding and calling the first superclass method it finds: ``super()`` will call all the sibling superclass methods:
 
-Here is an example of of class that inherits from three superclasses:
+Here is an example of class that inherits from three superclasses:
 
 .. code-block:: python
 
@@ -287,7 +287,7 @@ Since you have called __init__ on the ``super()`` object, this is essentially th
            B.__init__()
            A.__init__()
 
-Keep in mind that ``super()`` can be used for any method, not just ``__init__`` -- while you usually *do* want to initiallize all the superclasses, you may not want the call the same method on every superclass if it's a more specialized method.
+Keep in mind that ``super()`` can be used for any method, not just ``__init__`` -- while you usually *do* want to initiallize all the superclasses, you may not want to call the same method on every superclass if it's a more specialized method.
 
 But if you do, it's kind of handy.
 
@@ -325,7 +325,7 @@ Raymond Hettinger's rules for ``super()``
 
 (2) We'll get into in a moment
 
-(3) This is a tricky one -- you just need to remember it. What it means is that, for instance, if you are using super() to call ``__init__`` in the superclass(s), then all the superclasses ``__init__`` methods must ALSO call it:
+(3) This is a tricky one -- you just need to remember it. What it means is that, for instance, if you are using super() to call ``__init__`` in the superclass(es), then all the superclasses ``__init__`` methods must ALSO call it:
 
 .. code-block:: python
 
