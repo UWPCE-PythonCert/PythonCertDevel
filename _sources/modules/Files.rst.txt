@@ -46,8 +46,8 @@ File Opening Modes
     f = open('secrets.txt', [mode])
     'r', 'w', 'a'
     'rb', 'wb', 'ab'
-    r+, w+, a+
-    r+b, w+b, a+b
+    'r+', 'w+', 'a+'
+    'r+b', 'w+b', 'a+b'
 
 
 These follow the Unix conventions, and aren't all that well documented
@@ -282,7 +282,7 @@ Read about it in PEP 519:
 
 https://www.python.org/dev/peps/pep-0519/
 
-This was added because most built-in file handling modules, as well as any number of third party packages that needed a path, worked only with paths string paths.
+This was added because most built-in file handling modules, as well as any number of third party packages that needed a path, worked only with string paths.
 
 Even after ``pathlib`` was added to the standard library, you couldn't pass a ``Path`` object in where a path was needed --even the most common ones like ``open()``.
 

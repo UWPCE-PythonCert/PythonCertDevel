@@ -24,7 +24,7 @@ That last one is a bit tricky, and is not necessary to understand right out of t
 
 :ref:`git_overview`
 
-There other versioning systems, such as Mercurial and Subversion (and commercial offerings), but Git is the most popular.
+There are other versioning systems, such as Mercurial and Subversion (and commercial offerings), but Git is the most popular.
 
 It is incredibly important to learn and understand versioning control to work as a developer today, so we have incorporated Git into our work flow for submitting students' work in this class.
 

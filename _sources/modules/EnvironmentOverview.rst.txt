@@ -31,7 +31,7 @@ Windows provides the "DOS" command line, which is OK, but pretty old and limited
 
 If you are comfortable with either of these -- go for it.
 
-If not, you can use the "git Bash" shell -- which is much like the bash shell on OS-X and Linux. Or, on Windows 10, look into the "bash shell for Windows" otherwise known as the "Linux system" - - more info here: `PythonResources--Windows Bash  <http://uwpce-pythoncert.github.io/PythonResources/DevEnvironment/windows_bash.html>`_
+If not, you can use the "git Bash" shell -- which is much like the bash shell on OS-X and Linux. Or, on Windows 10, look into the "bash shell for Windows" otherwise known as the "Windows Subsystem for Linux" - - more info here: `PythonResources--Windows Bash  <http://uwpce-pythoncert.github.io/PythonResources/DevEnvironment/windows_bash.html>`_
 
 
 The Interpreter
