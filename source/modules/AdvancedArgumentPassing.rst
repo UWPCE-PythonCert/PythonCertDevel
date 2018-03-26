@@ -289,7 +289,7 @@ And you can pass any number in:
     In [39]: fun(1,2,3,4,5,6,7, key1='that')
     1 2 (3, 4, 5, 6, 7) that
 
-This is actually the primary motivation for the PEP --it makes a cleaner separation of positional and keyword arguments.
+This is actually the primary motivation for the PEP -- it makes a cleaner separation of positional and keyword arguments.
 
 So for ALL the features in one function:
 
