@@ -90,7 +90,7 @@ Operator Overloading
   Python (and most languages) have operators, like `+`, `-`. `*`, etc. Overloading an operator is a way to define what that operator means to a new class that is not originally part of the language.
 
 Polymorphism
-  Allowing instances of multiple classes to be used in the same way. Literally means "having many forms". This simply happens with Python's "Duck Typing" -- An object with a given method can have that method called on it. But is statically typed languages, this is a big deal.
+  Allowing instances of multiple classes to be used in the same way. Literally means "having many forms". This simply happens with Python's "Duck Typing" -- An object with a given method can have that method called on it. But in statically typed languages, this is a big deal.
 
 Python and OO
 -------------
