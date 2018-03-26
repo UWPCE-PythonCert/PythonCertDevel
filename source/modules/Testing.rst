@@ -149,7 +149,7 @@ There are several other options for running tests in Python.
 
 Nose was the most common test runner when I first started learning testing, but it has been in maintaince mode for a while.
 
-pytest has become the defacto standard for test runners those that want a more "pythonic" test framework.
+pytest has become the defacto standard test runner for those that want a more "pythonic" test framework.
 
 It is very capable and widely used.
 
