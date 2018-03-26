@@ -1,7 +1,7 @@
 .. _py2_vs_py3:
 
 ########################
-Python 2 verses Python 3
+Python 2 versus Python 3
 ########################
 
 

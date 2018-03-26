@@ -36,7 +36,7 @@ Numbers:
 Text:
   -  ``"a bit of text"``
   -  ``'a bit of text'``
-  - (either single or double quotes work -- why? If you dont know try looking it up in one of the referenced sources!)
+  - (either single or double quotes work -- why? If you don't know try looking it up in one of the referenced sources!)
 
 Boolean values:
   -  ``True``
@@ -761,7 +761,7 @@ A function is a self-contained chunk of code.
 You use them when you need the same code to run multiple times,
 or in multiple parts of the program.
 
-Functions allow you to take code that would otherwise be duplicated potentially many times, and put it in once place. Then all you do is call that code to use it.
+Functions allow you to take code that would otherwise be duplicated potentially many times, and put it in one place. Then all you do is call that code to use it.
 
 This is often referred to as "DRY" -- "Don't Repeat Yourself".
 

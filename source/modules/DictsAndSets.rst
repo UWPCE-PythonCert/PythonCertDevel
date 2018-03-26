@@ -327,7 +327,7 @@ But you can specify a default:
   In [11]: d.get('something', 'a default')
   Out[11]: 'a default'
 
-never raises an Exception (default default is None).
+never raises an Exception (default is None).
 
 
 iterating
@@ -570,18 +570,18 @@ If you want to add a bunch of stuff to a set, you can use update:
 
     In [1]: s = set()
 
-In [2]: s.update
-Out[2]: <function set.update>
+    In [2]: s.update
+    Out[2]: <function set.update>
 
-In [3]: s.update(['this', 'that'])
+    In [3]: s.update(['this', 'that'])
 
-In [4]: s
-Out[4]: {'that', 'this'}
+    In [4]: s
+    Out[4]: {'that', 'this'}
 
-In [5]: s.update(['this', 'thatthing'])
+    In [5]: s.update(['this', 'thatthing'])
 
-In [6]: s
-Out[6]: {'that', 'thatthing', 'this'}
+    In [6]: s
+    Out[6]: {'that', 'thatthing', 'this'}
 
 **NOTE:** It's VERY often the case that when you find yourself writing a trivial loop -- there is a way to do it with a built in method!
 

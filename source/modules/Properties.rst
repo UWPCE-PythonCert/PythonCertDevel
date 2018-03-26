@@ -112,10 +112,10 @@ You do not need to define a setter. If you don't, you get a "read only" attribut
 
     In [11]: class D():
        ....:     def __init__(self, x=5):
-       ....:         self._x = 5
+       ....:         self._x = x
        ....:     @property
-       ....:     def getx(self):
-       ....:     """I am read only"""
+       ....:     def x(self):
+       ....:         """I am read only"""
        ....:         return self._x
        ....:
     In [12]: d = D()
@@ -150,4 +150,4 @@ what you want.
 
 Play around with some properties code:
 
-:download:`properties_example.py <../examples/Properties/properties_example.py>`]
+:download:`properties_example.py <../examples/Properties/properties_example.py>`
