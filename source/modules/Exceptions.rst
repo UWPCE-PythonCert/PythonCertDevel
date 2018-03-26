@@ -327,7 +327,7 @@ Example::
 
 Is the *value* of the input the problem here?
 
-Nope: the *type* is the problem::
+Nope: the *type* of the input is the problem::
 
   if (not isinstance(m, int)) or (not isinstance(n, int)):
       raise TypeError
