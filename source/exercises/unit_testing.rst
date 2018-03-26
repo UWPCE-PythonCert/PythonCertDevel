@@ -7,12 +7,25 @@ Introduction To Unit Testing
 Test Driven Development
 -----------------------
 
-in the examples/Session06 dir, try::
+Download this module:
 
-  $ py.test test_cigar_party
+:download:`cigar_party.py </examples/testing/cigar_party.py>`
 
-What we've just done here is the first step in what is called:
+(This is the `"cigar party" <http://codingbat.com/prob/p195669>`_ problem from the codingbat site)
 
+and this test file:
+
+:download:`test_cigar_party.py </examples/testing/test_cigar_party.py>`
+
+Put them in the same directory, and make that directory your working directory.
+
+Then then try running the test file with pytest:
+
+.. code-block:: bash
+
+  $ pytest test_cigar_party
+
+What you've done here is the first step in what is called:
 
   **Test Driven Development**.
 
@@ -27,30 +40,33 @@ Test Driven development
 
 Open:
 
-``exercises/test_cigar_party.py``
+``test_cigar_party.py``
 
 and:
 
-``exercises/cigar_party.py``
+``cigar_party.py``
 
-and run::
+In your editor.
 
-  $ py.test test_cigar_party.py
+Now edit ``cigar_party.py``, and each time you make a change, run teh tests again. Continue until all the tests pass.
 
-Copy both of these files into your home directory in the repo.
+Doing your own:
+---------------
 
-Develop ``cigar_party.py`` until all the tests pass.
+Pick another example from codingbat:
 
+``http://codingbat.com``
 
-  Pick an example from codingbat:
+Do a bit of test-driven development on it:
 
-  ``http://codingbat.com``
+  * run something on the web site.
+  * write a few tests using the examples from the site.
 
-  Do a bit of test-driven development on it:
+These tests should be in a file names ``test_something.py`` -- I usually name the test file the same as the module it tests, with ``test_`` prepended.
 
-   * run something on the web site.
-   * write a few tests using the examples from the site.
-   * then write the function, and fix it 'till it passes the tests.
+  * then write the function, and fix it 'till it passes the tests.
 
-  Do at least two of these...
+Do at least two of these to get the hang of the process.
+
+Also -- once you have the tests passing, look at your solution -- is there a way it could be refactored to be cleaner? Give it a shot -- you'll know if it still works if the tests still pass!
 
