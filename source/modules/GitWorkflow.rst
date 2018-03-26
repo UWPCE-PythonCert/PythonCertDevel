@@ -157,7 +157,7 @@ If there are changes upstream that you did not have, it is a good idea to go ahe
 
 Now you can begin your work:
 
-create a dir to the Exercise in:
+create a dir to do the Exercise in:
 
 ``$ mkdir mailroom``
 
