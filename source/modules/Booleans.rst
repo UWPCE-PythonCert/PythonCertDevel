@@ -177,7 +177,7 @@ statements:
 
 ::
 
-                      if x is fFlse:
+                      if x is False:
     x or y               return y
                       else: return x
 
