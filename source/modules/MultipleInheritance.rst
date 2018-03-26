@@ -269,7 +269,7 @@ https://docs.python.org/3.6/library/functions.html#super
 
 But it's not as simple as finding and calling the first superclass method it finds: ``super()`` will call all the sibling superclass methods:
 
-Here is an example of class that inherits from three superclasses:
+Here is an example of a class that inherits from three superclasses:
 
 .. code-block:: python
 
