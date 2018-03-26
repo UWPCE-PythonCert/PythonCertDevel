@@ -74,7 +74,7 @@ Don't do this:
         f = open('missing.txt')
         process(f)
 
-It will almost always work -- but it almost will drive you crazy.
+It will almost always work -- but the *almost* will drive you crazy.
 
 It is "possible" that the file got deleted by another process in the precise moment between checking for it and opening it. Rare, but possible. But catching the exception will always work.
 
