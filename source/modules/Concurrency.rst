@@ -8,7 +8,7 @@ Concurrent Programming
 What does it mean to do something "Concurrently" ? It means multiple things
 are happening at the same time. But what are those "things"?
 
- - Parallelism is about the processor(s) things at the same time -- true parallelism requires multiple processors (or cores).
+ - Parallelism is about processing multiple things at the same time -- true parallelism requires multiple processors (or cores).
  - Concurrency is about handling multiple things at the same time -- which may or may not be actually running in the processor at the same time (like network requests for instance).
  - Parallelism needs concurrency, but concurrency need not be in parallel.
 
@@ -62,22 +62,19 @@ Motivations for parallel execution
 ----------------------------------
 
 -  Performance
-
    -  Limited by "Amdahl's Law"
       http://en.wikipedia.org/wiki/Amdahl%27s_law
 
    -  CPUs aren't getting much faster
 
 -  Event handling
-
    - If a system handles asynchronous events, a separate thread of
      execution could handle those events and let other threads do other
      work
 
    - Examples:
       -  Network applications
-
-     -  User interfaces
+      -  User interfaces
 
 Parallel programming can be hard!
 
@@ -127,7 +124,7 @@ Concurrency in the standard library:
 
  - ``concurrent.futures``: https://www.blog.pythonlibrary.org/2016/08/03/python-3-concurrency-the-concurrent-futures-module/ This has mostly been superseded by the ``asyncio`` package.
 
-  - ``asyncio``: an asynchronous event loop, designed primarily for IO (networked) applications.
+- ``asyncio``: an asynchronous event loop, designed primarily for IO (networked) applications.
 
 
 Concurrency Outside the Standard Library
@@ -155,7 +152,7 @@ Threads versus processes in Python
 Threads are lightweight processes_, run in the address space of an OS
 process, true OS level threads.
 
-Therefor, a component of a process.
+Therefore, a component of a process.
 
 .. _processes: https://en.wikipedia.org/wiki/Light-weight_process
 
@@ -278,7 +275,7 @@ http://pyvideo.org/pycon-us-2010/pycon-2010--understanding-the-python-gil---82.h
 
 **NOTE:** The GIL *seems* like such an obvious limitation that you've got to wonder why it's there. And there have been multiple efforts to remove it. But it turns out that Python's design makes that very hard (impossible?) without severely reducing performance on single threaded programs.
 
-The current "Best effort is Larry Hastings' `"gilectomy <https://speakerdeck.com/pycon2017/larry-hastings-the-gilectomy-hows-it-going>`_
+The current "Best" effort is Larry Hastings' `gilectomy <https://speakerdeck.com/pycon2017/larry-hastings-the-gilectomy-hows-it-going>`_
 
 But that may be stalled out at this point, too. No one should count on it going away in cPython.
 
@@ -308,7 +305,7 @@ Multiprocessing is suitable for computationally intensive work.
 
 Works best for "large" problems with not much data to pass back and forth, as that's what's expensive.
 
-Note that there are ways to share memory between processes, if you have a lot of read-only data that needs to be used. (see `Memory Maps <https://docs.python.org/3/library/mmap.html>`)
+Note that there are ways to share memory between processes, if you have a lot of read-only data that needs to be used. (see `Memory Maps <https://docs.python.org/3/library/mmap.html>`_)
 
 
 The mechanics: how do you use threads and/or processes
@@ -331,7 +328,7 @@ We already talked about shared data, this can lead to a "race condition".
 
  - May produce slightly different results every run
  - May just flake out mysteriously every once in a while
- - May run finie when testing, but fail when run on:
+ - May run fine when testing, but fail when run on:
    - a slower system
    - a heavily loaded system
    - a larger dataset
@@ -351,7 +348,7 @@ Mutex locks (``threading.Lock``)
 --------------------------------
 
  - Probably most common
- - Only one thread can modify shared data a any given time
+ - Only one thread can modify shared data at any given time
  - Thread determines when unlocked
  - Must put lock/unlock around critical code in ALL threads
  - Difficult to manage
@@ -422,7 +419,7 @@ Common use: producer/consumer patterns
 
     Producer thread:
     for item in produce_items():
-        data_q.put(items
+        data_q.put(item)
 
     Consumer thread:
     while True:
@@ -447,7 +444,7 @@ Run a function at some time in the future:
 
     def called_once():
         """
-        this function is designed to be be called once in the future
+        this function is designed to be called once in the future
         """
         print("I just got called! It's now: {}".format(time.asctime()))
 
@@ -467,7 +464,7 @@ A "race condition" is when the code expects things to happen in a certain order.
 
 But with threading, multiple threads can touch the same data, and they may not do it in the order the code expects.
 
-trival example in:
+trivial example in:
 
 ``Examples/condensed_concurrenc``
 

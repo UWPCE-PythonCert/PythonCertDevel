@@ -77,7 +77,7 @@ Encoding
 
 -  The default encoding in Python 2 is ASCII, in Python 3 it is UTF-8.
    UTF-8 has become ubiquitous enough that you probably haven't noticed.
-   But do check your editor at some point -- or if something wierd happens.
+   But do check your editor at some point -- or if something weird happens.
 
 -  If you insert a non encodable character in a string literal, the
    interpreter will throw a SyntaxError when it reaches it.
