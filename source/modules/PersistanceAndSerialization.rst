@@ -586,7 +586,7 @@ Execute SQL with the cursor:
     c.close()
 
 
-``SELECT``  creates an cursor that can be iterated:
+``SELECT``  creates a cursor that can be iterated:
 
 .. code-block:: python
 

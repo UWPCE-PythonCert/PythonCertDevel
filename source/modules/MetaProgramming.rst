@@ -108,7 +108,7 @@ https://docs.python.org/3.6/library/functions.html#vars
 
 An object's ``__dict__`` special attribute is used as the namesapce of an updateable object -- it's what you might expect, an actual dictionary used to hold the names in the namespace.
 
-For the most part, ``vars()`` will return the ``__dict__`` of an object. It's kind of like ``len()`` and the ``__len__`` attribute.  But it's a bit better to use ``vars()`` to access an objects namespace -- it will work in more places.
+For the most part, ``vars()`` will return the ``__dict__`` of an object. It's kind of like ``len()`` and the ``__len__`` attribute.  But it's a bit better to use ``vars()`` to access an object's namespace -- it will work in more places.
 
 ``dir()``
 ---------
@@ -381,7 +381,7 @@ The signature is: ::
 
 so you need to pass in three things to make a class object.
 
-``name``:  the name of the class -- this what comes after the ``class`` keyword in the usual way...
+``name``:  the name of the class -- this is what comes after the ``class`` keyword in the usual way...
 
 ``bases``: a tuple of base classes -- this is the same as passing them when contructing the class.
 
@@ -413,7 +413,7 @@ or
 Adding methods to a class built with ``type()``
 -----------------------------------------------
 
-remember that functions are objects, so methods are simply attributes of a class that happen to be functions. So to add a method to a class crated with ``type()``, just define a function with the correct signature and add it to the attr dictionary:
+remember that functions are objects, so methods are simply attributes of a class that happen to be functions. So to add a method to a class created with ``type()``, just define a function with the correct signature and add it to the attr dictionary:
 
 .. code-block:: python
 
@@ -506,7 +506,7 @@ They can be useful when creating an API or framework.
 
 Whenever you need to manage object creation for one or more classes.
 
-Exampoles may help, so take a look at:
+Examples may help, so take a look at:
 :download:`singleton.py </examples/metaprogramming/singleton.py>`
 
 Or consider the Django ORM:
@@ -582,7 +582,7 @@ Most of the time, that's all you need -- you want the instance created in the us
 
 The arguments (arg1, arg2) are what's passed in when calling the class.
 
-It needs to return a class instance -- usually by directly calling the superclass ``__new__`` (which returns an new instance).
+It needs to return a class instance -- usually by directly calling the superclass ``__new__`` (which returns a new instance).
 
 If there are no superclasses, you can call ``object.__new__`` (or ``super().__new__``)
 
@@ -631,11 +631,11 @@ Remember that metaclasses are used to create new class objects (instances of typ
            print('Creating class', name)
            return super(CoolMeta, meta).__new__(meta, name, bases, dct)
        def __init__(cls, name, bases, dct):
-     print('Initializing class', name)
-     super(CoolMeta, cls).__init__(name, bases, dct)
+           print('Initializing class', name)
+           super(CoolMeta, cls).__init__(name, bases, dct)
        def __call__(cls, *args, **kw):
            print('Meta has been called')
-     return type(cls, *args, **kw)
+           return type(cls, *args, **kw)
 
    class CoolClass(metaclass=CoolMeta):
        def __init__(self):
@@ -764,7 +764,7 @@ are a clearer solution to some problems?
 As an example, in Python 3.7 (which is in beta release as of this writing), there is a new feature in the standard library: ``Data Classes``, introduced in
 `PEP 557 <https://www.python.org/dev/peps/pep-0557/>`_
 
-They are a quick way to make a simple class that's prime purpose is to store a set of fields -- kind of like a database record. What the new tool provides as auto-generation of all the boilerplate code for the ``__init__``, etc. They could have been implemented with a metaclass, but it was decided to use a class decorator instead. From the PEP:
+They are a quick way to make a simple class whose prime purpose is to store a set of fields -- kind of like a database record. What the new tool provides is auto-generation of all the boilerplate code for the ``__init__``, etc. They could have been implemented with a metaclass, but it was decided to use a class decorator instead. From the PEP:
 
   "No base classes or metaclasses are used by Data Classes. Users of these classes are free to use inheritance and metaclasses without any interference from Data Classes. The decorated classes are truly "normal" Python classes. The Data Class decorator should not interfere with any usage of the class."
 
@@ -851,7 +851,7 @@ Decorator json_save
 
 The second solution uses a decorator: ``json_save_dec.py``
 
-As the in the metaclass case, the actual decorator is pretty simple.
+As in the metaclass case, the actual decorator is pretty simple.
 
 And it can use much of the code from the metaclass solution -- since not much really had anything specific to metaclasses.
 

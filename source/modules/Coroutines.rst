@@ -29,9 +29,9 @@ Hopefully this will make a bit more sense after we've experimented a bit.
 Coroutines By Themselves
 ========================
 
-Coroutines are really only useful when controlled by a event loop.  And for teh most part, you are going to use an event loop provided by an async framework, like the ``asyncio`` package.
+Coroutines are really only useful when controlled by an event loop.  And for the most part, you are going to use an event loop provided by an async framework, like the ``asyncio`` package.
 
-But it can be instructive to know about about what is going on directly with coroutines, so we'll experiment a bit here:
+But it can be instructive to know about what is going on directly with coroutines, so we'll experiment a bit here:
 
 We can make a coroutine with the ``async`` keyword:
 
@@ -47,11 +47,11 @@ This, of course is a coroutine that does nothing really, but print a message. Bu
     In [28]: corout()
     Out[28]: <coroutine object corout at 0x1063ef6d0>
 
-Hmm -- nothing. The print statement didn't happen. But what we got back is a "coroutine object". So calling a coroutine function doesn't run teh code in the function, but rather creates a coroutine object and returns that. In fact, you can make any number of coroutine objects with the same "async def" function.  Why is that?
+Hmm -- nothing. The print statement didn't happen. But what we got back is a "coroutine object". So calling a coroutine function doesn't run the code in the function, but rather creates a coroutine object and returns that. In fact, you can make any number of coroutine objects with the same "async def" function.  Why is that?
 
 Recall from the definition of coroutines: "... that can hold state". So you want to be able to create multiple instances of a coroutine, so each one can hold diffreent state.
 
-So how do we actually run the code in the coroutine instance? First, we need to save it in a variable so we can refer to it, and then we can call it's ``send`` method.
+So how do we actually run the code in the coroutine instance? First, we need to save it in a variable so we can refer to it, and then we can call its ``send`` method.
 
 .. code-block:: ipython
 
@@ -95,9 +95,9 @@ And indeed, they have a lot on common -- in fact, before Python3.5, when the ``a
 
 But if a coroutine raises ``StopIteration`` right away, what's the point? Well, recall that the point of a coroutine (and asnyc in general), is to be able to return control to the system, while you wait for something else to happen. And thus the "await" keyword. So a coroutine isn't useful unless it uses ``await``
 
-``await an_awaitable`` suspends the coroutine until the something is done, then returns the "awaitable"'s result.
+``await an_awaitable`` suspends the coroutine until something is done, then returns the "awaitable"'s result.
 
-hmm -- we have a trick here -- we need a "awaitable" object -- how do we get one of those? Well, a coroutine is awaitable, so let's make the simplest one of those:
+hmm -- we have a trick here -- we need an "awaitable" object -- how do we get one of those? Well, a coroutine is awaitable, so let's make the simplest one of those:
 
 
 

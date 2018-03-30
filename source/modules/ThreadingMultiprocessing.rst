@@ -20,22 +20,19 @@ Motivations for parallel execution
 ----------------------------------
 
 -  Performance
-
    -  Limited by "Amdahl's Law"
       http://en.wikipedia.org/wiki/Amdahl%27s_law
 
    -  CPUs aren't getting much faster
 
 -  Event handling
-
    - If a system handles asynchronous events, a separate thread of
      execution could handle those events and let other threads do other
      work
 
    - Examples:
       -  Network applications
-
-     -  User interfaces
+      -  User interfaces
 
 Parallel programming can be hard!
 
@@ -144,7 +141,7 @@ Starting threads doesn't take much:
 Subclassing Thread
 ------------------
 
-You can adding threading capability to your own classes
+You can add threading capability to your own classes
 
 Subclass Thread and implement the run method
 
@@ -265,7 +262,7 @@ Mutex locks (``threading.Lock``)
 --------------------------------
 
  - Probably most common
- - Only one thread can modify shared data a any given time
+ - Only one thread can modify shared data at any given time
  - Thread determines when unlocked
  - Must put lock/unlock around critical code in ALL threads
  - Difficult to manage
