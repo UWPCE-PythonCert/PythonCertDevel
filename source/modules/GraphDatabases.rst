@@ -164,7 +164,7 @@ We are going to play with the code to get a feel for neo4j.
 Other interfaces for neo4j
 ==========================
 
-neo4j-client is the default Pyhton interface developed by the neo4j team. There are other options:
+neo4j-client is the default Python interface developed by the neo4j team. There are other options:
 
 neomodel
 --------
