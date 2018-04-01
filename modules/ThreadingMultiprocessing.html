@@ -36,7 +36,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="up" title="Modules" href="index.html"/>
+        <link rel="up" title="Topic Notes" href="index.html"/>
         <link rel="next" title="Notes on Coroutines" href="Coroutines.html"/>
         <link rel="prev" title="Concurrent Programming" href="Concurrency.html"/> 
 
@@ -92,7 +92,7 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Topic Notes</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="index.html#py210-introduction-to-python">Py210: Introduction to Python</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
@@ -116,6 +116,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Coroutines.html">Notes on Coroutines</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Profiling.html">Performance and Profiling</a></li>
 </ul>
 </li>
 </ul>
@@ -167,7 +168,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Modules</a> &raquo;</li>
+          <li><a href="index.html">Topic Notes</a> &raquo;</li>
         
       <li>Threading and multiprocessing</li>
     
@@ -201,30 +202,22 @@
 </ul>
 <div class="section" id="motivations-for-parallel-execution">
 <h3>Motivations for parallel execution<a class="headerlink" href="#motivations-for-parallel-execution" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p class="first">Performance</p>
 <ul class="simple">
-<li>Limited by “Amdahl’s Law”
-<a class="reference external" href="http://en.wikipedia.org/wiki/Amdahl%27s_law">http://en.wikipedia.org/wiki/Amdahl%27s_law</a></li>
+<li>Performance
+-  Limited by “Amdahl’s Law” – <a class="reference external" href="http://en.wikipedia.org/wiki/Amdahl%27s_law">http://en.wikipedia.org/wiki/Amdahl%27s_law</a><ul>
 <li>CPUs aren’t getting much faster</li>
 </ul>
 </li>
-<li><p class="first">Event handling</p>
-<ul>
-<li><p class="first">If a system handles asynchronous events, a separate thread of
-execution could handle those events and let other threads do other
-work</p>
-</li>
+<li>Event handling
+- If a system handles asynchronous events, a separate thread of execution could handle those events and let other threads do other work<ul>
 <li><dl class="first docutils">
 <dt>Examples:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>Network applications</li>
+<li>User interfaces</li>
 </ul>
 </dd>
 </dl>
-<ul class="simple">
-<li>User interfaces</li>
-</ul>
 </li>
 </ul>
 </li>
@@ -316,7 +309,7 @@ things like garbage collection, network keepalives, ..</li>
 </div>
 <div class="section" id="subclassing-thread">
 <h3>Subclassing Thread<a class="headerlink" href="#subclassing-thread" title="Permalink to this headline">¶</a></h3>
-<p>You can adding threading capability to your own classes</p>
+<p>You can add threading capability to your own classes</p>
 <p>Subclass Thread and implement the run method</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span>
 
@@ -483,7 +476,7 @@ f()</p>
 <blockquote>
 <div><ul class="simple">
 <li>Probably most common</li>
-<li>Only one thread can modify shared data a any given time</li>
+<li>Only one thread can modify shared data at any given time</li>
 <li>Thread determines when unlocked</li>
 <li>Must put lock/unlock around critical code in ALL threads</li>
 <li>Difficult to manage</li>

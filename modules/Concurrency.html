@@ -197,7 +197,7 @@
 are happening at the same time. But what are those “things”?</p>
 <blockquote>
 <div><ul class="simple">
-<li>Parallelism is about the processor(s) things at the same time – true parallelism requires multiple processors (or cores).</li>
+<li>Parallelism is about processing multiple things at the same time – true parallelism requires multiple processors (or cores).</li>
 <li>Concurrency is about handling multiple things at the same time – which may or may not be actually running in the processor at the same time (like network requests for instance).</li>
 <li>Parallelism needs concurrency, but concurrency need not be in parallel.</li>
 </ul>
@@ -236,30 +236,22 @@ are happening at the same time. But what are those “things”?</p>
 </div>
 <div class="section" id="motivations-for-parallel-execution">
 <h3>Motivations for parallel execution<a class="headerlink" href="#motivations-for-parallel-execution" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p class="first">Performance</p>
 <ul class="simple">
-<li>Limited by “Amdahl’s Law”
-<a class="reference external" href="http://en.wikipedia.org/wiki/Amdahl%27s_law">http://en.wikipedia.org/wiki/Amdahl%27s_law</a></li>
+<li>Performance
+-  Limited by “Amdahl’s Law”: <a class="reference external" href="http://en.wikipedia.org/wiki/Amdahl%27s_law">http://en.wikipedia.org/wiki/Amdahl%27s_law</a><ul>
 <li>CPUs aren’t getting much faster</li>
 </ul>
 </li>
-<li><p class="first">Event handling</p>
-<ul>
-<li><p class="first">If a system handles asynchronous events, a separate thread of
-execution could handle those events and let other threads do other
-work</p>
-</li>
+<li>Event handling
+- If a system handles asynchronous events, a separate thread of execution could handle those events and let other threads do other work<ul>
 <li><dl class="first docutils">
 <dt>Examples:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>Network applications</li>
+<li>User interfaces</li>
 </ul>
 </dd>
 </dl>
-<ul class="simple">
-<li>User interfaces</li>
-</ul>
 </li>
 </ul>
 </li>
@@ -306,12 +298,10 @@ environment, so make it tunable</li>
 <li><code class="docutils literal"><span class="pre">subprocess</span></code>: allows you to spawn new processes (entirely different programs), connect to their input/output/error pipes, and obtain their return codes.  Parallel, hands to OS (usually running command line programs)</li>
 <li><code class="docutils literal"><span class="pre">concurrent.futures</span></code>: <a class="reference external" href="https://www.blog.pythonlibrary.org/2016/08/03/python-3-concurrency-the-concurrent-futures-module/">https://www.blog.pythonlibrary.org/2016/08/03/python-3-concurrency-the-concurrent-futures-module/</a> This has mostly been superseded by the <code class="docutils literal"><span class="pre">asyncio</span></code> package.</li>
 </ul>
-<blockquote>
-<div><ul class="simple">
+</div></blockquote>
+<ul class="simple">
 <li><code class="docutils literal"><span class="pre">asyncio</span></code>: an asynchronous event loop, designed primarily for IO (networked) applications.</li>
 </ul>
-</div></blockquote>
-</div></blockquote>
 </div>
 <div class="section" id="concurrency-outside-the-standard-library">
 <h3>Concurrency Outside the Standard Library<a class="headerlink" href="#concurrency-outside-the-standard-library" title="Permalink to this headline">¶</a></h3>
@@ -340,7 +330,7 @@ environment, so make it tunable</li>
 <h3>Threads versus processes in Python<a class="headerlink" href="#threads-versus-processes-in-python" title="Permalink to this headline">¶</a></h3>
 <p>Threads are lightweight <a class="reference external" href="https://en.wikipedia.org/wiki/Light-weight_process">processes</a>, run in the address space of an OS
 process, true OS level threads.</p>
-<p>Therefor, a component of a process.</p>
+<p>Therefore, a component of a process.</p>
 <p>This allows multiple threads access to data in the same scope.</p>
 <p>Threads can not gain the performance advantage of multiple processors
 due to the Global Interpreter Lock (GIL)</p>
@@ -429,7 +419,7 @@ have no GIL</p>
 <li><a class="reference external" href="http://hg.python.org/cpython/file/05e8dde3229c/Python/pystate.c#l761">http://hg.python.org/cpython/file/05e8dde3229c/Python/pystate.c#l761</a></li>
 </ul>
 <p><strong>NOTE:</strong> The GIL <em>seems</em> like such an obvious limitation that you’ve got to wonder why it’s there. And there have been multiple efforts to remove it. But it turns out that Python’s design makes that very hard (impossible?) without severely reducing performance on single threaded programs.</p>
-<p>The current “Best effort is Larry Hastings’ <a class="reference external" href="https://speakerdeck.com/pycon2017/larry-hastings-the-gilectomy-hows-it-going">“gilectomy</a></p>
+<p>The current “Best” effort is Larry Hastings’ <a class="reference external" href="https://speakerdeck.com/pycon2017/larry-hastings-the-gilectomy-hows-it-going">gilectomy</a></p>
 <p>But that may be stalled out at this point, too. No one should count on it going away in cPython.</p>
 <p>But: <strong>Personal Opinion:</strong> Python is not really (directly) suited to the kind of computationally intensive work that the GIL really hampers. And extension modules (i.e. numpy) can release the GIL!</p>
 </div>
@@ -449,7 +439,7 @@ have no GIL</p>
 <div><strong>no GIL</strong></div></blockquote>
 <p>Multiprocessing is suitable for computationally intensive work.</p>
 <p>Works best for “large” problems with not much data to pass back and forth, as that’s what’s expensive.</p>
-<p>Note that there are ways to share memory between processes, if you have a lot of read-only data that needs to be used. (see <cite>Memory Maps &lt;https://docs.python.org/3/library/mmap.html&gt;</cite>)</p>
+<p>Note that there are ways to share memory between processes, if you have a lot of read-only data that needs to be used. (see <a class="reference external" href="https://docs.python.org/3/library/mmap.html">Memory Maps</a>)</p>
 </div>
 </div>
 <div class="section" id="the-mechanics-how-do-you-use-threads-and-or-processes">
@@ -471,7 +461,7 @@ have no GIL</p>
 <div><ul class="simple">
 <li>May produce slightly different results every run</li>
 <li>May just flake out mysteriously every once in a while</li>
-<li>May run finie when testing, but fail when run on:
+<li>May run fine when testing, but fail when run on:
 - a slower system
 - a heavily loaded system
 - a larger dataset</li>
@@ -494,7 +484,7 @@ have no GIL</p>
 <blockquote>
 <div><ul class="simple">
 <li>Probably most common</li>
-<li>Only one thread can modify shared data a any given time</li>
+<li>Only one thread can modify shared data at any given time</li>
 <li>Thread determines when unlocked</li>
 <li>Must put lock/unlock around critical code in ALL threads</li>
 <li>Difficult to manage</li>
@@ -574,7 +564,7 @@ have no GIL</p>
 
 <span class="n">Producer</span> <span class="n">thread</span><span class="p">:</span>
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">produce_items</span><span class="p">():</span>
-    <span class="n">data_q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">items</span>
+    <span class="n">data_q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 
 <span class="n">Consumer</span> <span class="n">thread</span><span class="p">:</span>
 <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -599,7 +589,7 @@ have no GIL</p>
 
 <span class="k">def</span> <span class="nf">called_once</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    this function is designed to be be called once in the future</span>
+<span class="sd">    this function is designed to be called once in the future</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I just got called! It&#39;s now: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">()))</span>
 
@@ -617,7 +607,7 @@ have no GIL</p>
 <h3>Race condition:<a class="headerlink" href="#race-condition" title="Permalink to this headline">¶</a></h3>
 <p>A “race condition” is when the code expects things to happen in a certain order.</p>
 <p>But with threading, multiple threads can touch the same data, and they may not do it in the order the code expects.</p>
-<p>trival example in:</p>
+<p>trivial example in:</p>
 <p><code class="docutils literal"><span class="pre">Examples/condensed_concurrenc</span></code></p>
 <p>That also serves as an example of creating and using threads.</p>
 </div>

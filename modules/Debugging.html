@@ -382,7 +382,7 @@ TypeError: &#39;method&#39; object is not subscriptable
 <li>Trace will show the line number and file of exception/calling functions.</li>
 <li>More than likely the error is in your code, not established packages
 - look at lines in your code mentioned in the stacktrace first
-- Sometimes that error was triggered by something else, and you need to look higher. (probably more than one file in t he stacktrace is your code)</li>
+- Sometimes that error was triggered by something else, and you need to look higher. (probably more than one file in the stacktrace is your code)</li>
 </ul>
 <p>If that fails you…</p>
 <ul class="simple">
@@ -546,7 +546,7 @@ to the first letter.</p>
 </div>
 <p>Can use up, down, where and list to evalutate where you are, and use that to
 set a new breakpoint in code coming up. Useful for getting out of rabbit holes.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pdb</span><span class="o">&gt;</span> <span class="k">break</span> <span class="n">api</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">21</span> <span class="nb">set</span> <span class="n">a</span> <span class="n">breakpoint</span> <span class="n">file</span><span class="p">:</span><span class="n">line</span> <span class="c1">#</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pdb</span><span class="o">&gt;</span> <span class="k">break</span> <span class="n">api</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">21</span> <span class="c1"># set a breakpoint file:line #</span>
 <span class="n">pdb</span><span class="o">&gt;</span> <span class="k">break</span>  <span class="c1"># list breakpoints</span>
 <span class="n">pdb</span><span class="o">&gt;</span> <span class="n">clear</span> <span class="mi">1</span>  <span class="c1"># get rid of first breakpoint</span>
 <span class="n">pdb</span><span class="o">&gt;</span> <span class="k">break</span> <span class="mi">35</span>  <span class="c1"># set a breakpoint in current file at line 35</span>
@@ -572,7 +572,7 @@ set a new breakpoint in code coming up. Useful for getting out of rabbit holes.<
         <span class="n">stop</span> <span class="n">only</span> <span class="k">if</span> <span class="n">j</span><span class="o">&gt;</span><span class="mi">3</span>
 </pre></div>
 </div>
-<p>Condition can be used to add a conditional to and existing breakpoint</p>
+<p>Condition can be used to add a conditional to an existing breakpoint</p>
 <p class="rubric" id="invoking-pdb-with-nose">Invoking pdb with nose</p>
 <p>On error condition, drop to pdb</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nosetests</span> <span class="o">--</span><span class="n">pdb</span>

@@ -35,7 +35,7 @@ My take:
 
 Async is the good approach to support many connections that are spending a lot of time waiting, and doing short tasks when they do have something to do.
 
-**NOTE:** the backbone of the web is HTTP -- which is a "stateless" protocol. That is, each request is independent (state is "faked" with sessions via cookies). So "classic" web apps are NOT keeping many connections alive, there may be many clients at once, but each request is still independent. And often there is substantial work do be done with each one. A multi-threaded or multi-processes web server works fine for this.
+**NOTE:** the backbone of the web is HTTP -- which is a "stateless" protocol. That is, each request is independent (state is "faked" with sessions via cookies). So "classic" web apps are NOT keeping many connections alive, there may be many clients at once, but each request is still independent. And often there is substantial work to be done with each one. A multi-threaded or multi-processes web server works fine for this.
 
 Single Page Apps and WebSockets
 -------------------------------
@@ -89,7 +89,7 @@ But what if:
 - That function will take a while?
 - And it's mostly just waiting for the network or database, or....
 
-Maybe your application needs to be responsive to user input, or you want it to do other work while that function is doing it's thing. Especially if it's mostly jsut waiting for a response to return. How do you deal with that?
+Maybe your application needs to be responsive to user input, or you want it to do other work while that function is doing its thing. Especially if it's mostly just waiting for a response to return. How do you deal with that?
 
 Event Loops
 -----------
@@ -148,7 +148,7 @@ Contrast with the "normal" python request library:
 
 The difference here is that the program will wait for ``requests.get()`` call to return, and that won't happen until the request is complete. If you are making a lot of requests and they take a while, that is a lot of time sitting around waiting for the server when your computer isn't doing anything.
 
-Note that javascript began as a way to automate stuff on web pages -- it lets you attach actions to various events in the browser: clicking button or what have you. The "callback" approach is natural for this. And once that structure was there, it made sense to keep it when making requests directly from code, that is doing: *Asychronous Javascript and XML* -- i.e. AJAX. That that's why callback-based async is "built in" to Javascript.
+Note that javascript began as a way to automate stuff on web pages -- it lets you attach actions to various events in the browser: clicking button or what have you. The "callback" approach is natural for this. And once that structure was there, it made sense to keep it when making requests directly from code, that is doing: *Asychronous Javascript and XML* -- i.e. AJAX. That's why callback-based async is "built in" to Javascript.
 
 Async programming usually (always?) involves an event loop to schedule operations.
 
@@ -215,7 +215,7 @@ It's kind of like yield (from generators), but instead it returns the next value
 
 ``await`` suspends the execution (letting other code run) until the object called returns.
 
-When you call await on an object, it needs to be an "awaitable" object: an object that defines an ``__await__()`` method which returns either an iterator which is not a coroutine itself, or a coroutines -- which are considered awaitable objects.
+When you call await on an object, it needs to be an "awaitable" object: an object that defines an ``__await__()`` method which returns either an iterator which is not a coroutine itself, or a coroutine -- which are considered awaitable objects.
 
 Scheduling it to run
 ....................
@@ -232,7 +232,7 @@ or
 Think of ``async/await`` as an API for asynchronous programming
 -------------------------------------------------------------------
 
-``async/await`` is really an API for asynchronous programming: People shouldn't think that ``async/await`` as synonymous with asyncio, but instead think that asyncio is a framework that can utilize the ``async/await`` API for asynchronous programming. IN fact, this view is supported by the fact that there are other async frameworks that use async/await -- like the Trio package mentioned above.
+``async/await`` is really an API for asynchronous programming: People shouldn't think that ``async/await`` as synonymous with asyncio, but instead think that asyncio is a framework that can utilize the ``async/await`` API for asynchronous programming. In fact, this view is supported by the fact that there are other async frameworks that use async/await -- like the Trio package mentioned above.
 
 
 Future objects
@@ -317,7 +317,7 @@ Let's make that a tiny bit more interesting with multiple events:
 
 Still not very interesting -- technically async, but with only one coroutine, not much to it.
 
-**NOTE:** The event loop requires some setup, and it' snot very happy when you stop and try to restart it. So you may have issues if you run this kind of code firm iPython -- each time you run it, you're still in the same Python process, so the event loop is whatever state it was left by the previous code. If you get add errors, simply restart iPython, or just run the scripts by themselves:
+**NOTE:** The event loop requires some setup, and it's not very happy when you stop and try to restart it. So you may have issues if you run this kind of code from iPython -- each time you run it, you're still in the same Python process, so the event loop is whatever state it was left by the previous code. If you get any errors, simply restart iPython, or just run the scripts by themselves:
 
 .. code-block:: bash
 
@@ -609,7 +609,7 @@ The Asyncio Cheat Sheet: This is a pretty helpful, how to do it guide.
 
 http://cheat.readthedocs.io/en/latest/python/asyncio.html
 
-David Beazley: Concurrency from the ground Up.
+David Beazley: Concurrency from the ground up.
 
 He writes a full async client server from scratch before your eyes --
 this guy can write code faster than most of us can read it...
@@ -622,7 +622,7 @@ https://youtu.be/ZzfHjytDceU
 
 https://www.youtube.com/watch?v=lYe8W04ERnY
 
-And David Beazley's "Curio" package -- a async package designed primarily for learning, rather than production use.
+And David Beazley's "Curio" package -- an async package designed primarily for learning, rather than production use.
 
 
 

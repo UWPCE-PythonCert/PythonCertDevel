@@ -106,12 +106,12 @@ If the resource in questions has a ``.close()`` method, then you can simply use 
 But what if the thing doesn't have a ``close()`` method, or you're creating
 the thing and it shouldn't have a close() method?
 
-(full confession: urlib.request was not a context manager in py2 -- but it is in py3 -- but th issue still comes up with third-party packages ans your own code!)
+(full confession: urlib.request was not a context manager in py2 -- but it is in py3 -- but the issue still comes up with third-party packages and your own code!)
 
 Do It Yourself
 --------------
 
-If you do need to support resource management of some sort, you can context manager of your own withe the context manager protocol.
+If you do need to support resource management of some sort, you can create a context manager of your own with the context manager protocol.
 
 The interface is simple.  It must be a class that implements two
 more of the nifty python *special methods*
@@ -193,7 +193,7 @@ What if we try with ``False``?
 
     RuntimeError: this is the error message
 
-So this time, the context manager did not catch the error -- so it was raised the in the usual way.
+So this time, the context manager did not catch the error -- so it was raised in the usual way.
 
 The parameters to ``__exit__``
 ------------------------------
@@ -210,7 +210,7 @@ So the ``__exit__`` method takes all the information about the exception as para
 
 ``exc_tb``: the Exception Traceback object
 
-The type lets you check if this is a type you know how to handle::
+The type lets you check if this is a type you know how to handle:
 
 .. code-block:: python
 
@@ -218,7 +218,7 @@ The type lets you check if this is a type you know how to handle::
 
 The value is the exception object itself.
 
-And the traceback is a full traceback object. Traceback objects hold all the information about the context in which and error occurred. It's pretty advanced stuff, so you can mostly ignore it, but if you want to know more, there are tools for working with them in the ``traceback`` module.
+And the traceback is a full traceback object. Traceback objects hold all the information about the context in which an error occurred. It's pretty advanced stuff, so you can mostly ignore it, but if you want to know more, there are tools for working with them in the ``traceback`` module.
 
 https://docs.python.org/3/library/traceback.html
 
@@ -270,8 +270,8 @@ Or, we can allow them to propagate:
 .. code-block:: ipython
 
     In [51]: with context(False):
-       ....: print("in the context")
-       ....: raise RuntimeError("error raised")
+       ....:    print("in the context")
+       ....:    raise RuntimeError("error raised")
     __init__ code here
     __enter__ code goes here
     in the context
@@ -301,7 +301,7 @@ here is a generator function that gives yields all the files in a directory:
         """
         iterate over all the files that match the pattern
 
-        pattern us a "glob" pattern, like: *.py
+        pattern use a "glob" pattern, like: *.py
         """
         for filename in pathlib.Path(dir).glob(pattern):
             with open(filename) as file_obj:

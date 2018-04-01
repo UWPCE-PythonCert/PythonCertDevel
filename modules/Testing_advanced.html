@@ -36,7 +36,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="up" title="Modules" href="index.html"/>
+        <link rel="up" title="Topic Notes" href="index.html"/>
         <link rel="next" title="Logging and the logging module" href="Logging.html"/>
         <link rel="prev" title="Coding Style and Linting" href="Pep8.html"/> 
 
@@ -92,9 +92,9 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#first-class-introduction-to-python">First Class: Introduction to Python</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#second-class-advanced-python">Second Class: Advanced Python</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Topic Notes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#py210-introduction-to-python">Py210: Introduction to Python</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CodeReviews.html">Code Reviews</a></li>
@@ -119,7 +119,11 @@
 <li class="toctree-l3"><a class="reference internal" href="PersistanceAndSerialization.html">Persistence and Serialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NoSQL.html">No SQL Databases</a></li>
 <li class="toctree-l3"><a class="reference internal" href="GraphDatabases.html">Graph Databases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Concurrency.html">Concurrent Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ThreadingMultiprocessing.html">Threading and multiprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Coroutines.html">Notes on Coroutines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Profiling.html">Performance and Profiling</a></li>
 </ul>
 </li>
 </ul>
@@ -171,7 +175,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Modules</a> &raquo;</li>
+          <li><a href="index.html">Topic Notes</a> &raquo;</li>
         
       <li>Testing</li>
     
@@ -232,7 +236,7 @@ coverage.</p>
 <p>100% coverage is an ideal to strive for. But the decision on when and
 what to test should take into account the volatility of the project.</p>
 <p><strong>NOTE</strong> Even if every line of code is run during tests (100% coverage),
-they may not be comprehensive! It is very hard to anticipate every wierd
+they may not be comprehensive! It is very hard to anticipate every weird
 input some code may get.</p>
 </div>
 <div class="section" id="unit-testing-tools">
@@ -263,10 +267,10 @@ input some code may get.</p>
 <div class="section" id="unittest">
 <h3>unittest<a class="headerlink" href="#unittest" title="Permalink to this headline">¶</a></h3>
 <p>The unittest framework comes with the standard library</p>
-<p>Unittest is ported from Java’s jUnit – it is therefor OO-heavy, and
+<p>Unittest is ported from Java’s jUnit – it is therefore OO-heavy, and
 requires a lot of boilerplate code.</p>
 <p>Many projects built custom testing Frameworks on top of it – e.g. Django</p>
-<p>Therefor you will encounter it</p>
+<p>Therefore you will encounter it</p>
 <p>So it’s good to be familiar with it.</p>
 <p>Key missing features:</p>
 <blockquote>
@@ -336,7 +340,7 @@ for validation, here are a few common ones:</p>
     <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p># or from the command line:</p>
+<p>or from the command line:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>python -m unittest test_my_module  <span class="c1"># with or without .py on end</span>
 
 python -m unittest test_my_module.TestClass  <span class="c1"># particular class in a module</span>
@@ -375,10 +379,9 @@ from all unittest.TestCase subclasses, as well as functions whose names
 start with ‘test’.</p>
 <p>So running your tests is as easy as</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ pytest
-
-or
 </pre></div>
 </div>
+<p>or</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ nose2
 </pre></div>
 </div>
@@ -432,9 +435,10 @@ returns <em>something</em> that your tests need:</p>
 The fixture function is automatically run before each test.</p>
 <p>Let’s see this in action:</p>
 <p><a class="reference download internal" href="../_downloads/pytest_fixtures.py" download=""><code class="xref download docutils literal"><span class="pre">pytest_fixtures.py</span></code></a></p>
-<blockquote>
-<div>py.test -s -v pytest_fixtures.py</div></blockquote>
-<p>The <code class="docutils literal"><span class="pre">-s</span></code> tells pytest not to capture stdout – so we can see print statements)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pytest -s -v pytest_fixtures.py
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">-s</span></code> tells pytest not to capture stdout – so we can see print statements.</p>
 <p>The <code class="docutils literal"><span class="pre">-v</span></code> is verbose mode – so we can see a bit more what is going on.</p>
 </div>
 <div class="section" id="teardown">
@@ -443,7 +447,7 @@ The fixture function is automatically run before each test.</p>
 “teardown”</p>
 <p>To accomplish this in pytest, you use “yield”, rather than “return”.</p>
 <p>The teardown code will run after the yield</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@pytest.fixture</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@pytest.fixture</span>
 <span class="k">def</span> <span class="nf">smtp</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">smtp</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">(</span><span class="s2">&quot;smtp.gmail.com&quot;</span><span class="p">)</span>
     <span class="k">yield</span> <span class="n">smtp</span>  <span class="c1"># provide the fixture value</span>
@@ -451,7 +455,7 @@ The fixture function is automatically run before each test.</p>
     <span class="n">smtp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Remember that putting a yield in a function makes is a generator function – which provides a way to halt execution of the function, return a value, and then pick up where it left off. So in this case, you use whatever code you want to generate your object – then after the yield, all those variables will be there, so you can do whatever clean up you need to do.</p>
+<p>Remember that putting a yield in a function makes it a generator function – which provides a way to halt execution of the function, return a value, and then pick up where it left off. So in this case, you use whatever code you want to generate your object – then after the yield, all those variables will be there, so you can do whatever clean up you need to do.</p>
 <p>See the example again for this…</p>
 </div>
 </div>
@@ -669,7 +673,7 @@ problem. There is a nifty library called parameterized, which does solve it
 <p>Lots more examples on their website.</p>
 <div class="section" id="pytest-mark-parametrize">
 <h3><code class="docutils literal"><span class="pre">pytest.mark.parametrize</span></code><a class="headerlink" href="#pytest-mark-parametrize" title="Permalink to this headline">¶</a></h3>
-<p>Pytest does provide a nifty way built in way to do it:</p>
+<p>Pytest does provide a nifty built-in way to do it:</p>
 <p><a class="reference external" href="https://docs.pytest.org/en/latest/parametrize.html#parametrize-basics">https://docs.pytest.org/en/latest/parametrize.html#parametrize-basics</a></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">param_names</span> <span class="o">=</span> <span class="s2">&quot;arg1, arg2, result&quot;</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
@@ -746,13 +750,13 @@ option to run:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ pip install pytest-cov
 
 <span class="c1"># now it can be used</span>
-$ py.test --cov code_module test_module.py
+$ pytest --cov code_module test_module.py
 </pre></div>
 </div>
 <p><a class="reference external" href="https://pypi.python.org/pypi/pytest-cov">https://pypi.python.org/pypi/pytest-cov</a></p>
 <p>There are a number of ways to invoke it and get different reports:</p>
 <p>To get a nifty html report:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>pytest --cov code_module --cov-report html test_module.py
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pytest --cov code_module --cov-report html test_module.py
 </pre></div>
 </div>
 </div>
@@ -793,7 +797,7 @@ human in a machine testable way</p>
 </div>
 <div class="section" id="test-driven-development-tdd">
 <h2>Test Driven Development (TDD)<a class="headerlink" href="#test-driven-development-tdd" title="Permalink to this headline">¶</a></h2>
-<p>In TDD, the tests are written the meet the requirements before the code
+<p>In TDD, the tests are written to meet the requirements before the code
 exists.</p>
 <p>Once the collection of tests passes, the requirement is considered met.</p>
 <p>We’ve been trying to get you to do this from the beginning of this class :-)</p>
@@ -821,7 +825,7 @@ class methods. Are they behaving how you expect?</li>
 <li>Fix any failures in the code</li>
 <li>Add doctests to calculator_functions.py</li>
 </ul>
-<p>YOu can find all that in:</p>
+<p>You can find all that in:</p>
 <p><code class="docutils literal"><span class="pre">examples/calculator</span></code></p>
 <p>In the class repo.</p>
 </div>
@@ -889,10 +893,11 @@ undone</p>
         <span class="n">mock_method</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span><span class="s2">&quot;Robot&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>There are a number of ways to use <code class="docutils literal"><span class="pre">mock.patch</span></code> – this is a nice discussion of that: <a class="reference external" href="http://treyhunner.com/2014/10/the-many-flavors-of-mock-dot-patch/">The Many Flavors of mock.patch</a></p>
 </div>
 <div class="section" id="mocking-a-builtin">
 <h3>Mocking a builtin<a class="headerlink" href="#mocking-a-builtin" title="Permalink to this headline">¶</a></h3>
-<p>Say you would like to mock input in this function in a file called mock_input:</p>
+<p>Say you would like to mock input in this function in a file called mock_input.py:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_input</span><span class="p">():</span>
     <span class="n">color</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What is your favorite color? &quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">color</span>
@@ -900,7 +905,7 @@ undone</p>
 </div>
 <p>In your test file, you would do this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@mock.patch</span><span class="p">(</span><span class="s1">&#39;builtins.input&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">test_get_more_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_mocked_input</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">test_get_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_mocked_input</span><span class="p">):</span>
     <span class="n">new_mocked_input</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">mock_input</span><span class="o">.</span><span class="n">get_input</span><span class="p">(),</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
 </pre></div>

@@ -36,7 +36,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="up" title="Modules" href="index.html"/>
+        <link rel="up" title="Topic Notes" href="index.html"/>
         <link rel="next" title="Persistence and Serialization" href="PersistanceAndSerialization.html"/>
         <link rel="prev" title="Debugging" href="Debugging.html"/> 
 
@@ -92,7 +92,7 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Topic Notes</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="index.html#py210-introduction-to-python">Py210: Introduction to Python</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
@@ -115,9 +115,11 @@
 <li class="toctree-l3"><a class="reference internal" href="PersistanceAndSerialization.html">Persistence and Serialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NoSQL.html">No SQL Databases</a></li>
 <li class="toctree-l3"><a class="reference internal" href="GraphDatabases.html">Graph Databases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Concurrency.html">Concurrent Programing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Concurrency.html">Concurrent Programming</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ThreadingMultiprocessing.html">Threading and multiprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Coroutines.html">Notes on Coroutines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Profiling.html">Performance and Profiling</a></li>
 </ul>
 </li>
 </ul>
@@ -169,7 +171,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Modules</a> &raquo;</li>
+          <li><a href="index.html">Topic Notes</a> &raquo;</li>
         
       <li>Metaprogramming</li>
     
@@ -264,7 +266,7 @@ namespace used by the object.”</div></blockquote>
 <div class="section" id="dict">
 <h3><code class="docutils literal"><span class="pre">__dict__</span></code><a class="headerlink" href="#dict" title="Permalink to this headline">¶</a></h3>
 <p>An object’s <code class="docutils literal"><span class="pre">__dict__</span></code> special attribute is used as the namesapce of an updateable object – it’s what you might expect, an actual dictionary used to hold the names in the namespace.</p>
-<p>For the most part, <code class="docutils literal"><span class="pre">vars()</span></code> will return the <code class="docutils literal"><span class="pre">__dict__</span></code> of an object. It’s kind of like <code class="docutils literal"><span class="pre">len()</span></code> and the <code class="docutils literal"><span class="pre">__len__</span></code> attribute.  But it’s a bit better to use <code class="docutils literal"><span class="pre">vars()</span></code> to access an objects namespace – it will work in more places.</p>
+<p>For the most part, <code class="docutils literal"><span class="pre">vars()</span></code> will return the <code class="docutils literal"><span class="pre">__dict__</span></code> of an object. It’s kind of like <code class="docutils literal"><span class="pre">len()</span></code> and the <code class="docutils literal"><span class="pre">__len__</span></code> attribute.  But it’s a bit better to use <code class="docutils literal"><span class="pre">vars()</span></code> to access an object’s namespace – it will work in more places.</p>
 </div>
 <div class="section" id="dir">
 <h3><code class="docutils literal"><span class="pre">dir()</span></code><a class="headerlink" href="#dir" title="Permalink to this headline">¶</a></h3>
@@ -470,7 +472,7 @@ namespace used by the object.”</div></blockquote>
 </pre></div>
 </div>
 <p>so you need to pass in three things to make a class object.</p>
-<p><code class="docutils literal"><span class="pre">name</span></code>:  the name of the class – this what comes after the <code class="docutils literal"><span class="pre">class</span></code> keyword in the usual way…</p>
+<p><code class="docutils literal"><span class="pre">name</span></code>:  the name of the class – this is what comes after the <code class="docutils literal"><span class="pre">class</span></code> keyword in the usual way…</p>
 <p><code class="docutils literal"><span class="pre">bases</span></code>: a tuple of base classes – this is the same as passing them when contructing the class.</p>
 <p><code class="docutils literal"><span class="pre">dict</span></code>: this is a dictionary of the class attributes – this will become the <code class="docutils literal"><span class="pre">__class__</span></code> of the class object (after some standard stuff is added)</p>
 </div>
@@ -490,7 +492,7 @@ using type</p>
 </div>
 <div class="section" id="adding-methods-to-a-class-built-with-type">
 <h3>Adding methods to a class built with <code class="docutils literal"><span class="pre">type()</span></code><a class="headerlink" href="#adding-methods-to-a-class-built-with-type" title="Permalink to this headline">¶</a></h3>
-<p>remember that functions are objects, so methods are simply attributes of a class that happen to be functions. So to add a method to a class crated with <code class="docutils literal"><span class="pre">type()</span></code>, just define a function with the correct signature and add it to the attr dictionary:</p>
+<p>remember that functions are objects, so methods are simply attributes of a class that happen to be functions. So to add a method to a class created with <code class="docutils literal"><span class="pre">type()</span></code>, just define a function with the correct signature and add it to the attr dictionary:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;called my_method, x = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 
@@ -558,7 +560,7 @@ same signature as type(): (<code class="docutils literal"><span class="pre">(nam
 <p>What a metaclass does is create a way to create custom classes on the fly.  You can do it directly with the <code class="docutils literal"><span class="pre">type</span></code>, but if you write a metaclass, new classes can be made with that metaclass in the usual way.</p>
 <p>They can be useful when creating an API or framework.</p>
 <p>Whenever you need to manage object creation for one or more classes.</p>
-<p>Exampoles may help, so take a look at:
+<p>Examples may help, so take a look at:
 <a class="reference download internal" href="../_downloads/singleton.py" download=""><code class="xref download docutils literal"><span class="pre">singleton.py</span></code></a></p>
 <p>Or consider the Django ORM:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
@@ -611,7 +613,7 @@ abstracted from the user of the Model class. And the user doesn’t have to know
 </div>
 <p><code class="docutils literal"><span class="pre">cls</span></code> is the class object.</p>
 <p>The arguments (arg1, arg2) are what’s passed in when calling the class.</p>
-<p>It needs to return a class instance – usually by directly calling the superclass <code class="docutils literal"><span class="pre">__new__</span></code> (which returns an new instance).</p>
+<p>It needs to return a class instance – usually by directly calling the superclass <code class="docutils literal"><span class="pre">__new__</span></code> (which returns a new instance).</p>
 <p>If there are no superclasses, you can call <code class="docutils literal"><span class="pre">object.__new__</span></code> (or <code class="docutils literal"><span class="pre">super().__new__</span></code>)</p>
 </div>
 <div class="section" id="when-to-use-new">
@@ -645,11 +647,11 @@ go right.</p>
         <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Creating class&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">CoolMeta</span><span class="p">,</span> <span class="n">meta</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">dct</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">dct</span><span class="p">):</span>
-  <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Initializing class&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-  <span class="nb">super</span><span class="p">(</span><span class="n">CoolMeta</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">dct</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Initializing class&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CoolMeta</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">dct</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
         <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Meta has been called&#39;</span><span class="p">)</span>
-  <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">CoolClass</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">CoolMeta</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -748,7 +750,7 @@ changed version replaces the one in the definition.</p>
 are a clearer solution to some problems?</p>
 <p>As an example, in Python 3.7 (which is in beta release as of this writing), there is a new feature in the standard library: <code class="docutils literal"><span class="pre">Data</span> <span class="pre">Classes</span></code>, introduced in
 <a class="reference external" href="https://www.python.org/dev/peps/pep-0557/">PEP 557</a></p>
-<p>They are a quick way to make a simple class that’s prime purpose is to store a set of fields – kind of like a database record. What the new tool provides as auto-generation of all the boilerplate code for the <code class="docutils literal"><span class="pre">__init__</span></code>, etc. They could have been implemented with a metaclass, but it was decided to use a class decorator instead. From the PEP:</p>
+<p>They are a quick way to make a simple class whose prime purpose is to store a set of fields – kind of like a database record. What the new tool provides is auto-generation of all the boilerplate code for the <code class="docutils literal"><span class="pre">__init__</span></code>, etc. They could have been implemented with a metaclass, but it was decided to use a class decorator instead. From the PEP:</p>
 <blockquote>
 <div>“No base classes or metaclasses are used by Data Classes. Users of these classes are free to use inheritance and metaclasses without any interference from Data Classes. The decorated classes are truly “normal” Python classes. The Data Class decorator should not interfere with any usage of the class.”</div></blockquote>
 <p>A key difference between using a class decorator and a metaclass is that a metaclass is used to create the class – so you can manipulate things before the class is created.</p>
@@ -809,7 +811,7 @@ attributes.</li>
 <div class="section" id="decorator-json-save">
 <h3>Decorator json_save<a class="headerlink" href="#decorator-json-save" title="Permalink to this headline">¶</a></h3>
 <p>The second solution uses a decorator: <code class="docutils literal"><span class="pre">json_save_dec.py</span></code></p>
-<p>As the in the metaclass case, the actual decorator is pretty simple.</p>
+<p>As in the metaclass case, the actual decorator is pretty simple.</p>
 <p>And it can use much of the code from the metaclass solution – since not much really had anything specific to metaclasses.</p>
 <p>Let’s take a look at that, too:</p>
 </div>

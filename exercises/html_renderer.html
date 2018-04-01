@@ -92,7 +92,7 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Topic Notes</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Exercises</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="submitting_to_gitHub.html">Submitting your work to gitHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_pushups.html">Python Pushups</a></li>
@@ -159,6 +159,7 @@
 <li class="toctree-l2"><a class="reference internal" href="context-managers-exercise.html">A Couple Handy Context Managers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mailroom-mock.html">Mocking Mailroom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mailroom-meta.html">Mailroom – metaprogramming it!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="threaded_downloader.html">Threaded Web Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
@@ -318,6 +319,8 @@
 <p>Note: So why are we subclassing here? Because: “a body element <em>is</em> an <code class="docutils literal"><span class="pre">Element</span></code>” makes perfect sense – that’s when you want to subclass. Another way to think about it is that you want to subclass to make a specialized version of something.</p>
 <p>You may note not that the <code class="docutils literal"><span class="pre">Element</span></code> class really doesn’t do anything by itself – it needs a tag (at least) to be a proper element. This is what’s called a “Base Class”. It contains functionality required by various subclasses, but may not do anything on its own.</p>
 <p>Extend the <code class="docutils literal"><span class="pre">Element.render()</span></code> method so that it can render other elements inside the tag in addition to strings. A recursion-like approach should do it. i.e. it can call the <code class="docutils literal"><span class="pre">render()</span></code> method of the elements it contains. You’ll need to be smart about setting the <code class="docutils literal"><span class="pre">cur_ind</span></code> optional parameter – so that the nested elements get indented correctly (again, this is a secondary concern…get correct html first).</p>
+<p>If this recursion-like idea doesn’t make sense to you, take a look at this blog post, which talks about recursive algorithms:</p>
+<p><a class="reference external" href="https://realpython.com/python-thinking-recursively/">https://realpython.com/python-thinking-recursively/</a></p>
 <p>Figure out a way to deal with the fact that the contained elements could be either simple strings or <code class="docutils literal"><span class="pre">Element</span></code> s with render methods (there are a few ways to handle that…). Think about “Duck Typing” and EAFP. See the section <a class="reference internal" href="#notes-on-handling-duck-typing"><span class="std std-ref">Notes on handling “duck typing”</span></a> and the end of the Exercise for more.</p>
 <p>You should now be able to render a basic web page with an <code class="docutils literal"><span class="pre">&lt;html&gt;</span></code> tag around the whole thing, a <code class="docutils literal"><span class="pre">&lt;body&gt;</span></code> tag inside, and multiple <code class="docutils literal"><span class="pre">&lt;p&gt;</span></code> tags inside that, with text inside that. And all indented nicely.</p>
 <p>See: <a class="reference download internal" href="../_downloads/test_html_output2.html" download=""><code class="xref download docutils literal"><span class="pre">test_html_output2.htm</span></code></a></p>

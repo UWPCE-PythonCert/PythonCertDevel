@@ -23,7 +23,7 @@ There are a number of commercial and open source Graph databases out there, and 
 neo4j
 =====
 
-`neo4j <https://neo4j.com/>`_ is perhaps the most `popular <https://db-engines.com/en/ranking/graph+dbms>`_ graph database as of this writing, and it comes with Python drives and good documentation, so we'll use that one for examples.
+`neo4j <https://neo4j.com/>`_ is perhaps the most `popular <https://db-engines.com/en/ranking/graph+dbms>`_ graph database as of this writing, and it comes with a Python driver and good documentation, so we'll use that one for examples.
 
 Here is a nice Python based tutorial about graph databases and neo4j:
 
@@ -82,7 +82,7 @@ Getting an account:
 
 4. Once you create the database, it will create a username (the name of the database you gave it) and generated password. Be sure to record your user name and password.
 
-Note that when your database is set up, you also get connection strings for both "bolt" and http REST interfaces. originally designed for neo4j, Bolt is a highly efficient, lightweight client-server protocol designed for database applications.
+Note that when your database is set up, you also get connection strings for both "bolt" and http REST interfaces. Originally designed for neo4j, Bolt is a highly efficient, lightweight client-server protocol designed for database applications.
 
 https://boltprotocol.org/
 
@@ -90,7 +90,7 @@ https://boltprotocol.org/
 Managing your password:
 .......................
 
-We always have to sign on to our network database, using our user name and password. That means these credentials must be accessible to our Python program. But we must make sure that our password is secure. If we check code contains the password in to github, it will give access to anyone who reads our repo. With many online services, that will incur costs for which we would be responsible.
+We always have to sign on to our network database, using our user name and password. That means these credentials must be accessible to our Python program. But we must make sure that our password is secure. If we check code containing the password in to github, it will give access to anyone who reads our repo. With many online services, that will incur costs for which we would be responsible.
 
 But don’t worry, we can guard against that easily. Here’s how:
 
@@ -142,7 +142,7 @@ Now, we are ready to start using our database!
 Cypher
 ------
 
-Neo4j uses a query language called Cypher. It plays the same role as SQL for RDMSs -- and the official driver uses it to "talk" to the database.
+Neo4j uses a query language called Cypher. It plays the same role as SQL for RDBMSs -- and the official driver uses it to "talk" to the database.
 
 https://neo4j.com/developer/cypher-query-language/
 
@@ -164,7 +164,7 @@ We are going to play with the code to get a feel for neo4j.
 Other interfaces for neo4j
 ==========================
 
-neo4j-client is the default Pyhto ninterface developed by the neo4j team. There are other options:
+neo4j-client is the default Python interface developed by the neo4j team. There are other options:
 
 neomodel
 --------
@@ -185,7 +185,7 @@ http://py2neo.org/v3/
 A bit more about Graphs
 =======================
 
-Graph data structures can be very useful certain catagories of problems:
+Graph data structures can be very useful for certain catagories of problems:
 
 If you Google something like: "applications of graph data structure in computer science" you will get a lot of pages to explore, like this one:
 

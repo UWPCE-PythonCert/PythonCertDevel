@@ -36,7 +36,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="up" title="Modules" href="index.html"/>
+        <link rel="up" title="Topic Notes" href="index.html"/>
         <link rel="next" title="Decorators" href="Decorators.html"/>
         <link rel="prev" title="Code Reviews" href="CodeReviews.html"/> 
 
@@ -92,9 +92,9 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#first-class-introduction-to-python">First Class: Introduction to Python</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#second-class-advanced-python">Second Class: Advanced Python</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Topic Notes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#py210-introduction-to-python">Py210: Introduction to Python</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CodeReviews.html">Code Reviews</a></li>
@@ -114,7 +114,11 @@
 <li class="toctree-l3"><a class="reference internal" href="PersistanceAndSerialization.html">Persistence and Serialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NoSQL.html">No SQL Databases</a></li>
 <li class="toctree-l3"><a class="reference internal" href="GraphDatabases.html">Graph Databases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Concurrency.html">Concurrent Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ThreadingMultiprocessing.html">Threading and multiprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Coroutines.html">Notes on Coroutines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Profiling.html">Performance and Profiling</a></li>
 </ul>
 </li>
 </ul>
@@ -166,7 +170,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Modules</a> &raquo;</li>
+          <li><a href="index.html">Topic Notes</a> &raquo;</li>
         
       <li>Closures and Function Currying</li>
     
@@ -193,10 +197,10 @@
 <div class="section" id="scope">
 <h2>Scope<a class="headerlink" href="#scope" title="Permalink to this headline">¶</a></h2>
 <p>In order to get a handle on all this, it’s important to understand variable scoping rules in Python.</p>
-<p>“Scope” is the word for where in the names in your code are accessible. Another word for a scope is namespace.</p>
+<p>“Scope” is the word for where the names in your code are accessible. Another word for a scope is namespace.</p>
 <div class="section" id="global">
 <h3>global<a class="headerlink" href="#global" title="Permalink to this headline">¶</a></h3>
-<p>The simplest is the global scope. This is the where all the names defined right in your code file are (or in the interpreter).</p>
+<p>The simplest is the global scope. This is where all the names defined right in your code file are (or in the interpreter).</p>
 <p>You can get the global namespace with the <code class="docutils literal"><span class="pre">globals()</span></code> function, but …</p>
 <p>The Python interpreter defines a handful of names when it starts up, and iPython defines a whole bunch more.  Most of those start with an underscore, so you can filter them out for a more reasonable result:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_globals</span><span class="p">():</span>
@@ -248,17 +252,18 @@
 <h3>local<a class="headerlink" href="#local" title="Permalink to this headline">¶</a></h3>
 <p>So that’s the global scope – what creates a new scope?</p>
 <p>A new, “local” scope is created by a function or class definition:</p>
-<p>And there is a build in function to get the names in the local scope, too, so we can use it to show us the names in a function’s local namespace. There isn’t a lot of cruft in the local namespace, so we don’t need a special function to print it.</p>
+<p>And there is a built-in function to get the names in the local scope, too, so we can use it to show us the names in a function’s local namespace. There isn’t a lot of cruft in the local namespace, so we don’t need a special function to print it.</p>
 <p>Note that <code class="docutils literal"><span class="pre">locals()</span></code> and <code class="docutils literal"><span class="pre">globals()</span></code> returns a dict of the names and the objects they are bound to, so we can print the keys to get the names:</p>
-<dl class="docutils">
-<dt>In [15]: def test():</dt>
-<dd>…:     x = 5
-…:     y = 6
-…:     print(locals().keys())
-…:</dd>
-</dl>
-<p>In [16]: test()
-dict_keys([‘y’, ‘x’])</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+<span class="go">...:     x = 5</span>
+<span class="go">...:     y = 6</span>
+<span class="go">...:     print(locals().keys())</span>
+<span class="go">...:</span>
+
+<span class="gp">In [16]: </span><span class="n">test</span><span class="p">()</span>
+<span class="go">dict_keys([&#39;y&#39;, &#39;x&#39;])</span>
+</pre></div>
+</div>
 <p>When a function is called, it creates a clean local namespace.</p>
 <p>Similarly a class definition does the same thing:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="k">class</span> <span class="nc">Test</span><span class="p">:</span>
@@ -318,7 +323,7 @@ dict_keys([‘y’, ‘x’])</p>
 </div>
 <div class="section" id="the-global-keyword">
 <h3>The global keyword<a class="headerlink" href="#the-global-keyword" title="Permalink to this headline">¶</a></h3>
-<p>global names can be accessed from within functions, but not if that same name is created in the local scope. So you can’t change an immutable object that it outside the local scope:</p>
+<p>global names can be accessed from within functions, but not if that same name is created in the local scope. So you can’t change an immutable object that is outside the local scope:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [37]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 
 <span class="gp">In [38]: </span><span class="k">def</span> <span class="nf">increment_x</span><span class="p">():</span>
@@ -430,7 +435,7 @@ dict_keys([‘y’, ‘x’])</p>
 </div>
 <div class="section" id="function-parameters">
 <h3>function parameters<a class="headerlink" href="#function-parameters" title="Permalink to this headline">¶</a></h3>
-<p>A side note: function parameters are in a functions local scope, jsut as though they were created there:</p>
+<p>A side note: function parameters are in a function’s local scope, just as though they were created there:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [28]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
 <span class="go">    ...:     print(locals().keys())</span>
 <span class="go">    ...:</span>
@@ -497,7 +502,7 @@ dict_keys([‘y’, ‘x’])</p>
 </pre></div>
 </div>
 <p>So each time <code class="docutils literal"><span class="pre">counter()</span></code> is called, a new <code class="docutils literal"><span class="pre">incr</span></code> function is created. But also, a new namespace is created, that holds the count name. So the new <code class="docutils literal"><span class="pre">incr</span></code> function is holding a reference to that new count name.</p>
-<p>This is what makes in a “closure” – it carries with it the scope in which is was created.</p>
+<p>This is what makes in a “closure” – it carries with it the scope in which it was created.</p>
 <p>The returned <code class="docutils literal"><span class="pre">incr</span></code> function is a “curried” function – a function with some parameters pre-specified.</p>
 <p>Let’s experiment a bit more with these ideas:</p>
 <p><a class="reference download internal" href="../_downloads/play_with_scope.py" download=""><code class="xref download docutils literal"><span class="pre">play_with_scope.py</span></code></a></p>
@@ -508,7 +513,7 @@ dict_keys([‘y’, ‘x’])</p>
 <h2>Currying<a class="headerlink" href="#currying" title="Permalink to this headline">¶</a></h2>
 <p>“Currying” is a special case of closures:</p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Currying">Currying on Wikipedia</a></p>
-<p>The idea behind currying is that you may have a function with a number of parameters, and you want to make a specialized version that function with a couple parameters pre-set.</p>
+<p>The idea behind currying is that you may have a function with a number of parameters, and you want to make a specialized version of that function with a couple parameters pre-set.</p>
 <div class="section" id="real-world-example">
 <h3>Real world Example<a class="headerlink" href="#real-world-example" title="Permalink to this headline">¶</a></h3>
 <p>I was writing some code to compute the concentration of a contaminant in a river, as it was reduced by exponential decay, defined by a half-life:</p>
@@ -529,9 +534,9 @@ dict_keys([‘y’, ‘x’])</p>
 <p>What if I could create a function, on the fly, that had a particular half-life “baked in”?</p>
 <p><em>Enter Currying</em> – Currying is a technique where you reduce the number of parameters that function takes, creating a specialized function with one or more of the original parameters set to a particular value. Here is that technique, applied to the half-life decay problem:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_scale_fun</span><span class="p">(</span><span class="n">half_life</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">half_life</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">half_life_fun</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
         <span class="k">return</span> <span class="mf">0.5</span> <span class="o">**</span> <span class="p">(</span><span class="n">time</span> <span class="o">/</span> <span class="n">half_life</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">half_life</span>
+    <span class="k">return</span> <span class="n">half_life_fun</span>
 </pre></div>
 </div>
 <p><strong>NOTE:</strong> This is simple enough to use a lambda for a bit more compact code:</p>

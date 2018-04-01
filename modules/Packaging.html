@@ -36,7 +36,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="up" title="Modules" href="index.html"/>
+        <link rel="up" title="Topic Notes" href="index.html"/>
         <link rel="next" title="Code Reviews" href="CodeReviews.html"/>
         <link rel="prev" title="Iterators and Generators" href="IteratorsAndGenerators.html"/> 
 
@@ -92,9 +92,9 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#first-class-introduction-to-python">First Class: Introduction to Python</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#second-class-advanced-python">Second Class: Advanced Python</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Topic Notes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#py210-introduction-to-python">Py210: Introduction to Python</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Packages and Packaging</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#packages-modules-imports-oh-my">Packages, modules, imports, oh my!</a></li>
@@ -115,7 +115,11 @@
 <li class="toctree-l3"><a class="reference internal" href="PersistanceAndSerialization.html">Persistence and Serialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NoSQL.html">No SQL Databases</a></li>
 <li class="toctree-l3"><a class="reference internal" href="GraphDatabases.html">Graph Databases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Concurrency.html">Concurrent Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ThreadingMultiprocessing.html">Threading and multiprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Coroutines.html">Notes on Coroutines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Profiling.html">Performance and Profiling</a></li>
 </ul>
 </li>
 </ul>
@@ -167,7 +171,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Modules</a> &raquo;</li>
+          <li><a href="index.html">Topic Notes</a> &raquo;</li>
         
       <li>Packages and Packaging</li>
     
@@ -207,7 +211,7 @@ ourselves about packages and modules, and importing….</p>
 <p>A module usually corresponds to a single file: <code class="docutils literal"><span class="pre">something.py</span></code></p>
 <p><strong>Packages</strong></p>
 <p>A “package” is essentially a module, except it can have other modules (and indeed other packages) inside it.</p>
-<p>A module usually corresponds to a directory with a file in it called <code class="docutils literal"><span class="pre">__init__.py</span></code> and any number
+<p>A package usually corresponds to a directory with a file in it called <code class="docutils literal"><span class="pre">__init__.py</span></code> and any number
 of python files or other package directories:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a_package</span>
    <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
@@ -267,7 +271,7 @@ The code will be run when the package is imported – just like a module,</p>
 <p>means: “import all the names in the module”</p>
 <p>You really don’t want to do that! It is an old pattern that is now an anti-pattern</p>
 <p>But if you do encounter it, it doesn’t actually import all the names –
-it imports the ones defined in the module’s <code class="docutils literal"><span class="pre">_all__</span></code> variable.</p>
+it imports the ones defined in the module’s <code class="docutils literal"><span class="pre">__all__</span></code> variable.</p>
 <p><code class="docutils literal"><span class="pre">__all__</span></code> is a list of names that you want import * to import – so
 the module author can control it, and not expect all sorts of build ins
 and other modules.</p>
@@ -281,7 +285,7 @@ and other modules.</p>
 <p><a class="reference external" href="https://www.python.org/dev/peps/pep-0328/#guido-s-decision">https://www.python.org/dev/peps/pep-0328/#guido-s-decision</a></p>
 <p>This gets confusing! There is a good discussion on Stack Overflow here:</p>
 <p><a class="reference external" href="http://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time">http://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time</a></p>
-<p>Relative imports allow you to refer to other modules relative to where the existing module is in the package hierarchy, rather than in the while thing. For instance, with the following package structure:</p>
+<p>Relative imports allow you to refer to other modules relative to where the existing module is in the package hierarchy, rather than in the whole thing. For instance, with the following package structure:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">package</span><span class="o">/</span>
     <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
     <span class="n">subpackage1</span><span class="o">/</span>
@@ -354,8 +358,10 @@ and other modules.</p>
 </pre></div>
 </div>
 <p>you can access the module through the modules dict:</p>
-<p>In [12]: sys.modules[‘textwrap’].__file__
-Out[12]: ‘/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/textwrap.py’</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;textwrap&#39;</span><span class="p">]</span><span class="o">.</span><span class="vm">__file__</span>
+<span class="gh">Out[12]: </span><span class="go">&#39;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/textwrap.py&#39;</span>
+</pre></div>
+</div>
 <p>Which is the same as:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="kn">import</span> <span class="nn">textwrap</span>
 
@@ -414,7 +420,7 @@ change will <strong>not</strong> show up, even if re-imported.<ul>
 <div class="section" id="reloading">
 <h3>Reloading<a class="headerlink" href="#reloading" title="Permalink to this headline">¶</a></h3>
 <p>Once loaded, a module stays loaded.</p>
-<p>If you import it again (usually in another module) it will simply load up teh versions already there – rather than re-running the code.</p>
+<p>If you import it again (usually in another module) it will simply load up the versions already there – rather than re-running the code.</p>
 <p>And you can access all the already loaded modules from <code class="docutils literal"><span class="pre">sys.modules</span></code>. sys.modules is a dict with the module names as the keys, and the module objects as the values</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="kn">import</span> <span class="nn">sys</span>
 
@@ -487,7 +493,7 @@ change will <strong>not</strong> show up, even if re-imported.<ul>
 <li>Which has now been merged back into <code class="docutils literal"><span class="pre">setuptools</span></code></li>
 </ul>
 <p>Now it’s pretty stable: pip+setuptools+wheel: use them.</p>
-<p><strong>warning</strong> – setuptools still provides easy_install, but it hss mostly been deprecated, so you really want to use pip. And sometimes setuptools will invoke it for you under the hood by accident :-(</p>
+<p><strong>warning</strong> – setuptools still provides easy_install, but it has mostly been deprecated, so you really want to use pip. And sometimes setuptools will invoke it for you under the hood by accident :-(</p>
 </div>
 <div class="section" id="id1">
 <h3>Installing Packages<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
@@ -537,7 +543,7 @@ change will <strong>not</strong> show up, even if re-imported.<ul>
 <p>Dependencies:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Here’s were it gets really ugly</li>
+<li>Here’s where it gets really ugly</li>
 <li>Particularly on Windows</li>
 </ul>
 </div></blockquote>
@@ -849,7 +855,7 @@ structured package eases development.</p>
 <h3>wheels<a class="headerlink" href="#wheels" title="Permalink to this headline">¶</a></h3>
 <p>Wheels are a new binary format for packages.</p>
 <p><a class="reference external" href="http://wheel.readthedocs.org/en/latest/">http://wheel.readthedocs.org/en/latest/</a></p>
-<p>Pretty simple, essentially an zip archive of all the stuff that gets put
+<p>Pretty simple, essentially a zip archive of all the stuff that gets put
 in <code class="docutils literal"><span class="pre">site-packages</span></code>.</p>
 <p>Can be just pure python or binary with compiled extensions</p>
 <p>Compatible with virtualenv.</p>
@@ -870,11 +876,11 @@ in <code class="docutils literal"><span class="pre">site-packages</span></code>.
 </div>
 <div class="section" id="manylinux">
 <h3>manylinux<a class="headerlink" href="#manylinux" title="Permalink to this headline">¶</a></h3>
-<p>There are a lot of Linux distributions out there. So for a long time, there were not easily available binary wheels for Linux – how could you define an standard with all the Linux distros out there?</p>
-<p>Enter “manylinux” – no one thinks you can support all Linux distros, but it was found that you could support many of the common ones, by building on a older version, and restricting system libraries. THis approach worked well for Canopy and conda, so PyPi adopted a similar strategy with manylinux:</p>
+<p>There are a lot of Linux distributions out there. So for a long time, there were not easily available binary wheels for Linux – how could you define a standard with all the Linux distros out there?</p>
+<p>Enter “manylinux” – no one thinks you can support all Linux distros, but it was found that you could support many of the common ones, by building on an older version, and restricting system libraries. This approach worked well for Canopy and conda, so PyPi adopted a similar strategy with manylinux:</p>
 <p><a class="reference external" href="https://github.com/pypa/manylinux">https://github.com/pypa/manylinux</a></p>
 <p>So there are now binary wheels for Linux on PyPi.</p>
-<p>The core scipy stack is a great example – you can now pip install numpy on all three systems easily with pip.</p>
+<p>The core scipy stack is a great example – you can now <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">numpy</span></code> on all three systems easily with pip.</p>
 </div>
 <div class="section" id="pypi">
 <h3>PyPi<a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h3>
@@ -916,7 +922,7 @@ $ python setup.py <span class="nb">test</span>
 </pre></div>
 </div>
 <p><strong>Note:</strong> there is debate about whether this is a good idea. But if you want to:</p>
-<p>Do do this, you need to add a <code class="docutils literal"><span class="pre">test_suite</span></code> stanza in setup.py.</p>
+<p>To do this, you need to add a <code class="docutils literal"><span class="pre">test_suite</span></code> stanza in setup.py.</p>
 <p><strong>pytest</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">setup</span><span class="p">(</span>
   <span class="c1">#...,</span>
@@ -967,7 +973,7 @@ $ python setup.py <span class="nb">test</span>
 <p>Put the version in the package __init__</p>
 <p>__version__ = “1.2.3”</p>
 <p>In the setup.py, you could import the package to get the version number
-… but it not a safe practice to import you package when installing
+… but it’s not a safe practice to import your package when installing
 it (or building it, or…)</p>
 <p>So: read the <code class="docutils literal"><span class="pre">__version__</span></code> string yourself with code like:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_version</span><span class="p">():</span>
@@ -1032,7 +1038,7 @@ they upgrade.</p>
 </div>
 <p><a class="reference external" href="https://packaging.python.org/tutorials/distributing-packages/#package-data">https://packaging.python.org/tutorials/distributing-packages/#package-data</a></p>
 <p>Then you’ll get the data file included in the package in the same place relative to your code regardless of how (or whether) it is installed.</p>
-<p>Now you’ll need to write your code to find that data file. You can do that by using the <code class="docutils literal"><span class="pre">__file__</span></code> module attribute – then the location of the data file will be relative to the <code class="docutils literal"><span class="pre">__file__</span></code> that your code is in. A little massaging with a <code class="docutils literal"><span class="pre">pathlib.Path</span></code> should do it. PUtting the path to the data directory in the package’s <code class="docutils literal"><span class="pre">__init__.py</span></code> provides a way for the rest of your code to find it.</p>
+<p>Now you’ll need to write your code to find that data file. You can do that by using the <code class="docutils literal"><span class="pre">__file__</span></code> module attribute – then the location of the data file will be relative to the <code class="docutils literal"><span class="pre">__file__</span></code> that your code is in. A little massaging with a <code class="docutils literal"><span class="pre">pathlib.Path</span></code> should do it. Putting the path to the data directory in the package’s <code class="docutils literal"><span class="pre">__init__.py</span></code> provides a way for the rest of your code to find it.</p>
 <p>In <code class="docutils literal"><span class="pre">pkg_name/__init__.py</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 

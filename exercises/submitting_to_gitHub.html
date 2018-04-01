@@ -92,7 +92,7 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Topic Notes</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Exercises</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Submitting your work to gitHub</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#starting-a-new-exercise">Starting a New Exercise</a></li>
@@ -128,6 +128,7 @@
 <li class="toctree-l2"><a class="reference internal" href="context-managers-exercise.html">A Couple Handy Context Managers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mailroom-mock.html">Mocking Mailroom</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mailroom-meta.html">Mailroom – metaprogramming it!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="threaded_downloader.html">Threaded Web Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
@@ -222,7 +223,7 @@
 </pre></div>
 </div>
 <p>or you can commit only those files that you want to. To do that, you need to “stage” the files you want to commit:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="n">one_file</span><span class="o">.</span><span class="n">py</span><span class="p">,</span> <span class="n">another_file</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="n">one_file</span><span class="o">.</span><span class="n">py</span> <span class="n">another_file</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>(Yes, it is confusing – “add” means: “add this file to the ones git is managing” if it’s a new file, but “add this file to the ones I want to commit (staged)” if git is already managing the file. In fact, for a new file, you need to do “git add the_file.py” twice!)</p>

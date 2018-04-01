@@ -36,8 +36,8 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="up" title="Modules" href="index.html"/>
-        <link rel="next" title="Exercises" href="../exercises/index.html"/>
+        <link rel="up" title="Topic Notes" href="index.html"/>
+        <link rel="next" title="Performance and Profiling" href="Profiling.html"/>
         <link rel="prev" title="Notes on Coroutines" href="Coroutines.html"/> 
 
   
@@ -92,7 +92,7 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Topic Notes</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="index.html#py210-introduction-to-python">Py210: Introduction to Python</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
@@ -118,6 +118,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#references">References:</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="Profiling.html">Performance and Profiling</a></li>
 </ul>
 </li>
 </ul>
@@ -169,7 +170,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Modules</a> &raquo;</li>
+          <li><a href="index.html">Topic Notes</a> &raquo;</li>
         
       <li>Asychronous Programming</li>
     
@@ -213,7 +214,7 @@
 <div class="section" id="my-take">
 <h4>My take:<a class="headerlink" href="#my-take" title="Permalink to this headline">¶</a></h4>
 <p>Async is the good approach to support many connections that are spending a lot of time waiting, and doing short tasks when they do have something to do.</p>
-<p><strong>NOTE:</strong> the backbone of the web is HTTP – which is a “stateless” protocol. That is, each request is independent (state is “faked” with sessions via cookies). So “classic” web apps are NOT keeping many connections alive, there may be many clients at once, but each request is still independent. And often there is substantial work do be done with each one. A multi-threaded or multi-processes web server works fine for this.</p>
+<p><strong>NOTE:</strong> the backbone of the web is HTTP – which is a “stateless” protocol. That is, each request is independent (state is “faked” with sessions via cookies). So “classic” web apps are NOT keeping many connections alive, there may be many clients at once, but each request is still independent. And often there is substantial work to be done with each one. A multi-threaded or multi-processes web server works fine for this.</p>
 </div>
 </div>
 <div class="section" id="single-page-apps-and-websockets">
@@ -253,7 +254,7 @@
 <li>That function will take a while?</li>
 <li>And it’s mostly just waiting for the network or database, or….</li>
 </ul>
-<p>Maybe your application needs to be responsive to user input, or you want it to do other work while that function is doing it’s thing. Especially if it’s mostly jsut waiting for a response to return. How do you deal with that?</p>
+<p>Maybe your application needs to be responsive to user input, or you want it to do other work while that function is doing its thing. Especially if it’s mostly just waiting for a response to return. How do you deal with that?</p>
 </div>
 <div class="section" id="event-loops">
 <h3>Event Loops<a class="headerlink" href="#event-loops" title="Permalink to this headline">¶</a></h3>
@@ -292,7 +293,7 @@
 </pre></div>
 </div>
 <p>The difference here is that the program will wait for <code class="docutils literal"><span class="pre">requests.get()</span></code> call to return, and that won’t happen until the request is complete. If you are making a lot of requests and they take a while, that is a lot of time sitting around waiting for the server when your computer isn’t doing anything.</p>
-<p>Note that javascript began as a way to automate stuff on web pages – it lets you attach actions to various events in the browser: clicking button or what have you. The “callback” approach is natural for this. And once that structure was there, it made sense to keep it when making requests directly from code, that is doing: <em>Asychronous Javascript and XML</em> – i.e. AJAX. That that’s why callback-based async is “built in” to Javascript.</p>
+<p>Note that javascript began as a way to automate stuff on web pages – it lets you attach actions to various events in the browser: clicking button or what have you. The “callback” approach is natural for this. And once that structure was there, it made sense to keep it when making requests directly from code, that is doing: <em>Asychronous Javascript and XML</em> – i.e. AJAX. That’s why callback-based async is “built in” to Javascript.</p>
 <p>Async programming usually (always?) involves an event loop to schedule operations.</p>
 <p>But callbacks are only one way to communicate with the event loop.</p>
 </div>
@@ -337,7 +338,7 @@
 <p><code class="docutils literal"><span class="pre">await</span> <span class="pre">a_coroutine</span></code></p>
 <p>It’s kind of like yield (from generators), but instead it returns the next value from the coroutine, and <em>pauses execution</em> so other things can run.</p>
 <p><code class="docutils literal"><span class="pre">await</span></code> suspends the execution (letting other code run) until the object called returns.</p>
-<p>When you call await on an object, it needs to be an “awaitable” object: an object that defines an <code class="docutils literal"><span class="pre">__await__()</span></code> method which returns either an iterator which is not a coroutine itself, or a coroutines – which are considered awaitable objects.</p>
+<p>When you call await on an object, it needs to be an “awaitable” object: an object that defines an <code class="docutils literal"><span class="pre">__await__()</span></code> method which returns either an iterator which is not a coroutine itself, or a coroutine – which are considered awaitable objects.</p>
 </div>
 <div class="section" id="scheduling-it-to-run">
 <h4>Scheduling it to run<a class="headerlink" href="#scheduling-it-to-run" title="Permalink to this headline">¶</a></h4>
@@ -349,7 +350,7 @@
 </div>
 <div class="section" id="think-of-async-await-as-an-api-for-asynchronous-programming">
 <h3>Think of <code class="docutils literal"><span class="pre">async/await</span></code> as an API for asynchronous programming<a class="headerlink" href="#think-of-async-await-as-an-api-for-asynchronous-programming" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">async/await</span></code> is really an API for asynchronous programming: People shouldn’t think that <code class="docutils literal"><span class="pre">async/await</span></code> as synonymous with asyncio, but instead think that asyncio is a framework that can utilize the <code class="docutils literal"><span class="pre">async/await</span></code> API for asynchronous programming. IN fact, this view is supported by the fact that there are other async frameworks that use async/await – like the Trio package mentioned above.</p>
+<p><code class="docutils literal"><span class="pre">async/await</span></code> is really an API for asynchronous programming: People shouldn’t think that <code class="docutils literal"><span class="pre">async/await</span></code> as synonymous with asyncio, but instead think that asyncio is a framework that can utilize the <code class="docutils literal"><span class="pre">async/await</span></code> API for asynchronous programming. In fact, this view is supported by the fact that there are other async frameworks that use async/await – like the Trio package mentioned above.</p>
 </div>
 <div class="section" id="future-objects">
 <h3>Future objects<a class="headerlink" href="#future-objects" title="Permalink to this headline">¶</a></h3>
@@ -415,7 +416,7 @@
 </div>
 <p><a class="reference download internal" href="../_downloads/ultra_simple.py" download=""><code class="xref download docutils literal"><span class="pre">ultra_simple.py</span></code></a></p>
 <p>Still not very interesting – technically async, but with only one coroutine, not much to it.</p>
-<p><strong>NOTE:</strong> The event loop requires some setup, and it’ snot very happy when you stop and try to restart it. So you may have issues if you run this kind of code firm iPython – each time you run it, you’re still in the same Python process, so the event loop is whatever state it was left by the previous code. If you get add errors, simply restart iPython, or just run the scripts by themselves:</p>
+<p><strong>NOTE:</strong> The event loop requires some setup, and it’s not very happy when you stop and try to restart it. So you may have issues if you run this kind of code from iPython – each time you run it, you’re still in the same Python process, so the event loop is whatever state it was left by the previous code. If you get any errors, simply restart iPython, or just run the scripts by themselves:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ python ultra_simple.py
 </pre></div>
 </div>
@@ -634,14 +635,14 @@ of what is in asyncio, as they existed before asyncio existed)</p>
 <h2>References:<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>The Asyncio Cheat Sheet: This is a pretty helpful, how to do it guide.</p>
 <p><a class="reference external" href="http://cheat.readthedocs.io/en/latest/python/asyncio.html">http://cheat.readthedocs.io/en/latest/python/asyncio.html</a></p>
-<p>David Beazley: Concurrency from the ground Up.</p>
+<p>David Beazley: Concurrency from the ground up.</p>
 <p>He writes a full async client server from scratch before your eyes –
 this guy can write code faster than most of us can read it…</p>
 <p><a class="reference external" href="https://youtu.be/MCs5OvhV9S4">https://youtu.be/MCs5OvhV9S4</a></p>
 <p>David Beazley: asyncio:</p>
 <p><a class="reference external" href="https://youtu.be/ZzfHjytDceU">https://youtu.be/ZzfHjytDceU</a></p>
 <p><a class="reference external" href="https://www.youtube.com/watch?v=lYe8W04ERnY">https://www.youtube.com/watch?v=lYe8W04ERnY</a></p>
-<p>And David Beazley’s “Curio” package – a async package designed primarily for learning, rather than production use.</p>
+<p>And David Beazley’s “Curio” package – an async package designed primarily for learning, rather than production use.</p>
 </div>
 </div>
 
@@ -655,7 +656,7 @@ this guy can write code faster than most of us can read it…</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../exercises/index.html" class="btn btn-neutral float-right" title="Exercises" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Profiling.html" class="btn btn-neutral float-right" title="Performance and Profiling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Coroutines.html" class="btn btn-neutral" title="Notes on Coroutines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

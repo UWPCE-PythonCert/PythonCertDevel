@@ -36,8 +36,8 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="up" title="Modules" href="index.html"/>
-        <link rel="next" title="Asychronous Programing" href="Async.html"/>
+        <link rel="up" title="Topic Notes" href="index.html"/>
+        <link rel="next" title="Concurrent Programming" href="Concurrency.html"/>
         <link rel="prev" title="No SQL Databases" href="NoSQL.html"/> 
 
   
@@ -92,9 +92,9 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#first-class-introduction-to-python">First Class: Introduction to Python</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#second-class-advanced-python">Second Class: Advanced Python</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Topic Notes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#py210-introduction-to-python">Py210: Introduction to Python</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CodeReviews.html">Code Reviews</a></li>
@@ -115,7 +115,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#a-bit-more-about-graphs">A bit more about Graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Concurrency.html">Concurrent Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ThreadingMultiprocessing.html">Threading and multiprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Coroutines.html">Notes on Coroutines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Profiling.html">Performance and Profiling</a></li>
 </ul>
 </li>
 </ul>
@@ -167,7 +171,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Modules</a> &raquo;</li>
+          <li><a href="index.html">Topic Notes</a> &raquo;</li>
         
       <li>Graph Databases</li>
     
@@ -199,7 +203,7 @@
 <p>There are a number of commercial and open source Graph databases out there, and more than a few have Python drivers.</p>
 <div class="section" id="neo4j">
 <h2>neo4j<a class="headerlink" href="#neo4j" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://neo4j.com/">neo4j</a> is perhaps the most <a class="reference external" href="https://db-engines.com/en/ranking/graph+dbms">popular</a> graph database as of this writing, and it comes with Python drives and good documentation, so we’ll use that one for examples.</p>
+<p><a class="reference external" href="https://neo4j.com/">neo4j</a> is perhaps the most <a class="reference external" href="https://db-engines.com/en/ranking/graph+dbms">popular</a> graph database as of this writing, and it comes with a Python driver and good documentation, so we’ll use that one for examples.</p>
 <p>Here is a nice Python based tutorial about graph databases and neo4j:</p>
 <p><a class="reference external" href="https://medium.com/labcodes/graph-databases-talking-about-your-data-relationships-with-python-b438c689dc89">Talking About your Data Relationships</a></p>
 <p>And <a class="reference external" href="https://neo4j.com/developer/python/">here are the docs</a> for the python driver.</p>
@@ -236,12 +240,12 @@
 <li>Once you have created an account, you need to create a database. You can create a small (but not that small!) “Hobby” database for free.</li>
 <li>Once you create the database, it will create a username (the name of the database you gave it) and generated password. Be sure to record your user name and password.</li>
 </ol>
-<p>Note that when your database is set up, you also get connection strings for both “bolt” and http REST interfaces. originally designed for neo4j, Bolt is a highly efficient, lightweight client-server protocol designed for database applications.</p>
+<p>Note that when your database is set up, you also get connection strings for both “bolt” and http REST interfaces. Originally designed for neo4j, Bolt is a highly efficient, lightweight client-server protocol designed for database applications.</p>
 <p><a class="reference external" href="https://boltprotocol.org/">https://boltprotocol.org/</a></p>
 </div>
 <div class="section" id="managing-your-password">
 <h4>Managing your password:<a class="headerlink" href="#managing-your-password" title="Permalink to this headline">¶</a></h4>
-<p>We always have to sign on to our network database, using our user name and password. That means these credentials must be accessible to our Python program. But we must make sure that our password is secure. If we check code contains the password in to github, it will give access to anyone who reads our repo. With many online services, that will incur costs for which we would be responsible.</p>
+<p>We always have to sign on to our network database, using our user name and password. That means these credentials must be accessible to our Python program. But we must make sure that our password is secure. If we check code containing the password in to github, it will give access to anyone who reads our repo. With many online services, that will incur costs for which we would be responsible.</p>
 <p>But don’t worry, we can guard against that easily. Here’s how:</p>
 <p>First, edit your <code class="docutils literal"><span class="pre">.gitignore</span></code> file and add the following 2 lines at the end of the file, exactly as shown:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># secrets</span>
@@ -277,7 +281,7 @@
 </div>
 <div class="section" id="cypher">
 <h3>Cypher<a class="headerlink" href="#cypher" title="Permalink to this headline">¶</a></h3>
-<p>Neo4j uses a query language called Cypher. It plays the same role as SQL for RDMSs – and the official driver uses it to “talk” to the database.</p>
+<p>Neo4j uses a query language called Cypher. It plays the same role as SQL for RDBMSs – and the official driver uses it to “talk” to the database.</p>
 <p><a class="reference external" href="https://neo4j.com/developer/cypher-query-language/">https://neo4j.com/developer/cypher-query-language/</a></p>
 <p>And here is a nice introduction:</p>
 <p><a class="reference external" href="https://www.airpair.com/neo4j/posts/getting-started-with-neo4j-and-cypher">https://www.airpair.com/neo4j/posts/getting-started-with-neo4j-and-cypher</a></p>
@@ -291,7 +295,7 @@
 </div>
 <div class="section" id="other-interfaces-for-neo4j">
 <h2>Other interfaces for neo4j<a class="headerlink" href="#other-interfaces-for-neo4j" title="Permalink to this headline">¶</a></h2>
-<p>neo4j-client is the default Pyhto ninterface developed by the neo4j team. There are other options:</p>
+<p>neo4j-client is the default Python interface developed by the neo4j team. There are other options:</p>
 <div class="section" id="neomodel">
 <h3>neomodel<a class="headerlink" href="#neomodel" title="Permalink to this headline">¶</a></h3>
 <p>Is a Django ORM-like Object Mapper for neo4j</p>
@@ -306,7 +310,7 @@
 </div>
 <div class="section" id="a-bit-more-about-graphs">
 <h2>A bit more about Graphs<a class="headerlink" href="#a-bit-more-about-graphs" title="Permalink to this headline">¶</a></h2>
-<p>Graph data structures can be very useful certain catagories of problems:</p>
+<p>Graph data structures can be very useful for certain catagories of problems:</p>
 <p>If you Google something like: “applications of graph data structure in computer science” you will get a lot of pages to explore, like this one:</p>
 <p><a class="reference external" href="http://www.cs.cmu.edu/afs/cs/academic/class/15210-s14/www/lectures/graphs.pdf">http://www.cs.cmu.edu/afs/cs/academic/class/15210-s14/www/lectures/graphs.pdf</a></p>
 <p>I encourage you to read up about them.</p>
@@ -329,7 +333,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Async.html" class="btn btn-neutral float-right" title="Asychronous Programing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Concurrency.html" class="btn btn-neutral float-right" title="Concurrent Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="NoSQL.html" class="btn btn-neutral" title="No SQL Databases" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

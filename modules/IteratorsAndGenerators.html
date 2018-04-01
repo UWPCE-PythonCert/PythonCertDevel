@@ -349,7 +349,7 @@ the following word.</p>
 </pre></div>
 </div>
 <p>It works, and is fairly efficient, but what about:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">triple</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">words</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">words</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">triple</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">words</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">words</span><span class="p">[</span><span class="mi">2</span><span class="p">:]):</span>
 </pre></div>
 </div>
 <p>zip() returns an iterable – it does not build up the whole list.
@@ -595,21 +595,15 @@ the data in a class in multiple ways.</p>
 <p>Anytime you want to return a value, and then hold state until later,
 <code class="docutils literal"><span class="pre">yield</span></code> can be used.</p>
 <p><strong>Example:</strong> pytest fixtures:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@pytest.fixture</span>
+<span class="k">def</span> <span class="nf">example_fixture</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="c1"># setup code here</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">something</span><span class="p">()</span>
+    <span class="k">yield</span> <span class="n">value</span>  <span class="c1"># provide the fixture value</span>
+    <span class="c1"># do the teardown</span>
+    <span class="n">something_with</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>&#64;pytest.fixture</dt>
-<dd><dl class="first last docutils">
-<dt>def example_fixture(request):</dt>
-<dd># setup code here
-value = something()
-yield value  # provide the fixture value
-# do the teardown
-something_with(value)</dd>
-</dl>
-</dd>
-</dl>
 <p>In this case, the yield isn’t in any sort of loop or anything.
 It will only get run once. But the generator will maintain state,
 so the value can be used after the yield to do the teardown.</p>

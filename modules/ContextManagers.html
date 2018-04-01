@@ -36,7 +36,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="up" title="Modules" href="index.html"/>
+        <link rel="up" title="Topic Notes" href="index.html"/>
         <link rel="next" title="Coding Style and Linting" href="Pep8.html"/>
         <link rel="prev" title="Decorators" href="Decorators.html"/> 
 
@@ -92,9 +92,9 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#first-class-introduction-to-python">First Class: Introduction to Python</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#second-class-advanced-python">Second Class: Advanced Python</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Topic Notes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#py210-introduction-to-python">Py210: Introduction to Python</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CodeReviews.html">Code Reviews</a></li>
@@ -112,7 +112,11 @@
 <li class="toctree-l3"><a class="reference internal" href="PersistanceAndSerialization.html">Persistence and Serialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NoSQL.html">No SQL Databases</a></li>
 <li class="toctree-l3"><a class="reference internal" href="GraphDatabases.html">Graph Databases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Concurrency.html">Concurrent Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ThreadingMultiprocessing.html">Threading and multiprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Coroutines.html">Notes on Coroutines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Profiling.html">Performance and Profiling</a></li>
 </ul>
 </li>
 </ul>
@@ -164,7 +168,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Modules</a> &raquo;</li>
+          <li><a href="index.html">Topic Notes</a> &raquo;</li>
         
       <li>Context Managers</li>
     
@@ -261,11 +265,11 @@ context managers.</li>
 </div>
 <p>But what if the thing doesn’t have a <code class="docutils literal"><span class="pre">close()</span></code> method, or you’re creating
 the thing and it shouldn’t have a close() method?</p>
-<p>(full confession: urlib.request was not a context manager in py2 – but it is in py3 – but th issue still comes up with third-party packages ans your own code!)</p>
+<p>(full confession: urlib.request was not a context manager in py2 – but it is in py3 – but the issue still comes up with third-party packages and your own code!)</p>
 </div>
 <div class="section" id="do-it-yourself">
 <h3>Do It Yourself<a class="headerlink" href="#do-it-yourself" title="Permalink to this headline">¶</a></h3>
-<p>If you do need to support resource management of some sort, you can context manager of your own withe the context manager protocol.</p>
+<p>If you do need to support resource management of some sort, you can create a context manager of your own with the context manager protocol.</p>
 <p>The interface is simple.  It must be a class that implements two
 more of the nifty python <em>special methods</em></p>
 <dl class="docutils">
@@ -334,7 +338,7 @@ clarify the order in which things happen:</p>
 <span class="ne">RuntimeError</span>: this is the error message
 </pre></div>
 </div>
-<p>So this time, the context manager did not catch the error – so it was raised the in the usual way.</p>
+<p>So this time, the context manager did not catch the error – so it was raised in the usual way.</p>
 </div>
 <div class="section" id="the-parameters-to-exit">
 <h3>The parameters to <code class="docutils literal"><span class="pre">__exit__</span></code><a class="headerlink" href="#the-parameters-to-exit" title="Permalink to this headline">¶</a></h3>
@@ -345,13 +349,11 @@ clarify the order in which things happen:</p>
 <p><code class="docutils literal"><span class="pre">exc_val</span></code>: the value of the Exception</p>
 <p><code class="docutils literal"><span class="pre">exc_tb</span></code>: the Exception Traceback object</p>
 <p>The type lets you check if this is a type you know how to handle:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">python</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">exc_type</span> <span class="ow">is</span> <span class="ne">RuntimeError</span><span class="p">:</span>
 </pre></div>
 </div>
-<blockquote>
-<div>if exc_type is RuntimeError:</div></blockquote>
 <p>The value is the exception object itself.</p>
-<p>And the traceback is a full traceback object. Traceback objects hold all the information about the context in which and error occurred. It’s pretty advanced stuff, so you can mostly ignore it, but if you want to know more, there are tools for working with them in the <code class="docutils literal"><span class="pre">traceback</span></code> module.</p>
+<p>And the traceback is a full traceback object. Traceback objects hold all the information about the context in which an error occurred. It’s pretty advanced stuff, so you can mostly ignore it, but if you want to know more, there are tools for working with them in the <code class="docutils literal"><span class="pre">traceback</span></code> module.</p>
 <p><a class="reference external" href="https://docs.python.org/3/library/traceback.html">https://docs.python.org/3/library/traceback.html</a></p>
 </div>
 <div class="section" id="the-contextmanager-decorator">
@@ -390,8 +392,8 @@ clarify the order in which things happen:</p>
 </div>
 <p>Or, we can allow them to propagate:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [51]: </span><span class="k">with</span> <span class="n">context</span><span class="p">(</span><span class="bp">False</span><span class="p">):</span>
-<span class="gp">   ....: </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;in the context&quot;</span><span class="p">)</span>
-<span class="gp">   ....: </span><span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;error raised&quot;</span><span class="p">)</span>
+<span class="gp">   ....: </span>   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;in the context&quot;</span><span class="p">)</span>
+<span class="gp">   ....: </span>   <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;error raised&quot;</span><span class="p">)</span>
 <span class="go">__init__ code here</span>
 <span class="go">__enter__ code goes here</span>
 <span class="go">in the context</span>
@@ -418,7 +420,7 @@ clarify the order in which things happen:</p>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    iterate over all the files that match the pattern</span>
 
-<span class="sd">    pattern us a &quot;glob&quot; pattern, like: *.py</span>
+<span class="sd">    pattern use a &quot;glob&quot; pattern, like: *.py</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="nb">dir</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">pattern</span><span class="p">):</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_obj</span><span class="p">:</span>
