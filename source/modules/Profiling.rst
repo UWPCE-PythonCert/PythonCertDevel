@@ -637,7 +637,7 @@ Processors are fast
 
 It can take longer to push the memory around than do the computation
 
-So keep in in mind for big data sets:
+So keep in mind for big data sets:
 
 Use the right data structures
 

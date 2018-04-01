@@ -33,7 +33,7 @@ Most Exercise will begin with creating a new python file.
 
    or you can commit only those files that you want to. To do that, you need to "stage" the files you want to commit::
 
-      git add one_file.py, another_file.py
+      git add one_file.py another_file.py
 
    (Yes, it is confusing -- "add" means: "add this file to the ones git is managing" if it's a new file, but "add this file to the ones I want to commit (staged)" if git is already managing the file. In fact, for a new file, you need to do "git add the_file.py" twice!)
 

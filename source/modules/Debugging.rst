@@ -276,7 +276,7 @@ Some helpful hints with stacktraces:
 - Trace will show the line number and file of exception/calling functions.
 - More than likely the error is in your code, not established packages 
   - look at lines in your code mentioned in the stacktrace first
-  - Sometimes that error was triggered by something else, and you need to look higher. (probably more than one file in t he stacktrace is your code)
+  - Sometimes that error was triggered by something else, and you need to look higher. (probably more than one file in the stacktrace is your code)
 
 
 
@@ -538,7 +538,7 @@ set a new breakpoint in code coming up. Useful for getting out of rabbit holes.
 
 ::
 
-      pdb> break api.py:21 set a breakpoint file:line #
+      pdb> break api.py:21 # set a breakpoint file:line #
       pdb> break  # list breakpoints
       pdb> clear 1  # get rid of first breakpoint
       pdb> break 35  # set a breakpoint in current file at line 35
@@ -576,7 +576,7 @@ You can also delete(clear), disable and enable breakpoints
           1   breakpoint   keep yes   at .../pdb_break.py:9
                   stop only if j>3
 
-Condition can be used to add a conditional to and existing breakpoint
+Condition can be used to add a conditional to an existing breakpoint
 
 
 

@@ -73,7 +73,7 @@ Background
 
 .. rst-class:: left
 
-      There are lots of good tutorials, etc, on the web for getting you started with *useing* the logging module.
+      There are lots of good tutorials, etc, on the web for getting you started with *using* the logging module.
 
       But not much about how it works -- how it is structured.
 

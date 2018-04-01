@@ -26,7 +26,7 @@ A module usually corresponds to a single file: ``something.py``
 
 A "package" is essentially a module, except it can have other modules (and indeed other packages) inside it.
 
-A module usually corresponds to a directory with a file in it called ``__init__.py`` and any number
+A package usually corresponds to a directory with a file in it called ``__init__.py`` and any number
 of python files or other package directories::
 
   a_package
@@ -96,7 +96,7 @@ means: "import all the names in the module"
 You really don't want to do that! It is an old pattern that is now an anti-pattern
 
 But if you do encounter it, it doesn't actually import all the names --
-it imports the ones defined in the module's ``_all__`` variable.
+it imports the ones defined in the module's ``__all__`` variable.
 
 ``__all__`` is a list of names that you want import * to import -- so
 the module author can control it, and not expect all sorts of build ins
@@ -120,7 +120,7 @@ This gets confusing! There is a good discussion on Stack Overflow here:
 
 http://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time
 
-Relative imports allow you to refer to other modules relative to where the existing module is in the package hierarchy, rather than in the while thing. For instance, with the following package structure::
+Relative imports allow you to refer to other modules relative to where the existing module is in the package hierarchy, rather than in the whole thing. For instance, with the following package structure::
 
   package/
       __init__.py
@@ -209,8 +209,10 @@ sys.modules
 
 you can access the module through the modules dict:
 
-In [12]: sys.modules['textwrap'].__file__
-Out[12]: '/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/textwrap.py'
+.. code-block:: ipython
+
+  In [12]: sys.modules['textwrap'].__file__
+  Out[12]: '/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/textwrap.py'
 
 Which is the same as:
 
@@ -276,7 +278,7 @@ Reloading
 
 Once loaded, a module stays loaded.
 
-If you import it again (usually in another module) it will simply load up teh versions already there -- rather than re-running the code.
+If you import it again (usually in another module) it will simply load up the versions already there -- rather than re-running the code.
 
 And you can access all the already loaded modules from ``sys.modules``. sys.modules is a dict with the module names as the keys, and the module objects as the values
 
@@ -370,7 +372,7 @@ But ``distutils``  is missing some key features:
 
 Now it's pretty stable: pip+setuptools+wheel: use them.
 
-**warning** -- setuptools still provides easy_install, but it hss mostly been deprecated, so you really want to use pip. And sometimes setuptools will invoke it for you under the hood by accident :-(
+**warning** -- setuptools still provides easy_install, but it has mostly been deprecated, so you really want to use pip. And sometimes setuptools will invoke it for you under the hood by accident :-(
 
 
 Installing Packages
@@ -420,7 +422,7 @@ Biggest issue is with compiled extensions:
 
 Dependencies:
 
-  * Here's were it gets really ugly
+  * Here's where it gets really ugly
 
   * Particularly on Windows
 
@@ -799,7 +801,7 @@ Wheels are a new binary format for packages.
 
 http://wheel.readthedocs.org/en/latest/
 
-Pretty simple, essentially an zip archive of all the stuff that gets put
+Pretty simple, essentially a zip archive of all the stuff that gets put
 in ``site-packages``.
 
 Can be just pure python or binary with compiled extensions
@@ -825,15 +827,15 @@ Create a set of wheels (a wheelhouse)::
 manylinux
 ---------
 
-There are a lot of Linux distributions out there. So for a long time, there were not easily available binary wheels for Linux -- how could you define an standard with all the Linux distros out there?
+There are a lot of Linux distributions out there. So for a long time, there were not easily available binary wheels for Linux -- how could you define a standard with all the Linux distros out there?
 
-Enter "manylinux" -- no one thinks you can support all Linux distros, but it was found that you could support many of the common ones, by building on a older version, and restricting system libraries. THis approach worked well for Canopy and conda, so PyPi adopted a similar strategy with manylinux:
+Enter "manylinux" -- no one thinks you can support all Linux distros, but it was found that you could support many of the common ones, by building on an older version, and restricting system libraries. This approach worked well for Canopy and conda, so PyPi adopted a similar strategy with manylinux:
 
 https://github.com/pypa/manylinux
 
 So there are now binary wheels for Linux on PyPi.
 
-The core scipy stack is a great example -- you can now pip install numpy on all three systems easily with pip.
+The core scipy stack is a great example -- you can now ``pip install numpy`` on all three systems easily with pip.
 
 PyPi
 -----
@@ -893,7 +895,7 @@ So that you (or your users) can:
 
 **Note:** there is debate about whether this is a good idea. But if you want to:
 
-Do do this, you need to add a ``test_suite`` stanza in setup.py.
+To do this, you need to add a ``test_suite`` stanza in setup.py.
 
 **pytest**
 
@@ -965,7 +967,7 @@ Put the version in the package __init__
 __version__ = "1.2.3"
 
 In the setup.py, you could import the package to get the version number
-... but it not a safe practice to import you package when installing
+... but it's not a safe practice to import your package when installing
 it (or building it, or...)
 
 So: read the ``__version__`` string yourself with code like:
@@ -1055,7 +1057,7 @@ https://packaging.python.org/tutorials/distributing-packages/#package-data
 
 Then you'll get the data file included in the package in the same place relative to your code regardless of how (or whether) it is installed.
 
-Now you'll need to write your code to find that data file. You can do that by using the ``__file__`` module attribute -- then the location of the data file will be relative to the ``__file__`` that your code is in. A little massaging with a ``pathlib.Path`` should do it. PUtting the path to the data directory in the package's ``__init__.py`` provides a way for the rest of your code to find it.
+Now you'll need to write your code to find that data file. You can do that by using the ``__file__`` module attribute -- then the location of the data file will be relative to the ``__file__`` that your code is in. A little massaging with a ``pathlib.Path`` should do it. Putting the path to the data directory in the package's ``__init__.py`` provides a way for the rest of your code to find it.
 
 In ``pkg_name/__init__.py``:
 
