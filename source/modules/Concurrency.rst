@@ -62,15 +62,12 @@ Motivations for parallel execution
 ----------------------------------
 
 -  Performance
-   -  Limited by "Amdahl's Law"
-      http://en.wikipedia.org/wiki/Amdahl%27s_law
+   -  Limited by "Amdahl's Law": http://en.wikipedia.org/wiki/Amdahl%27s_law
 
    -  CPUs aren't getting much faster
 
 -  Event handling
-   - If a system handles asynchronous events, a separate thread of
-     execution could handle those events and let other threads do other
-     work
+   - If a system handles asynchronous events, a separate thread of execution could handle those events and let other threads do other work
 
    - Examples:
       -  Network applications
