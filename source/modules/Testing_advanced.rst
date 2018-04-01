@@ -898,6 +898,7 @@ Using patch
             article = Definitions.article("Robot")
             mock_method.assert_called_once_with("Robot")
 
+There are a number of ways to use ``mock.patch`` -- this is a nice discussion of that: `The Many Flavors of mock.patch <http://treyhunner.com/2014/10/the-many-flavors-of-mock-dot-patch/>`_
 
 Mocking a builtin
 -----------------
@@ -916,7 +917,7 @@ In your test file, you would do this:
 .. code-block:: python
 
     @mock.patch('builtins.input')
-    def test_get_more_input(self, new_mocked_input):
+    def test_get_input(self, new_mocked_input):
         new_mocked_input.return_value = 'blue'
         self.assertEqual(mock_input.get_input(), 'blue')
 
