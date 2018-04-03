@@ -8,28 +8,10 @@ Threading and multiprocessing
 Threading / multiprocessing
 ===========================
 
-Today's topics:
+How to actually DO threading and multiprocessing:
 
--  Threading / multiprocessing motivation and options
--  threading module
--  multiprocessing module
--  other options
-
-
-Motivations for parallel execution
-----------------------------------
-
--  Performance
-   -  Limited by "Amdahl's Law" -- http://en.wikipedia.org/wiki/Amdahl%27s_law
-
-   -  CPUs aren't getting much faster
-
--  Event handling
-   - If a system handles asynchronous events, a separate thread of execution could handle those events and let other threads do other work
-
-   - Examples:
-      -  Network applications
-      -  User interfaces
+-  ``threading`` module
+-  ``multiprocessing`` module
 
 Parallel programming can be hard!
 
@@ -62,13 +44,38 @@ Parallelization Strategy for Performance
    -  queues
    -  signaling/messaging mechanisms
 
+The mechanics: how do you use threads and/or processes
+======================================================
 
+Python provides the `threading` and `multiprocessing` modules to facility concurrency.
 
-A CPU bound problem
--------------------
+They have similar APIs -- so you can use them in similar ways.
+
+Key points:
+
+ - There is no Python thread scheduler, it is up to the host OS. yes these are "true" threads.
+ - Works well for I/O bound problems, can use literally thousands of threads
+ - Limit CPU-bound processing to C extensions (that release the GIL)
+ - Do not use for CPU bound problems, will go slower than no threads, especially on multiple cores!!! (see David Beazley's talk referenced above)
+
+Starting threads is relatively simple, but there are many potential issues.
+
+We already talked about shared data, this can lead to a "race condition".
+
+ - May produce slightly different results every run
+ - May just flake out mysteriously every once in a while
+ - May run fine when testing, but fail when run on:
+   - a slower system
+   - a heavily loaded system
+   - a larger dataset
+ - Thus you *must* synchronize threads!
+
+Example: A CPU bound problem
+----------------------------
 
 Numerically integrate the function
 :math:`y =x^2` from 0 to 10.
+
 http://www.wolframalpha.com/input/?i=x%5E2
 
 .. image:: /_static/x2.png
@@ -236,8 +243,7 @@ both repeatedly move the same way at the same time.*
 Locks
 -----
 
-Lock objects allow threads to control access to a resource until they're
-done with it
+Lock objects allow threads to control access to a resource until they're done with it
 
 This is known as mutual exclusion, often called "mutex".
 
@@ -248,8 +254,7 @@ themselves by calling its ``.acquire()`` and ``.release()`` methods
 
 If a Lock is locked, .acquire will block until it becomes unlocked
 
-These threads will wait in line politely for access to the statements in
-f()
+These threads will wait in line politely for access to the statements in f()
 
 Mutex locks (``threading.Lock``)
 --------------------------------
@@ -277,22 +282,22 @@ Only one lock per thread! (or risk mysterious deadlocks)
 Or use RLock for code-based locking (locking function/method execution rather than data access)
 
 
-.. .. code-block:: python
+.. code-block:: python
 
-..    import threading
-..    import time
+    import threading
+    import time
 
-..    lock = threading.Lock()
+    lock = threading.Lock()
 
-..    def f():
-..        lock.acquire()
-..        print("%s got lock" % threading.current_thread().name)
-..        time.sleep(1)
-..        lock.release()
+    def f():
+        lock.acquire()
+        print("%s got lock" % threading.current_thread().name)
+        time.sleep(1)
+        lock.release()
 
-..    threading.Thread(target=f).start()
-..    threading.Thread(target=f).start()
-..    threading.Thread(target=f).start()
+    threading.Thread(target=f).start()
+    threading.Thread(target=f).start()
+    threading.Thread(target=f).start()
 
 
 Nonblocking Locking
@@ -347,6 +352,23 @@ resource simultaneously
 .. image:: /_static/flags.jpg
   :height: 250px
 
+Events (``threading.Event``)
+----------------------------
+
+ - Threads can wait for particular event
+ - Setting an event unblocks all waiting threads
+
+Common use: barriers, notification
+
+
+Condition (``threading.Condition``)
+-----------------------------------
+
+ - Combination of locking/signaling
+ - lock protects code that establishes a "condition" (e.g., data available)
+ - signal notifies threads that "condition" has changed
+
+Common use: producer/consumer patterns
 
 
 Locking Exercise
@@ -391,6 +413,63 @@ If maxsize is less than or equal to zero, the queue size is infinite
 
 -  http://docs.python.org/3/library/threading.html
 -  http://docs.python.org/3/library/queue.html
+
+Queues (``queue``)
+------------------
+
+ - Easier to use than many of above
+ - Do not need locks
+ - Has signaling
+
+Common use: producer/consumer patterns
+
+
+.. code-block:: python
+
+
+    from Queue import Queue
+    data_q = Queue()
+
+    Producer thread:
+    for item in produce_items():
+        data_q.put(item)
+
+    Consumer thread:
+    while True:
+        item = q.get()
+        consume_item(item)
+
+
+
+Scheduling (``sched``)
+----------------------
+
+ - Schedules based on time, either absolute or delay
+ - Low level, so has many of the traps of the threading synchronization primitives.
+
+Timed events (``threading.timer``)
+----------------------------------
+
+Run a function at some time in the future:
+
+.. code-block:: python
+
+    import threading
+
+    def called_once():
+        """
+        this function is designed to be called once in the future
+        """
+        print("I just got called! It's now: {}".format(time.asctime()))
+
+    # setting it up to be called
+    t = Timer(interval=3, function=called_once)
+    t.start()
+
+    # you can cancel it if you want:
+    t.cancel()
+
+:download:`simple_timer.py </examples/threading-multiprocessing/simple_timer.py>`
 
 Other Queue types
 -----------------
@@ -478,8 +557,11 @@ What happens when you change the thread count? What thread count gives the maxim
 Multiprocessing
 ---------------
 
-Multiprocessing provides an API very similar to threading, so the
-transition is easy
+ - processes are completely isolated
+ - no locking :) (and no GIL!)
+ - instead of locking: messaging
+
+``multiprocessing`` provides an API very similar to ``threading``, so the transition is easy
 
 use ``multiprocessing.Process`` instead of ``threading.Thread``
 
@@ -519,6 +601,37 @@ Also has its own versions of ``Lock``, ``RLock``, ``Semaphore``
     parent_conn, child_conn = Pipe()
     child_conn.send("foo")
     print parent_conn.recv()
+
+Messaging
+---------
+
+Pipes (``multiprocessing.Pipe``)
+................................
+
+ - Returns a pair of connected objects
+ - Largely mimics Unix pipes, but higher level
+ - send pickled objects or buffers
+
+
+Queues (``multiprocessing.Queue``)
+..................................
+
+ - same interface as ``queue.Queue``
+ - implemented on top of pipes
+ - means you can pretty easily port threaded programs using queues to multiprocessing
+   - queue is the only shared data
+   - data is all pickled and unpickled to pass between processes -- significant overhead.
+
+
+Other features of the multiprocessing package
+.............................................
+
+ - Pools
+ - Shared objects and arrays
+ - Synchronization primitives
+ - Managed objects
+ - Connections
+
 
 Pooling
 -------
@@ -598,144 +711,3 @@ Confusingly, it lives in the multiprocessing module
 .. ``client-pooled.py`` creates a ThreadPool
 
 .. ``client-pooled.py`` contains a results Queue, but doesn't use it. Can you collect all the output from the pool into a single data structure using this Queue?
-
-
-Other options
--------------
-
-Traditionally, concurency has been achieved through multiple process
-communication and in-process threads, as we've seen.
-
-Another strategy is through micro-threads, implemented via coroutines
-and a scheduler.
-
-A coroutine is a generalization of a subroutine which allows multiple
-entry points for suspending and resuming execution.
-
-The threading and the multiprocessing modules follow a
-`preemptive multitasking model <http://en.wikipedia.org/wiki/Preemption_(computing)>`_
-
-Coroutine based solutions follow a
-`cooperative multitasking model: <http://en.wikipedia.org/wiki/Computer_multitasking#Cooperative_multitasking.2Ftime-sharing>`_
-
-A Curious Course on Coroutines and Concurrency
-
-  -  http://dabeaz.com/coroutines/
-
-  -  http://en.wikipedia.org/wiki/Coroutine
-
-
-With send(), a generator becomes a coroutine
---------------------------------------------
-
-.. rst-class:: small
-
-    .. code-block:: python
-
-        def coroutine(n):
-            try:
-                while True:
-                    x = (yield)
-                    print(n+x)
-            except GeneratorExit:
-                pass
-        targets = [
-         coroutine(10),
-         coroutine(20),
-         coroutine(30),
-        ]
-        for target in targets:
-            target.next()
-        for i in range(5):
-            for target in targets:
-                target.send(i)
-
-    http://dabeaz.com/coroutines/Coroutines.pdf
-
-
-Packages using coroutines for micro threads
--------------------------------------------
-
-By "jumping" to parallel coroutines, our application can simulate true
-threads.
-
-Creating the scheduler which does the jumping is an exercise for the
-reader, but look into these packages which handle the dirty work
-
--  https://pypi.python.org/pypi/greenlet
-
-  - interface for creating coroutine based microthreads
-
--  http://eventlet.net/
-
-  - a concurrent networking library, based on
-    greenlet. Developed for Second Life
-
--  http://www.gevent.org
-
-  - forked from eventlet. Built on top of greenlet and libevent,
-    a portable event loop with strong OS support
-
--  Python 3.4+ : the asyncio module
-
-
-Distributed programming
------------------------
-
-A distributed system is one in which components located on networked
-computers communicate and coordinate their actions by passing messages
-
-There are lots of ways to do this at different layers. MPI, \*-RPC,
-Pyro, ...
-
-Celery
-------
-
-"Celery is an asynchronous task queue/job queue based on distributed
-message passing"
-
-Provides an API for defining tasks, and retrieving results from those
-tasks
-
-Messages are passed via a "message broker", of which Celery supports
-several:
-
--  RabbitMQ (default)
--  Redis
--  MongoDB
--  Amazon SQS
--  ...
-
-Celery worker processes are run on compute nodes, while the main process
-farms jobs out to them:
-
-http://www.celeryproject.org/
-
-
-Celery in one minute
---------------------
-
-.. code-block:: python
-
-    # tasks.py
-
-    from celery import Celery
-
-    celery = Celery('tasks', backend="amqp", broker='amqp://guest@localhost//')
-
-    @celery.task
-    def add(x, y):
-        return x + y
-
-
-    % celery -A tasks worker --loglevel=INFO -c 4
-
-    from tasks import add
-    result = add.delay(2,3)
-    print result.get()
-
-Questions?
-----------
-
-There are many code samples for various techniques and libraries mentioned in lecture `here <https://github.com/UWPCE-PythonCert/PythonCertDevel/tree/master/source/examples/threading-multiprocessing>`_
-

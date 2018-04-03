@@ -95,30 +95,25 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Topic Notes</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="index.html#py210-introduction-to-python">Py210: Introduction to Python</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="CodeReviews.html">Code Reviews</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Closures.html">Closures and Function Currying</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Decorators.html">Decorators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ContextManagers.html">Context Managers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Pep8.html">Coding Style and Linting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Testing_advanced.html">Testing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Logging.html">Logging and the logging module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Debugging.html">Debugging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="MetaProgramming.html">Metaprogramming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="PersistanceAndSerialization.html">Persistence and Serialization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="NoSQL.html">No SQL Databases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="GraphDatabases.html">Graph Databases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Concurrency.html">Concurrent Programming</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Threading and multiprocessing</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#threading-multiprocessing">Threading / multiprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-1-functional-programming-2">Lesson 1: Functional Programming 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-2-functional-programming-3">Lesson 2: Functional Programming 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-3-advanced-language-constructs">Lesson 3: Advanced Language Constructs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-4-metaprogramming">Lesson 4: MetaProgramming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-5-logging-and-debugging">Lesson 5: Logging and Debugging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-6-advanced-testing">Lesson 6: Advanced Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-7-relational-databases">Lesson 7: Relational Databases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-8-non-relational-databases">Lesson 8: Non-Relational Databases</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#lesson-9-concurrency-async-programming">Lesson 9: Concurrency &amp; Async Programming</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Concurrency.html">Concurrent Programming</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Threading and multiprocessing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Coroutines.html">Notes on Coroutines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Async.html">Asychronous Programming</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Coroutines.html">Notes on Coroutines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Profiling.html">Performance and Profiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-10-profiling-and-performance">Lesson 10: Profiling and Performance</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#assorted-additional-topics">Assorted Additional Topics</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
@@ -193,39 +188,14 @@
 <span id="threading"></span><h1>Threading and multiprocessing<a class="headerlink" href="#threading-and-multiprocessing" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="threading-multiprocessing">
 <h2>Threading / multiprocessing<a class="headerlink" href="#threading-multiprocessing" title="Permalink to this headline">¶</a></h2>
-<p>Today’s topics:</p>
+<p>How to actually DO threading and multiprocessing:</p>
 <ul class="simple">
-<li>Threading / multiprocessing motivation and options</li>
-<li>threading module</li>
-<li>multiprocessing module</li>
-<li>other options</li>
-</ul>
-<div class="section" id="motivations-for-parallel-execution">
-<h3>Motivations for parallel execution<a class="headerlink" href="#motivations-for-parallel-execution" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Performance
--  Limited by “Amdahl’s Law” – <a class="reference external" href="http://en.wikipedia.org/wiki/Amdahl%27s_law">http://en.wikipedia.org/wiki/Amdahl%27s_law</a><ul>
-<li>CPUs aren’t getting much faster</li>
-</ul>
-</li>
-<li>Event handling
-- If a system handles asynchronous events, a separate thread of execution could handle those events and let other threads do other work<ul>
-<li><dl class="first docutils">
-<dt>Examples:</dt>
-<dd><ul class="first last">
-<li>Network applications</li>
-<li>User interfaces</li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-</li>
+<li><code class="docutils literal"><span class="pre">threading</span></code> module</li>
+<li><code class="docutils literal"><span class="pre">multiprocessing</span></code> module</li>
 </ul>
 <p>Parallel programming can be hard!</p>
 <p>If your problem can be solved sequentially, consider the costs and
 benefits before going parallel.</p>
-</div>
 <div class="section" id="parallelization-strategy-for-performance">
 <h3>Parallelization Strategy for Performance<a class="headerlink" href="#parallelization-strategy-for-performance" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
@@ -251,11 +221,38 @@ environment, so make it tunable</li>
 </li>
 </ul>
 </div>
-<div class="section" id="a-cpu-bound-problem">
-<h3>A CPU bound problem<a class="headerlink" href="#a-cpu-bound-problem" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="the-mechanics-how-do-you-use-threads-and-or-processes">
+<h2>The mechanics: how do you use threads and/or processes<a class="headerlink" href="#the-mechanics-how-do-you-use-threads-and-or-processes" title="Permalink to this headline">¶</a></h2>
+<p>Python provides the <cite>threading</cite> and <cite>multiprocessing</cite> modules to facility concurrency.</p>
+<p>They have similar APIs – so you can use them in similar ways.</p>
+<p>Key points:</p>
+<blockquote>
+<div><ul class="simple">
+<li>There is no Python thread scheduler, it is up to the host OS. yes these are “true” threads.</li>
+<li>Works well for I/O bound problems, can use literally thousands of threads</li>
+<li>Limit CPU-bound processing to C extensions (that release the GIL)</li>
+<li>Do not use for CPU bound problems, will go slower than no threads, especially on multiple cores!!! (see David Beazley’s talk referenced above)</li>
+</ul>
+</div></blockquote>
+<p>Starting threads is relatively simple, but there are many potential issues.</p>
+<p>We already talked about shared data, this can lead to a “race condition”.</p>
+<blockquote>
+<div><ul class="simple">
+<li>May produce slightly different results every run</li>
+<li>May just flake out mysteriously every once in a while</li>
+<li>May run fine when testing, but fail when run on:
+- a slower system
+- a heavily loaded system
+- a larger dataset</li>
+<li>Thus you <em>must</em> synchronize threads!</li>
+</ul>
+</div></blockquote>
+<div class="section" id="example-a-cpu-bound-problem">
+<h3>Example: A CPU bound problem<a class="headerlink" href="#example-a-cpu-bound-problem" title="Permalink to this headline">¶</a></h3>
 <p>Numerically integrate the function
-<span class="math">\(y =x^2\)</span> from 0 to 10.
-<a class="reference external" href="http://www.wolframalpha.com/input/?i=x%5E2">http://www.wolframalpha.com/input/?i=x%5E2</a></p>
+<span class="math">\(y =x^2\)</span> from 0 to 10.</p>
+<p><a class="reference external" href="http://www.wolframalpha.com/input/?i=x%5E2">http://www.wolframalpha.com/input/?i=x%5E2</a></p>
 <a class="reference internal image-reference" href="../_images/x2.png"><img alt="../_images/x2.png" src="../_images/x2.png" style="height: 400px;" /></a>
 <p><a class="reference external" href="http://www.wolframalpha.com/input/?i=int(x%5E2,0,10)">Solution</a></p>
 </div>
@@ -461,15 +458,13 @@ both repeatedly move the same way at the same time.</em></p>
 </div>
 <div class="section" id="locks">
 <h3>Locks<a class="headerlink" href="#locks" title="Permalink to this headline">¶</a></h3>
-<p>Lock objects allow threads to control access to a resource until they’re
-done with it</p>
+<p>Lock objects allow threads to control access to a resource until they’re done with it</p>
 <p>This is known as mutual exclusion, often called “mutex”.</p>
 <p>A Lock has two states: locked and unlocked</p>
 <p>If multiple threads have access to the same Lock, they can police
 themselves by calling its <code class="docutils literal"><span class="pre">.acquire()</span></code> and <code class="docutils literal"><span class="pre">.release()</span></code> methods</p>
 <p>If a Lock is locked, .acquire will block until it becomes unlocked</p>
-<p>These threads will wait in line politely for access to the statements in
-f()</p>
+<p>These threads will wait in line politely for access to the statements in f()</p>
 </div>
 <div class="section" id="mutex-locks-threading-lock">
 <h3>Mutex locks (<code class="docutils literal"><span class="pre">threading.Lock</span></code>)<a class="headerlink" href="#mutex-locks-threading-lock" title="Permalink to this headline">¶</a></h3>
@@ -493,6 +488,22 @@ f()</p>
 </div>
 <p>Only one lock per thread! (or risk mysterious deadlocks)</p>
 <p>Or use RLock for code-based locking (locking function/method execution rather than data access)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+    <span class="n">lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> got lock&quot;</span> <span class="o">%</span> <span class="n">threading</span><span class="o">.</span><span class="n">current_thread</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+
+<span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="nonblocking-locking">
 <h3>Nonblocking Locking<a class="headerlink" href="#nonblocking-locking" title="Permalink to this headline">¶</a></h3>
@@ -530,6 +541,27 @@ resource simultaneously</p>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/Semaphore_(programming)">Semaphore</a></p>
 <a class="reference internal image-reference" href="../_images/flags.jpg"><img alt="../_images/flags.jpg" src="../_images/flags.jpg" style="height: 250px;" /></a>
 </div>
+<div class="section" id="events-threading-event">
+<h3>Events (<code class="docutils literal"><span class="pre">threading.Event</span></code>)<a class="headerlink" href="#events-threading-event" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>Threads can wait for particular event</li>
+<li>Setting an event unblocks all waiting threads</li>
+</ul>
+</div></blockquote>
+<p>Common use: barriers, notification</p>
+</div>
+<div class="section" id="condition-threading-condition">
+<h3>Condition (<code class="docutils literal"><span class="pre">threading.Condition</span></code>)<a class="headerlink" href="#condition-threading-condition" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>Combination of locking/signaling</li>
+<li>lock protects code that establishes a “condition” (e.g., data available)</li>
+<li>signal notifies threads that “condition” has changed</li>
+</ul>
+</div></blockquote>
+<p>Common use: producer/consumer patterns</p>
+</div>
 <div class="section" id="locking-exercise">
 <h3>Locking Exercise<a class="headerlink" href="#locking-exercise" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference download internal" href="../_downloads/lock_exercise.zip" download=""><code class="xref download docutils literal"><span class="pre">lock_exercise.zip</span></code></a></p>
@@ -563,6 +595,60 @@ safely</p>
 <li><a class="reference external" href="http://docs.python.org/3/library/threading.html">http://docs.python.org/3/library/threading.html</a></li>
 <li><a class="reference external" href="http://docs.python.org/3/library/queue.html">http://docs.python.org/3/library/queue.html</a></li>
 </ul>
+</div>
+<div class="section" id="queues-queue">
+<h3>Queues (<code class="docutils literal"><span class="pre">queue</span></code>)<a class="headerlink" href="#queues-queue" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>Easier to use than many of above</li>
+<li>Do not need locks</li>
+<li>Has signaling</li>
+</ul>
+</div></blockquote>
+<p>Common use: producer/consumer patterns</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Queue</span> <span class="kn">import</span> <span class="n">Queue</span>
+<span class="n">data_q</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+
+<span class="n">Producer</span> <span class="n">thread</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">produce_items</span><span class="p">():</span>
+    <span class="n">data_q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+<span class="n">Consumer</span> <span class="n">thread</span><span class="p">:</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">consume_item</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="scheduling-sched">
+<h3>Scheduling (<code class="docutils literal"><span class="pre">sched</span></code>)<a class="headerlink" href="#scheduling-sched" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>Schedules based on time, either absolute or delay</li>
+<li>Low level, so has many of the traps of the threading synchronization primitives.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="timed-events-threading-timer">
+<h3>Timed events (<code class="docutils literal"><span class="pre">threading.timer</span></code>)<a class="headerlink" href="#timed-events-threading-timer" title="Permalink to this headline">¶</a></h3>
+<p>Run a function at some time in the future:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span>
+
+<span class="k">def</span> <span class="nf">called_once</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    this function is designed to be called once in the future</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I just got called! It&#39;s now: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">()))</span>
+
+<span class="c1"># setting it up to be called</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="n">interval</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">called_once</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="c1"># you can cancel it if you want:</span>
+<span class="n">t</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><a class="reference download internal" href="../_downloads/simple_timer.py" download=""><code class="xref download docutils literal"><span class="pre">simple_timer.py</span></code></a></p>
 </div>
 <div class="section" id="other-queue-types">
 <h3>Other Queue types<a class="headerlink" href="#other-queue-types" title="Permalink to this headline">¶</a></h3>
@@ -643,8 +729,14 @@ inserting the tuple:</p>
 </div>
 <div class="section" id="multiprocessing">
 <h3>Multiprocessing<a class="headerlink" href="#multiprocessing" title="Permalink to this headline">¶</a></h3>
-<p>Multiprocessing provides an API very similar to threading, so the
-transition is easy</p>
+<blockquote>
+<div><ul class="simple">
+<li>processes are completely isolated</li>
+<li>no locking :) (and no GIL!)</li>
+<li>instead of locking: messaging</li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal"><span class="pre">multiprocessing</span></code> provides an API very similar to <code class="docutils literal"><span class="pre">threading</span></code>, so the transition is easy</p>
 <p>use <code class="docutils literal"><span class="pre">multiprocessing.Process</span></code> instead of <code class="docutils literal"><span class="pre">threading.Thread</span></code></p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -675,6 +767,43 @@ interprocess communication</p>
 <span class="n">child_conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">parent_conn</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="messaging">
+<h3>Messaging<a class="headerlink" href="#messaging" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="pipes-multiprocessing-pipe">
+<h4>Pipes (<code class="docutils literal"><span class="pre">multiprocessing.Pipe</span></code>)<a class="headerlink" href="#pipes-multiprocessing-pipe" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li>Returns a pair of connected objects</li>
+<li>Largely mimics Unix pipes, but higher level</li>
+<li>send pickled objects or buffers</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="queues-multiprocessing-queue">
+<h4>Queues (<code class="docutils literal"><span class="pre">multiprocessing.Queue</span></code>)<a class="headerlink" href="#queues-multiprocessing-queue" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li>same interface as <code class="docutils literal"><span class="pre">queue.Queue</span></code></li>
+<li>implemented on top of pipes</li>
+<li>means you can pretty easily port threaded programs using queues to multiprocessing
+- queue is the only shared data
+- data is all pickled and unpickled to pass between processes – significant overhead.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="other-features-of-the-multiprocessing-package">
+<h4>Other features of the multiprocessing package<a class="headerlink" href="#other-features-of-the-multiprocessing-package" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li>Pools</li>
+<li>Shared objects and arrays</li>
+<li>Synchronization primitives</li>
+<li>Managed objects</li>
+<li>Connections</li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="pooling">
@@ -721,136 +850,6 @@ number running at one time</p>
 <span class="n">pool</span> <span class="o">=</span> <span class="n">ThreadPool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="other-options">
-<h3>Other options<a class="headerlink" href="#other-options" title="Permalink to this headline">¶</a></h3>
-<p>Traditionally, concurency has been achieved through multiple process
-communication and in-process threads, as we’ve seen.</p>
-<p>Another strategy is through micro-threads, implemented via coroutines
-and a scheduler.</p>
-<p>A coroutine is a generalization of a subroutine which allows multiple
-entry points for suspending and resuming execution.</p>
-<p>The threading and the multiprocessing modules follow a
-<a class="reference external" href="http://en.wikipedia.org/wiki/Preemption_(computing)">preemptive multitasking model</a></p>
-<p>Coroutine based solutions follow a
-<a class="reference external" href="http://en.wikipedia.org/wiki/Computer_multitasking#Cooperative_multitasking.2Ftime-sharing">cooperative multitasking model:</a></p>
-<p>A Curious Course on Coroutines and Concurrency</p>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://dabeaz.com/coroutines/">http://dabeaz.com/coroutines/</a></li>
-<li><a class="reference external" href="http://en.wikipedia.org/wiki/Coroutine">http://en.wikipedia.org/wiki/Coroutine</a></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="with-send-a-generator-becomes-a-coroutine">
-<h3>With send(), a generator becomes a coroutine<a class="headerlink" href="#with-send-a-generator-becomes-a-coroutine" title="Permalink to this headline">¶</a></h3>
-<div class="small highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">coroutine</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="k">yield</span><span class="p">)</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">GeneratorExit</span><span class="p">:</span>
-        <span class="k">pass</span>
-<span class="n">targets</span> <span class="o">=</span> <span class="p">[</span>
- <span class="n">coroutine</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
- <span class="n">coroutine</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
- <span class="n">coroutine</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span>
-<span class="p">]</span>
-<span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
-    <span class="n">target</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
-        <span class="n">target</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</pre></div>
-</div>
-<p class="small"><a class="reference external" href="http://dabeaz.com/coroutines/Coroutines.pdf">http://dabeaz.com/coroutines/Coroutines.pdf</a></p>
-</div>
-<div class="section" id="packages-using-coroutines-for-micro-threads">
-<h3>Packages using coroutines for micro threads<a class="headerlink" href="#packages-using-coroutines-for-micro-threads" title="Permalink to this headline">¶</a></h3>
-<p>By “jumping” to parallel coroutines, our application can simulate true
-threads.</p>
-<p>Creating the scheduler which does the jumping is an exercise for the
-reader, but look into these packages which handle the dirty work</p>
-<ul class="simple">
-<li><a class="reference external" href="https://pypi.python.org/pypi/greenlet">https://pypi.python.org/pypi/greenlet</a></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>interface for creating coroutine based microthreads</li>
-</ul>
-</div></blockquote>
-<ul class="simple">
-<li><a class="reference external" href="http://eventlet.net/">http://eventlet.net/</a></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>a concurrent networking library, based on
-greenlet. Developed for Second Life</li>
-</ul>
-</div></blockquote>
-<ul class="simple">
-<li><a class="reference external" href="http://www.gevent.org">http://www.gevent.org</a></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>forked from eventlet. Built on top of greenlet and libevent,
-a portable event loop with strong OS support</li>
-</ul>
-</div></blockquote>
-<ul class="simple">
-<li>Python 3.4+ : the asyncio module</li>
-</ul>
-</div>
-<div class="section" id="distributed-programming">
-<h3>Distributed programming<a class="headerlink" href="#distributed-programming" title="Permalink to this headline">¶</a></h3>
-<p>A distributed system is one in which components located on networked
-computers communicate and coordinate their actions by passing messages</p>
-<p>There are lots of ways to do this at different layers. MPI, *-RPC,
-Pyro, …</p>
-</div>
-<div class="section" id="celery">
-<h3>Celery<a class="headerlink" href="#celery" title="Permalink to this headline">¶</a></h3>
-<p>“Celery is an asynchronous task queue/job queue based on distributed
-message passing”</p>
-<p>Provides an API for defining tasks, and retrieving results from those
-tasks</p>
-<p>Messages are passed via a “message broker”, of which Celery supports
-several:</p>
-<ul class="simple">
-<li>RabbitMQ (default)</li>
-<li>Redis</li>
-<li>MongoDB</li>
-<li>Amazon SQS</li>
-<li>…</li>
-</ul>
-<p>Celery worker processes are run on compute nodes, while the main process
-farms jobs out to them:</p>
-<p><a class="reference external" href="http://www.celeryproject.org/">http://www.celeryproject.org/</a></p>
-</div>
-<div class="section" id="celery-in-one-minute">
-<h3>Celery in one minute<a class="headerlink" href="#celery-in-one-minute" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># tasks.py</span>
-
-<span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span>
-
-<span class="n">celery</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span><span class="s1">&#39;tasks&#39;</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;amqp&quot;</span><span class="p">,</span> <span class="n">broker</span><span class="o">=</span><span class="s1">&#39;amqp://guest@localhost//&#39;</span><span class="p">)</span>
-
-<span class="nd">@celery.task</span>
-<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
-
-
-<span class="o">%</span> <span class="n">celery</span> <span class="o">-</span><span class="n">A</span> <span class="n">tasks</span> <span class="n">worker</span> <span class="o">--</span><span class="n">loglevel</span><span class="o">=</span><span class="n">INFO</span> <span class="o">-</span><span class="n">c</span> <span class="mi">4</span>
-
-<span class="kn">from</span> <span class="nn">tasks</span> <span class="kn">import</span> <span class="n">add</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="questions">
-<h3>Questions?<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h3>
-<p>There are many code samples for various techniques and libraries mentioned in lecture <a class="reference external" href="https://github.com/UWPCE-PythonCert/PythonCertDevel/tree/master/source/examples/threading-multiprocessing">here</a></p>
 </div>
 </div>
 </div>

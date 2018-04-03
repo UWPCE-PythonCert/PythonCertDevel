@@ -5,8 +5,7 @@
 Concurrent Programming
 ######################
 
-What does it mean to do something "Concurrently" ? It means multiple things
-are happening at the same time. But what are those "things"?
+What does it mean to do something "Concurrently" ? It means multiple things are happening at the same time. But what are those "things"?
 
  - Parallelism is about processing multiple things at the same time -- true parallelism requires multiple processors (or cores).
  - Concurrency is about handling multiple things at the same time -- which may or may not be actually running in the processor at the same time (like network requests for instance).
@@ -105,43 +104,23 @@ Parallelization Strategy for Performance
    -  queues
    -  signaling/messaging mechanisms
 
+Other options
+-------------
 
-Concurrency in the standard library:
-------------------------------------
+Traditionally, concurency has been achieved through multiple process
+communication and in-process threads, as we've seen.
 
- - ``threading``: processing is interleaved to get more done (doing dishes while taking a break from cooking)
+Another strategy is through micro-threads, implemented via coroutines
+and a scheduler.
 
-   - ``sched``: Scheduler, safe in multi-threaded environments
+A coroutine is a generalization of a subroutine which allows multiple
+entry points for suspending and resuming execution.
 
-   - ``queue``: The queue module implements multi-producer, multi-consumer queues. It is especially useful in threaded programming when information must be exchanged safely between multiple threads.
+The threading and the multiprocessing modules follow a
+`preemptive multitasking model <http://en.wikipedia.org/wiki/Preemption_(computing)>`_
 
- - ``multiprocessing``: processing is parallel (someone else does the dishes while you cook). Duplicates the current Python process and runs code in it. Follows a similar API to threading.
-
- - ``subprocess``: allows you to spawn new processes (entirely different programs), connect to their input/output/error pipes, and obtain their return codes.  Parallel, hands to OS (usually running command line programs)
-
- - ``concurrent.futures``: https://www.blog.pythonlibrary.org/2016/08/03/python-3-concurrency-the-concurrent-futures-module/ This has mostly been superseded by the ``asyncio`` package.
-
-- ``asyncio``: an asynchronous event loop, designed primarily for IO (networked) applications.
-
-
-Concurrency Outside the Standard Library
-----------------------------------------
-
-Async Web Frameworks
-....................
-
-These are Frameworks for making web APIs with an asynchronous approach. They pre-date the built in asyncio package, and the latest language syntax.
-
- - Twisted
- - Tornado
-
-Job Schedulers
-..............
-
-These are for scheduling jobs (not only Python jobs) on larger Multiprocessing and multi-machine systems -- think the cloud.
-
- - Celery + Rabbitmq
- - Redis + RQ
+Coroutine based solutions follow a
+`cooperative multitasking model: <http://en.wikipedia.org/wiki/Computer_multitasking#Cooperative_multitasking.2Ftime-sharing>`_
 
 Threads versus processes in Python
 ----------------------------------
@@ -246,7 +225,6 @@ Python threads work well if the threads are spending time waiting for something:
  - Network Access
  - File I/O
 
-
 Some alternative Python implementations such as Jython and IronPython
 have no GIL
 
@@ -305,31 +283,6 @@ Works best for "large" problems with not much data to pass back and forth, as th
 Note that there are ways to share memory between processes, if you have a lot of read-only data that needs to be used. (see `Memory Maps <https://docs.python.org/3/library/mmap.html>`_)
 
 
-The mechanics: how do you use threads and/or processes
-======================================================
-
-Python provides the `threading` and `multiprocessing` modules to facility concurrency.
-
-They have similar APIs -- so you can use them in similar ways.
-
-Key points:
-
- - There is no Python thread scheduler, it is up to the host OS. yes these are "true" threads.
- - Works well for I/O bound problems, can use literally thousands of threads
- - Limit CPU-bound processing to C extensions (that release the GIL)
- - Do not use for CPU bound problems, will go slower than no threads, especially on multiple cores!!! (see David Beazley's talk referenced above)
-
-Starting threads is relatively simple, but there are many potential issues.
-
-We already talked about shared data, this can lead to a "race condition".
-
- - May produce slightly different results every run
- - May just flake out mysteriously every once in a while
- - May run fine when testing, but fail when run on:
-   - a slower system
-   - a heavily loaded system
-   - a larger dataset
- - Thus you *must* synchronize threads!
 
 Synchronization options:
 
@@ -367,107 +320,6 @@ Only one lock per thread! (or risk mysterious deadlocks)
 Or use RLock for code-based locking (locking function/method execution rather than data access)
 
 
-Semaphores (``threading.Semaphore``)
-------------------------------------
-
- - Counter-based synchronization primitive
-    - when acquire called, wait if count is zero, otherwise decrement
-    - when release called, increment count, signal any waiting threads
- - Can be called in any order by any thread
- - More tunable than locks
-    - Can limit number of threads performing certain operations
-    - Can signal between threads
-
-
-Events (``threading.Event``)
-----------------------------
-
- - Threads can wait for particular event
- - Setting an event unblocks all waiting threads
-
-Common use: barriers, notification
-
-
-Condition (``threading.Condition``)
------------------------------------
-
- - Combination of locking/signaling
- - lock protects code that establishes a "condition" (e.g., data available)
- - signal notifies threads that "condition" has changed
-
-Common use: producer/consumer patterns
-
-
-Queues (``queue``)
-------------------
-
- - Easier to use than many of above
- - Do not need locks
- - Has signaling
-
-Common use: producer/consumer patterns
-
-
-.. code-block:: python
-
-
-    from Queue import Queue
-    data_q = Queue()
-
-    Producer thread:
-    for item in produce_items():
-        data_q.put(item)
-
-    Consumer thread:
-    while True:
-        item = q.get()
-        consume_item(item)
-
-
-Scheduling (``sched``)
-----------------------
-
- - Schedules based on time, either absolute or delay
- - Low level, so has many of the traps of the threading synchronization primitives.
-
-Timed events (``threading.timer``)
-----------------------------------
-
-Run a function at some time in the future:
-
-.. code-block:: python
-
-    import threading
-
-    def called_once():
-        """
-        this function is designed to be called once in the future
-        """
-        print("I just got called! It's now: {}".format(time.asctime()))
-
-    # setting it up to be called
-    t = Timer(interval=3, function=called_once)
-    t.start()
-
-    # you can cancel it if you want:
-    t.cancel()
-
-demo: ``Examples/condensed_concurrency/simple_timer.py``
-
-Race condition:
----------------
-
-A "race condition" is when the code expects things to happen in a certain order.
-
-But with threading, multiple threads can touch the same data, and they may not do it in the order the code expects.
-
-trivial example in:
-
-``Examples/condensed_concurrenc``
-
-That also serves as an example of creating and using threads.
-
-
 Subprocesses (``subprocess``)
 -----------------------------
 
@@ -503,48 +355,7 @@ Pipes and ``pickle`` and ``subprocess``
 For this to work, you need to send messages, as each process runs its own independent Python interpreter.
 
 
-Multiprocessing (``multiprocessing``)
--------------------------------------
-
- - processes are completely isolated
- - no locking :) (and no GIL!)
- - instead of locking: messaging
-
-Provides a similar API as ``threading`` -- in the simple case, you can switch between them easily.
-
-Messaging
----------
-
-Pipes (``multiprocessing.Pipe``)
-................................
-
- - Returns a pair of connected objects
- - Largely mimics Unix pipes, but higher level
- - send pickled objects or buffers
-
-
-Queues (``multiprocessing.Queue``)
-..................................
-
- - same interface as ``queue.Queue``
- - implemented on top of pipes
- - means you can pretty easily port threaded programs using queues to multiprocessing
-   - queue is the only shared data
-   - data is all pickled and unpickled to pass between processes -- significant overhead.
-
-
-Other features of the multiprocessing package
-.............................................
-
- - Pools
- - Shared objects and arrays
- - Synchronization primitives
- - Managed objects
- - Connections
-
-Add references!
-
-When to use What
+When to Use What
 ================
 
 .. image:: /_static/proc_thread_async.png
