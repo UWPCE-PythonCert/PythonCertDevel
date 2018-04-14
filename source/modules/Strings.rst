@@ -339,7 +339,7 @@ https://pyformat.info/
 
 And a nice formatting cookbook:
 
-https://mkaz.tech/python-string-format.html
+https://mkaz.blog/code/python-string-format-cookbook/
 
 
 Literal String Interpolation
