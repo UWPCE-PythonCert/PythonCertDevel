@@ -157,13 +157,13 @@ If there are changes upstream that you did not have, it is a good idea to go ahe
 
 Now you can begin your work:
 
-create a dir to to the Exercise in:
+create a dir to do the Exercise in:
 
 ``$ mkdir mailroom``
 
 (remember to make sure you are creating this new dir in *your own working directory*)
 
-Create your new python file(s) in that new directory. Then add it to git before you start writing any really code -- just to make sure you don't forget:
+Create your new python file(s) in that new directory. Then add it to git before you start writing any real code -- just to make sure you don't forget:
 
 ``$ git add mailroom.py``
 
@@ -175,7 +175,7 @@ And when you are done, push it to gitHub:
 
 ``$ git push``
 
-If you are ready for an instructor to review it, go to the your repo on the gitHub website and make a pull request.
+If you are ready for an instructor to review it, go to your repo on the gitHub website and make a pull request.
 
 Final Thoughts
 --------------

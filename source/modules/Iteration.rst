@@ -166,7 +166,7 @@ If Python didn't have ``else`` on loops, you'd need to set a flag, something lik
         if x == 11:
             it_did_break = True
             break
-    if it_did_break:
+    if not it_did_break:
         print('finished')
 
 That's klunkier, no?

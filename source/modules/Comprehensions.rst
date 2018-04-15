@@ -82,9 +82,9 @@ Python does have a ``map()``, which pre-dates comprehensions. But it does much o
 What about filter?
 ------------------
 
-``filter()`` is another functional concept: building an new list with only *some* of the elements -- "filtering" out the ones you don't want.
+``filter()`` is another functional concept: building a new list with only *some* of the elements -- "filtering" out the ones you don't want.
 
-This is tp support the comon case of when you have a conditional in the loop:
+This is to support the common case of when you have a conditional in the loop:
 
 .. code-block:: python
 

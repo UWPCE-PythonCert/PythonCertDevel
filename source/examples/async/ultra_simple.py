@@ -10,7 +10,7 @@ import asyncio
 async def say_lots(num):
     for i in range(num):
         print(f'This was run by the loop ({i}) :')
-        await asyncio.sleep(0.2)
+        await asyncio.sleep(1.0)
 
 # getting the event loop
 loop = asyncio.get_event_loop()

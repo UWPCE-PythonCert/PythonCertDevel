@@ -61,7 +61,7 @@ If you want anyone to take you seriously as a Python developer:
 
 `(PEP 8) <http://legacy.python.org/dev/peps/pep-0008/>`_
 
-Also note: if you DO you tabs (and really, don't do that!) python interprets them as the equivalent of *eight* spaces.  Text editors can display tabs as any number of spaces, and most modern editors default to four -- so this can be *very* confusing! so again:
+Also note: if you DO use tabs (and really, don't do that!) python interprets them as the equivalent of *eight* spaces.  Text editors can display tabs as any number of spaces, and most modern editors default to four -- so this can be *very* confusing! so again:
 
 **never mix tabs and spaces in python code**
 
@@ -159,7 +159,7 @@ This imports the module, and gives it a new name in the global namespace.  This 
 
     import numpy as np
 
-Because numpy has a LOT of names, some of which may conflict, and users want to be able to reference them without a too much typing.
+Because numpy has a LOT of names, some of which may conflict, and users want to be able to reference them without too much typing.
 
 .. code-block:: python
 

@@ -54,7 +54,7 @@ coverage.
 what to test should take into account the volatility of the project.
 
 **NOTE** Even if every line of code is run during tests (100% coverage),
-they may not be comprehensive! It is very hard to anticipate every wierd
+they may not be comprehensive! It is very hard to anticipate every weird
 input some code may get.
 
 
@@ -90,12 +90,12 @@ unittest
 
 The unittest framework comes with the standard library
 
-Unittest is ported from Java's jUnit -- it is therefor OO-heavy, and
+Unittest is ported from Java's jUnit -- it is therefore OO-heavy, and
 requires a lot of boilerplate code.
 
 Many projects built custom testing Frameworks on top of it -- e.g. Django
 
-Therefor you will encounter it
+Therefore you will encounter it
 
 So it's good to be familiar with it.
 
@@ -177,7 +177,7 @@ Call unittest.main() right in your module
         if __name__ == "__main__":
             unittest.main()
 
-# or from the command line:
+or from the command line:
 
 .. code-block:: bash
 
@@ -233,7 +233,7 @@ So running your tests is as easy as
 
     $ pytest
 
-    or
+or
 
 .. code-block:: bash
 
@@ -307,9 +307,11 @@ Let's see this in action:
 
 :download:`pytest_fixtures.py <../examples/testing/pytest_fixtures.py>`
 
-    py.test -s -v pytest_fixtures.py
+.. code-block:: bash
 
-The ``-s`` tells pytest not to capture stdout -- so we can see print statements)
+    $ pytest -s -v pytest_fixtures.py
+
+The ``-s`` tells pytest not to capture stdout -- so we can see print statements.
 
 The ``-v`` is verbose mode -- so we can see a bit more what is going on.
 
@@ -325,14 +327,14 @@ The teardown code will run after the yield
 
 .. code-block:: python
 
-  @pytest.fixture()
+  @pytest.fixture
   def smtp(request):
       smtp = smtplib.SMTP("smtp.gmail.com")
       yield smtp  # provide the fixture value
       print("teardown smtp")
       smtp.close()
 
-Remember that putting a yield in a function makes is a generator function -- which provides a way to halt execution of the function, return a value, and then pick up where it left off. So in this case, you use whatever code you want to generate your object -- then after the yield, all those variables will be there, so you can do whatever clean up you need to do.
+Remember that putting a yield in a function makes it a generator function -- which provides a way to halt execution of the function, return a value, and then pick up where it left off. So in this case, you use whatever code you want to generate your object -- then after the yield, all those variables will be there, so you can do whatever clean up you need to do.
 
 See the example again for this...
 
@@ -600,7 +602,7 @@ Lots more examples on their website.
 ``pytest.mark.parametrize``
 ---------------------------
 
-Pytest does provide a nifty way built in way to do it:
+Pytest does provide a nifty built-in way to do it:
 
 https://docs.pytest.org/en/latest/parametrize.html#parametrize-basics
 
@@ -710,7 +712,7 @@ There is a plug-in for pytest that will run coverage for you when you run your t
     $ pip install pytest-cov
 
     # now it can be used
-    $ py.test --cov code_module test_module.py
+    $ pytest --cov code_module test_module.py
 
 https://pypi.python.org/pypi/pytest-cov
 
@@ -720,7 +722,7 @@ To get a nifty html report:
 
 .. code-block:: bash
 
-  pytest --cov code_module --cov-report html test_module.py
+    $ pytest --cov code_module --cov-report html test_module.py
 
 
 Doctests
@@ -774,7 +776,7 @@ doctests are really cool -- but they are more a way to test your documentation, 
 Test Driven Development (TDD)
 =============================
 
-In TDD, the tests are written the meet the requirements before the code
+In TDD, the tests are written to meet the requirements before the code
 exists.
 
 Once the collection of tests passes, the requirement is considered met.
@@ -808,7 +810,7 @@ or
 -  Fix any failures in the code
 -  Add doctests to calculator_functions.py
 
-YOu can find all that in:
+You can find all that in:
 
 ``examples/calculator``
 
@@ -898,11 +900,12 @@ Using patch
             article = Definitions.article("Robot")
             mock_method.assert_called_once_with("Robot")
 
+There are a number of ways to use ``mock.patch`` -- this is a nice discussion of that: `The Many Flavors of mock.patch <http://treyhunner.com/2014/10/the-many-flavors-of-mock-dot-patch/>`_
 
 Mocking a builtin
 -----------------
 
-Say you would like to mock input in this function in a file called mock_input:
+Say you would like to mock input in this function in a file called mock_input.py:
 
 .. code-block:: python
 
@@ -916,7 +919,7 @@ In your test file, you would do this:
 .. code-block:: python
 
     @mock.patch('builtins.input')
-    def test_get_more_input(self, new_mocked_input):
+    def test_get_input(self, new_mocked_input):
         new_mocked_input.return_value = 'blue'
         self.assertEqual(mock_input.get_input(), 'blue')
 

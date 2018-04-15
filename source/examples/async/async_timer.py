@@ -41,6 +41,8 @@ loop = asyncio.get_event_loop()
 # or add tasks to the loop like this:
 loop.create_task(display_date(3))
 loop.create_task(display_date(4))
+for i in range(5, 20):
+    loop.create_task(display_date(i))
 
 # this will shut the event loop down in 15 seconds
 loop.call_later(15, shutdown)

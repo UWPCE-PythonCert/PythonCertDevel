@@ -12,6 +12,8 @@ Session 10: Profiling & Performance
 Reading
 =======
 
+:ref:`profiling`
+
 Supplemental Readings
 =====================
 

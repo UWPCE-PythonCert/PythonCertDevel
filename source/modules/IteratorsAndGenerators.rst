@@ -196,7 +196,7 @@ It works, and is fairly efficient, but what about:
 
 .. code-block:: python
 
-    for triple in zip(words[:-2], words[1:-1], words[2:-2]):
+    for triple in zip(words[:-2], words[1:-1], words[2:]):
 
 
 zip() returns an iterable -- it does not build up the whole list.
@@ -522,7 +522,7 @@ Anytime you want to return a value, and then hold state until later,
 
 .. code-block:: python
 
-@pytest.fixture
+    @pytest.fixture
     def example_fixture(request):
         # setup code here
         value = something()

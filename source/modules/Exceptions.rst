@@ -74,7 +74,7 @@ Don't do this:
         f = open('missing.txt')
         process(f)
 
-It will almost always work -- but the almost will drive you crazy.
+It will almost always work -- but the *almost* will drive you crazy.
 
 It is "possible" that the file got deleted by another process in the precise moment between checking for it and opening it. Rare, but possible. But catching the exception will always work.
 
@@ -269,7 +269,7 @@ So a full-featured ``try`` block has all of this:
     finally:
         some code to run always.
 
-The minimal try block as a ``try``, and one ``except``.
+The minimal try block is a ``try``, and one ``except``.
 
 Raising Exceptions
 -------------------
@@ -325,9 +325,9 @@ Example::
   if (not isinstance(m, int)) or (not isinstance(n, int)):
       raise ValueError
 
-Is it the *value* or the input the problem here?
+Is the *value* of the input the problem here?
 
-Nope: the *type* is the problem::
+Nope: the *type* of the input is the problem::
 
   if (not isinstance(m, int)) or (not isinstance(n, int)):
       raise TypeError
@@ -359,7 +359,7 @@ What if the file I want to read doesn't exist?
 
 Now I know to use::
 
-    except  ``FileNotFoundError``:
+    except FileNotFoundError:
 
 In the ``try`` block where I am opening the file.
 

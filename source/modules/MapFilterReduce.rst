@@ -16,7 +16,7 @@ map
 
 ``map``  "maps" a function onto a sequence of objects -- It applies the function to each item in the sequence, returning an "iterable" "map object".
 
-The map object delays evaluation until you iterate over it. That way you can pass it to another map, or use it in a for loop, without creating a unnecessary copy of the list.
+The map object delays evaluation until you iterate over it. That way you can pass it to another map, or use it in a for loop, without creating an unnecessary copy of the list.
 
 .. code-block:: ipython
 
@@ -43,9 +43,9 @@ filter
 ------
 
 ``filter``  "filters" a sequence of objects with a boolean function --
-It keeps only those for which the function is True -- filtering our the rest.
+It keeps only those for which the function is True -- filtering out the rest.
 
-It similarly returns and iterable object.
+It similarly returns an iterable object.
 
 To get only the even numbers:
 

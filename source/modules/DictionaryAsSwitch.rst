@@ -57,7 +57,7 @@ The ``elif`` chain is neither elegant nor efficient. There are a number of ways 
 .. code-block:: python
 
     arg_dict = {0:"zero", 1:"one", 2: "two"}
-        dict.get(argument, "nothing")
+    arg_dict.get(argument, "nothing")
 
 Simple, elegant and fast.
 
@@ -73,7 +73,7 @@ What would this be like if you used functions instead? Think of the possibilitie
 .. code-block:: ipython
 
     In [11]: def my_zero_func():
-    return "I'm zero"
+        return "I'm zero"
 
     In [12]: def my_one_func():
         return "I'm one"

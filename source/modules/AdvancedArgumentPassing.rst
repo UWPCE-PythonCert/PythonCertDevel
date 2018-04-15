@@ -122,7 +122,7 @@ Build a dict of the keys and values:
 
     In [25]: d = {"last":"Barker", "first":"Chris"}
 
-And pass to ``format()``with ``**``
+And pass to ``format()`` with ``**``
 
 .. code-block:: ipython
 
@@ -161,7 +161,7 @@ Keyword Only Arguments
 
 The usual function signature looks something like:
 
-.. code-block: python
+.. code-block:: python
 
     def fun (pos1, pos2, key1='this', key2='that'):
         print(pos1, pos2, key1, key2)
@@ -197,7 +197,7 @@ And the positional arguments are all required:
 
     TypeError: fun() missing 1 required positional argument: 'pos2'
 
-**But:**  Notice that you can either have a required argument with no keyword, or an optional argument with a keyword (and a default). And keyworkd arguments can also be passes as positional arguments.
+**But:**  Notice that you can either have a required argument with no keyword, or an optional argument with a keyword (and a default). And keyword arguments can also be passed as positional arguments.
 
 This was considered less than ideal -- with some APIs, you want to require a keyword be used -- and you may have a required argument that you want users to pass as a keyword (rather than positional) argument.
 
@@ -207,14 +207,14 @@ https://www.python.org/dev/peps/pep-3102/
 
 So you can do:
 
-.. code-block: python
+.. code-block:: python
 
     def fun (pos1, pos2, *, key1='this'):
         print(pos1, pos2, key1)
 
 Now the user can only provide a value for key1 as a keyword argument. If they pass a third positional argument, it'll be an error:
 
-.. code-block: ipython
+.. code-block:: ipython
 
     In [26]: fun(1,2,3)
     ---------------------------------------------------------------------------
@@ -226,24 +226,26 @@ Now the user can only provide a value for key1 as a keyword argument. If they pa
 
 So Python will not just move that third argument along for you. You need to use the keyword:
 
-.. code-block: ipython
+.. code-block:: ipython
 
     In [29]: fun(1,2, key1=3)
     1 2 3
 
 But you can still let it be the default:
 
-.. code-block: ipython
+.. code-block:: ipython
 
     In [30]: fun(1,2)
     1 2 this
 
 However, with keyword only arguments you can make it required by providing no default:
 
-.. code-block: python
+.. code-block:: python
 
-    def fun (pos1, pos2, *, key1):
+    def fun(pos1, pos2, *, key1):
         print(pos1, pos2, key1)
+
+.. code-block:: ipython
 
     In [32]: fun(1,2)
     ---------------------------------------------------------------------------
@@ -255,7 +257,7 @@ However, with keyword only arguments you can make it required by providing no de
 
 So you HAVE to provide it, and you HAVE to provide it as a keyword argument.
 
-.. code-block: python
+.. code-block:: ipython
 
     In [34]: fun(1,2, key1='that')
     1 2 that
@@ -287,7 +289,7 @@ And you can pass any number in:
     In [39]: fun(1,2,3,4,5,6,7, key1='that')
     1 2 (3, 4, 5, 6, 7) that
 
-This is actually the primary motivation for the PEP --it makes a cleaner separation of positional an keyword arguments.
+This is actually the primary motivation for the PEP -- it makes a cleaner separation of positional and keyword arguments.
 
 So for ALL the features in one function:
 

@@ -50,7 +50,7 @@ for this program.
 
 This means that the "homework" will be reading, watching videos, etc.
 
-And class time will spent primarly coding:
+And class time will be spent primarly coding:
 
  * Still some lecture -- as little as possible
  * Lots of demos
@@ -85,7 +85,7 @@ You should have been subscribed to the mailing list, if not talk to your instruc
 
 We will be using this list to communicate with you. You should have (or will soon) received an email invitation to join the mailing list.
 
-Slack: We have set up a slack channel for discussions. Anything python related is fair game (or not in the random channel). Again, if you did not receive and invite to slack, talk to your instructors.
+Slack: We have set up a slack channel for discussions. Anything python related is fair game (or not in the random channel). Again, if you did not receive an invite to slack, talk to your instructors.
 
 
 We highly encourage you to work together. You will learn at a much deeper level if you work together, and it gets you ready to collaborate with colleagues. If you have never used slack before, you may want to look at their intro:

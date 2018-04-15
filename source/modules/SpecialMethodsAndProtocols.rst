@@ -41,7 +41,7 @@ Most classes should at least have these special methods:
 
   This means that the "repr" is what you type to create the object. In practice, this is impractical for complex objects... but it is still a more "formal" form.
 
-  Note that is you don't define a ``__str__`` method, than the __repr__ will be used. And the base class (``object``) has a __repr__ defined, so every class automatically gets one -- but it's ugly :-)
+  Note that if you don't define a ``__str__`` method, then the ``__repr__`` will be used. And the base class (``object``) has a ``__repr__`` defined, so every class automatically gets one -- but it's ugly :-)
 
 
 Protocols
@@ -106,7 +106,7 @@ While this is not division in any sense, the slash *is* used as a path separator
 Comparing
 ---------
 
-If you want you objects to be comparable::
+If you want your objects to be comparable::
 
   A > B
   A < B
@@ -146,7 +146,7 @@ Total Ordering
 
 You may notice that those operators are kind of redundant -- if ``A > B is True`` then we know that ``A < B is False`` and ``A <= B is False``.
 
-In fact, there is a mathematical / computer science concept know as "Total Order": (https://en.wikipedia.org/wiki/Total_order), which strictly defines "well behaved" objects in this regard.
+In fact, there is a mathematical / computer science concept known as "Total Order": (https://en.wikipedia.org/wiki/Total_order), which strictly defines "well behaved" objects in this regard.
 
 There may be some special cases, where these rules may not apply for your classes (though I can't think of any :-) ), but for the most part, you want your classes, if they support comparisons at all, to be well behaved, or "total ordered".
 

@@ -3,19 +3,23 @@
 import threading
 import time
 
-x = 1
+
+# create a mutable object that is shared among threads
+class shared:
+    val = 1
+
 
 def func():
-    global x
-    y = x
-    time.sleep(0.01)
+    y = shared.val
+    time.sleep(0.00001)
     y += 1
-    x = y
+    shared.val = y
+
 
 threads = []
-# with enough threads, there's sufficient overhead to cause a race
-# condition
-for i in range(20000):
+# with enough threads, there's sufficient overhead to
+# cause a race condition
+for i in range(100):
     thread = threading.Thread(target=func)
     threads.append(thread)
     thread.start()
@@ -23,4 +27,5 @@ for i in range(20000):
 for thread in threads:
     thread.join()
 
-print(x)
+print(shared.val)
+

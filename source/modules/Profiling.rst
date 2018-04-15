@@ -270,7 +270,7 @@ iPython has your back (again)
 
     %timeit -n 10000 "f" in "food"
 
-http://ipython.readthedocs.io/en/stable/interactive/magics.html?#magic-timeit
+`timeit magic <http://ipython.readthedocs.io/en/stable/interactive/magics.html?#magic-timeit>`_
 
 
 Exercise
@@ -637,7 +637,7 @@ Processors are fast
 
 It can take longer to push the memory around than do the computation
 
-So keep in in mind for big data sets:
+So keep in mind for big data sets:
 
 Use the right data structures
 

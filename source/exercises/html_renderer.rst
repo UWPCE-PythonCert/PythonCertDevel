@@ -140,6 +140,10 @@ You may note not that the ``Element`` class really doesn't do anything by itself
 
 Extend the ``Element.render()`` method so that it can render other elements inside the tag in addition to strings. A recursion-like approach should do it. i.e. it can call the ``render()`` method of the elements it contains. You'll need to be smart about setting the ``cur_ind`` optional parameter -- so that the nested elements get indented correctly (again, this is a secondary concern...get correct html first).
 
+If this recursion-like idea doesn't make sense to you, take a look at this blog post, which talks about recursive algorithms:
+
+https://realpython.com/python-thinking-recursively/
+
 Figure out a way to deal with the fact that the contained elements could be either simple strings or ``Element`` s with render methods (there are a few ways to handle that...). Think about "Duck Typing" and EAFP. See the section :ref:`notes_on_handling_duck_typing` and the end of the Exercise for more.
 
 You should now be able to render a basic web page with an ``<html>`` tag around the whole thing, a ``<body>`` tag inside, and multiple ``<p>`` tags inside that, with text inside that. And all indented nicely.

@@ -14,7 +14,7 @@ https://newsapi.org
 import time
 import asyncio
 import aiohttp
-import requests
+#import requests
 
 WORD = "trump"
 

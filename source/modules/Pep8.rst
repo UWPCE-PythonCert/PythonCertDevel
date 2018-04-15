@@ -77,7 +77,7 @@ Encoding
 
 -  The default encoding in Python 2 is ASCII, in Python 3 it is UTF-8.
    UTF-8 has become ubiquitous enough that you probably haven't noticed.
-   But do check your editor at some point -- or if something wierd happens.
+   But do check your editor at some point -- or if something weird happens.
 
 -  If you insert a non encodable character in a string literal, the
    interpreter will throw a SyntaxError when it reaches it.
@@ -355,4 +355,12 @@ Conclusion:
 Personally, I use flake8 -- it gets most of it for me. Though a run with pylint isn't a bad idea once in a while....
 
 Also -- if you set up your editor with a linter -- you'll be encouraged to fix it a bit at a time as you write -- much better way to go.
+
+Pythonic Style
+==============
+
+Good "Pythonic" style goes beyond style guides and things linters can figure out for you.
+
+The `Hitchhiker's Guide to Python: Code Style <http://docs.python-guide.org/en/latest/writing/style/>`_ is a good read that gets into a nice level of detail.
+
 

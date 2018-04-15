@@ -339,7 +339,7 @@ https://pyformat.info/
 
 And a nice formatting cookbook:
 
-https://mkaz.tech/python-string-format.html
+https://mkaz.blog/code/python-string-format-cookbook/
 
 
 Literal String Interpolation
@@ -388,7 +388,7 @@ So what does that all mean?
 
 For this most simple example::
 
-  f"some text: {str(expression)}"
+  f"some text: {expression}"
 
 `expression` is any valid python expression(remember that an expression is a combination of values and operators and names that produces a value).
 

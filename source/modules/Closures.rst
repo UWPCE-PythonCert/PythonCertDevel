@@ -12,12 +12,12 @@ Scope
 
 In order to get a handle on all this, it's important to understand variable scoping rules in Python.
 
-"Scope" is the word for where in the names in your code are accessible. Another word for a scope is namespace.
+"Scope" is the word for where the names in your code are accessible. Another word for a scope is namespace.
 
 global
 ------
 
-The simplest is the global scope. This is the where all the names defined right in your code file are (or in the interpreter).
+The simplest is the global scope. This is where all the names defined right in your code file are (or in the interpreter).
 
 You can get the global namespace with the ``globals()`` function, but ...
 
@@ -82,18 +82,20 @@ So that's the global scope -- what creates a new scope?
 
 A new, "local" scope is created by a function or class definition:
 
-And there is a build in function to get the names in the local scope, too, so we can use it to show us the names in a function's local namespace. There isn't a lot of cruft in the local namespace, so we don't need a special function to print it.
+And there is a built-in function to get the names in the local scope, too, so we can use it to show us the names in a function's local namespace. There isn't a lot of cruft in the local namespace, so we don't need a special function to print it.
 
 Note that ``locals()`` and ``globals()`` returns a dict of the names and the objects they are bound to, so we can print the keys to get the names:
 
-In [15]: def test():
+.. code-block:: ipython
+
+    In [15]: def test():
     ...:     x = 5
     ...:     y = 6
     ...:     print(locals().keys())
     ...:
 
-In [16]: test()
-dict_keys(['y', 'x'])
+    In [16]: test()
+    dict_keys(['y', 'x'])
 
 When a function is called, it creates a clean local namespace.
 
@@ -165,7 +167,7 @@ Look carefully to see where each of those names came from. All the print stateme
 The global keyword
 ------------------
 
-global names can be accessed from within functions, but not if that same name is created in the local scope. So you can't change an immutable object that it outside the local scope:
+global names can be accessed from within functions, but not if that same name is created in the local scope. So you can't change an immutable object that is outside the local scope:
 
 .. code-block:: ipython
 
@@ -312,7 +314,7 @@ But it will go up multiple levels in nested scopes:
 function parameters
 -------------------
 
-A side note: function parameters are in a functions local scope, jsut as though they were created there:
+A side note: function parameters are in a function's local scope, just as though they were created there:
 
 .. code-block:: ipython
 
@@ -404,7 +406,7 @@ But what happens if we call ``counter()`` multiple times?
 
 So each time ``counter()`` is called, a new ``incr`` function is created. But also, a new namespace is created, that holds the count name. So the new ``incr`` function is holding a reference to that new count name.
 
-This is what makes in a "closure" -- it carries with it the scope in which is was created.
+This is what makes in a "closure" -- it carries with it the scope in which it was created.
 
 The returned ``incr`` function is a "curried" function -- a function with some parameters pre-specified.
 
@@ -421,7 +423,7 @@ Currying
 
 `Currying on Wikipedia <https://en.wikipedia.org/wiki/Currying>`_
 
-The idea behind currying is that you may have a function with a number of parameters, and you want to make a specialized version that function with a couple parameters pre-set.
+The idea behind currying is that you may have a function with a number of parameters, and you want to make a specialized version of that function with a couple parameters pre-set.
 
 
 Real world Example
@@ -458,9 +460,9 @@ What if I could create a function, on the fly, that had a particular half-life "
 .. code-block:: python
 
     def get_scale_fun(half_life):
-        def half_life(time)
+        def half_life_fun(time):
             return 0.5 ** (time / half_life)
-        return half_life
+        return half_life_fun
 
 **NOTE:** This is simple enough to use a lambda for a bit more compact code:
 
