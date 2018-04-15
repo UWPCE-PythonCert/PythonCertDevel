@@ -55,3 +55,7 @@ numbers_str = str(numbers)[1:-1]  # make a string, remove the brackets
 # put it together with the rest of the string
 print("the first {:d} numbers are: {}".format(len(numbers), numbers_str))
 
+# answer to bonus question at the very end:
+# And for an extra task, given a tuple with 10 consecutive numbers, can you work how to quickly 
+# print the tuple in columns that are 5 charaters wide? It can be done on one short line!
+print(('{:<5}'*len(the_tuple)).format(*the_tuple))

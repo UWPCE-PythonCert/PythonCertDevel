@@ -54,8 +54,6 @@ def make_words(text):
     # could be done with list comprehension too -- next week!
     # words2 = [("I" if word == 'i' else word) for word in words if word != "'"]
     return words2
-    print(words)
-    return words
 
 
 def read_in_data(infilename):
