@@ -32,7 +32,7 @@ except SyntaxError:
 # again assigning it to more_joke.
 #
 # If there are no exceptions, call the more_fun function with the last
-# language in the list regardless of whether there was an exception
+# language in the list
 
 # Finally, while still in the try/except block and regardless of whether
 # there were any exceptions, call the function last_fun with no
