@@ -497,6 +497,9 @@ In Python 2, instead of the keyword argument, a special class attribute:
 
 Otherwise it's the same.
 
+The __metaclass__ attribute is part of determining that function. If __metaclass__ is a key in the body dictionary then the value of that key is used. This value could be anything, although if not callable an exception will be raised. 
+from http://jfine-python-classes.readthedocs.io/en/latest/decorators-versus-metaclass.html
+
 Why use metaclasses?
 --------------------
 

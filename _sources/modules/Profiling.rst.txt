@@ -610,8 +610,7 @@ A few key approaches
 -  Overhead in function/method runtime lookup can be significant for
    small frequent calls.
 
--  inlining code or caching function references might help. See
-   ``examples/data_aggregation/agg.py``
+-  inlining code or caching function results might help.
 
 -  Python string handling idioms: use ``"".join(list_of_strings)`` rather
    than sequential calls to += See ``examples/strings/str_concat.py`` and
