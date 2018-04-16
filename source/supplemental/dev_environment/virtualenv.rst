@@ -133,6 +133,10 @@ using the ``source`` command:
     (demoenv)$ which python
     /Users/cewing/demoenv/bin/python
 
+On Windows, the *activate* script is in the ``Scripts`` folder:
+
+``> \path\to\env\Scripts\activate``
+
 There.  That's better. Now whenever you run the ``python`` command, the
 executable that will be used will be the new one in your ``demoenv``.
 
