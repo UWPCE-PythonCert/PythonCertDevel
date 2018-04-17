@@ -13,9 +13,8 @@ Very often a search for a very specific question or topic will very quickly get 
 
     python_community
     learning
-    git_hints
-    packaging
     language_topics
+    packaging
     scipy
     guis
 
