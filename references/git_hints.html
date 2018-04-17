@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>git Hints &mdash; PythonCert 4.0 documentation</title>
+  <title>Handy hints for using git &mdash; PythonCert 4.0 documentation</title>
   
 
   
@@ -26,21 +26,22 @@
 
   
   
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   
 
   
 
   
         <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../../index.html"/>
-        <link rel="up" title="Supplemental Materials" href="../index.html"/>
-        <link rel="prev" title="Graphical User Interfaces" href="../../references/guis.html"/> 
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
+        <link rel="up" title="Resources for Specific Python Topics" href="index.html"/>
+        <link rel="next" title="Packages and Packaging" href="packaging.html"/>
+        <link rel="prev" title="Useful Python Learning Resources" href="learning.html"/> 
 
   
-  <script src="../../_static/js/modernizr.min.js"></script>
+  <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -56,7 +57,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> PythonCert
+            <a href="../index.html" class="icon icon-home"> PythonCert
           
 
           
@@ -73,7 +74,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -91,28 +92,32 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../modules/index.html">Topic Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../exercises/index.html">Exercises</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Supplemental Materials</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../HowToRunAPythonFile.html">How to run a python file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../installing/index.html">Installing Python and core tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html">Setting Up A Development Environment For Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#specific-python-notes">Specific Python Notes</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html#more-about-git">More about git</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../../modules/GitWorkflow.html">git Workflow</a></li>
-<li class="toctree-l3"><a class="reference internal" href="git_overview.html">git Overview</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">git Hints</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#origin-and-upstream">“origin” and “upstream”</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#backing-out-a-change">Backing out a change</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#git-blame">git blame</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#branching">Branching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Resources for Specific Python Topics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python_community.html">Python Community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learning.html">Useful Python Learning Resources</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Handy hints for using git</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#backing-out-a-change">Backing out a change</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#backing-out-a-change-that-has-been-committed">Backing out a change that has been committed.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#git-blame"><code class="docutils literal"><span class="pre">git</span> <span class="pre">blame</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#branching">Branching</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quick-tutorial">quick tutorial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#merging">merging</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="packaging.html">Packages and Packaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packaging.html#distributing">Distributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_topics.html">Python Language Topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scipy.html">The SciPy Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guis.html">Graphical User Interfaces</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../references/index.html">Resources for Specific Python Topics</a></li>
 </ul>
 
             
@@ -127,7 +132,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">PythonCert</a>
+          <a href="../index.html">PythonCert</a>
         
       </nav>
 
@@ -155,17 +160,17 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../index.html">Supplemental Materials</a> &raquo;</li>
+          <li><a href="index.html">Resources for Specific Python Topics</a> &raquo;</li>
         
-      <li>git Hints</li>
+      <li>Handy hints for using git</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/supplemental/dev_environment/git_hints.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/references/git_hints.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -178,73 +183,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="git-hints">
-<span id="id1"></span><h1>git Hints<a class="headerlink" href="#git-hints" title="Permalink to this headline">¶</a></h1>
-<p>git is a very complex system, and can be used in many ways. Because of this, it can be hard to find answers to seemingly simple questions, even though the Internet is full of discussions of how to use git.</p>
+  <div class="section" id="handy-hints-for-using-git">
+<span id="git-hints"></span><h1>Handy hints for using git<a class="headerlink" href="#handy-hints-for-using-git" title="Permalink to this headline">¶</a></h1>
+<p>git is a very complex system, and can be used in many ways. Because of this, it can be hard to find answers to seemingly simple questions, even though the internet is full of discussions of how to use git.</p>
 <p>Every group using git has to establish a standard “work flow”. If you google “git workflow” you find a LOT of discussion, and they are not all the same. And depending on the workflow you are using, the problems you’ll have and the solutions to them will be different.</p>
 <p>We are using a very simplified workflow for this class, and this page seeks to provide solutions to problems that you might encounter specifically with this workflow.</p>
-<div class="section" id="origin-and-upstream">
-<h2>“origin” and “upstream”<a class="headerlink" href="#origin-and-upstream" title="Permalink to this headline">¶</a></h2>
-<p>git is a “distributed version control system”. That means that git repositories are self contained, and can be “connected” with multiple other, remote repositories – that is, repos on other machines elsewhere on the internet.</p>
-<p>This facilitates collaboration with widely dispersed groups, but as it allows essentially arbitrary complexity, some conventions have emerged.</p>
-<p>a git repo can be “connected” with virtually any number of remote repositories you can see what yours is connected to with:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git remote -v
-</pre></div>
-</div>
-<p>After cloning a repository (from gitHub, for instance) on your machine, is will look something like this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git remote -v
-origin  https://github.com/PythonCHB/Sp2018-Accelerated.git <span class="o">(</span>fetch<span class="o">)</span>
-origin  https://github.com/PythonCHB/Sp2018-Accelerated.git <span class="o">(</span>push<span class="o">)</span>
-</pre></div>
-</div>
-<p>so I have one remote repository, on gitHub. It is listed twice, as I am both fetching from (pulling) and pushing to the same repository. “origin” is created when you do a clone, and it is the one that is pushed to and pulled from by default. git is so flexible that you could set it up to push and pull be default to two different repos, but I’ve never seen that done.</p>
-<p>In case of the PythonCertclass, we need <em>another</em> remote repository:</p>
-<p>There is the central class repository, which only the instructors have permissions to change. But you want to be able to get updated materials from that repository as well.  Since this repo is the one your personal repo was “forked” from, the convention is to call it the “upstream” repository. You should have set that up with a command like this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git remote add upstream https://github.com/UWPCE-PythonCert-ClassRepos/Sp2018-Accelerated.git
-</pre></div>
-</div>
-<p>And it should look something like this when you check your remotes:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git remote -v
-origin  https://github.com/PythonCHB/Sp2018-Accelerated.git <span class="o">(</span>fetch<span class="o">)</span>
-origin  https://github.com/PythonCHB/Sp2018-Accelerated.git <span class="o">(</span>push<span class="o">)</span>
-upstream    https://github.com/UWPCE-PythonCert-ClassRepos/Sp2018-Accelerated.git <span class="o">(</span>fetch<span class="o">)</span>
-upstream    https://github.com/UWPCE-PythonCert-ClassRepos/Sp2018-Accelerated.git <span class="o">(</span>push<span class="o">)</span>
-</pre></div>
-</div>
-<p>So I now have two more remotes, one for pushing and one for pulling (fetching).</p>
-<p>Do this now on your own machine, and make sure that “origin” points to your repo on gitHub, and “upstream” is pointed to the one in the “UWPCE-PythonCert-ClassRepos” gitHub organization.</p>
-<div class="section" id="changing-a-remote">
-<h3>Changing a remote<a class="headerlink" href="#changing-a-remote" title="Permalink to this headline">¶</a></h3>
-<p>If your remotes are not set up right, you can reset them, but removing one:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git remote remove upstream
-</pre></div>
-</div>
-<p>and then adding it back correctly:</p>
-<blockquote>
-<div>$ git remote add upstream <a class="reference external" href="https://github.com/UWPCE-PythonCert-ClassRepos/Sp2018-Accelerated.git">https://github.com/UWPCE-PythonCert-ClassRepos/Sp2018-Accelerated.git</a></div></blockquote>
-<p><strong>make sure to adjust that command for your particular class!</strong></p>
-</div>
-<div class="section" id="working-with-upstream">
-<h3>Working with “upstream”<a class="headerlink" href="#working-with-upstream" title="Permalink to this headline">¶</a></h3>
-<p>If you were to try to push to the upstream one, it would fail, as you do not have permissions to do so. But when you do:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git pull upstream master
-</pre></div>
-</div>
-<p>you are telling git to pull all the latest changes from the “upstream” repository into your local one. Note that all those changes will only get into your repo on github (origin) when you push:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git push
-</pre></div>
-</div>
-<p>Note that “origin” is the default remote, and “master” is the default branch, so that command is the same as:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git pull origin master
-</pre></div>
-</div>
-<p>And when you pull from your gitHub repo (<code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></code>) that is shorthand for:</p>
-<blockquote>
-<div>$ git pull origin master</div></blockquote>
-<p>Note that you may not have a reason to pull from your origin repo. But if you were to work on two different machines – say a personal laptop at home, and a work machine at the office, you could push stuff to your gitHub repo from both, and use <code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></code> to keep your changes in sync.</p>
-<p>In fact, I highly recommend using git and gitHub as a way to coordinate your personal work if you have multiple machines (or multiple OSs, or…). You also get a backup essentially for free that way.</p>
-</div>
-</div>
 <div class="section" id="backing-out-a-change">
 <h2>Backing out a change<a class="headerlink" href="#backing-out-a-change" title="Permalink to this headline">¶</a></h2>
 <p>If you change a file in your repo, and you decide that you simply want to put it back the way it was the last time you committed it – that’s easy:</p>
@@ -298,7 +241,7 @@ Date:   Tue Oct 31 18:59:31 2017 -0700
 </div>
 </div>
 <div class="section" id="git-blame">
-<h2>git blame<a class="headerlink" href="#git-blame" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal"><span class="pre">git</span> <span class="pre">blame</span></code><a class="headerlink" href="#git-blame" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">git</span> <span class="pre">blame</span></code> is a handy utility for examining the history of a particular part of a particular file. For example:</p>
 <p><code class="docutils literal"><span class="pre">git</span> <span class="pre">blame</span> <span class="pre">-L</span> <span class="pre">2,6</span> <span class="pre">examples/Session05/maillroom_test.py</span></code></p>
 <p>That means: “show me the changes to lines 2–6 of this file”.</p>
@@ -370,8 +313,10 @@ Date:   Tue Oct 31 18:59:31 2017 -0700
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="packaging.html" class="btn btn-neutral float-right" title="Packages and Packaging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="../../references/guis.html" class="btn btn-neutral" title="Graphical User Interfaces" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="learning.html" class="btn btn-neutral" title="Useful Python Learning Resources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -401,7 +346,7 @@ Date:   Tue Oct 31 18:59:31 2017 -0700
 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
+            URL_ROOT:'../',
             VERSION:'4.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -409,16 +354,16 @@ Date:   Tue Oct 31 18:59:31 2017 -0700
             SOURCELINK_SUFFIX: '.txt'
         };
     </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
   
   
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
   
 
   

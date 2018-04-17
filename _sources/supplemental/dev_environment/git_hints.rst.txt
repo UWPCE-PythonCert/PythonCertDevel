@@ -1,14 +1,104 @@
 .. _git_hints:
 
-#########################
-Handy hints for using git
-#########################
+#########
+git Hints
+#########
 
-git is a very complex system, and can be used in many ways. Because of this, it can be hard to find answers to seemingly simple questions, even though the internet is full of discussions of how to use git.
+git is a very complex system, and can be used in many ways. Because of this, it can be hard to find answers to seemingly simple questions, even though the Internet is full of discussions of how to use git.
 
 Every group using git has to establish a standard "work flow". If you google "git workflow" you find a LOT of discussion, and they are not all the same. And depending on the workflow you are using, the problems you'll have and the solutions to them will be different.
 
 We are using a very simplified workflow for this class, and this page seeks to provide solutions to problems that you might encounter specifically with this workflow.
+
+"origin" and "upstream"
+=======================
+
+git is a "distributed version control system". That means that git repositories are self contained, and can be "connected" with multiple other, remote repositories -- that is, repos on other machines elsewhere on the internet.
+
+This facilitates collaboration with widely dispersed groups, but as it allows essentially arbitrary complexity, some conventions have emerged.
+
+a git repo can be "connected" with virtually any number of remote repositories you can see what yours is connected to with:
+
+.. code-block:: bash
+
+  git remote -v
+
+After cloning a repository (from gitHub, for instance) on your machine, is will look something like this:
+
+.. code-block:: bash
+
+    $ git remote -v
+    origin  https://github.com/PythonCHB/Sp2018-Accelerated.git (fetch)
+    origin  https://github.com/PythonCHB/Sp2018-Accelerated.git (push)
+
+so I have one remote repository, on gitHub. It is listed twice, as I am both fetching from (pulling) and pushing to the same repository. "origin" is created when you do a clone, and it is the one that is pushed to and pulled from by default. git is so flexible that you could set it up to push and pull be default to two different repos, but I've never seen that done.
+
+In case of the PythonCertclass, we need *another* remote repository:
+
+There is the central class repository, which only the instructors have permissions to change. But you want to be able to get updated materials from that repository as well.  Since this repo is the one your personal repo was "forked" from, the convention is to call it the "upstream" repository. You should have set that up with a command like this:
+
+.. code-block:: bash
+
+    $ git remote add upstream https://github.com/UWPCE-PythonCert-ClassRepos/Sp2018-Accelerated.git
+
+And it should look something like this when you check your remotes:
+
+.. code-block:: bash
+
+    $ git remote -v
+    origin  https://github.com/PythonCHB/Sp2018-Accelerated.git (fetch)
+    origin  https://github.com/PythonCHB/Sp2018-Accelerated.git (push)
+    upstream    https://github.com/UWPCE-PythonCert-ClassRepos/Sp2018-Accelerated.git (fetch)
+    upstream    https://github.com/UWPCE-PythonCert-ClassRepos/Sp2018-Accelerated.git (push)
+
+So I now have two more remotes, one for pushing and one for pulling (fetching).
+
+Do this now on your own machine, and make sure that "origin" points to your repo on gitHub, and "upstream" is pointed to the one in the "UWPCE-PythonCert-ClassRepos" gitHub organization.
+
+Changing a remote
+-----------------
+
+If your remotes are not set up right, you can reset them, but removing one:
+
+.. code-block:: bash
+
+    git remote remove upstream
+
+and then adding it back correctly:
+
+    $ git remote add upstream https://github.com/UWPCE-PythonCert-ClassRepos/Sp2018-Accelerated.git
+
+**make sure to adjust that command for your particular class!**
+
+Working with "upstream"
+-----------------------
+
+If you were to try to push to the upstream one, it would fail, as you do not have permissions to do so. But when you do:
+
+.. code-block:: bash
+
+    $ git pull upstream master
+
+you are telling git to pull all the latest changes from the "upstream" repository into your local one. Note that all those changes will only get into your repo on github (origin) when you push:
+
+.. code-block:: bash
+
+    $ git push
+
+Note that "origin" is the default remote, and "master" is the default branch, so that command is the same as:
+
+.. code-block:: bash
+
+    $ git pull origin master
+
+And when you pull from your gitHub repo (``git pull``) that is shorthand for:
+
+    $ git pull origin master
+
+Note that you may not have a reason to pull from your origin repo. But if you were to work on two different machines -- say a personal laptop at home, and a work machine at the office, you could push stuff to your gitHub repo from both, and use ``git pull`` to keep your changes in sync.
+
+In fact, I highly recommend using git and gitHub as a way to coordinate your personal work if you have multiple machines (or multiple OSs, or...). You also get a backup essentially for free that way.
+
 
 Backing out a change
 ====================
@@ -76,8 +166,8 @@ And that puts it back to the state it was in at that previous commit, identified
 Note that the full hash for each commit is really long, but git will if you use enough characters to uniquely identify it -- ten or so is usually plenty.
 
 
-``git blame``
-=============
+git blame
+=========
 
 ``git blame`` is a handy utility for examining the history of a particular part of a particular file. For example:
 
