@@ -37,8 +37,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
         <link rel="up" title="Resources for Specific Python Topics" href="index.html"/>
-        <link rel="next" title="The SciPy Stack" href="scipy.html"/>
-        <link rel="prev" title="Packages and Packaging" href="packaging.html"/> 
+        <link rel="next" title="Packages and Packaging" href="packaging.html"/>
+        <link rel="prev" title="Useful Python Learning Resources" href="learning.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -92,19 +92,36 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Topic Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../supplemental/HowToRunAPythonFile.html">How to run a python file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supplemental/installing/index.html">Installing Python and core tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supplemental/dev_environment/index.html">Setting Up A Development Environment For Python</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../supplemental/index.html#specific-python-notes">Specific Python Notes</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Resources for Specific Python Topics</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="python_community.html">Python Community</a></li>
+<li class="toctree-l4"><a class="reference internal" href="learning.html">Useful Python Learning Resources</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Python Language Topics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="packaging.html">Packages and Packaging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="packaging.html#distributing">Distributing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scipy.html">The SciPy Stack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guis.html">Graphical User Interfaces</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../supplemental/index.html#more-about-git">More about git</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Resources for Specific Python Topics</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="python_community.html">Python Community</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learning.html">Useful Python Learning Resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git_hints.html">Handy hints for using git</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packaging.html">Packages and Packaging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packaging.html#distributing">Distributing</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Python Language Topics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#the-python-glossary">The Python Glossary:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#names-and-values">Names and Values</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sequences-and-slicing">Sequences and Slicing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iterators">Iterators</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#working-with-text">Working with text</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#string-formatting">String Formatting</a></li>
 </ul>
@@ -115,6 +132,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#object-oriented-programming-classes">Object Oriented Programming: classes</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#magic-methods">Magic Methods</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#super"><code class="docutils literal"><span class="pre">super()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#functional-programming">Functional Programming</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#programming-paradigms">Programming paradigms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Functional programming</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#concurrency">Concurrency</a><ul>
@@ -137,6 +159,8 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="packaging.html">Packages and Packaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packaging.html#distributing">Distributing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scipy.html">The SciPy Stack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guis.html">Graphical User Interfaces</a></li>
 </ul>
@@ -185,6 +209,8 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="../supplemental/index.html">Supplemental Materials</a> &raquo;</li>
+        
           <li><a href="index.html">Resources for Specific Python Topics</a> &raquo;</li>
         
       <li>Python Language Topics</li>
@@ -222,6 +248,12 @@
 </div>
 <div class="section" id="sequences-and-slicing">
 <h2>Sequences and Slicing<a class="headerlink" href="#sequences-and-slicing" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="iterators">
+<h2>Iterators<a class="headerlink" href="#iterators" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://stackoverflow.com/questions/2776829/difference-between-pythons-generators-and-iterators">What’s the difference between interators and generators?</a></li>
+</ul>
 </div>
 <div class="section" id="working-with-text">
 <h2>Working with text<a class="headerlink" href="#working-with-text" title="Permalink to this headline">¶</a></h2>
@@ -264,6 +296,25 @@
 <p><a class="reference external" href="https://rhettinger.wordpress.com/2011/05/26/super-considered-super/">Super Considered Super</a></p>
 <p>Which was in response to this original post:</p>
 <p><a class="reference external" href="https://fuhm.net/super-harmful/">Super Considered Harmful</a></p>
+</div>
+</div>
+<div class="section" id="functional-programming">
+<h2>Functional Programming<a class="headerlink" href="#functional-programming" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="programming-paradigms">
+<h3>Programming paradigms<a class="headerlink" href="#programming-paradigms" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Comparison_of_programming_paradigms">https://en.wikipedia.org/wiki/Comparison_of_programming_paradigms</a></li>
+<li><a class="reference external" href="https://dev.to/ericnormand/programming-paradigms-and-the-procedural-paradox">https://dev.to/ericnormand/programming-paradigms-and-the-procedural-paradox</a></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h3>Functional programming<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Some links for you that may help with the concepts (in no particular order):
+* <a class="reference external" href="https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming">https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming</a>
+* <a class="reference external" href="https://www.dataquest.io/blog/introduction-functional-programming-python/">https://www.dataquest.io/blog/introduction-functional-programming-python/</a>
+* <a class="reference external" href="https://www.vinta.com.br/blog/2015/functional-programming-python/">https://www.vinta.com.br/blog/2015/functional-programming-python/</a>
+* <a class="reference external" href="https://marcobonzanini.com/2015/06/08/functional-programming-in-python/">https://marcobonzanini.com/2015/06/08/functional-programming-in-python/</a>
+* <a class="reference external" href="https://github.com/sfermigier/awesome-functional-python">https://github.com/sfermigier/awesome-functional-python</a></p>
 </div>
 </div>
 <div class="section" id="concurrency">
@@ -356,10 +407,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="scipy.html" class="btn btn-neutral float-right" title="The SciPy Stack" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="packaging.html" class="btn btn-neutral float-right" title="Packages and Packaging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="packaging.html" class="btn btn-neutral" title="Packages and Packaging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="learning.html" class="btn btn-neutral" title="Useful Python Learning Resources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

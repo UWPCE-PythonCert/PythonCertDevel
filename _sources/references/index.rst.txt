@@ -9,7 +9,7 @@ There is an enormous amount of information available on the Web to help you lear
 Very often a search for a very specific question or topic will very quickly get you and answer. But if you want a more general understanding of a broader topic it can be harder -- there are so man out there, and some are better than others, some are outdated, etc. So this is list of references that we recommend to learn more about particular topics.
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
 
     python_community
     learning

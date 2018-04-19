@@ -14,27 +14,27 @@ gitHub provides a web service and web interface that hosts projects and supports
 Learning Resources
 ==================
 
-* **gitHub tutorial:**
+* Introduction to Git and GitHub for Python Developers
+
+  https://realpython.com/python-git-github-intro/
+
+* "Official" gitHub tutorials:
 
 https://guides.github.com/activities/hello-world/
 
 https://guides.github.com/introduction/flow/
 
-Reading suggested at the end of session 1:
+* Other suggested readings:
 
 http://rogerdudler.github.io/git-guide/
 
 https://try.github.io/levels/1/challenges/1
 
-**Pro git**
-
-The semi-official documentation -- the first few chapters are worth going through:
+* Pro git: The complete semi-official documentation -- the first few chapters are worth going through:
 
 https://git-scm.com/book/en
 
-** git Branching: getting fancy **
-
-Interactive tutorial about branching -- try it right in the browser!
+* git Branching: Interactive tutorial about branching -- try it right in the browser!
 
 http://pcottle.github.io/learnGitBranching/
 

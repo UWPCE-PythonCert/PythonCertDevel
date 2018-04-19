@@ -268,7 +268,7 @@ I've already said it, but it bears repeating:
 
 for loops are for iterating over something (an "iterable") -- you almost never want to iterate over the indexes, and then access items with the index.
 
-nifty for loop tricks
+Nifty for loop tricks
 ---------------------
 
 **tuple unpacking:**
@@ -292,9 +292,9 @@ You can do that in a for loop, also:
   i:3, j:4
   i:5, j:6
 
+
 Looping through two iterables at once:
 --------------------------------------
-
 
   ``zip``
 
@@ -320,7 +320,6 @@ There can be more than two:
 
 Need the index and the item?
 ----------------------------
-
 
   ``enumerate``
 
