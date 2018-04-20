@@ -1,11 +1,12 @@
 .. _git_workflow:
 
-Git Workflow
+git Workflow
 ============
 
 Git is a very flexible system that can be used in a lot of different ways to manage code development. This page describes the workflow we are using for this class -- about as simple a workflow as you can have with git.
 
-We start with an overview of the usual process. This overview may be all you need for future work, once you have created your home directory within the students directory. 
+We start with an overview of the usual process. This overview may be all you need for future work, once you have created your home directory within the students directory.
+
 The instructions following the overview are very explicit for those new to git and the command line.
 
 The usual process

@@ -42,12 +42,12 @@ assert reverse([3, 6, 1, 8, 3, 7]) == [7, 3, 8, 1, 6, 3]
 
 
 def thirds(seq):
-    """With the middle third, then last third, then the first third in the new order"""
+    """with the last third, then first third, then the middle third in the new order."""
     i = len(seq) // 3
-    return seq[i:-i] + seq[-i:] + seq[:i]
+    return seq[-i:] + seq[:i] + seq[i:-i]
 
 
 print(thirds(tuple(range(12))))
-assert thirds(tuple(range(12))) == (4, 5, 6, 7, 8, 9, 10, 11, 0, 1, 2, 3)
+assert thirds(tuple(range(12))) == (8, 9, 10, 11, 0, 1, 2, 3, 4, 5, 6, 7)
 
 

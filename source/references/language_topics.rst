@@ -24,6 +24,10 @@ And a related note about mutability:
 Sequences and Slicing
 =====================
 
+Iterators
+=========
+
+* `What's the difference between interators and generators? <https://stackoverflow.com/questions/2776829/difference-between-pythons-generators-and-iterators>`_
 
 
 Working with text
@@ -61,7 +65,6 @@ Comprehensions:
 http://treyhunner.com/2015/12/python-list-comprehensions-now-in-color/
 
 
-
 Object Oriented Programming: classes
 ====================================
 
@@ -94,6 +97,22 @@ Which was in response to this original post:
 
 `Super Considered Harmful <https://fuhm.net/super-harmful/>`_
 
+Functional Programming
+======================
+
+Programming paradigms
+---------------------
+* https://en.wikipedia.org/wiki/Comparison_of_programming_paradigms
+* https://dev.to/ericnormand/programming-paradigms-and-the-procedural-paradox
+
+Functional programming
+----------------------
+Some links for you that may help with the concepts (in no particular order):
+* https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming
+* https://www.dataquest.io/blog/introduction-functional-programming-python/
+* https://www.vinta.com.br/blog/2015/functional-programming-python/
+* https://marcobonzanini.com/2015/06/08/functional-programming-in-python/
+* https://github.com/sfermigier/awesome-functional-python
 
 Concurrency
 ===========
