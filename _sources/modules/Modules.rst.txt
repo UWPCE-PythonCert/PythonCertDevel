@@ -63,7 +63,8 @@ If you want anyone to take you seriously as a Python developer:
 
 Also note: if you DO use tabs (and really, don't do that!) python interprets them as the equivalent of *eight* spaces.  Text editors can display tabs as any number of spaces, and most modern editors default to four -- so this can be *very* confusing! so again:
 
-**never mix tabs and spaces in python code**
+**Never mix tabs and spaces in Python code**
+
 
 Spaces Elsewhere
 ----------------
@@ -90,24 +91,25 @@ But you should strive for proper style. Isn't this easier to read?
 Modules and Packages
 ====================
 
-Python is all about *namespaces* --  the "dots"
+Python is all about *namespaces* -- the "dots"
 
 ``name.another_name``
 
 The "dot" indicates that you are looking for a name in the *namespace* of the given object. It could be:
 
-* name in a module
-* module in a package
-* attribute of an object
-* method of an object
+* a name in a module
+* a module in a package
+* an attribute of an object
+* a method of an object
 
 The only way to know is to know what type of object the name refers to.  But in all cases, it is looking up a name in the namespace of the object.
 
+So what *are* all these different types of namespaces?
 
 Modules
 -------
 
-A module is simply a namespace.
+A module is simply a namespace. But a module more or less maps to a file with python code in it.
 
 It might be a single file, or it could be a collection of files that define a shared API.
 
@@ -115,7 +117,7 @@ But in the common and simplest case, a single file is a single module.
 
 So you can think of the files you write that end in ``.py`` as modules.
 
-When a module is imported, the code in that file is run, and any names defined in that file are now defined in the module namespace.
+When a module is imported, the code in that file is run, and any names defined in that file are now available in the module namespace.
 
 
 Packages
@@ -125,29 +127,113 @@ A package is a module with other modules in it.
 
 On a filesystem, this is represented as a directory that contains one or more``.py`` files, one of which **must** be called ``__init__.py``.
 
-When you have a package, you can import only the package, or any of the modules inside it. When a package is imported, the code in the ``__init__.py`` file is run.
+When you have a package, you can import only the package, or any of the modules inside it. When a package is imported, the code in the ``__init__.py`` file is run, and any names defined in that file are available in the *package namespace*.
 
+Here we define about the simplest package possible:
+
+Create a directory (folder) for your package:
+
+.. code-block:: bash
+
+    mkdir my_package
+
+Save a file in that package, called ``__init__.py``, and put this in it:
+
+.. code-block:: python
+
+    name1 = "Fred"
+    name2 = "Bob"
+
+Save another file in your my_package dir called ``a_module.py``, and put this in it:
+
+.. code-block:: python
+
+    name3 = "Mary"
+    name4 = "Jane"
+
+    def a_function():
+        print("a_function has been called")
+
+You now have about the simplest package you can have. If make sure your current working dir is the dir that ``my_package`` is in, and start python or iPython. Then try this code:
+
+.. code-block:: ipython
+
+    In [1]: import my_package
+
+    In [2]: my_package.name1
+    Out[2]: 'Fred'
+
+    In [3]: my_package.name2
+    Out[3]: 'Bob'
+
+The names you've defined are available in the package namespace.
+
+What about the module?
+
+.. code-block:: ipython
+
+    In [4]: my_package.a_module
+    ---------------------------------------------------------------------------
+    AttributeError                            Traceback (most recent call last)
+    <ipython-input-4-8b9269cdf0e5> in <module>()
+    ----> 1 my_package.a_module
+
+    AttributeError: module 'my_package' has no attribute 'a_module'
+
+the a_module name does not exist. It must be imported explicitly:
+
+.. code-block:: ipython
+
+    In [1]: import my_package.a_module
+
+Now the names defined in the ``a_module.py`` file are all there:
+
+.. code-block:: ipython
+
+    In [2]: my_package.a_module.name3
+    Out[2]: 'Mary'
+
+    In [3]: my_package.a_module.name4
+    Out[3]: 'Jane'
+
+    In [4]: my_package.a_module.a_function()
+    a_function has been called
+
+Note that you can also put a package inside a package. So you can create arbitrarily deeply nested hierarchy of packages. This can be helpful for a large, complex collection of related code, such as an entire Web Framework. But from the *Zen of Python*:
+
+   "Flat is better than nested."
+
+So don't overdue it -- only go as deep as you really need to to keep the your code organized.
 
 Importing modules
 -----------------
 
-There are a few ways to import modules:
+You have probably imported a module or two already:
+
+.. code-block:: python
+
+    import sys
+    import math
+
+But there a handful of ways to import modules and packages.
 
 .. code-block:: python
 
     import modulename
 
-This adds the name of the module to the global namespace, and lets you access the names defined in that module:
+Is the simplest way: this adds the name of the module to the global namespace, and lets you access the names defined in that module:
 
 .. code-block:: python
 
     modulename.a_name_in_the_module
 
+If you want only a few names in a module, and don't want to type the module name each time, you can import only the names you want:
+
 .. code-block:: python
 
     from modulename import this, that
 
-This brings only the names specified (``this``, ``that``) into the global namespace. All the code in the module is run, but the module's name is not available. But the imported names are directly available.
+This brings only the names specified (``this``, ``that``) into the global namespace. All the code in the module is run, but the module's name is not available. But the explicitly imported names are directly available.
 
 .. code-block:: python
 
@@ -159,13 +245,14 @@ This imports the module, and gives it a new name in the global namespace.  This 
 
     import numpy as np
 
-Because numpy has a LOT of names, some of which may conflict, and users want to be able to reference them without too much typing.
+Because numpy has a LOT of names, some of which may conflict with builtins or other modules, and users want to be able to reference them without too much typing.
 
 .. code-block:: python
 
     from modulename import this as that
 
 This imports only one name from a module, while also giving it a new name in the global namespace.
+
 
 Examples
 --------
@@ -240,16 +327,16 @@ In that case, you can simply add more "dots" and follow the same rules as above.
 
 .. code-block:: python
 
-    from modulename import my_funcs.this_func
+    from packagename import my_funcs.this_func
 
 Here's a nice reference for more detail:
 
 http://effbot.org/zone/import-confusion.htm
 
+And :ref:`packaging` goes into more detail about creating (and distributing!) your own package.
 
-
-``import``
-----------
+What does ``import`` actually do?
+---------------------------------
 
 When you import a module, or a symbol from a module, the Python code is *compiled* to **bytecode**.
 
@@ -281,9 +368,7 @@ Another key point to keep in mind is that all code files in a given python progr
 
 This can create dangerous side effects and hard to find bugs if you change anything in an imported module, but it can also be used as a handy way to store truly global state, like application preferences, for instance.
 
-A rule of thumb for managing global state is to have only *one* part of your code change the values, and everywhere else considers them read-only.
-
-
+A rule of thumb for managing global state is to have only *one* part of your code change the values, and everywhere else considers them read-only. You can't enforce this, but you can structure you own code that way.
 
 
 

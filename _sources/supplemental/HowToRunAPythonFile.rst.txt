@@ -31,13 +31,13 @@ If you want to run the code directly (it is a script), you have a couple options
 
 3) On Windows, the `.py` extensions can be associated with the python interpreter, so it can be run directly. This is clunkier than the \*nix "shebang line" approach, so don't recommend it -- but it is an option.
 
-4) run ``iPython``, and run it from within iPython with the ``run`` command
+4) run ``ipython``, and run it from within iPython with the ``run`` command
 
 .. code-block:: ipython
 
   In [1]: run the_file.py
 
-5) Various IDEs (PyCharm, IDLE, etc) have a way to run the module you are currently editing --if you use one of these tools, learn how to do that. MAke sure that it is using the Python that you want it to be.
+5) Various IDEs (PyCharm, IDLE, etc) have a way to run the module you are currently editing -- if you use one of these tools, learn how to do that. Make sure that it is using the Python that you want it to be.
 
 Making sure you are set up correctly
 ------------------------------------
