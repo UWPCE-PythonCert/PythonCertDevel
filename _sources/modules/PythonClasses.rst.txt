@@ -202,7 +202,7 @@ The class is one namespace, the instance is another.
         size = 4
         color = "red"
     ...
-        def get_color():
+        def get_color(self):
             return self.color
     >>> p3.get_color()
      'red'
