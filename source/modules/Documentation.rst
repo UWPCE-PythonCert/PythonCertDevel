@@ -41,7 +41,7 @@ You can use them to mark places you want to revisit later:
                 #  for large parties.
                 resolve_party_favor(partygoer, balloon, cupcake)
 
-Comments about comments
+Comments about Comments
 -----------------------
 
  * Be judicious in your use of comments.
@@ -60,7 +60,7 @@ This is not useful:
         # apply soap to each sponge
         worker.apply_soap(sponge)
 
-Note: Nothing special about Python here -- basic good programing practice.
+Note: Nothing special about Python here -- basic good programing practice.  Note that you will need a lto fewer comments if you choose your names well!
 
 Docstrings
 ----------
@@ -76,14 +76,14 @@ header, it is a "docstring":
 
 .. code-block:: python
 
-    def complex_function(arg1, arg2, kwarg1=u'bannana'):
+    def complex_function(arg1, arg2, kwarg1='banana'):
         """Return a value resulting from a complex calculation."""
         # code block here
 
 You can then read this in an interpreter as the ``__doc__`` attribute of the
-function object.
+function object. Docstrings can also be read and processed by documentation systems and IDEs like iPython.
 
-A function docstring should:
+A Function Docstring Should:
 ............................
 
 * Be a complete sentence in the form of a command describing what the function
@@ -103,4 +103,29 @@ A function docstring should:
   * This allows for easy expansion if required at a later date.
   * Always close on the same line if the docstring is only one line.
 
-For more information see `PEP 257: Docstring Conventions <http://legacy.python.org/dev/peps/pep-0257/>`_.
+For any functions that are less than trivial, and particulalry if they take multiple parameters, the parameters should be described in the docstring:
+
+.. code-block:: python
+
+    def complex_function(arg1, arg2, kwarg1='banana'):
+        """
+        Return a value resulting from a complex calculation.
+
+        :param arg1: The first very important parameter. And a bit about
+                     what it means.
+        :param arg2: The second very important parameter. And now some
+                     description of how this is used
+        :param kwarg1='banana': An optional parameter. Some text describing
+                                what it means and why you might specify it.
+
+        """
+        # The actual code here
+
+The ``:param arg1:`` notation is "restructured text" -- very handy if you want your docstrings to be able to be automatically processed by documentation systems such as `Sphinx <http://sphinx-doc.org/>`_
+
+The docstring PEP
+.................
+
+For the full "official" recomendations about docstrings, see `PEP 257: Docstring Conventions <http://legacy.python.org/dev/peps/pep-0257/>`_.
+
+

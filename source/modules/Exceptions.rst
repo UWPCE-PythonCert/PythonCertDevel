@@ -36,10 +36,10 @@ This provides another branching structure (kind of like if) -- a way for differe
         do_something()
         f = open('missing.txt')
         process(f)   # never called if file missing
-    except IOError:
-        print("couldn't open missing.txt")
+    except FileNotFoundError:
+        print("Couldn't find missing.txt")
 
-bare ``except``
+Bare ``except``
 ---------------
 
 *Never* do this:
@@ -51,7 +51,7 @@ bare ``except``
         f = open('missing.txt')
         process(f)   # never called if file missing
     except:
-        print "couldn't open missing.txt"
+        print "couldn't find missing.txt"
 
 If you don't specify a particular exception, ``except`` will catch *All* exceptions.
 
@@ -76,7 +76,7 @@ Don't do this:
 
 It will almost always work -- but the *almost* will drive you crazy.
 
-It is "possible" that the file got deleted by another process in the precise moment between checking for it and opening it. Rare, but possible. But catching the exception will always work.
+It is "possible" that the file got deleted by another process in the precise moment between checking for it and opening it. Rare, but possible. Catching the exception will always work -- even in that rare case.
 
 
 Example from mailroom exercise:
@@ -93,7 +93,7 @@ So you could do this:
 
 But -- ``int(num_in)`` will only work if the string can be converted to an integer.
 
-So you can do
+So you can also do:
 
 .. code-block:: python
 
@@ -101,6 +101,7 @@ So you can do
         num_in = int(num_in)
     except ValueError:
         print("Input must be an integer, try again.")
+        continue
 
 This is particularly helpful for things like converting to a float -- much more complicated to check -- and all that logic is already in the ``float()`` constructor.
 
@@ -111,9 +112,9 @@ EAFP
 
 This is all an example of the EAFP principle:
 
-"It's Easier to Ask Forgiveness than Permission"
+  "It's Easier to Ask Forgiveness than Permission"
 
- -- Grace Hopper
+    -- Grace Hopper
 
 The idea is that you want to try to do what you want to do -- and then handle it if it doesn't work (forgiveness).
 
@@ -131,15 +132,15 @@ Do you catch all Exceptions?
 
 For simple scripts, let exceptions happen.
 
-Only handle the exception if the code can and will do something about it.
+Only handle the exception if the code can and will do something (useful) about it.
 
 This results in much better debugging info when an error does occur.  The user will see the exception, and where in the code it happened, etc.
 
 
-Exceptions -- finally
----------------------
+Exceptions -- ``finally``
+-------------------------
 
-There is another control structure to exceptions:
+There is another component to exception handling control structures:
 
 .. code-block:: python
 
@@ -147,15 +148,25 @@ There is another control structure to exceptions:
         do_something()
         f = open('missing.txt')
         process(f)   # never called if file missing
-    except IOError:
+    except FileNotFoundError:
         print("couldn't open missing.txt")
     finally:
         do_some_clean-up
 
-The ``finally:``  clause will always run.
+The code in the ``finally:``  clause will always run.
 
 This is really important if your code does anything before the exception occurred that needs to be cleaned up -- open database connection, etc...
 
+**NOTE:** In the above example, you can often avoid all that exception handling code using a with statement:
+
+.. code-block:: python
+
+    with open('missing.txt') as f:
+        process(f)
+
+In this case, the file will be properly closed regardless. And many other systems, like database managers, etc. can also be used with ``with``.
+
+This is known as a "context manager", and was added to Python specifically to handle the common cases that required finally clauses. But if your use case does not already have a context manager that handles the cleanup you may need.
 
 Exceptions -- ``else``
 ----------------------
@@ -184,7 +195,7 @@ This bears repeating:
 
 **Always catch exceptions as close to where they might occur as you can**.
 
-Exceptions -- using the exception object
+Exceptions -- using the Exception object
 ----------------------------------------
 
 What can you do in an ``except`` block?
@@ -212,7 +223,7 @@ But if your code *can't* continue on, you can re-raise the exception:
 
 The ``raise`` statement will re-raise the same exception object, where it may get caught higher up in the code, or even end the program.
 
-Exception objects are full-fledged Python objects -- they can contain data, and you can add data to them:
+Exception objects are full-fledged Python objects -- they can contain data, and you can add data to them. You can give a name to a raised Exception with ``as``:
 
 .. code-block:: python
 
@@ -233,7 +244,38 @@ This is particularly useful if you catch more than one exception:
     except (IOError, BufferError, OSError) as the_error:
         do_something_with(the_error)
 
-You may want to do something different depending on which exception it is.
+You may want to do something different depending on which exception it is. And you can inspect the Exception object to find out more about it.  Each Exception has different information attached to it -- you'll need to read its docs to see.
+
+For an example -- try running this code:
+
+.. code-block:: ipython
+
+In [34]: try:
+    ...:     f = open("blah")
+    ...: except IOError as err:
+    ...:     print(err)
+    ...:     print(dir(err))
+    ...:     the_err = err
+
+The ``print(dir(err))`` will print all the names (attributes) in the error object. A number of those are ordinary names that all objects have, but a few are specific to this error.
+
+the ``the_err`` = err line is there so that we can keep a name bound to the err after the code is run. ``err`` as bound by the except line only exists inside the following block.
+
+Now that we have a name to access it, we can look at some of its attributes. The name of the file that was attempted to be opened:
+
+.. code-block:: ipython
+
+    In [35]: the_err.filename
+    Out[35]: 'blah'
+
+The message that will be pronted is usually in the "args" attribute:
+
+.. code-block:: ipython
+
+    In [37]: the_err.args
+    Out[37]: (2, 'No such file or directory')
+
+the ``.__traceback__`` attribute hold the actual traceback object -- all the information about the context the exception was raised in. That can inpsected to get all sorts of info. tHat is very advanced stuff, but you can investigate the ``inspect`` module if you want to know how.
 
 Multiple Exceptions
 -------------------
@@ -282,7 +324,7 @@ Raising Exceptions
         else:
             return a / b
 
-(OK, this is a stupid example, as that error will be raised for you anyway. but bear with me).
+(OK, this is a stupid example, as that error will be raised for you anyway. But bear with me).
 
 When you call it:
 
@@ -291,7 +333,7 @@ When you call it:
     In [515]: divide (12,0)
     ZeroDivisionError: b can not be zero
 
-note how you can pass a message to the exception object constructor. It will get printed when the exception is printed.
+Note how you can pass a message to the exception object constructor. It will get printed when the exception is printed. (and it is stored the in the Exception object's ``.args`` attribute)
 
 
 Built in Exceptions
