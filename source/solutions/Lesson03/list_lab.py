@@ -37,6 +37,10 @@ new = input("type a fruit to add> ")
 
 fruits.append(new)
 
+# or, using "+":
+# fruits = fruits + [new]
+# to use "+", you must be adding two lists.
+
 print(fruits)
 
 ind = int(input("give me an index> "))
