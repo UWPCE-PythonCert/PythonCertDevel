@@ -20,6 +20,19 @@ can understand what's possible, and what happens with each call.
 It is also entirely silly, since the function does not do anything
 at all, but it will teach you about using parameters effectively.
 
+
+Test Driven Development?
+------------------------
+
+Since this code isn't really going to do anything, it doesn't make a lot of sense to test it.  However, you need to run the code somehow anyway. So this is a good chance to practice test-driven development anyway.
+
+So for each step of the exercise, write a test that calls your function in a particular way, and test that it returns what you expect. In this case, what you will be testing is not really the code -- but rather your own expectations of what the results should be.
+
+You will also be testing Python's argument handling, which you can be pretty sure DOES work correctly.
+
+So while these won't be useful tests in the usual sense, this is a chance to practice test driven development.
+
+
 Procedure
 ---------
 
@@ -38,8 +51,7 @@ we are telling you it should do.
 
 * Have it return the colors (use strings for the colors)
 
-* Call it with a couple different parameters set
-  IOW, write tests that verify that all of the following work as advertised:
+* Call it with a couple different parameters set. IOW, write tests that verify that all of the following work as advertised:
 
   - using just positional arguments:
 
