@@ -101,6 +101,8 @@ straightforward enough. But kind a lot of extra code, eh? and now there is this 
 
 But with a lambda, you simply define it inline:
 
+.. code-block:: ipython
+
     In [16]: lst = [("Chris","Barker"), ("Fred", "Jones"), ("Zola", "Adams")]
 
     In [17]: lst.sort(key=lambda x: x[1])
