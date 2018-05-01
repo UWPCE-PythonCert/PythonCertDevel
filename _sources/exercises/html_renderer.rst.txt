@@ -4,15 +4,17 @@
 HTML Renderer Exercise
 ######################
 
-Ever need to generate some HTML?
+Ever need to write some HTML? Maybe from data?
 
 And not want to write all those tags yourself?
+
+OK, maybe not -- but trust me, it's a pain -- let's write some code to do it for us.
 
 HTML Renderer
 =============
 
 Goal:
-------
+-----
 
 The goal is to create a set of classes to render html pages -- in a "pretty printed" way.
 
@@ -24,10 +26,18 @@ We'll try to get to all the features required to render this file:
 
 Take a look at it by opening it in your text editor. And also in a browser to see how it's rendered.
 
-If you don't know html -- just look at the example and copy that. And you can read the: :ref:`html_primer` at the end of this page for enough to do this exercise.
+If you don't know html -- just look at the example and copy that. And you can read the: :ref:`html_primer` at the end of this page for enough to do this exercise. And anyone working with computers these days would benefit from at least a passing familiarity with html.
 
 The exercise is broken down into a number of steps -- each requiring a few more OO concepts in Python.
 
+The goal of the code is render html. The goal of the *exercise* is to build up a simple object hierarchy with:
+
+* classes
+* class attributes
+* instance attributes
+* methods
+* subclassing
+* overriding attributes and methods
 
 General Instructions:
 ---------------------
@@ -51,7 +61,9 @@ The html generated at each step will be in the files: ``test_html_ouput?.html``
 Unit tests
 ----------
 
-Use "test driven development":
+Running the ``run_html_render.py`` script is a (simple) form of integration testing -- it checks how the individual components are working together. But we also want to make sure each individual *unit* (class, method) of code works. So to do that, we'll use:
+
+**test driven development**
 
 In addition to checking if the output is what you expect with the running script -- you should also write unit tests as you go.
 
@@ -79,7 +91,7 @@ Step 1:
 
 Create an ``Element`` class for rendering an html element (xml element).
 
-It should have class attributes for the tag name ("html" first) and the indentation (spaces to indent for pretty printing)
+It should a class attribute for the tag name ("html" first).
 
 The initializer signature should look like
 
@@ -105,15 +117,10 @@ If the *is* phrase makes sense, then subclassing would makes sense. If the *uses
 
 So no -- you don't want ``Element`` to subclass from list.
 
-It should have a ``render(file_out, cur_ind = "")`` method that renders the tag and the strings in the content.
+It should have a ``render(file_out)`` method that renders the tag and the strings in the content.
 
-``file_out`` could be any open, writable file-like object ( i.e. have a ``write()`` method ). This is what you get from the ``open()`` function -- but there are other kinds of file-like objects. The html will be rendered to this file.
+``file_out`` could be any open, writable file-like object ( i.e. have a ``write()`` method ). This is what you get from the ``open()`` function -- but there are other kinds of file-like objects. The html will be rendered to this file-like object.
 
-``cur_ind`` is a string with the current level of indentation in it: the amount that the entire tag should be indented for pretty printing.
-
- - This is a little tricky: ``cur_ind`` will be the amount that this element should be indented already. It will be from zero (an empty string) to a lot of spaces, depending on how deep it is in the tree. You could use an integer for the number of spaces to indent -- or keep it simple and just use a string with 2, or 4 or ?? spaces in it.
-
-The amount of each level of indentation should be set by the class attribute: ``indent``
 
 NOTE: don't worry too much about indentation at this stage -- the primary goal is to get proper, compliant html. i.e. the opening and closing tags rendered correctly. Worry about cleaning up the indentation once you've got that working. See :ref:`html_render_note_on_indentation` below for more explanation.
 
@@ -197,7 +204,7 @@ Rather you would set the "class" attribute::
     This is my recipe for making curry purely with chocolate
   </p>
 
-However, if you try this as a keywork argument in Python:
+However, if you try this as a keyword argument in Python:
 
 .. code-block:: ipython
 
@@ -283,7 +290,7 @@ It can subclass from ``OneLineTag`` -- overriding the ``__init__``, then calling
 See: :download:`test_html_output7.htm  <../examples/html_render/test_html_output7.html>`
 
 Step 8:
---------
+-------
 
 Update the ``Html`` element class to render the "<!DOCTYPE html>" tag at the head of the page, before the html element.
 
@@ -311,29 +318,99 @@ But it can make it much easier to read for humans, and it's a nice exercise to s
 
 There is also more than one way to indent html -- so you have a bit of flexibility here.
 
+Step 9: Adding Indentation
+--------------------------
+
+You will need to enhance your code in a couple ways to add indentation.
+
+1. Specify the indentation level
+................................
+
+Add a class attribute to the ``Element`` base class that indicates how much indentation you want -- you can either use a simple string: 2 or four spaces:
+
+.. code-block:: python
+
+    class Element:
+        indent = "    "
+
+Or you can use an integer to specify how many spaces you want to use:
+
+.. code-block:: python
+
+    class Element:
+        indent = 4
+
+Your render method(s) can access this attribute to know how much to indent a element. You want it as a class attribute in the base class, so that all the instances of all the subclasses will share the same value -- to indent all the html consistently.
+
+Then you need to pass this indentation
+
+2. Pass the "current level" of indentation down the tree of elements
+....................................................................
+
+html elements can be nested arbitrarily deep:
+
+.. code-block:: html
+
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>PythonClass = Revision 1087:</title>
+        </head>
+        <body>
+            <p>
+                Here is a paragraph of text -- there could be more of them, but this is enough  to show that we can do some text
+            </p>
+            <ul>
+                <li>
+                    The first item in a list
+                </li>
+                <li>
+                    This is the second item
+                </li>
+            </ul>
+        </body>
+    </html>
+
+So how does a given element know where it is in the tree? How deep to indent itself?
+
+One way: extend your ``render`` method(s) to take another parameter:
+
+.. code-block:: python
+
+    def render(out_file, cur_ind=""):
+        <render code here>
+
+``cur_ind`` is a string (or number) with the current level of indentation in it: the amount that the entire tag should be indented for pretty printing.
+
+ - This is a little tricky: ``cur_ind`` will be the amount that this element should be indented already. It will be from zero (an empty string) to a lot of spaces, depending on how deep it is in the tree. You could use an integer for the number of spaces to indent -- or keep it simple and just use a string with the currect number of spaces in it.
+
+The amount of each level of indentation should be set by the class attribute: ``indent``
+
 So:
 
-* You probably  want ``cur_ind`` to be an optional argument to render -- so it will not indent if nothing is passed in. And that lets you write the code without indentation first if you like.
+* You probably  want ``cur_ind`` to be an optional argument to render -- so it will not indent if nothing is passed in.
 
-* But ultimately, you want your code to USE the ``cur_ind`` parameter -- it is supposed to indicate how much this entire tag is already indented.
+* But if it is passed in, you want your code to USE the ``cur_ind`` parameter -- it is supposed to indicate how much this entire tag is already indented.
 
 * When a given element gets rendered, you don't know where it is in a potentially deeply nested hierarchy -- it could be at the top level or ten levels deep. passing ``cur_ind`` into the render method is how this is communicated.
 
-* You have (at least) two options for how to indicate level of indentation:
+* So when you call ``render`` from *inside* a render method -- you need to tell the nested elements how deep to render themselves -- usually one more level of indentation deep. Probably something like:
 
-  - It could be a integer indicating number of levels of indentation.
-  - It could, more simply, be a bunch of spaces.
+<in ``render()``>
 
-* You want to have the amount of spaces per indentation defined as a class attribute of the base class (the ``Element`` class). That way, you could change it in one place, and it would change everywhere and remain consistent.
+``sub_element.render(out_file, cur_ind + self.indent)``
+
+
+* Remember to keep the amount of spaces per indentation defined as a class attribute of the base class (the ``Element`` class). That way, you could change it in one place, and it would change everywhere and remain consistent.
 
 * Be sure to test that the indentation of the result changes if you change the class attribute!
+
 
 
 .. _notes_on_handling_duck_typing:
 
 Notes on handling "duck typing"
 ===============================
-
 
 In this exercise, we need to deal with the fact that XML (and thus HTML) allows *either* plain text *or* other tags to be the content of a tag. Our code also needs to handle the fact that there are two possible types that we need to be able to render.
 

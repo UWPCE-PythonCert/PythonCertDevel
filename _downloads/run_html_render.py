@@ -14,7 +14,7 @@ import html_render as hr
 
 
 # writing the file out:
-def render_page(page, filename):
+def render_page(page, filename, indent=None):
     """
     render the tree of elements
 
@@ -23,7 +23,10 @@ def render_page(page, filename):
     """
 
     f = StringIO()
-    page.render(f, "    ")
+    if indent is None:
+        page.render(f)
+    else:
+        page.render(f, indent)
 
     print(f.getvalue())
     with open(filename, 'w') as outfile:
