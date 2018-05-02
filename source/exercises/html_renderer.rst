@@ -137,7 +137,7 @@ Once this works, this code:
     with open("test.html", 'w') as outfile:
         page.render(outfile)
 
-Will result in a file with something like this in it::
+Will result in a file with something like this in it:
 
 .. code-block:: html
 
@@ -167,7 +167,7 @@ Now you can render a few different types of element. For example:
     with open("test.html", 'w') as outfile:
         page.render(outfile)
 
-Will result in a file with something like this in it::
+Will result in a file with something like this in it:
 
 .. code-block:: html
 
@@ -178,7 +178,10 @@ Will result in a file with something like this in it::
 
 Note: So why are we subclassing here? Because: "a body element *is* an ``Element``" makes perfect sense -- that's when you want to subclass. Another way to think about it is that you want to subclass to make a specialized version of something.
 
-You may note that the ``Element`` class really doesn't do anything by itself -- it needs a tag (at least) to be a proper element. This is what's called a "Base Class". It contains functionality required by various subclasses, but may not do anything on its own. IN this case, we gave it the tag 'html', so we could run and test the render method. But strictly speaking, as a base class, it could have no tag.
+You may note that the ``Element`` class really doesn't do anything by itself -- it needs a tag (at least) to be a proper element. This is what's called a "Base Class". It contains functionality required by various subclasses, but may not do anything on its own. In this case, we gave it the tag 'html', so we could run and test the render method. But strictly speaking, as a base class, it could have no tag.
+
+And of course these subclasses are pretty simple -- only overriding one class attribute.  If that's all you need to do to specialize, there are other ways than subclassing to do it. But bear with us -- other element subclasses will require more specialization.
+
 
 Part B:
 .......
@@ -186,6 +189,8 @@ Part B:
 Now it gets fun!
 
 Extend the ``Element.render()`` method so that it can render other elements inside the tag in addition to strings. A recursion-like approach should do it. i.e. it can call the ``render()`` method of the elements it contains.
+
+so you should be able to ``append`` an element to another element -- not just text.
 
 If this recursion-like idea doesn't make sense to you, take a look at this blog post, which talks about recursive algorithms:
 
@@ -471,10 +476,10 @@ See :download:`test_html_output9.html  <../examples/html_render/test_html_output
 
 .. _notes_on_handling_duck_typing:
 
-Notes on handling "duck typing"
+Notes on handling "Duck Typing"
 ===============================
 
-In this exercise, we need to deal with the fact that XML (and thus HTML) allows *either* plain text *or* other tags to be the content of a tag. Our code also needs to handle the fact that there are two possible types that we need to be able to render.
+In this exercise, we need to deal with the fact that XML (and thus HTML) allows *either* plain text *or* other tags to be the content of a tag. So our code needs to handle the fact that there are two possible types that we need to be able to render.
 
 There are two primary ways to address this (and multiple ways to actually write the code for each of these).
 
@@ -482,9 +487,9 @@ There are two primary ways to address this (and multiple ways to actually write 
 
 2) Make sure the render() method can handle either type on the fly.
 
-The difference is where you handle the multiple types -- in the render method itself, or ahead of time, when you append new content to the Element.
+The difference is where you handle the multiple types -- in the render method itself, or ahead of time, when you append new content to the ``Element``.
 
-The ahead of time option:
+The Ahead of Time Option:
 -------------------------
 
 You can handle it ahead of time by creating a simple object that wraps a string and gives it a render method. As simple as:
@@ -499,8 +504,7 @@ You can handle it ahead of time by creating a simple object that wraps a string 
       def __init__(self, text):
           self.text = text
 
-      def render(self, file_out, current_ind=""):
-          file_out.write(current_ind)
+      def render(self, file_out):
           file_out.write(self.text)
 
 
@@ -521,7 +525,7 @@ So much easier.
 To accomplish this, you can update the ``append()`` method to put this wrapper around plain strings when something new is added.
 
 
-Checking if it's the right type
+Checking if it's the Right Type
 -------------------------------
 
 How do you decide if the wrapper is required?
@@ -562,7 +566,7 @@ But in this case, we're not actually rendering the object at this stage, so call
 
 Instead of calling the method, see if it's there. You can do that with ``hasattr()``
 
-check if the passed-in object has a ``render`` attribute:
+Check if the passed-in object has a ``render`` attribute:
 
 .. code-block:: python
 
