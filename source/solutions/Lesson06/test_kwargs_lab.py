@@ -8,7 +8,7 @@ not a bad way to run code as you develop it anyway...
 
 And we want to encourage test code -- so we'll use it everywhere possible
 
-Note: I decided that instead of having my funciton print somthing it would
+Note: I decided that instead of having my function print somthing it would
 return a string -- that way I could test that the returned string was correct.
 
 """
@@ -23,7 +23,7 @@ def test_all_positional():
     result = colors('red', 'blue', 'yellow', 'chartreuse')
 
     # these aren't exhaustive by any means
-    # but mostly I want to make the code runs without error
+    # but mostly I want to make the code run without error
     print(result)
     assert 'red' in result
     assert 'blue' in result
