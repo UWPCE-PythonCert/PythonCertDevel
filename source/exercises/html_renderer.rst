@@ -101,7 +101,7 @@ Ask yourself -- does this make sense? an "Element *is* a list" -- no.
 
 But "An Element *uses* a list" makes perfect sense.
 
-If the *is* phrase makes sense, then subclassing would makes sense. If the *uses* phrase makes sense, *then* you would want to subclass.
+If the *is* phrase makes sense, then subclassing would makes sense. If the *uses* phrase makes sense, *then* you would not want to subclass.
 
 So no -- you don't want ``Element`` to subclass from list.
 
