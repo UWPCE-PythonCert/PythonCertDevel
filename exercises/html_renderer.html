@@ -269,14 +269,12 @@
 </pre></div>
 </div>
 <p>Will result in a file with something like this in it:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">html</span>
-</pre></div>
-</div>
-<blockquote>
-<div>&lt;html&gt;
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
 Some content.
 Some more content.
-&lt;/html&gt;</div></blockquote>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
 <p>That is, you should now be able to render an html tag with text in it as content.</p>
 <p>See: step 1. in <code class="docutils literal"><span class="pre">run_html_render.py</span></code> and the test code.</p>
 </div>
@@ -293,24 +291,24 @@ Some more content.
 </pre></div>
 </div>
 <p>Will result in a file with something like this in it:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">html</span>
-</pre></div>
-</div>
-<blockquote>
-<div>&lt;body&gt;
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 Some content.
 Some more content.
-&lt;/body&gt;</div></blockquote>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</pre></div>
+</div>
 <p>Note: So why are we subclassing here? Because: “a body element <em>is</em> an <code class="docutils literal"><span class="pre">Element</span></code>” makes perfect sense – that’s when you want to subclass. Another way to think about it is that you want to subclass to make a specialized version of something.</p>
-<p>You may note that the <code class="docutils literal"><span class="pre">Element</span></code> class really doesn’t do anything by itself – it needs a tag (at least) to be a proper element. This is what’s called a “Base Class”. It contains functionality required by various subclasses, but may not do anything on its own. IN this case, we gave it the tag ‘html’, so we could run and test the render method. But strictly speaking, as a base class, it could have no tag.</p>
+<p>You may note that the <code class="docutils literal"><span class="pre">Element</span></code> class really doesn’t do anything by itself – it needs a tag (at least) to be a proper element. This is what’s called a “Base Class”. It contains functionality required by various subclasses, but may not do anything on its own. In this case, we gave it the tag ‘html’, so we could run and test the render method. But strictly speaking, as a base class, it could have no tag.</p>
+<p>And of course these subclasses are pretty simple – only overriding one class attribute.  If that’s all you need to do to specialize, there are other ways than subclassing to do it. But bear with us – other element subclasses will require more specialization.</p>
 </div>
 <div class="section" id="part-b">
 <h4>Part B:<a class="headerlink" href="#part-b" title="Permalink to this headline">¶</a></h4>
 <p>Now it gets fun!</p>
 <p>Extend the <code class="docutils literal"><span class="pre">Element.render()</span></code> method so that it can render other elements inside the tag in addition to strings. A recursion-like approach should do it. i.e. it can call the <code class="docutils literal"><span class="pre">render()</span></code> method of the elements it contains.</p>
+<p>so you should be able to <code class="docutils literal"><span class="pre">append</span></code> an element to another element – not just text.</p>
 <p>If this recursion-like idea doesn’t make sense to you, take a look at this blog post, which talks about recursive algorithms:</p>
 <p><a class="reference external" href="https://realpython.com/python-thinking-recursively/">https://realpython.com/python-thinking-recursively/</a></p>
-<p>Figure out a way to deal with the fact that the contained elements could be either simple strings or <code class="docutils literal"><span class="pre">Element</span></code> s with render methods (there are a few ways to handle that…). Think about “Duck Typing” and EAFP. See the section <a class="reference internal" href="#notes-on-handling-duck-typing"><span class="std std-ref">Notes on handling “duck typing”</span></a> and the end of the Exercise for more.</p>
+<p>Figure out a way to deal with the fact that the contained elements could be either simple strings or <code class="docutils literal"><span class="pre">Element</span></code> s with render methods (there are a few ways to handle that…). Think about “Duck Typing” and EAFP. See the section <a class="reference internal" href="#notes-on-handling-duck-typing"><span class="std std-ref">Notes on handling “Duck Typing”</span></a> and the end of the Exercise for more.</p>
 <p>You should now be able to render a basic web page with an <code class="docutils literal"><span class="pre">&lt;html&gt;</span></code> tag around the whole thing, a <code class="docutils literal"><span class="pre">&lt;body&gt;</span></code> tag inside, and multiple <code class="docutils literal"><span class="pre">&lt;p&gt;</span></code> tags inside that, with text inside that.</p>
 <p>So code like:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">page</span> <span class="o">=</span> <span class="n">Html</span><span class="p">()</span>
@@ -514,16 +512,16 @@ So it can’t be used as a keyword argument.</p>
 </div>
 </div>
 <div class="section" id="notes-on-handling-duck-typing">
-<span id="id1"></span><h2>Notes on handling “duck typing”<a class="headerlink" href="#notes-on-handling-duck-typing" title="Permalink to this headline">¶</a></h2>
-<p>In this exercise, we need to deal with the fact that XML (and thus HTML) allows <em>either</em> plain text <em>or</em> other tags to be the content of a tag. Our code also needs to handle the fact that there are two possible types that we need to be able to render.</p>
+<span id="id1"></span><h2>Notes on handling “Duck Typing”<a class="headerlink" href="#notes-on-handling-duck-typing" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise, we need to deal with the fact that XML (and thus HTML) allows <em>either</em> plain text <em>or</em> other tags to be the content of a tag. So our code needs to handle the fact that there are two possible types that we need to be able to render.</p>
 <p>There are two primary ways to address this (and multiple ways to actually write the code for each of these).</p>
 <ol class="arabic simple">
 <li>Make sure that the content only has renderable objects in it.</li>
 <li>Make sure the render() method can handle either type on the fly.</li>
 </ol>
-<p>The difference is where you handle the multiple types – in the render method itself, or ahead of time, when you append new content to the Element.</p>
+<p>The difference is where you handle the multiple types – in the render method itself, or ahead of time, when you append new content to the <code class="docutils literal"><span class="pre">Element</span></code>.</p>
 <div class="section" id="the-ahead-of-time-option">
-<h3>The ahead of time option:<a class="headerlink" href="#the-ahead-of-time-option" title="Permalink to this headline">¶</a></h3>
+<h3>The Ahead of Time Option:<a class="headerlink" href="#the-ahead-of-time-option" title="Permalink to this headline">¶</a></h3>
 <p>You can handle it ahead of time by creating a simple object that wraps a string and gives it a render method. As simple as:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TextWrapper</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -533,8 +531,7 @@ So it can’t be used as a keyword argument.</p>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
 
-    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_out</span><span class="p">,</span> <span class="n">current_ind</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="n">file_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">current_ind</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_out</span><span class="p">):</span>
         <span class="n">file_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -550,7 +547,7 @@ So it can’t be used as a keyword argument.</p>
 <p>To accomplish this, you can update the <code class="docutils literal"><span class="pre">append()</span></code> method to put this wrapper around plain strings when something new is added.</p>
 </div>
 <div class="section" id="checking-if-it-s-the-right-type">
-<h3>Checking if it’s the right type<a class="headerlink" href="#checking-if-it-s-the-right-type" title="Permalink to this headline">¶</a></h3>
+<h3>Checking if it’s the Right Type<a class="headerlink" href="#checking-if-it-s-the-right-type" title="Permalink to this headline">¶</a></h3>
 <p>How do you decide if the wrapper is required?</p>
 <p><strong>Checking it it’s an instance of Element:</strong></p>
 <p>You could check and see if the object being appended is an Element:</p>
@@ -576,7 +573,7 @@ So it can’t be used as a keyword argument.</p>
 <p>But in this case, we’re not actually rendering the object at this stage, so calling the method isn’t appropriate.</p>
 <p><strong>Checking for an attribute</strong></p>
 <p>Instead of calling the method, see if it’s there. You can do that with <code class="docutils literal"><span class="pre">hasattr()</span></code></p>
-<p>check if the passed-in object has a <code class="docutils literal"><span class="pre">render</span></code> attribute:</p>
+<p>Check if the passed-in object has a <code class="docutils literal"><span class="pre">render</span></code> attribute:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;render&#39;</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
