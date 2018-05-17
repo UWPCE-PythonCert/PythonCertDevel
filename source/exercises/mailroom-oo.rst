@@ -10,7 +10,7 @@ Goal:
 
 Refactor the mailroom program using classes to help organize the code.
 
-The goal here is the same as the earlier mailroom:
+The functionality is the same as the earlier mailroom:
 
 :ref:`exercise_mailroom`
 
@@ -25,7 +25,7 @@ would start to get a bit unwieldy and hard to maintain.
 
 So it's a pretty good candidate for an object-oriented approach.
 
-As you design appropriate classes, keep in mind these three guidlines for good code structure:
+As you design appropriate classes, keep in mind these three guidelines for good code structure:
 
 1) Encapsulation: you have a data structure that holds your data, and you have functions that manipulate that data -- you want them "bundled up" in a neat package, so that the rest of the code doesn't need to know about the data structure you are using.
 

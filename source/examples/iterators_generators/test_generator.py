@@ -3,7 +3,7 @@ test_generator.py
 
 tests the solution to the generator lab
 
-can be run with py.test or nosetests
+can be run with pytest
 """
 
 import generator_solution as gen
