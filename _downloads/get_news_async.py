@@ -4,8 +4,6 @@
 An Asynchronous version of the script to see how much a given word is
 mentioned in the news today
 
-Takes advantage of:
-
 Uses data from the NewsAPI:
 
 https://newsapi.org
@@ -14,30 +12,23 @@ https://newsapi.org
 import time
 import asyncio
 import aiohttp
-#import requests
-
-WORD = "trump"
 
 NEWS_API_KEY = "84d0483394c44f288965d7b366e54a74"
 
+WORD = "war"
 base_url = 'https://newsapi.org/v1/'
 
-# use one session for the whole script
-#  recommended by the docs
-# session = aiohttp.ClientSession()
 
-
-# this has to run first, so doesn't really need async
-# but why use two reuests libraries ?
+# This has to run first, so doesn't really need async
+# but why use two requests libraries ?
 async def get_sources(sources):
     """
-    get all the english language sources of news
+    Get all the english language sources of news
 
     'https://newsapi.org/v1/sources?language=en'
     """
     url = base_url + "sources"
-    params = {"language": "en"}
-    session = aiohttp.ClientSession()
+    params = {"language": "en", "apiKey": NEWS_API_KEY}
     async with aiohttp.ClientSession() as session:
         async with session.get(url, ssl=False, params=params) as resp:
             data = await resp.json()
@@ -47,26 +38,25 @@ async def get_sources(sources):
 
 async def get_articles(source):
     """
-    https://newsapi.org/v1/articles?source=associated-press&sortBy=top&apiKey=1fabc23bb9bc485ca59b3966cbd6ea26
+    download the info for all the articles
     """
     url = base_url + "articles"
     params = {"source": source,
               "apiKey": NEWS_API_KEY,
-              # "sortBy": "latest", # some sources don't support latest
-              "sortBy": "top",
-              # "sortBy": "popular",
+              "sortBy": "top"
               }
     print("requesting:", source)
     async with aiohttp.ClientSession() as session:
         async with session.get(url, ssl=False, params=params) as resp:
             if resp.status != 200:  # aiohttpp has "status"
-                print("something went wrong with: {}".format(source))
-                await asyncio.sleep(0)
+                print(f'something went wrong with: {source}')
+                await asyncio.sleep(0)  # releases control the the mainloop
                 return
-            data = await resp.json()
+            # awaits response rather than waiting on response in the requests version of this
             print("got the articles from {}".format(source))
+            data = await resp.json()
     # the url to the article itself is in data['articles'][i]['url']
-    titles.extend([str(art['title']) + str(art['description'])
+    titles.extend([(str(art['title']) + str(art['description']))
                    for art in data['articles']])
 
 
@@ -91,14 +81,13 @@ titles = []
 # get the sources -- this is essentially synchronous
 loop.run_until_complete(get_sources(sources))
 
-# running the loop for the articles
+# run the loop for the articles
 jobs = asyncio.gather(*(get_articles(source) for source in sources))
 loop.run_until_complete(jobs)
 loop.close()
-# session.close()
 
 art_count = len(titles)
 word_count = count_word(WORD, titles)
 
-print(WORD, "found {} times in {} articles".format(word_count, art_count))
-print("Process took {:.0f} seconds".format(time.time() - start))
+print(f'found {WORD}, {word_count} times in {art_count} articles')
+print(f'Process took {(time.time() - start):.0f} sec.')
