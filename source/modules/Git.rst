@@ -101,8 +101,8 @@ Git uses shortcuts to address *remotes*. When you *clone* a repository from its 
 .. code-block:: bash
 
   $ git remote -v
-  origin  https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython.git (fetch)
-  origin  https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython.git (push)
+  origin  https://github.com/UWPCE-PythonCert-ClassRepos/ExampleRepo.git (fetch)
+  origin  https://github.com/UWPCE-PythonCert-ClassRepos/ExampleRepo.git (push)
 
 This shows that the local repo on my machine *originated* from one in
 the UWPCE-PythonCert-ClassRepos GitHub account (it shows up twice, because there is a shortcut for both ``fetch`` from and ``push`` to this remote).
@@ -126,7 +126,7 @@ The class repositories are on *GitHub* in the *UWPCE-PythonCert-ClassRepos* orga
 
 Each class will have a repository created specifically for it, called something like: "Wi2018-Online".
 
-In examples below it is called IntroToPython, so replace that in your head with the name of your class's repository.
+In examples below it is called YourClassRepoNameHere, so replace that in your head with the name of your class's repository.
 
 This class repository will include examples and relevant materials (and some exercise solutions) will be added throughout the class.
 
@@ -170,9 +170,9 @@ From that directory, run
 
 .. code-block:: bash
 
-    $ git clone https://github.com/your_github_id/IntroToPython
+    $ git clone https://github.com/your_github_id/YourClassRepoNameHere
 
-Be sure to replace "IntroToPython" with the name of your class repository (you can get the url by going to the class repo on gitHub and clicking “clone or download”).
+Be sure to replace "YourClassRepoNameHere" with the name of your class repository (you can get the url by going to the class repo on gitHub and clicking “clone or download”).
 
 This will download the repository from your GitHub account into the local directory that you ran the git *clone* command from.
 
@@ -193,17 +193,17 @@ repository and run (remembering to use the name of your class):
 
 .. code-block:: bash
 
-    $ git remote add upstream https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython
+    $ git remote add upstream https://github.com/UWPCE-PythonCert-ClassRepos/YourClassRepoNameHere
 
 Your local setup should now look something like this:
 
 .. code-block:: bash
 
     $ git remote -v
-    origin  https://github.com/your_github_id/IntroToPython (fetch)
-    origin  https://github.com/your_github_id/IntroToPython (push)
-    upstream    https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython (fetch)
-    upstream    https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython (push)
+    origin  https://github.com/your_github_id/YourClassRepoNameHere (fetch)
+    origin  https://github.com/your_github_id/YourClassRepoNameHere (push)
+    upstream    https://github.com/UWPCE-PythonCert-ClassRepos/YourClassRepoNameHere (fetch)
+    upstream    https://github.com/UWPCE-PythonCert-ClassRepos/YourClassRepoNameHere (push)
 
 This should leave you in a situation that looks like this:
 
