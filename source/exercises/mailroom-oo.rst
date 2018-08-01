@@ -73,9 +73,10 @@ DonorCollection Class
 
 Module responsible for donor collection data encapsulation.
 
-This will hold all the donor objects, but also methods to add a new donor, search for a given donor, etc. If you want a way to save and re-load your data, this class would have that too.
+This will hold all of the donor objects, but also methods to add a new donor, search for a given donor, etc. If you want a way to save and re-load your data, this class would have that too.
 
 Your class for the collection of donors will also hold the code that generates reports about multiple donors.
+
 
 Command Line Interface
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -87,7 +88,7 @@ Let's call this module ``cli_main.py`` to represent the entry point for the mail
 What should go into this module?
 
 * the main "switch dictionary" to map user selection to the program features; in general, you will have a method for each of the mailroom functions.
-* ``input`` function calls to gather user input
+* ``input`` function calls to gather user input.
 * ``print`` statements to print to console.
 
 
@@ -96,19 +97,19 @@ What should go into this module?
 
 Why is this separation so important?
 
-The idea here is to be able to replace this CLI program with a different type of interface like a GUI (Graphical User Interface) as an example and not having to make any changes to our data classes.
+The idea here is that we should be able to fairly easy replace this CLI program with a different type of interface like a GUI (Graphical User Interface) as an example and not having to make any changes to our data classes.
 The only thing that would need to change with a potential GUI feature is implementing actual gui elements to use those same classes.
 
 Test Driven Development
 -----------------------
 
-At this point we have done a great job refactoring the more complex code out of data holding classes and we are left with fairly simple classes that are more straightforward to unit test.
+At this point we have done a great job refactoring the more complex code out of data holding classes and we are left with simple classes that are more straightforward to unit test.
 
 The ``Donor`` and ``DonorCollection`` classes should now have close to 100 percent code coverage.
 
 Although it is ok to have a single test file to test all of your functionality, it is more common practice to have a test file per module.
 
-For example, you may define 3 test files:
+For example, you may create 3 test files:
 ``test_donor.py``, ``test_donor_collection.py`` and ``test_cli_main.py`` - each testing corresponding module.
 
 
