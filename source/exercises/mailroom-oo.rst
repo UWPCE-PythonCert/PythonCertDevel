@@ -58,7 +58,7 @@ So now you have to think about using a dict or class? Again for flexibility, I t
 
 Consider ``data[0]`` vs ``data["first_name"]`` vs ``data.first_name`` -- which one is more readable? Keep in mind that another benefit of using OO for data encapsulation is ability of modern IDE to provide auto-completion, which reduces number of bugs and helps to produce code faster.
 
-Below are suggestions on breaking down your existing code into multiple modules that will be part of a single mailroom program.
+Below are more detailed suggestions on breaking down your existing code into multiple modules that will be part of a single mailroom program.
 
 Donor Class
 ^^^^^^^^^^^^
