@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
         <link rel="up" title="Topic Notes" href="index.html"/>
-        <link rel="next" title="Git Workflow" href="GitWorkflow.html"/>
+        <link rel="next" title="git Workflow" href="GitWorkflow.html"/>
         <link rel="prev" title="Introduction to the Environment" href="EnvironmentOverview.html"/> 
 
   
@@ -95,10 +95,10 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Topic Notes</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#py210-introduction-to-python">Py210: Introduction to Python</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="index.html#lesson-1-introductions-and-setting-up-your-environment">Lesson 1: Introductions and Setting up your Environment</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="Class_introduction.html">Introductions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Class_introduction.html">Introduction to the in-class version of the program</a></li>
 <li class="toctree-l4"><a class="reference internal" href="EnvironmentOverview.html">Introduction to the Environment</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Intro to Git</a></li>
-<li class="toctree-l4"><a class="reference internal" href="GitWorkflow.html">Git Workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="GitWorkflow.html">git Workflow</a></li>
 <li class="toctree-l4"><a class="reference internal" href="IPythonIntroduction.html">IPython Introduction</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Py2vsPy3.html">Python 2 versus Python 3</a></li>
 </ul>
@@ -115,6 +115,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#assorted-additional-topics">Assorted Additional Topics</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
@@ -251,8 +252,8 @@ repository that serves as the one to rule them all. This simply means that all r
 <p>With git, you work with <em>local</em> repositories and the <em>remotes</em> that they are connected to.</p>
 <p>Git uses shortcuts to address <em>remotes</em>. When you <em>clone</em> a repository from its remote location to your local machine, you get an <em>origin</em> shortcut for free:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ git remote -v
-origin  https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython.git <span class="o">(</span>fetch<span class="o">)</span>
-origin  https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython.git <span class="o">(</span>push<span class="o">)</span>
+origin  https://github.com/UWPCE-PythonCert-ClassRepos/ExampleRepo.git <span class="o">(</span>fetch<span class="o">)</span>
+origin  https://github.com/UWPCE-PythonCert-ClassRepos/ExampleRepo.git <span class="o">(</span>push<span class="o">)</span>
 </pre></div>
 </div>
 <p>This shows that the local repo on my machine <em>originated</em> from one in
@@ -269,7 +270,7 @@ the UWPCE-PythonCert-ClassRepos GitHub account (it shows up twice, because there
 <a class="center reference internal image-reference" href="../_images/remotes_start.png"><img alt="../_images/remotes_start.png" class="center" src="../_images/remotes_start.png" style="width: 50%;" /></a>
 </div>
 <p>Each class will have a repository created specifically for it, called something like: “Wi2018-Online”.</p>
-<p>In examples below it is called IntroToPython, so replace that in your head with the name of your class’s repository.</p>
+<p>In examples below it is called YourClassRepoNameHere, so replace that in your head with the name of your class’s repository.</p>
 <p>This class repository will include examples and relevant materials (and some exercise solutions) will be added throughout the class.</p>
 <p>There will be a folder called students at the top level, and everyone will create their own directory within it.</p>
 <p>Note that you can use any name you want for your personal working directory – it can be your first name, you full name, or maybe your gitHub handle if you want to remain anonymous. Just make sure you let your instructors know what name you’ve used so that they can credit you for your work.</p>
@@ -294,10 +295,10 @@ the UWPCE-PythonCert-ClassRepos GitHub account (it shows up twice, because there
 <p>Begin in a directory on your computer where you want to keep your cloned version of the class repository.
 This can live anywhere on your file system but this outer directory should not be tracked in git.</p>
 <p>From that directory, run</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git clone https://github.com/your_github_id/IntroToPython
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git clone https://github.com/your_github_id/YourClassRepoNameHere
 </pre></div>
 </div>
-<p>Be sure to replace “IntroToPython” with the name of your class repository (you can get the url by going to the class repo on gitHub and clicking “clone or download”).</p>
+<p>Be sure to replace “YourClassRepoNameHere” with the name of your class repository (you can get the url by going to the class repo on gitHub and clicking “clone or download”).</p>
 <p>This will download the repository from your GitHub account into the local directory that you ran the git <em>clone</em> command from.</p>
 <div class="section" id="adding-a-remote">
 <h3>Adding a remote<a class="headerlink" href="#adding-a-remote" title="Permalink to this headline">¶</a></h3>
@@ -309,15 +310,15 @@ locations.</p>
 <p>For this class, you will add an <em>upstream</em> remote to our local copy that points to the original copy of the material in the
 <code class="docutils literal"><span class="pre">UWPCE-PythonCert-ClassRepos</span></code> account, and we will call it, appropriately, “upstream”. Change directories into your local version of the class
 repository and run (remembering to use the name of your class):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git remote add upstream https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git remote add upstream https://github.com/UWPCE-PythonCert-ClassRepos/YourClassRepoNameHere
 </pre></div>
 </div>
 <p>Your local setup should now look something like this:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ git remote -v
-origin  https://github.com/your_github_id/IntroToPython <span class="o">(</span>fetch<span class="o">)</span>
-origin  https://github.com/your_github_id/IntroToPython <span class="o">(</span>push<span class="o">)</span>
-upstream    https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython <span class="o">(</span>fetch<span class="o">)</span>
-upstream    https://github.com/UWPCE-PythonCert-ClassRepos/IntroToPython <span class="o">(</span>push<span class="o">)</span>
+origin  https://github.com/your_github_id/YourClassRepoNameHere <span class="o">(</span>fetch<span class="o">)</span>
+origin  https://github.com/your_github_id/YourClassRepoNameHere <span class="o">(</span>push<span class="o">)</span>
+upstream    https://github.com/UWPCE-PythonCert-ClassRepos/YourClassRepoNameHere <span class="o">(</span>fetch<span class="o">)</span>
+upstream    https://github.com/UWPCE-PythonCert-ClassRepos/YourClassRepoNameHere <span class="o">(</span>push<span class="o">)</span>
 </pre></div>
 </div>
 <p>This should leave you in a situation that looks like this:</p>
@@ -372,7 +373,7 @@ $
 </div>
 <p>(A simple <code class="docutils literal"><span class="pre">git</span> <span class="pre">push</span></code> will usually do the right thing)</p>
 <p>You are now set up to work with this repository, and the next steps will be similar every time you work on code.</p>
-<p>Go now to this page: <a class="reference internal" href="GitWorkflow.html#git-workflow"><span class="std std-ref">Git Workflow</span></a>, where you will learn what to do each time you have work to submit for review.</p>
+<p>Go now to this page: <a class="reference internal" href="GitWorkflow.html#git-workflow"><span class="std std-ref">git Workflow</span></a>, where you will learn what to do each time you have work to submit for review.</p>
 </div>
 <div class="section" id="privacy-note">
 <h3>Privacy Note:<a class="headerlink" href="#privacy-note" title="Permalink to this headline">¶</a></h3>
@@ -414,7 +415,7 @@ This will put everything in your home directory up on GitHub, and you do not wan
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="GitWorkflow.html" class="btn btn-neutral float-right" title="Git Workflow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="GitWorkflow.html" class="btn btn-neutral float-right" title="git Workflow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="EnvironmentOverview.html" class="btn btn-neutral" title="Introduction to the Environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
