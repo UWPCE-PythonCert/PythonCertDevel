@@ -60,10 +60,38 @@ Consider ``data[0]`` vs ``data["first_name"]`` vs ``data.first_name`` -- which o
 
 Below are more detailed suggestions on breaking down your existing code into multiple modules that will be part of a single mailroom program.
 
+
+Modules vs Classes
+...................
+
+You may organize your code up to your preference and you can keep it simple by having all of the code in a single file.
+
+Optionally, you could organize your code into modules which helps to keep code organized and re-usable.
+
+What is a module? Module is a python file that can be imported in other files.
+Modules can contain functions, classes, and even variables (constants).
+
+Here is an example file structure for ``mailroom_oo`` package:
+
+.. code-block:: bash
+
+  └── mailroom_oo
+     ├── __init__.py
+     ├── cli_main.py
+     ├── donor_models.py
+     └── test_mailroom_oo.py
+
+
+``donor_models.py`` can contain ``Donor`` and ``DonorCollection`` classes
+
+``cli_main.py`` would include all of your user interaction functions and main program flow
+
+Note that ``__init__.py`` is an empty file that tells Python that this directory should be treated as a package so that you can import modules.
+
 Donor Class
 ...........
 
-Module responsible for donor data encapsulation.
+Class responsible for donor data encapsulation.
 
 This will hold all the information about a single donor, and have attributes, properties, and methods to provide access to the donor specific information that is needed.
 Remember that if you are writing code that only accesses information about a single donor then it should most likely live in this class.
@@ -71,7 +99,7 @@ Remember that if you are writing code that only accesses information about a sin
 DonorCollection Class
 .....................
 
-Module responsible for donor collection data encapsulation.
+Class responsible for donor collection data encapsulation.
 
 This will hold all of the donor objects, but also methods to add a new donor, search for a given donor, etc. If you want a way to save and re-load your data, this class would have that too.
 
@@ -106,10 +134,3 @@ Test Driven Development
 At this point we have done a great job refactoring the more complex code out of data holding classes and we are left with simple classes that are more straightforward to unit test.
 
 The ``Donor`` and ``DonorCollection`` classes should now have close to 100 percent code coverage.
-
-Although it is ok to have a single test file to test all of your functionality, it is more common practice to have a test file per module.
-
-For example, you may create 3 test files:
-``test_donor.py``, ``test_donor_collection.py`` and ``test_cli_main.py`` - each testing corresponding module.
-
-
