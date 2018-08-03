@@ -61,7 +61,7 @@ Consider ``data[0]`` vs ``data["first_name"]`` vs ``data.first_name`` -- which o
 Below are more detailed suggestions on breaking down your existing code into multiple modules that will be part of a single mailroom program.
 
 Donor Class
-^^^^^^^^^^^^
+...........
 
 Module responsible for donor data encapsulation.
 
@@ -69,7 +69,7 @@ This will hold all the information about a single donor, and have attributes, pr
 Remember that if you are writing code that only accesses information about a single donor then it should most likely live in this class.
 
 DonorCollection Class
-^^^^^^^^^^^^^^^^^^^^^
+.....................
 
 Module responsible for donor collection data encapsulation.
 
@@ -79,7 +79,7 @@ Your class for the collection of donors will also hold the code that generates r
 
 
 Command Line Interface
-^^^^^^^^^^^^^^^^^^^^^^
+.......................
 
 Module responsible for main program flow (CLI - Command Line Interface).
 
