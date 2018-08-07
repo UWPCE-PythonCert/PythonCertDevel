@@ -119,8 +119,7 @@ What should go into this module?
 * ``input`` function calls to gather user input.
 * ``print`` statements to print to console.
 
-
-.. note::  Technically console print statement don't belong in your data classes, however for some features like send letters instead of "sending" we are simply printing so it is ok for this feature to reside in the data class.
+.. note::  Technically console print statement don't belong in your data classes, however for some features like send letters instead of "sending" we are simply printing so it is ok for this feature to reside in the data class. But do keep it to a minimum -- i.e. the data class methods return a string, and the UI code does the printing.
 
 
 Why is this separation so important?
@@ -131,6 +130,11 @@ The only thing that would need to change with a potential GUI feature is impleme
 Test Driven Development
 -----------------------
 
-At this point we have done a great job refactoring the more complex code out of data holding classes and we are left with simple classes that are more straightforward to unit test.
+At this point we have done a great job refactoring the more complex code out of data holding classes and we are left with simple classes that are more straightforward to unit test. As you build your classes update the tests you already have to the logic code to the new API. Ideally, update the tests first, then the code.
 
 The ``Donor`` and ``DonorCollection`` classes should now have close to 100 percent code coverage.
+
+For the moment, don't worry about testing most of the command line interface code. That requires simulating use input, which is an advanced testing topic. But you can (hopefully) see some of the benefits of separating the user-interaction code from the logic code -- your logic code is much easier to test with no user-interaction involved.
+
+
+
