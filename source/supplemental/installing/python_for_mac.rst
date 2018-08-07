@@ -17,7 +17,7 @@ So we recommend installing a new version.
 **Note**:
 
 
-If you use ``macports`` or ``homebrew`` to manage \*nix software on your machine, feel free to use those for ``python``, ``git``, etc, as well. But make sure you have Python 3.6.*
+If you use ``macports`` or ``homebrew`` to manage \*nix software on your machine, feel free to use those for ``python``, ``git``, etc, as well. But make sure you have Python 3.7.*
 
 If not, then read on.
 
@@ -38,7 +38,7 @@ latest version, and you really don't want to mess with the system
 installation. So we recommend installing an independent installation from
 ``python.org``:
 
-Download the latest realease of Python (currently 3.6.4) installer from Python.org:
+Download the latest realease of Python (currently 3.7.0) installer from Python.org:
 
 https://www.python.org/downloads/
 
@@ -48,21 +48,22 @@ Oddly, this does NOT install a ``python`` command, but rather a ``python3`` comm
 
 .. code-block:: bash
 
-  $ cd /Library/Frameworks/Python.framework/Versions/3.6/bin
-  $ ln -s python3.6 python
+  $ cd /Library/Frameworks/Python.framework/Versions/3.7/bin
+  $ ln -s python3.7 python
 
-(or an add an alias in your shell: add the following line
+Or an add an alias in your shell: add the following line::
 
-alias python='python3'
+  alias python='python3'
 
-to your .bash_profile).
+to your ``.bash_profile`` file.
 
 Once you have done that, you should be able to type ``python`` at the command prompt, and get something like:
 
 .. code-block:: bash
 
-  Python 3.6.2 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06)
-  [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+  $ python
+  Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 26 2018, 23:26:24)
+  [Clang 6.0 (clang-600.0.57)] on darwin
   Type "help", "copyright", "credits" or "license" for more information.
   >>>
 
@@ -70,17 +71,18 @@ This is the Python interpreter.
 
 Type ``ctrl+D`` to get out (or ``exit()``)
 
+.. note:: IF all this is confusing to you -- take heart -- you will get used it it. And in the meantime, you can simply type ``python3`` when you want to run python.
 
 pip
 ---
 
 ``pip`` is the Python package installer. It is updated faster than Python itself, so once you have Python, you want to get the latest version of pip working::
 
-  $ python -m ensurepip --upgrade
+  $ python3 -m ensurepip --upgrade
 
-[first make sure that ``python`` gives you the one you want. You may need to call ``python3`` instead]
+[``python`` may work too (if you set things up correctly above), but ``python3`` should always work]
 
-It should download and install the latest ``pip``.
+It should download and install the latest ``pip``. Or let you know that you already have it.
 
 You can now use pip to install other packages.
 
@@ -89,39 +91,41 @@ Using pip:
 
 To use pip to install a package, you invoke it with this command::
 
-  python -m pip install the_name_of_the_package
+  python3 -m pip install the_name_of_the_package
 
-Where ``python`` is the command you use to invoke the Python you want to use (could be ``python3``)
+Where ``python3`` is the command you use to invoke the Python you want to use.
 
 **NOTE:** You will frequently see advice to use pip like so::
 
-  $ pip install something_or_other
+    $ pip install something_or_other
 
 Which often works, but also can invoke the *wrong* version of pip. The above command::
 
-  $ python -m pip install something_or_other
+  $ python3 -m pip install something_or_other
 
 calls Python, and tells it to run the ``pip`` module. It is exactly the same as calling pip directly, except that you are assured that you are getting the version of pip connected the version of Python that you are running.
 
 iPython
 --------
 
-One package we are going to use in the program from the begining is ``iPython``. You can install it with ``pip`` like so::
+One package we are going to use in the program from the beginning is ``iPython``. You can install it with ``pip`` like so::
 
-  $ python3 -m pip install ipython[all]
+  $ python3 -m pip install ipython
 
 (it will install a LOT...).
 
-You should now be able to run ``iPython``:
+Now you should now be able to run ``iPython``:
 
 .. code-block:: ipython
 
-  Python 3.6.2 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06)
+  $ ipython
+  Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 26 2018, 23:26:24)
   Type 'copyright', 'credits' or 'license' for more information
-  IPython 6.1.0 -- An enhanced Interactive Python. Type '?' for help.
+  IPython 6.5.0 -- An enhanced Interactive Python. Type '?' for help.
 
   In [1]:
 
+Which you can also get out of with ``ctrl+D`` or ``exit()``
 
 git
 ----
@@ -183,38 +187,41 @@ To try it out, you should be able to run all of these commands, and get somethin
 (recall that you can get out of the Python or iPython command lines with ``ctrl+D``)
 
 For Python:
+...........
 
 .. code-block:: bash
 
-  MacBook-Pro:PythonCertDevel Chris$ python
-  Python 3.6.2 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06)
-  [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+  $ python3
+  Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 26 2018, 23:26:24)
+  [Clang 6.0 (clang-600.0.57)] on darwin
   Type "help", "copyright", "credits" or "license" for more information.
-  >>> ^D
+  >>>
+
 
 For iPython:
+............
 
 .. code-block:: bash
 
-  MacBook-Pro:PythonCertDevel Chris$ ipython
-  Python 3.6.2 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06)
+  $ ipython
+  Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 26 2018, 23:26:24)
   Type 'copyright', 'credits' or 'license' for more information
-  IPython 6.1.0 -- An enhanced Interactive Python. Type '?' for help.
-
-  In [1]:
-
-  Do you really want to exit ([y]/n)? y
+  IPython 6.5.0 -- An enhanced Interactive Python. Type '?' for help.
 
 For pip:
+........
 
 .. code-block:: bash
 
-  MacBook-Pro:PythonCertDevel Chris$ python -m pip --version
-  pip 9.0.1 from /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages (python 3.6)
+  $ python3 -m pip --version
+  pip 18.0 from /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/pip (python 3.7)
+
+Note that when you ask pip for ``--version`` it tells you which version of python it is "connected" to.
 
 For git:
+........
 
 .. code-block:: bash
 
-  MacBook-Pro:PythonCertDevel Chris$ git --version
-  git version 2.11.0 (Apple Git-81)
+  $ git --version
+  git version 2.15.2 (Apple Git-101.1)
