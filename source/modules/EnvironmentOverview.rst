@@ -1,13 +1,33 @@
-###############################
-Introduction to the Environment
-###############################
+############################################
+Introduction to your Programming Environment
+############################################
+
+This program is a course of instruction in developing with the Python programming language.
+
+Python is a language with multiple implementations, and many different ways to edit and run code. One's development environment is a personal thing -- what is most productive for you depends on what platform you use, how you like to work, what the people you work with are using, etc. -- it is a very personal choice.
+
+Each of you starting this program come with a different background and experience. So we do not require that you use a particular development environment. Indeed, each of the instructors in the program use their own tools and approach.
+
+However, there are some core requirements, and we provide advice for what to do if you are just getting started.
 
 There are three basic elements to your environment when working with Python:
 
-* The Command Line
-* The Interpreter
-* The Editor
+* A way to run your code, git, etc.
 
+* A Python interpreter
+
+* A way to edit your code.
+
+We recommend these tools:
+
+* The Command Line
+  - for runing your code, and tests, and git, and ...
+
+* The Python Interpreter
+  - We use "cPython" version 3.6 or greater.
+
+* The Editor
+  - Any good programmer's text editor will work well.
 
 The Command Line (cli)
 ----------------------
