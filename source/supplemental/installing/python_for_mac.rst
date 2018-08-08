@@ -84,7 +84,11 @@ pip
 
 It should download and install the latest ``pip``. Or let you know that you already have it.
 
-You can now use pip to install other packages.
+You can now use pip to install other packages. The first thing you may want to do is update pip itself:
+
+.. code-block:: bash
+
+  $ python3 -m pip install --upgrade pip
 
 Using pip:
 ----------
