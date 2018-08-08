@@ -1,27 +1,19 @@
 .. _python_for_linux:
 
-***************************
+###########################
 Setting Up Linux for Python
-***************************
+###########################
 
 
-==================================================
 Debian and Related Distros (Ubuntu, Linux Mint)
-==================================================
+===============================================
 
 Python
 -------
 
 Debian distros already have the stable python2 and python3 releases preinstalled (`Debian Wiki <https://wiki.debian.org/Python>`_).
 
-Try the following commands:
-
-.. code-block:: bash
-
-  $ python2
-  Python 2.7.9 (default, April 2 2015, 15:33:32)
-  [GCC 4.9.2 on linux2]
-  >>>
+Try the following command:
 
 .. code-block:: bash
 
