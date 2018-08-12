@@ -1,8 +1,8 @@
 .. _exercise_trigrams:
 
-=========================================
+========================================
 Kata Fourteen: Tom Swift Under Milk Wood
-=========================================
+========================================
 
 Adapted from Dave Thomas's work:
 
@@ -141,7 +141,7 @@ I suggest you write the trigrams part first -- it's more interesting :-)
 trigrams
 --------
 
-Key to the trigrams problem is what data structure to use to hold the "trigrams themselves" -- what do we need here?
+Key to the trigrams problem is what data structure to use to hold the "trigrams" themselves -- what do we need here?
 
 The text
 ........
@@ -160,7 +160,7 @@ which results in an (ordered) list of words::
 
   ['I', 'wish', 'I', 'may', 'I', 'wish', 'I', 'might']
 
-Now you've got some words to play with. Once you think you've got it working, try a bit longer piece of text. But this will do for now, and it's small and simpile enough that you can immediately see if your code is working.
+Now you've got some words to play with. Once you think you've got it working, try a bit longer piece of text. But this will do for now, and it's small and simple enough that you can immediately see if your code is working.
 
 The trigrams structure
 ----------------------
@@ -172,13 +172,14 @@ From above, this is what you need to build up something like this::
     "may I"  => ["wish"]
     "I may"  => ["I"]
 
-hmm -- in a way, that's almost pseudo code: You have a bunch of word pairs, and for each word pair, there are one or more works that follow it.
+hmmm -- in a way, that's almost pseudo code: You have a bunch of word pairs, and for each word pair, there are one or more works that follow it.
 
-Those words look a lot like they are in a list, yes? Perfect -- it keeps order, and you can keep adding (appending) new words to it.
+Those following words look a lot like they are in a list, yes? Perfect -- it keeps order, and you can keep adding (appending) new words to it.
 
 Each of those lists of words needs to be mapped to a particular pair. Each pair is unique -- it only shows up once (when that same pair is encountered again in the text, you add the follower to the list).
 
-That sounds a a lot like a dictionary - the keys (word pairs) are unique, and map to a list of following words.
+That sounds a a lot like a dictionary - the keys (word pairs) are unique, and map to a list of following words. (note that technically in python, the dictionary is only one implementation of a
+`Mapping <https://docs.python.org/3/glossary.html#term-mapping>`_)
 
 Now you have a choice -- the keys are a pair of words -- they can be represented as a string of two words with a space like so:
 
@@ -190,7 +191,7 @@ Now you have a choice -- the keys are a pair of words -- they can be represented
                 "I may": ["I"],
                 }
 
-But strings are not the only type that you can use as keys in a dict -- you can use any *immutable* type. Since the pairs of words are, well, a pair, it makes sense to store them in a tuple, keeping the individual words separate:
+But strings are not the only type that you can use as keys in a dict -- you can use any *immutable* type. Recall that tuples are immutable (they can't be changed once they have been created). Since the pairs of words are, well, a pair, it makes sense to store them in a tuple, keeping the individual words separate:
 
 .. code-block:: python
 
@@ -205,7 +206,9 @@ I like that better, but either one will work.
 Building the Trigrams dict
 ..........................
 
-So you've got a list of words, and you need to build up a dict like one of the above. Time to create a python file and put that in a function:
+So you've got a list of words, and you need to build up a dict like one of the above.
+
+It time to create a python file and start writting some code!
 
 .. code-block:: python
 
@@ -237,27 +240,27 @@ So how do you actually build up that dict? That's kind of the point of the exerc
 
 **Looping through the words**
 
-Obviously you need to loop through all the words, so a for loop makes sense. However, this is a bit tricky -- usually in Python you loop through all the items in a list, and don't worry about the indexes:
+Obviously you need to loop through all the words, so a for loop makes sense. However, this is a bit tricky -- usually in Python you loop through all the items in a list, and don't worry about the indices:
 
-   .. code-block:: python
+.. code-block:: python
 
-     for item in a_list:
-         ...
+  for item in a_list:
+     ...
 
 But in this case, we don't need to work with one word at a time, we need to work with three at a time (a pair of words, and the one that follows it).
-So contrary to the usual practice, indexes can be helpful here:
+So contrary to the usual practice, an index can be helpful here:
 
-   .. code-block:: python
+.. code-block:: python
 
-     for i in len(words)-2: # why -2 ?
-         pair = words[i:i + 2]
-         follower = words[i + 2]
+  for i in len(words)-2: # why -2 ?
+     pair = words[i:i + 2]
+     follower = words[i + 2]
 
 **Adding a pair to the dict:**
 
 For each pair in the text, you need to add it to the dict. But:
 
-- words[i:i + 2] is a list with two words in it -- can that be used as a key in a dict? IF not, how can you make a valid key out of it?
+- words[i:i + 2] is a list with two words in it -- can that be used as a key in a dict? (try it) If not, how can you make a valid key out of it?
 
 - As you loop through the text, you will collect pairs of words. Each time, a given pair may already be in the dict.
 
@@ -265,9 +268,13 @@ For each pair in the text, you need to add it to the dict. But:
 
     ("may", "I"): ["wish"]
 
-  - If the pair already is in the dict, then you want to add the follower to the list that's already there.
+  - If the pair already is in the dict, then you want to add the follower to the list that's already there
+
+    ("wish", "I"): ["may", "might"]
 
 Note that the above suggests the basic logic -- it's almost pseudo-code. And that logic will work.  But it turns out that this is a common enough operation that python dicts have a method that lets you do that logic in one step -- can you find it?
+
+`Python dict Documentation <https://docs.python.org/3/library/stdtypes.html?highlight=dictionary#mapping-types-dict>`_
 
 You should now have code that will return a dict like we noted above::
 
@@ -281,9 +288,9 @@ Try it out on a longer bit of text (your choice) before you go any further.
 Using the Trigrams dict
 .......................
 
-This is the fun part: once you have a mapping of word pairs to following words, you can build up some new "fake" text. Read above again to remind yourself of the procedure, but a couple hints:
+This is the fun part: once you have a mapping of word pairs to following words, you can build up some new "fake" text. Read the above again to remind yourself of the procedure, but a couple hints:
 
-- the "random" module is your friend here:
+- the ```random`` module <https://docs.python.org/3/library/random.html#module-random>`_ is your friend here:
 
 .. code-block:: python
 
@@ -335,11 +342,11 @@ Any other ideas your may have.
 
 **Hints:**
 
-The string methods are your friend here.
+The ``string`` methods are your friend here.
 
 There are also handy constants in the ``string`` module: ``import string``
 
-Check out the ``str.translate`` method -- it can make multiple replacements very fast.
+Check out the ``str.translate()`` method -- it can make multiple replacements very fast.
 
 Do get the full trigrams code working first -- then play with some of the fancier options.
 
