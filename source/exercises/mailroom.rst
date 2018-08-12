@@ -17,6 +17,145 @@ incredibly boring, repetitive emails thanking your donors for their generous
 gifts. You are tired of doing this over and over again, so you've decided to
 let Python help you out of a jam and do your work for you.
 
+Intro Tutorial
+--------------
+
+Controlling Main Program Flow
+..............................
+
+One of the key components of the mailroom program is managing program flow and interacting with the user. Ideally main flow code should be cleanly separate from your feature code.
+
+The best way to manage the program flow is to use a ``while True`` loop which means you will keep asking the user for input until user selects a feature or exits.
+
+There are several ways to write your main program flow. Let's consider these two options:
+
+
+.. code-block:: python
+
+    def do_something():
+        # do things
+
+    def main():
+        while True:
+            do_something()
+
+    main()
+
+
+
+
+.. code-block:: python
+
+    def do_something()
+        # do things
+        main()
+
+    def main():
+        do_something()
+
+    main()
+
+
+Can you see the advantages of one over the other?
+In the first one, ``do_something`` is not aware of how the main works and as you add more features they shouldn't manage the main either.
+Another advantage is simpler code logic, and simpler code logic means less bugs!
+
+Let's look at a simple program to utilize the while True loop and how we can handle user response:
+
+.. code-block:: python
+
+    import sys  # imports go at the top of the file
+
+
+    fruits = ['Apples', 'Oranges', 'Pears']
+
+    prompt = "\n".join(("Welcome to the fruit stand!",
+              "Please choose from below options:",
+              "1 - View fruits",
+              "2 - Add a fruit",
+              "3 - Remove a fruit",
+              "4 - Exit",
+              ">>> "))
+
+
+    def view_fruits():
+        print("\n".join(fruits))
+
+
+    def add_fruit():
+        new_fruit = input("Name of the fruit to add?").title()
+        fruits.append(new_fruit)
+
+
+    def remove_fruit():
+        purge_fruit = input("Name of the fruit to remove?").title()
+        if purge_fruit not in fruits:
+            print("This fruit does not exist!")
+        else:
+            fruits.remove(purge_fruit)
+
+    def exit_program():
+        print("Bye!")
+        sys.exit()  # exit the interactive script
+
+
+    def main():
+        while True:
+            response = input(prompt)  # continuously collect user selection
+            # now redirect to feature functions based on the user selection
+            if response == "1":
+                view_fruits()
+            elif response == "2":
+                add_fruit()
+            elif response == "3":
+                remove_fruit()
+            elif response == "4":
+                exit_program()
+            else:
+                print("Not a valid option!")
+
+
+    if __name__ == "__main__":
+        # don't forget this block to guard against your code running automatically if this module is imported
+        main()
+
+
+
+Choosing Data Structure
+........................
+
+
+So far we have learned about strings, tuples, and lists. We will apply data structures that we have learned in previous lessons to hold our mailroom donor information.
+Choosing the right data structure is critical and our donor data structure will change in future lessons as we learn additional ones.
+
+What goes into this decision? Here are a couple of things to consider:
+
+* efficiency - we often need to look up data, are you able to efficiently look up the data you need?
+* ease of use - is the code straightforward and simple for basic operations?
+* features - does it do everything you need to do for your requirements?
+
+Let's consider each data structure:
+
+String would probably be able to do what we need feature wise but the code to implement would be quite complex and not very efficient.
+
+A tuple would be an issue when adding donors since it is an immutable data structure.
+
+A list would satisfy all of the needed features with a fairly simple code to implement. It makes the most sense to use a list for the main data structure, and actually we can have a combination of both tuples and a list.
+
+Here is a potential data structure to consider:
+
+.. code-block:: python
+
+    donor_db = [("William Gates, III", [653772.32, 12.17]),
+            ("Jeff Bezos", [877.33]),
+            ("Paul Allen", [663.23, 43.87, 1.32]),
+            ("Mark Zuckerberg", [1663.23, 4300.87, 10432.0]),
+            ]
+
+Why choose tuples for inner donor record? Well another part of using the right data structure is also to reduce bugs - you are setting clear expectations that single donor entry only contains two items.
+
+
+
 The program
 -----------
 
