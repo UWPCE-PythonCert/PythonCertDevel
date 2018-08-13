@@ -20,10 +20,11 @@ Lesson 1: Introductions and Setting up your Environment
 
     Class_introduction
     EnvironmentOverview
-    Git
-    GitWorkflow
     IPythonIntroduction
     Py2vsPy3
+    Git
+    GitWorkflow
+    Submitting_to_github
 
 Lesson 2: Basic Python and Functions
 ------------------------------------

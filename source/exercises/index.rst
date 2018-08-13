@@ -15,7 +15,6 @@ Lesson 1: Introductions and Setting up your Environment
 .. toctree::
     :maxdepth: 1
 
-    submitting_to_gitHub.rst
     python_pushups.rst
 
 
