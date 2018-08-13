@@ -1,3 +1,2 @@
 sphinx
-hieroglyph
 sphinx-rtd-theme
