@@ -374,6 +374,7 @@ You can either use `unittest` or ``pytest`` module, but it might be easier to us
 
 
 You should have 3 main features so far:
+
 * sending a thank you, which adds a new donor or updates existing donor info
 * create a report
 * send letters, which creates files
