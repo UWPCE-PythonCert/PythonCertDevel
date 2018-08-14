@@ -362,3 +362,45 @@ I like to say: "If it's hard to test, it's not well structured"
 
 Put in the tests **before** you make the other changes below - that's much of the point of tests -- you can know that you haven't broken anything when you refactor!
 
+Guidelines
+-----------
+
+Here are some suggestions on what should be refactored in the mailroom.
+
+In general you want to avoid unit testing code with ``input`` or ``print`` functions, these pieces require more advanced unit testing methodologies which will be revisited in future courses.
+Below, we will go over what components should be refactored so that we are able to unit test our mailroom - your code should improve and be better modularized if that's not the case then maybe refactor should be re-thought.
+
+You can either use `unittest` or ``pytest`` module, but it might be easier to use ``pytest`` since Object Oriented isn't something we have gone over yet.
+
+
+You should have 3 main features so far:
+* sending a thank you, which adds a new donor or updates existing donor info
+* create a report
+* send letters, which creates files
+
+
+Send Thank You
+...............
+
+Even though every mailroom implementation will be unique, most likely this function will require significant refactor for most.
+You can break up the code into components that handle user flow and data manipulation logic. Write your unit tests for data manipulation logic, that would include adding or updating donors and list donors function.
+
+
+Create Report
+.............
+
+This function should only need slight modification. Split up user presentation (``print`` function calls) and data logic (actual creating of rows).
+Your data logic function can either return the report string already formatted or return a list of rows that can be joined and printed int he user presentation function.
+Then you can write a unit test for your data logic function.
+
+
+Send Letters
+............
+
+This one should require very little or no change to make it unit testable.
+The unit test can assert that a file is created per donor entry (hint: ``os.path`` module) and file content contains text as expected.
+
+
+**Common Mistakes**
+
+TBD
