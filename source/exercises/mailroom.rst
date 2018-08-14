@@ -370,7 +370,7 @@ Here are some suggestions on what should be refactored in the mailroom.
 In general you want to avoid unit testing code with ``input`` or ``print`` functions, these pieces require more advanced unit testing methodologies which will be revisited in future courses.
 Below, we will go over what components should be refactored so that we are able to unit test our mailroom - your code should improve and be better modularized if that's not the case then maybe refactor should be re-thought.
 
-You can either use `unittest` or ``pytest`` module, but it might be easier to use ``pytest`` since Object Oriented isn't something we have gone over yet.
+You can either use ``unittest`` or ``pytest`` module, but it might be easier to use ``pytest`` since Object Oriented isn't something we have gone over yet.
 
 
 You should have 3 main features so far:
