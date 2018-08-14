@@ -391,9 +391,20 @@ Create Report
 .............
 
 This function should only need slight modification. Split up user presentation (``print`` function calls) and data logic (actual creating of rows).
-Your data logic function can either return the report string already formatted or return a list of rows that can be joined and printed int he user presentation function.
+Your data logic function can either return the report string already formatted or return a list of rows that can be joined and printed in the user presentation function.
 Then you can write a unit test for your data logic function.
 
+Example:
+
+.. code-block:: python
+
+    def display_report():
+        for row in get_report():
+            print(row)
+
+
+
+Here you would write a unit test for ``get_report`` function.
 
 Send Letters
 ............
