@@ -118,9 +118,9 @@ There is a skeleton for one in ``html_render.py`` -- it has just enough so that 
 
 Do run those tests first -- then add the code to make them pass.
 
-The Element class should a class attribute for the tag name ("html" first).
+The ``Element`` class should have a class attribute for the tag name ("html" first).
 
-The initializer signature should look like
+The initializer signature should look like:
 
 .. code-block:: python
 
@@ -177,6 +177,8 @@ Will result in a file with something like this in it:
 That is, you should now be able to render an html tag with text in it as content.
 
 See: step 1. in ``run_html_render.py`` and the test code.
+
+If you are stuck -- see the tutorial:  :ref:`render_tutorial_1`
 
 Step 2:
 -------
@@ -258,6 +260,8 @@ Should result in something like:
 See: :download:`test_html_output2.html  <../examples/html_render/test_html_output2.html>`
 
 NOTE: when you run step 2 in ``run_html_render.py``, you will want to comment out step 1 -- that way you'll only get one set of output.
+
+If you are stuck -- see the tutorial: :ref:`render_tutorial_2`
 
 Step 3:
 -------

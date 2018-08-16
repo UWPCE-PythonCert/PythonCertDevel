@@ -8,8 +8,10 @@ If you are finding that you don't really know where to start with the html rende
 
 However, you generally learn more if you figure things out for yourself. So I highly suggest that you give each step a try on your own first, before reading that step in this tutorial. Then, if you are really stuck -- follow the process here.
 
-Step 1
-------
+.. _render_tutorial_1:
+
+Step 1:
+-------
 
 Step one is a biggie -- that's 'cause you need a fair bit all working before you can actually have anything to test, really. But let's take it bit by bit.
 
@@ -61,7 +63,7 @@ Hey! that's pretty cool -- two tests are already passing! Let's take a quick loo
 
         e = Element("this is some text")
 
-So that one simply tested that an Element class exists, and that you can pass in a string when you initialize it -- not a bad start, but it doesn't show that you can DO anything with it.
+So that one simply tested that an ``Element`` class exists, and that you can pass in a string when you initialize it -- not a bad start, but it doesn't show that you can *do* anything with it.
 
 
 .. code-block:: python
@@ -127,7 +129,7 @@ Looking there, we can see why the tests did what they did -- we have the three k
 
 So back to the assignment:
 
-    The Element class should a class attribute for the tag name ("html" first)
+    The ``Element`` class should have a class attribute for the tag name ("html" first)
 
 each html element has a different "tag", specifying what kind of element it is. so our class needs one of those. Why a class attribute? because each *instance* of each type (or class) of element will share the same tag.  And we don't want to store the tag in the render method, because then we couldn't reuse that render method for a different type of element.
 
@@ -152,7 +154,7 @@ Back to the task at hand:
 
   So your class will need a way to store the content in a way that you can keep adding more to it.
 
-OK, so we need a way to store the content -- both what gets passed in to the ``__init__`` and what gets added with the append method.  WE need a data structure that can hold an ordered list of things, and can be added to in the future -- sounds like a list to me. So let's create a list in __init__ and store it in ``self`` for use by the other methods:
+OK, so we need a way to store the content -- both what gets passed in to the ``__init__`` and what gets added with the ``append method``.  We need a data structure that can hold an ordered list of things, and can be added to in the future -- sounds like a list to me. So let's create a list in __init__ and store it in ``self`` for use by the other methods:
 
 .. code-block:: python
 
@@ -170,6 +172,8 @@ OK -- let's run the tests and see if anything changed::
     test_html_render.py:72: AssertionError
 
 nope -- still failed at the first assert in test_render. Which makes sense, we haven't done anything with the render method yet!
+
+.. rubric:: 1c.
 
 From the assignemnt:
 
@@ -320,7 +324,62 @@ This is what I got with my code::
     html_render.py:23: TypeError
     ====================== 1 failed, 3 passed in 0.08 seconds ======================
 
-Darn -- something is wrong here.
+Darn -- something is wrong here. And this time it errored out before it even got results to test.  So look and see exactly what the error is. (pytest does a really nice job of showing you the errors)::
+
+                  out_file.write("<{}>\n".format(self.tag))
+    >           out_file.write(content)
+    E           TypeError: string argument expected, got 'NoneType'
+
+So it failed when we tried to write to the file. We're trying to write a piece of content, and we got a "NoneType".  How in the world did a "NoneType" (which is the type of None) get in there?
+
+Where does the ``self.contents`` list get created? In the ``__init__``. Let's do a little print debugging here. Add a print to the __init__:
+
+.. code-block:: python
+
+    def __init__(self, content=None):
+        self.contents = [content]
+        print("contents is:", self.contents)
+
+And run the tests again::
+
+    >           out_file.write(content)
+    E           TypeError: string argument expected, got 'NoneType'
+
+    html_render.py:24: TypeError
+    ----------------------------- Captured stdout call -----------------------------
+    contents is: [None]
+    ====================== 1 failed, 3 passed in 0.06 seconds ======================
+
+
+Same failure -- but pytest does a nice job of showing you what was printed (stdout) when a test fails. So in this case, at the end of the ``__init__`` method, the contents list looks like ``[None]`` -- a list with a single None object in it. No wonder it failed later when we tried to write that None to a file!
+
+But why? -- well, looking at the __init__ -- it looks like content gets set to None by default:
+
+    def __init__(self, content=None):
+
+and then we put that in the ``self.contents`` list.  What do we want went content is None?  An empty list, so that we can add to it later.  So you need some code that checks for ``None`` (hint: use ``is None`` or ``is not None`` to check for ``None``), and only adds content to the list if it is not None.
+
+I'll leave it as an exercise for the reader to figure out how to do that -- but make sure all tests are passing before you move on! And once the tests pass, you may want to remove that ``print()`` line.
+
+.. _render_tutorial_2:
+
+Step 2:
+-------
+
+OK, we have nice little class here -- it has a class attribute to store information about the tag -- information that's the same for all instances.
+
+And we are storing a list of contents in "self" -- information that each instance needs its own copy of.
+
+And we are using that data to render an element.
+
+So we're ready to move on:
+
+Part A
+......
+
+
+
+
 
 
 
