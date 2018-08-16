@@ -80,6 +80,7 @@ Lesson 7: Intro to Object Oriented Programing
     :maxdepth: 1
 
     html_renderer.rst
+    html_renderer_tutorial.rst
 
 
 Lesson 8: Properties and Magic Methods

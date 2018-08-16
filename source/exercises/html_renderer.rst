@@ -65,7 +65,7 @@ Unit tests
 
 Running the ``run_html_render.py`` script is a (simple) form of integration testing -- it checks how the individual components are working together. But we also want to make sure each individual *unit* (class, method) of code works. So to do that, we'll use:
 
-**test driven development**
+**Test Driven Development**
 
 In addition to checking if the output is what you expect with the running script -- you should also write unit tests as you go.
 
@@ -88,12 +88,37 @@ But it is NOT comprehensive -- you will need to add more tests at every step!
 
 You can run ``pytest`` on that test file first thing -- it should pass two tests (that you can create an Element object -- not that it works) and fail one -- one that actually starts to test functionality.
 
+**NOTE** if you are lost, take a look at the tutorial here:
+:ref:`html_renderer_tutorial`. But do try to do it yourself first.
+
+Step 0:
+-------
+
+Before you can start writing code, you need to get setup.
+
+* In your directory in the class repo called ``lesson07``
+* In that directory, you can start working on the code. Start by putting the files you just downloaded in that dir:
+
+  - ``html_render.py``, ``run_html_render.py``,
+    ``sample_html.html``, ``test_html_render.py``
+
+* Add those files to your git repo:
+
+  - ``git add *.py sample_html.html``
+
+
 Step 1:
 -------
 
+.. rubric:: 1a.
+
 Create an ``Element`` class for rendering an html element (xml element).
 
-It should a class attribute for the tag name ("html" first).
+There is a skeleton for one in ``html_render.py`` -- it has just enough so that the first few tests in ``test_html_render.py`` can run -- though that won't pass!
+
+Do run those tests first -- then add the code to make them pass.
+
+The Element class should a class attribute for the tag name ("html" first).
 
 The initializer signature should look like
 
@@ -103,7 +128,9 @@ The initializer signature should look like
 
 Where ``content`` is expected to be a string -- and defaults to nothing.
 
-It should have an ``append`` method that can add another string to the content.
+.. rubric:: 1b.
+
+The class should have an ``append`` method that can add another string to the content.
 
 (The ``html_render.py`` file you downloaded above should have a skeleton for this class in it.)
 
@@ -119,12 +146,13 @@ If the *is* phrase makes sense, then subclassing would makes sense. If the *uses
 
 So no -- you don't want ``Element`` to subclass from list.
 
+.. rubric:: 1c.
+
 It should have a ``render(file_out)`` method that renders the tag and the strings in the content.
 
 ``file_out`` could be any open, writable file-like object ( i.e. have a ``write()`` method ). This is what you get from the ``open()`` function -- but there are other kinds of file-like objects. The html will be rendered to this file-like object.
 
-
-NOTE: html is not sensitive to newlines -- but you don't want all your html on one line. so put a newline in after each tag and each content string. Later on in the assignment, you'll add indentation as well!
+**NOTE:** html is not sensitive to newlines -- but you don't want all your html on one line. so put a newline in after each tag and each content string. Later on in the assignment, you'll add indentation as well!
 
 So this ``render()`` method takes a file-like object, and calls its ``write()`` method, writing the html for a tag.
 

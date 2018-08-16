@@ -7,7 +7,7 @@ This is just a start -- you will need more tests!
 import io
 import pytest
 
-# import * is often bad form, but makes some sense for testing.
+# import * is often bad form, but makes it easier to test everything in a module.
 from html_render import *
 
 
@@ -23,7 +23,11 @@ def render_result(element, ind=""):
     # so it can be used to test code that writes to a file, without
     # having to actually write to disk.
     outfile = io.StringIO()
-    element.render(outfile, ind)
+    # this so the tests will work before we tackle indentation
+    if ind:
+        element.render(outfile, ind)
+    else:
+        element.render(outfile)
     return outfile.getvalue()
 
 ########
