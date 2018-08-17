@@ -12,7 +12,7 @@ There are three basic elements to your environment when working with Python:
 The Command Line (cli)
 ----------------------
 
-Having some facility on the command line is important
+Having some facility on the command line is important.
 
 We won't cover this much in class, so if you are not comfortable,
 please bone up on your own.
@@ -25,13 +25,13 @@ http://cli.learncodethehardway.org/book/
 
 **Windows:**
 
-Most of the demos in class, etc, will be done using the "bash" command line shell on OS-X. This is identical to the bash shell on Linux.
+Most of the demos in class, etc., will be done using the "bash" command line shell on OS-X. This is identical to the bash shell on Linux.
 
-Windows provides the "DOS" command line, which is OK, but pretty old and limited, or "Power Shell" -- a more modern, powerful, flexible command shell.
+Windows provides the "DOS" command line, which is OK, but pretty old and limited, or "Power Shell," a more modern, powerful, flexible command shell.
 
-If you are comfortable with either of these -- go for it.
+If you are comfortable with either of these, go for it.
 
-If not, you can use the "git Bash" shell -- which is much like the bash shell on OS-X and Linux. Or, on Windows 10, look into the "bash shell for Windows" otherwise known as the "Windows Subsystem for Linux" - - more info here: `PythonResources--Windows Bash  <http://uwpce-pythoncert.github.io/PythonResources/DevEnvironment/windows_bash.html>`_
+If not, you can use the "git Bash" shell, which is much like the bash shell on OS-X and Linux. Or, on Windows 10, look into the "bash shell for Windows," otherwise known as the "Windows Subsystem for Linux." More info is available here `PythonResources--Windows Bash  <http://uwpce-pythoncert.github.io/PythonResources/DevEnvironment/windows_bash.html>`_
 
 
 The Interpreter
@@ -49,7 +49,7 @@ You see it when you type ``python`` at the command line:
   Type "help", "copyright", "credits" or "license" for more information.
   >>>
 
-That last thing you see, ``>>>`` is the "Python prompt".
+That last thing you see, ``>>>`` is the "Python prompt."
 
 This is where you type code.
 
@@ -114,7 +114,7 @@ This allows you quite a bit of latitude in exploring what Python is.
 In addition to the built-in interpreter, there are several more advanced
 interpreters available to you.
 
-We'll be using one in this course called ``iPython``
+We'll be using one in this course called ``iPython``.
 
 More on this soon.
 
@@ -124,10 +124,10 @@ The Editor
 
 Typing code in an interpreter is great for exploring.
 
-But for anything "real", you'll want to save the work you are doing in a more permanent
+But for anything "real," you'll want to save the work you are doing in a more permanent
 fashion.
 
-This is where an Editor fits in.
+This is where an editor fits in.
 
 
 Any good text editor will do.
@@ -136,7 +136,7 @@ MS Word is **not** a text editor.
 
 Nor is *TextEdit* on a Mac.
 
-``Notepad`` on Windows is a text editor -- but a crappy one.
+``Notepad`` on Windows is a text editor, but a crappy one.
 
 You need a real "programmers text editor"
 
@@ -190,8 +190,7 @@ Why Not an IDE?
 
 That said ...
 
-You may want to go get the educational edition of PyCharm:
+You may want to go get the educational edition of PyCharm, which is awesome:
 
 https://www.jetbrains.com/pycharm-edu/
 
-Which is awesome.
