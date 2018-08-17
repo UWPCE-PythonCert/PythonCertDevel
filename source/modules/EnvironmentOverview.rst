@@ -194,7 +194,7 @@ An IDE often weighs a great deal.
 
 Setting up IDEs to work with different projects can be challenging and time-consuming.
 
-An IDE, once set u,p can hide a a lot of what is going on under the hood.  Particularly when you are first learning, you don't want too much done for you, So we recommend using an editor and the command line.
+An IDE, once set up, can hide a a lot of what is going on under the hood.  Particularly when you are first learning, you don't want too much done for you, So we recommend using an editor and the command line.
 
 **That said ...**
 
