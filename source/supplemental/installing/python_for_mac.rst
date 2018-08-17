@@ -33,7 +33,7 @@ Drag it to the dock to easily access.
 Python
 ------
 
-While OS-X does provide Python out of the box -- it tends not to have the
+While OS-X does provide Python out of the box, it tends not to have the
 latest version, and you really don't want to mess with the system
 installation. So we recommend installing an independent installation from
 ``python.org``:
@@ -42,7 +42,7 @@ Download the latest realease of Python (currently 3.7.0) installer from Python.o
 
 https://www.python.org/downloads/
 
-Double click the installer and follow the prompts -- the defaults are your best bet. Simple as that.
+Double click the installer and follow the prompts. The defaults are your best bet. Simple as that.
 
 Oddly, this does NOT install a ``python`` command, but rather a ``python3`` command. If you want to be able to simply type ``python`` and get python3, then you can add a symlink to the install. Type this at a terminal prompt:
 
@@ -51,7 +51,7 @@ Oddly, this does NOT install a ``python`` command, but rather a ``python3`` comm
   $ cd /Library/Frameworks/Python.framework/Versions/3.7/bin
   $ ln -s python3.7 python
 
-Or an add an alias in your shell: add the following line::
+Or an add an alias in your shell by adding the following line::
 
   alias python='python3'
 
@@ -80,7 +80,7 @@ pip
 
   $ python3 -m ensurepip --upgrade
 
-[``python`` may work too (if you set things up correctly above), but ``python3`` should always work]
+[``python`` may work too, if you set things up correctly above, but ``python3`` should always work.]
 
 It should download and install the latest ``pip``. Or let you know that you already have it.
 
@@ -103,7 +103,7 @@ Where ``python3`` is the command you use to invoke the Python you want to use.
 
     $ pip install something_or_other
 
-Which often works, but also can invoke the *wrong* version of pip. The above command::
+This often works, but also can invoke the *wrong* version of pip. The above command::
 
   $ python3 -m pip install something_or_other
 
@@ -116,7 +116,7 @@ One package we are going to use in the program from the beginning is ``iPython``
 
   $ python3 -m pip install ipython
 
-(it will install a LOT...).
+(It will install a LOT...).
 
 Now you should now be able to run ``iPython``:
 
@@ -136,15 +136,13 @@ git
 
 git is a source code version control system. It is not strictly related to Python, but it (or a similar system) is a critical tool for software development in general, and it is very widely used in the Python community. We will be using it, along with the gitHub service, in the program to hand in assignments and support code review.
 
-You need a git client -- the gitHub GUI client may be nice -- I honestly don't know, but we will be using the command line client in class.
+You need a git client. The gitHub GUI client may be nice; I honestly don't know. However, we will be using the command line client in class.
 
-There are a couple options for a command line client.
+There are a couple of options for a command line client.
 
-This one:
+This option is a big download and install, but has everything you need out of the box:
 
 http://sourceforge.net/projects/git-osx-installer/
-
-Is a big download and install, but has everything you need out of the box.
 
 NOTE: if you get a warning like:
 
@@ -154,19 +152,13 @@ you'll need to go to  system preferences:
 
   "Security and Privacy"
 
-  Then check the box saying "Open Anyway". Or maybe check the box saying you can install untrusted packages -- depends on the OS-X version.
+  Depending on the OS-X version, you will need to check the box saying "Open Anyway," or perhaps the box saying you can install untrusted packages. 
 
-This one:
+This option works great, but you need the XCode command line tools to run it: 
 
 http://git-scm.com/download/mac
 
-works great, but you need the XCode command line tools to run it. If you already have that, or expect to need a compiler anyway, then this is a good option.
-
-You can get XCode from the Apple App Store.
-
-(If you try running "git" on the command line after installing, it should send you there).
-
-Warning: XCode is a BIG download. Once installed, run it so it can initialize itself.
+You can get XCode from the Apple App Store. If you try running "git" on the command line after installing, it should send you there. Warning: XCode is a BIG download. Once installed, run it so it can initialize itself.
 
 After either of these is installed, the ``git`` command should work:
 
@@ -178,15 +170,13 @@ After either of these is installed, the ``git`` command should work:
 Testing it out
 --------------
 
-To be ready for the program, you need to have:
+To be ready for the program, you need to have, all available from the command line:
  - python
  - pip
  - iPython
  - git
 
-All available from the command line.
-
-To try it out, you should be able to run all of these commands, and get something like the following results:
+To try it out, you should be able to run all of the following commands, and get something like the results shown:
 
 (recall that you can get out of the Python or iPython command lines with ``ctrl+D``)
 
