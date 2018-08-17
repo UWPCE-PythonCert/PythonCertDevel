@@ -71,12 +71,12 @@ This is the Python interpreter.
 
 Type ``ctrl+D`` to get out (or ``exit()``)
 
-.. note:: IF all this is confusing to you -- take heart -- you will get used it it. And in the meantime, you can simply type ``python3`` when you want to run python.
+.. note:: If all this is confusing to you -- take heart -- you will get used it it. And in the meantime, you can simply type ``python3`` when you want to run python.
 
 pip
 ---
 
-``pip`` is the Python package installer. It is updated faster than Python itself, so once you have Python, you want to get the latest version of pip working::
+``pip`` is the Python package installer. It is updated more frequently than Python itself, so once you have Python, you want to get the latest version of pip working::
 
   $ python3 -m ensurepip --upgrade
 
@@ -103,7 +103,7 @@ Where ``python3`` is the command you use to invoke the Python you want to use.
 
     $ pip install something_or_other
 
-This often works, but also can invoke the *wrong* version of pip. The above command::
+This often works, but also can invoke the *wrong* version of pip. This command::
 
   $ python3 -m pip install something_or_other
 
