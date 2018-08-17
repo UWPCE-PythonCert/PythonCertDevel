@@ -6,9 +6,9 @@ This program is a course of instruction in developing with the Python programmin
 
 Python is a language with multiple implementations, and many different ways to edit and run code.
 
-One's development environment is a personal thing -- what is most productive for you depends on what platform you use, how you like to work, what the people you work with are using, etc. -- it is a very personal choice.
+One's development environment is a personal thing. What is most productive for you depends on what platform you use, how you like to work, what the people you work with are using, etc. It is a very personal choice.
 
-Each of you starting this program comes with a different background and experience. So we do not require that you use a particular development environment. Indeed, each of the instructors in the program use their own tools and approach.
+Each of you starting this program comes with a different background and experience. So we do not require that you use a particular development environment. Indeed, each of the instructors in the program uses their own tools and approach.
 
 However, there are some core requirements, and we provide advice for what to do if you are just getting started.
 
@@ -49,13 +49,13 @@ We have some resources here: `PythonResources--command line <http://uwpce-python
 
 **Windows:**
 
-Most of the demos in class, etc, will be done using the "bash" command line shell on OS-X or Linux.
+Most of the demos in class, etc., will be done using the "bash" command line shell on OS-X or Linux.
 
-Windows provides the "DOS" command line, which is OK, but pretty old and limited, or "Power Shell" -- a more modern, powerful, flexible command shell.
+Windows provides the "DOS" command line, which is OK, but pretty old and limited, or "Power Shell," a more modern, powerful, flexible command shell.
 
-If you are comfortable with either of these -- go for it.
+If you are comfortable with either of these, go for it.
 
-If not, you can use the "git Bash" shell -- which is much like the bash shell on OS-X and Linux. Or, on Windows 10, look into the "bash shell for Windows" otherwise known as the "Windows Subsystem for Linux" - - more info here:
+If not, you can use the "git Bash" shell, which is much like the bash shell on OS-X and Linux. Or, on Windows 10, look into the "bash shell for Windows," otherwise known as the "Windows Subsystem for Linux." More info is available here:
 `PythonResources--Windows Bash  <http://uwpce-pythoncert.github.io/PythonResources/DevEnvironment/windows_bash.html>`_
 
 
@@ -68,7 +68,7 @@ Most modern UIs provide a way to start up a teminal from the file manager:
 Windows
 .......
 
-Windows used to provide a "open command window here" options with a ``shift+right-click`` menu. Give a try -- if it works, great. If not, then this might help:
+Windows used to provide a "open command window here" options with a ``shift+right-click`` menu. Give a try; if it works, great. If not, then this might help:
 
 `Open Command Window Here on Windows 10 <https://www.windowscentral.com/add-open-command-window-here-back-context-menu-windows-10>`_
 
@@ -84,7 +84,7 @@ On The Mac, you can add a "New Terminal at Folder" right-click menu item by:
 Linux
 .....
 
-Whether you use the KDE or GNOME Desktop (or anything else), there should be a way to open a shell from the file manager -- find it, it's very handy.
+Whether you use the KDE or GNOME Desktop (or anything else), there should be a way to open a shell from the file manager. Find it, it's very handy.
 
 
 The Python Interpreter
@@ -137,9 +137,9 @@ The Editor
 
 Typing code in an interpreter is great for exploring.
 
-But for anything "real", you'll want to save the work you are doing in a more permanent fashion.
+But for anything "real," you'll want to save the work you are doing in a more permanent fashion.
 
-This is where a Programmer's Text Editor fits in.
+This is where a "Programmer's Text Editor" fits in.
 
 Any good text editor will do.
 
@@ -147,9 +147,9 @@ MS Word is **not** a text editor.
 
 Nor is *TextEdit* on a Mac.
 
-``Notepad`` on Windows is a text editor -- but a crappy one.
+``Notepad`` on Windows is a text editor, but a crappy one.
 
-You need a real "Programmers Text Editor"
+You need a real "Programmers Text Editor."
 
 A text editor saves only what it shows you, with no special formatting
 characters hidden behind the scenes.
@@ -194,15 +194,15 @@ An IDE often weighs a great deal.
 
 Setting up IDEs to work with different projects can be challenging and time-consuming.
 
-An IDE, once set up can hide a a lot of what is going on under the hood.  Particularly when you are first learning, you don't want too much done for you, So we recommend using an editor and the command line.
+An IDE, once set u,p can hide a a lot of what is going on under the hood.  Particularly when you are first learning, you don't want too much done for you, So we recommend using an editor and the command line.
 
 **That said ...**
 
-You may want to try the educational edition of PyCharm:
+You may want to try the educational edition of PyCharm, which some people like a lot:
 
 https://www.jetbrains.com/pycharm-edu/
 
-Which some people like a lot.
+
 
 
 .. _testing_your_setup:
@@ -210,7 +210,7 @@ Which some people like a lot.
 Testing Your setup
 ==================
 
-If you have access to a command line, and Python installed, and a text editor or IDE ready to go -- here's how you can make sure it's all working correctly.
+If you have access to a command line, and Python installed, and a text editor or IDE ready to go, here's how you can make sure it's all working correctly.
 
 Python Interpreter
 ------------------
@@ -274,15 +274,15 @@ You should also be able to run iPython:
 
     In [1]:
 
-If that doesn't work -- try:
+If that doesn't work, try:
 
 .. code-block:: bash
 
   $ python3 -m pip install iPython
 
-And try it again (you may need to restart your terminal)
+And try it again (you may need to restart your terminal).
 
-If that doesn't work -- go back to the install instructions.
+If that doesn't work, go back to the install instructions.
 
 git
 ---
@@ -296,7 +296,7 @@ There will be another lesson on getting that all set up for class, but for now, 
   $ git --version
   git version 2.15.2 (Apple Git-101.1)
 
-If that reports a version newer than about 2.15, you are all set (as of this writing the latest version is 2.18)
+If that reports a version newer than about 2.15, you are all set (as of this writing the latest version is 2.18).
 
 If the git command does not work, go back to the install instructions for your platform above, and get it installed.
 
