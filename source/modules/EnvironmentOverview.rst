@@ -139,7 +139,7 @@ Typing code in an interpreter is great for exploring.
 
 But for anything "real," you'll want to save the work you are doing in a more permanent fashion.
 
-This is where a "Programmer's Text Editor" fits in.
+This is where a "programmer's text editor" fits in.
 
 Any good text editor will do.
 
@@ -149,7 +149,7 @@ Nor is *TextEdit* on a Mac.
 
 ``Notepad`` on Windows is a text editor, but a crappy one.
 
-You need a real "Programmers Text Editor."
+You need a real "programmers text editor."
 
 A text editor saves only what it shows you, with no special formatting
 characters hidden behind the scenes.
