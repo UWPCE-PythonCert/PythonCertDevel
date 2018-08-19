@@ -29,6 +29,8 @@ Double click and install.
 
 Ensure that the Install launcher for all users (recommended) and the Add Python 3.7 to PATH checkboxes at the bottom are checked.
 
+**Add Python 3.7 to PATH step is important!** If this is not checked then when you try to run your python code it won't be able to find the executable.
+
 See: `Installing Python on Windows <https://www.ics.uci.edu/~pattis/common/handouts/pythoneclipsejava/python.html>`_
 
 .. _git_bash:
@@ -43,6 +45,9 @@ From now on, if you hear the terms "bash", "shell" or "terminal", or "commandlin
 When you install Git Bash, you are installing git (and a git gui) as well, thus killing two birds with one stone!
 
 https://git-for-windows.github.io/
+
+Select the download button on the page and launch downloaded executable, then follow the prompts. On "Choosing default editor used by Git" step it is best to select Notepad++ (which you need to have installed first) unless you are comfortable with non-graphical editors like vim.
+You can go through the rest of the prompts using default values. Once you are done, a terminal window should pop up - try out some commands like ``ls`` or ``git help``.
 
 You can use this git with the DOS box or Powershell as well.
 
@@ -60,6 +65,25 @@ and
 
 to ``PATH``
 
+Here are steps for updating path:
+
+::
+
+    cd
+    touch .bash_profile
+
+You can edit this file using Notepad, locate this file in File Explorer in This PC > Local Disk > Users > YourUsername
+
+Add to the file (file should be empty):
+
+::
+
+    PATH=$PATH:/C/Python37:/C/Python37/Scripts
+
+Note: your python executable may be located in a different path, to check the path start windows shell (``cmd``) and type ``where python3`` - this command will output where python is currently installed.
+
+Save the file and start a new gitbash shell.
+
 Once you have done that, you should be able to type ``python3`` at the command prompt, and get something like:
 
 ::
@@ -72,6 +96,8 @@ Once you have done that, you should be able to type ``python3`` at the command p
 This is the Python interpreter.
 
 Type ``ctrl+Z`` to get out (or ``exit()``)
+
+Note: if you have trouble running ``python`` command in your gitbash (it hangs), try running this instead: ``winpty python``.
 
 
 git
