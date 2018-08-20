@@ -361,7 +361,7 @@ and then we put that in the ``self.contents`` list.  What do we want went conten
 
 I'll leave it as an exercise for the reader to figure out how to do that -- but make sure all tests are passing before you move on! And once the tests pass, you may want to remove that ``print()`` line.
 
-.. _render_tutorial_2:
+.. _render_tutorial_2_A:
 
 Step 2:
 -------
@@ -472,7 +472,7 @@ Let's  run the tests and see if this worked::
 
     =========================== 7 passed in 0.02 seconds ===========================
 
-Success!.
+Success!. WE now have three different tags.
 
 .. note::
   Why the ``Html`` element? doesn't the ``Element`` class already use the "html" tag?
@@ -481,15 +481,466 @@ Success!.
   But we wanted to be able to test that partial functionality, so we had to give it a tag to use in the initial tests.
   If you want to be pure about it -- you could use something like "abstract_tag" in the ``Element`` class to make it clear that it isn't supposed to be used alone.  And later on in the assignment, we'll be adding extra functionality to the ``Html`` element.
 
+Making a subclass where the only thing you change is a single class attribute may seem a bit silly -- and indeed it is. If that were going to be the ONLY difference between all elements, There would be other ways to accomplish that task that would make more sense -- perhaps passing the tag in to the initializer, for instance. But have patience, as we proceed with the exercise, some element types will have more customization.
+
+But another thing to keep in mind -- the fact that that is ALL we need to do to get a new type of element demonstrates the power of subclassing -- with that tiny change, we get a new element that we can add content to, and render to a file, etc. With virtually no repeated code.
+
+.. _render_tutorial_2_B:
+
+Part B:
+.......
+
+Now it gets more interesting, and challenging!
+
+The goal is to be able to render nested elements, like so:
+
+.. code-block:: html
+
+    <html>
+    <body>
+    <p>
+    a very small paragraph
+    </p>
+    <p>
+    Another small paragraph.
+    This one with multiple lines.
+    </p>
+    </body>
+    </html>
+
+This means that we need to be able to append not just text to an element, but also other elements.  The appending is easy -- the tricky bit is when you want to render those enclosed elements.
+
+Let's take this bit by bit -- first with a test or two.
+Uncomment ``test_subelement`` in the test file, and run the tests::
+
+    $ pytest
+    ============================= test session starts ==============================
+    platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
+    rootdir: /Users/Chris/Junk/lesson07, inifile:
+    collected 8 items
+
+    test_html_render.py .......F                                             [100%]
+
+    =================================== FAILURES ===================================
+    _______________________________ test_sub_element _______________________________
+
+        def test_sub_element():
+            """
+            tests that you can add another element and still render properly
+            """
+            page = Html()
+            page.append("some plain text.")
+            page.append(P("A simple paragraph of text"))
+            page.append("Some more plain text.")
+
+    >       file_contents = render_result(page)
+
+    test_html_render.py:163:
+    _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+    test_html_render.py:30: in render_result
+        element.render(outfile)
+    _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    self = <html_render.Html object at 0x1032f8438>
+    out_file = <_io.StringIO object at 0x10325b5e8>
+
+        def render(self, out_file):
+            # loop through the list of contents:
+            for content in self.contents:
+                out_file.write("<{}>\n".format(self.tag))
+    >           out_file.write(content)
+    E           TypeError: string argument expected, got 'P'
+
+    html_render.py:26: TypeError
+    ====================== 1 failed, 7 passed in 0.11 seconds ======================
+
+Again, the new test failed -- no surprise, we haven't written any new code yes. But do read the report carefully -- it did not fail on an assert -- but rather with a ``TypeError``.  The code itself raised an exception before it could produce results to test.
+
+So now it's time to write the code -- look at where the exception was raised: line 26 in my code, inside the ``render()`` method. The line number will likely be different in your code, but it probably failed on the render method. Looking closer at the error::
+
+    >           out_file.write(content)
+    E           TypeError: string argument expected, got 'P'
+
+It occurred in the file ``write`` method, complaining that it expected to be writing a string to the file, but it got a 'P' -- 'P' is the name of the paragraph element class. So we need a way to write an element to a file. How might we do that? Inside the element's render method, we need to render an element...
+
+Well, elements already know how to render themselves -- this is what is meant by a recursive approach -- in the ``render`` method, we want to make use of the ``render`` method itself.
+
+Looking at the signature of the render method::
+
+.. code-block:: python
+
+      def render(self, out_file):
+
+it becomes clear -- we render an element by passing the output file to the element's render method. Here is what mine looks like now:
+
+.. code-block:: python
+
+    def render(self, out_file):
+        # loop through the list of contents:
+        for content in self.contents:
+            out_file.write("<{}>\n".format(self.tag))
+            out_file.write(content)
+            out_file.write("\n")
+            out_file.write("</{}>\n".format(self.tag))
+
+So let's update our render by replacing that ``out_file.write()`` call with  a call to the content's ``render`` method:
+
+.. code-block:: python
+
+    def render(self, out_file):
+        # loop through the list of contents:
+        for content in self.contents:
+            out_file.write("<{}>\n".format(self.tag))
+            # out_file.write(content)
+            content.render(out_file)
+            out_file.write("\n")
+            out_file.write("</{}>\n".format(self.tag))
+
+And let's see what happens when we run the tests::
+
+    $ pytest
+    ============================= test session starts ==============================
+    platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
+    rootdir: /Users/Chris/Junk/lesson07, inifile:
+    collected 8 items
+
+    test_html_render.py ..FFFFFF                                             [100%]
+
+    =================================== FAILURES ===================================
+
+    ... lots of failures here
+
+    _______________________________ test_sub_element _______________________________
+
+        def test_sub_element():
+            """
+            tests that you can add another element and still render properly
+            """
+            page = Html()
+            page.append("some plain text.")
+            page.append(P("A simple paragraph of text"))
+            page.append("Some more plain text.")
+
+    >       file_contents = render_result(page)
+
+    test_html_render.py:163:
+    _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+    test_html_render.py:30: in render_result
+        element.render(outfile)
+    _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    self = <html_render.Html object at 0x10b10dfd0>
+    out_file = <_io.StringIO object at 0x10b123828>
+
+        def render(self, out_file):
+            # loop through the list of contents:
+            for content in self.contents:
+                out_file.write("<{}>\n".format(self.tag))
+                # out_file.write(content)
+    >           content.render(out_file)
+    E           AttributeError: 'str' object has no attribute 'render'
+
+    html_render.py:27: AttributeError
+    ====================== 6 failed, 2 passed in 0.12 seconds ======================
+
+Whoaa! six failures! We really broke something! But that is a *good* thing -- it's the whole point of unit tests -- when you are making a change to address one issue, you know right away that you broke previously working code.
+
+So let's see if we can fix these tests, while still allowing us to add the feature we intended to add.
+
+Again -- look carefully at the error, and the solution might pop out at us::
+
+    >           content.render(out_file)
+    E           AttributeError: 'str' object has no attribute 'render'
+
+Now we are trying to call a piece of content's ``render`` method, but we got a simple string, which does not *have* a ``render`` method.
+This is the challenge of this part of teh excercise -- it's easy to render a string, and it's easy to render an element, but the content list could have either one -- so how do we switch between the two methods?
+
+There are a number of approaches you can take. This is a good time to read the notes about this here: :ref:`notes_on_handling_duck_typing`.
+You may want to try one of the more complex methods -- but for now, we're going to use the one that suggests itself from the error.
+
+We need to know whether we want to call a ``render()`` method, or simply write the content to the file. How would we know which to do? Again, look at the error:
+We tried to call the render() method of a piece of content, but got an ``AttributeError``. So the way to know whether we can call a render method is to try to call it -- if it works, great! If not, we can catch the exception, and do something else. In this case, the something else is to try to write the content directly to the file:
+
+.. code-block:: python
+
+    def render(self, out_file):
+        # loop through the list of contents:
+        for content in self.contents:
+            out_file.write("<{}>\n".format(self.tag))
+            try:
+                content.render(out_file)
+            except AttributeError:
+                out_file.write(content)
+            out_file.write("\n")
+            out_file.write("</{}>\n".format(self.tag))
+
+And run the tests again::
+
+    $ pytest
+    ============================= test session starts ==============================
+    platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
+    rootdir: /Users/Chris/Junk/lesson07, inifile:
+    collected 8 items
+
+    test_html_render.py ........                                             [100%]
+
+    =========================== 8 passed in 0.03 seconds ===========================
+
+Yeah! all eight tests pass!  I hope you found that at least a little bit satisfying.  And pretty cool, really, only two extra lines of code. This is an application of the EAFP method: it's Easier to Ask Forgiveness than Permission. You simply try to do one thing, and if that raises the exception you expect, than do something else.
+
+It's also taking advantage of Python's "Duck Typing" notice that we don't know if that piece of content is actually an ``Element`` object -- all we know is that it has a render() method that we can pass a file-like object to. Which is quite deliberate -- if some future user (that might be you) wants to write their own element type, that can do that -- and all it needs to do is define a render method.
+
+So what are the downsides? Well, there are two:
+
+1. When we successfully call the ``render`` method, we have no idea if it's actually done the right thing -- it could do anything -- if someone puts some completely unrelated object in the content list that happens to have a render method, this is not going to work -- but what are the odds of that?
+
+2. This is the bigger one -- if the object *HAS* a render method, but that render method has something wrong with it, then it could conceivably raise an AttributeError itself -- but it would not be the Attribute Error we are expecting. The trick here is that this is very hard to debug.
+
+However, we are saved by tests. If the render method works in all the other tests, It's not going to raise an AttributeError only in this case. Another reason to have a good test suite.
 
 
+.. _render_tutorial_3:
+
+Step 3:
+-------
+
+Now we are getting a little more interesting.
+
+"Create a ``<head>`` element -- a simple subclass."
+
+This is easy -- you know how to do that, yes?
+
+But the training wheels are off -- you are going to need to write your own tests now.  So before you create the ``Head`` element class, write a test for it. You should be able to copy and paste one the previous tests, and just change the name of the class and the tag text. Remember to give it a new name, or it will simply replace the previous test.
+
+I like to run the tests as soon as I make a new one -- if nothing else, I can make sure I have one more test!
+
+OK, that should have been straightforward.  Now this part:
+
+  Create a ``OneLineTag`` subclass of ``Element``:
+
+  * It should override the render method, to render everything on one line -- for the simple tags, like::
+
+      <title> PythonClass - Session 6 example </title>
+
+Some html elements don't tend to have a lot content -- like the document title. So it makes sense to render them all on one line.  This is going to require a new render method.  Since there are multiple types of elements that should be rendered on one line, we want to create a base class for all one-line elements. It should subclass from Element, and override the render method with a new one, which will be pretty much the same as the main ``Element`` method, but without the newlines.
+
+Before we do that though -- let's write a test for that!  as the ONeLIneTag class is a base class for actual elements that should be rendered on one line, we really don't need to write a test directly for it. We can write one for its first subclass: ``Title``. The title elements should be rendered something like this::
+
+    <title> PythonClass - title example </title>
+
+Which should be generated by code like this::
+
+    Title("PythonClass - title example")
+
+Take a look at one of the other tests to get ideas -- and maybe start with a copy and paste, and then change the names:
+
+.. code-block:: python
+
+    def test_title():
+        e = Title("this is some text")
+        e.append("and this is some more text")
+
+        file_contents = render_result(e).strip()
+
+        assert("this is some text") in file_contents
+        assert("and this is some more text") in file_contents
+        print(file_contents)
+        assert file_contents.startswith("<title>")
+        assert file_contents.endswith("</title>")
+
+That's not going to pass, as there is no ``Title`` class. But before we get that far -- what else do we need to change about this test?
+For starters, this test is appending additional content.
+That's not very likely for a title, is it? So let's get rid of that line.
+
+.. code-block:: python
+
+    def test_title():
+        e = Title("This is a Title")
+
+        file_contents = render_result(e).strip()
+
+        assert("This is a Title") in file_contents
+        print(file_contents)
+        assert file_contents.startswith("<title>")
+        assert file_contents.endswith("</title>")
+
+So that's a bit cleaner.  But let's look at those asserts -- what are we testing for?  Looks like we're testing for the correct start and end tags, and that the content is there. That's a pretty good start, but it isn't checking for newlines at all.  In fact, all the previous tests would pass even if our render method did not have any newlines in it at all. Which is probably OK -- html does not require newlines.  You could go back and update the tests to check for the proper newlines, though later on, when we get to indenting, we'll be doing that anyway.
+
+But for this element, we want to make sure that we don't have any newlines. So let's add an assert for that:
+
+.. code-block:: python
+
+    assert "\n" not in file_contents
+
+You can run the tests now if you like -- it will fail due to there being no Title element. So let's make one now. Remember that we want to start with a ``OneLineTag`` element, and then subclass ``Title`` from that.
+
+.. code-block:: python
+
+    class OneLineTag(Element):
+        pass
 
 
+    class Title(OneLineTag):
+        tag = "title"
 
+The ``pass`` means "do nothing" -- but it is required to satisfy PYhton -- there needs to be *something* in the class definition.  So in this case, we have a ``OneLineTag`` class that is exactly the same as the Element class.  And a Title class that is the same except for the tag. Time to test again::
 
+    $ pytest
+    ============================= test session starts ==============================
+    platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
+    rootdir: /Users/Chris/Junk/lesson07, inifile:
+    collected 10 items
 
+    test_html_render.py .........F                                           [100%]
 
+    =================================== FAILURES ===================================
+    __________________________________ test_title __________________________________
 
+        def test_title():
+            e = Title("This is a Title")
+
+            file_contents = render_result(e).strip()
+
+            assert("This is a Title") in file_contents
+            print(file_contents)
+            assert file_contents.startswith("<title>")
+            assert file_contents.endswith("</title>")
+    >       assert "\n" not in file_contents
+    E       AssertionError: assert '\n' not in '<title>\nThis is a Title\</title>'
+    E         '\n' is contained here:
+    E           <title>
+    E         ? -------
+    E           This is a Title
+    E           </title>
+
+    test_html_render.py:203: AssertionError
+    ----------------------------- Captured stdout call -----------------------------
+    <title>
+    This is a Title
+    </title>
+    ====================== 1 failed, 9 passed in 0.12 seconds ======================
+
+The title test failed on this assertion::
+
+    >       assert "\n" not in file_contents
+
+which is what we expected -- we haven't written a new render method yet.  But look at the end of the output -- where is says ``-- Captured stdout call --``.  That is showing you how the title element is being rendered -- with the newlines. That's there because there is a print in the test:
+
+.. code-block:: python
+
+  print(file_contents)
+
+.. note::
+
+  pytest is pretty slick with this. It "Captures" the output from print calls, etc, and then only shows them to you if a test fails.
+  So you can sprinkle print calls into your tests, and it won't clutter the output -- you'll only see it when a test fails, which is when you need it.
+
+This is a good exercise to go through -- if a new test fails, it lets you know that it is indeed working -- testing what it is supposed to test.
+
+So how do we get this test to pass? We need a new render method for ``OneLineTag``.  For now, you can copy the render method from ``Element`` to ``OneLineTag``, and remove the newlines:
+
+.. code-block:: python
+
+    class OneLineTag(Element):
+        def render(self, out_file):
+            # loop through the list of contents:
+            for content in self.contents:
+                out_file.write("<{}>".format(self.tag))
+                try:
+                    content.render(out_file)
+                except AttributeError:
+                    out_file.write(content)
+                out_file.write("</{}>\n".format(self.tag))
+
+notice that I left the newline in at the end of the closing tag -- we do want a newline there, so the next element won't get rendered on the same line.  And the tests::
+
+    $ pytest
+    ============================= test session starts ==============================
+    platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
+    rootdir: /Users/Chris/Junk/lesson07, inifile:
+    collected 10 items
+
+    test_html_render.py ..........                                           [100%]
+
+    ========================== 10 passed in 0.03 seconds ===========================
+
+We done good.  But wait! there *is* a newline at the end, and yet the assert: `assert "\n" not in file_contents` passed!  Why is that?
+
+Take a look at the code in the tests that renders the element:
+
+.. code-block:: python
+
+    file_contents = render_result(e).strip()
+
+It's calling ``.strip()`` on the rendered string.  That will remove all whitespace from both ends -- removing that last newline.
+
+However, there is still some extra code in that ``render()`` method.  It's still looping through the contents and checking for an ``Element`` type. But for this, we hope that there will only be one piece of content, and it should not be an element. So we can make the render method simpler:
+
+.. code-block:: python
+
+    class OneLineTag(Element):
+        def render(self, out_file):
+            out_file.write("<{}>".format(self.tag))
+            out_file.write(self.contents[0])
+            out_file.write("</{}>\n".format(self.tag))
+
+If you are nervous about people appending content that will then be ignored, you can override the append method, too:
+
+.. code-block:: python
+
+    def append(self, content):
+        raise NotImplementedError
+
+``NotImplementedError`` means just what it says -- this method is not implemented.  My tests still pass, but how do I test to make sure that I can't append to a OneLineTag? Let's try that:
+
+.. code-block:: python
+
+    def test_one_line_tag_append():
+        """
+        You should not be able to append content to a OneLineTag
+        """
+        e = OneLineTag("the initial content")
+        e.append("some more content")
+
+        file_contents = render_result(e).strip()
+        print(file_contents)
+
+and run the tests::
+
+    test_html_render.py:199:
+    _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    self = <html_render.OneLineTag object at 0x1020bb198>
+    content = 'some more content'
+
+        def append(self, content):
+    >       raise NotImplementedError
+    E       NotImplementedError
+
+    html_render.py:57: NotImplementedError
+    ===================== 1 failed, 10 passed in 0.09 seconds ======================
+
+hmm -- it raised a NotImplementedError, whih is what we want -- but it is logging as a test failure.  An exception raised in a test is going to cause a failure -- but what we want is for the test to pass only *if* that exception is raised.
+Fortunately, pytest has a utility to do just that. make sure there is an ``import pytest`` in your test file, and then add this code:
+
+.. code-block:: python
+
+    def test_one_line_tag_append():
+        """
+        You should not be able to append content to a OneLineTag
+        """
+        e = OneLineTag("the initial content")
+        with pytest.raises(NotImplementedError):
+            e.append("some more content")
+
+that ``with`` is a "context manager" (kind of like the file open one). More on that later in the course, but what this means is that the test will pass if an only if the code inside that ``with`` block raised a ``NotImplementedError``.  If it raises something else, or it doesn't raise an exception at all -- then the test will fail.
+
+OK -- I've got 11 tests passing now. How about you? Time for the next step.
+
+.. _render_tutorial_4:
+
+Step 4.
+-------
 
 
 

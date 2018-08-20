@@ -212,15 +212,18 @@ You may note that the ``Element`` class really doesn't do anything by itself -- 
 
 And of course these subclasses are pretty simple -- only overriding one class attribute.  If that's all you need to do to specialize, there are other ways than subclassing to do it. But bear with us -- other element subclasses will require more specialization.
 
+If you are stuck -- see the tutorial: :ref:`render_tutorial_2_A`
 
 Part B:
 .......
 
 Now it gets fun!
 
+Now that you have multipel types of elements, it's worth looking a bit at how html works. A given element can hold text, but it can *also* hold other elements. So we need to update our ``Element`` classes to support that.
+
 Extend the ``Element.render()`` method so that it can render other elements inside the tag in addition to strings. A recursion-like approach should do it. i.e. it can call the ``render()`` method of the elements it contains.
 
-so you should be able to ``append`` an element to another element -- not just text.
+You should be able to ``append`` an element to another element -- not just text.
 
 If this recursion-like idea doesn't make sense to you, take a look at this blog post, which talks about recursive algorithms:
 
@@ -261,7 +264,7 @@ See: :download:`test_html_output2.html  <../examples/html_render/test_html_outpu
 
 NOTE: when you run step 2 in ``run_html_render.py``, you will want to comment out step 1 -- that way you'll only get one set of output.
 
-If you are stuck -- see the tutorial: :ref:`render_tutorial_2`
+If you are stuck -- see the tutorial: :ref:`render_tutorial_2_B`
 
 Step 3:
 -------
