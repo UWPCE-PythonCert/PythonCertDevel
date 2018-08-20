@@ -78,7 +78,7 @@ So that one simply tested that an ``Element`` class exists, and that you can pas
         e = Element("this is some text")
         e.append("some more text")
 
-And this one shows that you can append some text -- nice, but again, it doesn't really do anything. But it does show you got the API right.
+And this one shows that you can call the ``append()`` method with some text -- nice, but again, it doesn't test if that appended text was used correctly. But it does show you got the API right.
 
 But this one failed:
 
@@ -175,7 +175,7 @@ nope -- still failed at the first assert in test_render. Which makes sense, we h
 
 .. rubric:: 1c.
 
-From the assignemnt:
+From the assignment:
 
   It should have a ``render(file_out)`` method that renders the tag and the strings in the content.
 
@@ -376,6 +376,116 @@ So we're ready to move on:
 
 Part A
 ......
+
+.. rubric:: Instructions:
+
+
+"Create a couple subclasses of ``Element``, for each of ``<html>``, ``<body>``, and ``<p>`` tags. All you should have to do is override the ``tag`` class attribute (you may need to add a ``tag`` class attribute to the ``Element`` class first, if you haven't already)."
+
+So this is very straightforward -- we have a class that represents an element -- and the only difference between basic elements is that they have a different tag. for example::
+
+    <body>
+    Some content.
+    Some more content.
+    </body>
+
+and::
+
+    <p>
+    Some content.
+    Some more content.
+    </p>
+
+
+The ``<body>`` tag is for the entire contents of an html page, and the ``<p>`` tag is for a paragraph.  But you can see that form of the tags is identical, so we don't have to change much to make classes for these tags. In fact, all we need to change is the ``tag`` class attribute.
+
+Before we do that -- let's do some test-driven development. Uncomment the next few tests in ``test_html_render.py``: ``test_html``, ``test_body``, and ``test_p``, and run the tests::
+
+    $ pytest
+    ============================= test session starts ==============================
+    platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
+    rootdir: /Users/Chris/Junk/lesson07, inifile:
+    collected 7 items
+
+    test_html_render.py ....FFF                                              [100%]
+
+    =================================== FAILURES ===================================
+    __________________________________ test_html ___________________________________
+
+        def test_html():
+    >       e = Html("this is some text")
+    E       NameError: name 'Html' is not defined
+
+    test_html_render.py:117: NameError
+    __________________________________ test_body ___________________________________
+
+        def test_body():
+    >       e = Body("this is some text")
+    E       NameError: name 'Body' is not defined
+
+    test_html_render.py:129: NameError
+    ____________________________________ test_p ____________________________________
+
+        def test_p():
+    >       e = P("this is some text")
+    E       NameError: name 'P' is not defined
+
+    test_html_render.py:142: NameError
+    ====================== 3 failed, 4 passed in 0.08 seconds ======================
+
+So we have three failure -- of course we do -- we haven't written code yet!  Yes, this is pedantic, and there is no real reason to run tests you know are going to fail -- but there is a reason to *write* tests that you know are going to fail -- and you have to run them to know that you have written them correctly.
+
+Now we can write the code for those three new element types. Try to do that yourself first, before you read on.
+
+OK -- did you do something as simple as this?
+
+.. code-block:: python
+
+    class Body(Element):
+        tag = 'body'
+
+(and similarly for ``Html`` and ``P``)
+
+That's it!  But what does that mean?  This line:
+
+``class Body(Element):``
+
+means: make a new subclass of the ``Element`` tag called "Body".
+
+and this line:
+
+``    tag = 'body'``
+
+means:  set the "tag" class attribute to 'body'. Since this class attribute was set by the Element tag already -- this is called "overriding" the tag attribute.
+
+The end result is that we now have a class that is exactly the same as the Element class, except with a different tag. Where is that attribute used? It is used in the ``render()`` method.
+
+Let's  run the tests and see if this worked::
+
+    $ pytest
+    ============================= test session starts ==============================
+    platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
+    rootdir: /Users/Chris/Junk/lesson07, inifile:
+    collected 7 items
+
+    test_html_render.py .......                                              [100%]
+
+    =========================== 7 passed in 0.02 seconds ===========================
+
+Success!.
+
+.. note::
+  Why the ``Html`` element? doesn't the ``Element`` class already use the "html" tag?
+  Indeed it does -- but the goal of the ``Element`` class is to be a base class for the other tags, rather than being a particular element.
+  Sometimes this is called an "abstract base class": a class that can't do anything by itself, but exists only to provide an interface (and partial functionality) for subclasses.
+  But we wanted to be able to test that partial functionality, so we had to give it a tag to use in the initial tests.
+  If you want to be pure about it -- you could use something like "abstract_tag" in the ``Element`` class to make it clear that it isn't supposed to be used alone.  And later on in the assignment, we'll be adding extra functionality to the ``Html`` element.
+
+
+
+
+
+
 
 
 
