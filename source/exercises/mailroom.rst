@@ -367,7 +367,8 @@ Guidelines
 
 Here are some suggestions on what should be refactored in your mailroom code.
 
-At this point, you should avoid unit testing code with ``input`` or ``print`` functions, these pieces require more advanced unit testing methodologies which will be revisited in future courses.
+As mentioned above, testing user interaction code is harder (code with ``print`` and ``input`` functions), these pieces require more advanced unit testing methodologies which will be revisited in future courses. So you should refactor your code where user interaction code has little business logic in there as possible, it should only deal with interacting with user either by asking them for input or printing out data. This is a good practice in general and we will come back to this concept in later lesson. This refactor will allow you to unit test functions with business logic.
+
 Below, we will go over what components should be refactored so that we are able to unit test our mailroom - your code should improve and be better modularized if that's not the case then maybe your refactor approach should be re-visited.
 
 For unit testing framework you should use `pytest <https://docs.pytest.org/en/latest/>`_, it has a simple interface and rich features.
