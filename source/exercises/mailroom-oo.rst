@@ -91,7 +91,7 @@ Note that ``__init__.py`` is an empty file that tells Python that this directory
 Donor Class
 ...........
 
-Class responsible for donor data encapsulation.
+**Class responsible for donor data encapsulation**
 
 This will hold all the information about a single donor, and have attributes, properties, and methods to provide access to the donor specific information that is needed.
 Remember that if you are writing code that only accesses information about a single donor then it should most likely live in this class.
@@ -99,7 +99,7 @@ Remember that if you are writing code that only accesses information about a sin
 DonorCollection Class
 .....................
 
-Class responsible for donor collection data encapsulation.
+**Class responsible for donor collection data encapsulation**
 
 This will hold all of the donor objects, but also methods to add a new donor, search for a given donor, etc. If you want a way to save and re-load your data, this class would have that too.
 
