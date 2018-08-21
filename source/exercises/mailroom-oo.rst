@@ -109,7 +109,7 @@ Your class for the collection of donors will also hold the code that generates r
 Command Line Interface
 .......................
 
-Module responsible for main program flow (CLI - Command Line Interface).
+**Module responsible for main program flow (CLI - Command Line Interface)**
 
 Let's call this module ``cli_main.py`` to represent the entry point for the mailroom program. This module will be using above classes we defined: ``Donor`` and ``DonorCollection``; it will also handle interaction with the user via the ``input`` function calls to gather user input and to provide the output to the console.
 
