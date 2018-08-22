@@ -80,7 +80,7 @@ Add to the file (file should be empty):
 
     PATH=$PATH:/C/Python37:/C/Python37/Scripts
 
-Note: your python executable may be located in a different path, to check the path start windows shell (``cmd``) and type ``where python3`` - this command will output where python is currently installed.
+Note: your python executable may be located in a different path, to check the path you need to start windows shell (``cmd``) and type ``where python3`` - this command will output where python is currently installed.
 
 Save the file and start a new gitbash shell.
 
