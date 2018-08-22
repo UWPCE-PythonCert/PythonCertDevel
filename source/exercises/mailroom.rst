@@ -6,7 +6,7 @@ Mailroom: A complete program
 
 .. Once you complete revisions on this assignment, the text changes should be copied over to the edX assignments as part of the revision.
 
-Part 1: Establishing Data Structure (Lesson 4)
+Part 1: Establishing Data Structure (Lesson 3)
 ======
 
 **Using Python's basic data types and logic for a full program**
@@ -33,7 +33,7 @@ Write a small command-line script called ``mailroom.py``. This script should be 
   at first with at least five donors, with between 1 and 3 donations each. You can store that data structure in the global namespace.
 
 * The script should prompt the user (you) to choose from a menu of 3 actions:
-  "Send a Thank You", "Create a Report," or "quit."
+  "Send a Thank You," "Create a Report," or "quit."
 
 Sending a Thank You
 -------------------
@@ -44,7 +44,7 @@ Sending a Thank You
   * If the user types a name not in the list, add that name to the data structure and use it.
   * If the user types a name in the list, use it.
   * Once a name has been selected, prompt for a donation amount.
-  * Turn the amount into a number -- it is OK at this point for the program to crash if someone types a bogus amount.
+  * Turn the amount into a number; it is OK at this point for the program to crash if someone types a bogus amount.
   * Once an amount has been given, add that amount to the donation history of
     the selected user.
   * Finally, use string formatting to compose an email thanking the donor for
@@ -137,9 +137,10 @@ There are several ways to write your main program flow. Let's consider these two
 
 
 Can you see the advantages of one example over the other?
-In the first example, ``do_something`` is not aware of how the main works. As you add more features, these will not, and should not manage the main either.
+In the first example, ``do_something`` is not aware of how the main works. As you add more features, these will not, and should not, manage the main, either. As you add features to the code in the first example, the call stack will also keep getting deeper and deeper. This can make error stack traces hard to debug.
 
-.. (SOME LOGIC MISSING HERE. BECAUSE CODE DOESN'T MANAGE THE MAIN, YOU NEED TO ADD FEATURES TO THE CALL STACK?) As you add features to the code in the first example, the call stack will also keep getting deeper and deeper. This can make error stack traces hard to debug.
+.. (SOME LOGIC MISSING IN PARAGRAPH ABOVE. BECAUSE CODE DOESN'T MANAGE THE MAIN, YOU NEED TO ADD FEATURES TO THE CALL STACK?)
+
 
 The second example uses simpler code logic, and simpler code logic means fewer bugs!
 
@@ -209,7 +210,7 @@ Choosing Data Structure
 
 
 So far in this course, we have learned about strings, tuples, and lists. We will apply these data structures to hold our mailroom donor information.
-Choosing the right data structure is critical and our donor data structure will change in Parts 2 and 3 of this assignment as we learn additional structures.
+Choosing the right data structure is critical and our donor data structure will change in Parts 2 and 3 of this assignment as we learn about additional structures.
 
 What goes into this decision to use a specific data structure? Here are a couple of things to consider.
 
@@ -223,7 +224,7 @@ A string structure would probably be able to do what we need feature-wise but th
 
 A tuple would be an issue when adding donors since it is an immutable data structure.
 
-A list would satisfy all of the needed features with a fairly simple code to implement. It makes the most sense to use a list for the main data structure. Actually, and we can use a combination of both tuples and a list.
+A list would satisfy all of the needed features with a fairly simple code to implement. It makes the most sense to use a list for the main data structure. Actually, we can use a combination of both tuples and a list.
 
 Here is a potential data structure to consider:
 
@@ -283,7 +284,7 @@ Example:
   In [5]: "My name is {first_name} {last_name}".format(**d)
   Out[5]: 'My name is Chris Barker'
 
-Don't worry too much about the ``**``. We'll get into the details later, but for now it means, more or less: pass this whole dict in as a bunch of keyword arguments.
+Don't worry too much about the ``**``. We'll get into the details later, but for now it means, more or less, "pass this whole dict in as a bunch of keyword arguments."
 
 Update mailroom with file writing.
 ----------------------------------
@@ -292,7 +293,7 @@ Update mailroom with file writing.
 
 In the first version of mailroom, you generated a letter to a donor who had just made a new donation, and printed it to the screen.
 
-In this version of your program, add a function (and a menu item to invoke it), that goes through all the donors in your donor data structure, generates a thank you letter for each, and writes each letter to disk as a text file.
+In this version of your program, add a function (and a menu item to invoke it), that goes through all the donors in your donor data structure, generates a thank you letter for each donor, and writes each letter to disk as a text file.
 
 Your main menu may look something like:
 
@@ -300,10 +301,10 @@ Your main menu may look something like:
 
   1 - Send a Thank You to a single donor.
   2 - Create a Report.
-  3 - Send letters to every donor.
+  3 - Send letters to all donors.
   4 - Quit
 
-The files for each thank you letter should  get a unique file name derived from the donor's name, and maybe a date.
+The files for each thank you letter should get a unique file name derived from the donor's name, and maybe a date.
 
 After running the "send letters to everyone" option, you should get a bunch of new files in the working dir, one for each donor.
 
@@ -355,17 +356,17 @@ Can you use comprehensions to clean up your code a bit?
 Part 4: Adding Unit Tests  (Lesson 6)
 =========================
 
-**Test your program after you learn about unit tests in Lesson 5**.
+**Test your program after you learn about unit tests in Lesson 6**.
 
 Add a full suite of unit tests.
 
-"Full suite" means all the code is tested. In practice, it's very hard to test the user interaction, but you can test everything else. Make sure that there is as little untested code in the user interaction portion of the program as possible -- hardly any logic.
+"Full suite" means all the code is tested. In practice, it's very hard to test the user interaction, but you can test everything else. Make sure that there is as little untested code in the user interaction portion of the program as possible, hardly any logic.
 
-This is a big step -- you may find that your code is hard to test. If that's the case, it's a good sign that you *should* refactor your code.
+This is a big step; you may find that your code is hard to test. If that's the case, it's a good sign that you *should* refactor your code.
 
 I like to say: "If it's hard to test, it's not well structured."
 
-Put in the tests **before** you make the other changes below - that's much of the point of tests -- you can know that you haven't broken anything when you refactor!
+Put in the tests **before** you make the other changes below. That's much of the point of tests. You can know that you haven't broken anything when you refactor!
 
 Guidelines
 -----------
@@ -380,17 +381,17 @@ For unit testing framework you should use `pytest <https://docs.pytest.org/en/la
 
 You should have 3 main features so far:
 
-* Sending a thank you, which adds a new donor or updates existing donor info. 
+* Send a thank you, which adds a new donor or updates existing donor info. 
 * Create a report
 * Send letters, which creates files
 
-.. The first point "Sending a thank you" seems confusing: it sounds like sending a thank automatically adds a new donor or updates donor info. This doesn't seem to be explained. I thought that adding a donor was a separate function from sending letters to a single donor or to all donoors.
+.. The first point "Send a thank you" seems confusing: it sounds like sending a thank you letter automatically adds a new donor to your data or updates your donor info. This doesn't seem to be explained. I thought that adding a donor was a separate function from sending letters to a single donor or to all donoors.
 
 Send Thank You
 ...............
 
 Even though every mailroom implementation will be unique, most likely this function will require a significant refactor for most of you.
-You can break up the code into components that handle user flow and data manipulation logic. Write your unit tests for data manipulation logic that includes functionality for adding or updating donors, and for listing donors.
+You can break up the code into components that handle user flow and data manipulation logic. Write your unit tests for data manipulation logic, including functionality for adding or updating donors, and for listing donors.
 
 .. Did my best to re-write sentence above; it seemed very unclear to me. My apologies for introducing errors. Part of my job is to stand in for the students slowest to understand your directions.
 
