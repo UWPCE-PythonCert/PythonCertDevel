@@ -4,17 +4,13 @@
 Mailroom: A complete program
 ############################
 
-Part 1
+Part 1: Establishing Data Structure (Lesson 4)
 ======
 
 **Using Python's basic data types and logic for a full program**
 
 **Assignment Structure:**
-This assignment is designed in three parts that will make use of your skills as you develop them through the first half of this course. You will complete and submit Part 1 for your homework in Lesson 3. You will continue to add functionality to your program in the following weeks, tackling and submitting Part 2 during Lesson 4 and Part 3 during Lesson 5. This will give you a strong foundation for success the final projects, a Mailroom program using object-oriented programming (Lesson 9), and a fully functional Mailroom program (Lesson 10). 
-
-...Comment. Above text is a draft orienting students to the assignment. I see that in the edX shell, the assignment is split into three parts. If you've decided to provide all the info in one document, which you can make an argument for, that you need to make that structure explicit. Also, I don't see Parts 2 and 3 assigned in the GitHub index https://uwpce-pythoncert.github.io/PythonCertDevel/exercises/index.html#.  Wondering if there's a reason that the GitHub index varies from the edX course, and if these will be reconciled at some point. FYI, the Parts 2 and 3 don't seem to be referenced in the Canvas course shells I could find. 
-...
-
+This assignment is designed in three parts that will make use of your skills as you develop them during this course. You will complete and submit Part 1 for your homework in Lesson 3. You will continue to add functionality to your program in the following weeks, tackling and submitting Part 2 for Lesson 4,  Part 3 for Lesson 5, and Part 4 for Lesson 6. This progressive work will give you a strong foundation for success the final projects, a Mailroom program using object-oriented programming (Lesson 9), and a fully functional Mailroom program (Lesson 10). 
 
 Program Goal:
 -----
@@ -24,7 +20,6 @@ incredibly boring, repetitive emails thanking your donors for their generous
 gifts. You are tired of doing this over and over again, so you've decided to
 let Python help you out of a jam and do your work for you.
 
-..
 
 The program
 -----------
@@ -33,19 +28,17 @@ Write a small command-line script called ``mailroom.py``. This script should be 
 
 * It should have a data structure that holds a list of your donors and a
   history of the amounts they have donated. This structure should be populated
-  at first with at least five donors, with between 1 and 3 donations each.
-
-  You can store that data structure in the global namespace.
+  at first with at least five donors, with between 1 and 3 donations each. You can store that data structure in the global namespace.
 
 * The script should prompt the user (you) to choose from a menu of 3 actions:
-  "Send a Thank You", "Create a Report" or "quit")
+  "Send a Thank You", "Create a Report," or "quit."
 
 Sending a Thank You
 -------------------
 
 * If the user (you) selects 'Send a Thank You', prompt for a Full Name.
 
-  * If the user types 'list', show them a list of the donor names and re-prompt
+  * If the user types 'list', show them a list of the donor names and re-prompt.
   * If the user types a name not in the list, add that name to the data structure and use it.
   * If the user types a name in the list, use it.
   * Once a name has been selected, prompt for a donation amount.
@@ -56,16 +49,16 @@ Sending a Thank You
     their generous donation. Print the email to the terminal and return to the
     original prompt.
 
-It is fine (for now) to forget new donors once the script quits running.
+It is fine (for now) for the program not to store the names of the new donors that had been added, in other words, to forget new donors once the script quits running.
 
 Creating a Report
 ------------------
 
-* If the user (you) selected "Create a Report", print a list of your donors,
+* If the user (you) selected "Create a Report," print a list of your donors,
   sorted by total historical donation amount.
 
-  - Include Donor Name, total donated, number of donations and average donation amount as values in each row. You do not need to print out all their donations, just the summary info.
-  - Using string formatting, format the output rows as nicely as possible.  The end result should be tabular (values in each column should align with those above and below)
+  - Include Donor Name, total donated, number of donations, and average donation amount as values in each row. You do not need to print out all their donations, just the summary info.
+  - Using string formatting, format the output rows as nicely as possible.  The end result should be tabular (values in each column should align with those above and below).
   - After printing this report, return to the original prompt.
 
 * At any point, the user should be able to quit their current task and return
@@ -99,8 +92,8 @@ Put the functions you write into the script at the top.
 
 Put your main interaction into an ``if __name__ == '__main__'`` block.
 
-Finally, use only functions and the basic Python data types you've learned
-about so far. There is no need to go any farther than that for this assignment.
+Finally, for Part 1 use only functions and the basic Python data types you've learned
+about so far in Lessons 1-3. There is no need to go any farther than that for this assignment.
 
 Intro Tutorial
 --------------
@@ -110,7 +103,7 @@ Controlling Main Program Flow
 
 One of the key components of the mailroom program is managing program flow and interacting with the user. Ideally main flow code should be cleanly separate from your feature code.
 
-The best way to manage the program flow is to use a ``while True`` loop which means you will keep asking the user for input until user selects a feature or exits.
+The best way to manage the program flow is to use a ``while True`` loop, which means you will keep asking the user for input until user selects a feature or exits.
 
 There are several ways to write your main program flow. Let's consider these two options:
 
@@ -141,12 +134,14 @@ There are several ways to write your main program flow. Let's consider these two
     main()
 
 
-Can you see the advantages of one over the other?
-In the first one, ``do_something`` is not aware of how the main works and as you add more features they shouldn't manage the main either.
-The call stack will also keep getting deeper and deeper, which can make error stack traces hard to debug.
-Another advantage is simpler code logic, and simpler code logic means less bugs!
+Can you see the advantages of one example over the other?
+In the first example, ``do_something`` is not aware of how the main works. As you add more features, these will not, and should not manage the main either.
 
-Let's look at a simple program to utilize the while True loop and how we can handle user response:
+.. (SOME LOGIC MISSING HERE. BECAUSE CODE DOESN'T MANAGE THE MAIN, YOU NEED TO ADD FEATURES TO THE CALL STACK?) As you add features to the code in the first example, the call stack will also keep getting deeper and deeper. This can make error stack traces hard to debug.
+
+The second example uses simpler code logic, and simpler code logic means fewer bugs!
+
+Let's look at a simple program to utilize the ``while True`` loop and how we can handle user response:
 
 .. code-block:: python
 
@@ -211,22 +206,22 @@ Choosing Data Structure
 ........................
 
 
-So far we have learned about strings, tuples, and lists. We will apply data structures that we have learned in previous lessons to hold our mailroom donor information.
-Choosing the right data structure is critical and our donor data structure will change in future lessons as we learn additional ones.
+So far in this course, we have learned about strings, tuples, and lists. We will apply these data structures to hold our mailroom donor information.
+Choosing the right data structure is critical and our donor data structure will change in Parts 2 and 3 of this assignment as we learn additional structures.
 
-What goes into this decision? Here are a couple of things to consider:
+What goes into this decision to use a specific data structure? Here are a couple of things to consider.
 
-* efficiency - we often need to look up data, are you able to efficiently look up the data you need?
-* ease of use - is the code straightforward and simple for basic operations?
-* features - does it do everything you need to do for your requirements?
+* Efficiency: We often need to look up data; are you able to efficiently look up the data you need?
+* Ease of use: Is the code straightforward and simple for basic operations?
+* Features: Does the code do everything you need to do for your requirements?
 
-Let's consider each data structure:
+Let's consider each data structure.
 
-String would probably be able to do what we need feature wise but the code to implement would be quite complex and not very efficient.
+A string structure would probably be able to do what we need feature-wise but the code to implement these features would be quite complex and not very efficient.
 
 A tuple would be an issue when adding donors since it is an immutable data structure.
 
-A list would satisfy all of the needed features with a fairly simple code to implement. It makes the most sense to use a list for the main data structure, and actually we can have a combination of both tuples and a list.
+A list would satisfy all of the needed features with a fairly simple code to implement. It makes the most sense to use a list for the main data structure. Actually, and we can use a combination of both tuples and a list.
 
 Here is a potential data structure to consider:
 
@@ -238,7 +233,7 @@ Here is a potential data structure to consider:
             ("Mark Zuckerberg", [1663.23, 4300.87, 10432.0]),
             ]
 
-Why choose tuples for inner donor record? Well another part of using the right data structure is also to reduce bugs - you are setting clear expectations that single donor entry only contains two items.
+Why choose tuples for the inner donor record? Well, another part of using the right data structure is to reduce bugs; you are setting clear expectations that a single donor entry only contains two items.
 
 Submission
 ----------
@@ -252,29 +247,28 @@ When you are done, push your changes and make a pull request.
 .. _exercise_mailroom_plus:
 
 
-Part 2: Adding dicts and Files
+Part 2: Adding dicts and Files (Lesson 4)
 ==============================
 
-**Wait to do this till after you've learned about dictionaries in a later lesson!**
+**Try this expansion after you've learned about dictionaries in Lesson 5**.
 
-use dicts where appropriate
+Use dicts where appropriate.
 ---------------------------
 
-You should have been able to do all of the above with the basic data types:
+Part 1 of this assignment used these basic data types: numbers, strings, lists and tuples.
 
-numbers, strings, lists and tuples.
+However, using dictionaries, covered in Lesson 4, will let you re-write your program a bit more simply and efficiently.
 
-But once you've learned about dictionaries, you may be able to re-write it a bit more simply and efficiently.
+Update your mailroom program to:
 
- * Update your mailroom program to:
+  - Use dicts where appropriate.
 
-  - Use dicts where appropriate
-
-  - See if you can use a dict to switch between the users selections.
+  - See if you can use a dict to switch between the user's selections;
     see :ref:`dict_as_switch` for what this means.
 
-  - Try to use a dict and the ``.format()`` method to do the letter as one
-    big template -- rather than building up a big string in parts.
+  - Try to use a dict and the ``.format()`` method to produce the letter as one
+    big template, rather than building up a big string that produces the letter in parts.
+
 
 Example:
 
@@ -287,31 +281,31 @@ Example:
   In [5]: "My name is {first_name} {last_name}".format(**d)
   Out[5]: 'My name is Chris Barker'
 
-Don't worry too much about the "**" -- we'll get into the details later, but for now it means, more or less, pass this whole dict in as a bunch of keyword arguments.
+Don't worry too much about the ``**``. We'll get into the details later, but for now it means, more or less: pass this whole dict in as a bunch of keyword arguments.
 
 Update mailroom with file writing.
 ----------------------------------
 
-Write a full set of letters to everyone to individual files on disk.
+**Goal: Write a full set of letters to all donors to individual files on disk.**
 
-In the first version of mailroom, you generated a letter to someone who had just made a new donation, and printed it to the screen.
+In the first version of mailroom, you generated a letter to a donor who had just made a new donation, and printed it to the screen.
 
-In this version, add a function (and a menu item to invoke it), that goes through all the donors in your donor data structure, generates a thank you letter, and writes it to disk as a text file.
+In this version of your program, add a function (and a menu item to invoke it), that goes through all the donors in your donor data structure, generates a thank you letter for each, and writes each letter to disk as a text file.
 
-Your main menu may look something like::
+Your main menu may look something like:
 
   Choose an action:
 
-  1 - Send a Thank You
-  2 - Create a Report
-  3 - Send letters to everyone
+  1 - Send a Thank You to a single donor.
+  2 - Create a Report.
+  3 - Send letters to every donor.
   4 - Quit
 
-The letters should each get a unique file name -- derived from the donor's name, and maybe a date.
+The files for each thank you letter should  get a unique file name derived from the donor's name, and maybe a date.
 
-After running the "send letters to everyone" option, you should get a bunch of new files in the working dir -- one for each donor.
+After running the "send letters to everyone" option, you should get a bunch of new files in the working dir, one for each donor.
 
-After choosing (3) above, I get these files in the dir I ran it from::
+For example, after choosing (3) above using my example database, I get these files in the dir I ran the code from::
 
   Jeff_Bezos.txt
   Mark_Zuckerberg.txt
@@ -331,7 +325,7 @@ An example looks like this::
                          Sincerely,
                             -The Team
 
-Feel free to enhance it with some more information about past generosity, etc....
+Feel free to enhance your letter template with some more information about past generosity, etc....
 
 The idea is to require you to structure your code so that you can write the same letter to the screen or to disk (and thus anywhere else) and also exercise a bit of file writing.
 
@@ -339,15 +333,15 @@ The idea is to require you to structure your code so that you can write the same
 .. _exercise_mailroom_exceptions:
 
 
-Part 3: Adding Exceptions and Comprehensions
+Part 3: Adding Exceptions and Comprehensions (Lesson 5)
 ============================================
 
-**After the lesson where you learn about Exceptions**.
+**Tackle this expansion after you learn about exceptions in Lesson 5**.
 
 Exceptions
 ----------
 
-Now that you've learned about exception handling, you can update your code to handle errors better -- like when a user inputs bad data.
+Now that you've learned about exception handling, you can update your code to handle errors better, such as when a user inputs bad data.
 
 Comprehensions
 --------------
@@ -356,10 +350,10 @@ Can you use comprehensions to clean up your code a bit?
 
 .. _exercise_mailroom_testing:
 
-Part 4: Adding Unit Tests
+Part 4: Adding Unit Tests  (Lesson 6)
 =========================
 
-**After the lesson when you learn about Unit Testing**
+**Test your program after you learn about unit tests in Lesson 5**.
 
 Add a full suite of unit tests.
 
@@ -367,7 +361,7 @@ Add a full suite of unit tests.
 
 This is a big step -- you may find that your code is hard to test. If that's the case, it's a good sign that you *should* refactor your code.
 
-I like to say: "If it's hard to test, it's not well structured"
+I like to say: "If it's hard to test, it's not well structured."
 
 Put in the tests **before** you make the other changes below - that's much of the point of tests -- you can know that you haven't broken anything when you refactor!
 
@@ -384,16 +378,19 @@ For unit testing framework you should use `pytest <https://docs.pytest.org/en/la
 
 You should have 3 main features so far:
 
-* sending a thank you, which adds a new donor or updates existing donor info
-* create a report
-* send letters, which creates files
+* Sending a thank you, which adds a new donor or updates existing donor info. 
+* Create a report
+* Send letters, which creates files
 
+.. The first point "Sending a thank you" seems confusing: it sounds like sending a thank automatically adds a new donor or updates donor info. This doesn't seem to be explained. I thought that adding a donor was a separate function from sending letters to a single donor or to all donoors.
 
 Send Thank You
 ...............
 
-Even though every mailroom implementation will be unique, most likely this function will require significant refactor for most of you.
-You can break up the code into components that handle user flow and data manipulation logic. Write your unit tests for data manipulation logic, that would include adding or updating donors and list donors functionality.
+Even though every mailroom implementation will be unique, most likely this function will require a significant refactor for most of you.
+You can break up the code into components that handle user flow and data manipulation logic. Write your unit tests for data manipulation logic that includes functionality for adding or updating donors, and for listing donors.
+
+.. Did my best to re-write sentence above; it seemed very unclear to me. My apologies for introducing errors. Part of my job is to stand in for the students slowest to understand your directions.
 
 
 Create Report
@@ -418,5 +415,5 @@ Here you would write a unit test for ``get_report`` function.
 Send Letters
 ............
 
-This one should require very little or no change to make it unit testable.
-The unit test can assert that a file is created per donor entry (hint: ``os.path`` module) and file content contains text as expected.
+This function should require very little or no change to make it unit-testable.
+The unit test can assert that a file is created per donor entry (hint: ``os.path`` module), and that the file content contains text as expected.
