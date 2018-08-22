@@ -7,15 +7,24 @@ Mailroom: A complete program
 Part 1
 ======
 
-Using Python's basic data types and logic for a full program.
+**Using Python's basic data types and logic for a full program**
 
-Goal:
+**Assignment Structure**
+This assignment is designed in three parts that will make use of your skills as you develop them through the first half of this course. You will complete and submit Part 1 for your homework in Lesson 3. You will continue to add functionality to your program in the following weeks, tackling and submitting Part 2 during Lesson 4 and Part 3 during Lesson 5. This will give you a strong foundation for success the final projects, a Mailroom program using object-oriented programming (Lesson 9), and a fully functional Mailroom program (Lesson 10). 
+
+..Comment. Above text is a draft orienting students to the assignment. I see that in the edX shell, the assignment is split into three parts. If you've decided to provide all the info in one document, which you can make an argument for, that you need to make that structure explicit. Also, I don't see Parts 2 and 3 assigned in the GitHub index https://uwpce-pythoncert.github.io/PythonCertDevel/exercises/index.html#.  Wondering if there's a reason that the GitHub index varies from the edX course, and if these will be reconciled at some point. FYI, the Parts 2 and 3 don't seem to be referenced in the Canvas course shells I could find. 
+..
+
+
+Program Goal:
 -----
 
 You work in the mail room at a local charity. Part of your job is to write
 incredibly boring, repetitive emails thanking your donors for their generous
 gifts. You are tired of doing this over and over again, so you've decided to
 let Python help you out of a jam and do your work for you.
+
+..
 
 The program
 -----------
