@@ -4,6 +4,8 @@
 Mailroom: A complete program
 ############################
 
+.. Once you complete revisions on this assignment, the text changes should be copied over to the edX assignments as part of the revision.
+
 Part 1: Establishing Data Structure (Lesson 4)
 ======
 
