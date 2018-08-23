@@ -13,7 +13,8 @@ Part 1: Establishing The Data Structure (Lesson 3)
 
 **Assignment Structure:**
 
-This assignment is designed in three parts that will make use of your skills as you develop them during this course. You will complete and submit Part 1 for your homework in Lesson 3. You will continue to add functionality to your program in the following weeks, tackling and submitting Part 2 for Lesson 4,  Part 3 for Lesson 5, and Part 4 for Lesson 6. This progressive work will give you a strong foundation for success the final projects, a Mailroom program using object-oriented programming (Lesson 9), and a fully functional Mailroom program (Lesson 10). 
+This assignment is designed in three parts that will make use of your skills as you develop them during this course. You will complete and submit Part 1 for your homework in Lesson 3. You will continue to add functionality to your program in the following weeks, tackling and submitting Part 2 for Lesson 4,  Part 3 for Lesson 5, and Part 4 for Lesson 6. This progressive work will give you a strong foundation for success the final project, a Mailroom program using object-oriented programming (Lesson 9).
+
 
 Program Goal:
 -------------
@@ -221,7 +222,7 @@ What goes into this decision to use a specific data structure? Here are a couple
 
 Let's consider each data structure.
 
-A string structure would probably be able to do what we need feature-wise but the code to implement these features would be quite complex and not very efficient.
+A simple string would probably be able to do what we need feature-wise but the code to implement these features would be quite complex and not very efficient.
 
 A tuple would be an issue when adding donors since it is an immutable data structure.
 
@@ -232,10 +233,10 @@ Here is a potential data structure to consider:
 .. code-block:: python
 
     donor_db = [("William Gates, III", [653772.32, 12.17]),
-            ("Jeff Bezos", [877.33]),
-            ("Paul Allen", [663.23, 43.87, 1.32]),
-            ("Mark Zuckerberg", [1663.23, 4300.87, 10432.0]),
-            ]
+                ("Jeff Bezos", [877.33]),
+                ("Paul Allen", [663.23, 43.87, 1.32]),
+                ("Mark Zuckerberg", [1663.23, 4300.87, 10432.0]),
+                ]
 
 Why choose tuples for the inner donor record? Well, another part of using the right data structure is to reduce bugs; you are setting clear expectations that a single donor entry only contains two items.
 
@@ -422,3 +423,9 @@ Send Letters
 
 This function should require very little or no change to make it unit-testable.
 The unit test can assert that a file is created per donor entry (hint: ``os.path`` module), and that the file content contains text as expected.
+
+Note that you should test the correct text being generated separately from the writting the file. That way you don't need to read the file to know it's correct. So the function that generates the text should be separate from teh function that writes the file.
+
+
+
+
