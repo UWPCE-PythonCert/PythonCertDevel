@@ -73,8 +73,8 @@ and so on.
 
 To generate new text from this analysis, choose an arbitrary word pair as a
 starting point. Use this pair of words to look up a random next word (using the table
-above) and append this new word to the text so far. This now gives you a
-new word pair at the end of the text, so look up a potential next word
+above) and append this new word to the text so far. This now gives you three words with a
+new word pair (second and third words) at the end of the three-word text. Look up a potential next word
 based on this pair. This generates another pair to add to the list, and so on. In the previous example,
 we could start with "I may". The only possible next word is
 "I", so now we have::
@@ -88,7 +88,7 @@ is constrained to another "I"::
    I may I wish I
 
 
-Now we look up "wish I", and find we have a choice. Let’s
+Now we look up "wish I," and find we have a choice. Let’s
 choose "may"::
 
    I may I wish I may
@@ -109,7 +109,7 @@ can be surprising.
 For this kata, try implementing a trigram algorithm that generates a couple
 of hundred words of text using a book-sized file as input.
 `Project Gutenberg <http://www.gutenberg.org/>`_ is a good source of online
-books (Tom Swift and His Airship is `here <http://sailor.gutenberg.org/etext02/03tom10.txt>`_.)
+books (*Tom Swift and His Airship* is `here <http://sailor.gutenberg.org/etext02/03tom10.txt>`_.)
 
 .. Above paragraph is the first place in the text that the term kata is mentioned.
 
@@ -117,7 +117,7 @@ Be warned that these files have DOS line endings (carriage return followed by
 newline).
 
 
-There is a copy of short-story collection *The Adventures of Sherlock Holmes* right here:
+Here is a copy of short-story collection *The Adventures of Sherlock Holmes*:
 
 :download:`sherlock.txt  <./sherlock.txt>`.
 
@@ -164,7 +164,7 @@ You need that in a python data structure somehow, so how about:
 
     words = "I wish I may I wish I might".split()
 
-which results in an (ordered) list of words::
+This produces an (ordered) list of words::
 
   ['I', 'wish', 'I', 'may', 'I', 'wish', 'I', 'might']
 
@@ -186,10 +186,12 @@ Those following words look a lot like they are in a list, yes? Perfect, the list
 
 Each of those lists of words needs to be mapped to a particular pair. Each pair is unique; it only shows up once (when that same pair is encountered again in the text, you add the follower to the list).
 
-That sounds a lot like a dictionary. The keys (word pairs) are unique, and map to a list of following words. (Note that, technically in python, the dictionary is only one implementation of a
+That sounds a lot like a dictionary. The keys (word pairs) are unique, and map to a list of following words. (Note that, technically, in python the dictionary is only one implementation of a
 `Mapping <https://docs.python.org/3/glossary.html#term-mapping>`_.)
 
-Now you have a choice of data structure. The keys are a pair of words and can be represented as a string of two words with a space like so:
+Now you have a choice of data structures: string or tuple.
+
+String: The keys are a pair of words and can be represented as a string of two words with a space like so:
 
 .. code-block:: python
 
@@ -199,7 +201,7 @@ Now you have a choice of data structure. The keys are a pair of words and can be
                 "I may": ["I"],
                 }
 
-But strings are not the only type that you can use as keys in a dict; you can use any *immutable* type. Recall that tuples are immutable (they can't be changed once they have been created). Since each pair of words is, well, a pair, it makes sense to store each pair in a tuple, keeping the individual words separate:
+Tuple: But strings are not the only type that you can use as keys in a dict; you can use any *immutable* type. Recall that tuples are immutable (they can't be changed once they have been created). Since each pair of words is, well, a pair, it makes sense to store each pair in a tuple, keeping the individual words separate:
 
 .. code-block:: python
 
@@ -276,7 +278,7 @@ For each pair in the text, you need to add it to the dict. But:
 
     ("may", "I"): ["wish"]
 
-  - If the pair already is in the dict, then you want to add the follower to the list that's already there
+  - If the pair already is in the dict, then you want to add the follower (the second word in the pair) to the list that's already there
 
     ("wish", "I"): ["may", "might"]
 
@@ -296,7 +298,7 @@ Try it out on a longer bit of text (your choice) before you go any further.
 Using the Trigrams dict
 .......................
 
-This is the fun part. Once you have a mapping of word pairs to following words, you can build up some new "fake" text. Read the above again to remind yourself of the procedure. Here are a couple of additional hints and questions to consider:
+This is the fun part. Once you have a mapping of word pairs to following words, you can build up some new "fake" text. Re-read the above again to remind yourself of the procedure. Here are a couple of additional hints and questions to consider:
 
 .. What do you mean when you say "above"?
 
@@ -314,37 +316,37 @@ This is the fun part. Once you have a mapping of word pairs to following words, 
 
 - You need to start with the first word pair; picking a random key from a dict is actually a bit tricky. Start with this known pair, and once you have the code working, you can figure out a better way to pick a pair to start with.
 
-- As you build up your text, you probably want to build it up in a list: appending one word at a time.  You can join it together at the end.
+- As you build up your text, you probably want to build it up in a list, appending one word at a time.  You can join it together at the end.
 .. Do you mean you can join the text "together at the end"?
 
-- Remember that after adding a word to a pair to make a three-word text, the next pair is the last two words in the three-word text.
+- Remember that after adding a word to a pair to make a three-word text, the next pair is the last two words in that three-word text.
 
 - What to do if you end up with a word pair that isn't in the original text?
 
 - How to terminate? Probably have a pre-defined length of text!
 
-Once you have the basics working, try your code on a longer piece of input text. Then think about making it fancy. Can you make sentences, with capitalized first words, and punctuation? Anything else to make the text more "real"?
+Once you have the basics working, try your code on a longer piece of input text. Then think about making it fancy. Can you make sentences with capitalized first words and punctuation? Anything else to make the text more "real"?
 
 Processing the Input Text
 -------------------------
 
-If you get a book from Project Gutenberg (or anywhere else), it will not be "clean." That is, it has header information, footer information, chapter headings, punctuation, what have you. So you'll need to clean it up somehow to get a simple list of words to use to build your trigrams.
+If you get a book from Project Gutenberg (or anywhere else), it will not be "clean." That is, it will have header information, footer information, chapter headings, punctuation, what have you. So you'll need to clean it up somehow to get a simple list of words to use to build your trigrams.
 
-The first part of the process is pretty straightforward: open the file and loop through the lines of text.
+The first part of the process is pretty straightforward; open the file and loop through the lines of text.
 
-You may want to skip the header: how would you do that??
-Hint: there is a line of textthat starts with::
+You may want to skip the header. How would you do that??
+Hint: in a Project Gutenberg e-book, there is a line of text that starts with::
 
   *** START OF THIS PROJECT GUTENBERG EBOOK
 
-In the loop, you can process a single line of text.
+In the loop, you can process a single line of text to break it into words:
 
- - calling ``.split()`` to break it into words.
+ - calling ``.split()`` 
 
 Optional steps to cleaning up the text:
 
  - Strip out punctuation?
-   - If you do this, what about contractions, i.e. can't (vs. a single quotation mark)
+   - If you do this, what about contractions, i.e., can't (vs. a single quotation mark)
    
    .. not sure what you mean by "vs. a single quotation mark." Are you making a distinction between apostrophes found within a word, usually one letter from the end, vs. single quotes found at the end of a word?
 
