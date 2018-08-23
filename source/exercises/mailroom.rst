@@ -6,16 +6,17 @@ Mailroom: A complete program
 
 .. Once you complete revisions on this assignment, the text changes should be copied over to the edX assignments as part of the revision.
 
-Part 1: Establishing Data Structure (Lesson 3)
-======
+Part 1: Establishing The Data Structure (Lesson 3)
+==================================================
 
 **Using Python's basic data types and logic for a full program**
 
 **Assignment Structure:**
+
 This assignment is designed in three parts that will make use of your skills as you develop them during this course. You will complete and submit Part 1 for your homework in Lesson 3. You will continue to add functionality to your program in the following weeks, tackling and submitting Part 2 for Lesson 4,  Part 3 for Lesson 5, and Part 4 for Lesson 6. This progressive work will give you a strong foundation for success the final projects, a Mailroom program using object-oriented programming (Lesson 9), and a fully functional Mailroom program (Lesson 10). 
 
 Program Goal:
------
+-------------
 
 You work in the mail room at a local charity. Part of your job is to write
 incredibly boring, repetitive emails thanking your donors for their generous
@@ -54,7 +55,7 @@ Sending a Thank You
 It is fine (for now) for the program not to store the names of the new donors that had been added, in other words, to forget new donors once the script quits running.
 
 Creating a Report
-------------------
+-----------------
 
 * If the user (you) selected "Create a Report," print a list of your donors,
   sorted by total historical donation amount.
@@ -205,8 +206,8 @@ Let's look at a simple program to utilize the ``while True`` loop and how we can
 
 
 
-Choosing Data Structure
-........................
+Choosing A Data Structure
+.........................
 
 
 So far in this course, we have learned about strings, tuples, and lists. We will apply these data structures to hold our mailroom donor information.
@@ -251,12 +252,12 @@ When you are done, push your changes and make a pull request.
 
 
 Part 2: Adding dicts and Files (Lesson 4)
-==============================
+=========================================
 
 **Try this expansion after you've learned about dictionaries in Lesson 5**.
 
 Use dicts where appropriate.
----------------------------
+----------------------------
 
 Part 1 of this assignment used these basic data types: numbers, strings, lists and tuples.
 
@@ -337,7 +338,7 @@ The idea is to require you to structure your code so that you can write the same
 
 
 Part 3: Adding Exceptions and Comprehensions (Lesson 5)
-============================================
+=======================================================
 
 **Tackle this expansion after you learn about exceptions in Lesson 5**.
 
@@ -345,6 +346,7 @@ Exceptions
 ----------
 
 Now that you've learned about exception handling, you can update your code to handle errors better, such as when a user inputs bad data.
+
 
 Comprehensions
 --------------
@@ -354,7 +356,7 @@ Can you use comprehensions to clean up your code a bit?
 .. _exercise_mailroom_testing:
 
 Part 4: Adding Unit Tests  (Lesson 6)
-=========================
+=====================================
 
 **Test your program after you learn about unit tests in Lesson 6**.
 
@@ -369,7 +371,7 @@ I like to say: "If it's hard to test, it's not well structured."
 Put in the tests **before** you make the other changes below. That's much of the point of tests. You can know that you haven't broken anything when you refactor!
 
 Guidelines
------------
+----------
 
 Here are some suggestions on what should be refactored in your mailroom code.
 
