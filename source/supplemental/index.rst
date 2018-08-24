@@ -1,3 +1,5 @@
+.. _supplemental_materials:
+
 Supplemental Materials
 ======================
 

@@ -15,7 +15,6 @@ Lesson 1: Introductions and Setting up your Environment
 .. toctree::
     :maxdepth: 1
 
-    submitting_to_gitHub.rst
     python_pushups.rst
 
 
@@ -81,6 +80,7 @@ Lesson 7: Intro to Object Oriented Programing
     :maxdepth: 1
 
     html_renderer.rst
+    html_renderer_tutorial.rst
 
 
 Lesson 8: Properties and Magic Methods
