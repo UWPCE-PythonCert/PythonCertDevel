@@ -115,7 +115,6 @@ The built-in set is::
 
 so DEBUG provides the most detail, and CRITICAL you'd pretty much always want to see.
 
-.. nextslide::
 
 The logging API provides easy ways to send messages with these levels:
 
@@ -163,7 +162,6 @@ There is always a root logger, and often the only one you need.
 
 Each ``Logger`` represents a single logging channel.
 
-.. nextslide::
 
 ``Logger`` instances are given text names, with module-style "dots" representing the hierarchy:
 
@@ -205,7 +203,6 @@ And, of course, you can make your own.
 
 Each logger can have multiple Handlers
 
-.. nextslide::
 
 You will most likely use:
 
@@ -271,7 +268,6 @@ Example:
                         format='%(asctime)s %(message)s',
                         level=logging.DEBUG)
 
-.. nextslide::
 
 This creates a "root" logger, and sets it up with:
 

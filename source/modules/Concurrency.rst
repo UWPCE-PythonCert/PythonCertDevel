@@ -205,7 +205,6 @@ execute, ensuring thread safety
 .. image:: /_static/gil.png
     :width: 100.0%
 
-.. nextslide::
 
 The GIL is released during IO operations, so threads which spend time
 waiting on network or disk access can enjoy performance gains

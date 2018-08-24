@@ -93,6 +93,144 @@ Put your main interaction into an ``if __name__ == '__main__'`` block.
 Finally, use only functions and the basic Python data types you've learned
 about so far. There is no need to go any farther than that for this assignment.
 
+Intro Tutorial
+--------------
+
+Controlling Main Program Flow
+..............................
+
+One of the key components of the mailroom program is managing program flow and interacting with the user. Ideally main flow code should be cleanly separate from your feature code.
+
+The best way to manage the program flow is to use a ``while True`` loop which means you will keep asking the user for input until user selects a feature or exits.
+
+There are several ways to write your main program flow. Let's consider these two options:
+
+
+.. code-block:: python
+
+    def do_something():
+        # do things
+
+    def main():
+        while True:
+            do_something()
+
+    main()
+
+
+
+
+.. code-block:: python
+
+    def do_something()
+        # do things
+        main()
+
+    def main():
+        do_something()
+
+    main()
+
+
+Can you see the advantages of one over the other?
+In the first one, ``do_something`` is not aware of how the main works and as you add more features they shouldn't manage the main either.
+The call stack will also keep getting deeper and deeper, which can make error stack traces hard to debug.
+Another advantage is simpler code logic, and simpler code logic means less bugs!
+
+Let's look at a simple program to utilize the while True loop and how we can handle user response:
+
+.. code-block:: python
+
+    import sys  # imports go at the top of the file
+
+
+    fruits = ['Apples', 'Oranges', 'Pears']
+
+    prompt = "\n".join(("Welcome to the fruit stand!",
+              "Please choose from below options:",
+              "1 - View fruits",
+              "2 - Add a fruit",
+              "3 - Remove a fruit",
+              "4 - Exit",
+              ">>> "))
+
+
+    def view_fruits():
+        print("\n".join(fruits))
+
+
+    def add_fruit():
+        new_fruit = input("Name of the fruit to add?").title()
+        fruits.append(new_fruit)
+
+
+    def remove_fruit():
+        purge_fruit = input("Name of the fruit to remove?").title()
+        if purge_fruit not in fruits:
+            print("This fruit does not exist!")
+        else:
+            fruits.remove(purge_fruit)
+
+    def exit_program():
+        print("Bye!")
+        sys.exit()  # exit the interactive script
+
+
+    def main():
+        while True:
+            response = input(prompt)  # continuously collect user selection
+            # now redirect to feature functions based on the user selection
+            if response == "1":
+                view_fruits()
+            elif response == "2":
+                add_fruit()
+            elif response == "3":
+                remove_fruit()
+            elif response == "4":
+                exit_program()
+            else:
+                print("Not a valid option!")
+
+
+    if __name__ == "__main__":
+        # don't forget this block to guard against your code running automatically if this module is imported
+        main()
+
+
+
+Choosing Data Structure
+........................
+
+
+So far we have learned about strings, tuples, and lists. We will apply data structures that we have learned in previous lessons to hold our mailroom donor information.
+Choosing the right data structure is critical and our donor data structure will change in future lessons as we learn additional ones.
+
+What goes into this decision? Here are a couple of things to consider:
+
+* efficiency - we often need to look up data, are you able to efficiently look up the data you need?
+* ease of use - is the code straightforward and simple for basic operations?
+* features - does it do everything you need to do for your requirements?
+
+Let's consider each data structure:
+
+String would probably be able to do what we need feature wise but the code to implement would be quite complex and not very efficient.
+
+A tuple would be an issue when adding donors since it is an immutable data structure.
+
+A list would satisfy all of the needed features with a fairly simple code to implement. It makes the most sense to use a list for the main data structure, and actually we can have a combination of both tuples and a list.
+
+Here is a potential data structure to consider:
+
+.. code-block:: python
+
+    donor_db = [("William Gates, III", [653772.32, 12.17]),
+            ("Jeff Bezos", [877.33]),
+            ("Paul Allen", [663.23, 43.87, 1.32]),
+            ("Mark Zuckerberg", [1663.23, 4300.87, 10432.0]),
+            ]
+
+Why choose tuples for inner donor record? Well another part of using the right data structure is also to reduce bugs - you are setting clear expectations that single donor entry only contains two items.
+
 Submission
 ----------
 
@@ -123,6 +261,8 @@ But once you've learned about dictionaries, you may be able to re-write it a bit
 
   - Use dicts where appropriate
 
+  - Convert your main donor data structure to be a dict.
+
   - See if you can use a dict to switch between the users selections.
     see :ref:`dict_as_switch` for what this means.
 
@@ -145,7 +285,7 @@ Don't worry too much about the "**" -- we'll get into the details later, but for
 Update mailroom with file writing.
 ----------------------------------
 
-Write a full set of letters to everyone to individual files on disk.
+Write a full set of thank you letters to everyone as individual files on disk.
 
 In the first version of mailroom, you generated a letter to someone who had just made a new donation, and printed it to the screen.
 
@@ -160,11 +300,21 @@ Your main menu may look something like::
   3 - Send letters to everyone
   4 - Quit
 
-The letters should each get a unique file name -- derived from the donor's name, and maybe a date.
+The letters should each get a unique file name -- you can keep it really simple and just use the donor's name or add a date timestamp for additional uniqueness.
 
-After running the "send letters to everyone" option, you should get a bunch of new files in the working dir -- one for each donor.
+You want to avoid specifying a hardcoded file path when creating the files, for example don't to this:
 
-After choosing (3) above, I get these files in the dir I ran it from::
+.. code-block:: python
+
+    open("/home/users/bob/dev/mailroom/thank_you.txt", "w")
+
+
+Doing so will prevent other users from running the program as it will fail to find your path. Instead, you can create files in the current working directory or you can use a temporary directory.
+To identify a temporary directory you can use a handy function like `tempfile.gettempdir() <https://docs.python.org/3/library/tempfile.html#tempfile.gettempdir/>`_ which is also OS agnostic (meaning it can handle temp directory differences between different operating systems).
+
+After running the "send letters to everyone" option, you should see some new files in the directory -- there should be a file for each donor in the database, in this case 4.
+
+After choosing action (3) above, I get these files::
 
   Jeff_Bezos.txt
   Mark_Zuckerberg.txt
@@ -173,7 +323,7 @@ After choosing (3) above, I get these files in the dir I ran it from::
 
 (If you want to get really fancy, ask the user for a directory name to write to!)
 
-An example looks like this::
+An example file content looks like this::
 
   Dear Jeff Bezos,
 
@@ -186,7 +336,7 @@ An example looks like this::
 
 Feel free to enhance it with some more information about past generosity, etc....
 
-The idea is to require you to structure your code so that you can write the same letter to the screen or to disk (and thus anywhere else) and also exercise a bit of file writing.
+The idea is to require you to structure your code so that you can write the same letter to the screen or to disk (and thus anywhere else) and also exercise a bit of file writing. Remember to review the `with <http://www.diveintopython3.net/files.html#with>`_ statement as it is the preferred method when working with files.
 
 
 .. _exercise_mailroom_exceptions:
@@ -224,3 +374,52 @@ I like to say: "If it's hard to test, it's not well structured"
 
 Put in the tests **before** you make the other changes below - that's much of the point of tests -- you can know that you haven't broken anything when you refactor!
 
+Guidelines
+-----------
+
+Here are some suggestions on what should be refactored in your mailroom code.
+
+As mentioned above, testing user interaction code is harder (code with ``print`` and ``input`` functions), these pieces require more advanced unit testing methodologies which will be revisited in future courses. So you should refactor your code where user interaction code has little business logic in there as possible, it should only deal with interacting with user either by asking them for input or printing out data. This is a good practice in general and we will come back to this concept in later lesson. This refactor will allow you to unit test functions with business logic.
+
+Below, we will go over what components should be refactored so that we are able to unit test our mailroom - your code should improve and be better modularized if that's not the case then maybe your refactor approach should be re-visited.
+
+For unit testing framework you should use `pytest <https://docs.pytest.org/en/latest/>`_, it has a simple interface and rich features.
+
+You should have 3 main features so far:
+
+* sending a thank you, which adds a new donor or updates existing donor info
+* create a report
+* send letters, which creates files
+
+
+Send Thank You
+...............
+
+Even though every mailroom implementation will be unique, most likely this function will require significant refactor for most of you.
+You can break up the code into components that handle user flow and data manipulation logic. Write your unit tests for data manipulation logic, that would include adding or updating donors and list donors functionality.
+
+
+Create Report
+.............
+
+This function should only need slight modification. Split up user presentation (``print`` function calls) and data logic (actual creating of rows).
+Your data logic function can either return the report string already formatted or return a list of formatted rows that can be joined and printed in the user presentation function.
+Then you can write a unit test for your data logic function.
+
+Example:
+
+.. code-block:: python
+
+    def display_report():
+        for row in get_report():
+            print(row)
+
+
+
+Here you would write a unit test for ``get_report`` function.
+
+Send Letters
+............
+
+This one should require very little or no change to make it unit testable.
+The unit test can assert that a file is created per donor entry (hint: ``os.path`` module) and file content contains text as expected.

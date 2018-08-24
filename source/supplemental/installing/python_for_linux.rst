@@ -1,36 +1,28 @@
 .. _python_for_linux:
 
-***************************
+###########################
 Setting Up Linux for Python
-***************************
+###########################
 
 
-==================================================
 Debian and Related Distros (Ubuntu, Linux Mint)
-==================================================
+===============================================
 
 Python
 -------
 
 Debian distros already have the stable python2 and python3 releases preinstalled (`Debian Wiki <https://wiki.debian.org/Python>`_).
 
-Try the following commands:
-
-.. code-block:: bash
-
-  $ python2
-  Python 2.7.9 (default, April 2 2015, 15:33:32)
-  [GCC 4.9.2 on linux2]
-  >>>
+Try the following command:
 
 .. code-block:: bash
 
   $ python3
-  Python 3.4.3 (default, March 26 2015, 15:33:32)
+  Python 3.6.3 (default, March 26 2017, 15:33:32)
   [GCC 4.9.2 on linux]
   >>>
 
-I'm pretty sure that 16.4 (the most recent long term support release) has 3.5
+I'm pretty sure that 18.4 (the most recent long term support release) has 3.6
 
 That's nice, which one is the default version? Just type ``python`` to see. It's probably python2 still:
 
@@ -41,7 +33,7 @@ That's nice, which one is the default version? Just type ``python`` to see. It's
   [GCC 4.9.2 on linux2]
   >>>
 
-If you want to make ``python3.5`` the default version then add the line ``alias python=python3`` to your user's ``/home/{user}/.bashrc`` file. You should also do the same for pip and ipython by adding ``alias pip=pip3`` and ``alias ipython=ipython3``, giving the following changes:
+If you want to make ``python3.6`` the default version then add the line ``alias python=python3`` to your user's ``/home/{user}/.bashrc`` file like so:
 
 .. code-block:: bash
 
@@ -58,7 +50,7 @@ If you want to make ``python3.5`` the default version then add the line ``alias 
 
   $ # after the change
   $ python
-  Python 3.5.2 (default, March 26 2015, 15:33:32)
+  Python 3.6.3 (default, March 26 2017, 15:33:32)
   [GCC 4.9.2 on linux]
   >>>
 
@@ -69,10 +61,10 @@ If you don't have the version you want installed then use the package manager to
 .. code-block:: bash
 
    $ # search the package manager for it
-   $ sudo apt-cache search python | grep '^python3.5\ -'
-   python3.5 - Interactive high-level object-oriented language (version 3.5)
+   $ sudo apt-cache search python | grep '^python3.6\ -'
+   python3.6 - Interactive high-level object-oriented language (version 3.6)
    $ # install it
-   $ sudo apt-get install python3.5
+   $ sudo apt-get install python3.6
 
 
 Terminal
@@ -95,16 +87,29 @@ To get pip, the first option is to use your system package manager, something li
 
     $ sudo apt-get install python3-pip
 
-If that doesn't work, then look up the `official manual install notes <https://pip.pypa.io/en/latest/installing.html>`_
+If that doesn't work, then try "ensure-pip":
+
+.. code-block:: bash
+
+    $ python3 -m ensurepip --upgrade
+
+
+  $ python3 -m ensurepip --upgrade
+
+You can now use pip to install other packages. The first thing you may want to do is update pip itself:
+
+.. code-block:: bash
+
+  $ python3 -m pip install --upgrade pip
 
 Using pip:
 ----------
 
 To use pip to install a package, you invoke it with this command::
 
-  python -m pip install the_name_of_the_package
+  python3 -m pip install the_name_of_the_package
 
-Where ``python`` is the command you use to invoke the Python you want to use (could be ``python3``)
+Where ``python3`` is the command you use to invoke the Python you want to use (could be ``python3``)
 
 **NOTE:** You will frequently see advice to use pip like so::
 
@@ -112,7 +117,7 @@ Where ``python`` is the command you use to invoke the Python you want to use (co
 
 Which often works, but also can invoke the *wrong* version of pip. The above command::
 
-  $ python -m pip install something_or_other
+  $ python3 -m pip install something_or_other
 
 calls Python, and tells it to run the ``pip`` module. It is exactly the same as calling pip directly, except that you are assured that you are getting the version of pip connected the version of python that you are running.
 
@@ -126,7 +131,7 @@ One extra package we are going to use in class is ``iPython``::
 You should now be able to run ``iPython``::
 
   $ ipython3
-  Python 3.5.2 ()
+  Python 3.6.4 ()
   Type "copyright", "credits" or "license" for more information.
 
   IPython 2.0.0 -- An enhanced Interactive Python.

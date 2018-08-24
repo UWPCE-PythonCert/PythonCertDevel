@@ -141,6 +141,10 @@ Recent versions of Python have added support for asynchronous programming. It is
 
 Here are some resources to help you "get" it:
 
+A simple introduction to Python’s asyncio
+
+https://hackernoon.com/a-simple-introduction-to-pythons-asyncio-595d9c9ecf8c
+
 Asynchronous Python -- Await the Future
 
 https://hackernoon.com/asynchronous-python-45df84b82434#.kpwejkin2
