@@ -54,23 +54,23 @@ Note that when you are working, you may want to do steps 2-6 far more often than
 
 Now put that to work to get you set up for class:
 
-Initial Setup
--------------
+Required Initial Setup
+-----------------------
 
-The first step in getting ready for the class is to create an individual directory for yourself inside the class repository, initiated with a README.
+The first step in getting ready for the class is to create an individual directory for yourself inside the class repository, initiated with a README file. This step is necessary to ensure you have everything setup correctly and understand the process for future assignment submissions. Your instructor can review the workflow and give you early feedback before you start working on your first assignment submission.
 
-When you start a new project or exercise, you should create a folder within this folder for that particular project. You should only ever add things inside your OWN directory -- don't add or change anything anywhere else.
+When you start a new class project or exercise, you should create a folder within this folder for that particular project (ex. lesson1). You should only ever add things inside your OWN directory -- don't add or change anything anywhere else.
 
 Note that when you start doing projects on your own (outside of classwork), you will want to create a whole new repository for each project.
 
 Create Your Own Working Directory
 .................................
 
-The first step is to ``cd`` to the students dir:
+The first step is to ``cd`` to the students directory:
 
 ``$ cd students``
 
-Then create a dir for yourself. YOU can use your first name, your gitHub handle, or any nickname you like -- just make sure your instructor knows who you are so you can get credit for your work.
+Then create a directory for yourself. You can use your first name, your gitHub handle (username), or any nickname you like -- just make sure your instructor knows who you are so you can get credit for your work.
 
 ``$ mkdir marie_curie``
 
@@ -97,6 +97,8 @@ Once you are done coding, always a good idea to look at what you have done.
 
 ``$ git status``
 
+Carefully observe new files or files that you have changed to ensure no other files are being committed outside of your student directory.
+
 Committing your changes
 .......................
 
@@ -119,15 +121,17 @@ Since these are the default, you can usually simply do:
 Make a PR
 .........
 
-Go onto GitHub, and make a pull request!
+In high level overview, pull request provides a view to see the difference between a source branch (your fork) and a target branch (the main class repo), this view is used for code reviews and to provide feedback to the author. Keep in mind that this view is not static, meaning any subsequent commits to the source branch will show in this diff view.
 
-here is some gitHub help for that:
+Now go onto GitHub, and make your first pull request (PR)!
+
+Here is some gitHub help for that:
 
 https://help.github.com/articles/creating-a-pull-request-from-a-fork/
 
-You've pushed your own changes to that fork, and then issued pull requests to have that work merged back to the main class repo in (UWPCE-PythonCert-ClassRepos) An instructor will look at your code, make comments and approve your pull request if your work is satisfactory.
+You've pushed your own changes to that fork, and then issued pull requests to have that work merged back to the main class repo in (UWPCE-PythonCert-ClassRepos). An instructor will look at your code, make comments and approve your pull request if your work is satisfactory.
 
-Do that now with just the README, so we can get the class repo all set up, and so that both you and your instructors know you have your gitHub repo all set up correctly.
+Do that now with just the README file, so we can get the class repo all set up, and so that both you and your instructors know you have your gitHub repo all set up correctly.
 
 Starting a new Exercise
 -----------------------
