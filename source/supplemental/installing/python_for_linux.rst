@@ -41,7 +41,7 @@ That's nice, which one is the default version? Just type ``python`` to see. It's
   [GCC 4.9.2 on linux2]
   >>>
 
-If you want to make ``python3.5`` the default version then add the line ``alias python=python3`` to your user's ``/home/{user}/.bashrc`` file like so:
+If you want to make ``python3.5`` the default version then add the line ``alias python=python3`` to your user's ``/home/{user}/.bashrc`` file. You should also do the same for pip and ipython by adding ``alias pip=pip3`` and ``alias ipython=ipython3``, giving the following changes:
 
 .. code-block:: bash
 
@@ -52,6 +52,8 @@ If you want to make ``python3.5`` the default version then add the line ``alias 
   >>>
 
   $ echo "alias python=python3" >> ~/.bashrc
+  $ echo "alias pip=pip3" >> ~/.bashrc
+  $ echo "alias ipython=ipython3" >> ~/.bashrc
   $ source ~/.bashrc
 
   $ # after the change
@@ -59,6 +61,8 @@ If you want to make ``python3.5`` the default version then add the line ``alias 
   Python 3.5.2 (default, March 26 2015, 15:33:32)
   [GCC 4.9.2 on linux]
   >>>
+
+Note: your version number may vary, but it will be a Python 3 version. And you may not have pip and ipython installed yet, but you will as you follow the instructions below.
 
 If you don't have the version you want installed then use the package manager to find and install it:
 
