@@ -38,12 +38,11 @@ There are several ways to write your main program flow. Let's consider these two
 
 
 Can you see the advantages of one example over the other?
-In the first example, ``do_something`` is not aware of how the main works. As you add more features, these will not, and should not, manage the main, either. As you add features to the code in the first example, the call stack will also keep getting deeper and deeper. This can make error stack traces hard to debug.
 
-.. (SOME LOGIC MISSING IN PARAGRAPH ABOVE. BECAUSE CODE DOESN'T MANAGE THE MAIN, YOU NEED TO ADD FEATURES TO THE CALL STACK?)
+In the first one, ``do_something`` is not aware of how the main works and as you add more features they shouldn't manage the main either.
+The call stack will also keep getting deeper and deeper, which can make error stack traces hard to debug.
 
-
-The second example uses simpler code logic, and simpler code logic means fewer bugs!
+Another advantage is simpler code logic, and simpler code logic means less bugs!
 
 Let's look at a simple program to utilize the ``while True`` loop and how we can handle user response:
 
