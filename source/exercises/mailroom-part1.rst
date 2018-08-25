@@ -1,8 +1,8 @@
 .. _exercise_mailroom_part1:
 
 
-Part 1: Establishing The Data Structure (Lesson 3)
-==================================================
+Mailroom Part 1
+================
 
 **Using Python's basic data types and logic for a full program**
 

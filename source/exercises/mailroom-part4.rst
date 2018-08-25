@@ -1,9 +1,7 @@
 .. _exercise_mailroom_part4_testing:
 
-Part 4: Adding Unit Tests  (Lesson 6)
-=====================================
-
-**Test your program after you learn about unit tests in Lesson 6**.
+Mailroom Part 4
+=================
 
 Add a full suite of unit tests.
 
@@ -65,6 +63,20 @@ Send Letters
 This function should require very little or no change to make it unit-testable.
 The unit test can assert that a file is created per donor entry (hint: ``os.path`` module), and that the file content contains text as expected.
 
-Note that you should test the correct text being generated separately from the writting the file. That way you don't need to read the file to know it's correct. So the function that generates the text should be separate from teh function that writes the file.
+Note that you should test the correct text being generated separately from the writing of file. That way you don't need to read the file to know it's correct. So the function that generates the text should be separate from the function that writes the file.
+
+For example:
+
+.. code-block:: python
+
+    def get_letter_text(name):
+        """Get letter text for file content"""
+        return f"{name}, thanks a lot!"
+
+
+    def test_get_letter_text():
+        expected = "Frank, thanks a lot!"
+        assert get_letter_text("Frank") == expected
+
 
 

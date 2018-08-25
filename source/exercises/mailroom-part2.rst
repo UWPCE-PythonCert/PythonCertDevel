@@ -1,10 +1,10 @@
 .. _exercise_mailroom_part2_dict_files:
 
 
-Part 2: Adding dicts and Files (Lesson 4)
-=========================================
+Mailroom Part 2
+=================
 
-**Try this expansion after you've learned about dictionaries in Lesson 5**.
+Incorporate file writing and dictionary use.
 
 Use dicts where appropriate.
 ----------------------------
