@@ -4,7 +4,6 @@
 Mailroom: A complete program
 ############################
 
-.. Once you complete revisions on this assignment, the text changes should be copied over to the edX assignments as part of the revision.
 
 Part 1: Establishing The Data Structure (Lesson 3)
 ==================================================
@@ -98,147 +97,6 @@ Put your main interaction into an ``if __name__ == '__main__'`` block.
 
 Finally, for Part 1 use only functions and the basic Python data types you've learned
 about so far in Lessons 1-3. There is no need to go any farther than that for this assignment.
-
-Intro Tutorial
---------------
-
-Controlling Main Program Flow
-..............................
-
-One of the key components of the mailroom program is managing program flow and interacting with the user. Ideally main flow code should be cleanly separate from your feature code.
-
-The best way to manage the program flow is to use a ``while True`` loop, which means you will keep asking the user for input until user selects a feature or exits.
-
-There are several ways to write your main program flow. Let's consider these two options:
-
-
-.. code-block:: python
-
-    def do_something():
-        # do things
-
-    def main():
-        while True:
-            do_something()
-
-    main()
-
-
-
-
-.. code-block:: python
-
-    def do_something()
-        # do things
-        main()
-
-    def main():
-        do_something()
-
-    main()
-
-
-Can you see the advantages of one example over the other?
-In the first example, ``do_something`` is not aware of how the main works. As you add more features, these will not, and should not, manage the main, either. As you add features to the code in the first example, the call stack will also keep getting deeper and deeper. This can make error stack traces hard to debug.
-
-.. (SOME LOGIC MISSING IN PARAGRAPH ABOVE. BECAUSE CODE DOESN'T MANAGE THE MAIN, YOU NEED TO ADD FEATURES TO THE CALL STACK?)
-
-
-The second example uses simpler code logic, and simpler code logic means fewer bugs!
-
-Let's look at a simple program to utilize the ``while True`` loop and how we can handle user response:
-
-.. code-block:: python
-
-    import sys  # imports go at the top of the file
-
-
-    fruits = ['Apples', 'Oranges', 'Pears']
-
-    prompt = "\n".join(("Welcome to the fruit stand!",
-              "Please choose from below options:",
-              "1 - View fruits",
-              "2 - Add a fruit",
-              "3 - Remove a fruit",
-              "4 - Exit",
-              ">>> "))
-
-
-    def view_fruits():
-        print("\n".join(fruits))
-
-
-    def add_fruit():
-        new_fruit = input("Name of the fruit to add?").title()
-        fruits.append(new_fruit)
-
-
-    def remove_fruit():
-        purge_fruit = input("Name of the fruit to remove?").title()
-        if purge_fruit not in fruits:
-            print("This fruit does not exist!")
-        else:
-            fruits.remove(purge_fruit)
-
-    def exit_program():
-        print("Bye!")
-        sys.exit()  # exit the interactive script
-
-
-    def main():
-        while True:
-            response = input(prompt)  # continuously collect user selection
-            # now redirect to feature functions based on the user selection
-            if response == "1":
-                view_fruits()
-            elif response == "2":
-                add_fruit()
-            elif response == "3":
-                remove_fruit()
-            elif response == "4":
-                exit_program()
-            else:
-                print("Not a valid option!")
-
-
-    if __name__ == "__main__":
-        # don't forget this block to guard against your code running automatically if this module is imported
-        main()
-
-
-
-Choosing A Data Structure
-.........................
-
-
-So far in this course, we have learned about strings, tuples, and lists. We will apply these data structures to hold our mailroom donor information.
-Choosing the right data structure is critical and our donor data structure will change in Parts 2 and 3 of this assignment as we learn about additional structures.
-
-What goes into this decision to use a specific data structure? Here are a couple of things to consider.
-
-* Efficiency: We often need to look up data; are you able to efficiently look up the data you need?
-* Ease of use: Is the code straightforward and simple for basic operations?
-* Features: Does the code do everything you need to do for your requirements?
-
-Let's consider each data structure.
-
-A simple string would probably be able to do what we need feature-wise but the code to implement these features would be quite complex and not very efficient.
-
-A tuple would be an issue when adding donors since it is an immutable data structure.
-
-A list would satisfy all of the needed features with a fairly simple code to implement. It makes the most sense to use a list for the main data structure. Actually, we can use a combination of both tuples and a list.
-
-Here is a potential data structure to consider:
-
-.. code-block:: python
-
-    donor_db = [("William Gates, III", [653772.32, 12.17]),
-                ("Jeff Bezos", [877.33]),
-                ("Paul Allen", [663.23, 43.87, 1.32]),
-                ("Mark Zuckerberg", [1663.23, 4300.87, 10432.0]),
-                ]
-
-Why choose tuples for the inner donor record? Well, another part of using the right data structure is to reduce bugs; you are setting clear expectations that a single donor entry only contains two items.
 
 Submission
 ----------
@@ -402,15 +260,12 @@ You should have 3 main features so far:
 * Create a report
 * Send letters, which creates files
 
-.. The first point "Send a thank you" seems confusing: it sounds like sending a thank you letter automatically adds a new donor to your data or updates your donor info. This doesn't seem to be explained. I thought that adding a donor was a separate function from sending letters to a single donor or to all donoors.
 
 Send Thank You
 ...............
 
 Even though every mailroom implementation will be unique, most likely this function will require a significant refactor for most of you.
 You can break up the code into components that handle user flow and data manipulation logic. Write your unit tests for data manipulation logic, including functionality for adding or updating donors, and for listing donors.
-
-.. Did my best to re-write sentence above; it seemed very unclear to me. My apologies for introducing errors. Part of my job is to stand in for the students slowest to understand your directions.
 
 
 Create Report
