@@ -38,7 +38,7 @@ Lesson 3: Booleans, Sequences, Iteration, and Strings
     slicing.rst
     list_lab.rst
     string_formatting.rst
-    mailroom.rst
+    mailroom-part1.rst
 
 
 Lesson 4: Dictionaries, Sets, and Files
@@ -50,8 +50,7 @@ Lesson 4: Dictionaries, Sets, and Files
     dict_lab.rst
     file_lab.rst
     kata_fourteen.rst
-
-* :ref:`exercise_mailroom_plus`
+    mailroom-part2.rst
 
 
 Lesson 5: Exceptions, Modules, and Comprehensions
@@ -63,8 +62,7 @@ Lesson 5: Exceptions, Modules, and Comprehensions
     exceptions_lab.rst
     except_exercise.rst
     comprehensions_lab.rst
-
-* :ref:`exercise_mailroom_exceptions`
+    mailroom-part3.rst
 
 
 Lesson 6: Unit Testing and Advanced Argument Passing
@@ -75,8 +73,7 @@ Lesson 6: Unit Testing and Advanced Argument Passing
 
     unit_testing.rst
     args_kwargs_lab.rst
-
-* :ref:`exercise_mailroom_testing`
+    mailroom-part4.rst
 
 
 Lesson 7: Intro to Object Oriented Programing
