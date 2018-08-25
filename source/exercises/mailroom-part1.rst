@@ -8,7 +8,10 @@ Mailroom Part 1
 
 **Assignment Structure:**
 
-This assignment is designed in three parts that will make use of your skills as you develop them during this course. You will complete and submit Part 1 for your homework in Lesson 3. You will continue to add functionality to your program in the following weeks, tackling and submitting Part 2 for Lesson 4,  Part 3 for Lesson 5, and Part 4 for Lesson 6. This progressive work will give you a strong foundation for success the final project, a Mailroom program using object-oriented programming (Lesson 9).
+This assignment is designed in three parts that will make use of your skills as you develop them during this course.
+You will complete and submit Part 1 for your homework in Lesson 3. You will continue to add functionality to your program in the following weeks,
+tackling and submitting Part 2 for Lesson 4,  Part 3 for Lesson 5, and Part 4 for Lesson 6.
+This progressive work will give you a strong foundation for success in the final projects, a Mailroom program using object-oriented programming (Lesson 9) and functional Mailroom in Lesson 10.
 
 
 Program Goal:
