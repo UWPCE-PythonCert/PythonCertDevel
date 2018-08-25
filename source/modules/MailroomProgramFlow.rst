@@ -1,3 +1,5 @@
+.. _exercise_mailroom_part1_tutorial:
+
 Mailroom Part 1 Tutorial
 -------------------------
 
