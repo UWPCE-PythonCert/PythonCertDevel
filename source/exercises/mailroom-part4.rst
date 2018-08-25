@@ -37,7 +37,7 @@ Send Thank You
 ...............
 
 Even though every mailroom implementation will be unique, most likely this function will require a significant refactor for most of you.
-You can break up the code into components that handle user flow and data manipulation logic. Write your unit tests for data manipulation logic, including functionality for adding or updating donors, and for listing donors.
+You can break up the code into components that handle user flow and data manipulation logic. Your unit tests should test the data manipulation logic code: thank you text, adding or updating donors, and listing donors.
 
 
 Create Report
