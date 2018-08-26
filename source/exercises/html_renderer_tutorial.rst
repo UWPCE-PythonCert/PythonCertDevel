@@ -15,7 +15,9 @@ Step 1:
 
 Step one is a biggie -- that's 'cause you need a fair bit all working before you can actually have anything to test, really. But let's take it bit by bit.
 
-First, we are doing test driven development, and we already have a test or two. So let's run those, and see what we get:
+First, we are doing test driven development, and we already have a test or two. So let's run those, and see what we get.
+
+You should now be in a terminal with the current working directory set to where you downloaded ``html_render.py`` and ``test_html_render.py``. If you run pytest, it will find the ``test_html_render.py`` file and run the tests in it:
 
 .. code-block:: bash
 
@@ -276,7 +278,7 @@ Now run the tests again::
 
     =========================== 3 passed in 0.02 seconds ===========================
 
-Whoo Hoo!  All tests pass! But wait, there's more -- comprehensive testing is difficult -- we tested that you could initialize the elemnt with one piece of content, and then add another.  But what if you initialized it with nothing, and then added some?  Uncomment the next test: ``test_render_element2`` -- and see what you get.
+Whoo Hoo!  All tests pass! But wait, there's more -- comprehensive testing is difficult -- we tested that you could initialize the element with one piece of content, and then add another.  But what if you initialized it with nothing, and then added some?  Uncomment the next test: ``test_render_element2`` -- and see what you get.
 
 This is what I got with my code::
 
@@ -554,7 +556,7 @@ Uncomment ``test_subelement`` in the test file, and run the tests::
     html_render.py:26: TypeError
     ====================== 1 failed, 7 passed in 0.11 seconds ======================
 
-Again, the new test failed -- no surprise, we haven't written any new code yes. But do read the report carefully -- it did not fail on an assert -- but rather with a ``TypeError``.  The code itself raised an exception before it could produce results to test.
+Again, the new test failed -- no surprise, we haven't written any new code yet. But do read the report carefully -- it did not fail on an assert -- but rather with a ``TypeError``.  The code itself raised an exception before it could produce results to test.
 
 So now it's time to write the code -- look at where the exception was raised: line 26 in my code, inside the ``render()`` method. The line number will likely be different in your code, but it probably failed on the render method. Looking closer at the error::
 
@@ -647,13 +649,13 @@ Whoaa! six failures! We really broke something! But that is a *good* thing -- it
 
 So let's see if we can fix these tests, while still allowing us to add the feature we intended to add.
 
-Again -- look carefully at the error, and the solution might pop out at us::
+Again -- look carefully at the error, and the solution might pop out at you::
 
     >           content.render(out_file)
     E           AttributeError: 'str' object has no attribute 'render'
 
 Now we are trying to call a piece of content's ``render`` method, but we got a simple string, which does not *have* a ``render`` method.
-This is the challenge of this part of teh excercise -- it's easy to render a string, and it's easy to render an element, but the content list could have either one -- so how do we switch between the two methods?
+This is the challenge of this part of the exercise -- it's easy to render a string, and it's easy to render an element, but the content list could have either one -- so how do we switch between the two methods?
 
 There are a number of approaches you can take. This is a good time to read the notes about this here: :ref:`notes_on_handling_duck_typing`.
 You may want to try one of the more complex methods -- but for now, we're going to use the one that suggests itself from the error.
@@ -835,13 +837,14 @@ which is what we expected -- we haven't written a new render method yet.  But lo
   pytest is pretty slick with this. It "Captures" the output from print calls, etc, and then only shows them to you if a test fails.
   So you can sprinkle print calls into your tests, and it won't clutter the output -- you'll only see it when a test fails, which is when you need it.
 
-This is a good exercise to go through -- if a new test fails, it lets you know that it is indeed working -- testing what it is supposed to test.
+This is a good exercise to go through -- if a new test fails, it lets you know that the test itself is working -- testing what it is supposed to test.
 
 So how do we get this test to pass? We need a new render method for ``OneLineTag``.  For now, you can copy the render method from ``Element`` to ``OneLineTag``, and remove the newlines:
 
 .. code-block:: python
 
     class OneLineTag(Element):
+
         def render(self, out_file):
             # loop through the list of contents:
             for content in self.contents:
@@ -920,7 +923,7 @@ and run the tests::
     html_render.py:57: NotImplementedError
     ===================== 1 failed, 10 passed in 0.09 seconds ======================
 
-hmm -- it raised a NotImplementedError, whih is what we want -- but it is logging as a test failure.  An exception raised in a test is going to cause a failure -- but what we want is for the test to pass only *if* that exception is raised.
+hmm -- it raised a NotImplementedError, which is what we want -- but it is logging as a test failure.  An exception raised in a test is going to cause a failure -- but what we want is for the test to pass only *if* that exception is raised.
 Fortunately, pytest has a utility to do just that. make sure there is an ``import pytest`` in your test file, and then add this code:
 
 .. code-block:: python
@@ -933,14 +936,50 @@ Fortunately, pytest has a utility to do just that. make sure there is an ``impor
         with pytest.raises(NotImplementedError):
             e.append("some more content")
 
-that ``with`` is a "context manager" (kind of like the file open one). More on that later in the course, but what this means is that the test will pass if an only if the code inside that ``with`` block raised a ``NotImplementedError``.  If it raises something else, or it doesn't raise an exception at all -- then the test will fail.
+That ``with`` is a "context manager" (kind of like the file ``open()`` one). More on that later in the course, but what this means is that the test will pass if and only if the code inside that ``with`` block raised a ``NotImplementedError``.  If it raises something else, or it doesn't raise an exception at all -- then the test will fail.
 
 OK -- I've got 11 tests passing now. How about you? Time for the next step.
 
 .. _render_tutorial_4:
 
+
 Step 4.
 -------
+
+From the exercise instructions:
+
+"Extend the ``Element`` class to accept a set of attributes as keywords to the constructor, e.g. ``run_html_render.py``"
+
+If you don't know what attributes of an element are, read up a bit more on html on the web, and/or take another look at :ref:`html_primer`. But in short, attributes are a way to "customize" an element -- give it some extra information. The syntax looks like this::
+
+    <p style="text-align: center" id="intro">
+
+Inside the opening tag, there is the tag name, then a space, then the attributes separated by spaces. Each attribute is a ``name="value"`` pair, with the name in plain text, and the value in quotes.
+
+Note that these name:value pairs look a lot like python keyword arguments, which lends itself to an initialization signature. For the above example, we would create the element like so:
+
+.. code-block:: python
+
+  el = P("A paragraph of text", style="text-align: center", id="intro")
+
+Which should result in the following html::
+
+    <p style="text-align: center" id="intro">
+    a paragraph of text
+    </p>
+
+
+Now that we know how to initialize an element with attributes, and how it should get rendered, we can write a test that will check if the attributes are rendered correctly. Something like:
+
+.. code-block:: python
+
+
+
+
+
+
+
+
 
 
 
