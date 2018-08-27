@@ -278,7 +278,112 @@ Now run the tests again::
 
     =========================== 3 passed in 0.02 seconds ===========================
 
-Whoo Hoo!  All tests pass! But wait, there's more -- comprehensive testing is difficult -- we tested that you could initialize the element with one piece of content, and then add another.  But what if you initialized it with nothing, and then added some?  Uncomment the next test: ``test_render_element2`` -- and see what you get.
+Whoo Hoo!  All tests pass! But wait, there's more. Comprehensive testing is difficult. We tested that you could initialize the element with one piece of content, and then add another, and we checked that the opening and closing tag are there correctly. But is it actually rendering correctly? We may not have tested for everything. So we should take a look at the results, and see how it's doing. My trick for this is to print what I want to see in the test::
+
+    print(file_contents)
+
+and add a forced test failure at the end of the test, so we'll see that print::
+
+    assert False
+
+And let's run it::
+
+    =================================== FAILURES ===================================
+    _____________________________ test_render_element ______________________________
+
+        def test_render_element():
+            """
+            Tests whether the Element can render two pieces of text
+            So it is also testing that the append method works correctly.
+
+            It is not testing whether indentation or line feeds are correct.
+            """
+            e = Element("this is some text")
+            e.append("and this is some more text")
+
+            # This uses the render_results utility above
+            file_contents = render_result(e).strip()
+            print(file_contents)
+            # making sure the content got in there.
+            assert("this is some text") in file_contents
+            assert("and this is some more text") in file_contents
+
+            # make sure it's in the right order
+            assert file_contents.index("this is") < file_contents.index("and this")
+
+            # making sure the opening and closing tags are right.
+            assert file_contents.startswith("<html>")
+            assert file_contents.endswith("</html>")
+    >       assert False
+    E       assert False
+
+    test_html_render.py:82: AssertionError
+    ----------------------------- Captured stdout call -----------------------------
+    <html>
+    this is some text
+    </html>
+    <html>
+    and this is some more text
+    </html>
+
+It failed on the assert False -- good sign, it didn't fail before that.  We can now look at the results we printed, and whoops! we actually got *two* html elements, rather than one with two pieces of content. Why is that? Before you look at the code again, let's make sure the test catches that and fails. How about this?
+
+.. code-block::
+
+    assert file_contents.count("<html>") == 1
+    assert file_contents.count("</html>") == 1
+
+And it does indeed fail on this line::
+
+    >       assert file_contents.count("<html>") == 1
+    E       AssertionError: assert 2 == 1
+    E        +  where 2 = <built-in method count of str object at 0x103967030>('<html>')
+    E        +    where <built-in method count of str object at 0x103967030> = '<html>\nthis is some text\n</html>\n<html>\nand this is some more text\n</html>'.count
+
+    test_html_render.py:83: AssertionError
+
+Now that we know we can test for the issue -- we can try ot fix it, and we'll know it's fixed when the tests pass.
+
+So looking at the code -- why did I get two ``<html>`` tags?
+
+.. code-block:: python
+
+    def render(self, out_file):
+        # loop through the list of contents:
+        for content in self.contents:
+            out_file.write("<{}>\n".format(self.tag))
+            out_file.write(content)
+            out_file.write("\n")
+            out_file.write("</{}>\n".format(self.tag))
+
+Hmm -- when are those tags getting rendered? *inside* the loops through the contents! oops! we want to write the tag *before* the loop, and the closing tag *after* loop. (Did you notice that the first time? I hope so.) So a little restructuring is in order.
+
+.. code-block:: python
+
+    def render(self, out_file):
+        # loop through the list of contents:
+        out_file.write("<{}>\n".format(self.tag))
+        for content in self.contents:
+            out_file.write(content)
+            out_file.write("\n")
+        out_file.write("</{}>\n".format(self.tag))
+
+That's it -- let's see if the tests pass now::
+
+
+    >       assert False
+    E       assert False
+
+    test_html_render.py:86: AssertionError
+    ----------------------------- Captured stdout call -----------------------------
+    <html>
+    this is some text
+    and this is some more text
+    </html>
+
+mine failed on the ``assert False`` -- so the actual test passed -- good. And the rendered html tag looks right, too. So we can go ahead and remove that ``assert False``, and move on!
+
+We have tested to see that we could initialize with one piece of content, and then add another, but what if you initialized it with nothing, and then added some?  Try uncommenting the next test: ``test_render_element2`` -- and see what you get.
 
 This is what I got with my code::
 
@@ -474,7 +579,7 @@ Let's  run the tests and see if this worked::
 
     =========================== 7 passed in 0.02 seconds ===========================
 
-Success!. WE now have three different tags.
+Success!. We now have three different tags.
 
 .. note::
   Why the ``Html`` element? doesn't the ``Element`` class already use the "html" tag?
@@ -972,6 +1077,91 @@ Which should result in the following html::
 Now that we know how to initialize an element with attributes, and how it should get rendered, we can write a test that will check if the attributes are rendered correctly. Something like:
 
 .. code-block:: python
+
+    def test_attributes():
+        e = P("A paragraph of text", style="text-align: center", id="intro")
+
+        file_contents = render_result(e).strip()
+        print(file_contents)  # so we can see it if the test fails
+
+        # note: The previous tests should make sure that the tags are getting
+        #       properly rendered, so we don't need to test that here.
+        #       so using only a "P" tag is fine
+        assert "A paragraph of text" in file_contents
+        # but make sure the embedded element's tags get rendered!
+        # first test the end tag is there -- same as always:
+        assert file_contents.endswith("</p>")
+
+        # but now the opening tag is far more complex
+        # but it starts the same:
+        assert file_contents.startswith("<p")
+
+Note that this doesn't (yet) test that the attributes are actually rendered, but it does test that you can pass them in to constructor. What happens when we run this test? ::
+
+    =================================== FAILURES ===================================
+    _______________________________ test_attributes ________________________________
+
+        def test_attributes():
+    >       e = P("A paragraph of text", style="text-align: center", id="intro")
+    E       TypeError: __init__() got an unexpected keyword argument 'style'
+
+    test_html_render.py:217: TypeError
+    ===================== 1 failed, 11 passed in 0.19 seconds ======================
+
+Yes, the new test failed -- isn't TDD a bit hard on the ego? So many failures! But why? well, we passed in the ``style`` and ``id`` attributes as keyword arguments -- but the ``__init__`` doesn't expect those arguments -- hence the failure.
+
+So should be add those two as keyword parameters? Well, no we shouldn't -- because those are two arbitrary attribute names -- we need to support virtually any attribute name. So how do you write a method that will accept ANY keyword argument? Time for our old friend ``**kwargs``. ``**kwargs**`` will allow any keyword argument to be used, and will store them in the ``kwargs`` dict. So time to update the ``Element.__init__`` like so:
+
+.. code-block:: python
+
+    def __init__(self, content=None, **kwargs):
+
+But then, make sure to *do* something with the ``kwargs`` dict -- you need to store those somewhere. Remember that they are a collection of attribute names and values -- and you will need them again when it's time to render the opening tag. How do you store something so that it can be used in another method? I'll leave that as an exercise for the reader.
+
+And lets try to run the tests again::
+
+    ========================== 12 passed in 0.07 seconds ===========================
+
+They passed! Great, but did we test whether the attributes get rendered in the tag correctly? No -- not yet, let's make sure to add that.  It may be helpful to add and ``assert False`` in there, so we can see what our tag looks like while we work on it::
+
+    ...
+           assert False
+    E       assert False
+
+    test_html_render.py:243: AssertionError
+    ----------------------------- Captured stdout call -----------------------------
+    <p>
+    A paragraph of text
+    </p>
+    ===================== 1 failed, 11 passed in 0.11 seconds ======================
+
+OK, so we have a regular old <p> element -- no attributes at all -- no surprise here.  Let's first add a couple tests for the attributes:
+
+.. code-block:: python
+
+    # order of the tags is not important in html, so we need to
+    # make sure not to test for that
+    # but each attribute should be there:
+    assert 'style="text-align: center"' in file_contents
+    assert 'id="intro"' in file_contents
+
+We know the tests will fail -- so let's go straight to the code. We need to update our ``render()`` method to put the attributes in the opening tag. Let's remind ourselves what this needs to look like::
+
+    <p style="text-align: center" id="intro">
+
+So we need to render the ``<``, then the ``p``, then a bunch of attribute name=value pairs. Let's start with breaking up the rendering of the opening tag, and make sure the existing tests still pass.
+
+.. code-block:: python
+
+    def render(self, out_file):
+        # loop through the list of contents:
+        open_tag = ["<{}".format(self.tag)]
+        open_tag.append(">\n")
+        out_file.write("".join(open_tag))
+        ...
+
+OK -- tests still passing for me.
+
 
 
 

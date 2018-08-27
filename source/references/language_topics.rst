@@ -239,3 +239,16 @@ http://docopt.org/
 
 http://click.pocoo.org/
 
+
+Network Programming
+===================
+
+Sockets
+-------
+
+Sockets are the lower-level backbone of internet programming -- underneith http and all that. And working directly with sockets has gotten more popular with the advetn of WebSockets. So good to have a bit of an understanding of them:
+
+Here's a nice into / tutorial:
+
+https://realpython.com/python-sockets/
+
