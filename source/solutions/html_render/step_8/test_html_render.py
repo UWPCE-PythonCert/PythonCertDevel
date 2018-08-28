@@ -312,7 +312,7 @@ def test_attributes_one_line_tag():
 
 
 def test_br():
-    br = Br("")
+    br = Br()
     file_contents = render_result(br)
     print(file_contents)
     assert file_contents == "<br />"
