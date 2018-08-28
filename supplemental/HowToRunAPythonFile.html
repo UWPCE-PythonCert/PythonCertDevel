@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>How to run a python file &mdash; PythonCert 4.0 documentation</title>
+  <title>How to run a python file &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
+    <link rel="top" title="PythonCert 5.0 documentation" href="../index.html"/>
         <link rel="up" title="Supplemental Materials" href="index.html"/>
         <link rel="next" title="Installing Python and core tools" href="installing/index.html"/>
         <link rel="prev" title="Supplemental Materials" href="index.html"/> 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -95,10 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Topic Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Supplemental Materials</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">How to run a python file</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#making-sure-you-are-set-up-correctly">Making sure you are set up correctly</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">How to run a python file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installing/index.html">Installing Python and core tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dev_environment/index.html">Setting Up A Development Environment For Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#specific-python-notes">Specific Python Notes</a></li>
@@ -175,66 +172,39 @@
 <span id="id1"></span><h1>How to run a python file<a class="headerlink" href="#how-to-run-a-python-file" title="Permalink to this headline">¶</a></h1>
 <p>A file with python code in it is a ‘module’ or ‘script’</p>
 <p>(more on the distinction later on…)</p>
-<p>It should be named with the <code class="docutils literal"><span class="pre">.py</span></code> extension: <code class="docutils literal"><span class="pre">some_name.py</span></code></p>
+<p>It should be named with the <code class="docutils literal notranslate"><span class="pre">.py</span></code> extension: <code class="docutils literal notranslate"><span class="pre">some_name.py</span></code></p>
 <p>If you want to run the code directly (it is a script), you have a couple options:</p>
 <ol class="arabic simple">
 <li>call python on the command line, and pass in your module name</li>
 </ol>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python the_name_of_the_script.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python3 the_name_of_the_script.py
 </pre></div>
 </div>
 <ol class="arabic" start="2">
 <li><p class="first">On *nix (linux, OS-X, Windows bash), you can make the file “executable”:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">the_file</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ chmod +x the_file.py
 </pre></div>
 </div>
-<p>And make sur it has a “shebang” line at the top:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<p>And make sure it has a “shebang” line at the top:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 </pre></div>
 </div>
 <p>Then you can run it directly:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">the_file</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">the_file</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">On Windows, the <cite>.py</cite> extensions can be associated with the python interpreter, so it can be run directly. This is clunkier than the *nix “shebang line” approach, so don’t recommend it – but it is an option.</p>
+<li><p class="first">On Windows, the <cite>.py</cite> extensions can be associated with the python interpreter, so it can be run directly. This is clunkier than the *nix “shebang line” approach, so I don’t recommend it – but it is an option.</p>
 </li>
-<li><p class="first">run <code class="docutils literal"><span class="pre">ipython</span></code>, and run it from within iPython with the <code class="docutils literal"><span class="pre">run</span></code> command</p>
+<li><p class="first">run <code class="docutils literal notranslate"><span class="pre">ipython</span></code>, and run it from within iPython with the <code class="docutils literal notranslate"><span class="pre">run</span></code> command</p>
 </li>
 </ol>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">run</span> <span class="n">the_file</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">run</span> <span class="n">the_file</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li>Various IDEs (PyCharm, IDLE, etc) have a way to run the module you are currently editing – if you use one of these tools, learn how to do that. Make sure that it is using the Python that you want it to be.</li>
+<li>Various IDEs (PyCharm, IDLE, etc) have a way to run the module you are currently editing – if you use one of these tools, learn how to do that. Make sure that it is using the version of Python that you want it to be.</li>
 </ol>
-<div class="section" id="making-sure-you-are-set-up-correctly">
-<h2>Making sure you are set up correctly<a class="headerlink" href="#making-sure-you-are-set-up-correctly" title="Permalink to this headline">¶</a></h2>
-<p>Create a file called <code class="docutils literal"><span class="pre">install_test.py</span></code>, with the following content:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
-
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;This is my first python program&quot;</span><span class="p">)</span>
-
-<span class="n">version</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span>
-
-<span class="k">if</span> <span class="n">version</span><span class="o">.</span><span class="n">major</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">version</span><span class="o">.</span><span class="n">minor</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;You should be running version 3.6&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;You are running python3.6 -- all good!&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;You need to run Python 3!&quot;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;This is version: {}.{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version</span><span class="o">.</span><span class="n">major</span><span class="p">,</span> <span class="n">version</span><span class="o">.</span><span class="n">minor</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>Run it with your version of python by one (or more) of the above methods. It should result in:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>This is my first python program
-You are running python3.6 -- all good!
-</pre></div>
-</div>
-<p>If you get something else – figure out why and fix it!</p>
-</div>
 </div>
 
 
@@ -259,7 +229,7 @@ You are running python3.6 -- all good!
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
@@ -281,7 +251,7 @@ You are running python3.6 -- all good!
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

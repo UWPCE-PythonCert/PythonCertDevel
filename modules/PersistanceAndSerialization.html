@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Persistence and Serialization &mdash; PythonCert 4.0 documentation</title>
+  <title>Persistence and Serialization &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -35,10 +35,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
+    <link rel="top" title="PythonCert 5.0 documentation" href="../index.html"/>
         <link rel="up" title="Topic Notes" href="index.html"/>
-        <link rel="next" title="No SQL Databases" href="NoSQL.html"/>
-        <link rel="prev" title="Metaprogramming" href="MetaProgramming.html"/> 
+        <link rel="next" title="Exercises" href="../exercises/index.html"/>
+        <link rel="prev" title="Packages and Packaging" href="Packaging.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -94,18 +94,11 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Topic Notes</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="index.html#py210-introduction-to-python">Py210: Introduction to Python</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="CodeReviews.html">Code Reviews</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Closures.html">Closures and Function Currying</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Decorators.html">Decorators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ContextManagers.html">Context Managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#assorted-additional-topics">Assorted Additional Topics</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="Pep8.html">Coding Style and Linting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Testing_advanced.html">Testing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Logging.html">Logging and the logging module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Debugging.html">Debugging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="MetaProgramming.html">Metaprogramming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CodeReviews.html">Code Reviews</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Persistence and Serialization</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id1">Serialization</a></li>
@@ -120,13 +113,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#other-options">Other Options</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="NoSQL.html">No SQL Databases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="GraphDatabases.html">Graph Databases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Concurrency.html">Concurrent Programming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ThreadingMultiprocessing.html">Threading and multiprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Coroutines.html">Notes on Coroutines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Profiling.html">Performance and Profiling</a></li>
 </ul>
 </li>
 </ul>
@@ -236,14 +222,14 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS, etc.)</p>
 <p>Gives a nice, human-editable form for config files, etc.</p>
 <p>Don’t use for untrusted sources!!!</p>
 <p>Good for basic python types.</p>
-<p>(can work for your own classes, too – if you write a good <code class="docutils literal"><span class="pre">__repr__</span></code> )</p>
-<p>In theory, <code class="docutils literal"><span class="pre">repr()</span></code> always gives a form that can be re-constructed.</p>
-<p>Often the <code class="docutils literal"><span class="pre">str()</span></code> form works too.</p>
-<p><code class="docutils literal"><span class="pre">pprint</span></code>  (pretty print) module can make it easier to read:</p>
+<p>(can work for your own classes, too – if you write a good <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> )</p>
+<p>In theory, <code class="docutils literal notranslate"><span class="pre">repr()</span></code> always gives a form that can be re-constructed.</p>
+<p>Often the <code class="docutils literal notranslate"><span class="pre">str()</span></code> form works too.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pprint</span></code>  (pretty print) module can make it easier to read:</p>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/pprint.html">https://docs.python.org/3.5/library/pprint.html</a></p>
 <div class="section" id="python-literal-example">
 <h4>Python Literal Example<a class="headerlink" href="#python-literal-example" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="go"># a list of dicts</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go"># a list of dicts</span>
 <span class="go">data = [{&#39;this&#39;:5, &#39;that&#39;:4}, {&#39;spam&#39;:7, &#39;eggs&#39;:3.4}]</span>
 <span class="gp">In [51]: </span><span class="n">s</span> <span class="o">=</span> <span class="nb">repr</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># save a string version:</span>
 <span class="gp">In [52]: </span><span class="n">data2</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="c1"># re-construct with eval:</span>
@@ -253,18 +239,18 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS, etc.)</p>
 <span class="gh">Out[54]: </span><span class="go">False</span>
 </pre></div>
 </div>
-<p>You can save the string to a file and even use <code class="docutils literal"><span class="pre">import</span></code>.</p>
+<p>You can save the string to a file and even use <code class="docutils literal notranslate"><span class="pre">import</span></code>.</p>
 <p>In fact, using a python file and importing it is a great way to handle configuration for your app – very powerful and flexible.</p>
-<p>NOTE: <code class="docutils literal"><span class="pre">eval()</span></code> is <strong>DANGEROUS</strong>:</p>
-<p>Not so bad if you know where your data is coming from, but <code class="docutils literal"><span class="pre">eval()</span></code> will run any code it gets, even:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<p>NOTE: <code class="docutils literal notranslate"><span class="pre">eval()</span></code> is <strong>DANGEROUS</strong>:</p>
+<p>Not so bad if you know where your data is coming from, but <code class="docutils literal notranslate"><span class="pre">eval()</span></code> will run any code it gets, even:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;cd /; rm -rf *&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You really don’t want that run on your machine!</p>
 <p>The alternative:</p>
 <blockquote>
-<div><p><code class="docutils literal"><span class="pre">ast.literal_eval</span></code> is safer than eval:</p>
+<div><p><code class="docutils literal notranslate"><span class="pre">ast.literal_eval</span></code> is safer than eval:</p>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/ast.html#ast-helpers">https://docs.python.org/3.5/library/ast.html#ast-helpers</a></p>
 </div></blockquote>
 <p>It will only evaluate literals.</p>
@@ -272,7 +258,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS, etc.)</p>
 </div>
 <div class="section" id="pretty-print">
 <h3>pretty print<a class="headerlink" href="#pretty-print" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [68]: </span><span class="n">data</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;this&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;that&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;eggs&#39;</span><span class="p">:</span> <span class="mf">3.4</span><span class="p">,</span> <span class="s1">&#39;spam&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">},</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [68]: </span><span class="n">data</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;this&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;that&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;eggs&#39;</span><span class="p">:</span> <span class="mf">3.4</span><span class="p">,</span> <span class="s1">&#39;spam&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">},</span>
 <span class="go">         {&#39;foo&#39;: 86, &#39;bar&#39;: 4.5}, {&#39;fun&#39;: 43, &#39;baz&#39;: 6.5}]</span>
 <span class="gp">In [69]: </span><span class="kn">import</span> <span class="nn">pprint</span>
 <span class="gp">In [71]: </span><span class="nb">repr</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -291,7 +277,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS, etc.)</p>
 <h3>Pickle<a class="headerlink" href="#pickle" title="Permalink to this headline">¶</a></h3>
 <p>Pickle is a custom binary format for python objects.</p>
 <p>You can essentially dump any python object to disk (or string, or socket, or…</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [87]: </span><span class="kn">import</span> <span class="nn">pickle</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [87]: </span><span class="kn">import</span> <span class="nn">pickle</span>
 <span class="gp">In [83]: </span><span class="n">data</span>
 <span class="gh">Out[83]:</span>
 <span class="go">[{&#39;that&#39;: 4, &#39;this&#39;: 5},</span>
@@ -307,7 +293,7 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS, etc.)</p>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/pickle.html">https://docs.python.org/3.5/library/pickle.html</a></p>
 <p><strong>Warning</strong></p>
 <p>The pickle module is <strong>not secure</strong> against erroneous or maliciously constructed data. Never unpickle data received from an untrusted or unauthenticated source.</p>
-<p><code class="docutils literal"><span class="pre">pickle</span></code> is cool because it can serialize virtually ANY object – including your self-defined classes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pickle</span></code> is cool because it can serialize virtually ANY object – including your self-defined classes.</p>
 <p>But to do this, it must run essentially arbitrary code – so <strong>not safe</strong>.</p>
 <p>Do not use it for receiving data from an external source.</p>
 <p>But you probably won’t want to do that anyway – pickle is python-specific, not very useful for data interchange.</p>
@@ -317,10 +303,10 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS, etc.)</p>
 <p>A “shelf” is a persistent, dictionary-like object.</p>
 <p>(It’s also a place you can put a jar of pickles…)</p>
 <p>The values (not the keys!) can be essentially arbitrary Python objects (anything picklable)</p>
-<p><strong>NOTE:</strong> it will not reflect changes in mutable objects without re-writing them to the db. (or use <code class="docutils literal"><span class="pre">writeback=True</span></code>)</p>
+<p><strong>NOTE:</strong> it will not reflect changes in mutable objects without re-writing them to the db. (or use <code class="docutils literal notranslate"><span class="pre">writeback=True</span></code>)</p>
 <p>If less that 100s of MB – just use a dict and pickle it.</p>
-<p><code class="docutils literal"><span class="pre">shelve</span></code>  presents a <code class="docutils literal"><span class="pre">dict</span></code>  interface:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shelve</span>
+<p><code class="docutils literal notranslate"><span class="pre">shelve</span></code>  presents a <code class="docutils literal notranslate"><span class="pre">dict</span></code>  interface:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shelve</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 <span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>   <span class="c1"># store data at key</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>   <span class="c1"># retrieve a COPY of data at key</span>
@@ -335,11 +321,11 @@ a file), but not all persistence mechanisms are serial (i.e RDBMS, etc.)</p>
 <div class="section" id="lab">
 <h3>LAB<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h3>
 <p>Here are two datasets embedded in Python:</p>
-<p><a class="reference download internal" href="../_downloads/add_book_data.py" download=""><code class="xref download docutils literal"><span class="pre">add_book_data.py</span></code></a>
+<p><a class="reference download internal" href="../_downloads/add_book_data.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">add_book_data.py</span></code></a>
 and
-<a class="reference download internal" href="../_downloads/add_book_data_flat.py" download=""><code class="xref download docutils literal"><span class="pre">add_book_data_flat.py</span></code></a></p>
+<a class="reference download internal" href="../_downloads/add_book_data_flat.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">add_book_data_flat.py</span></code></a></p>
 <p>They can be loaded with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">add_book_data</span> <span class="k">import</span> <span class="n">AddressBook</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">add_book_data</span> <span class="k">import</span> <span class="n">AddressBook</span>
 </pre></div>
 </div>
 <p>They have address book data – one with a nested dict, one “flat”. Use the nested version for this exercise.</p>
@@ -368,7 +354,7 @@ and
 <h3>INI<a class="headerlink" href="#ini" title="Permalink to this headline">¶</a></h3>
 <p>INI files</p>
 <p>(the old Windows config files)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Section1</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Section1</span><span class="p">]</span>
 <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span>
 <span class="nb">bool</span> <span class="o">=</span> <span class="n">true</span>
 <span class="nb">float</span> <span class="o">=</span> <span class="mf">3.1415</span>
@@ -380,9 +366,9 @@ and
 <p>Good for configuration data, etc.</p>
 <div class="section" id="configparser">
 <h4>ConfigParser<a class="headerlink" href="#configparser" title="Permalink to this headline">¶</a></h4>
-<p>The <code class="docutils literal"><span class="pre">configparser</span></code> module provides tools for working with INI files:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">configparser</span></code> module provides tools for working with INI files:</p>
 <p>Writing:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">configparser</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">configparser</span>
 <span class="n">config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
 <span class="n">config</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="s1">&#39;Section1&#39;</span><span class="p">)</span>
 <span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;Section1&#39;</span><span class="p">,</span> <span class="s1">&#39;an_integer&#39;</span><span class="p">,</span> <span class="s1">&#39;15&#39;</span><span class="p">)</span>
@@ -396,8 +382,8 @@ and
 </div>
 </div>
 <div class="section" id="reading-ini-files">
-<h3>Reading <code class="docutils literal"><span class="pre">ini</span></code>  files:<a class="headerlink" href="#reading-ini-files" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+<h3>Reading <code class="docutils literal notranslate"><span class="pre">ini</span></code>  files:<a class="headerlink" href="#reading-ini-files" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;example.cfg&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">config</span><span class="o">.</span><span class="n">sections</span><span class="p">()</span>
 <span class="go">[&#39;Section1&#39;]</span>
@@ -418,9 +404,9 @@ and
 <p>Most useful for simple tabular data</p>
 <div class="section" id="the-csv-module">
 <h3>The CSV module<a class="headerlink" href="#the-csv-module" title="Permalink to this headline">¶</a></h3>
-<p>Reading <code class="docutils literal"><span class="pre">CSV</span></code>  files:</p>
-<p>(uses: <a class="reference download internal" href="../_downloads/eggs.csv" download=""><code class="xref download docutils literal"><span class="pre">eggs.csv</span></code></a>)</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="kn">import</span> <span class="nn">csv</span>
+<p>Reading <code class="docutils literal notranslate"><span class="pre">CSV</span></code>  files:</p>
+<p>(uses: <a class="reference download internal" href="../_downloads/eggs.csv" download=""><code class="xref download docutils literal notranslate"><span class="pre">eggs.csv</span></code></a>)</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="kn">import</span> <span class="nn">csv</span>
 <span class="gp">In [17]: </span><span class="n">spam_reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eggs.csv&#39;</span><span class="p">),</span>
 <span class="go">                                  skipinitialspace=True)</span>
 <span class="gp">In [19]: </span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">spam_reader</span><span class="p">:</span>
@@ -429,14 +415,14 @@ and
 <span class="go">[&#39;Spam&#39;, &#39; Lovely Spam&#39;, &#39; Wonderful Spam&#39;]</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">csv</span></code>  module takes care of string quoting, etc. for you.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">csv</span></code>  module takes care of string quoting, etc. for you.</p>
 <ul class="simple">
 <li>This is a pretty big deal – that can be a real pain!</li>
 </ul>
-<p>NOTE: <code class="docutils literal"><span class="pre">skipinitialspace</span></code> is False by default, which can mess up
+<p>NOTE: <code class="docutils literal notranslate"><span class="pre">skipinitialspace</span></code> is False by default, which can mess up
 interpreting quotes correctly.</p>
-<p>Writing <code class="docutils literal"><span class="pre">CSV</span></code> files:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">csv</span>
+<p>Writing <code class="docutils literal notranslate"><span class="pre">CSV</span></code> files:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">csv</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;eggs2.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">spam_writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span>
 <span class="go">                                 quoting=csv.QUOTE_MINIMAL)</span>
@@ -445,8 +431,8 @@ interpreting quotes correctly.</p>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">spam_writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s1">&#39;Spam&#39;</span><span class="p">,</span> <span class="s1">&#39;Spam, Wonderful spam..&#39;</span><span class="p">,</span> <span class="s1">&#39;Very-Wonderful Spam&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">csv</span></code> module takes care of string quoting, etc. for you.</p>
-<p>You can set the <code class="docutils literal"><span class="pre">quoting</span></code> attribute on the dialect object to control that.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">csv</span></code> module takes care of string quoting, etc. for you.</p>
+<p>You can set the <code class="docutils literal notranslate"><span class="pre">quoting</span></code> attribute on the dialect object to control that.</p>
 <p><a class="reference external" href="https://docs.python.org/3/library/csv.html">https://docs.python.org/3/library/csv.html</a></p>
 </div>
 </div>
@@ -454,13 +440,13 @@ interpreting quotes correctly.</p>
 <h2>JSON<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h2>
 <p>JSON (JavaScript Object Notation) is a subset of JavaScript syntax used as a lightweight data interchange format.</p>
 <p><strong>LOTS</strong> of systems can read JSON – notably browsers…</p>
-<p>Python module has an interface similar to <code class="docutils literal"><span class="pre">pickle</span></code></p>
+<p>Python module has an interface similar to <code class="docutils literal notranslate"><span class="pre">pickle</span></code></p>
 <p>Can handle the standard Python data types</p>
 <p>Specializable encoding/decoding for other types – but I wouldn’t do that!</p>
 <p>Commonly used for configuration files, etc.</p>
 <div class="section" id="python-json-module">
 <h3>Python json module<a class="headerlink" href="#python-json-module" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [93]: </span><span class="kn">import</span> <span class="nn">json</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [93]: </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="gp">In [94]: </span><span class="n">s</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="gh">Out[95]: </span><span class="go">&#39;[{&quot;this&quot;: 5, &quot;that&quot;: 4}, {&quot;eggs&quot;: 3.4, &quot;spam&quot;: 7},</span>
 <span class="go">           {&quot;foo&quot;: 86, &quot;bar&quot;: 4.5}, {&quot;fun&quot;: 43, &quot;baz&quot;: 6.5}]&#39;</span>
@@ -473,7 +459,7 @@ interpreting quotes correctly.</p>
 <span class="gh">Out[98]: </span><span class="go">True # they are the same</span>
 </pre></div>
 </div>
-<p>(also <code class="docutils literal"><span class="pre">json.dump()</span> <span class="pre">and</span> <span class="pre">json.load()</span></code> for files)</p>
+<p>(also <code class="docutils literal notranslate"><span class="pre">json.dump()</span> <span class="pre">and</span> <span class="pre">json.load()</span></code> for files)</p>
 <p><strong>NOTE:</strong> JSON is less “rich” than python – no tuples, no distinction between integers and floats, no comments! And keys can only be strings.</p>
 <p><a class="reference external" href="http://www.json.org/">http://www.json.org/</a></p>
 <p><a class="reference external" href="https://docs.python.org/3/library/json.html">https://docs.python.org/3/library/json.html</a></p>
@@ -481,7 +467,7 @@ interpreting quotes correctly.</p>
 <div class="section" id="id2">
 <h3>LAB<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Use the same addressbook data:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># load with:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># load with:</span>
 <span class="kn">from</span> <span class="nn">add_book_data</span> <span class="k">import</span> <span class="n">AddressBook</span>
 </pre></div>
 </div>
@@ -519,19 +505,19 @@ interpreting quotes correctly.</p>
 <p>NOTE: HTML is also SGML, and modern versions conform to the XML standard.</p>
 <div class="section" id="xml-in-the-python-std-lib">
 <h3>XML in the python std lib<a class="headerlink" href="#xml-in-the-python-std-lib" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">xml.dom</span></code></p>
-<p><code class="docutils literal"><span class="pre">xml.sax</span></code></p>
-<p><code class="docutils literal"><span class="pre">xml.parsers.expat</span></code></p>
-<p><code class="docutils literal"><span class="pre">xml.etree</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">xml.dom</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">xml.sax</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">xml.parsers.expat</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">xml.etree</span></code></p>
 <p><a class="reference external" href="https://docs.python.org/3/library/xml.html">https://docs.python.org/3/library/xml.html</a></p>
 </div>
 <div class="section" id="elementtree">
 <h3>elementtree<a class="headerlink" href="#elementtree" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">elementtree</span></code> is the simplest tool – maps pretty directly to XML.</p>
+<p><code class="docutils literal notranslate"><span class="pre">elementtree</span></code> is the simplest tool – maps pretty directly to XML.</p>
 <p>The Element type is a flexible container object, designed to store hierarchical data structures in memory.</p>
 <p>Essentially an in-memory XML – can be read from/written to XML</p>
-<p>an <code class="docutils literal"><span class="pre">ElementTree</span></code>  is an entire XML doc</p>
-<p>an <code class="docutils literal"><span class="pre">Element</span></code>  is a node in that tree</p>
+<p>an <code class="docutils literal notranslate"><span class="pre">ElementTree</span></code>  is an entire XML doc</p>
+<p>an <code class="docutils literal notranslate"><span class="pre">Element</span></code>  is a node in that tree</p>
 <p><a class="reference external" href="https://docs.python.org/3/library/xml.etree.elementtree.html">https://docs.python.org/3/library/xml.etree.elementtree.html</a></p>
 <ul>
 <li><p class="first">Write a module that saves the data in XML</p>
@@ -552,17 +538,17 @@ interpreting quotes correctly.</p>
 <p>We usually think RDBMS and SQL – but there are simpler systems.</p>
 <div class="section" id="dbm">
 <h3>dbm<a class="headerlink" href="#dbm" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">dbm</span></code>  is a generic interface to variants of the DBM database</p>
+<p><code class="docutils literal notranslate"><span class="pre">dbm</span></code>  is a generic interface to variants of the DBM database</p>
 <p>Suitable for storing data that fits well into a python dict with strings as both keys and values</p>
-<p>Note: dbm will use the dbm system that works on your system – this may be different on different systems – so the db files may NOT be compatible! <code class="docutils literal"><span class="pre">whichdb</span></code>  will try to figure it out, but it’s not guaranteed</p>
+<p>Note: dbm will use the dbm system that works on your system – this may be different on different systems – so the db files may NOT be compatible! <code class="docutils literal notranslate"><span class="pre">whichdb</span></code>  will try to figure it out, but it’s not guaranteed</p>
 <p><a class="reference external" href="https://docs.python.org/3/library/dbm.html">https://docs.python.org/3/library/dbm.html</a></p>
 <p><strong>NOTE:</strong> dbm is getting pretty old fashioned – e.g. it doesn’t handle Unicode</p>
 <p>It’s here for completeness, but there are probably better options!</p>
 </div>
 <div class="section" id="the-dbm-module">
-<h3>the <code class="docutils literal"><span class="pre">dbm</span></code> module<a class="headerlink" href="#the-dbm-module" title="Permalink to this headline">¶</a></h3>
+<h3>the <code class="docutils literal notranslate"><span class="pre">dbm</span></code> module<a class="headerlink" href="#the-dbm-module" title="Permalink to this headline">¶</a></h3>
 <p>Writing data:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">#creating a dbm file:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#creating a dbm file:</span>
 <span class="kn">import</span> <span class="nn">dbm</span>
 <span class="n">dbm</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">)</span>
 </pre></div>
@@ -575,8 +561,8 @@ interpreting quotes correctly.</p>
 <li>‘n’ – Always create a new, empty database, open for reading and writing</li>
 </ul>
 <p><strong>caution</strong> – these are different than the file open modes!</p>
-<p><code class="docutils literal"><span class="pre">dbm</span></code>  provides a dict-like interface:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dbm</span>
+<p><code class="docutils literal notranslate"><span class="pre">dbm</span></code>  provides a dict-like interface:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dbm</span>
 <span class="n">db</span> <span class="o">=</span> <span class="n">dbm</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;dbm&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">)</span>
 <span class="n">db</span><span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;bruce&quot;</span>
 <span class="n">db</span><span class="p">[</span><span class="s2">&quot;second&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;micheal&quot;</span>
@@ -589,7 +575,7 @@ interpreting quotes correctly.</p>
     <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">db</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>(a lot like <code class="docutils literal"><span class="pre">shelve</span></code>, though theoretically compatible with other systems)</p>
+<p>(a lot like <code class="docutils literal notranslate"><span class="pre">shelve</span></code>, though theoretically compatible with other systems)</p>
 <p><a class="reference external" href="https://docs.python.org/3/library/dbm.html">https://docs.python.org/3/library/dbm.html</a></p>
 </div>
 <div class="section" id="sqlite">
@@ -603,12 +589,12 @@ interpreting quotes correctly.</p>
 </div>
 <div class="section" id="python-sqlite-module">
 <h3>python sqlite module<a class="headerlink" href="#python-sqlite-module" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">sqlite3</span></code>  Python module wraps C lib – provides standard DB-API interface</p>
+<p><code class="docutils literal notranslate"><span class="pre">sqlite3</span></code>  Python module wraps C lib – provides standard DB-API interface</p>
 <p>Allows (and requires) SQL queries</p>
 <p>Can provide high performance, flexible, portable storage for your app</p>
 <div class="section" id="example">
 <h4>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
 <span class="c1"># open a connection to a db file:</span>
 <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;example.db&#39;</span><span class="p">)</span>
 <span class="c1"># or build one in-memory</span>
@@ -620,7 +606,7 @@ interpreting quotes correctly.</p>
 </div>
 <div class="section" id="execute-sql-with-the-cursor">
 <h4>Execute SQL with the cursor:<a class="headerlink" href="#execute-sql-with-the-cursor" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Create table</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create table</span>
 <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&#39;CREATE TABLE stocks (date text, trans text, symbol text, qty real, price real)&#39;&quot;</span><span class="p">)</span>
 <span class="c1"># Insert a row of data</span>
 <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO stocks VALUES (&#39;2006-01-05&#39;,&#39;BUY&#39;,&#39;RHAT&#39;,100,35.14)&quot;</span><span class="p">)</span>
@@ -630,8 +616,8 @@ interpreting quotes correctly.</p>
 <span class="n">c</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">SELECT</span></code>  creates a cursor that can be iterated:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM stocks ORDER BY price&#39;</span><span class="p">):</span>
+<p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>  creates a cursor that can be iterated:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM stocks ORDER BY price&#39;</span><span class="p">):</span>
 <span class="go">        print row</span>
 <span class="go">(&#39;2006-01-05&#39;, &#39;BUY&#39;, &#39;RHAT&#39;, 100, 35.14)</span>
 <span class="go">(&#39;2006-03-28&#39;, &#39;BUY&#39;, &#39;IBM&#39;, 1000, 45.0)</span>
@@ -639,12 +625,12 @@ interpreting quotes correctly.</p>
 </pre></div>
 </div>
 <p>Or you can get the rows one by one or in a list:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
 <span class="n">c</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Good idea to use the DB-API’s parameter substitution:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">symbol</span><span class="p">,)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">symbol</span><span class="p">,)</span>
 <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM stocks WHERE symbol=?&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
 <span class="c1"># Larger example that inserts many records at a time</span>
@@ -709,7 +695,7 @@ A custom class, or a more complex built-in?</li>
 <h3>Object Databases<a class="headerlink" href="#object-databases" title="Permalink to this headline">¶</a></h3>
 <p>(we’ll be talking more about this in another class: <a class="reference internal" href="NoSQL.html#nosql"><span class="std std-ref">No SQL Databases</span></a>)</p>
 <p>Directly store and retrieve Python Objects.</p>
-<p>Kind of like <code class="docutils literal"><span class="pre">shelve</span></code>, but more flexible, and give you searching, etc.</p>
+<p>Kind of like <code class="docutils literal notranslate"><span class="pre">shelve</span></code>, but more flexible, and give you searching, etc.</p>
 <p>ZODB: (<a class="reference external" href="http://www.zodb.org/">http://www.zodb.org/</a>)</p>
 </div>
 <div class="section" id="nosql">
@@ -730,7 +716,7 @@ A custom class, or a more complex built-in?</li>
 <div class="section" id="id3">
 <h3>LAB<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>Load data with:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">add_book_data</span> <span class="kn">import</span> <span class="n">AddressBook</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">add_book_data</span> <span class="kn">import</span> <span class="n">AddressBook</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -762,10 +748,10 @@ A custom class, or a more complex built-in?</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="NoSQL.html" class="btn btn-neutral float-right" title="No SQL Databases" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../exercises/index.html" class="btn btn-neutral float-right" title="Exercises" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="MetaProgramming.html" class="btn btn-neutral" title="Metaprogramming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Packaging.html" class="btn btn-neutral" title="Packages and Packaging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -774,7 +760,7 @@ A custom class, or a more complex built-in?</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
@@ -796,7 +782,7 @@ A custom class, or a more complex built-in?</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

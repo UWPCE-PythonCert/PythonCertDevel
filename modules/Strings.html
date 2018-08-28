@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Strings &mdash; PythonCert 4.0 documentation</title>
+  <title>Strings &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
+    <link rel="top" title="PythonCert 5.0 documentation" href="../index.html"/>
         <link rel="up" title="Topic Notes" href="index.html"/>
         <link rel="next" title="Dictionaries and Sets" href="DictsAndSets.html"/>
         <link rel="prev" title="Iteration" href="Iteration.html"/> 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -195,7 +195,7 @@
 <h3>Creating strings:<a class="headerlink" href="#creating-strings" title="Permalink to this headline">¶</a></h3>
 <p>A string literal creates a string type.</p>
 <p>(we’ve seen this already…)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;this is a string&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;this is a string&quot;</span>
 
 <span class="s1">&#39;So is this&#39;</span>
 
@@ -204,8 +204,8 @@
 <span class="sd">&#39;&#39;&#39;and even this&#39;&#39;&#39;</span>
 </pre></div>
 </div>
-<p>You can also use <code class="docutils literal"><span class="pre">str()</span></code></p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [256]: </span><span class="nb">str</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span>
+<p>You can also use <code class="docutils literal notranslate"><span class="pre">str()</span></code></p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [256]: </span><span class="nb">str</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span>
 <span class="gh">Out[256]: </span><span class="go">&#39;34&#39;</span>
 </pre></div>
 </div>
@@ -218,8 +218,8 @@
 <p>Here are just a few:</p>
 <div class="section" id="splitting-and-joining-strings">
 <h3>Splitting and Joining Strings<a class="headerlink" href="#splitting-and-joining-strings" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">split</span></code> and <code class="docutils literal"><span class="pre">join</span></code>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [167]: </span><span class="n">csv</span> <span class="o">=</span> <span class="s2">&quot;comma, separated, values&quot;</span>
+<p><code class="docutils literal notranslate"><span class="pre">split</span></code> and <code class="docutils literal notranslate"><span class="pre">join</span></code>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [167]: </span><span class="n">csv</span> <span class="o">=</span> <span class="s2">&quot;comma, separated, values&quot;</span>
 <span class="gp">In [168]: </span><span class="n">csv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>
 <span class="gh">Out[168]: </span><span class="go">[&#39;comma&#39;, &#39;separated&#39;, &#39;values&#39;]</span>
 <span class="gp">In [169]: </span><span class="n">psv</span> <span class="o">=</span> <span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">))</span>
@@ -227,12 +227,12 @@
 <span class="gh">Out[170]: </span><span class="go">&#39;comma|separated|values&#39;</span>
 </pre></div>
 </div>
-<p>It may seem odd at first that <code class="docutils literal"><span class="pre">.join()</span></code> is a string method, rather than, say, a method on lists. But, in fact it makes a lot of sense. Lists (and tuples, and other sequences) can hold any type of data – and “joining” arbitrary data types doesn’t make any sense.  Joining is strictly a string activity.</p>
+<p>It may seem odd at first that <code class="docutils literal notranslate"><span class="pre">.join()</span></code> is a string method, rather than, say, a method on lists. But, in fact it makes a lot of sense. Lists (and tuples, and other sequences) can hold any type of data – and “joining” arbitrary data types doesn’t make any sense.  Joining is strictly a string activity.</p>
 <p>And you need a string so you can join the parts – therefore, we need a string object in there somewhere anyway.</p>
 <p>Lastly, having join() be a string method means that it can join strings in ANY iterable object – not just the built-in sequence types.</p>
 <p>So it does make sense – but even if not, that’s the way it is.</p>
 <p>So to be clear: if you have a bunch of strings in a sequence and you want to put them together, you create a string with the character (or characters) you want to join them with, and call join() on that object:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="c1"># comma separated:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">20</span><span class="p">]:</span> <span class="c1"># comma separated:</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;these&quot;</span><span class="p">,</span> <span class="s2">&quot;are&quot;</span><span class="p">,</span> <span class="s2">&quot;some&quot;</span><span class="p">,</span> <span class="s2">&quot;strings&quot;</span><span class="p">])</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="s1">&#39;these,are,some,strings&#39;</span>
@@ -247,13 +247,13 @@
 <div class="section" id="building-up-a-long-string">
 <h3>Building up a long string.<a class="headerlink" href="#building-up-a-long-string" title="Permalink to this headline">¶</a></h3>
 <p>The obvious thing to do is something like:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 <span class="k">for</span> <span class="n">piece</span> <span class="ow">in</span> <span class="n">list_of_stuff</span><span class="p">:</span>
     <span class="n">msg</span> <span class="o">+=</span> <span class="n">piece</span>
 </pre></div>
 </div>
 <p>But: strings are immutable – Python needs to create a new string each time you add a piece – not efficient:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">msg</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">msg</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">piece</span> <span class="ow">in</span> <span class="n">list_of_stuff</span><span class="p">:</span>
     <span class="n">msg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">piece</span><span class="p">)</span>
 <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
@@ -263,7 +263,7 @@
 </div>
 <div class="section" id="case-switching">
 <h3>Case Switching<a class="headerlink" href="#case-switching" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [171]: </span><span class="n">sample</span> <span class="o">=</span> <span class="s1">&#39;A long string of words&#39;</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [171]: </span><span class="n">sample</span> <span class="o">=</span> <span class="s1">&#39;A long string of words&#39;</span>
 <span class="gp">In [172]: </span><span class="n">sample</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 <span class="gh">Out[172]: </span><span class="go">&#39;A LONG STRING OF WORDS&#39;</span>
 <span class="gp">In [173]: </span><span class="n">sample</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
@@ -277,7 +277,7 @@
 </div>
 <div class="section" id="testing">
 <h3>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [181]: </span><span class="n">number</span> <span class="o">=</span> <span class="s2">&quot;12345&quot;</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [181]: </span><span class="n">number</span> <span class="o">=</span> <span class="s2">&quot;12345&quot;</span>
 <span class="gp">In [182]: </span><span class="n">number</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">()</span>
 <span class="gh">Out[182]: </span><span class="go">True</span>
 <span class="gp">In [183]: </span><span class="n">number</span><span class="o">.</span><span class="n">isalnum</span><span class="p">()</span>
@@ -293,7 +293,7 @@
 <div class="section" id="string-literals">
 <h3>String Literals<a class="headerlink" href="#string-literals" title="Permalink to this headline">¶</a></h3>
 <p>Common Escape Sequences:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>\\  <span class="n">Backslash</span> <span class="p">(</span>\<span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\\  <span class="n">Backslash</span> <span class="p">(</span>\<span class="p">)</span>
 \<span class="n">a</span>  <span class="n">ASCII</span> <span class="n">Bell</span> <span class="p">(</span><span class="n">BEL</span><span class="p">)</span>
 \<span class="n">b</span>  <span class="n">ASCII</span> <span class="n">Backspace</span> <span class="p">(</span><span class="n">BS</span><span class="p">)</span>
 \<span class="n">n</span>  <span class="n">ASCII</span> <span class="n">Linefeed</span> <span class="p">(</span><span class="n">LF</span><span class="p">)</span>
@@ -304,7 +304,7 @@
 </pre></div>
 </div>
 <p>for example – for tab-separated values:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;these</span><span class="se">\t</span><span class="s2">are</span><span class="se">\t</span><span class="s2">separated</span><span class="se">\t</span><span class="s2">by</span><span class="se">\t</span><span class="s2">tabs&quot;</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;these</span><span class="se">\t</span><span class="s2">are</span><span class="se">\t</span><span class="s2">separated</span><span class="se">\t</span><span class="s2">by</span><span class="se">\t</span><span class="s2">tabs&quot;</span>
 
 <span class="gp">In [12]: </span><span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="go">these   are separated   by  tabs</span>
@@ -315,9 +315,9 @@
 </div>
 <div class="section" id="raw-strings">
 <h3>Raw Strings<a class="headerlink" href="#raw-strings" title="Permalink to this headline">¶</a></h3>
-<p>Add an <code class="docutils literal"><span class="pre">r</span></code> in front of the string literal:</p>
+<p>Add an <code class="docutils literal notranslate"><span class="pre">r</span></code> in front of the string literal:</p>
 <p><strong>Escape Sequences Ignored</strong></p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [408]: </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;this</span><span class="se">\n</span><span class="s2">that&quot;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [408]: </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;this</span><span class="se">\n</span><span class="s2">that&quot;</span><span class="p">)</span>
 <span class="go">this</span>
 <span class="go">that</span>
 <span class="gp">In [409]: </span><span class="k">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;this\nthat&quot;</span><span class="p">)</span>
@@ -325,7 +325,7 @@
 </pre></div>
 </div>
 <p><strong>Gotcha</strong></p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [415]: </span><span class="sa">r</span><span class="s2">&quot;</span><span class="se">\&quot;</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [415]: </span><span class="sa">r</span><span class="s2">&quot;</span><span class="se">\&quot;</span>
 <span class="go">SyntaxError: EOL while scanning string literal</span>
 </pre></div>
 </div>
@@ -341,7 +341,7 @@
 </ul>
 <p>Unicode supports a LOT of characters –every character in every language known to man – and then some :-)</p>
 <p>To get the value:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [109]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;Chris&#39;</span><span class="p">:</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [109]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;Chris&#39;</span><span class="p">:</span>
 <span class="gp">   .....: </span>    <span class="k">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
 <span class="go">67 104 114 105 115</span>
 <span class="gp">In [110]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">67</span><span class="p">,</span><span class="mi">104</span><span class="p">,</span><span class="mi">114</span><span class="p">,</span><span class="mi">105</span><span class="p">,</span><span class="mi">115</span><span class="p">):</span>
@@ -354,12 +354,12 @@
 <div class="section" id="building-strings-from-data">
 <h3>Building Strings from data<a class="headerlink" href="#building-strings-from-data" title="Permalink to this headline">¶</a></h3>
 <p>You could, but please don’t(!), do this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="s1">&#39;Hello &#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;!&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Hello &#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;!&#39;</span>
 </pre></div>
 </div>
 <p>(I know – we did that in the grid_printing exercise)</p>
 <p>Do this instead:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="s1">&#39;Hello {}!&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Hello {}!&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>It’s much faster and safer, and easier to modify as code gets complicated.</p>
@@ -367,18 +367,18 @@
 </div>
 <div class="section" id="old-and-new-string-formatting">
 <h3>Old and New string formatting<a class="headerlink" href="#old-and-new-string-formatting" title="Permalink to this headline">¶</a></h3>
-<p>Back in early Python days, there was the string formatting operator: <code class="docutils literal"><span class="pre">%</span></code></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="s2">&quot;a string: </span><span class="si">%s</span><span class="s2"> and a number: </span><span class="si">%i</span><span class="s2"> &quot;</span><span class="o">%</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
+<p>Back in early Python days, there was the string formatting operator: <code class="docutils literal notranslate"><span class="pre">%</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;a string: </span><span class="si">%s</span><span class="s2"> and a number: </span><span class="si">%i</span><span class="s2"> &quot;</span><span class="o">%</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This is very similar to C-style string formatting (<cite>sprintf</cite>).</p>
 <p>It’s still around, and handy — but …</p>
-<p>The “new” <code class="docutils literal"><span class="pre">format()</span></code> method is more powerful and flexible, so we’ll focus on that in this class.</p>
+<p>The “new” <code class="docutils literal notranslate"><span class="pre">format()</span></code> method is more powerful and flexible, so we’ll focus on that in this class.</p>
 </div>
 <div class="section" id="string-formatting">
 <h3>String Formatting<a class="headerlink" href="#string-formatting" title="Permalink to this headline">¶</a></h3>
-<p>The string <code class="docutils literal"><span class="pre">format()</span></code> method:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [62]: </span><span class="s2">&quot;A decimal integer is: {:d}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span>
+<p>The string <code class="docutils literal notranslate"><span class="pre">format()</span></code> method:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [62]: </span><span class="s2">&quot;A decimal integer is: {:d}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span>
 <span class="gh">Out[62]: </span><span class="go">&#39;A decimal integer is: 34&#39;</span>
 
 <span class="gp">In [63]: </span><span class="s2">&quot;a floating point is: {:f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">34.5</span><span class="p">)</span>
@@ -391,7 +391,7 @@
 </div>
 <div class="section" id="multiple-placeholders">
 <h3>Multiple placeholders:<a class="headerlink" href="#multiple-placeholders" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [65]: </span><span class="s2">&quot;the number is {} is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;five&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [65]: </span><span class="s2">&quot;the number is {} is {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;five&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="gh">Out[65]: </span><span class="go">&#39;the number is five is 5&#39;</span>
 
 <span class="gp">In [66]: </span><span class="s2">&quot;the first 3 numbers are {}, {}, {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
@@ -399,7 +399,7 @@
 </pre></div>
 </div>
 <p>The counts must agree:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [67]: </span><span class="s2">&quot;string with {} formatting {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [67]: </span><span class="s2">&quot;string with {} formatting {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
 <span class="nn">&lt;ipython-input-67-a079bc472aca&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
@@ -411,17 +411,17 @@
 </div>
 <div class="section" id="named-placeholders">
 <h3>Named placeholders:<a class="headerlink" href="#named-placeholders" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [69]: </span><span class="s2">&quot;Hello, {name}, whadaya know?&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Joe&quot;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [69]: </span><span class="s2">&quot;Hello, {name}, whadaya know?&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Joe&quot;</span><span class="p">)</span>
 <span class="gh">Out[69]: </span><span class="go">&#39;Hello, Joe, whadaya know?&#39;</span>
 </pre></div>
 </div>
 <p>You can use values more than once, and skip values:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [73]: </span><span class="s2">&quot;Hi, {name}. Howzit, {name}?&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [73]: </span><span class="s2">&quot;Hi, {name}. Howzit, {name}?&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
 <span class="gh">Out[73]: </span><span class="go">&#39;Hi, Bob. Howzit, Bob?&#39;</span>
 </pre></div>
 </div>
 <p>The format operator works with string variables, too:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [80]: </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;{:d} / {:d} = {:f}&quot;</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [80]: </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;{:d} / {:d} = {:f}&quot;</span>
 
 <span class="gp">In [81]: </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">3</span>
 
@@ -447,7 +447,7 @@
 <p>In Python 3.6, yet another string formatting method was introduced.</p>
 <p>Known at “f-strings”, or more formally, “Literal String Interpolation”, they provide a concise, readable way to include the value of Python expressions inside strings. In particular, they make it easy to include names in the current namespace without having to type them multiple times.</p>
 <p>For example:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [24]: </span><span class="n">first</span> <span class="o">=</span> <span class="s2">&quot;Chris&quot;</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [24]: </span><span class="n">first</span> <span class="o">=</span> <span class="s2">&quot;Chris&quot;</span>
 
 <span class="gp">In [25]: </span><span class="n">last</span> <span class="o">=</span> <span class="s2">&quot;Barker&quot;</span>
 
@@ -457,7 +457,7 @@
 </div>
 <p>Note that they are called “f-strings” because they are created by putting and “f” before the string – “f” is for format.</p>
 <p>All the other ways to do this required a lot more typing:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [28]: </span><span class="s2">&quot;My name is {first} {last}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">first</span><span class="o">=</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="n">last</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [28]: </span><span class="s2">&quot;My name is {first} {last}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">first</span><span class="o">=</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="o">=</span><span class="n">last</span><span class="p">)</span>
 <span class="gh">Out[28]: </span><span class="go">&#39;My name is Chris Barker&#39;</span>
 
 <span class="gp">In [29]: </span><span class="s2">&quot;My name is {} {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span>
@@ -471,19 +471,19 @@
 <h3>f-string basics<a class="headerlink" href="#f-string-basics" title="Permalink to this headline">¶</a></h3>
 <p>f-strings are actually pretty simple concept:</p>
 <p>You can interpolate the stringifcation of any expression into a string at run time. Variables are all evaluated at the current scope.</p>
-<p>The expression is put inside curly brackets: {}, the same as for the <code class="docutils literal"><span class="pre">.format</span></code> method.</p>
+<p>The expression is put inside curly brackets: {}, the same as for the <code class="docutils literal notranslate"><span class="pre">.format</span></code> method.</p>
 <p>So what does that all mean?</p>
 <p>For this most simple example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="s2">&quot;some text: </span><span class="si">{expression}</span><span class="s2">&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="s2">&quot;some text: </span><span class="si">{expression}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 <p><cite>expression</cite> is any valid python expression(remember that an expression is a combination of values and operators and names that produces a value).</p>
 <p>The expression is evaluated, and then, if it is not a string, it is converted to one, so it’s really:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">f</span><span class="s2">&quot;some text: {str(expression)}&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="s2">&quot;some text: {str(expression)}&quot;</span>
 </pre></div>
 </div>
 <p>Let’s see how that works in practice:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [32]: </span><span class="c1"># define a couple of names:</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [32]: </span><span class="c1"># define a couple of names:</span>
 
 <span class="gp">In [33]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 
@@ -568,7 +568,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
@@ -590,7 +590,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

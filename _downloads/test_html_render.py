@@ -7,7 +7,7 @@ This is just a start -- you will need more tests!
 import io
 import pytest
 
-# import * is often bad form, but makes some sense for testing.
+# import * is often bad form, but makes it easier to test everything in a module.
 from html_render import *
 
 
@@ -23,7 +23,11 @@ def render_result(element, ind=""):
     # so it can be used to test code that writes to a file, without
     # having to actually write to disk.
     outfile = io.StringIO()
-    element.render(outfile, ind)
+    # this so the tests will work before we tackle indentation
+    if ind:
+        element.render(outfile, ind)
+    else:
+        element.render(outfile)
     return outfile.getvalue()
 
 ########
@@ -75,13 +79,38 @@ def test_render_element():
     assert file_contents.startswith("<html>")
     assert file_contents.endswith("</html>")
 
+# # Uncomment this one after you get the one above to pass
+# # Does it pass right away?
+# def test_render_element2():
+#     """
+#     Tests whether the Element can render two pieces of text
+#     So it is also testing that the append method works correctly.
+
+#     It is not testing whether indentation or line feeds are correct.
+#     """
+#     e = Element()
+#     e.append("this is some text")
+#     e.append("and this is some more text")
+
+#     # This uses the render_results utility above
+#     file_contents = render_result(e).strip()
+
+#     # making sure the content got in there.
+#     assert("this is some text") in file_contents
+#     assert("and this is some more text") in file_contents
+
+#     # make sure it's in the right order
+#     assert file_contents.index("this is") < file_contents.index("and this")
+
+#     # making sure the opening and closing tags are right.
+#     assert file_contents.startswith("<html>")
+#     assert file_contents.endswith("</html>")
 
 
 
-# ########
-# # Step 2
-# ########
-
+# # ########
+# # # Step 2
+# # ########
 
 # # tests for the new tags
 # def test_html():
@@ -144,6 +173,14 @@ def test_render_element():
 #     assert "<p>" in file_contents
 #     assert "</p>" in file_contents
 
+
+
+
+########
+# Step 3
+########
+
+# Add your tests here!
 
 # #####################
 # # indentation testing
@@ -223,10 +260,3 @@ def test_render_element():
 #     assert lines[1].startswith(Element.indent + "thi")
 #     assert lines[2] == "</html>"
 #     assert file_contents.endswith("</html>")
-
-
-########
-# Step 3
-########
-
-# Add your tests here!

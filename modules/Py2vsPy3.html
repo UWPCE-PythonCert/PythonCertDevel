@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Python 2 versus Python 3 &mdash; PythonCert 4.0 documentation</title>
+  <title>Python 2 versus Python 3 &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -35,9 +35,9 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
+    <link rel="top" title="PythonCert 5.0 documentation" href="../index.html"/>
         <link rel="up" title="Topic Notes" href="index.html"/>
-        <link rel="next" title="Basic Python" href="BasicPython.html"/>
+        <link rel="next" title="Intro to Git" href="Git.html"/>
         <link rel="prev" title="IPython Introduction" href="IPythonIntroduction.html"/> 
 
   
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -95,12 +95,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Topic Notes</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#py210-introduction-to-python">Py210: Introduction to Python</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="index.html#lesson-1-introductions-and-setting-up-your-environment">Lesson 1: Introductions and Setting up your Environment</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="Class_introduction.html">Introductions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="EnvironmentOverview.html">Introduction to the Environment</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Git.html">Intro to Git</a></li>
-<li class="toctree-l4"><a class="reference internal" href="GitWorkflow.html">Git Workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Class_introduction.html">Introduction to the in-class version of the program</a></li>
+<li class="toctree-l4"><a class="reference internal" href="EnvironmentOverview.html">Introduction to your Programming Environment</a></li>
 <li class="toctree-l4"><a class="reference internal" href="IPythonIntroduction.html">IPython Introduction</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Python 2 versus Python 3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Git.html">Intro to Git</a></li>
+<li class="toctree-l4"><a class="reference internal" href="GitWorkflow.html">git Workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Submitting_to_github.html">Submitting your work to gitHub</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#lesson-2-basic-python-and-functions">Lesson 2: Basic Python and Functions</a></li>
@@ -115,6 +116,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#assorted-additional-topics">Assorted Additional Topics</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
@@ -193,13 +195,13 @@
 <p>But a couple that you’ll need to know right off the bat:</p>
 <div class="section" id="print">
 <h2>print()<a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h2>
-<p>In Python2, <code class="docutils literal"><span class="pre">print</span></code> is a “statement”, rather than a function. That means it didn’t require parentheses around what you want printed:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="n">something</span><span class="p">,</span> <span class="n">something_else</span>
+<p>In Python2, <code class="docutils literal notranslate"><span class="pre">print</span></code> is a “statement”, rather than a function. That means it didn’t require parentheses around what you want printed:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="n">something</span><span class="p">,</span> <span class="n">something_else</span>
 </pre></div>
 </div>
 <p>This made it a bit less flexible and powerful.</p>
 <p>But – if you try to use it that way in Python3, you’ll get an error:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="k">print</span> <span class="s2">&quot;this&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="k">print</span> <span class="s2">&quot;this&quot;</span>
   <span class="n">File</span> <span class="s2">&quot;&lt;ipython-input-15-70c8add5d16e&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
     <span class="k">print</span> <span class="s2">&quot;this&quot;</span>
                <span class="o">^</span>
@@ -207,7 +209,7 @@
 </pre></div>
 </div>
 <p>So – if you get this error, simply add the parentheses:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="k">print</span> <span class="p">(</span><span class="s2">&quot;this&quot;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="k">print</span> <span class="p">(</span><span class="s2">&quot;this&quot;</span><span class="p">)</span>
 <span class="go">this</span>
 </pre></div>
 </div>
@@ -215,22 +217,22 @@
 <div class="section" id="division">
 <h2>Division<a class="headerlink" href="#division" title="Permalink to this headline">¶</a></h2>
 <p>In python 3, the division operator is “smart” when you divide integers:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [17]: </span><span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [17]: </span><span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span>
 <span class="gh">Out[17]: </span><span class="go">0.5</span>
 </pre></div>
 </div>
 <p>However in Python2, integer division, will give you an integer result:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
 <span class="gh">Out[1]: </span><span class="go">0</span>
 </pre></div>
 </div>
 <p>In both versions, you can get “integer division” if you want it with a double slash:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="mi">1</span><span class="o">//</span><span class="mi">2</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="mi">1</span><span class="o">//</span><span class="mi">2</span>
 <span class="gh">Out[1]: </span><span class="go">0</span>
 </pre></div>
 </div>
 <p>And in Python2, you can get the behavior of Python3 with “true division”:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
 
 <span class="gp">In [3]: </span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
 <span class="gh">Out[3]: </span><span class="go">0.5</span>
@@ -242,7 +244,7 @@
 <h2>Other Python2 / Python3 differences<a class="headerlink" href="#other-python2-python3-differences" title="Permalink to this headline">¶</a></h2>
 <p>The most drastic difference (improvement!) is better Unicode support, and better bytes / Unicode separation.</p>
 <p>Most of the other differences are essentially implementation details, like getting iterators instead of sequences – we’ll talk about that more when it comes up in a later lesson.</p>
-<p>There are also a few syntax differences with more advanced topics: Exceptions, <code class="docutils literal"><span class="pre">super()</span></code>, etc.</p>
+<p>There are also a few syntax differences with more advanced topics: Exceptions, <code class="docutils literal notranslate"><span class="pre">super()</span></code>, etc.</p>
 <p>We’ll talk about all that when we cover those topics.</p>
 </div>
 </div>
@@ -257,7 +259,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="BasicPython.html" class="btn btn-neutral float-right" title="Basic Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Git.html" class="btn btn-neutral float-right" title="Intro to Git" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="IPythonIntroduction.html" class="btn btn-neutral" title="IPython Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -269,7 +271,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
@@ -291,7 +293,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

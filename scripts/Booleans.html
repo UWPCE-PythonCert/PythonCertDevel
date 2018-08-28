@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Booleans Video &mdash; PythonCert 4.0 documentation</title>
+  <title>Booleans Video &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/> 
+    <link rel="top" title="PythonCert 5.0 documentation" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -89,7 +89,7 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Topic Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/index.html">Resources for Specific Python Topics</a></li>
@@ -161,7 +161,7 @@
 <span id="script-booleans"></span><h1>Booleans Video<a class="headerlink" href="#booleans-video" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="with-rick-riehle">
 <h2>With Rick Riehle<a class="headerlink" href="#with-rick-riehle" title="Permalink to this headline">¶</a></h2>
-<p>In a certain sense there isn’t much to talk about with regard to booleans. Everybody knows what the word boolean means: true of false, yes or no. When programming we’re using them all the time to accomplish flow control, sometimes explicitly, often implicitly. Among Python’s key or reserved words are <code class="docutils literal"><span class="pre">True</span></code> and <code class="docutils literal"><span class="pre">False</span></code>.  You can test for these values explicitly when making flow control decisions.</p>
+<p>In a certain sense there isn’t much to talk about with regard to booleans. Everybody knows what the word boolean means: true of false, yes or no. When programming we’re using them all the time to accomplish flow control, sometimes explicitly, often implicitly. Among Python’s key or reserved words are <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code>.  You can test for these values explicitly when making flow control decisions.</p>
 <dl class="docutils">
 <dt>if (3 + 3 == 6) is True:</dt>
 <dd>print(“something”)</dd>
@@ -185,7 +185,7 @@
 </div>
 <div class="section" id="truthy-falsy">
 <h2>Truthy &amp; falsy<a class="headerlink" href="#truthy-falsy" title="Permalink to this headline">¶</a></h2>
-<p>We have taken up an idea in the programming world… truthy. We think Stephen Colbert coined the term. Truthiness, truthy and falsy. Odd sounding terms if you haven’t heard them before. They sound somewhat iffy or floaty, as if Truth were hard to pin down. When we’re using it in the Python world we are thinking about what Python considers equivalents of true and false. One way to test is to use the built-in function <code class="docutils literal"><span class="pre">bool()</span></code>.</p>
+<p>We have taken up an idea in the programming world… truthy. We think Stephen Colbert coined the term. Truthiness, truthy and falsy. Odd sounding terms if you haven’t heard them before. They sound somewhat iffy or floaty, as if Truth were hard to pin down. When we’re using it in the Python world we are thinking about what Python considers equivalents of true and false. One way to test is to use the built-in function <code class="docutils literal notranslate"><span class="pre">bool()</span></code>.</p>
 <p>bool(3+3)
 True</p>
 <p>bool(3-3)
@@ -195,20 +195,20 @@ False</p>
 True</p>
 <p>bool(0)
 False</p>
-<p>There are a lot of expressions that evaluate to <code class="docutils literal"><span class="pre">True</span></code> in Python. Any non-zero value is considered <code class="docutils literal"><span class="pre">True</span></code>. Any expression that evaluates to zero is <code class="docutils literal"><span class="pre">False</span></code>. Indeed it may be easier to think about what evaluates to <code class="docutils literal"><span class="pre">False</span></code> and is therefore considered falsy, than it is to think about what is true and therefore truthy. Here is a fairly inclusive list of things that are considered falsy.</p>
+<p>There are a lot of expressions that evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code> in Python. Any non-zero value is considered <code class="docutils literal notranslate"><span class="pre">True</span></code>. Any expression that evaluates to zero is <code class="docutils literal notranslate"><span class="pre">False</span></code>. Indeed it may be easier to think about what evaluates to <code class="docutils literal notranslate"><span class="pre">False</span></code> and is therefore considered falsy, than it is to think about what is true and therefore truthy. Here is a fairly inclusive list of things that are considered falsy.</p>
 <blockquote>
 <div>None
 False
 zero of any numeric type, for example, 0, 0.0, 0j
 any empty sequence, for example, ‘’, (), []
 any empty dictionary or set, for example, {}
-any object for which <code class="docutils literal"><span class="pre">__bool__()</span></code> returns False
-any object for which <code class="docutils literal"><span class="pre">__len__()</span></code> returns 0</div></blockquote>
-<p>You may not recognize <code class="docutils literal"><span class="pre">__bool__()</span></code> and <code class="docutils literal"><span class="pre">__len__()</span></code>. They are Python special methods. Special methods are sometimes called dunders because their names begin and end with double underscores. The Python interpreter invokes them for you, in the background so to speak, when it needs too. Don’t worry about it for now, more on dunders later.</p>
+any object for which <code class="docutils literal notranslate"><span class="pre">__bool__()</span></code> returns False
+any object for which <code class="docutils literal notranslate"><span class="pre">__len__()</span></code> returns 0</div></blockquote>
+<p>You may not recognize <code class="docutils literal notranslate"><span class="pre">__bool__()</span></code> and <code class="docutils literal notranslate"><span class="pre">__len__()</span></code>. They are Python special methods. Special methods are sometimes called dunders because their names begin and end with double underscores. The Python interpreter invokes them for you, in the background so to speak, when it needs too. Don’t worry about it for now, more on dunders later.</p>
 </div>
 <div class="section" id="boolean-operations">
 <h2>Boolean Operations<a class="headerlink" href="#boolean-operations" title="Permalink to this headline">¶</a></h2>
-<p>There are three boolean operators in Python: <code class="docutils literal"><span class="pre">or</span></code>, <code class="docutils literal"><span class="pre">and</span></code> and <code class="docutils literal"><span class="pre">not</span></code>. The first two enable compound boolean expressions whereas <code class="docutils literal"><span class="pre">not</span></code> simply negates the boolean value of any expression. To demonstrate, let’s set up a couple of functions. One will evaluate to <code class="docutils literal"><span class="pre">True</span></code> and the other will evaluate to <code class="docutils literal"><span class="pre">False</span></code>.</p>
+<p>There are three boolean operators in Python: <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span></code>. The first two enable compound boolean expressions whereas <code class="docutils literal notranslate"><span class="pre">not</span></code> simply negates the boolean value of any expression. To demonstrate, let’s set up a couple of functions. One will evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code> and the other will evaluate to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <dl class="docutils">
 <dt>def truthy():</dt>
 <dd>return True</dd>
@@ -219,7 +219,7 @@ any object for which <code class="docutils literal"><span class="pre">__len__()<
 True</p>
 <p>falsy()
 False</p>
-<p>Now let’s use them in expressions to see how <code class="docutils literal"><span class="pre">`and`</span></code>, <code class="docutils literal"><span class="pre">`or`</span></code> and <code class="docutils literal"><span class="pre">`not`</span></code> work.</p>
+<p>Now let’s use them in expressions to see how <code class="docutils literal notranslate"><span class="pre">`and`</span></code>, <code class="docutils literal notranslate"><span class="pre">`or`</span></code> and <code class="docutils literal notranslate"><span class="pre">`not`</span></code> work.</p>
 <p>(truthy() and falsy())  # Both must be true for the whole expression to be true
 False</p>
 <p>(truthy() or falsy())  # Either must be true for the whole expression to be true
@@ -231,7 +231,7 @@ False</p>
 </div>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>As you can see, booleans form the basis of much of the way we control the flow of our programs, particularly when we expand the notion of True and False to include truthy and falsy. I’d suggest you spend a little time in the interpreter with the <code class="docutils literal"><span class="pre">bool()</span></code> function. Try calling it on different sorts of expressions, or on the return values from functions, and see what you get. And remember that you can use it during debugging whenever you’re not clear on whether something is Truthy or falsy.</p>
+<p>As you can see, booleans form the basis of much of the way we control the flow of our programs, particularly when we expand the notion of True and False to include truthy and falsy. I’d suggest you spend a little time in the interpreter with the <code class="docutils literal notranslate"><span class="pre">bool()</span></code> function. Try calling it on different sorts of expressions, or on the return values from functions, and see what you get. And remember that you can use it during debugging whenever you’re not clear on whether something is Truthy or falsy.</p>
 </div>
 </div>
 
@@ -248,7 +248,7 @@ False</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
@@ -270,7 +270,7 @@ False</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

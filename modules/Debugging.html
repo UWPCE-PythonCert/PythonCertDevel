@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Debugging &mdash; PythonCert 4.0 documentation</title>
+  <title>Debugging &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
+    <link rel="top" title="PythonCert 5.0 documentation" href="../index.html"/>
         <link rel="up" title="Topic Notes" href="index.html"/>
         <link rel="next" title="Testing" href="Testing_advanced.html"/>
         <link rel="prev" title="Logging and the logging module" href="Logging.html"/> 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -188,7 +188,7 @@
 <ul class="simple">
 <li>Maria McKinley</li>
 </ul>
-<p><code class="docutils literal"><span class="pre">parody&#64;uw.edu</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">parody&#64;uw.edu</span></code></p>
 <div class="section" id="topics">
 <h2>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -218,8 +218,8 @@ program exits</li>
 <div class="section" id="visualize-the-stack">
 <h3>Visualize the stack!<a class="headerlink" href="#visualize-the-stack" title="Permalink to this headline">¶</a></h3>
 <a class="reference internal image-reference" href="../_images/program_callstack.png"><img alt="../_images/program_callstack.png" src="../_images/program_callstack.png" style="height: 580px;" /></a>
-<p class="rubric" id="how-deep-can-that-stack-be">How deep can that stack be?</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<p class="rubric">How deep can that stack be?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="k">def</span> <span class="nf">recurse</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">i</span>
@@ -232,7 +232,7 @@ program exits</li>
 </div>
 <p>That value can be changed with sys.setrecursionlimit(N)</p>
 <p>If we try to put more than sys.getrecursionlimit() frames on the stack, we get a RecursionError (derived from RuntimeError), which is python’s version of StackOverflow</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">inspect</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">inspect</span>
 
 <span class="k">def</span> <span class="nf">recurse</span><span class="p">(</span><span class="n">limit</span><span class="p">):</span>
     <span class="n">local_variable</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span> <span class="o">*</span> <span class="n">limit</span>
@@ -266,7 +266,7 @@ not handled anywhere in the stack, the interpreter will exit the program.</p>
 <div class="section" id="handling-exceptions">
 <h3>Handling exceptions<a class="headerlink" href="#handling-exceptions" title="Permalink to this headline">¶</a></h3>
 <p>The most basic form uses the builtins try and except</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">temp_f_to_c</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">temp_f_to_c</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">var</span><span class="p">)</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span><span class="o">/</span><span class="mf">1.8000</span>
     <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
@@ -276,7 +276,7 @@ not handled anywhere in the stack, the interpreter will exit the program.</p>
 </div>
 <div class="section" id="a-few-more-builtins-for-exception-handling-finally-else-and-raise">
 <h3>A few more builtins for exception handling: finally, else, and raise<a class="headerlink" href="#a-few-more-builtins-for-exception-handling-finally-else-and-raise" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;this&quot;</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -298,29 +298,29 @@ not handled anywhere in the stack, the interpreter will exit the program.</p>
 </pre></div>
 </div>
 <p>It is even possible to use a try block without the exception clause:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="mi">5</span><span class="o">/</span><span class="mi">0</span>
 <span class="k">finally</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;did it work? why would you do this?&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="rubric" id="built-in-exceptions">Built-in exceptions</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">__builtin__</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;Error&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">__builtin__</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;Error&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>If one of these meets your needs, by all means use it. You can add messages:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">raise</span> <span class="ne">SyntaxError</span><span class="p">(</span><span class="s2">&quot;That was a mispelling&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">raise</span> <span class="ne">SyntaxError</span><span class="p">(</span><span class="s2">&quot;That was a mispelling&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>If no builtin exceptions work, define a new exception type by subclassing Exception.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="k">pass</span>
 
 <span class="k">raise</span> <span class="n">MyException</span><span class="p">(</span><span class="s2">&quot;An exception doesn&#39;t always prove the rule!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>It is possible, but discouraged to catch all exceptions.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">my_cool_code</span><span class="p">()</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;no idea what the exceptions is, but I caught it&#39;</span><span class="p">)</span>
@@ -344,7 +344,8 @@ have reports of exactly what happened and what exception would have been thrown.
 <li>Small, tested functions are easier to debug.</li>
 <li>Find a bug, make a test, so it doesn’t come back</li>
 </ul>
-<p>Tools</p>
+<div class="section" id="tools">
+<h4>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>interpreter hints</li>
 <li>print()</li>
@@ -353,9 +354,11 @@ have reports of exactly what happened and what exception would have been thrown.
 <li>tests</li>
 <li>debuggers</li>
 </ul>
-<p>The Stack Trace</p>
+</div>
+<div class="section" id="the-stack-trace">
+<h4>The Stack Trace<a class="headerlink" href="#the-stack-trace" title="Permalink to this headline">¶</a></h4>
 <p>You already know what it looks like. Simple traceback:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>maria$ python3 define.py python
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>maria$ python3 define.py python
 Traceback (most recent call last):
   File &quot;define.py&quot;, line 15, in &lt;module&gt;
     definition = Definitions.article(title)
@@ -367,7 +370,9 @@ TypeError: &#39;method&#39; object is not subscriptable
 </pre></div>
 </div>
 <p>But things can quickly get complicated. You may have already run into stacktraces that go on for a 50 lines or more.</p>
-<p>Some helpful hints with stacktraces:</p>
+</div>
+<div class="section" id="some-helpful-hints-with-stacktraces">
+<h4>Some helpful hints with stacktraces:<a class="headerlink" href="#some-helpful-hints-with-stacktraces" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>May seem obvious, but… Read it carefully!</li>
 <li>What is the error? Try reading it aloud.</li>
@@ -393,16 +398,22 @@ TypeError: &#39;method&#39; object is not subscriptable
 <li>inlude the relative function of your code</li>
 </ul>
 <p>Often after writing out this email, you will realize what you forgot to check, and more often than not, this will happen just after you hit send. Good places to send these emails are other people on same project and mailing list for software package. For the purpose of this class, of course, copy it into slack or the class email list.</p>
-<p>Print</p>
+</div>
+<div class="section" id="print">
+<h4>Print<a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>print(“my_module.py: my_variable: “, my_variable)</li>
 <li>can use print statements to make sure you are editing a file in the stack</li>
 </ul>
-<p>Console debuggers</p>
+</div>
+<div class="section" id="console-debuggers">
+<h4>Console Debuggers<a class="headerlink" href="#console-debuggers" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>pdb/ipdb</li>
 </ul>
-<p>GUI debuggers (more about these below)</p>
+</div>
+<div class="section" id="gui-debuggers-more-about-these-below">
+<h4>GUI debuggers (more about these below)<a class="headerlink" href="#gui-debuggers-more-about-these-below" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>Winpdb</li>
 <li>IDEs: Eclipse, Wing IDE, PyCharm, Visual Studio Code</li>
@@ -411,18 +422,20 @@ TypeError: &#39;method&#39; object is not subscriptable
 <ol class="arabic simple">
 <li>investigate import issues with -v:</li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">v</span> <span class="n">myscript</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">v</span> <span class="n">myscript</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>Verbose (trace import statements)</p>
 <ol class="arabic simple" start="2">
 <li>inspect environment after running script with -i</li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">i</span> <span class="n">myscript</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">i</span> <span class="n">myscript</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>Forces interpreter to remain active, and still in scope</p>
-<p>Useful tools from interpreter:</p>
+</div>
+<div class="section" id="useful-tools-from-interpreter">
+<h4>Useful tools from interpreter:<a class="headerlink" href="#useful-tools-from-interpreter" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>In IPython, ‘who’ will list all currently defined variables</li>
 <li>locals()</li>
@@ -431,21 +444,22 @@ TypeError: &#39;method&#39; object is not subscriptable
 </ul>
 <p class="rubric" id="pdb-the-python-debugger"><a class="reference external" href="http://docs.python.org/2/library/pdb.html">Pdb - The Python
 Debugger</a></p>
-<p>Pros:</p>
+<p class="rubric">Pros:</p>
 <ul class="simple">
 <li>You have it already, ships with the standard library</li>
 <li>Easy remote debugging (since it is non-graphical, see remote-pdb for true remote debugging)</li>
 <li>Works with any development environment</li>
 </ul>
-<p>Cons:</p>
+<p class="rubric">Cons:</p>
 <ul class="simple">
 <li>Steep-ish learning curve</li>
 <li>Easy to get lost in a deep stack</li>
 <li>Watching variables isn’t hard, but non-trivial</li>
 </ul>
-<p class="rubric" id="pdb-the-python-debugger-1"><a class="reference external" href="http://docs.python.org/2/library/pdb.html">Pdb - The Python
-Debugger</a></p>
-<p>The 4-fold ways of invoking pdb</p>
+<p class="rubric"><a class="reference external" href="https://docs.python.org/3.7/library/pdb.html">Pdb - The Python Debugger</a></p>
+</div>
+<div class="section" id="the-4-fold-ways-of-invoking-pdb">
+<h4>The 4-fold ways of invoking pdb<a class="headerlink" href="#the-4-fold-ways-of-invoking-pdb" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>Postmortem mode</li>
 <li>Run mode</li>
@@ -458,45 +472,45 @@ which is mostly compatible, and generally easier to work with. But it
 doesn’t ship with Python.</p>
 <p class="rubric" id="postmortem-mode">Postmortem mode</p>
 <p>For analyzing crashes due to uncaught exceptions</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">i</span> <span class="n">script</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">i</span> <span class="n">script</span><span class="o">.</span><span class="n">py</span>
 <span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">pm</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>More info on using Postmortem mode:</p>
 <p><a class="reference external" href="http://www.almarklein.org/pm-debugging.html">http://www.almarklein.org/pm-debugging.html</a></p>
 <p class="rubric" id="run-mode">Run mode</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pdb</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;some.expression()&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pdb</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;some.expression()&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="rubric" id="script-mode">Script mode</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pdb</span> <span class="n">script</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pdb</span> <span class="n">script</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>“-m [module]” finds [module] in sys.path and executes it as a script</p>
 <p class="rubric" id="trace-mode">Trace mode</p>
 <p>Insert the following line into your code where you want execution to
 halt:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>It’s not always OK/possible to modify your code in order to debug it,
 but this is often the quickest way to begin inspecting state</p>
 <p class="rubric" id="pdb-in-ipython">pdb in ipython</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">pdb</span>
-<span class="n">Automatic</span> <span class="n">pdb</span> <span class="n">calling</span> <span class="n">has</span> <span class="n">been</span> <span class="n">turned</span> <span class="n">ON</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="n">pdb</span>
+<span class="go">Automatic pdb calling has been turned ON</span>
 
-<span class="o">%</span><span class="n">run</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+<span class="go">%run app.py</span>
 
-<span class="c1"># now halts execution on uncaught exception</span>
+<span class="go"># now halts execution on uncaught exception</span>
 </pre></div>
 </div>
-<p>If you forget to turn on pdb, the magic command %debug will activate the
+<p>If you forget to turn on pdb, the magic command <code class="docutils literal notranslate"><span class="pre">%debug</span></code> will activate the
 debugger (in ‘post-mortem mode’).</p>
 <p class="rubric" id="navigating-pdb">Navigating pdb</p>
 <p>The goal of each of the preceding techniques was to get to the pdb
 prompt and get to work inspecting state. Most commands can be short-cutted
 to the first letter.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pdb</span> <span class="n">define</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pdb</span> <span class="n">define</span><span class="o">.</span><span class="n">py</span>
 <span class="n">pdb</span><span class="o">&gt;</span> <span class="n">args</span>  <span class="c1"># print arguments and values to current function</span>
 <span class="n">pdb</span><span class="o">&gt;</span> <span class="n">pp</span> <span class="n">a_variable</span>  <span class="c1"># pretty-print a_variable</span>
 <span class="n">pdb</span><span class="o">&gt;</span> <span class="n">where</span>  <span class="c1"># print stack trace, bottom is most recent command</span>
@@ -504,7 +518,7 @@ to the first letter.</p>
 </pre></div>
 </div>
 <p>To repeat the current command, press only the Enter key</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># execute until current function returns</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># execute until current function returns</span>
 <span class="n">pdb</span><span class="o">&gt;</span> <span class="k">return</span>
 <span class="c1"># Execute the current line, stop at the first possible occasion</span>
 <span class="n">pdb</span><span class="o">&gt;</span> <span class="n">step</span>
@@ -523,7 +537,7 @@ to the first letter.</p>
 </pre></div>
 </div>
 <p class="rubric" id="breakpoints">Breakpoints</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pdb</span><span class="o">&gt;</span> <span class="n">help</span> <span class="k">break</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pdb</span><span class="o">&gt;</span> <span class="n">help</span> <span class="k">break</span>
   <span class="n">b</span><span class="p">(</span><span class="n">reak</span><span class="p">)</span> <span class="p">([</span><span class="n">file</span><span class="p">:]</span><span class="n">lineno</span> <span class="o">|</span> <span class="n">function</span><span class="p">)</span> <span class="p">[,</span> <span class="n">condition</span><span class="p">]</span>
   <span class="n">With</span> <span class="n">a</span> <span class="n">line</span> <span class="n">number</span> <span class="n">argument</span><span class="p">,</span> <span class="nb">set</span> <span class="n">a</span> <span class="k">break</span> <span class="n">there</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">current</span>
   <span class="n">file</span><span class="o">.</span>  <span class="n">With</span> <span class="n">a</span> <span class="n">function</span> <span class="n">name</span><span class="p">,</span> <span class="nb">set</span> <span class="n">a</span> <span class="k">break</span> <span class="n">at</span> <span class="n">first</span> <span class="n">executable</span> <span class="n">line</span>
@@ -539,7 +553,7 @@ to the first letter.</p>
 </div>
 <p>Can use up, down, where and list to evalutate where you are, and use that to
 set a new breakpoint in code coming up. Useful for getting out of rabbit holes.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pdb</span><span class="o">&gt;</span> <span class="k">break</span> <span class="n">api</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">21</span> <span class="c1"># set a breakpoint file:line #</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pdb</span><span class="o">&gt;</span> <span class="k">break</span> <span class="n">api</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">21</span> <span class="c1"># set a breakpoint file:line #</span>
 <span class="n">pdb</span><span class="o">&gt;</span> <span class="k">break</span>  <span class="c1"># list breakpoints</span>
 <span class="n">pdb</span><span class="o">&gt;</span> <span class="n">clear</span> <span class="mi">1</span>  <span class="c1"># get rid of first breakpoint</span>
 <span class="n">pdb</span><span class="o">&gt;</span> <span class="k">break</span> <span class="mi">35</span>  <span class="c1"># set a breakpoint in current file at line 35</span>
@@ -548,7 +562,7 @@ set a new breakpoint in code coming up. Useful for getting out of rabbit holes.<
 </pre></div>
 </div>
 <p>You can also delete(clear), disable and enable breakpoints</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">clear</span> <span class="p">[</span><span class="n">bpnumber</span> <span class="p">[</span><span class="n">bpnumber</span><span class="o">...</span><span class="p">]]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clear</span> <span class="p">[</span><span class="n">bpnumber</span> <span class="p">[</span><span class="n">bpnumber</span><span class="o">...</span><span class="p">]]</span>
 
 <span class="n">disable</span> <span class="p">[</span><span class="n">bpnumber</span> <span class="p">[</span><span class="n">bpnumber</span><span class="o">...</span><span class="p">]]</span>
 
@@ -556,7 +570,7 @@ set a new breakpoint in code coming up. Useful for getting out of rabbit holes.<
 </pre></div>
 </div>
 <p class="rubric" id="conditional-breakpoints">Conditional Breakpoints</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pdb</span><span class="o">&gt;</span> <span class="k">break</span> <span class="mi">9</span><span class="p">,</span> <span class="n">j</span><span class="o">&gt;</span><span class="mi">3</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pdb</span><span class="o">&gt;</span> <span class="k">break</span> <span class="mi">9</span><span class="p">,</span> <span class="n">j</span><span class="o">&gt;</span><span class="mi">3</span>
 <span class="n">Breakpoint</span> <span class="mi">1</span> <span class="n">at</span> <span class="o">.../</span><span class="n">pdb_break</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">9</span>
 
 <span class="n">pdb</span><span class="o">&gt;</span> <span class="k">break</span>
@@ -566,37 +580,30 @@ set a new breakpoint in code coming up. Useful for getting out of rabbit holes.<
 </pre></div>
 </div>
 <p>Condition can be used to add a conditional to an existing breakpoint</p>
-<p class="rubric" id="invoking-pdb-with-nose">Invoking pdb with nose</p>
-<p>On error condition, drop to pdb</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nosetests</span> <span class="o">--</span><span class="n">pdb</span>
-</pre></div>
-</div>
-<p>On test failure, drop to pdb:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nosetests</span> <span class="o">--</span><span class="n">pdb</span><span class="o">-</span><span class="n">failures</span>
-</pre></div>
-</div>
+<p class="rubric">Invoking pdb with pytest</p>
 <p>pytest allows one to drop into the PDB prompt via a command line option:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="o">--</span><span class="n">pdb</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="o">--</span><span class="n">pdb</span>
 </pre></div>
 </div>
 <p>This will invoke the Python debugger on every failure.
 Often you might only want to do this for the first failing
 test to understand a certain failure situation:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="o">-</span><span class="n">x</span> <span class="o">--</span><span class="n">pdb</span>   <span class="c1"># drop to PDB on first failure, then end test session</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="o">-</span><span class="n">x</span> <span class="o">--</span><span class="n">pdb</span>   <span class="c1"># drop to PDB on first failure, then end test session</span>
 <span class="n">pytest</span> <span class="o">--</span><span class="n">pdb</span> <span class="o">--</span><span class="n">maxfail</span><span class="o">=</span><span class="mi">3</span>  <span class="c1"># drop to PDB for first three failures</span>
 </pre></div>
 </div>
 <p>Try some debugging! Here is a fun tutorial intro to pdb that someone created:</p>
 <p><a class="reference external" href="https://github.com/spiside/pdb-tutorial">https://github.com/spiside/pdb-tutorial</a></p>
 </div>
+</div>
 <div class="section" id="python-ides">
 <h3>Python IDEs<a class="headerlink" href="#python-ides" title="Permalink to this headline">¶</a></h3>
-<p><strong>PyCharm</strong></p>
+<p class="rubric">PyCharm</p>
 <p>From JetBrains, — integrates some of their vast array of development
 tools</p>
 <p>Free Community Edition (CE) is available</p>
 <p>Good visual debugging support</p>
-<p><strong>Eclipse</strong></p>
+<p class="rubric">Eclipse</p>
 <p>A multi-language IDE</p>
 <p>Python support via <a class="reference external" href="http://pydev.org/">http://pydev.org/</a></p>
 <p>Automatic variable and expression watching</p>
@@ -604,14 +611,14 @@ tools</p>
 provided you look in the right places!</p>
 <p>Further reading</p>
 <p><a class="reference external" href="http://pydev.org/manual_adv_debugger.html">http://pydev.org/manual_adv_debugger.html</a></p>
-<p><strong>Visual Studio Code</strong></p>
+<p class="rubric">Visual Studio Code</p>
 <p>Visual Studio Code has support for Python</p>
 <p>(not the same as the monstrosity that is Visual Studio)</p>
 <p><a class="reference external" href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
-<p><strong>winpdb</strong></p>
+<p class="rubric">winpdb</p>
 <p>A multi platform Python debugger with threading support</p>
 <p>Easier to start up and get debugging:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">winpdb</span> <span class="n">your_app</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">winpdb</span> <span class="n">your_app</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p><a class="reference external" href="http://winpdb.org/tutorial/WinpdbTutorial.html">http://winpdb.org/tutorial/WinpdbTutorial.html</a></p>
@@ -621,12 +628,6 @@ provided you look in the right places!</p>
 <p>To debug an application running a different Python, even remotely:</p>
 <p>remote-pdb</p>
 <p><a class="reference external" href="https://pypi.python.org/pypi/remote-pdb">https://pypi.python.org/pypi/remote-pdb</a></p>
-<p>or older package rpdb</p>
-<p><a class="reference external" href="https://pypi.python.org/pypi/rpdb">https://pypi.python.org/pypi/rpdb</a></p>
-<p>(only tested to Python 3.1)</p>
-</div>
-<div class="section" id="questions">
-<h3>Questions?<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 </div>
@@ -653,7 +654,7 @@ provided you look in the right places!</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
@@ -675,7 +676,7 @@ provided you look in the right places!</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

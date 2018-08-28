@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Basic Python &mdash; PythonCert 4.0 documentation</title>
+  <title>Basic Python &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -35,10 +35,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
+    <link rel="top" title="PythonCert 5.0 documentation" href="../index.html"/>
         <link rel="up" title="Topic Notes" href="index.html"/>
         <link rel="next" title="More on Functions" href="Functions.html"/>
-        <link rel="prev" title="Python 2 versus Python 3" href="Py2vsPy3.html"/> 
+        <link rel="prev" title="Submitting your work to gitHub" href="Submitting_to_github.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -112,6 +112,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#assorted-additional-topics">Assorted Additional Topics</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
@@ -191,13 +192,13 @@
 <h2>Values<a class="headerlink" href="#values" title="Permalink to this headline">¶</a></h2>
 <p>All of programming is really about manipulating values.</p>
 <ul class="simple">
-<li>Values are pieces of unnamed data: <code class="docutils literal"><span class="pre">42</span></code>, <code class="docutils literal"><span class="pre">'Hello,</span> <span class="pre">world'</span></code></li>
+<li>Values are pieces of unnamed data: <code class="docutils literal notranslate"><span class="pre">42</span></code>, <code class="docutils literal notranslate"><span class="pre">'Hello,</span> <span class="pre">world'</span></code></li>
 <li>In Python, all values are objects.<ul>
-<li>Try <code class="docutils literal"><span class="pre">dir(42)</span></code>  - lots going on behind the curtain!</li>
+<li>Try <code class="docutils literal notranslate"><span class="pre">dir(42)</span></code>  - lots going on behind the curtain!</li>
 </ul>
 </li>
 <li>Every value has a type<ul>
-<li>Try <code class="docutils literal"><span class="pre">type(42)</span></code> - the type of a value determines what it can do.</li>
+<li>Try <code class="docutils literal notranslate"><span class="pre">type(42)</span></code> - the type of a value determines what it can do.</li>
 </ul>
 </li>
 </ul>
@@ -207,26 +208,26 @@
 <dl class="docutils">
 <dt>Numbers:</dt>
 <dd><ul class="first last simple">
-<li>floating point: <code class="docutils literal"><span class="pre">3.4</span></code></li>
-<li>integers: <code class="docutils literal"><span class="pre">456</span></code></li>
+<li>floating point: <code class="docutils literal notranslate"><span class="pre">3.4</span></code></li>
+<li>integers: <code class="docutils literal notranslate"><span class="pre">456</span></code></li>
 </ul>
 </dd>
 <dt>Text:</dt>
 <dd><ul class="first last simple">
-<li><code class="docutils literal"><span class="pre">&quot;a</span> <span class="pre">bit</span> <span class="pre">of</span> <span class="pre">text&quot;</span></code></li>
-<li><code class="docutils literal"><span class="pre">'a</span> <span class="pre">bit</span> <span class="pre">of</span> <span class="pre">text'</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">&quot;a</span> <span class="pre">bit</span> <span class="pre">of</span> <span class="pre">text&quot;</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">'a</span> <span class="pre">bit</span> <span class="pre">of</span> <span class="pre">text'</span></code></li>
 <li>(either single or double quotes work – why? If you don’t know try looking it up in one of the referenced sources!)</li>
 </ul>
 </dd>
 <dt>Boolean values:</dt>
 <dd><ul class="first last simple">
-<li><code class="docutils literal"><span class="pre">True</span></code></li>
-<li><code class="docutils literal"><span class="pre">False</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">True</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">False</span></code></li>
 </ul>
 </dd>
 <dt>The nothing object:</dt>
 <dd><ul class="first last simple">
-<li><code class="docutils literal"><span class="pre">None</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">None</span></code></li>
 </ul>
 </dd>
 </dl>
@@ -236,11 +237,11 @@
 <h2>Code structure<a class="headerlink" href="#code-structure" title="Permalink to this headline">¶</a></h2>
 <p>Each line is a piece of code.</p>
 <p>Comments:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="c1"># everything after a &#39;#&#39; is a comment</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="c1"># everything after a &#39;#&#39; is a comment</span>
 </pre></div>
 </div>
 <p>Expressions:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="c1"># evaluating an expression results in a value</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="c1"># evaluating an expression results in a value</span>
 
 <span class="gp">In [5]: </span><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span>
 <span class="gh">Out[5]: </span><span class="go">7</span>
@@ -248,7 +249,7 @@
 </div>
 <p>Statements:
 statements carry out an action, but do not evaluate to a value, that is you can’t assign to them (or put them in a lamda, or…)</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="c1"># statements carry out an action, do not evaluate a value, may contain an expression</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="c1"># statements carry out an action, do not evaluate a value, may contain an expression</span>
 
 <span class="gp">In [7]: </span><span class="n">line_count</span> <span class="o">=</span> <span class="mi">42</span>
 
@@ -256,17 +257,17 @@ statements carry out an action, but do not evaluate to a value, that is you can�
 </pre></div>
 </div>
 <p>It is somewhat obvious, but handy when playing with code:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;something&quot;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;something&quot;</span><span class="p">)</span>
 <span class="go">something</span>
 </pre></div>
 </div>
 <p>You can print multiple things:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;the value is&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;the value is&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="go">the value is 5</span>
 </pre></div>
 </div>
 <p>Any Python object can be printed (though it might not be pretty…)</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="k">class</span> <span class="nc">bar</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="k">class</span> <span class="nc">bar</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="gp">   ...: </span>    <span class="k">pass</span>
 <span class="gp">   ...:</span>
 
@@ -275,16 +276,16 @@ statements carry out an action, but do not evaluate to a value, that is you can�
 </pre></div>
 </div>
 <p>Blocks of code are delimited by a colon and indentation:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a_function</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a_function</span><span class="p">():</span>
     <span class="n">a_new_code_block</span>
 <span class="c1"># end_of_the_block on previous line</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">do_something_bad</span><span class="p">()</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="n">fix_the_problem</span><span class="p">()</span>
@@ -297,20 +298,20 @@ statements carry out an action, but do not evaluate to a value, that is you can�
 <p>Python requires spaces for indents. You can probably set your editor to replace tabs with spaces.
 This is a good idea as it is easier to type one tab than 4 spaces.</p>
 <p>These two blocks look the same:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>But they are not:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
 \<span class="n">s</span>\<span class="n">s</span>\<span class="n">s</span>\<span class="n">sprint</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
 \<span class="n">tprint</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
@@ -323,13 +324,13 @@ This is a good idea as it is easier to type one tab than 4 spaces.</p>
 <h2>Expressions<a class="headerlink" href="#expressions" title="Permalink to this headline">¶</a></h2>
 <p>An <em>expression</em> is made up of values and operators.</p>
 <ul class="simple">
-<li>An expression is evaluated to produce a new value:  <code class="docutils literal"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">2</span></code><ul>
+<li>An expression is evaluated to produce a new value:  <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">2</span></code><ul>
 <li>The Python interpreter can be used as a calculator to evaluate expressions.</li>
 </ul>
 </li>
 <li>Integer vs. float arithmetic<ul>
 <li>(Python 3 smooths this out).</li>
-<li>Always use <code class="docutils literal"><span class="pre">/</span></code> when you want division with float results, <code class="docutils literal"><span class="pre">//</span></code> when you want floored (integer) results (no remainder).</li>
+<li>Always use <code class="docutils literal notranslate"><span class="pre">/</span></code> when you want division with float results, <code class="docutils literal notranslate"><span class="pre">//</span></code> when you want floored (integer) results (no remainder).</li>
 </ul>
 </li>
 <li>Type conversions.<ul>
@@ -362,7 +363,7 @@ This is a good idea as it is easier to type one tab than 4 spaces.</p>
 <h2>Symbols and Type<a class="headerlink" href="#symbols-and-type" title="Permalink to this headline">¶</a></h2>
 <p>Evaluating the type of a <em>symbol</em> will return the type of the <em>value</em> to which
 it is bound.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="nb">type</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="nb">type</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="gh">Out[19]: </span><span class="go">int</span>
 
 <span class="gp">In [20]: </span><span class="nb">type</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
@@ -381,18 +382,18 @@ it is bound.</p>
 <span class="gh">Out[26]: </span><span class="go">float</span>
 </pre></div>
 </div>
-<p><em>wait!</em> <code class="docutils literal"><span class="pre">a</span></code> has a different type?!? – yes, because it’s the type of the value: “3.14”, names don’t actually have a type, the same name can refer to any type.</p>
+<p><em>wait!</em> <code class="docutils literal notranslate"><span class="pre">a</span></code> has a different type?!? – yes, because it’s the type of the value: “3.14”, names don’t actually have a type, the same name can refer to any type.</p>
 </div>
 <div class="section" id="assignment">
 <h2>Assignment<a class="headerlink" href="#assignment" title="Permalink to this headline">¶</a></h2>
-<p>A <em>symbol</em> is <strong>bound</strong> to a <em>value</em> with the assignment operator: <code class="docutils literal"><span class="pre">=</span></code></p>
+<p>A <em>symbol</em> is <strong>bound</strong> to a <em>value</em> with the assignment operator: <code class="docutils literal notranslate"><span class="pre">=</span></code></p>
 <ul class="simple">
 <li>This attaches a name to a value.</li>
 <li>A value can have many names (or none!)</li>
 <li>Assignment is a statement, it returns no value.</li>
 </ul>
 <p>Evaluating the name will return the value to which it is bound</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;value&quot;</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;value&quot;</span>
 
 <span class="gp">In [27]: </span><span class="n">name</span>
 <span class="gh">Out[27]: </span><span class="go">&#39;value&#39;</span>
@@ -424,8 +425,8 @@ location in memory.</li>
 </div>
 <div class="section" id="in-place-assignment">
 <h2>In-Place Assignment<a class="headerlink" href="#in-place-assignment" title="Permalink to this headline">¶</a></h2>
-<p>You can also do “in-place” assignment with <code class="docutils literal"><span class="pre">+=</span></code>.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [32]: </span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<p>You can also do “in-place” assignment with <code class="docutils literal notranslate"><span class="pre">+=</span></code>.</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [32]: </span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="gp">In [33]: </span><span class="n">a</span>
 <span class="gh">Out[33]: </span><span class="go">1</span>
@@ -441,10 +442,10 @@ location in memory.</li>
 <span class="gh">Out[37]: </span><span class="go">3</span>
 </pre></div>
 </div>
-<p>also: <code class="docutils literal"><span class="pre">-=,</span> <span class="pre">*=,</span> <span class="pre">/=,</span> <span class="pre">**=,</span> <span class="pre">\%=</span></code></p>
+<p>also: <code class="docutils literal notranslate"><span class="pre">-=,</span> <span class="pre">*=,</span> <span class="pre">/=,</span> <span class="pre">**=,</span> <span class="pre">\%=</span></code></p>
 <p><strong>Note:</strong> This is a bit tricky – if the value is mutable, it is in-place assignment – that is the object itself is changed. But if the value is immutable (can’t be changed), then it is replaced with a new object.</p>
 <p>Example with an immutable type:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># a is an integer -- an immutable type.</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># a is an integer -- an immutable type.</span>
 
 <span class="gp">In [12]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>  <span class="c1"># a and b are names for the SAME integer</span>
 
@@ -458,7 +459,7 @@ location in memory.</li>
 </pre></div>
 </div>
 <p>Example with a mutable type:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="c1"># a is a mutable list</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="c1"># a is a mutable list</span>
 
 <span class="gp">In [17]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>  <span class="c1"># b is now another name for the same list</span>
 
@@ -475,7 +476,7 @@ location in memory.</li>
 <h2>Multiple Assignment<a class="headerlink" href="#multiple-assignment" title="Permalink to this headline">¶</a></h2>
 <p>You can assign multiple names from multiple expressions in one
 statement:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [48]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [48]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
 
 <span class="gp">In [49]: </span><span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
 
@@ -493,7 +494,7 @@ statement:</p>
 <div class="section" id="nifty-python-trick">
 <h2>Nifty Python Trick<a class="headerlink" href="#nifty-python-trick" title="Permalink to this headline">¶</a></h2>
 <p>Using this feature, we can swap values between two names in one statement:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [51]: </span><span class="n">i</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [51]: </span><span class="n">i</span>
 <span class="gh">Out[51]: </span><span class="go">4</span>
 
 <span class="gp">In [52]: </span><span class="n">j</span>
@@ -513,8 +514,8 @@ statement:</p>
 <div class="section" id="deleting">
 <h2>Deleting<a class="headerlink" href="#deleting" title="Permalink to this headline">¶</a></h2>
 <p>You can’t actually directly delete values in Python…</p>
-<p><code class="docutils literal"><span class="pre">del</span></code> only deletes a name (or “unbinds” the name…)</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [56]: </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<p><code class="docutils literal notranslate"><span class="pre">del</span></code> only deletes a name (or “unbinds” the name…)</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [56]: </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
 
 <span class="gp">In [57]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
 
@@ -531,7 +532,7 @@ statement:</p>
 </div>
 <p>The object is still there…Python will only delete it if there are no
 references to it.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
 
 <span class="gp">In [16]: </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
 
@@ -554,8 +555,8 @@ references to it.</p>
 <h2>Identity<a class="headerlink" href="#identity" title="Permalink to this headline">¶</a></h2>
 <p>Every value in Python is an object.</p>
 <p>Every object is unique and has a unique <em>identity</em>, which you can inspect with
-the <code class="docutils literal"><span class="pre">id</span></code> <em>builtin</em>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [68]: </span><span class="nb">id</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+the <code class="docutils literal notranslate"><span class="pre">id</span></code> <em>builtin</em>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [68]: </span><span class="nb">id</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="gh">Out[68]: </span><span class="go">140553647890984</span>
 
 <span class="gp">In [69]: </span><span class="nb">id</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
@@ -571,8 +572,8 @@ the <code class="docutils literal"><span class="pre">id</span></code> <em>builti
 <div class="section" id="testing-identity">
 <h2>Testing Identity<a class="headerlink" href="#testing-identity" title="Permalink to this headline">¶</a></h2>
 <p>You can find out if the values bound to two different symbols are the <strong>same
-object</strong> using the <code class="docutils literal"><span class="pre">is</span></code> operator:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [72]: </span><span class="n">count</span> <span class="o">=</span> <span class="mi">23</span>
+object</strong> using the <code class="docutils literal notranslate"><span class="pre">is</span></code> operator:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [72]: </span><span class="n">count</span> <span class="o">=</span> <span class="mi">23</span>
 
 <span class="gp">In [73]: </span><span class="n">other_count</span> <span class="o">=</span> <span class="n">count</span>
 
@@ -589,8 +590,8 @@ object</strong> using the <code class="docutils literal"><span class="pre">is</s
 </div>
 <div class="section" id="equality">
 <h2>Equality<a class="headerlink" href="#equality" title="Permalink to this headline">¶</a></h2>
-<p>You can test for the equality of certain values with the <code class="docutils literal"><span class="pre">==</span></code> operator</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [77]: </span><span class="n">val1</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">30</span>
+<p>You can test for the equality of certain values with the <code class="docutils literal notranslate"><span class="pre">==</span></code> operator</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [77]: </span><span class="n">val1</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">30</span>
 
 <span class="gp">In [78]: </span><span class="n">val2</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">10</span>
 
@@ -609,21 +610,21 @@ object</strong> using the <code class="docutils literal"><span class="pre">is</s
 <h2>Singletons<a class="headerlink" href="#singletons" title="Permalink to this headline">¶</a></h2>
 <p>Python has three “singletons” – a value for which there is only one instance:</p>
 <blockquote>
-<div><code class="docutils literal"><span class="pre">True</span></code>, <code class="docutils literal"><span class="pre">False</span></code>, and <code class="docutils literal"><span class="pre">None</span></code></div></blockquote>
-<p>To check if a name is bound to one of these, you use <code class="docutils literal"><span class="pre">is</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="ow">is</span> <span class="bp">True</span>
+<div><code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code>, and <code class="docutils literal notranslate"><span class="pre">None</span></code></div></blockquote>
+<p>To check if a name is bound to one of these, you use <code class="docutils literal notranslate"><span class="pre">is</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="ow">is</span> <span class="bp">True</span>
 
 <span class="n">b</span> <span class="ow">is</span> <span class="bp">False</span>
 
 <span class="n">x</span> <span class="ow">is</span> <span class="bp">None</span>
 </pre></div>
 </div>
-<p>Note that in contrast to English – “is” is asking a question, not making an assertion – <code class="docutils literal"><span class="pre">a</span> <span class="pre">is</span> <span class="pre">True</span></code> means “is a set to the value True?”</p>
+<p>Note that in contrast to English – “is” is asking a question, not making an assertion – <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">is</span> <span class="pre">True</span></code> means “is a set to the value True?”</p>
 </div>
 <div class="section" id="operator-precedence">
 <h2>Operator Precedence<a class="headerlink" href="#operator-precedence" title="Permalink to this headline">¶</a></h2>
 <p>Operator Precedence determines what evaluates first:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">4</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">4</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span>
 </pre></div>
 </div>
 <p>To force statements to be evaluated out of order, use parentheses – expressions in parentheses are always evaluated first:</p>
@@ -635,46 +636,46 @@ object</strong> using the <code class="docutils literal"><span class="pre">is</s
 <h2>Python Operator Precedence<a class="headerlink" href="#python-operator-precedence" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>Parentheses and Literals:</dt>
-<dd><p class="first"><code class="docutils literal"><span class="pre">(),</span> <span class="pre">[],</span> <span class="pre">{}</span></code></p>
-<p class="last"><code class="docutils literal"><span class="pre">&quot;&quot;,</span> <span class="pre">b'',</span> <span class="pre">''</span></code></p>
+<dd><p class="first"><code class="docutils literal notranslate"><span class="pre">(),</span> <span class="pre">[],</span> <span class="pre">{}</span></code></p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">&quot;&quot;,</span> <span class="pre">b'',</span> <span class="pre">''</span></code></p>
 </dd>
 <dt>Function Calls:</dt>
-<dd><code class="docutils literal"><span class="pre">f(args)</span></code></dd>
+<dd><code class="docutils literal notranslate"><span class="pre">f(args)</span></code></dd>
 <dt>Slicing and Subscription:</dt>
-<dd><p class="first"><code class="docutils literal"><span class="pre">a[x:y]</span></code></p>
-<p class="last"><code class="docutils literal"><span class="pre">b[0],</span> <span class="pre">c['key']</span></code></p>
+<dd><p class="first"><code class="docutils literal notranslate"><span class="pre">a[x:y]</span></code></p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">b[0],</span> <span class="pre">c['key']</span></code></p>
 </dd>
 <dt>Attribute Reference:</dt>
-<dd><code class="docutils literal"><span class="pre">obj.attribute</span></code></dd>
+<dd><code class="docutils literal notranslate"><span class="pre">obj.attribute</span></code></dd>
 <dt>Exponentiation:</dt>
-<dd><code class="docutils literal"><span class="pre">**</span></code></dd>
+<dd><code class="docutils literal notranslate"><span class="pre">**</span></code></dd>
 <dt>Bitwise NOT, Unary Signing:</dt>
-<dd><p class="first"><code class="docutils literal"><span class="pre">~x</span></code></p>
-<p class="last"><code class="docutils literal"><span class="pre">+x,</span> <span class="pre">-x</span></code></p>
+<dd><p class="first"><code class="docutils literal notranslate"><span class="pre">~x</span></code></p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">+x,</span> <span class="pre">-x</span></code></p>
 </dd>
 <dt>Multiplication, Division, Modulus:</dt>
-<dd><code class="docutils literal"><span class="pre">*,</span> <span class="pre">/,</span> <span class="pre">%</span></code></dd>
+<dd><code class="docutils literal notranslate"><span class="pre">*,</span> <span class="pre">/,</span> <span class="pre">%</span></code></dd>
 <dt>Addition, Subtraction:</dt>
-<dd><code class="docutils literal"><span class="pre">+,</span> <span class="pre">-</span></code></dd>
+<dd><code class="docutils literal notranslate"><span class="pre">+,</span> <span class="pre">-</span></code></dd>
 <dt>Bitwise operations:</dt>
-<dd><p class="first"><code class="docutils literal"><span class="pre">&lt;&lt;,</span> <span class="pre">&gt;&gt;,</span></code></p>
-<p class="last"><code class="docutils literal"><span class="pre">&amp;,</span> <span class="pre">^,</span> <span class="pre">|</span></code></p>
+<dd><p class="first"><code class="docutils literal notranslate"><span class="pre">&lt;&lt;,</span> <span class="pre">&gt;&gt;,</span></code></p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">&amp;,</span> <span class="pre">^,</span> <span class="pre">|</span></code></p>
 </dd>
 <dt>Comparisons:</dt>
-<dd><code class="docutils literal"><span class="pre">&lt;,</span> <span class="pre">&lt;=,</span> <span class="pre">&gt;,</span> <span class="pre">&gt;=,</span> <span class="pre">!=,</span> <span class="pre">==</span></code></dd>
+<dd><code class="docutils literal notranslate"><span class="pre">&lt;,</span> <span class="pre">&lt;=,</span> <span class="pre">&gt;,</span> <span class="pre">&gt;=,</span> <span class="pre">!=,</span> <span class="pre">==</span></code></dd>
 <dt>Membership and Identity:</dt>
-<dd><code class="docutils literal"><span class="pre">in,</span> <span class="pre">not</span> <span class="pre">in,</span> <span class="pre">is,</span> <span class="pre">is</span> <span class="pre">not</span></code></dd>
+<dd><code class="docutils literal notranslate"><span class="pre">in,</span> <span class="pre">not</span> <span class="pre">in,</span> <span class="pre">is,</span> <span class="pre">is</span> <span class="pre">not</span></code></dd>
 <dt>Boolean operations:</dt>
-<dd><code class="docutils literal"><span class="pre">or,</span> <span class="pre">and,</span> <span class="pre">not</span></code></dd>
+<dd><code class="docutils literal notranslate"><span class="pre">or,</span> <span class="pre">and,</span> <span class="pre">not</span></code></dd>
 <dt>Anonymous Functions:</dt>
-<dd><code class="docutils literal"><span class="pre">lambda</span></code></dd>
+<dd><code class="docutils literal notranslate"><span class="pre">lambda</span></code></dd>
 </dl>
 </div>
 <div class="section" id="string-literals">
 <h2>String Literals<a class="headerlink" href="#string-literals" title="Permalink to this headline">¶</a></h2>
 <p>A “string” is a chunk of text.</p>
-<p>You define a <code class="docutils literal"><span class="pre">string</span></code> value by writing a string <em>literal</em>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="s1">&#39;a string&#39;</span>
+<p>You define a <code class="docutils literal notranslate"><span class="pre">string</span></code> value by writing a string <em>literal</em>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="s1">&#39;a string&#39;</span>
 <span class="gh">Out[1]: </span><span class="go">&#39;a string&#39;</span>
 
 <span class="gp">In [2]: </span><span class="s2">&quot;also a string&quot;</span>
@@ -687,7 +688,7 @@ object</strong> using the <code class="docutils literal"><span class="pre">is</s
 <span class="gh">Out[4]: </span><span class="go">&#39;a string with an embedded &quot;quote&quot;&#39;</span>
 </pre></div>
 </div>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="sd">&quot;&quot;&quot;a multi-line</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="sd">&quot;&quot;&quot;a multi-line</span>
 <span class="gp">   ...: </span><span class="sd">string</span>
 <span class="gp">   ...: </span><span class="sd">all in one</span>
 <span class="gp">   ...: </span><span class="sd">&quot;&quot;&quot;</span>
@@ -708,7 +709,7 @@ object</strong> using the <code class="docutils literal"><span class="pre">is</s
 <p>Python defines a number of <strong>keywords</strong></p>
 <p>These are language constructs.</p>
 <p>You <em>cannot</em> use these words as symbols.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kc">False</span>     <span class="k">class</span>       <span class="nc">finally</span>      <span class="ow">is</span>          <span class="k">return</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span>     <span class="k">class</span>       <span class="nc">finally</span>      <span class="ow">is</span>          <span class="k">return</span>
 <span class="kc">None</span>      <span class="k">continue</span>    <span class="k">for</span>          <span class="k">lambda</span>      <span class="k">try</span>
 <span class="kc">True</span>      <span class="k">def</span>         <span class="nf">from</span>         <span class="k">nonlocal</span>    <span class="k">while</span>
 <span class="ow">and</span>       <span class="k">del</span>         <span class="k">global</span>       <span class="ow">not</span>         <span class="k">with</span>
@@ -718,15 +719,15 @@ object</strong> using the <code class="docutils literal"><span class="pre">is</s
 </pre></div>
 </div>
 <p>If you try to use any of the keywords as symbols, you will cause a
-<code class="docutils literal"><span class="pre">SyntaxError</span></code>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="k">del</span> <span class="o">=</span> <span class="s2">&quot;this will raise an error&quot;</span>
+<code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="k">del</span> <span class="o">=</span> <span class="s2">&quot;this will raise an error&quot;</span>
 <span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-13-c816927c2fb8&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
     <span class="k">del</span> <span class="o">=</span> <span class="s2">&quot;this will raise an error&quot;</span>
         <span class="o">^</span>
 <span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="k">def</span> <span class="nf">a_function</span><span class="p">(</span><span class="k">else</span><span class="o">=</span><span class="s1">&#39;something&#39;</span><span class="p">):</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="k">def</span> <span class="nf">a_function</span><span class="p">(</span><span class="k">else</span><span class="o">=</span><span class="s1">&#39;something&#39;</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="k">else</span><span class="p">)</span>
 <span class="gp">   ....:</span>
 <span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-14-1dbbea504a9e&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
@@ -740,7 +741,7 @@ object</strong> using the <code class="docutils literal"><span class="pre">is</s
 <h2>__builtins__<a class="headerlink" href="#builtins" title="Permalink to this headline">¶</a></h2>
 <p>Python also has a number of pre-bound symbols, called <strong>builtins</strong></p>
 <p>Try this:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="nb">dir</span><span class="p">(</span><span class="n">__builtins__</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="nb">dir</span><span class="p">(</span><span class="n">__builtins__</span><span class="p">)</span>
 <span class="gh">Out[6]:</span>
 <span class="go">[&#39;ArithmeticError&#39;,</span>
 <span class="go"> &#39;AssertionError&#39;,</span>
@@ -754,7 +755,7 @@ object</strong> using the <code class="docutils literal"><span class="pre">is</s
 </pre></div>
 </div>
 <p>You are free to rebind these symbols:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;a new and exciting string&#39;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="nb">type</span><span class="p">(</span><span class="s1">&#39;a new and exciting string&#39;</span><span class="p">)</span>
 <span class="gh">Out[15]: </span><span class="go">str</span>
 
 <span class="gp">In [16]: </span><span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;a slightly different string&#39;</span>
@@ -772,14 +773,14 @@ object</strong> using the <code class="docutils literal"><span class="pre">is</s
 </div>
 <div class="section" id="exceptions">
 <h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
-<p>Notice that the first batch of <code class="docutils literal"><span class="pre">__builtins__</span></code> are all <em>Exceptions</em></p>
+<p>Notice that the first batch of <code class="docutils literal notranslate"><span class="pre">__builtins__</span></code> are all <em>Exceptions</em></p>
 <p>Exceptions are how Python tells you that something has gone wrong.</p>
 <p>There are several exceptions that you are likely to see a lot of:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">NameError</span></code>: indicates that you have tried to use a symbol that is not bound to a value.</li>
-<li><code class="docutils literal"><span class="pre">TypeError</span></code>: indicates that you have tried to use the wrong kind of object for an operation.</li>
-<li><code class="docutils literal"><span class="pre">SyntaxError</span></code>: indicates that you have mis-typed something.</li>
-<li><code class="docutils literal"><span class="pre">AttributeError</span></code>: indicates that you have tried to access an attribute or
+<li><code class="docutils literal notranslate"><span class="pre">NameError</span></code>: indicates that you have tried to use a symbol that is not bound to a value.</li>
+<li><code class="docutils literal notranslate"><span class="pre">TypeError</span></code>: indicates that you have tried to use the wrong kind of object for an operation.</li>
+<li><code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>: indicates that you have mis-typed something.</li>
+<li><code class="docutils literal notranslate"><span class="pre">AttributeError</span></code>: indicates that you have tried to access an attribute or
 method that an object does not have (this often means you have a different
 type of object than you expect)</li>
 </ul>
@@ -795,12 +796,12 @@ or in multiple parts of the program.</p>
 <p>It also helps to keep the code clean and maintainable, as there is only one place to make a change. This in turn helps reduce defects.</p>
 <p>Functions can take and return information.</p>
 <p>The minimal function has at least one statement.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a_name</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a_name</span><span class="p">():</span>
     <span class="n">a_statement</span>
 </pre></div>
 </div>
 <p>Pass Statement does nothing (Note the indentation!)</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">minimal</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">minimal</span><span class="p">():</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
@@ -808,8 +809,8 @@ or in multiple parts of the program.</p>
 <p>However, the pass statement can help you by allowing you to create placeholder functions that you will come back to later to develop and embelish.</p>
 </div>
 <div class="section" id="functions-def">
-<h2>Functions: <code class="docutils literal"><span class="pre">def</span></code><a class="headerlink" href="#functions-def" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">def</span></code>  is a <em>statement</em>:</p>
+<h2>Functions: <code class="docutils literal notranslate"><span class="pre">def</span></code><a class="headerlink" href="#functions-def" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">def</span></code>  is a <em>statement</em>:</p>
 <blockquote>
 <div><ul class="simple">
 <li>it is executed</li>
@@ -818,7 +819,7 @@ or in multiple parts of the program.</p>
 </ul>
 </div></blockquote>
 <p>Function defs must be executed before the functions can be called:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">unbound</span><span class="p">()</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">unbound</span><span class="p">()</span>
 <span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="nn">&lt;ipython-input-23-3132459951e4&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
@@ -827,7 +828,7 @@ or in multiple parts of the program.</p>
 <span class="ne">NameError</span>: name &#39;unbound&#39; is not defined
 </pre></div>
 </div>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="k">def</span> <span class="nf">simple</span><span class="p">():</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="k">def</span> <span class="nf">simple</span><span class="p">():</span>
 <span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am a simple function&quot;</span><span class="p">)</span>
 <span class="gp">   ....:</span>
 
@@ -839,7 +840,7 @@ or in multiple parts of the program.</p>
 <div class="section" id="calling-functions">
 <h2>Calling Functions<a class="headerlink" href="#calling-functions" title="Permalink to this headline">¶</a></h2>
 <p>You <strong>call</strong> a function using the function call operator (parentheses):</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="nb">type</span><span class="p">(</span><span class="n">simple</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="nb">type</span><span class="p">(</span><span class="n">simple</span><span class="p">)</span>
 <span class="gh">Out[2]: </span><span class="go">function</span>
 
 <span class="gp">In [3]: </span><span class="n">simple</span>
@@ -854,7 +855,7 @@ or in multiple parts of the program.</p>
 <div class="section" id="functions-call-stack">
 <h2>Functions: Call Stack<a class="headerlink" href="#functions-call-stack" title="Permalink to this headline">¶</a></h2>
 <p>Functions can call functions – this makes what is called an execution stack. That is what a “trace back”, often referred to in exceptions, is – the function call stack.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="k">def</span> <span class="nf">exceptional</span><span class="p">():</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="k">def</span> <span class="nf">exceptional</span><span class="p">():</span>
 <span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am exceptional!&quot;</span><span class="p">)</span>
 <span class="gp">   ...: </span>    <span class="k">print</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
 <span class="gp">   ...:</span>
@@ -872,7 +873,7 @@ or in multiple parts of the program.</p>
 </div>
 <div class="section" id="functions-tracebacks">
 <h2>Functions: Tracebacks<a class="headerlink" href="#functions-tracebacks" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">doer</span><span class="p">()</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">doer</span><span class="p">()</span>
 <span class="go">I am exceptional!</span>
 <span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ZeroDivisionError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
@@ -894,20 +895,20 @@ or in multiple parts of the program.</p>
 <span class="ne">ZeroDivisionError</span>: integer division or modulo by zero
 </pre></div>
 </div>
-<p>The error occurred in the <code class="docutils literal"><span class="pre">doer</span></code> function – but the traceback shows you where that was called from.</p>
+<p>The error occurred in the <code class="docutils literal notranslate"><span class="pre">doer</span></code> function – but the traceback shows you where that was called from.</p>
 <p>Note that this listed in reverse order – reverse of the order in which the functions are called.</p>
 <p>In a more complex system, this can be VERY useful – learn to read tracebacks!</p>
 </div>
 <div class="section" id="functions-return">
-<h2>Functions: <code class="docutils literal"><span class="pre">return</span></code><a class="headerlink" href="#functions-return" title="Permalink to this headline">¶</a></h2>
+<h2>Functions: <code class="docutils literal notranslate"><span class="pre">return</span></code><a class="headerlink" href="#functions-return" title="Permalink to this headline">¶</a></h2>
 <p>Every function ends by returning a value.</p>
 <p>This is actually the simplest possible function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fun</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fun</span><span class="p">():</span>
     <span class="k">return</span> <span class="bp">None</span>
 </pre></div>
 </div>
-<p>If you don’t explicitly put <code class="docutils literal"><span class="pre">return</span></code>  there, Python will return <code class="docutils literal"><span class="pre">None</span></code>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">():</span>
+<p>If you don’t explicitly put <code class="docutils literal notranslate"><span class="pre">return</span></code>  there, Python will return <code class="docutils literal notranslate"><span class="pre">None</span></code>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">():</span>
 <span class="gp">   ...: </span>    <span class="k">pass</span>
 <span class="gp">   ...:</span>
 <span class="gp">In [10]: </span><span class="n">fun</span><span class="p">()</span>
@@ -916,7 +917,7 @@ or in multiple parts of the program.</p>
 <span class="go">None</span>
 </pre></div>
 </div>
-<p>Note that the interpreter eats <code class="docutils literal"><span class="pre">None</span></code> – you need to call <code class="docutils literal"><span class="pre">print()</span></code> to see it.</p>
+<p>Note that the interpreter eats <code class="docutils literal notranslate"><span class="pre">None</span></code> – you need to call <code class="docutils literal notranslate"><span class="pre">print()</span></code> to see it.</p>
 </div>
 <div class="section" id="more-on-return">
 <h2>More on return<a class="headerlink" href="#more-on-return" title="Permalink to this headline">¶</a></h2>
@@ -924,7 +925,7 @@ or in multiple parts of the program.</p>
 <p>Ever.</p>
 <p>Anything after an executed return statement will never get run.</p>
 <p>This is useful when debugging!</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="k">def</span> <span class="nf">no_error</span><span class="p">():</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="k">def</span> <span class="nf">no_error</span><span class="p">():</span>
 <span class="gp">   ....: </span>    <span class="k">return</span> <span class="s1">&#39;done&#39;</span>
 <span class="gp">   ....: </span>    <span class="c1"># no more will happen</span>
 <span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
@@ -934,7 +935,7 @@ or in multiple parts of the program.</p>
 </pre></div>
 </div>
 <p>However, functions <em>can</em> return multiple results:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">():</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">():</span>
 <span class="gp">   ....: </span>    <span class="k">return</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
 <span class="gp">   ....:</span>
 <span class="gp">In [17]: </span><span class="n">fun</span><span class="p">()</span>
@@ -942,7 +943,7 @@ or in multiple parts of the program.</p>
 </pre></div>
 </div>
 <p>Remember multiple assignment?</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">fun</span><span class="p">()</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">fun</span><span class="p">()</span>
 <span class="gp">In [19]: </span><span class="n">x</span>
 <span class="gh">Out[19]: </span><span class="go">1</span>
 <span class="gp">In [20]: </span><span class="n">y</span>
@@ -954,9 +955,9 @@ or in multiple parts of the program.</p>
 </div>
 <div class="section" id="functions-parameters">
 <h2>Functions: parameters<a class="headerlink" href="#functions-parameters" title="Permalink to this headline">¶</a></h2>
-<p>In a <code class="docutils literal"><span class="pre">def</span></code> statement, the values written <em>inside</em> the parens are
+<p>In a <code class="docutils literal notranslate"><span class="pre">def</span></code> statement, the values written <em>inside</em> the parens are
 <strong>parameters</strong></p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [22]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [22]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="n">q</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>
 <span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
 <span class="gp">   ....:</span>
@@ -968,7 +969,7 @@ or in multiple parts of the program.</p>
 <h2>Functions: arguments<a class="headerlink" href="#functions-arguments" title="Permalink to this headline">¶</a></h2>
 <p>When you call a function, you pass values to the function parameters as
 <strong>arguments</strong></p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [23]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="go">3 4 5 12</span>
 </pre></div>
 </div>
@@ -979,8 +980,8 @@ or in multiple parts of the program.</p>
 <h2>Making a Decision<a class="headerlink" href="#making-a-decision" title="Permalink to this headline">¶</a></h2>
 <p><strong>“Conditionals”</strong></p>
 <p>In order to do anything interesting at all, you need to be able to write code to make a decision.</p>
-<p><code class="docutils literal"><span class="pre">if</span></code> and <code class="docutils literal"><span class="pre">elif</span></code> (else if) allow you to make decisions:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<p><code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">elif</span></code> (else if) allow you to make decisions:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
 <span class="gp">   ....: </span>        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;that&#39;s the value I&#39;m looking for!&quot;</span><span class="p">)</span>
 <span class="gp">   ....: </span>    <span class="k">elif</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
@@ -1000,7 +1001,7 @@ or in multiple parts of the program.</p>
 </div>
 <p>There is more to it than that, but this will get you started.</p>
 <p>What’s the difference between these two?</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">b</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
@@ -1018,7 +1019,7 @@ or in multiple parts of the program.</p>
 <p>A way to store a bunch of stuff in order.</p>
 <p>Pretty much like an “array” or “vector” in other languages.</p>
 <p>To make a list literal you use square brackets and commas between the items:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
 <span class="n">a_list_of_strings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;that&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;other&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1026,10 +1027,10 @@ or in multiple parts of the program.</p>
 <p>Lists are a key Python data type with lots of functionality that we will get into later.</p>
 </div>
 <div class="section" id="for-loops">
-<h2><code class="docutils literal"><span class="pre">for</span></code> loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">for</span></code> loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes called a ‘determinate’ loop.</p>
 <p>When you need to do something to all the objects in a sequence:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 
 <span class="gp">In [11]: </span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
 <span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
@@ -1042,25 +1043,25 @@ or in multiple parts of the program.</p>
 </div>
 </div>
 <div class="section" id="range-and-for">
-<h2><code class="docutils literal"><span class="pre">range()</span></code> and for<a class="headerlink" href="#range-and-for" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">range</span></code> builds sequences of numbers automatically</p>
+<h2><code class="docutils literal notranslate"><span class="pre">range()</span></code> and for<a class="headerlink" href="#range-and-for" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">range</span></code> builds sequences of numbers automatically</p>
 <p>Use it when you need to do something a set number of times:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="go">num_stars = 4</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go">num_stars = 4</span>
 <span class="gp">In [31]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_stars</span><span class="p">):</span>
 <span class="go">    print(&#39;*&#39;, end=&#39; &#39;)</span>
 <span class="gp">   ....:</span>
 <span class="go">* * * *</span>
 </pre></div>
 </div>
-<p>NOTE: <code class="docutils literal"><span class="pre">range(n)</span></code> creates an “iterable” – something you can loop over.
+<p>NOTE: <code class="docutils literal notranslate"><span class="pre">range(n)</span></code> creates an “iterable” – something you can loop over.
 We will cover iterables in greater depth in a later lesson.</p>
 </div>
 <div class="section" id="assert">
-<h2><code class="docutils literal"><span class="pre">assert</span></code><a class="headerlink" href="#assert" title="Permalink to this headline">¶</a></h2>
-<p>Writing <code class="docutils literal"><span class="pre">tests</span></code> that demonstrate that your program works is an important part of learning to program.</p>
-<p>The Python <code class="docutils literal"><span class="pre">assert</span></code> statement is useful in writing simple tests:
+<h2><code class="docutils literal notranslate"><span class="pre">assert</span></code><a class="headerlink" href="#assert" title="Permalink to this headline">¶</a></h2>
+<p>Writing <code class="docutils literal notranslate"><span class="pre">tests</span></code> that demonstrate that your program works is an important part of learning to program.</p>
+<p>The Python <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement is useful in writing simple tests:
 for your code.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>
 <span class="gp">   ...: </span>    <span class="k">return</span> <span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span>
 <span class="gp">   ...:</span>
 
@@ -1103,7 +1104,7 @@ for your code.</p>
         <a href="Functions.html" class="btn btn-neutral float-right" title="More on Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Py2vsPy3.html" class="btn btn-neutral" title="Python 2 versus Python 3" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Submitting_to_github.html" class="btn btn-neutral" title="Submitting your work to gitHub" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1112,7 +1113,7 @@ for your code.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
@@ -1134,7 +1135,7 @@ for your code.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

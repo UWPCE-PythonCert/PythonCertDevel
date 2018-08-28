@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Documentation &mdash; PythonCert 4.0 documentation</title>
+  <title>Documentation &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
+    <link rel="top" title="PythonCert 5.0 documentation" href="../index.html"/>
         <link rel="up" title="Topic Notes" href="index.html"/>
         <link rel="next" title="Exception Handling" href="Exceptions.html"/>
         <link rel="prev" title="Code Structure, Modules, and Namespaces" href="Modules.html"/> 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -201,14 +201,14 @@ thinking when you wrote it.</p>
 <div class="section" id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h2>
 <p>Comments go inline in the body of your code, to explain reasoning:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">frobnaglers</span> <span class="o">&gt;</span> <span class="n">whozits</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">frobnaglers</span> <span class="o">&gt;</span> <span class="n">whozits</span><span class="p">):</span>
     <span class="c1"># borangas are shermed to ensure frobnagler population</span>
     <span class="c1"># does not grow out of control</span>
     <span class="n">sherm_the_boranga</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>You can use them to mark places you want to revisit later:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">partygoer</span> <span class="ow">in</span> <span class="n">partygoers</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">partygoer</span> <span class="ow">in</span> <span class="n">partygoers</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">balloon</span> <span class="ow">in</span> <span class="n">balloons</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">cupcake</span> <span class="ow">in</span> <span class="n">cupcakes</span><span class="p">:</span>
             <span class="c1"># TODO: Reduce time complexity here.  It&#39;s killing us</span>
@@ -228,7 +228,7 @@ thinking when you wrote it.</p>
 </ul>
 </div></blockquote>
 <p>This is not useful:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sponge</span> <span class="ow">in</span> <span class="n">sponges</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sponge</span> <span class="ow">in</span> <span class="n">sponges</span><span class="p">:</span>
     <span class="c1"># apply soap to each sponge</span>
     <span class="n">worker</span><span class="o">.</span><span class="n">apply_soap</span><span class="p">(</span><span class="n">sponge</span><span class="p">)</span>
 </pre></div>
@@ -239,15 +239,15 @@ thinking when you wrote it.</p>
 <h2>Docstrings<a class="headerlink" href="#docstrings" title="Permalink to this headline">¶</a></h2>
 <p>In Python, “docstrings” are used to provide in-line documentation in a number of places.</p>
 <p>The first place we will see is in the definition of functions.</p>
-<p>As you know, to define a function you use the <code class="docutils literal"><span class="pre">def</span></code> keyword.</p>
+<p>As you know, to define a function you use the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword.</p>
 <p>If a “string literal” is the first thing in the function block following the
 header, it is a “docstring”:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">complex_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">kwarg1</span><span class="o">=</span><span class="s1">&#39;banana&#39;</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">complex_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">kwarg1</span><span class="o">=</span><span class="s1">&#39;banana&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a value resulting from a complex calculation.&quot;&quot;&quot;</span>
     <span class="c1"># code block here</span>
 </pre></div>
 </div>
-<p>You can then read this in an interpreter as the <code class="docutils literal"><span class="pre">__doc__</span></code> attribute of the
+<p>You can then read this in an interpreter as the <code class="docutils literal notranslate"><span class="pre">__doc__</span></code> attribute of the
 function object. Docstrings can also be read and processed by documentation systems and IDEs like iPython.</p>
 <div class="section" id="a-function-docstring-should">
 <h3>A Function Docstring Should:<a class="headerlink" href="#a-function-docstring-should" title="Permalink to this headline">¶</a></h3>
@@ -270,7 +270,7 @@ add more lines below for enhancement.</li>
 </li>
 </ul>
 <p>For any functions that are less than trivial, and particulalry if they take multiple parameters, the parameters should be described in the docstring:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">complex_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">kwarg1</span><span class="o">=</span><span class="s1">&#39;banana&#39;</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">complex_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">kwarg1</span><span class="o">=</span><span class="s1">&#39;banana&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a value resulting from a complex calculation.</span>
 
@@ -285,7 +285,7 @@ add more lines below for enhancement.</li>
     <span class="c1"># The actual code here</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">:param</span> <span class="pre">arg1:</span></code> notation is “restructured text” – very handy if you want your docstrings to be able to be automatically processed by documentation systems such as <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">:param</span> <span class="pre">arg1:</span></code> notation is “restructured text” – very handy if you want your docstrings to be able to be automatically processed by documentation systems such as <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a></p>
 </div>
 <div class="section" id="the-docstring-pep">
 <h3>The docstring PEP<a class="headerlink" href="#the-docstring-pep" title="Permalink to this headline">¶</a></h3>
@@ -316,7 +316,7 @@ add more lines below for enhancement.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
@@ -338,7 +338,7 @@ add more lines below for enhancement.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

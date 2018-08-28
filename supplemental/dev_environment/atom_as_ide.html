@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Turning Atom Into a Lightweight Python IDE &mdash; PythonCert 4.0 documentation</title>
+  <title>Turning Atom Into a Lightweight Python IDE &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../../index.html"/>
+    <link rel="top" title="PythonCert 5.0 documentation" href="../../index.html"/>
         <link rel="up" title="Setting Up A Development Environment For Python" href="index.html"/>
         <link rel="next" title="Command line basics" href="command_line.html"/>
         <link rel="prev" title="Turning Sublime Text Into a Lightweight Python IDE" href="sublime_as_ide.html"/> 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -92,7 +92,7 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../modules/index.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/index.html">Topic Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/index.html">Exercises</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Supplemental Materials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../HowToRunAPythonFile.html">How to run a python file</a></li>
@@ -119,6 +119,8 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#specific-python-notes">Specific Python Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#more-about-git">More about git</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../references/index.html">Resources for Specific Python Topics</a></li>
@@ -215,7 +217,7 @@ version will have the latest bug fixes and updates.</p>
 <p>On the main page, click the big red button to download the installer, then run the installer.</p>
 <p>If it is not offering the correct platform: on the main page, below the big red button, click Other Platforms and find the installer for your operating system.</p>
 <p>If you already have Atom installed, but want to check for a newer version, go to
-<code class="docutils literal"><span class="pre">Help</span></code> -&gt; <code class="docutils literal"><span class="pre">Check</span> <span class="pre">for</span> <span class="pre">Update</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">Help</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Check</span> <span class="pre">for</span> <span class="pre">Update</span></code>.</p>
 </div>
 <div class="section" id="basic-settings">
 <h2>Basic Settings<a class="headerlink" href="#basic-settings" title="Permalink to this headline">¶</a></h2>
@@ -230,8 +232,8 @@ how to open projects, install packages, and customize your themes and styling.</
 <p>Atom has great <a class="reference external" href="https://atom.io/docs">documentation</a> on how to hack and configure it. Read the Flight <a class="reference external" href="http://flight-manual.atom.io/">Manual</a> for tons of information on
 everything you can do. You can also watch a Getting Started <a class="reference external" href="https://www.youtube.com/watch?v=U5POoGSrtGg">video</a>.</p>
 <p>Atom has a configuration file which you can modify called config.cson.
-Access it via <code class="docutils literal"><span class="pre">File</span></code> -&gt; <code class="docutils literal"><span class="pre">Config...</span></code></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;*&quot;</span><span class="p">:</span>
+Access it via <code class="docutils literal notranslate"><span class="pre">File</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Config...</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;*&quot;</span><span class="p">:</span>
   <span class="n">core</span><span class="p">:</span>
     <span class="n">themes</span><span class="p">:</span> <span class="p">[</span>
       <span class="s2">&quot;atom-dark-ui&quot;</span>
@@ -249,7 +251,7 @@ Access it via <code class="docutils literal"><span class="pre">File</span></code
 or make adjustments here. Read the documentation carefully when installing packages.</p>
 <p>In general, you can extend Atom by installing packages, and then accessing their functionality from the Packages
 drop-down menu. Access the Install Packages page from the Welcome Guide page. If the Welcome Guide is not open,
-you can open it via <code class="docutils literal"><span class="pre">Help</span></code> -&gt; <code class="docutils literal"><span class="pre">Welcome</span> <span class="pre">Guide</span></code>.</p>
+you can open it via <code class="docutils literal notranslate"><span class="pre">Help</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Welcome</span> <span class="pre">Guide</span></code>.</p>
 <p>Keyboard shortcuts are specified in the packages menus if available.</p>
 <p>The Useful Packages presented below are only a few options of many.</p>
 </div>
@@ -276,13 +278,13 @@ setup.</p>
 <p>Atom knows when you are writing Python and helps you out by dealing with spaces and tabs
 in the same way. When in a Python file, if you type 4 spaces, then hit delete, you are
 taken back a tab.</p>
-<p>The <a class="reference external" href="https://atom.io/packages/whitespace">Whitespace</a> package ships with Atom and requires no setup. Under the <code class="docutils literal"><span class="pre">Packages</span></code> -&gt; <code class="docutils literal"><span class="pre">Whitespace</span></code> menu,
+<p>The <a class="reference external" href="https://atom.io/packages/whitespace">Whitespace</a> package ships with Atom and requires no setup. Under the <code class="docutils literal notranslate"><span class="pre">Packages</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Whitespace</span></code> menu,
 you will find tools to turn all tabs into spaces, all spaces into tabs, among other whitespace-related options.</p>
 </div>
 <div class="section" id="debugging">
 <h3>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h3>
 <p>To use a Python debugger in Atom, you will need to install the <a class="reference external" href="https://atom.io/packages/python-debugger">python-debugger</a> package. Once installed, turn on the
-debugger by going to <code class="docutils literal"><span class="pre">Packages</span></code> -&gt; <code class="docutils literal"><span class="pre">python-debugger</span></code> -&gt; <code class="docutils literal"><span class="pre">Toggle</span></code>.</p>
+debugger by going to <code class="docutils literal notranslate"><span class="pre">Packages</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">python-debugger</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Toggle</span></code>.</p>
 </div>
 </div>
 </div>
@@ -309,7 +311,7 @@ debugger by going to <code class="docutils literal"><span class="pre">Packages</
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
@@ -331,7 +333,7 @@ debugger by going to <code class="docutils literal"><span class="pre">Packages</
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'4.0',
+            VERSION:'5.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

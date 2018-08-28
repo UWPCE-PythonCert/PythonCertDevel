@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Packages and Packaging &mdash; PythonCert 4.0 documentation</title>
+  <title>Packages and Packaging &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -35,10 +35,10 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
+    <link rel="top" title="PythonCert 5.0 documentation" href="../index.html"/>
         <link rel="up" title="Resources for Specific Python Topics" href="index.html"/>
-        <link rel="next" title="Python Language Topics" href="language_topics.html"/>
-        <link rel="prev" title="Handy hints for using git" href="git_hints.html"/> 
+        <link rel="next" title="The SciPy Stack" href="scipy.html"/>
+        <link rel="prev" title="Python Language Topics" href="language_topics.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -92,13 +92,32 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Topic Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../supplemental/HowToRunAPythonFile.html">How to run a python file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supplemental/installing/index.html">Installing Python and core tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supplemental/dev_environment/index.html">Setting Up A Development Environment For Python</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../supplemental/index.html#specific-python-notes">Specific Python Notes</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Resources for Specific Python Topics</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="python_community.html">Python Community</a></li>
+<li class="toctree-l4"><a class="reference internal" href="learning.html">Useful Python Learning Resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="language_topics.html">Python Language Topics</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Packages and Packaging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#distributing">Distributing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scipy.html">The SciPy Stack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="guis.html">Graphical User Interfaces</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../supplemental/index.html#more-about-git">More about git</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Resources for Specific Python Topics</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="python_community.html">Python Community</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learning.html">Useful Python Learning Resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git_hints.html">Handy hints for using git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_topics.html">Python Language Topics</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Packages and Packaging</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#modules-and-packages">Modules and Packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">Modules and Packages</a></li>
@@ -130,7 +149,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#lab">LAB</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="language_topics.html">Python Language Topics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scipy.html">The SciPy Stack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guis.html">Graphical User Interfaces</a></li>
 </ul>
@@ -179,6 +197,8 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="../supplemental/index.html">Supplemental Materials</a> &raquo;</li>
+        
           <li><a href="index.html">Resources for Specific Python Topics</a> &raquo;</li>
         
       <li>Packages and Packaging</li>
@@ -204,23 +224,23 @@
 <h1>Packages and Packaging<a class="headerlink" href="#packages-and-packaging" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="modules-and-packages">
 <h2>Modules and Packages<a class="headerlink" href="#modules-and-packages" title="Permalink to this headline">¶</a></h2>
-<p>A module is a file (<code class="docutils literal"><span class="pre">something.py</span></code>) with python code in it</p>
-<p>A package is a directory with an <code class="docutils literal"><span class="pre">__init__.py</span></code>  file in it</p>
+<p>A module is a file (<code class="docutils literal notranslate"><span class="pre">something.py</span></code>) with python code in it</p>
+<p>A package is a directory with an <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>  file in it</p>
 <p>And usually other modules, packages, etc…</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">my_package</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_package</span>
     <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
     <span class="n">module_a</span><span class="o">.</span><span class="n">py</span>
     <span class="n">module_b</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_package</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_package</span>
 </pre></div>
 </div>
-<p>runs the code <code class="docutils literal"><span class="pre">my_package/__init__.py</span></code> (if there is any)</p>
+<p>runs the code <code class="docutils literal notranslate"><span class="pre">my_package/__init__.py</span></code> (if there is any)</p>
 </div>
 <div class="section" id="id1">
 <h2>Modules and Packages<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
     <span class="k">print</span> <span class="n">p</span>
 </pre></div>
@@ -248,7 +268,7 @@
 <li>There are non-open source components</li>
 <li>Third party packages may or may not support it</li>
 <li>Apple does use it – so don’t mess with it</li>
-<li>I usually recommend the <code class="docutils literal"><span class="pre">python.org</span></code> version</li>
+<li>I usually recommend the <code class="docutils literal notranslate"><span class="pre">python.org</span></code> version</li>
 </ul>
 </div></blockquote>
 <p>(Also Macports, Fink, Home Brew…)</p>
@@ -269,8 +289,8 @@
 </div>
 <div class="section" id="installing-packages">
 <h2>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this headline">¶</a></h2>
-<p>Every Python installation has its own stdlib and <code class="docutils literal"><span class="pre">site-packages</span></code> folder</p>
-<p><code class="docutils literal"><span class="pre">site-packages</span></code>  is the default place for third-party packages</p>
+<p>Every Python installation has its own stdlib and <code class="docutils literal notranslate"><span class="pre">site-packages</span></code> folder</p>
+<p><code class="docutils literal notranslate"><span class="pre">site-packages</span></code>  is the default place for third-party packages</p>
 </div>
 <div class="section" id="finding-packages">
 <h2>Finding Packages<a class="headerlink" href="#finding-packages" title="Permalink to this headline">¶</a></h2>
@@ -283,7 +303,7 @@
 <blockquote>
 <div><strong>From source</strong></div></blockquote>
 <ul>
-<li><p class="first">(<code class="docutils literal"><span class="pre">setup.py</span> <span class="pre">install</span></code> )</p>
+<li><p class="first">(<code class="docutils literal notranslate"><span class="pre">setup.py</span> <span class="pre">install</span></code> )</p>
 </li>
 <li><p class="first">With the system installer (apt-get, yum, etc…)</p>
 <blockquote>
@@ -296,22 +316,22 @@
 </li>
 <li><p class="first">And now: binary wheels – (More and more of those available)</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">pip</span></code> should find appropriate binary wheels if they are there.</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">pip</span></code> should find appropriate binary wheels if they are there.</p>
 </li>
 </ul>
-<p>In the beginning, there was the <code class="docutils literal"><span class="pre">distutils</span></code>:</p>
-<p>But <code class="docutils literal"><span class="pre">distutils</span></code>  is missing some key features:</p>
+<p>In the beginning, there was the <code class="docutils literal notranslate"><span class="pre">distutils</span></code>:</p>
+<p>But <code class="docutils literal notranslate"><span class="pre">distutils</span></code>  is missing some key features:</p>
 <ul class="simple">
 <li>package versioning</li>
 <li>package discovery</li>
 <li>auto-install</li>
 </ul>
 <ul class="simple">
-<li>And then came <code class="docutils literal"><span class="pre">PyPi</span></code></li>
-<li>And then came <code class="docutils literal"><span class="pre">setuptools</span></code></li>
+<li>And then came <code class="docutils literal notranslate"><span class="pre">PyPi</span></code></li>
+<li>And then came <code class="docutils literal notranslate"><span class="pre">setuptools</span></code></li>
 <li>But that wasn’t well maintained…</li>
-<li>Then there was <code class="docutils literal"><span class="pre">distribute/pip</span></code></li>
-<li>Which has now been merged back into <code class="docutils literal"><span class="pre">setuptools</span></code></li>
+<li>Then there was <code class="docutils literal notranslate"><span class="pre">distribute/pip</span></code></li>
+<li>Which has now been merged back into <code class="docutils literal notranslate"><span class="pre">setuptools</span></code></li>
 </ul>
 <p>Now it’s pretty stable: pip+setuptools: use them.</p>
 </div>
@@ -375,10 +395,10 @@
 </ul>
 </div></blockquote>
 <ol class="arabic" start="2">
-<li><p class="first">Try <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span></code>: it may just work!</p>
+<li><p class="first">Try <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code>: it may just work!</p>
 </li>
 <li><p class="first">Install the dependencies, build from source:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span>
 
 <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 </pre></div>
@@ -441,7 +461,7 @@
 </div>
 <div class="section" id="final-recommendations">
 <h2>Final Recommendations<a class="headerlink" href="#final-recommendations" title="Permalink to this headline">¶</a></h2>
-<p>First try: <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span></code></p>
+<p>First try: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code></p>
 <p>If that doesn’t work:</p>
 <p>Read the docs of the package you want to install</p>
 <p>Do what they say</p>
@@ -449,7 +469,7 @@
 </div>
 <div class="section" id="virtualenv">
 <h2>virtualenv<a class="headerlink" href="#virtualenv" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">virtualenv</span></code> is a tool to create isolated Python environments.</p>
+<p><code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> is a tool to create isolated Python environments.</p>
 <p>Very useful for developing multiple apps</p>
 <p>Or deploying more than one app on one system</p>
 <p><a class="reference external" href="http://www.virtualenv.org/en/latest/index.html">http://www.virtualenv.org/en/latest/index.html</a>}</p>
@@ -483,7 +503,7 @@ control and call it good.</p>
 </div>
 <div class="section" id="distutils">
 <h2>distutils<a class="headerlink" href="#distutils" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">distutils</span></code>  makes it easy to do the easy stuff:</p>
+<p><code class="docutils literal notranslate"><span class="pre">distutils</span></code>  makes it easy to do the easy stuff:</p>
 <p>Distribute and install to multiple platforms, etc.</p>
 <p>Even binaries, installers and compiled packages</p>
 <p>(Except dependencies)</p>
@@ -491,13 +511,13 @@ control and call it good.</p>
 </div>
 <div class="section" id="distutils-basics">
 <h2>distutils basics<a class="headerlink" href="#distutils-basics" title="Permalink to this headline">¶</a></h2>
-<p>It’s all in the <code class="docutils literal"><span class="pre">setup.py</span> <span class="pre">file</span></code>:</p>
+<p>It’s all in the <code class="docutils literal notranslate"><span class="pre">setup.py</span> <span class="pre">file</span></code>:</p>
 <p>(<a class="reference external" href="http://docs.python.org/distutils/">http://docs.python.org/distutils/</a>)</p>
 </div>
 <div class="section" id="id6">
 <h2>distutils basics<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>Once your setup.py is written, you can:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">...</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">...</span>
 <span class="n">build</span>         <span class="n">build</span> <span class="n">everything</span> <span class="n">needed</span> <span class="n">to</span> <span class="n">install</span>
 <span class="n">install</span>       <span class="n">install</span> <span class="n">everything</span> <span class="kn">from</span> <span class="nn">build</span> <span class="n">directory</span>
 <span class="n">sdist</span>         <span class="n">create</span> <span class="n">a</span> <span class="n">source</span> <span class="n">distribution</span>
@@ -514,7 +534,7 @@ control and call it good.</p>
 <p>“wheels” are the “new” package format for python.</p>
 <p>A wheel is essentially a zip file of the entire package, ready to be
 unpacked in the right place on installation.</p>
-<p><code class="docutils literal"><span class="pre">pip</span></code> will look for wheels for OS-X and Windows on PyPi, and auto-install
+<p><code class="docutils literal notranslate"><span class="pre">pip</span></code> will look for wheels for OS-X and Windows on PyPi, and auto-install
 them if they exist</p>
 <p>This is particularly nice for packages with non-python dependencies.</p>
 </div>
@@ -528,10 +548,10 @@ them if they exist</p>
 <h2>develop mode<a class="headerlink" href="#develop-mode" title="Permalink to this headline">¶</a></h2>
 <p>While you are developing your package, Installing it is a pain.</p>
 <p>But you want your code to be able to import, etc. as though it were installed</p>
-<p><code class="docutils literal"><span class="pre">setup.py</span> <span class="pre">develop</span></code>  installs links to your code, rather than copies
+<p><code class="docutils literal notranslate"><span class="pre">setup.py</span> <span class="pre">develop</span></code>  installs links to your code, rather than copies
 – so it looks like it’s installed, but it’s using the original source</p>
-<p><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span></code></p>
-<p>You need <code class="docutils literal"><span class="pre">setuptools</span></code> and a setup.py  to use it.</p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span></code></p>
+<p>You need <code class="docutils literal notranslate"><span class="pre">setuptools</span></code> and a setup.py  to use it.</p>
 </div>
 <div class="section" id="applications">
 <h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h2>
@@ -557,7 +577,7 @@ them if they exist</p>
 <p>Bundles are Python + all your code + plus all the dependencies –
 all in one single “bundle”</p>
 <p>Most popular on Windows and OS-X</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">py2exe</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">py2exe</span>
 <span class="n">py2app</span>
 <span class="n">pyinstaller</span>
 <span class="o">...</span>
@@ -576,26 +596,26 @@ all in one single “bundle”</p>
 <blockquote>
 <div><ul class="simple">
 <li>Ideally, your script relies on at least one other module</li>
-<li>At a minimum, you’ll need to specify <code class="docutils literal"><span class="pre">scripts</span></code></li>
-<li>and probably <code class="docutils literal"><span class="pre">py_modules</span></code></li>
+<li>At a minimum, you’ll need to specify <code class="docutils literal notranslate"><span class="pre">scripts</span></code></li>
+<li>and probably <code class="docutils literal notranslate"><span class="pre">py_modules</span></code></li>
 <li>try:<ul>
-<li><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">build</span></code></li>
-<li><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></li>
-<li><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">sdist</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">build</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">sdist</span></code></li>
 </ul>
 </li>
-<li>EXTRA: install <code class="docutils literal"><span class="pre">setuptools</span></code><ul>
-<li>use: <code class="docutils literal"><span class="pre">from</span> <span class="pre">setuptools</span> <span class="pre">import</span> <span class="pre">setup</span></code></li>
+<li>EXTRA: install <code class="docutils literal notranslate"><span class="pre">setuptools</span></code><ul>
+<li>use: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">setuptools</span> <span class="pre">import</span> <span class="pre">setup</span></code></li>
 <li>try: `` python setup.py develop``</li>
 </ul>
 </li>
-<li>EXTRA2: install <code class="docutils literal"><span class="pre">wheel</span></code><ul>
-<li><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">bdist_wheel</span></code></li>
+<li>EXTRA2: install <code class="docutils literal notranslate"><span class="pre">wheel</span></code><ul>
+<li><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">bdist_wheel</span></code></li>
 </ul>
 </li>
 </ul>
 </div></blockquote>
-<p>(my example: <code class="docutils literal"><span class="pre">Examples/Session09/capitalize</span></code>)</p>
+<p>(my example: <code class="docutils literal notranslate"><span class="pre">Examples/Session09/capitalize</span></code>)</p>
 </div>
 </div>
 
@@ -609,10 +629,10 @@ all in one single “bundle”</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="language_topics.html" class="btn btn-neutral float-right" title="Python Language Topics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="scipy.html" class="btn btn-neutral float-right" title="The SciPy Stack" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="git_hints.html" class="btn btn-neutral" title="Handy hints for using git" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="language_topics.html" class="btn btn-neutral" title="Python Language Topics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -621,7 +641,7 @@ all in one single “bundle”</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
@@ -643,7 +663,7 @@ all in one single “bundle”</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

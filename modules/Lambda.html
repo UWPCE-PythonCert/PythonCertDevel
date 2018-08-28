@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Anonymous Functions: Lambda &mdash; PythonCert 4.0 documentation</title>
+  <title>Anonymous Functions: Lambda &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
+    <link rel="top" title="PythonCert 5.0 documentation" href="../index.html"/>
         <link rel="up" title="Topic Notes" href="index.html"/>
         <link rel="next" title="Map Filter and Reduce" href="MapFilterReduce.html"/>
         <link rel="prev" title="Object Oriented vs Functional Programming" href="OO_vs_functional.html"/> 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -202,56 +202,56 @@
             
   <div class="section" id="anonymous-functions-lambda">
 <span id="anonymous-functions"></span><h1>Anonymous Functions: Lambda<a class="headerlink" href="#anonymous-functions-lambda" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="docutils literal"><span class="pre">lambda</span></code> keyword is a way to create a function on the fly, without giving it a name. Hence the term “anonymous” – it has no name.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">lambda</span></code> keyword is a way to create a function on the fly, without giving it a name. Hence the term “anonymous” – it has no name.</p>
 <div class="section" id="using-lambda">
-<h2>Using <code class="docutils literal"><span class="pre">lambda</span></code><a class="headerlink" href="#using-lambda" title="Permalink to this headline">¶</a></h2>
+<h2>Using <code class="docutils literal notranslate"><span class="pre">lambda</span></code><a class="headerlink" href="#using-lambda" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="structure">
 <h3>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h3>
 <p>“lambda” is a keyword – it can not be used as a variable name, etc. A lambda expression looks like:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">lambda</span> <span class="o">&lt;</span><span class="n">parameters</span><span class="o">&gt;</span> <span class="p">:</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">lambda</span> <span class="o">&lt;</span><span class="n">parameters</span><span class="o">&gt;</span> <span class="p">:</span> <span class="o">&lt;</span><span class="n">expression</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>It is an expression – which means it evaluates to a value – which means that it can be assigned to a variable, put in a container (such as a list or dict) etc.</p>
 <p>The parameters are just like function parameters – but without the parentheses. And they exist in the local scope of the lambda, and can thus be used in the expression.</p>
 <p>The expression can be any expression using global variables or the parameters – but not a statement – anyone remember what the difference is?</p>
-<p>An expression is something that evaluates to a value, and can be assigned to a variable etc. but things like <code class="docutils literal"><span class="pre">for</span></code> and <code class="docutils literal"><span class="pre">while</span></code> loops and <code class="docutils literal"><span class="pre">if...else</span></code> structures are NOT expressions, and thus can’t be put in a lambda.</p>
+<p>An expression is something that evaluates to a value, and can be assigned to a variable etc. but things like <code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">while</span></code> loops and <code class="docutils literal notranslate"><span class="pre">if...else</span></code> structures are NOT expressions, and thus can’t be put in a lambda.</p>
 <p>In short, lambda is only for very simple functions with no real flow control.</p>
 </div>
 <div class="section" id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
 <span class="gp">In [2]: </span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 <span class="gh">Out[2]: </span><span class="go">7</span>
 </pre></div>
 </div>
-<p>This creates a function that takes two positional parameters, <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>, and returns their sum.</p>
+<p>This creates a function that takes two positional parameters, <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>, and returns their sum.</p>
 <p>This is ALMOST the same as:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="k">def</span> <span class="nf">f2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="k">def</span> <span class="nf">f2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="gp">   ...: </span>    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
 <span class="gp">In [4]: </span><span class="n">f2</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 <span class="gh">Out[4]: </span><span class="go">7</span>
 </pre></div>
 </div>
-<p>So what is the difference? Well, <code class="docutils literal"><span class="pre">lambda</span></code> creates an “anonymous” function – it doesn’t have a name:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">f</span><span class="o">.</span><span class="vm">__name__</span>
+<p>So what is the difference? Well, <code class="docutils literal notranslate"><span class="pre">lambda</span></code> creates an “anonymous” function – it doesn’t have a name:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">f</span><span class="o">.</span><span class="vm">__name__</span>
 <span class="gh">Out[10]: </span><span class="go">&#39;&lt;lambda&gt;&#39;</span>
 </pre></div>
 </div>
 <p>All lambda functions are called &lt;lambda&gt;. But:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">f2</span><span class="o">.</span><span class="vm">__name__</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">f2</span><span class="o">.</span><span class="vm">__name__</span>
 <span class="gh">Out[11]: </span><span class="go">&#39;f2&#39;</span>
 </pre></div>
 </div>
 <p>Regular “def” defined functions know their name.</p>
-<p>So <code class="docutils literal"><span class="pre">lambda</span></code> creates a function, but it doesn’t have a name, and it can only have a single expression in it – no flow control.</p>
+<p>So <code class="docutils literal notranslate"><span class="pre">lambda</span></code> creates a function, but it doesn’t have a name, and it can only have a single expression in it – no flow control.</p>
 </div>
 <div class="section" id="what-s-the-point">
 <h3>What’s the point?<a class="headerlink" href="#what-s-the-point" title="Permalink to this headline">¶</a></h3>
-<p>There is nothing you can do with lambda that you can’t do with regular <code class="docutils literal"><span class="pre">def</span></code> functions. But there are times when you just need a simple quick function that you don’t need to keep around or refer to again – so it’s a handy syntax for these situations.</p>
+<p>There is nothing you can do with lambda that you can’t do with regular <code class="docutils literal notranslate"><span class="pre">def</span></code> functions. But there are times when you just need a simple quick function that you don’t need to keep around or refer to again – so it’s a handy syntax for these situations.</p>
 <p>A sorting key function is a great example:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [55]: </span><span class="n">lst</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Chris&quot;</span><span class="p">,</span><span class="s2">&quot;Barker&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Fred&quot;</span><span class="p">,</span> <span class="s2">&quot;Jones&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Zola&quot;</span><span class="p">,</span> <span class="s2">&quot;Adams&quot;</span><span class="p">)]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [55]: </span><span class="n">lst</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Chris&quot;</span><span class="p">,</span><span class="s2">&quot;Barker&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Fred&quot;</span><span class="p">,</span> <span class="s2">&quot;Jones&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Zola&quot;</span><span class="p">,</span> <span class="s2">&quot;Adams&quot;</span><span class="p">)]</span>
 
 <span class="gp">In [56]: </span><span class="n">lst</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 
@@ -260,7 +260,7 @@
 </pre></div>
 </div>
 <p>Tuples are sorted, be default, by their first element. But what if you wanted to sort by the second (index 1) element – last name in this case:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="k">def</span> <span class="nf">sort_key</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="k">def</span> <span class="nf">sort_key</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
 <span class="go">    ...:     return item[1]</span>
 <span class="go">    ...:</span>
 
@@ -270,9 +270,9 @@
 <span class="gh">Out[15]: </span><span class="go">[(&#39;Zola&#39;, &#39;Adams&#39;), (&#39;Chris&#39;, &#39;Barker&#39;), (&#39;Fred&#39;, &#39;Jones&#39;)]</span>
 </pre></div>
 </div>
-<p>straightforward enough. But kind a lot of extra code, eh? and now there is this function: “sort_key” hanging around. You could delete it: <code class="docutils literal"><span class="pre">del</span> <span class="pre">sort_key</span></code>, but that would be even more code.</p>
+<p>straightforward enough. But kind a lot of extra code, eh? and now there is this function: “sort_key” hanging around. You could delete it: <code class="docutils literal notranslate"><span class="pre">del</span> <span class="pre">sort_key</span></code>, but that would be even more code.</p>
 <p>But with a lambda, you simply define it inline:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">lst</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Chris&quot;</span><span class="p">,</span><span class="s2">&quot;Barker&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Fred&quot;</span><span class="p">,</span> <span class="s2">&quot;Jones&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Zola&quot;</span><span class="p">,</span> <span class="s2">&quot;Adams&quot;</span><span class="p">)]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">lst</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Chris&quot;</span><span class="p">,</span><span class="s2">&quot;Barker&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Fred&quot;</span><span class="p">,</span> <span class="s2">&quot;Jones&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Zola&quot;</span><span class="p">,</span> <span class="s2">&quot;Adams&quot;</span><span class="p">)]</span>
 
 <span class="gp">In [17]: </span><span class="n">lst</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
@@ -281,24 +281,24 @@
 </pre></div>
 </div>
 <p>Nice and compact and clear, with no extra names hanging around.</p>
-<p>You’ll find them useful with things like <code class="docutils literal"><span class="pre">map</span></code>, <code class="docutils literal"><span class="pre">filter</span></code>, and <code class="docutils literal"><span class="pre">reduce</span></code>. as well.</p>
+<p>You’ll find them useful with things like <code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">filter</span></code>, and <code class="docutils literal notranslate"><span class="pre">reduce</span></code>. as well.</p>
 </div>
 </div>
 <div class="section" id="functions-as-first-class-objects">
 <h2>Functions as first class objects<a class="headerlink" href="#functions-as-first-class-objects" title="Permalink to this headline">¶</a></h2>
 <p>lambda functions are python objects; they can be stored in a list or other container:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">]</span>
 <span class="gp">In [8]: </span><span class="nb">type</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="gh">Out[8]: </span><span class="go">function</span>
 </pre></div>
 </div>
 <p>And you can call it by indexing the container:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 <span class="gh">Out[9]: </span><span class="go">7</span>
 </pre></div>
 </div>
 <p>You can do that with “regular” functions too:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
 <span class="gp">   ....:</span>
 <span class="gp">In [13]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">fun</span><span class="p">]</span>
@@ -312,19 +312,19 @@
 <div class="section" id="lambda-and-keyword-arguments">
 <h3>lambda and keyword arguments<a class="headerlink" href="#lambda-and-keyword-arguments" title="Permalink to this headline">¶</a></h3>
 <p>lambda functions can take keyword arguments as well:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="o">=</span><span class="bp">None</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)(</span><span class="n">x</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="o">=</span><span class="bp">None</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)(</span><span class="n">x</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="gh">Out[20]: </span><span class="go">8</span>
 </pre></div>
 </div>
 <p>Remember that default arguments get evaluated when the function is defined. This is the case with lambda as well.  This can get you in trouble if you use a mutable in a function definition. But it also can be a handy way to “bake in” a value into a function to be used later:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [186]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [186]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="gp">In [187]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
 <span class="go">    l.append(lambda x, e=i: x**e)</span>
 </pre></div>
 </div>
-<p>This creates a list, in this case with three items. Each of those items is a function. Note that the lambda is called each time through the loop, so each one has that default parameter defined separately – and each time the default is set to the current value of <code class="docutils literal"><span class="pre">i</span></code> in the loop. So we get three functions, all the same except for the default value of <code class="docutils literal"><span class="pre">e</span></code> – that is, each function will raise the input value to a different power.</p>
+<p>This creates a list, in this case with three items. Each of those items is a function. Note that the lambda is called each time through the loop, so each one has that default parameter defined separately – and each time the default is set to the current value of <code class="docutils literal notranslate"><span class="pre">i</span></code> in the loop. So we get three functions, all the same except for the default value of <code class="docutils literal notranslate"><span class="pre">e</span></code> – that is, each function will raise the input value to a different power.</p>
 <p>We can loop through that list, and call each function in turn with the same input value:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">func_list</span><span class="p">:</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">func_list</span><span class="p">:</span>
 <span class="go">    ...:     print(f(2))</span>
 <span class="go">    ...:</span>
 <span class="go">1</span>
@@ -362,7 +362,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
@@ -384,7 +384,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

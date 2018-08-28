@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Context Managers &mdash; PythonCert 4.0 documentation</title>
+  <title>Context Managers &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -35,9 +35,9 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
+    <link rel="top" title="PythonCert 5.0 documentation" href="../index.html"/>
         <link rel="up" title="Topic Notes" href="index.html"/>
-        <link rel="next" title="Coding Style and Linting" href="Pep8.html"/>
+        <link rel="next" title="Metaprogramming" href="MetaProgramming.html"/>
         <link rel="prev" title="Decorators" href="Decorators.html"/> 
 
   
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -95,30 +95,24 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Topic Notes</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="index.html#py210-introduction-to-python">Py210: Introduction to Python</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="CodeReviews.html">Code Reviews</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Closures.html">Closures and Function Currying</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Decorators.html">Decorators</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Context Managers</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#managing-resources">Managing Resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-1-functional-programming-2">Lesson 1: Functional Programming 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-2-functional-programming-3">Lesson 2: Functional Programming 3</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#lesson-3-advanced-language-constructs">Lesson 3: Advanced Language Constructs</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Decorators.html">Decorators</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Context Managers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Recursion.html">Recursion</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Pep8.html">Coding Style and Linting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Testing_advanced.html">Testing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Logging.html">Logging and the logging module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Debugging.html">Debugging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="MetaProgramming.html">Metaprogramming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="PersistanceAndSerialization.html">Persistence and Serialization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="NoSQL.html">No SQL Databases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="GraphDatabases.html">Graph Databases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Concurrency.html">Concurrent Programming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ThreadingMultiprocessing.html">Threading and multiprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Coroutines.html">Notes on Coroutines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Profiling.html">Performance and Profiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-4-metaprogramming">Lesson 4: MetaProgramming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-5-logging-and-debugging">Lesson 5: Logging and Debugging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-6-advanced-testing">Lesson 6: Advanced Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-7-relational-databases">Lesson 7: Relational Databases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-8-non-relational-databases">Lesson 8: Non-Relational Databases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-9-concurrency-async-programming">Lesson 9: Concurrency &amp; Async Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-10-profiling-and-performance">Lesson 10: Profiling and Performance</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#assorted-additional-topics">Assorted Additional Topics</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
@@ -191,24 +185,24 @@
             
   <div class="section" id="context-managers">
 <span id="id1"></span><h1>Context Managers<a class="headerlink" href="#context-managers" title="Permalink to this headline">¶</a></h1>
-<p>You’ve seen the <code class="docutils literal"><span class="pre">with</span></code> statement – probably used for working with files. Now you’ll learn what that’s all about.</p>
+<p>You’ve seen the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement – probably used for working with files. Now you’ll learn what that’s all about.</p>
 <div class="section" id="managing-resources">
 <h2>Managing Resources<a class="headerlink" href="#managing-resources" title="Permalink to this headline">¶</a></h2>
 <p><strong>Repetition in code stinks (DRY!)</strong></p>
 <p>A large source of repetition in code deals with the handling of external
 resources.</p>
 <p>As an example, how many times do you think you might type something like the following code:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">file_handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;filename.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file_handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;filename.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">file_content</span> <span class="o">=</span> <span class="n">file_handle</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">file_handle</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="c1"># do some stuff with the contents</span>
 </pre></div>
 </div>
 <p>Not only is this a couple extra lines of code to write, it’s also prone to error:</p>
-<p>What happens if you forget to call <code class="docutils literal"><span class="pre">.close()</span></code>?</p>
+<p>What happens if you forget to call <code class="docutils literal notranslate"><span class="pre">.close()</span></code>?</p>
 <p>What happens if reading the file raises an exception?</p>
 <p>So you really should write it something like:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">file_handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
     <span class="n">file_content</span> <span class="o">=</span> <span class="n">file_handle</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
@@ -227,35 +221,35 @@ repetition needed to handle resources like this.</p>
 <p><strong>Context Managers</strong></p>
 <p>You can encapsulate the setup, error handling, and teardown of resources in a
 few simple steps.</p>
-<p>The key is to use the <code class="docutils literal"><span class="pre">with</span></code> statement.</p>
+<p>The key is to use the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement.</p>
 </div>
 <div class="section" id="with-a-little-help">
-<h3><code class="docutils literal"><span class="pre">with</span></code> a little help<a class="headerlink" href="#with-a-little-help" title="Permalink to this headline">¶</a></h3>
-<p>Since the introduction of the <code class="docutils literal"><span class="pre">with</span></code> statement in <a class="reference external" href="https://www.python.org/dev/peps/pep-0343/">pep343</a>, the above seven lines of defensive code have been replaced with this simple form:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_handle</span><span class="p">:</span>
+<h3><code class="docutils literal notranslate"><span class="pre">with</span></code> a little help<a class="headerlink" href="#with-a-little-help" title="Permalink to this headline">¶</a></h3>
+<p>Since the introduction of the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement in <a class="reference external" href="https://www.python.org/dev/peps/pep-0343/">pep343</a>, the above seven lines of defensive code have been replaced with this simple form:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_handle</span><span class="p">:</span>
     <span class="n">file_content</span> <span class="o">=</span> <span class="n">file_handle</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="c1"># do something with file_content</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">open</span></code> builtin is defined as a <em>context manager</em>.</p>
-<p>The resource it returns (<code class="docutils literal"><span class="pre">file_handle</span></code>) is automatically and reliably closed
+<p>The <code class="docutils literal notranslate"><span class="pre">open</span></code> builtin is defined as a <em>context manager</em>.</p>
+<p>The resource it returns (<code class="docutils literal notranslate"><span class="pre">file_handle</span></code>) is automatically and reliably closed
 when the code block ends.</p>
 <p>At this point in Python history, many functions you might expect to behave this way do:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">open</span></code> works as a context manager.</li>
-<li>network connections via <code class="docutils literal"><span class="pre">socket</span></code> do as well.</li>
+<li><code class="docutils literal notranslate"><span class="pre">open</span></code> works as a context manager.</li>
+<li>network connections via <code class="docutils literal notranslate"><span class="pre">socket</span></code> do as well.</li>
 <li>most implementations of database wrappers can open connections or cursors as
 context managers.</li>
 <li>…</li>
 <li>But what if you are working with a library that doesn’t support this
-(<code class="docutils literal"><span class="pre">urllib</span></code>)?</li>
+(<code class="docutils literal notranslate"><span class="pre">urllib</span></code>)?</li>
 </ul>
 </div>
 <div class="section" id="close-it-automatically">
 <h3>Close It Automatically<a class="headerlink" href="#close-it-automatically" title="Permalink to this headline">¶</a></h3>
 <p>There are a couple of ways you can go.</p>
-<p>If the resource in questions has a <code class="docutils literal"><span class="pre">.close()</span></code> method, then you can simply use the <code class="docutils literal"><span class="pre">closing</span></code> context manager from <code class="docutils literal"><span class="pre">contextlib</span></code> to handle the issue:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
+<p>If the resource in questions has a <code class="docutils literal notranslate"><span class="pre">.close()</span></code> method, then you can simply use the <code class="docutils literal notranslate"><span class="pre">closing</span></code> context manager from <code class="docutils literal notranslate"><span class="pre">contextlib</span></code> to handle the issue:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span>
 <span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">closing</span>
 
 <span class="k">with</span> <span class="n">closing</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;http://google.com&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">web_connection</span><span class="p">:</span>
@@ -263,7 +257,7 @@ context managers.</li>
 <span class="c1"># and here, it will be closed automatically</span>
 </pre></div>
 </div>
-<p>But what if the thing doesn’t have a <code class="docutils literal"><span class="pre">close()</span></code> method, or you’re creating
+<p>But what if the thing doesn’t have a <code class="docutils literal notranslate"><span class="pre">close()</span></code> method, or you’re creating
 the thing and it shouldn’t have a close() method?</p>
 <p>(full confession: urlib.request was not a context manager in py2 – but it is in py3 – but the issue still comes up with third-party packages and your own code!)</p>
 </div>
@@ -273,19 +267,19 @@ the thing and it shouldn’t have a close() method?</p>
 <p>The interface is simple.  It must be a class that implements two
 more of the nifty python <em>special methods</em></p>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">__enter__(self)</span></code>:</dt>
-<dd>Called when the <code class="docutils literal"><span class="pre">with</span></code> statement is run, it should return something to work with in the created context.</dd>
-<dt><code class="docutils literal"><span class="pre">__exit__(self,</span> <span class="pre">e_type,</span> <span class="pre">e_val,</span> <span class="pre">e_traceback)</span></code>:</dt>
+<dt><code class="docutils literal notranslate"><span class="pre">__enter__(self)</span></code>:</dt>
+<dd>Called when the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement is run, it should return something to work with in the created context.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">__exit__(self,</span> <span class="pre">e_type,</span> <span class="pre">e_val,</span> <span class="pre">e_traceback)</span></code>:</dt>
 <dd>Clean-up that needs to happen is implemented here.</dd>
 </dl>
 <p>The arguments will be the exception raised in the context.</p>
-<p>If the exception will be handled here, return <code class="docutils literal"><span class="pre">True</span></code>. If not, return <code class="docutils literal"><span class="pre">False</span></code>.</p>
+<p>If the exception will be handled here, return <code class="docutils literal notranslate"><span class="pre">True</span></code>. If not, return <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <p>Let’s see this in action to get a sense of what happens.</p>
 </div>
 <div class="section" id="an-example">
 <h3>An Example<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h3>
 <p>Consider this code:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Context</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Context</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;from Doug Hellmann, PyMOTW</span>
 <span class="sd">    https://pymotw.com/3/contextlib/#module-contextlib</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -302,10 +296,10 @@ more of the nifty python <em>special methods</em></p>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">handle_error</span>
 </pre></div>
 </div>
-<p><a class="reference download internal" href="../_downloads/context_manager.py" download=""><code class="xref download docutils literal"><span class="pre">context_manager.py</span></code></a></p>
+<p><a class="reference download internal" href="../_downloads/context_manager.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">context_manager.py</span></code></a></p>
 <p>This class doesn’t do much of anything, but playing with it can help
 clarify the order in which things happen:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="o">%</span><span class="k">paste</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="o">%</span><span class="k">paste</span>
 <span class="go">    In [46]: with Context(True) as foo:</span>
 <span class="go">       ....:     print(&#39;This is in the context&#39;)</span>
 <span class="go">       ....:     raise RuntimeError(&#39;this is the error message&#39;)</span>
@@ -318,9 +312,9 @@ clarify the order in which things happen:</p>
 <span class="go">         &lt;traceback object at 0x1047873c8&gt;)</span>
 </pre></div>
 </div>
-<p>Because the <code class="docutils literal"><span class="pre">__exit__</span></code> method returns <code class="docutils literal"><span class="pre">True</span></code>, the raised error is ‘handled’.</p>
-<p>What if we try with <code class="docutils literal"><span class="pre">False</span></code>?</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="k">with</span> <span class="n">Context</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">foo</span><span class="p">:</span>
+<p>Because the <code class="docutils literal notranslate"><span class="pre">__exit__</span></code> method returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, the raised error is ‘handled’.</p>
+<p>What if we try with <code class="docutils literal notranslate"><span class="pre">False</span></code>?</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="k">with</span> <span class="n">Context</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">foo</span><span class="p">:</span>
 <span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;this is in the context&quot;</span><span class="p">)</span>
 <span class="gp">   ...: </span>    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;this is the error message&#39;</span><span class="p">)</span>
 <span class="gp">   ...:</span>
@@ -341,27 +335,27 @@ clarify the order in which things happen:</p>
 <p>So this time, the context manager did not catch the error – so it was raised in the usual way.</p>
 </div>
 <div class="section" id="the-parameters-to-exit">
-<h3>The parameters to <code class="docutils literal"><span class="pre">__exit__</span></code><a class="headerlink" href="#the-parameters-to-exit" title="Permalink to this headline">¶</a></h3>
+<h3>The parameters to <code class="docutils literal notranslate"><span class="pre">__exit__</span></code><a class="headerlink" href="#the-parameters-to-exit" title="Permalink to this headline">¶</a></h3>
 <p>In real life, a context manager could have pretty much any error raised in its context.  And the context manager will likely only be able to “properly” handle particular Exceptions.</p>
-<p>So the <code class="docutils literal"><span class="pre">__exit__</span></code> method takes all the information about the exception as parameters:</p>
-<p><code class="docutils literal"><span class="pre">def</span> <span class="pre">__exit__(self,</span> <span class="pre">exc_type,</span> <span class="pre">exc_val,</span> <span class="pre">exc_tb)</span></code></p>
-<p><code class="docutils literal"><span class="pre">exc_type</span></code>: the type of the Exception</p>
-<p><code class="docutils literal"><span class="pre">exc_val</span></code>: the value of the Exception</p>
-<p><code class="docutils literal"><span class="pre">exc_tb</span></code>: the Exception Traceback object</p>
+<p>So the <code class="docutils literal notranslate"><span class="pre">__exit__</span></code> method takes all the information about the exception as parameters:</p>
+<p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">__exit__(self,</span> <span class="pre">exc_type,</span> <span class="pre">exc_val,</span> <span class="pre">exc_tb)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">exc_type</span></code>: the type of the Exception</p>
+<p><code class="docutils literal notranslate"><span class="pre">exc_val</span></code>: the value of the Exception</p>
+<p><code class="docutils literal notranslate"><span class="pre">exc_tb</span></code>: the Exception Traceback object</p>
 <p>The type lets you check if this is a type you know how to handle:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">exc_type</span> <span class="ow">is</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">exc_type</span> <span class="ow">is</span> <span class="ne">RuntimeError</span><span class="p">:</span>
 </pre></div>
 </div>
 <p>The value is the exception object itself.</p>
-<p>And the traceback is a full traceback object. Traceback objects hold all the information about the context in which an error occurred. It’s pretty advanced stuff, so you can mostly ignore it, but if you want to know more, there are tools for working with them in the <code class="docutils literal"><span class="pre">traceback</span></code> module.</p>
+<p>And the traceback is a full traceback object. Traceback objects hold all the information about the context in which an error occurred. It’s pretty advanced stuff, so you can mostly ignore it, but if you want to know more, there are tools for working with them in the <code class="docutils literal notranslate"><span class="pre">traceback</span></code> module.</p>
 <p><a class="reference external" href="https://docs.python.org/3/library/traceback.html">https://docs.python.org/3/library/traceback.html</a></p>
 </div>
 <div class="section" id="the-contextmanager-decorator">
-<h3>The <code class="docutils literal"><span class="pre">contextmanager</span></code> decorator<a class="headerlink" href="#the-contextmanager-decorator" title="Permalink to this headline">¶</a></h3>
+<h3>The <code class="docutils literal notranslate"><span class="pre">contextmanager</span></code> decorator<a class="headerlink" href="#the-contextmanager-decorator" title="Permalink to this headline">¶</a></h3>
 <p>Similar to writing iterable classes, there’s a fair bit of bookkeeping involved. It turns out you can take advantage of generator functions to do that bookkeeping for you.</p>
-<p><code class="docutils literal"><span class="pre">contextlib.contextmanager</span></code> decorator will turn a generator function into context manager.</p>
+<p><code class="docutils literal notranslate"><span class="pre">contextlib.contextmanager</span></code> decorator will turn a generator function into context manager.</p>
 <p>Consider this code:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
 
 <span class="nd">@contextmanager</span>
 <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="n">boolean</span><span class="p">):</span>
@@ -379,7 +373,7 @@ clarify the order in which things happen:</p>
 </div>
 <p>The code is similar to the class defined previously.</p>
 <p>And using it has similar results.  We can handle errors:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [96]: </span><span class="k">with</span> <span class="n">context</span><span class="p">(</span><span class="bp">True</span><span class="p">):</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [96]: </span><span class="k">with</span> <span class="n">context</span><span class="p">(</span><span class="bp">True</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;in the context&quot;</span><span class="p">)</span>
 <span class="gp">   ....: </span>    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;error raised&quot;</span><span class="p">)</span>
 <span class="gp">   ....:</span>
@@ -391,7 +385,7 @@ clarify the order in which things happen:</p>
 </pre></div>
 </div>
 <p>Or, we can allow them to propagate:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [51]: </span><span class="k">with</span> <span class="n">context</span><span class="p">(</span><span class="bp">False</span><span class="p">):</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [51]: </span><span class="k">with</span> <span class="n">context</span><span class="p">(</span><span class="bp">False</span><span class="p">):</span>
 <span class="gp">   ....: </span>   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;in the context&quot;</span><span class="p">)</span>
 <span class="gp">   ....: </span>   <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;error raised&quot;</span><span class="p">)</span>
 <span class="go">__init__ code here</span>
@@ -412,9 +406,9 @@ clarify the order in which things happen:</p>
 </div>
 <div class="section" id="mixing-context-managers-with-generators">
 <h3>Mixing context_managers with generators<a class="headerlink" href="#mixing-context-managers-with-generators" title="Permalink to this headline">¶</a></h3>
-<p>You can put a <code class="docutils literal"><span class="pre">yield</span></code> inside a context manager as well.</p>
+<p>You can put a <code class="docutils literal notranslate"><span class="pre">yield</span></code> inside a context manager as well.</p>
 <p>here is a generator function that gives yields all the files in a directory:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pathlib</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pathlib</span>
 
 <span class="k">def</span> <span class="nf">file_yielder</span><span class="p">(</span><span class="nb">dir</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -427,10 +421,10 @@ clarify the order in which things happen:</p>
             <span class="k">yield</span> <span class="n">file_obj</span>
 </pre></div>
 </div>
-<p><a class="reference download internal" href="../_downloads/file_yielder.py" download=""><code class="xref download docutils literal"><span class="pre">file_yielder.py</span></code></a></p>
-<p>So the <code class="docutils literal"><span class="pre">yield</span></code> is inside the file context manager, so that state will be preserved while the file object is in use.</p>
+<p><a class="reference download internal" href="../_downloads/file_yielder.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">file_yielder.py</span></code></a></p>
+<p>So the <code class="docutils literal notranslate"><span class="pre">yield</span></code> is inside the file context manager, so that state will be preserved while the file object is in use.</p>
 <p>This generator can be used like so:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">file_yielder</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;*.py&quot;</span><span class="p">):</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">file_yielder</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;*.py&quot;</span><span class="p">):</span>
 <span class="go">    ...:     print(&quot;The first line of: {} is:\n{}&quot;.format(f.name, f.readline()))</span>
 </pre></div>
 </div>
@@ -449,7 +443,7 @@ clarify the order in which things happen:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Pep8.html" class="btn btn-neutral float-right" title="Coding Style and Linting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="MetaProgramming.html" class="btn btn-neutral float-right" title="Metaprogramming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Decorators.html" class="btn btn-neutral" title="Decorators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -461,7 +455,7 @@ clarify the order in which things happen:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
@@ -483,7 +477,7 @@ clarify the order in which things happen:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

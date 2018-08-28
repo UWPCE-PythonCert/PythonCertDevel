@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Using a Dictionary to switch &mdash; PythonCert 4.0 documentation</title>
+  <title>Using a Dictionary to switch &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
+    <link rel="top" title="PythonCert 5.0 documentation" href="../index.html"/>
         <link rel="up" title="Topic Notes" href="index.html"/>
         <link rel="next" title="Style and Naming" href="NamingThings.html"/>
         <link rel="prev" title="File Reading and Writing" href="Files.html"/> 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -100,7 +100,7 @@
 <li class="toctree-l3 current"><a class="reference internal" href="index.html#lesson-4-dictionaries-sets-and-files">Lesson 4: Dictionaries, Sets, and Files</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="DictsAndSets.html">Dictionaries and Sets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Files.html">File Reading and Writing</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code></a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Using a Dictionary to <code class="docutils literal notranslate"><span class="pre">switch</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#lesson-5-exceptions-modules-and-comprehensions">Lesson 5: Exceptions, Modules, and Comprehensions</a></li>
@@ -112,6 +112,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#assorted-additional-topics">Assorted Additional Topics</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
@@ -163,7 +164,7 @@
         
           <li><a href="index.html">Topic Notes</a> &raquo;</li>
         
-      <li>Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code></li>
+      <li>Using a Dictionary to <code class="docutils literal notranslate"><span class="pre">switch</span></code></li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -183,16 +184,16 @@
            <div itemprop="articleBody">
             
   <div class="section" id="using-a-dictionary-to-switch">
-<span id="dict-as-switch"></span><h1>Using a Dictionary to <code class="docutils literal"><span class="pre">switch</span></code><a class="headerlink" href="#using-a-dictionary-to-switch" title="Permalink to this headline">¶</a></h1>
-<p>Python does not have a <code class="docutils literal"><span class="pre">switch/case</span> <span class="pre">statement</span></code>.  Why not?</p>
+<span id="dict-as-switch"></span><h1>Using a Dictionary to <code class="docutils literal notranslate"><span class="pre">switch</span></code><a class="headerlink" href="#using-a-dictionary-to-switch" title="Permalink to this headline">¶</a></h1>
+<p>Python does not have a <code class="docutils literal notranslate"><span class="pre">switch/case</span> <span class="pre">statement</span></code>.  Why not?</p>
 <p><a class="reference external" href="https://www.python.org/dev/peps/pep-3103/">https://www.python.org/dev/peps/pep-3103/</a></p>
 <p>So what to use instead of “switch-case”?</p>
 <div class="section" id="switch-case">
-<h2><code class="docutils literal"><span class="pre">switch</span></code> / <code class="docutils literal"><span class="pre">case</span></code><a class="headerlink" href="#switch-case" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">switch</span></code> / <code class="docutils literal notranslate"><span class="pre">case</span></code><a class="headerlink" href="#switch-case" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="what-is-switch">
-<h3>What is <code class="docutils literal"><span class="pre">switch</span></code>?<a class="headerlink" href="#what-is-switch" title="Permalink to this headline">¶</a></h3>
+<h3>What is <code class="docutils literal notranslate"><span class="pre">switch</span></code>?<a class="headerlink" href="#what-is-switch" title="Permalink to this headline">¶</a></h3>
 <p>Many languages have a “switch-case” construct:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">switch</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">switch</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">case</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;zero&quot;</span><span class="p">;</span>
     <span class="n">case</span> <span class="mi">1</span><span class="p">:</span>
@@ -207,9 +208,9 @@
 <p>How do you say this in Python?</p>
 </div>
 <div class="section" id="if-elif-chains">
-<h3><code class="docutils literal"><span class="pre">if-elif</span></code> chains<a class="headerlink" href="#if-elif-chains" title="Permalink to this headline">¶</a></h3>
-<p>The obvious way to say it is a chain of <code class="docutils literal"><span class="pre">elif</span></code> statements:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">argument</span> <span class="o">==</span>  <span class="mi">0</span><span class="p">:</span>
+<h3><code class="docutils literal notranslate"><span class="pre">if-elif</span></code> chains<a class="headerlink" href="#if-elif-chains" title="Permalink to this headline">¶</a></h3>
+<p>The obvious way to say it is a chain of <code class="docutils literal notranslate"><span class="pre">elif</span></code> statements:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">argument</span> <span class="o">==</span>  <span class="mi">0</span><span class="p">:</span>
     <span class="k">return</span> <span class="s2">&quot;zero&quot;</span>
 <span class="k">elif</span> <span class="n">argument</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
     <span class="k">return</span> <span class="s2">&quot;one&quot;</span>
@@ -223,8 +224,8 @@
 </div>
 <div class="section" id="id1">
 <h3>dict as switch<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal"><span class="pre">elif</span></code> chain is neither elegant nor efficient. There are a number of ways to say it in python – but one elegant one is to use a dict:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">arg_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s2">&quot;zero&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;two&quot;</span><span class="p">}</span>
+<p>The <code class="docutils literal notranslate"><span class="pre">elif</span></code> chain is neither elegant nor efficient. There are a number of ways to say it in python – but one elegant one is to use a dict:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arg_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s2">&quot;zero&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;two&quot;</span><span class="p">}</span>
 <span class="n">arg_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">argument</span><span class="p">,</span> <span class="s2">&quot;nothing&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -235,7 +236,7 @@
 <div class="section" id="switch-with-functions">
 <h3>Switch with functions<a class="headerlink" href="#switch-with-functions" title="Permalink to this headline">¶</a></h3>
 <p>What would this be like if you used functions instead? Think of the possibilities.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="k">def</span> <span class="nf">my_zero_func</span><span class="p">():</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="k">def</span> <span class="nf">my_zero_func</span><span class="p">():</span>
 <span class="go">    return &quot;I&#39;m zero&quot;</span>
 
 <span class="gp">In [12]: </span><span class="k">def</span> <span class="nf">my_one_func</span><span class="p">():</span>
@@ -258,7 +259,7 @@
 <p>Another way to do the equivalent of switch / case is subclassing.</p>
 <p>If you haven’t learned about classes in Python this will be pretty confusing. But here’s a high level overview:</p>
 <p>In C, before C++, a common idiom was something like:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">switch</span><span class="p">(</span><span class="n">object_type</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">switch</span><span class="p">(</span><span class="n">object_type</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">case</span> <span class="n">circle</span><span class="p">:</span>
         <span class="n">draw_a_circle</span><span class="p">();</span>
     <span class="n">case</span> <span class="n">square</span><span class="p">:</span>
@@ -272,17 +273,17 @@
 </div>
 <p>That is, a different function is called depending on what type of “thing” you are dealing with.</p>
 <p>This is actually a really common idiom in C. And even in modern OO code written by old C developers – I had a developer on my team do exactly this in a program we were working on. It was a map drawing program (written in Python), and there was code all over it like:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">layer</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;tiles&quot;</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">layer</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;tiles&quot;</span><span class="p">:</span>
     <span class="n">do_something_with_tiles</span>
 <span class="k">elif</span> <span class="n">layer</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;grid&quot;</span><span class="p">:</span>
     <span class="n">do_somethign_with_grid</span>
 </pre></div>
 </div>
-<p>This was a maintainability nightmare – if you added a new layer type, you had to find every one of these constructs and add another <code class="docutils literal"><span class="pre">elif</span></code> block to it.</p>
+<p>This was a maintainability nightmare – if you added a new layer type, you had to find every one of these constructs and add another <code class="docutils literal notranslate"><span class="pre">elif</span></code> block to it.</p>
 </div>
 <div class="section" id="the-oo-way">
 <h3>The OO way<a class="headerlink" href="#the-oo-way" title="Permalink to this headline">¶</a></h3>
-<p>With object oriented programming, you can “subclass” objects, and use “polymorphism” to achieve this kind of selection. Say you have a bunch of objects you want to be able to draw. Give each of them a <code class="docutils literal"><span class="pre">draw()</span></code> method, and then the above switch statement becomes:</p>
+<p>With object oriented programming, you can “subclass” objects, and use “polymorphism” to achieve this kind of selection. Say you have a bunch of objects you want to be able to draw. Give each of them a <code class="docutils literal notranslate"><span class="pre">draw()</span></code> method, and then the above switch statement becomes:</p>
 <p>the_object.draw()</p>
 <p>That’s IT!</p>
 <p>You don’t have to test to see which type of object it is, you only have to know that it knows how to draw itself.</p>
@@ -313,7 +314,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
@@ -335,7 +336,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

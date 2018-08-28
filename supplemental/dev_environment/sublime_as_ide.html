@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Turning Sublime Text Into a Lightweight Python IDE &mdash; PythonCert 4.0 documentation</title>
+  <title>Turning Sublime Text Into a Lightweight Python IDE &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../../index.html"/>
+    <link rel="top" title="PythonCert 5.0 documentation" href="../../index.html"/>
         <link rel="up" title="Setting Up A Development Environment For Python" href="index.html"/>
         <link rel="next" title="Turning Atom Into a Lightweight Python IDE" href="atom_as_ide.html"/>
         <link rel="prev" title="Setting Up A Development Environment For Python" href="index.html"/> 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -92,7 +92,7 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../modules/index.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/index.html">Topic Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/index.html">Exercises</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Supplemental Materials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../HowToRunAPythonFile.html">How to run a python file</a></li>
@@ -119,6 +119,8 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#specific-python-notes">Specific Python Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#more-about-git">More about git</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../references/index.html">Resources for Specific Python Topics</a></li>
@@ -224,13 +226,13 @@ debugging, the editor will follow along with the debugger.</li>
 <h2>Basic Settings<a class="headerlink" href="#basic-settings" title="Permalink to this headline">¶</a></h2>
 <p>All configuration in Sublime Text is done via <a class="reference external" href="http://www.json.org">JSON</a>. It’s simple to learn. go and read that link then return here. [Note that JSON is very similar to Python dict and list literals]</p>
 <p>There are a number of <a class="reference external" href="http://www.sublimetext.com/docs/3/settings.html">different levels of configuration</a> in Sublime Text. You will most often work on settings at the user level.</p>
-<p>Open <code class="docutils literal"><span class="pre">Preferences</span></code> -&gt; <code class="docutils literal"><span class="pre">Settings</span></code></p>
+<p>Open <code class="docutils literal notranslate"><span class="pre">Preferences</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Settings</span></code></p>
 <p>On a Mac, you can find it under:</p>
-<p><code class="docutils literal"><span class="pre">Sublime</span> <span class="pre">Text</span></code> -&gt; <code class="docutils literal"><span class="pre">Preferences</span></code> -&gt; <code class="docutils literal"><span class="pre">Settings</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Sublime</span> <span class="pre">Text</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Preferences</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Settings</span></code></p>
 <p>Sublime will open up a split window – “default” and “user” – you can look through the default ones to see all the setting you might want to override, and then copy things from default by putting them in the user file.</p>
 <p>The preferences file is simply a JSON text file you edit like any other text file.</p>
 <p>Here’s a reasonable set of preliminary settings (theme, color scheme and font are quite personal, find ones that suit you.):</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;auto_indent&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="s2">&quot;color_scheme&quot;</span><span class="o">:</span> <span class="s2">&quot;Packages/User/Monokai (Flake8Lint).tmTheme&quot;</span><span class="p">,</span>
     <span class="s2">&quot;draw_white_space&quot;</span><span class="o">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
@@ -255,17 +257,22 @@ debugging, the editor will follow along with the debugger.</li>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>NOTE:</strong> Especially important is the setting <code class="docutils literal"><span class="pre">translate_tabs_to_spaces</span></code>, which ensures that any time you hit a tab key, the single &lt;tab&gt; character is replaced by four &lt;space&gt; characters.  In Python this is <strong>vital</strong>!</p>
+<p><strong>NOTE:</strong> Especially important is the setting <code class="docutils literal notranslate"><span class="pre">translate_tabs_to_spaces</span></code>, which ensures that any time you hit a tab key, the single &lt;tab&gt; character is replaced by four &lt;space&gt; characters.  In Python this is <strong>vital</strong>!</p>
 <p>If you do nothing else, add this for your config!</p>
 </div>
 <div class="section" id="extending-the-editor">
 <h2>Extending the Editor<a class="headerlink" href="#extending-the-editor" title="Permalink to this headline">¶</a></h2>
 <p>Most of the requirements above go beyond basic editor functionality. So we’ll use Plugins.</p>
-<p>Sublime Text comes with a great system for <a class="reference external" href="https://sublime.wbond.net">Package Control</a>. It handles installing and uninstalling plugins, and even updates installed plugins for you. You can also manually install plugins that haven’t made it to the big-time yet, including <a class="reference external" href="http://docs.sublimetext.info/en/latest/extensibility/plugins.html">ones you write yourself</a>. Happily, the plugin system is based on
-Python!</p>
-<p>To install a plugin using Package Control, open the <code class="docutils literal"><span class="pre">command</span> <span class="pre">palette</span></code> with <code class="docutils literal"><span class="pre">shift-super-P</span></code> (<code class="docutils literal"><span class="pre">ctrl-shift-P</span></code> on Windows/Linux). The <code class="docutils literal"><span class="pre">super</span></code> key is <code class="docutils literal"><span class="pre">command</span></code> or <code class="docutils literal"><span class="pre">⌘</span></code> on OS X. When the palette opens, typing <code class="docutils literal"><span class="pre">install</span></code> will bring up the <code class="docutils literal"><span class="pre">Package</span> <span class="pre">Control:</span> <span class="pre">Install</span> <span class="pre">Package</span></code> command. Hit <code class="docutils literal"><span class="pre">enter</span></code> to select it.</p>
+<p>Sublime Text comes with a great system for <a class="reference external" href="https://sublime.wbond.net">Package Control</a>.
+It handles installing and uninstalling plugins, and even updates installed plugins for you.
+You can also manually install plugins that haven’t made it to the big-time yet, including <a class="reference external" href="http://docs.sublimetext.info/en/latest/extensibility/plugins.html">ones you write yourself</a>.
+Happily, the plugin system is based on Python!</p>
+<p>To install a plugin using Package Control, open the <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">palette</span></code> with <code class="docutils literal notranslate"><span class="pre">shift-super-P</span></code> (<code class="docutils literal notranslate"><span class="pre">ctrl-shift-P</span></code> on Windows/Linux).
+The <code class="docutils literal notranslate"><span class="pre">super</span></code> key is <code class="docutils literal notranslate"><span class="pre">command</span></code> or <code class="docutils literal notranslate"><span class="pre">⌘</span></code> on OS X.
+When the palette opens, typing <code class="docutils literal notranslate"><span class="pre">install</span></code> will bring up the <code class="docutils literal notranslate"><span class="pre">Package</span> <span class="pre">Control:</span> <span class="pre">Install</span> <span class="pre">Package</span></code> command.
+Hit <code class="docutils literal notranslate"><span class="pre">enter</span></code> to select it.</p>
 <a class="reference internal image-reference" href="../../_images/pc_menu.png"><img alt="The package control command in the command palette." class="align-center" src="../../_images/pc_menu.png" style="width: 600px;" /></a>
-<p>After you select the command, Sublime Text fetches an updated list of packages from the network. It might take a second or two for the list to appear. When it does, start to type the name of the package you want. Sublime Text filters the list and shows you what you want to see. To install a plugin, select it with the mouse, or use arrow keys to navigate the list and hit <code class="docutils literal"><span class="pre">enter</span></code> when your plugin is highlighted.</p>
+<p>After you select the command, Sublime Text fetches an updated list of packages from the network. It might take a second or two for the list to appear. When it does, start to type the name of the package you want. Sublime Text filters the list and shows you what you want to see. To install a plugin, select it with the mouse, or use arrow keys to navigate the list and hit <code class="docutils literal notranslate"><span class="pre">enter</span></code> when your plugin is highlighted.</p>
 <a class="reference internal image-reference" href="../../_images/plugin_list.png"><img alt="../../_images/plugin_list.png" class="align-center" src="../../_images/plugin_list.png" style="width: 600px;" /></a>
 </div>
 <div class="section" id="useful-plugins">
@@ -277,7 +284,7 @@ Python!</p>
 <p>Not to be confused with the Scientific Python distribution – the Anaconda sublime plugin is a full featured package to turn Sublime into a pretty full IDE:</p>
 <p><a class="reference external" href="http://damnwidget.github.io/anaconda/">http://damnwidget.github.io/anaconda/</a></p>
 <p>There are nifty instructions on that page.</p>
-<p>By default, Anaconda uses the python interpreter that is in your <code class="docutils literal"><span class="pre">PATH</span></code> environment variable. So, the most important configuration option is the python_interpreter option that allows you to use a different Python interpreter, for example, one that resides in a virtual environment, or python3 vs python2.</p>
+<p>By default, Anaconda uses the python interpreter that is in your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable. So, the most important configuration option is the python_interpreter option that allows you to use a different Python interpreter, for example, one that resides in a virtual environment, or python3 vs python2.</p>
 <p>If you get the right Python when you type “python” at a raw command line, then you are OK. But if not you may need to re-configure it.</p>
 <p>{“python_interpreter”: “~/.virtualenvs/myproject/bin/python”}</p>
 <blockquote>
@@ -293,7 +300,7 @@ Python!</p>
 <div class="section" id="white-space-management">
 <h3>White Space Management<a class="headerlink" href="#white-space-management" title="Permalink to this headline">¶</a></h3>
 <p>One of the issues highlighted by code linters is trailing spaces.  Sublime Text provides a setting that allows you to remove them every time you save a file:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;trim_trailing_whitespace_on_save&quot;</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
 </pre></div>
@@ -307,8 +314,8 @@ Python!</p>
 <p>You’ll probably want to wait on this until you start using a debugger, but it’s a nifty feature when you get there.</p>
 <p>The final requirement for a reasonable IDE experience is to be able to follow a debugging session in the file where the code exists.</p>
 <p>There is no plugin for Sublime Text that supports this. But there is a Python package you can install.</p>
-<p>The package is called <a class="reference external" href="https://pypi.python.org/pypi/PdbSublimeTextSupport">PDBSublimeTextSupport</a> and its simple to install with <code class="docutils literal"><span class="pre">pip</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python -m  pip install PDBSublimeTextSupport
+<p>The package is called <a class="reference external" href="https://pypi.python.org/pypi/PdbSublimeTextSupport">PDBSublimeTextSupport</a> and its simple to install with <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python -m  pip install PDBSublimeTextSupport
 </pre></div>
 </div>
 <p>With that package installed in the Python that is used for your project, any breakpoint you set will automatically pop to the surface in Sublime Text.  And as you step through the code, you will see the current line in your Sublime Text file move along with you.</p>
@@ -338,7 +345,7 @@ Python!</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
@@ -360,7 +367,7 @@ Python!</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'4.0',
+            VERSION:'5.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

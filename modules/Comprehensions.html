@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Comprehensions &mdash; PythonCert 4.0 documentation</title>
+  <title>Comprehensions &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
+    <link rel="top" title="PythonCert 5.0 documentation" href="../index.html"/>
         <link rel="up" title="Topic Notes" href="index.html"/>
         <link rel="next" title="The Collections Module" href="CollectionsModule.html"/>
         <link rel="prev" title="Exception Handling" href="Exceptions.html"/> 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -115,6 +115,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#assorted-additional-topics">Assorted Additional Topics</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
@@ -193,30 +194,30 @@
 <p>The concept of “functional programming” is clearly defined in some contexts, but is also used in a less strict sense. Python is <strong>not</strong> a functional language in the strict sense, but it does support a number of functional paradigms.</p>
 <p>In general, code is considered “Pythonic” that used functional paradigms where they are natural, but not when they have to be forced in.</p>
 <p>We will cover functional programming concepts more clearly later in the program, but for now, we’ll talk about the syntax for a common functional paradigm: applying an expression to all the members of a sequence to produce another sequence:</p>
-<p>Consider this common <code class="docutils literal"><span class="pre">for</span></code> loop structure:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+<p>Consider this common <code class="docutils literal notranslate"><span class="pre">for</span></code> loop structure:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
     <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">(</span><span class="n">variable</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>This is such a common pattern, that python added syntax to directly support it:</p>
 <p>It can be expressed with a single line using a “list comprehension”</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">expression</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">expression</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>What about nested for loops?</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">var2</span> <span class="ow">in</span> <span class="n">a_list2</span><span class="p">:</span>
         <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Can also be expressed in one line:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span>  <span class="p">[</span><span class="n">exp</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">a_list</span> <span class="k">for</span> <span class="n">var2</span> <span class="ow">in</span> <span class="n">a_list2</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span>  <span class="p">[</span><span class="n">exp</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">a_list</span> <span class="k">for</span> <span class="n">var2</span> <span class="ow">in</span> <span class="n">a_list2</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>You get the “outer product”, i.e. all combinations.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [33]: </span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [33]: </span><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 
 <span class="gp">In [34]: </span><span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 
@@ -224,12 +225,12 @@
 <span class="gh">Out[35]: </span><span class="go">[(1, 4), (1, 5), (2, 4), (2, 5), (3, 4), (3, 5)]</span>
 </pre></div>
 </div>
-<p>Note that it makes every combination of the two input lists, and thus will be <code class="docutils literal"><span class="pre">len(list1)</span> <span class="pre">*</span> <span class="pre">len(list2)</span></code> in size. And there is no reason for them to be the same size.</p>
+<p>Note that it makes every combination of the two input lists, and thus will be <code class="docutils literal notranslate"><span class="pre">len(list1)</span> <span class="pre">*</span> <span class="pre">len(list2)</span></code> in size. And there is no reason for them to be the same size.</p>
 </div>
 <div class="section" id="zip-with-comprehensions">
 <h2>zip() with comprehensions<a class="headerlink" href="#zip-with-comprehensions" title="Permalink to this headline">¶</a></h2>
-<p>If you want them paired up instead, you can use <code class="docutils literal"><span class="pre">zip()</span></code>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [31]: </span><span class="p">[(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">)]</span>
+<p>If you want them paired up instead, you can use <code class="docutils literal notranslate"><span class="pre">zip()</span></code>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [31]: </span><span class="p">[(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">)]</span>
 <span class="gh">Out[31]: </span><span class="go">[(1, 4), (2, 5)]</span>
 </pre></div>
 </div>
@@ -237,25 +238,25 @@
 <div class="section" id="comprehensions-and-map">
 <h2>Comprehensions and map()<a class="headerlink" href="#comprehensions-and-map" title="Permalink to this headline">¶</a></h2>
 <p>Comprehensions are another way of expressing the “map” pattern from functional programming.</p>
-<p>Python does have a <code class="docutils literal"><span class="pre">map()</span></code>, which pre-dates comprehensions. But it does much of the same things – and most folks think comprehensions are the more “Pythonic” way to do it.</p>
+<p>Python does have a <code class="docutils literal notranslate"><span class="pre">map()</span></code>, which pre-dates comprehensions. But it does much of the same things – and most folks think comprehensions are the more “Pythonic” way to do it.</p>
 </div>
 <div class="section" id="what-about-filter">
 <h2>What about filter?<a class="headerlink" href="#what-about-filter" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">filter()</span></code> is another functional concept: building a new list with only <em>some</em> of the elements – “filtering” out the ones you don’t want.</p>
+<p><code class="docutils literal notranslate"><span class="pre">filter()</span></code> is another functional concept: building a new list with only <em>some</em> of the elements – “filtering” out the ones you don’t want.</p>
 <p>This is to support the common case of when you have a conditional in the loop:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">something_is_true</span><span class="p">:</span>
         <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can do the same thing by adding a conditional to the comprehension:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">expr</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">a_list</span> <span class="k">if</span> <span class="n">something_is_true</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">expr</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">a_list</span> <span class="k">if</span> <span class="n">something_is_true</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>This is expressing the “filter” pattern. (and map at the same time – one reason I like comprehensions more)</p>
 <p><strong>Examples:</strong></p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [341]: </span><span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [341]: </span><span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
 <span class="gh">Out[341]: </span><span class="go">[0, 1, 4]</span>
 
 <span class="gp">In [342]: </span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="n">y</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">)]</span>
@@ -266,7 +267,7 @@
 </pre></div>
 </div>
 <p>Get creative….</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">__builtin__</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;Error&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">__builtin__</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;Error&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
 <span class="p">[</span><span class="s1">&#39;ArithmeticError&#39;</span><span class="p">,</span>
  <span class="s1">&#39;AssertionError&#39;</span><span class="p">,</span>
  <span class="s1">&#39;AttributeError&#39;</span><span class="p">,</span>
@@ -279,17 +280,17 @@
 <div class="section" id="set-comprehensions">
 <h2>Set Comprehensions<a class="headerlink" href="#set-comprehensions" title="Permalink to this headline">¶</a></h2>
 <p>You can do a similar thing with sets, too:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_set</span> <span class="o">=</span> <span class="p">{</span> <span class="n">value</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_sequence</span> <span class="p">}</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_set</span> <span class="o">=</span> <span class="p">{</span> <span class="n">value</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_sequence</span> <span class="p">}</span>
 </pre></div>
 </div>
 <p>same as for loop:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
     <span class="n">new_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Example:</strong> Finding all the vowels in a string…</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;a not very long string&quot;</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;a not very long string&quot;</span>
 
 <span class="gp">In [20]: </span><span class="n">vowels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s1">&#39;aeiou&#39;</span><span class="p">)</span>
 
@@ -297,37 +298,37 @@
 <span class="gh">Out[21]: </span><span class="go">{&#39;a&#39;, &#39;e&#39;, &#39;i&#39;, &#39;o&#39;}</span>
 </pre></div>
 </div>
-<p>Side note: why did I do <code class="docutils literal"><span class="pre">set('aeiou')</span></code> rather than just <cite>aeiou</cite> ?</p>
+<p>Side note: why did I do <code class="docutils literal notranslate"><span class="pre">set('aeiou')</span></code> rather than just <cite>aeiou</cite> ?</p>
 </div>
 <div class="section" id="dict-comprehensions">
 <h2>Dict Comprehensions<a class="headerlink" href="#dict-comprehensions" title="Permalink to this headline">¶</a></h2>
 <p>Also with dictionaries</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_dict</span> <span class="o">=</span> <span class="p">{</span> <span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">}</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_dict</span> <span class="o">=</span> <span class="p">{</span> <span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Same as this for loop:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">new_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_dict</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
     <span class="n">new_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
 </pre></div>
 </div>
 <p><strong>Example:</strong></p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [22]: </span><span class="p">{</span> <span class="n">i</span><span class="p">:</span> <span class="s2">&quot;this_</span><span class="si">%i</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">i</span> for i in range(5) }
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [22]: </span><span class="p">{</span> <span class="n">i</span><span class="p">:</span> <span class="s2">&quot;this_</span><span class="si">%i</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">i</span> for i in range(5) }
 <span class="gh">Out[22]: </span><span class="go">{0: &#39;this_0&#39;, 1: &#39;this_1&#39;, 2: &#39;this_2&#39;,</span>
 <span class="go">          3: &#39;this_3&#39;, 4: &#39;this_4&#39;}</span>
 </pre></div>
 </div>
-<p>This is not as useful as it used to be, now that we have the <code class="docutils literal"><span class="pre">dict()</span></code>  constructor…</p>
+<p>This is not as useful as it used to be, now that we have the <code class="docutils literal notranslate"><span class="pre">dict()</span></code>  constructor…</p>
 </div>
 <div class="section" id="a-bit-of-history">
 <h2>A bit of history:<a class="headerlink" href="#a-bit-of-history" title="Permalink to this headline">¶</a></h2>
 <p>In the early days of Python the only way to create a dict was with a literal:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a_dict</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># an empty dict</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a_dict</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># an empty dict</span>
 </pre></div>
 </div>
 <p>or a dict that was already populated with a bunch of data.</p>
 <p>If you had a bunch of data in some other form, like a couple lists, you’d need to write a loop to fill it in:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;fred&quot;</span><span class="p">,</span> <span class="s2">&quot;john&quot;</span><span class="p">,</span> <span class="s2">&quot;mary&quot;</span><span class="p">]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;fred&quot;</span><span class="p">,</span> <span class="s2">&quot;john&quot;</span><span class="p">,</span> <span class="s2">&quot;mary&quot;</span><span class="p">]</span>
 
 <span class="gp">In [2]: </span><span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 
@@ -342,14 +343,14 @@
 </pre></div>
 </div>
 <p>now, with dict comps, you can do:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="nb">id</span><span class="p">:</span> <span class="n">name</span> <span class="k">for</span> <span class="nb">id</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">names</span><span class="p">)}</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [9]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="nb">id</span><span class="p">:</span> <span class="n">name</span> <span class="k">for</span> <span class="nb">id</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">names</span><span class="p">)}</span>
 
 <span class="gp">In [10]: </span><span class="n">d</span>
 <span class="gh">Out[10]: </span><span class="go">{1: &#39;fred&#39;, 2: &#39;john&#39;, 3: &#39;mary&#39;}</span>
 </pre></div>
 </div>
-<p>But there is also now a <code class="docutils literal"><span class="pre">dict()</span></code> constructor (actually the type object for dict):</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span>dict<span class="o">?</span>
+<p>But there is also now a <code class="docutils literal notranslate"><span class="pre">dict()</span></code> constructor (actually the type object for dict):</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span>dict<span class="o">?</span>
 <span class="go">Init signature: dict(self, /, *args, **kwargs)</span>
 <span class="go">Docstring:</span>
 <span class="go">dict() -&gt; new empty dictionary</span>
@@ -366,9 +367,9 @@
 </div>
 <p>So the first one is an empty dict – simple enough</p>
 <p>The second makes a dict from the contents of another dict (or similar object)</p>
-<p>The third one is of interest here – it makes a dict from an iterable of key, value pairs – exactly what <code class="docutils literal"><span class="pre">zip()</span></code> gives you.</p>
+<p>The third one is of interest here – it makes a dict from an iterable of key, value pairs – exactly what <code class="docutils literal notranslate"><span class="pre">zip()</span></code> gives you.</p>
 <p>So we can create a dict from data like so:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">names</span><span class="p">))</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">names</span><span class="p">))</span>
 
 <span class="gp">In [15]: </span><span class="n">d</span>
 <span class="gh">Out[15]: </span><span class="go">{1: &#39;fred&#39;, 2: &#39;john&#39;, 3: &#39;mary&#39;}</span>
@@ -376,7 +377,7 @@
 </div>
 <p>Which is more compact, and arguably more clear than the dict comprehension.</p>
 <p>dict comps are still nice if you need to filter the results, though:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="nb">id</span><span class="p">:</span> <span class="n">name</span> <span class="k">for</span> <span class="nb">id</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span> <span class="k">if</span> <span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;mary&#39;</span><span class="p">}</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="nb">id</span><span class="p">:</span> <span class="n">name</span> <span class="k">for</span> <span class="nb">id</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span> <span class="k">if</span> <span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;mary&#39;</span><span class="p">}</span>
 
 <span class="gp">In [17]: </span><span class="n">d</span>
 <span class="gh">Out[17]: </span><span class="go">{1: &#39;fred&#39;, 2: &#39;john&#39;}</span>
@@ -407,7 +408,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
@@ -429,7 +430,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

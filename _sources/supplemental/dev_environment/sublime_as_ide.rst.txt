@@ -93,11 +93,16 @@ Extending the Editor
 
 Most of the requirements above go beyond basic editor functionality. So we'll use Plugins.
 
-Sublime Text comes with a great system for `Package Control <https://sublime.wbond.net>`_. It handles installing and uninstalling plugins, and even updates installed plugins for you. You can also manually install plugins that haven't made it to the big-time yet, including `ones you write yourself <http://docs.sublimetext.info/en/latest/extensibility/plugins.html>`_. Happily, the plugin system is based on
-Python!
+Sublime Text comes with a great system for `Package Control <https://sublime.wbond.net>`_.
+It handles installing and uninstalling plugins, and even updates installed plugins for you.
+You can also manually install plugins that haven't made it to the big-time yet, including `ones you write yourself <http://docs.sublimetext.info/en/latest/extensibility/plugins.html>`_.
+Happily, the plugin system is based on Python!
 
 
-To install a plugin using Package Control, open the ``command palette`` with ``shift-super-P`` (``ctrl-shift-P`` on Windows/Linux). The ``super`` key is ``command`` or ``⌘`` on OS X. When the palette opens, typing ``install`` will bring up the ``Package Control: Install Package`` command. Hit ``enter`` to select it.
+To install a plugin using Package Control, open the ``command palette`` with ``shift-super-P`` (``ctrl-shift-P`` on Windows/Linux).
+The ``super`` key is ``command`` or ``⌘`` on OS X.
+When the palette opens, typing ``install`` will bring up the ``Package Control: Install Package`` command.
+Hit ``enter`` to select it.
 
 .. image:: /_static/pc_menu.png
     :width: 600px
