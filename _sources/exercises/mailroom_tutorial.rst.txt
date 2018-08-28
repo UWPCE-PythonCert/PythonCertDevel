@@ -1,8 +1,8 @@
 .. _exercise_mailroom_part1_tutorial:
 
 
-Mailroom Part 1 Tutorial
-========================
+Mailroom Tutorial
+=================
 
 Controlling Main Program Flow
 -----------------------------
