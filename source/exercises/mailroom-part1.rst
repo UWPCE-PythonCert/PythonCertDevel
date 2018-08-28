@@ -6,6 +6,8 @@ Mailroom Part 1
 
 **Using Python's basic data types and logic for a full program**
 
+.. This needs some updating now that we've broken it out into multiple files
+
 **Assignment Structure:**
 
 This assignment is designed in three parts that will make use of your skills as you develop them during this course.
