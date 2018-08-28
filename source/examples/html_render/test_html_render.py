@@ -79,8 +79,8 @@ def test_render_element():
     assert file_contents.startswith("<html>")
     assert file_contents.endswith("</html>")
 
-# Uncomment this one after you get the one above to pass
-# Does it pass right away?
+# # Uncomment this one after you get the one above to pass
+# # Does it pass right away?
 # def test_render_element2():
 #     """
 #     Tests whether the Element can render two pieces of text
@@ -108,10 +108,9 @@ def test_render_element():
 
 
 
-# ########
-# # Step 2
-# ########
-
+# # ########
+# # # Step 2
+# # ########
 
 # # tests for the new tags
 # def test_html():
@@ -174,6 +173,14 @@ def test_render_element():
 #     assert "<p>" in file_contents
 #     assert "</p>" in file_contents
 
+
+
+
+########
+# Step 3
+########
+
+# Add your tests here!
 
 # #####################
 # # indentation testing
@@ -253,10 +260,3 @@ def test_render_element():
 #     assert lines[1].startswith(Element.indent + "thi")
 #     assert lines[2] == "</html>"
 #     assert file_contents.endswith("</html>")
-
-
-########
-# Step 3
-########
-
-# Add your tests here!
