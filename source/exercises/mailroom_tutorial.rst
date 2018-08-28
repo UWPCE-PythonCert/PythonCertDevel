@@ -1,10 +1,11 @@
 .. _exercise_mailroom_part1_tutorial:
 
-Mailroom Part 1 Tutorial
--------------------------
+
+Mailroom Tutorial
+=================
 
 Controlling Main Program Flow
-..............................
+-----------------------------
 
 One of the key components of the mailroom program is managing program flow and interacting with the user. Ideally main flow code should be cleanly separate from your feature code.
 
@@ -12,6 +13,8 @@ The best way to manage the program flow is to use a ``while True`` loop, which m
 
 There are several ways to write your main program flow. Let's consider these two options:
 
+
+Option 1:
 
 .. code-block:: python
 
@@ -24,8 +27,7 @@ There are several ways to write your main program flow. Let's consider these two
 
     main()
 
-
-
+Option 2:
 
 .. code-block:: python
 
@@ -108,7 +110,7 @@ Let's look at a simple program to utilize the ``while True`` loop and how we can
 
 
 Choosing A Data Structure
-.........................
+-------------------------
 
 
 So far in this course, we have learned about strings, tuples, and lists. We will apply these data structures to hold our mailroom donor information.
@@ -142,16 +144,17 @@ Why choose tuples for the inner donor record? Well, another part of using the ri
 
 
 Sorting
-...........
+-------
 
-Python makes sorting fairly easy and has utilities for sorting simple lists as well as more complex structures like list of tuples as above.
+Python makes sorting fairly easy and has utilities for sorting simple lists as well as more complex structures like lists of tuples as above.
 
 Let's start with a structure that represents student records: student name and age.
 
+::
 
     >>> students = [('Bob', 39), ('Joe', 26), ('Jimmy', 40)]
 
-We will use ``sorted`` function to do the sorting and either sort by name or age. There are actually several ways to accomplish that, we will look at some of them.
+We will use the ``sorted`` function to do the sorting and either sort by name or age. There are actually several ways to accomplish that, we will look at some of them.
 
 The first option is to use optional ``key`` param, which accepts a function object - it can be any custom function we define as long as input and output are correctly implemented.
 
@@ -183,8 +186,9 @@ Then the custom function becomes really handy to sort on the last name:
     [('Joe Acer', 26), ('Jimmy Lenovo', 40), ('Bob Mac', 39)]
 
 
-Note: you might see a lot of examples online using ``lambda`` statement, it is valid and can be used but isn't preferred because the syntax isn't elegant or very readable:
+Note: you might see a lot of examples online using the ``lambda`` statement, it is valid and can be used but isn't preferred because the syntax isn't elegant or very readable:
 
 .. code-block:: python
 
     sorted(students, key=lambda x: x[0].split(" ")[1], reverse=True)
+

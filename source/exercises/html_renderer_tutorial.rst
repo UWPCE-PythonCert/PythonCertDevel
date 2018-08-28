@@ -1,7 +1,7 @@
 .. _html_renderer_tutorial:
 
 #######################################
-Tutorial for the html render assignment
+Tutorial for the Html Render Assignment
 #######################################
 
 If you are finding that you don't really know where to start with the html render assignemnt, this tutorial will walk you through the process.
@@ -328,7 +328,7 @@ And let's run it::
 
 It failed on the assert False -- good sign, it didn't fail before that.  We can now look at the results we printed, and whoops! we actually got *two* html elements, rather than one with two pieces of content. Why is that? Before you look at the code again, let's make sure the test catches that and fails. How about this?
 
-.. code-block::
+.. code-block:: python
 
     assert file_contents.count("<html>") == 1
     assert file_contents.count("</html>") == 1
