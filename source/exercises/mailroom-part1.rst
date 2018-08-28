@@ -102,11 +102,3 @@ about so far in Lessons 1-3. There is no need to go any farther than that for th
 
 If you're having a hard time getting started, or need some pointers, you should read the tutorial here: :ref:`exercise_mailroom_part1_tutorial`
 
-Submission
-----------
-
-As always, put the new file in your student directory in a ``session03``
-directory, and add it to your clone early. Make frequent commits with
-good, clear messages about what you are doing and why.
-
-When you are done, push your changes and make a pull request.
