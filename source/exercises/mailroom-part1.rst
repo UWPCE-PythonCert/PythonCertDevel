@@ -4,16 +4,16 @@
 Mailroom Part 1
 ================
 
-**Using Python's basic data types and logic for a full program**
+**Use Python's basic data types and logic for a full program**
 
 .. This needs some updating now that we've broken it out into multiple files
 
 **Assignment Structure:**
 
-This assignment is designed in three parts that will make use of your skills as you develop them during this course.
+This assignment is designed in four parts that will make use of your skills as you develop them during this course.
 You will complete and submit Part 1 for your homework in Lesson 3. You will continue to add functionality to your program in the following weeks,
 tackling and submitting Part 2 for Lesson 4,  Part 3 for Lesson 5, and Part 4 for Lesson 6.
-This progressive work will give you a strong foundation for success in the final projects, a Mailroom program using object-oriented programming in lesson 9.
+This progressive work will give you a strong foundation for success in the final project, a Mailroom program using object-oriented programming in lesson 9.
 
 
 Program Goal:
@@ -37,31 +37,32 @@ Write a small command-line script called ``mailroom.py``. This script should be 
 * The script should prompt the user (you) to choose from a menu of 3 actions:
   "Send a Thank You," "Create a Report," or "quit."
 
-Sending a Thank You
+Send a Thank You
 -------------------
+.. I changed heading to match title of function.
 
-* If the user (you) selects 'Send a Thank You', prompt for a Full Name.
+* If the user (you) selects 'Send a Thank You,' prompt for a Full Name.
 
-  * If the user types 'list', show them a list of the donor names and re-prompt.
+  * If the user types 'list,' show them a list of the donor names and re-prompt.
   * If the user types a name not in the list, add that name to the data structure and use it.
   * If the user types a name in the list, use it.
-  * Once a name has been selected, prompt for a donation amount.
-  * Turn the amount into a number; it is OK at this point for the program to crash if someone types a bogus amount.
-  * Once an amount has been given, add that amount to the donation history of
+* Once a name has been selected, prompt for a donation amount.
+
+  * Input the amount as a number; it is OK at this point for the program to crash if someone types a bogus amount.
+  * Once an amount has been inputted, add that amount to the donation history of
     the selected user.
-  * Finally, use string formatting to compose an email thanking the donor for
-    their generous donation. Print the email to the terminal and return to the
-    original prompt.
+ 
+* Finally, use string formatting to compose an email thanking the donor for their generous donation. Print the email to the terminal and return to the original prompt.
 
 It is fine (for now) for the program not to store the names of the new donors that had been added, in other words, to forget new donors once the script quits running.
 
-Creating a Report
+Create a Report
 -----------------
 
 * If the user (you) selected "Create a Report," print a list of your donors,
   sorted by total historical donation amount.
 
-  - Include Donor Name, total donated, number of donations, and average donation amount as values in each row. You do not need to print out all their donations, just the summary info.
+  - Include Donor Name, total donated, number of donations, and average donation amount as values in each row. You do not need to print out all of each donor's donations, just the summary info.
   - Using string formatting, format the output rows as nicely as possible.  The end result should be tabular (values in each column should align with those above and below).
   - After printing this report, return to the original prompt.
 
@@ -88,7 +89,7 @@ tasks can be accomplished by a series of steps.  Write discreet functions
 that accomplish individual steps and call them.
 
 Second, use loops to control the logical flow of your program. Interactive
-programs are a classic use-case for the ``while`` loop.
+programs are a classic use case for the ``while`` loop.
 
 Of course, ``input()`` will be useful here.
 
