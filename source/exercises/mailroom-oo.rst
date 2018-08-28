@@ -119,10 +119,10 @@ What should go into this module?
 
 Why is this separation of data and method so important?
 
-The idea here is that we should be able to fairly easy replace this CLI program with a different type of interface, such as a GUI (Graphical User Interface), without having to make any changes to our data classes.
-The only thing that would need to change with a potential GUI feature is implementing actual GUI elements to use those same classes.
+The idea here is that we should be able to fairly easy replace this CLI program with a different type of interface,
+such as a GUI (Graphical User Interface), without having to make any changes to our data classes.
+If that was the case, then you would implement the GUI elements and use your data classes the same way as they are used in CLI.
 
-.. Something is missing in the last sentence. Do you mean that if you keep data and printing interface separate than "The only thing that would need to change...."?
 
 Test-Driven Development
 -----------------------
