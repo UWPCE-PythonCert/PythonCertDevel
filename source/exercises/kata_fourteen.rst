@@ -1,8 +1,10 @@
 .. _exercise_trigrams:
 
-========================================
-Kata Fourteen: Tom Swift Under Milk Wood
-========================================
+====================================
+Trigrams -- Simple Text Manipulation
+====================================
+
+.. rubric:: Kata Fourteen: Tom Swift Under Milk Wood
 
 Adapted from Dave Thomas's work:
 
@@ -12,8 +14,6 @@ http://codekata.com/kata/kata14-tom-swift-under-the-milkwood/
 Trigrams
 =========
 
-.. It would be good to define the term "kata" somewhere early in this assignment. Also, I'd suggest revising the title. The "Fourteen" makes sense in the context of Dave Thomas's site, but doesn't seem to within the context of this course.
-
 Trigrams can be used to mutate text into new, surreal, forms. But what
 heuristics do we apply to get a reasonable result?
 
@@ -21,7 +21,7 @@ The Problem
 ------------
 
 As a boy, one of my treats was go to the shops on a Saturday and spend part
-of my allowance on books; for a nine-year old, I had quite a collection of books from the 
+of my allowance on books; for a nine-year old, I had quite a collection of books from the
 Tom Swift and Hardy Boys series. Wouldn’t it be great to be able to create
 more and more of these classic books, to be able to generate a new Tom
 Swift adventure on demand?
@@ -48,8 +48,6 @@ came up with:
 
 Stylistically, it’s Victor Appleton (pseudonymous author of the Tom Swift series) meets Dylan Thomas (Welsh poet). Technically,
 it’s all done with trigrams.
-
-.. Perhaps a quick definition of trigrams?
 
 Trigram analysis is very simple. Look at each set of three adjacent words
 in a document. Use the first two words of the set as a key, and remember
@@ -106,12 +104,10 @@ Given a short input text, the algorithm isn’t too interesting. Feed
 it a book, however, and you give it more options, so the resulting output
 can be surprising.
 
-For this kata, try implementing a trigram algorithm that generates a couple
+For this exercise, try implementing a trigram algorithm that generates a couple
 of hundred words of text using a book-sized file as input.
 `Project Gutenberg <http://www.gutenberg.org/>`_ is a good source of online
 books (*Tom Swift and His Airship* is `here <http://sailor.gutenberg.org/etext02/03tom10.txt>`_.)
-
-.. Above paragraph is the first place in the text that the term kata is mentioned.
 
 Be warned that these files have DOS line endings (carriage return followed by
 newline).
@@ -122,8 +118,6 @@ Here is a copy of short-story collection *The Adventures of Sherlock Holmes*:
 :download:`sherlock.txt  <./sherlock.txt>`.
 
 And a shorter copy for testing (a paragraph from one of the stories, "A Scandal in Bohemia"):
-
-.. My apologies for the addendums, if deemed unnecessary. I just had to know which stories these were.
 
 :download:`sherlock_small.txt  <./sherlock_small.txt>`.
 
@@ -298,9 +292,7 @@ Try it out on a longer bit of text (your choice) before you go any further.
 Using the Trigrams dict
 .......................
 
-This is the fun part. Once you have a mapping of word pairs to following words, you can build up some new "fake" text. Re-read the above again to remind yourself of the procedure. Here are a couple of additional hints and questions to consider:
-
-.. What do you mean when you say "above"?
+This is the fun part. Once you have a mapping of word pairs to following words, you can build up some new "fake" text. Re-read the previous sections again to remind yourself of the procedure. Here are a couple of additional hints and questions to consider:
 
 - The ```random`` module <https://docs.python.org/3/library/random.html#module-random>`_ is your friend here:
 
@@ -316,8 +308,7 @@ This is the fun part. Once you have a mapping of word pairs to following words, 
 
 - You need to start with the first word pair; picking a random key from a dict is actually a bit tricky. Start with this known pair, and once you have the code working, you can figure out a better way to pick a pair to start with.
 
-- As you build up your text, you probably want to build it up in a list, appending one word at a time.  You can join it together at the end.
-.. Do you mean you can join the text "together at the end"?
+- As you build up your text, you probably want to build it up in a list, appending one word at a time.  You can join it together at the end with ``" ".join(the_list_of_words)``
 
 - Remember that after adding a word to a pair to make a three-word text, the next pair is the last two words in that three-word text.
 
@@ -341,14 +332,12 @@ Hint: in a Project Gutenberg e-book, there is a line of text that starts with::
 
 In the loop, you can process a single line of text to break it into words:
 
- - calling ``.split()`` 
+ - calling ``.split()``
 
 Optional steps to cleaning up the text:
 
  - Strip out punctuation?
-   - If you do this, what about contractions, i.e., can't (vs. a single quotation mark)
-   
-   .. not sure what you mean by "vs. a single quotation mark." Are you making a distinction between apostrophes found within a word, usually one letter from the end, vs. single quotes found at the end of a word?
+   - If you do this, what about contractions, i.e. the appostrophe in "can't" vs. a single quotation mark -- which are the same character.
 
  - Remove capitalization?
    - If you do this, what about "I"? And proper nouns?
