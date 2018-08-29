@@ -146,7 +146,7 @@ So we need to add a tiny bit of code:
         def __init__(self, content=None):
             pass
 
-That's not much -- will the test pass now? Probably not, we aren't doing anything with the tag. But you can run it to see if you like. It's always good to run tests frequently to make sure you haven't inadvertently broken anything.
+That's not much -- will the test pass now? Probably not, we aren't doing anything with the tag. But you can run it to see if you'd like. It's always good to run tests frequently to make sure you haven't inadvertently broken anything.
 
 Back to the task at hand:
 
@@ -156,7 +156,7 @@ Back to the task at hand:
 
   So your class will need a way to store the content in a way that you can keep adding more to it.
 
-OK, so we need a way to store the content -- both what gets passed in to the ``__init__`` and what gets added with the ``append method``.  We need a data structure that can hold an ordered list of things, and can be added to in the future -- sounds like a list to me. So let's create a list in __init__ and store it in ``self`` for use by the other methods:
+OK, so we need a way to store the content -- both what gets passed in to the ``__init__`` and what gets added with the ``append`` method.  We need a data structure that can hold an ordered list of things, and can be added to in the future -- sounds like a list to me. So let's create a list in __init__ and store it in ``self`` for use by the other methods:
 
 .. code-block:: python
 
@@ -342,7 +342,7 @@ And it does indeed fail on this line::
 
     test_html_render.py:83: AssertionError
 
-Now that we know we can test for the issue -- we can try ot fix it, and we'll know it's fixed when the tests pass.
+Now that we know we can test for the issue -- we can try to fix it, and we'll know it's fixed when the tests pass.
 
 So looking at the code -- why did I get two ``<html>`` tags?
 
@@ -1447,7 +1447,7 @@ Hmm -- a TypeError in the ``__init__``, well that makes sense, we need to be abl
         def __init__(self, link, content=None, **kwargs):
             super().__init__(content, **kwargs)
 
-Notice that I added the "link" parameter at the beginning, and the the rest of the parameters are the same as for the base ``Element`` class. This is good approach. If you need to add an extra parameter when subclassing, put it at the front of the parameter list. We then call ``super().__init__`` with the content and any other keyword arguments. We haven't actually done anything with the link, but when I run the tests, it gets further, failing on the rendering.
+Notice that I added the "link" parameter at the beginning, and the rest of the parameters are the same as for the base ``Element`` class. This is good approach. If you need to add an extra parameter when subclassing, put it at the front of the parameter list. We then call ``super().__init__`` with the content and any other keyword arguments. We haven't actually done anything with the link, but when I run the tests, it gets further, failing on the rendering.
 
 So we need to do something with the link. But what? Do we need a new render method? Maybe not. After all, the link is really just the value of the "href" attribute. So we can simply create an href attribute, and the existing rendering code should work.
 
