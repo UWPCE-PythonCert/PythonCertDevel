@@ -35,7 +35,6 @@ Write a small command-line script called ``mailroom.py``. This script should be 
 
 Send a Thank You
 -------------------
-.. I changed heading to match title of function.
 
 * If the user (you) selects 'Send a Thank You,' prompt for a Full Name.
 
