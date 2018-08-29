@@ -1181,7 +1181,367 @@ Fortunately, pytest has a utility to do just that. make sure there is an <code c
     <span class="o">...</span>
 </pre></div>
 </div>
-<p>OK – tests still passing for me.</p>
+<p>OK – the rest of the tests are still passing for me – I haven’t broken anything else. Now to add code to render the attributes. You’ll need to write some sort of loop to loop through each attribute – probably looping through the keys and the values:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">python</span>
+</pre></div>
+</div>
+<blockquote>
+<div>for key, value in self.attributes:</div></blockquote>
+<p>then you can render them in html form inside that loop.</p>
+<p>Once you’ve done that, run the tests again. When I do that, mine passes the asserts checking the attributes, but fails on the <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">False</span></code>, so I can see how it’s rendering:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span>       <span class="k">assert</span> <span class="kc">False</span>
+<span class="n">E</span>       <span class="k">assert</span> <span class="kc">False</span>
+
+<span class="n">test_html_render</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">247</span><span class="p">:</span> <span class="ne">AssertionError</span>
+<span class="o">-----------------------------</span> <span class="n">Captured</span> <span class="n">stdout</span> <span class="n">call</span> <span class="o">-----------------------------</span>
+<span class="o">&lt;</span><span class="n">pid</span><span class="o">=</span><span class="s2">&quot;intro&quot;</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;text-align: center&quot;</span><span class="o">&gt;</span>
+<span class="n">A</span> <span class="n">paragraph</span> <span class="n">of</span> <span class="n">text</span>
+<span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+<span class="o">=====================</span> <span class="mi">1</span> <span class="n">failed</span><span class="p">,</span> <span class="mi">11</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.11</span> <span class="n">seconds</span> <span class="o">======================</span>
+</pre></div>
+</div>
+<p>Hmmm – the attributes are rendered correctly, but there is no space between the “p” (that tag name) and the first attribute. So let’s update our tests to make sure that we check for that:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">file_contents</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;&lt;p &quot;</span><span class="p">)</span> <span class="c1"># make sure there&#39;s space after the p</span>
+</pre></div>
+</div>
+<p>note that I added a space after the “p” in the test. Now my test is failing on that line, so I need to fix it – I’ve added an extra space in there, and now my test passes, and I like how it’s rendered:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">p</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;text-align: center&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;intro&quot;</span><span class="o">&gt;</span>
+<span class="n">A</span> <span class="n">paragraph</span> <span class="n">of</span> <span class="n">text</span>
+<span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>However, my code for rendering the opening tag is a bit klunky – how about yours? Perhaps you’d like to refactor it? Before you do that, you might want to make your tests a bit more robust. This is really tricky, it’s very hard to test for everytihng that might go wrong, without nailing down the expected results to much. For example, in this case, we haven’t tested that there is a space between the two attributes. IN fact, this would pass our test:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">p</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;text-align: center&quot;</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;intro&quot;</span><span class="o">&gt;</span>
+<span class="n">A</span> <span class="n">paragraph</span> <span class="n">of</span> <span class="n">text</span>
+<span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>See how there is no space before “id”? But the order of the attributes is arbitrary, so we don’t want to assume that the style will come before id. You could get really fnacy with parsing the results, but I think we could get away with assuring there are the right number of spaces in there in the opening tag.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">file_contents</span><span class="p">[:</span><span class="n">file_contents</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="p">)]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>This now fails with my broken code, but passes when I fix it with that space between the attributes. What else might you want to check to make sure it’s all good?</p>
+<p>Here’s my final test for attribute rendering:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_attributes</span><span class="p">():</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">P</span><span class="p">(</span><span class="s2">&quot;A paragraph of text&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;text-align: center&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;intro&quot;</span><span class="p">)</span>
+
+    <span class="n">file_contents</span> <span class="o">=</span> <span class="n">render_result</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">file_contents</span><span class="p">)</span>  <span class="c1"># so we can see it if the test fails</span>
+
+    <span class="c1"># note: The previous tests should make sure that the tags are getting</span>
+    <span class="c1">#       properly rendered, so we don&#39;t need to test that here.</span>
+    <span class="c1">#       so using only a &quot;P&quot; tag is fine</span>
+    <span class="k">assert</span> <span class="s2">&quot;A paragraph of text&quot;</span> <span class="ow">in</span> <span class="n">file_contents</span>
+    <span class="c1"># but make sure the embedded element&#39;s tags get rendered!</span>
+    <span class="c1"># first test the end tag is there -- same as always:</span>
+    <span class="k">assert</span> <span class="n">file_contents</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;&lt;/p&gt;&quot;</span><span class="p">)</span>
+
+    <span class="c1"># but now the opening tag is far more complex</span>
+    <span class="c1"># but it starts the same:</span>
+    <span class="k">assert</span> <span class="n">file_contents</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;&lt;p &quot;</span><span class="p">)</span> <span class="c1"># make sure there&#39;s space after the p</span>
+
+    <span class="c1"># order of the tags is not important in html, so we need to</span>
+    <span class="c1"># make sure not to test for that</span>
+    <span class="c1"># but each attribute should be there:</span>
+    <span class="k">assert</span> <span class="s1">&#39;style=&quot;text-align: center&quot;&#39;</span> <span class="ow">in</span> <span class="n">file_contents</span>
+    <span class="k">assert</span> <span class="s1">&#39;id=&quot;intro&quot;&#39;</span> <span class="ow">in</span> <span class="n">file_contents</span>
+
+    <span class="c1"># # just to be sure -- there should be a closing bracket to the opening tag</span>
+    <span class="k">assert</span> <span class="n">file_contents</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">file_contents</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;id=&quot;intro&quot;&#39;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">file_contents</span><span class="p">[:</span><span class="n">file_contents</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="p">)]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>With this test in place, you can safely refactor your attribute rendering if you like. I know I did.</p>
+</div>
+<div class="section" id="step-5">
+<h2>Step 5:<a class="headerlink" href="#step-5" title="Permalink to this headline">¶</a></h2>
+<p>Create a <code class="docutils literal notranslate"><span class="pre">SelfClosingTag</span></code> subclass of Element, to render tags like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">hr</span> <span class="o">/&gt;</span> <span class="ow">and</span> <span class="o">&lt;</span><span class="n">br</span> <span class="o">/&gt;</span> <span class="p">(</span><span class="n">horizontal</span> <span class="n">rule</span> <span class="ow">and</span> <span class="n">line</span> <span class="k">break</span><span class="p">)</span><span class="o">.</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Including with attributes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">hr</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;400&quot;</span> <span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>So let’s start with two tests:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_hr</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;a simple horizontal rule with no attributes&quot;&quot;&quot;</span>
+    <span class="n">hr</span> <span class="o">=</span> <span class="n">Hr</span><span class="p">()</span>
+    <span class="n">file_contents</span> <span class="o">=</span> <span class="n">render_result</span><span class="p">(</span><span class="n">hr</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">file_contents</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">file_contents</span> <span class="o">==</span> <span class="s1">&#39;&lt;hr /&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">test_hr_attr</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;a horizontal rule with an attribute&quot;&quot;&quot;</span>
+    <span class="n">hr</span> <span class="o">=</span> <span class="n">Hr</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+    <span class="n">file_contents</span> <span class="o">=</span> <span class="n">render_result</span><span class="p">(</span><span class="n">hr</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">file_contents</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">file_contents</span> <span class="o">==</span> <span class="s1">&#39;&lt;hr width=&quot;400&quot; /&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<p>Which, of course, will fail initially.</p>
+<p>We’ll want multiple self closing tags – so we’ll start with a base class, and then derive the Hr tag from that:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SelfClosingTag</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">Hr</span><span class="p">(</span><span class="n">SelfClosingTag</span><span class="p">):</span>
+    <span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;hr&quot;</span>
+</pre></div>
+</div>
+<p>Test still fails – but gets further.
+You’ll need to override the <code class="docutils literal notranslate"><span class="pre">render()</span></code> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SelfClosingTag</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outfile</span><span class="p">):</span>
+        <span class="c1"># put rendering code here.</span>
+</pre></div>
+</div>
+<p>What needs to be there? Well, self closing tags can have attributes, same as other elements.
+So we need a lot of the same code here as with the other <code class="docutils literal notranslate"><span class="pre">render()</span></code> methods.  You could copy and paste the <code class="docutils literal notranslate"><span class="pre">Element.render()</span></code> method, and edit it a bit.  But that’s a “Bad Idea” – remember DRY? (Don’t Repeat Yourself).
+You really don’t want two copies of that attribute rendering code you worked so hard on.
+How do we avoid that? We take advantage of the power of subclassing. If you put the code to render the opening (and closing) tags in it’s own method, then we can call that method from multiple render methods, something like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_file</span><span class="p">):</span>
+    <span class="c1"># loop through the list of contents:</span>
+    <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_open_tag</span><span class="p">())</span>
+    <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">content</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">contents</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">content</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">out_file</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+            <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_close_tag</span><span class="p">())</span>
+    <span class="n">out_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>So instead of making the tag in the render method itself, we call the <code class="docutils literal notranslate"><span class="pre">_open_tag</span></code> and <code class="docutils literal notranslate"><span class="pre">_close_tag</span></code> methods. Note that I gave those names with a single underscore at the beginning. This is a Python convention for indicating a “private” method – one that is expected to be used internally, rather than by client code.</p>
+<p>Are all the existing tests still passing?</p>
+<p>Now that you’ve got the tag-building code in its own method, we can give the self closing tag a render method something like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outfile</span><span class="p">):</span>
+    <span class="n">tag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_tag</span><span class="p">()[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; /&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And do your tests pass? Once they do add a couple more for the “br” element:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_br</span><span class="p">():</span>
+    <span class="n">br</span> <span class="o">=</span> <span class="n">Br</span><span class="p">()</span>
+    <span class="n">file_contents</span> <span class="o">=</span> <span class="n">render_result</span><span class="p">(</span><span class="n">br</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">file_contents</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">file_contents</span> <span class="o">==</span> <span class="s2">&quot;&lt;br /&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">test_content_in_br</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
+        <span class="n">br</span> <span class="o">=</span> <span class="n">Br</span><span class="p">(</span><span class="s2">&quot;some content&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">test_append_content_in_br</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
+        <span class="n">br</span> <span class="o">=</span> <span class="n">Br</span><span class="p">()</span>
+        <span class="n">br</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;some content&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Getting that first test to pass should be straightforward – but what about the other two? Self closing tags are now supposed to contain any content. So you want your <code class="docutils literal notranslate"><span class="pre">SelfClosingTag</span></code> class to raise an exception if you try to create one with some content. But you also want it to raise an exception if you try to append content. So do we need to override both the <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> and <code class="docutils literal notranslate"><span class="pre">append()</span></code> methods? Maybe not.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">__init__</span></code> needs to do some other initializing, so not as easy to override as <code class="docutils literal notranslate"><span class="pre">append</span></code>.  Let’s start with the <code class="docutils literal notranslate"><span class="pre">append</span></code> method. We need it to do nothing other than raise a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;You can not add content to a SelfClosingTag&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And run your tests. I still get a single failure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>=================================== FAILURES ===================================
+______________________________ test_content_in_br ______________________________
+
+    def test_content_in_br():
+        with pytest.raises(TypeError):
+&gt;           br = Br(&quot;some content&quot;)
+E           Failed: DID NOT RAISE &lt;class &#39;TypeError&#39;&gt;
+
+test_html_render.py:297: Failed
+===================== 1 failed, 17 passed in 0.08 seconds ======================
+</pre></div>
+</div>
+<p>So <code class="docutils literal notranslate"><span class="pre">append</span></code> did the right thing. But we still have a failure when we try to initialize it with content. So we want to override the <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, check if there was any content passed in, and if there was, raise an error. Andn if not, then call the usual <code class="docutils literal notranslate"><span class="pre">__init__</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SelfClosingTag</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">content</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;SelfClosingTag can not contain any content&quot;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>What’s that <code class="docutils literal notranslate"><span class="pre">super()</span></code> call? That’s a way to call a method on the “super class’” – that is, the class that this class is derived from. In this case, that’s exactly the same as if we had written:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">content</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;SelfClosingTag can not contain any content&quot;</span><span class="p">)</span>
+    <span class="n">Element</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>But <code class="docutils literal notranslate"><span class="pre">super</span></code> provides some extra features if you are doing multiple inheritance. And it makes your intentions clear.</p>
+<p>I’ve now got 18 tests passing – how about you? And I can also uncomment step 5 in <code class="docutils literal notranslate"><span class="pre">run_html_render.py</span></code>, and get something reasonable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python run_html_render.py
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;PythonClass = Revision 1087:&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p style=&quot;text-align: center; font-style: oblique;&quot;&gt;
+Here is a paragraph of text -- there could be more of them, but this is enough  to show that we can do some text
+&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p>If you get anything very different than this – write some tests to catch the error, and then fix them :-)</p>
+</div>
+<div class="section" id="step-6">
+<h2>Step 6:<a class="headerlink" href="#step-6" title="Permalink to this headline">¶</a></h2>
+<p>Create an <code class="docutils literal notranslate"><span class="pre">A</span></code> class for an anchor (link) element. Its constructor should look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">link</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">link</span></code> is the link, and <code class="docutils literal notranslate"><span class="pre">content</span></code> is what you see. It can be called like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">(</span><span class="s2">&quot;http://google.com&quot;</span><span class="p">,</span> <span class="s2">&quot;link to google&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and it should render like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;http://google.com&quot;</span><span class="o">&gt;</span><span class="n">link</span> <span class="n">to</span> <span class="n">google</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Notice that while the a (“anchor”) tag is kind of special, the link is simply and “href” (hyperlink reference) attribute. So we should be able to use most of our existing code, but simply add the link as another attribute.</p>
+<p>You know that drill now – create a test first – one that makes the above call, and then checks that you get the results expected. Notice that this is a single line tag, so it should subclass from OneLineTag. If I start with that, I get:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">===================================</span> <span class="n">FAILURES</span> <span class="o">===================================</span>
+<span class="n">_________________________________</span> <span class="n">test_anchor</span> <span class="n">__________________________________</span>
+
+    <span class="k">def</span> <span class="nf">test_anchor</span><span class="p">():</span>
+<span class="o">&gt;</span>       <span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="s2">&quot;http://google.com&quot;</span><span class="p">,</span> <span class="s2">&quot;link to google&quot;</span><span class="p">)</span>
+<span class="n">E</span>       <span class="ne">TypeError</span><span class="p">:</span> <span class="fm">__init__</span><span class="p">()</span> <span class="n">takes</span> <span class="kn">from</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">2</span> <span class="n">positional</span> <span class="n">arguments</span> <span class="n">but</span> <span class="mi">3</span> <span class="n">were</span> <span class="n">given</span>
+
+<span class="n">test_html_render</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">307</span><span class="p">:</span> <span class="ne">TypeError</span>
+</pre></div>
+</div>
+<p>Hmm – a TypeError in the <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, well that makes sense, we need to be able to pass the link in to it. We will need to override it, of course:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="n">OneLineTag</span><span class="p">):</span>
+
+    <span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">link</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Notice that I added the “link” parameter at the beginning, and the the rest of the parameters are the same as for the base <code class="docutils literal notranslate"><span class="pre">Element</span></code> class. This is good approach. If you need to add an extra parameter when subclassing, put it at the front of the parameter list. We then call <code class="docutils literal notranslate"><span class="pre">super().__init__</span></code> with the content and any other keyword arguments. We haven’t actually done anything with the link, but when I run the tests, it gets further, failing on the rendering.</p>
+<p>So we need to do something with the link. But what? Do we need a new render method? Maybe not. After all, the link is really just the value of the “href” attribute. So we can simply create an href attribute, and the existing rendering code should work.</p>
+<p>How are the attributes passed in? They are passed in in the <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> dict. So we can simply add the link to the <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> dict before calling the superclass initializer:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">link</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;href&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">link</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And run the tests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">===================================</span> <span class="n">FAILURES</span> <span class="o">===================================</span>
+<span class="n">_________________________________</span> <span class="n">test_anchor</span> <span class="n">__________________________________</span>
+
+    <span class="k">def</span> <span class="nf">test_anchor</span><span class="p">():</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="s2">&quot;http://google.com&quot;</span><span class="p">,</span> <span class="s2">&quot;link to google&quot;</span><span class="p">)</span>
+        <span class="n">file_contents</span> <span class="o">=</span> <span class="n">render_result</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">file_contents</span><span class="p">)</span>
+<span class="o">&gt;</span>       <span class="k">assert</span> <span class="n">file_contents</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&lt;a &#39;</span><span class="p">)</span>
+<span class="n">E</span>       <span class="ne">AssertionError</span><span class="p">:</span> <span class="k">assert</span> <span class="kc">False</span>
+<span class="n">E</span>        <span class="o">+</span>  <span class="n">where</span> <span class="kc">False</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="n">method</span> <span class="n">startswith</span> <span class="n">of</span> <span class="nb">str</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x1105e28e8</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;&lt;a &#39;</span><span class="p">)</span>
+<span class="n">E</span>        <span class="o">+</span>    <span class="n">where</span> <span class="o">&lt;</span><span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="n">method</span> <span class="n">startswith</span> <span class="n">of</span> <span class="nb">str</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x1105e28e8</span><span class="o">&gt;</span> <span class="o">=</span> <span class="s1">&#39;&lt;a&gt;link to google&lt;/a&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">startswith</span>
+
+<span class="n">test_html_render</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">310</span><span class="p">:</span> <span class="ne">AssertionError</span>
+<span class="o">-----------------------------</span> <span class="n">Captured</span> <span class="n">stdout</span> <span class="n">call</span> <span class="o">-----------------------------</span>
+<span class="o">&lt;</span><span class="n">a</span><span class="o">&gt;</span><span class="n">link</span> <span class="n">to</span> <span class="n">google</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+
+<span class="o">=====================</span> <span class="mi">1</span> <span class="n">failed</span><span class="p">,</span> <span class="mi">18</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.07</span> <span class="n">seconds</span> <span class="o">=====================</span>
+</pre></div>
+</div>
+<p>Darn – not passing! (did yours pass?) Even though we added the <code class="docutils literal notranslate"><span class="pre">href</span></code> to the kwargs dict, it didn’t get put in the attributes of the tag.  Why not? Think carefully about the code. Where should the attributes be added? In the <code class="docutils literal notranslate"><span class="pre">render()</span></code> method.
+But <em>which</em> render method is being used here? Well, the <code class="docutils literal notranslate"><span class="pre">A</span></code> class is a subclass of <code class="docutils literal notranslate"><span class="pre">OneLineTag</span></code>, which has defined its own <code class="docutils literal notranslate"><span class="pre">render()</span></code> method.
+So take a look at the <code class="docutils literal notranslate"><span class="pre">OneLineTag</span></code> <code class="docutils literal notranslate"><span class="pre">render()</span></code> method. Oops, mine doesn’t have anything in to render attributes – I wrote that before we added that feature.
+So it’s now time to go in and edit that render method to use the <code class="docutils literal notranslate"><span class="pre">_open_tag</span></code> and <code class="docutils literal notranslate"><span class="pre">_close_tag</span></code> methods.</p>
+<p>The tests should all pass now – and you have a working anchor element.</p>
+</div>
+<div class="section" id="step-7">
+<h2>Step 7:<a class="headerlink" href="#step-7" title="Permalink to this headline">¶</a></h2>
+<p>Making the list elements is pretty straightforward – go ahead and do those – and write some tests for them!</p>
+<div class="section" id="header-elements">
+<h3>Header Elements<a class="headerlink" href="#header-elements" title="Permalink to this headline">¶</a></h3>
+<p>You should have the tools to do this. First, write a couple tests.</p>
+<p>Then decide what to subclass for the header elements? WHich of the base classes you’ve developed are most like a header?</p>
+<p>Then think about how you will update the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> of your header subclass. It will need to take an extra parameter – the level of the header:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>But what to do with the level parameter? In this case, each level will have a different tag: <code class="docutils literal notranslate"><span class="pre">h1</span></code>, <code class="docutils literal notranslate"><span class="pre">h2</span></code>, etc. So you need to set the tag in the <code class="docutils literal notranslate"><span class="pre">__init__</span></code>. So far, the tag has been a class attribute – all instances of the class have the same tag.
+In this case, each instance can have a different tag – determined at initialization time. But how to override a class attribute? Think about how you access that attribute in your render methods: <code class="docutils literal notranslate"><span class="pre">self.tag</span></code>.
+When you make a reference to <code class="docutils literal notranslate"><span class="pre">self.something</span></code>, Python first checks if “something” is an instance attribute. then, if not, it checks for a class attribute, and if not, then it looks in the superclasses.
+So in this case, of you set an instance attribute for teh tag – that is what will be found in the other methods. So in the <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, you can set <code class="docutils literal notranslate"><span class="pre">self.tag=the_new_tag_value</span></code>, which will be <code class="docutils literal notranslate"><span class="pre">h1</span></code>, or <code class="docutils literal notranslate"><span class="pre">h2</span></code>, or …</p>
+</div>
+</div>
+<div class="section" id="step-8">
+<h2>Step 8:<a class="headerlink" href="#step-8" title="Permalink to this headline">¶</a></h2>
+<p>You have all the tools now for making a proper html element – it should reender as so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot; /&gt;
+&lt;title&gt;Python Class Sample page&lt;/title&gt;
+&lt;/head&gt;
+...
+</pre></div>
+</div>
+<p>That is, put a doctype tag at the top, before the html opening tag.</p>
+<p>(note that that may break an earlier test – update that test!)</p>
+</div>
+<div class="section" id="step-9">
+<h2>Step 9:<a class="headerlink" href="#step-9" title="Permalink to this headline">¶</a></h2>
+<p><strong>Adding Indentation</strong></p>
+<p>Be sure to read the instructions for this carefully – this is a bit tricky. But it’s also fairly straightforward once you “get it”. The trick here is that a given element can be indented some arbitrary amount – and there is no way to know until render time how deep it is. But when a given element is rendering itself, it needs to know how deep it’s indented, and it knows that the sub-elements need to be indented one more level. So by passing a parameter to each <code class="docutils literal notranslate"><span class="pre">render()</span></code> method that tells that element how much to indent itself, we can build a flexible system.</p>
+<p>Begin by uncommenting the tests in the test file for indentation:</p>
+<p><code class="docutils literal notranslate"><span class="pre">test_indent</span></code>, <code class="docutils literal notranslate"><span class="pre">test_indent_contents</span></code>, <code class="docutils literal notranslate"><span class="pre">test_multiple_indent</span></code>, and <code class="docutils literal notranslate"><span class="pre">test_element_indent1</span></code>.</p>
+<p>These are probably not comprehensive, but they should get you started. If you see something odd in your results, make sure to add a test for that before you fix it.</p>
+<p>Running these new tests should result in 4 failures – many (all?) of them like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">AttributeError</span><span class="p">:</span> <span class="nb">type</span> <span class="nb">object</span> <span class="s1">&#39;Element&#39;</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s1">&#39;indent&#39;</span>
+</pre></div>
+</div>
+<p>So the first step is to give you Element base class a <code class="docutils literal notranslate"><span class="pre">indent</span></code> attribute. This is the amount that you want one level of indentation to be – maybe two or four spaces. You want everything the be indented the same amount, so it makes sense that you put it as a class attribute of the base class – then <em>all</em> elements will inherit the same value. And you can change it in that one place if you want.</p>
+<p>Once I add the <code class="docutils literal notranslate"><span class="pre">indent</span></code> parameter, I still get four failures – three of them are for the results being incorrect – which makes sense, we haven’t implemented that code yet. One of them is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="c1"># this so the tests will work before we tackle indentation</span>
+        <span class="k">if</span> <span class="n">ind</span><span class="p">:</span>
+<span class="o">&gt;</span>           <span class="n">element</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="n">ind</span><span class="p">)</span>
+<span class="n">E</span>           <span class="ne">TypeError</span><span class="p">:</span> <span class="n">render</span><span class="p">()</span> <span class="n">takes</span> <span class="mi">2</span> <span class="n">positional</span> <span class="n">arguments</span> <span class="n">but</span> <span class="mi">3</span> <span class="n">were</span> <span class="n">given</span>
+</pre></div>
+</div>
+<p>This is the next one to tackle – our <code class="docutils literal notranslate"><span class="pre">render</span></code> methods all need to take an additional optional parameter – the current level of indentation. Remember to add that to <em>all</em> of your render methods:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_file</span><span class="p">,</span> <span class="n">cur_ind</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>Once I do that, I still get four failures – but they are all about the rendered results being incorrect – they do not have the indentation levels right.</p>
+<p>Now it’s time to go in one by one and add indentation code to get those tests to pass.</p>
+<p>I got them all to pass. But when I rendered a full page (by running <code class="docutils literal notranslate"><span class="pre">run_html_render.py</span></code>), I found some issues. The elements that overrode the <code class="docutils literal notranslate"><span class="pre">render()</span></code> methods where not indented properly: <code class="docutils literal notranslate"><span class="pre">OneLineTag</span></code> and <code class="docutils literal notranslate"><span class="pre">SelfClosingTag</span></code>.</p>
+<p>Write at least one test for each of those, and then go fix those render method!</p>
+</div>
+<div class="section" id="what-have-you-done">
+<h2>What have you done?<a class="headerlink" href="#what-have-you-done" title="Permalink to this headline">¶</a></h2>
+<p><strong>Congrats!</strong></p>
+<p>You’ve gotten to the end of the project. By going through tis whole procedure, you’ve done a lot of test-driven development, and built up class system that takes advantage of the key features object oriented systems in Python. I hope this has given you a better understanding of:</p>
+<ul class="simple">
+<li>class attributes vs. instance attributes</li>
+<li>subclassing</li>
+<li>overriding:<ul>
+<li>class attributes</li>
+<li>class attributes with instance attributes</li>
+<li>methods</li>
+</ul>
+</li>
+<li>calling a superclass’ method from an overridden method.</li>
+<li>defining a “private” method to be used by sub-classes overridden methods to make DRY code.</li>
+<li>polymorphism – having multiple classes all be used in the same way (calling the <code class="docutils literal notranslate"><span class="pre">render</span></code> method in this case)</li>
+</ul>
 </div>
 </div>
 

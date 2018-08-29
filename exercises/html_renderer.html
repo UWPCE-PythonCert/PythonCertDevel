@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PythonCert 5.0 documentation" href="../index.html"/>
         <link rel="up" title="Exercises" href="index.html"/>
-        <link rel="next" title="Tutorial for the html render assignment" href="html_renderer_tutorial.html"/>
+        <link rel="next" title="Tutorial for the Html Render Assignment" href="html_renderer_tutorial.html"/>
         <link rel="prev" title="Mailroom Part 4" href="mailroom-part4.html"/> 
 
   
@@ -103,7 +103,7 @@
 <li class="toctree-l3"><a class="reference internal" href="index.html#lesson-6-unit-testing-and-advanced-argument-passing">Lesson 6: Unit Testing and Advanced Argument Passing</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html#lesson-7-intro-to-object-oriented-programing">Lesson 7: Intro to Object Oriented Programing</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">HTML Renderer Exercise</a></li>
-<li class="toctree-l4"><a class="reference internal" href="html_renderer_tutorial.html">Tutorial for the html render assignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="html_renderer_tutorial.html">Tutorial for the Html Render Assignment</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#lesson-8-properties-and-magic-methods">Lesson 8: Properties and Magic Methods</a></li>
@@ -241,7 +241,7 @@
 <p>But it is NOT comprehensive – you will need to add more tests at every step!</p>
 <p>You can run <code class="docutils literal notranslate"><span class="pre">pytest</span></code> on that test file first thing – it should pass two tests (that you can create an Element object – not that it works) and fail one – one that actually starts to test functionality.</p>
 <p><strong>NOTE</strong> if you are lost, take a look at the tutorial here:
-<a class="reference internal" href="html_renderer_tutorial.html#html-renderer-tutorial"><span class="std std-ref">Tutorial for the html render assignment</span></a>. But do try to do it yourself first.</p>
+<a class="reference internal" href="html_renderer_tutorial.html#html-renderer-tutorial"><span class="std std-ref">Tutorial for the Html Render Assignment</span></a>. But do try to do it yourself first.</p>
 </div>
 <div class="section" id="step-0">
 <h3>Step 0:<a class="headerlink" href="#step-0" title="Permalink to this headline">¶</a></h3>
@@ -421,6 +421,15 @@ So it can’t be used as a keyword argument.</p>
 <h3>Step 5:<a class="headerlink" href="#step-5" title="Permalink to this headline">¶</a></h3>
 <p>Create a <code class="docutils literal notranslate"><span class="pre">SelfClosingTag</span></code> subclass of Element, to render tags like:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">hr</span> <span class="o">/&gt;</span> <span class="ow">and</span> <span class="o">&lt;</span><span class="n">br</span> <span class="o">/&gt;</span> <span class="p">(</span><span class="n">horizontal</span> <span class="n">rule</span> <span class="ow">and</span> <span class="n">line</span> <span class="k">break</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>(See: <a class="reference external" href="https://www.w3schools.com/tags/tag_hr.asp">https://www.w3schools.com/tags/tag_hr.asp</a>)</p>
+<p>For example you should be able to use this code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hr</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To get this result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">hr</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;400&quot;</span> <span class="o">/&gt;</span>
 </pre></div>
 </div>
 <p>You will need to override the render method to render just the one tag and attributes, if any.</p>
@@ -733,7 +742,7 @@ the element, and the end of the element is indicated by the same tag with a slas
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="html_renderer_tutorial.html" class="btn btn-neutral float-right" title="Tutorial for the html render assignment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="html_renderer_tutorial.html" class="btn btn-neutral float-right" title="Tutorial for the Html Render Assignment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="mailroom-part4.html" class="btn btn-neutral" title="Mailroom Part 4" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
