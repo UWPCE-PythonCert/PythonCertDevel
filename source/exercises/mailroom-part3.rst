@@ -4,7 +4,7 @@
 Mailroom Part 3
 =================
 
-Improve your mailroom by adding exceptions and comprehensions
+**Improve your mailroom by adding exceptions and comprehensions**
 
 Exceptions
 ----------
