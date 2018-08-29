@@ -71,9 +71,9 @@ You want to avoid specifying a hardcoded file path when creating the files, for 
 Doing so will prevent other users from running the program as it will fail to find your path. Instead, you can create files in the current working directory or you can use a temporary directory.
 To identify a temporary directory you can use a handy function like `tempfile.gettempdir() <https://docs.python.org/3/library/tempfile.html#tempfile.gettempdir/>`_ which is also OS agnostic (meaning it can handle temp directory differences between different operating systems).
 
-After running the "send letters to everyone" option, you should see some new files in the directory -- there should be a file for each donor in the database, in this case 4.
+After running the "send letters to everyone" option, you should see some new files in the directory. There should be a file for each donor in the database, in this case 4.
 
-After choosing action (3) above, I get these files::
+After choosing action (3) above, using my example database, I get these files::
 
   Jeff_Bezos.txt
   Mark_Zuckerberg.txt
