@@ -1283,7 +1283,8 @@ We'll want multiple self closing tags -- so we'll start with a base class, and t
     class Hr(SelfClosingTag):
         tag = "hr"
 
-Test still fails -- but gets further. You'll need to override the ``render()`` method:
+Test still fails -- but gets further.
+You'll need to override the ``render()`` method:
 
 .. code-block:: python
 
@@ -1292,7 +1293,10 @@ Test still fails -- but gets further. You'll need to override the ``render()`` m
         def render(self, outfile):
             # put rendering code here.
 
-So what needs to be there? Well, self closing tags can have attributes, same as other elements. So we need a lot of the same code here as with the other ``render()`` methods.  So you could copy and paste the ``Element.render()`` method, and edit it a bit. But that is a "Bad Idea" -- remember DRY? (**D**on't **Repeat** **Y**ourself). you really don't want two copies of that attribute rendering code you worked so hard on.  So how do we avoid that? We take advantage of the power of subclassing. If you put the code to render the opening (and closing) tags in it's own method, then we can call that method from multiple render methods, something like::
+What needs to be there? Well, self closing tags can have attributes, same as other elements.
+So we need a lot of the same code here as with the other ``render()`` methods.  You could copy and paste the ``Element.render()`` method, and edit it a bit.  But that's a "Bad Idea" -- remember DRY? (Don't Repeat Yourself).
+You really don't want two copies of that attribute rendering code you worked so hard on.
+How do we avoid that? We take advantage of the power of subclassing. If you put the code to render the opening (and closing) tags in it's own method, then we can call that method from multiple render methods, something like:
 
 .. code-block:: python
 
@@ -1407,16 +1411,183 @@ If you get anything very different than this -- write some tests to catch the er
 Step 6:
 -------
 
+Create an ``A`` class for an anchor (link) element. Its constructor should look like::
+
+    A(self, link, content)
+
+where ``link`` is the link, and ``content`` is what you see. It can be called like so::
+
+    A("http://google.com", "link to google")
+
+and it should render like::
+
+    <a href="http://google.com">link to google</a>
+
+Notice that while the a ("anchor") tag is kind of special, the link is simply and "href" (hyperlink reference) attribute. So we should be able to use most of our existing code, but simply add the link as another attribute.
+
+You know that drill now -- create a test first -- one that makes the above call, and then checks that you get the results expected. Notice that this is a single line tag, so it should subclass from OneLineTag. If I start with that, I get::
+
+    =================================== FAILURES ===================================
+    _________________________________ test_anchor __________________________________
+
+        def test_anchor():
+    >       a = A("http://google.com", "link to google")
+    E       TypeError: __init__() takes from 1 to 2 positional arguments but 3 were given
+
+    test_html_render.py:307: TypeError
+
+Hmm -- a TypeError in the ``__init__``, well that makes sense, we need to be able to pass the link in to it. We will need to override it, of course:
+
+.. code-block:: python
+
+    class A(OneLineTag):
+
+        tag = 'a'
+
+        def __init__(self, link, content=None, **kwargs):
+            super().__init__(content, **kwargs)
+
+Notice that I added the "link" parameter at the beginning, and the the rest of the parameters are the same as for the base ``Element`` class. This is good approach. If you need to add an extra parameter when subclassing, put it at the front of the parameter list. We then call ``super().__init__`` with the content and any other keyword arguments. We haven't actually done anything with the link, but when I run the tests, it gets further, failing on the rendering.
+
+So we need to do something with the link. But what? Do we need a new render method? Maybe not. After all, the link is really just the value of the "href" attribute. So we can simply create an href attribute, and the existing rendering code should work.
+
+How are the attributes passed in? They are passed in in the ``kwargs`` dict. So we can simply add the link to the ``kwargs`` dict before calling the superclass initializer:
+
+.. code-block:: python
+
+    def __init__(self, link, content=None, **kwargs):
+        kwargs['href'] = link
+        super().__init__(content, **kwargs)
+
+And run the tests::
+
+    =================================== FAILURES ===================================
+    _________________________________ test_anchor __________________________________
+
+        def test_anchor():
+            a = A("http://google.com", "link to google")
+            file_contents = render_result(a)
+            print(file_contents)
+    >       assert file_contents.startswith('<a ')
+    E       AssertionError: assert False
+    E        +  where False = <built-in method startswith of str object at 0x1105e28e8>('<a ')
+    E        +    where <built-in method startswith of str object at 0x1105e28e8> = '<a>link to google</a>\n'.startswith
+
+    test_html_render.py:310: AssertionError
+    ----------------------------- Captured stdout call -----------------------------
+    <a>link to google</a>
+
+    ===================== 1 failed, 18 passed in 0.07 seconds =====================
+
+Darn -- not passing! (did yours pass?) Even though we added the ``href`` to the kwargs dict, it didn't get put in the attributes of the tag.  Why not? Think carefully about the code. Where should the attributes be added? In the ``render()`` method.
+But *which* render method is being used here? Well, the ``A`` class is a subclass of ``OneLineTag``, which has defined its own ``render()`` method.
+So take a look at the ``OneLineTag`` ``render()`` method. Oops, mine doesn't have anything in to render attributes -- I wrote that before we added that feature.
+So it's now time to go in and edit that render method to use the ``_open_tag`` and ``_close_tag`` methods.
+
+The tests should all pass now -- and you have a working anchor element.
+
+Step 7:
+-------
+
+Making the list elements is pretty straightforward -- go ahead and do those -- and write some tests for them!
+
+Header Elements
+...............
+
+You should have the tools to do this. First, write a couple tests.
+
+Then decide what to subclass for the header elements? WHich of the base classes you've developed are most like a header?
+
+Then think about how you will update the ``__init__`` of your header subclass. It will need to take an extra parameter -- the level of the header:
+
+.. code-block:: python
+
+    def __init__(self, level, content=None, **kwargs):
+
+But what to do with the level parameter? In this case, each level will have a different tag: ``h1``, ``h2``, etc. So you need to set the tag in the ``__init__``. So far, the tag has been a class attribute -- all instances of the class have the same tag.
+In this case, each instance can have a different tag -- determined at initialization time. But how to override a class attribute? Think about how you access that attribute in your render methods: ``self.tag``.
+When you make a reference to ``self.something``, Python first checks if "something" is an instance attribute. then, if not, it checks for a class attribute, and if not, then it looks in the superclasses.
+So in this case, of you set an instance attribute for teh tag -- that is what will be found in the other methods. So in the ``__init__``, you can set ``self.tag=the_new_tag_value``, which will be ``h1``, or ``h2``, or ...
+
+Step 8:
+-------
+
+You have all the tools now for making a proper html element -- it should reender as so::
+
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <meta charset="UTF-8" />
+  <title>Python Class Sample page</title>
+  </head>
+  ...
+
+That is, put a doctype tag at the top, before the html opening tag.
+
+(note that that may break an earlier test -- update that test!)
+
+Step 9:
+-------
+
+**Adding Indentation**
+
+Be sure to read the instructions for this carefully -- this is a bit tricky. But it's also fairly straightforward once you "get it". The trick here is that a given element can be indented some arbitrary amount -- and there is no way to know until render time how deep it is. But when a given element is rendering itself, it needs to know how deep it's indented, and it knows that the sub-elements need to be indented one more level. So by passing a parameter to each ``render()`` method that tells that element how much to indent itself, we can build a flexible system.
+
+Begin by uncommenting the tests in the test file for indentation:
+
+``test_indent``, ``test_indent_contents``, ``test_multiple_indent``, and ``test_element_indent1``.
 
 
+These are probably not comprehensive, but they should get you started. If you see something odd in your results, make sure to add a test for that before you fix it.
 
+Running these new tests should result in 4 failures -- many (all?) of them like this::
 
+  AttributeError: type object 'Element' has no attribute 'indent'
 
+So the first step is to give you Element base class a ``indent`` attribute. This is the amount that you want one level of indentation to be -- maybe two or four spaces. You want everything the be indented the same amount, so it makes sense that you put it as a class attribute of the base class -- then *all* elements will inherit the same value. And you can change it in that one place if you want.
 
+Once I add the ``indent`` parameter, I still get four failures -- three of them are for the results being incorrect -- which makes sense, we haven't implemented that code yet. One of them is::
 
+            # this so the tests will work before we tackle indentation
+            if ind:
+    >           element.render(outfile, ind)
+    E           TypeError: render() takes 2 positional arguments but 3 were given
 
+This is the next one to tackle -- our ``render`` methods all need to take an additional optional parameter -- the current level of indentation. Remember to add that to *all* of your render methods:
 
+.. code-block:: python
 
+    def render(self, out_file, cur_ind=""):
+
+Once I do that, I still get four failures -- but they are all about the rendered results being incorrect -- they do not have the indentation levels right.
+
+Now it's time to go in one by one and add indentation code to get those tests to pass.
+
+I got them all to pass. But when I rendered a full page (by running ``run_html_render.py``), I found some issues. The elements that overrode the ``render()`` methods where not indented properly: ``OneLineTag`` and ``SelfClosingTag``.
+
+Write at least one test for each of those, and then go fix those render method!
+
+What have you done?
+-------------------
+**Congrats!**
+
+You've gotten to the end of the project. By going through tis whole procedure, you've done a lot of test-driven development, and built up class system that takes advantage of the key features object oriented systems in Python. I hope this has given you a better understanding of:
+
+* class attributes vs. instance attributes
+
+* subclassing
+
+* overriding:
+
+  - class attributes
+  - class attributes with instance attributes
+  - methods
+
+* calling a superclass' method from an overridden method.
+
+* defining a "private" method to be used by sub-classes overridden methods to make DRY code.
+
+* polymorphism -- having multiple classes all be used in the same way (calling the ``render`` method in this case)
 
 
 
