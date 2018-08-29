@@ -19,7 +19,7 @@ These documents are written in `Restructured Text <http://docutils.sourceforge.n
 
 To build the docs, you need Python, Sphinx, and sphinx-rtd-theme::
 
-  python3 -m pip install sphinx sphinx-rtd-theme
+  pip3 install -r requirements.txt
 
 Should do it.
 
