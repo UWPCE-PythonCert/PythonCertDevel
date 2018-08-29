@@ -4,19 +4,15 @@
 Mailroom Part 1
 ================
 
-**Use Python's basic data types and logic for a full program**
 
-.. This needs some updating now that we've broken it out into multiple files
+**Overall Assignment Structure**
 
-**Assignment Structure:**
+This is the first in a four-part that will make use of your Python programming skills as you develop them during this course. You will start work on the program in this assignment (Part 1) that will will submit for. Lesson 3. You will submit Part 2 for Lesson 4,  Part 3 for Lesson 5, and Part 4 for Lesson 6.
 
-This assignment is designed in four parts that will make use of your skills as you develop them during this course.
-You will complete and submit Part 1 for your homework in Lesson 3. You will continue to add functionality to your program in the following weeks,
-tackling and submitting Part 2 for Lesson 4,  Part 3 for Lesson 5, and Part 4 for Lesson 6.
 This progressive work will give you a strong foundation for success in the final project, a Mailroom program using object-oriented programming in lesson 9.
 
 
-Program Goal:
+Overall Program Goal:
 -------------
 
 You work in the mail room at a local charity. Part of your job is to write
@@ -25,7 +21,7 @@ gifts. You are tired of doing this over and over again, so you've decided to
 let Python help you out of a jam and do your work for you.
 
 
-The Program
+The Program: Part 1
 -----------
 
 Write a small command-line script called ``mailroom.py``. This script should be executable. The script should accomplish the following goals:
