@@ -30,7 +30,7 @@ class Element:
         self.attributes = kwargs
         self.content = []
         if content:
-            # call the classes append method
+            # call the class' append method
             # so that it can do anything special it needs to do
             self.append(content)
 
