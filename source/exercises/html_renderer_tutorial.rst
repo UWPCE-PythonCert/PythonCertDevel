@@ -1569,9 +1569,10 @@ Write at least one test for each of those, and then go fix those render method!
 
 What have you done?
 -------------------
+
 **Congrats!**
 
-You've gotten to the end of the project. By going through tis whole procedure, you've done a lot of test-driven development, and built up class system that takes advantage of the key features object oriented systems in Python. I hope this has given you a better understanding of:
+You've gotten to the end of the project. By going through this whole procedure, you've done a lot of test-driven development, and built up a class system that takes advantage of the key features of object oriented systems in Python. I hope this has given you a better understanding of:
 
 * class attributes vs. instance attributes
 
@@ -1588,21 +1589,3 @@ You've gotten to the end of the project. By going through tis whole procedure, y
 * defining a "private" method to be used by sub-classes overridden methods to make DRY code.
 
 * polymorphism -- having multiple classes all be used in the same way (calling the ``render`` method in this case)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

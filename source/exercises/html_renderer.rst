@@ -377,6 +377,11 @@ where ``link`` is the link, and ``content`` is what you see. It can be called li
 
     A("http://google.com", "link to google")
 
+and it should render like::
+
+    <a href="http://google.com">link to google</a>
+
+
 You should be able to subclass from ``Element``, and only override the ``__init__`` --- calling the ``Element`` ``__init__`` from the  ``A`` ``__init__``
 
 You can now add a link to your web page.
