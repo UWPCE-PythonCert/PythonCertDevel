@@ -184,7 +184,6 @@ def test_render_element():
 
 # #####################
 # # indentation testing
-# #  Uncomment for Step 9 -- adding indentation
 # #####################
 
 
@@ -193,12 +192,11 @@ def test_render_element():
 #     Tests that the indentation gets passed through to the renderer
 #     """
 #     html = Html("some content")
-#     file_contents = render_result(html, ind="   ").rstrip()  #remove the end newline
+#     file_contents = render_result(html, ind="   ")
 
 #     print(file_contents)
 #     lines = file_contents.split("\n")
 #     assert lines[0].startswith("   <")
-#     print(repr(lines[-1]))
 #     assert lines[-1].startswith("   <")
 
 
@@ -232,7 +230,7 @@ def test_render_element():
 
 #     assert lines[4].startswith(3 * Element.indent + "some")
 
-
+# this is for testing indenting -- we'll wait 'till we get to that
 # def test_element_indent1():
 #     """
 #     Tests whether the Element indents at least simple content

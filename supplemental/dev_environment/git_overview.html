@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PythonCert 5.0 documentation" href="../../index.html"/>
-        <link rel="up" title="Setting Up A Development Environment For Python" href="index.html"/>
-        <link rel="next" title="Feature Branching" href="feature_branching.html"/>
-        <link rel="prev" title="Using Windows Bash for Python Development" href="windows_bash.html"/> 
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Feature Branching" href="feature_branching.html" />
+    <link rel="prev" title="Using Windows Bash for Python Development" href="windows_bash.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -97,7 +88,28 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Supplemental Materials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../HowToRunAPythonFile.html">How to run a python file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../installing/index.html">Installing Python and core tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html">Setting Up A Development Environment For Python</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Setting Up A Development Environment For Python</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html#minimal-setup">Minimal Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#your-development-environment">Your Development Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#the-command-line-cli">The Command Line (cli)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#the-python-interpreter">The Python Interpreter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#the-editor">The Editor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#version-control-system">Version Control System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#am-i-ready-to-go">Am I ready to go?</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#specific-documentation">Specific Documentation</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="sublime_as_ide.html">Turning Sublime Text Into a Lightweight Python IDE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="atom_as_ide.html">Turning Atom Into a Lightweight Python IDE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="command_line.html">Command line basics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="shell.html">Shell Customizations for Python Development</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ipython.html">iPython Interpreter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="windows_bash.html">Using Windows Bash for Python Development</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">git Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="feature_branching.html">Feature Branching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="virtualenv.html">Working with Virtualenv</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#specific-python-notes">Specific Python Notes</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html#more-about-git">More about git</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../../modules/GitWorkflow.html">git Workflow</a></li>
@@ -123,7 +135,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">PythonCert</a>
@@ -131,9 +143,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -308,9 +321,7 @@ work on another.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -332,7 +343,7 @@ work on another.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -351,6 +362,7 @@ work on another.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
             VERSION:'5.0',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -364,19 +376,13 @@ work on another.</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>
