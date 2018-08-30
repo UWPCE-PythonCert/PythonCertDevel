@@ -4,7 +4,7 @@
 Tutorial for the Html Render Assignment
 #######################################
 
-If you are finding that you don't really know where to start with the html render assignemnt, this tutorial will walk you through the process.
+If you are finding that you don't really know where to start with the html render assignment, this tutorial will walk you through the process.
 
 However, you generally learn more if you figure things out for yourself. So I highly suggest that you give each step a try on your own first, before reading that step in this tutorial. Then, if you are really stuck -- follow the process here.
 
@@ -437,7 +437,7 @@ Darn! Something is wrong here. And this time it errored out before it even got r
     >           out_file.write(content)
     E           TypeError: string argument expected, got 'NoneType'
 
-So it failed when we tried to write to the file. We're trying to write a piece of content, and we got a "NoneType".  How in the world did a "NoneType" (which is the type of None) get in there?
+So it failed when we tried to write to the file. We're trying to write a piece of content, and we got a ``NoneType``.  How in the world did a ``NoneType`` (which is the type of None) get in there?
 
 Where does the ``self.contents`` list get created? In the ``__init__``. Let's do a little print debugging here. Add a print to the __init__:
 
@@ -563,7 +563,7 @@ and this line:
 
 ``    tag = 'body'``
 
-means:  set the "tag" class attribute to 'body'. Since this class attribute was set by the Element tag already -- this is called "overriding" the tag attribute.
+means:  set the ``tag`` class attribute to ``Body``. Since this class attribute was set by the Element tag already -- this is called "overriding" the tag attribute.
 
 The end result is that we now have a class that is exactly the same as the Element class, except with a different tag. Where is that attribute used? It is used in the ``render()`` method.
 
@@ -582,11 +582,11 @@ Let's  run the tests and see if this worked::
 Success!. We now have three different tags.
 
 .. note::
-  Why the ``Html`` element? Doesn't the ``Element`` class already use the "html" tag?
+  Why the ``Html`` element? Doesn't the ``Element`` class already use the ``html`` tag?
   Indeed it does, but the goal of the ``Element`` class is to be a base class for the other tags, rather than being a particular element.
   Sometimes this is called an "abstract base class": a class that can't do anything by itself, but exists only to provide an interface (and partial functionality) for subclasses.
   But we wanted to be able to test that partial functionality, so we had to give it a tag to use in the initial tests.
-  If you want to be pure about it, you could use something like "abstract_tag" in the ``Element`` class to make it clear that it isn't supposed to be used alone.  And later on in the assignment, we'll be adding extra functionality to the ``Html`` element.
+  If you want to be pure about it, you could use something like ``abstract_tag`` in the ``Element`` class to make it clear that it isn't supposed to be used alone.  And later on in the assignment, we'll be adding extra functionality to the ``Html`` element.
 
 Making a subclass where the only thing you change is a single class attribute may seem a bit silly -- and indeed it is. If that were going to be the ONLY difference between all elements, There would be other ways to accomplish that task that would make more sense, perhaps passing the tag in to the initializer, for instance. But have patience, as we proceed with the exercise, some element types will have more customization.
 
@@ -803,7 +803,7 @@ So what are the downsides? Well, there are two:
 
 2. This is the bigger one: if the object *HAS* a render method, but that render method has something wrong with it, then it could conceivably raise an ``AttributeError`` itself, but it would not be the Attribute Error we are expecting. The trick here is that this is very hard to debug.
 
-However, we are saved by tests. If the render method works in all the other tests, It's not going to raise an AttributeError only in this case. Another reason to have a good test suite.
+However, we are saved by tests. If the render method works in all the other tests, It's not going to raise an ``AttributeError`` only in this case. Another reason to have a good test suite.
 
 
 .. _render_tutorial_3:
@@ -931,7 +931,7 @@ The title test failed on this assertion::
 
     >       assert "\n" not in file_contents
 
-which is what we expected -- we haven't written a new render method yet.  But look at the end of the output -- where is says ``-- Captured stdout call --``.  That is showing you how the title element is being rendered -- with the newlines. That's there because there is a print in the test:
+wTich is what we expected because we haven't written a new render method yet.  But look at the end of the output, where is says ``-- Captured stdout call --``.  That shows you how the title element is being rendered -- with the newlines. That's there because there is a print in the test:
 
 .. code-block:: python
 
@@ -939,7 +939,7 @@ which is what we expected -- we haven't written a new render method yet.  But lo
 
 .. note::
 
-  pytest is pretty slick with this. It "Captures" the output from print calls, etc, and then only shows them to you if a test fails.
+  pytest is pretty slick with this. It "Captures" the output from print calls, etc., and then only shows them to you if a test fails.
   So you can sprinkle print calls into your tests, and it won't clutter the output -- you'll only see it when a test fails, which is when you need it.
 
 This is a good exercise to go through. If a new test fails, it lets you know that the test itself is working, testing what it is supposed to test.
