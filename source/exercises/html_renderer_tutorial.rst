@@ -131,9 +131,9 @@ Looking there, we can see why the tests did what they did -- we have the three k
 
 So back to the assignment:
 
-    The ``Element`` class should have a class attribute for the tag name ("html" first)
+    The ``Element`` class should have a class attribute for the tag name ("html" first).
 
-each html element has a different "tag", specifying what kind of element it is. so our class needs one of those. Why a class attribute? because each *instance* of each type (or class) of element will share the same tag.  And we don't want to store the tag in the render method, because then we couldn't reuse that render method for a different type of element.
+Each html element has a different "tag", specifying what kind of element it is. so our class needs one of those. Why a class attribute? Because each *instance* of each type (or class) of element will share the same tag.  And we don't want to store the tag in the render method, because then we couldn't reuse that render method for a different type of element.
 
 So we need to add a tiny bit of code:
 
@@ -146,7 +146,7 @@ So we need to add a tiny bit of code:
         def __init__(self, content=None):
             pass
 
-That's not much -- will the test pass now? Probably not, we aren't doing anything with the tag. But you can run it to see if you'd like. It's always good to run tests frequently to make sure you haven't inadvertently broken anything.
+That's not much -- will the test pass now? Probably not, because we aren't doing anything with the tag. But you can run it to see if you'd like. It's always good to run tests frequently to make sure you haven't inadvertently broken anything.
 
 Back to the task at hand:
 
@@ -156,7 +156,7 @@ Back to the task at hand:
 
   So your class will need a way to store the content in a way that you can keep adding more to it.
 
-OK, so we need a way to store the content -- both what gets passed in to the ``__init__`` and what gets added with the ``append`` method.  We need a data structure that can hold an ordered list of things, and can be added to in the future -- sounds like a list to me. So let's create a list in __init__ and store it in ``self`` for use by the other methods:
+OK, so we need a way to store the content: both what gets passed in to the ``__init__`` and what gets added with the ``append`` method.  We need a data structure that can hold an ordered list of things, and can be added to in the future -- sounds like a list to me. So let's create a list in __init__ and store it in ``self`` for use by the other methods:
 
 .. code-block:: python
 
@@ -173,7 +173,7 @@ OK -- let's run the tests and see if anything changed::
 
     test_html_render.py:72: AssertionError
 
-nope -- still failed at the first assert in test_render. Which makes sense, we haven't done anything with the render method yet!
+Nope -- still failed at the first assert in test_render. This makes sense because we haven't done anything with the render method yet!
 
 .. rubric:: 1c.
 
@@ -181,7 +181,7 @@ From the assignment:
 
   It should have a ``render(file_out)`` method that renders the tag and the strings in the content.
 
-we have the render method -- but it's rending arbitrary text to the file -- not an html tag or contents. So let's add that. First let's add the contents, adding a newline in between to keep it readable.  Remember that there can be multiple pieces of content -- so we need to loop though the list:
+We have the render method, but it's rending arbitrary text to the file, not an html tag or contents. So let's add that. First let's add the contents, adding a newline in between to keep it readable.  Remember that there can be multiple pieces of content, so we need to loop though the list:
 
 .. code-block:: python
 
@@ -233,11 +233,11 @@ And run the tests::
     test_html_render.py:79: AssertionError
     ====================== 1 failed, 2 passed in 0.05 seconds ======================
 
-Failed in test_render again -- but look carefully -- it didn't fail on the first assert! It failed on this line::
+Failed in test_render again. But look carefully. It didn't fail on the first assert! It failed on this line::
 
   assert file_contents.startswith("<html>")
 
-which makes sense, we haven't rendered anything like that yet. So let's add that now. Recall that we want the results to look something like this:
+This makes sense because we haven't rendered anything like that yet. So let's add that now. Recall that we want the results to look something like this:
 
 .. code-block:: html
 
@@ -326,7 +326,7 @@ And let's run it::
     and this is some more text
     </html>
 
-It failed on the assert False -- good sign, it didn't fail before that.  We can now look at the results we printed, and whoops! we actually got *two* html elements, rather than one with two pieces of content. Why is that? Before you look at the code again, let's make sure the test catches that and fails. How about this?
+It failed on the ``assert False``. It's a good sign that it didn't fail before that.  We can now look at the results we printed, and whoops! we actually got *two* html elements, rather than one with two pieces of content. Why is that? Before you look at the code again, let's make sure the test catches that and fails. How about this?
 
 .. code-block:: python
 
@@ -342,7 +342,7 @@ And it does indeed fail on this line::
 
     test_html_render.py:83: AssertionError
 
-Now that we know we can test for the issue -- we can try to fix it, and we'll know it's fixed when the tests pass.
+Now that we know we can test for the issue, we can try to fix it, and we'll know it's fixed when the tests pass.
 
 So looking at the code -- why did I get two ``<html>`` tags?
 
@@ -356,7 +356,7 @@ So looking at the code -- why did I get two ``<html>`` tags?
             out_file.write("\n")
             out_file.write("</{}>\n".format(self.tag))
 
-Hmm -- when are those tags getting rendered? *inside* the loops through the contents! oops! we want to write the tag *before* the loop, and the closing tag *after* loop. (Did you notice that the first time? I hope so.) So a little restructuring is in order.
+Hmm -- when are those tags getting rendered? *Inside* the loops through the contents! Oops! We want to write the tag *before* the loop, and the closing tag *after* loop. (Did you notice that the first time? I hope so.) So a little restructuring is in order.
 
 .. code-block:: python
 
@@ -381,9 +381,9 @@ That's it -- let's see if the tests pass now::
     and this is some more text
     </html>
 
-mine failed on the ``assert False`` -- so the actual test passed -- good. And the rendered html tag looks right, too. So we can go ahead and remove that ``assert False``, and move on!
+Mine failed on the ``assert False``. So the actual test passed -- good. And the rendered html tag looks right, too. So we can go ahead and remove that ``assert False``, and move on!
 
-We have tested to see that we could initialize with one piece of content, and then add another, but what if you initialized it with nothing, and then added some?  Try uncommenting the next test: ``test_render_element2`` -- and see what you get.
+We have tested to see that we could initialize with one piece of content, and then add another, but what if you initialized it with nothing, and then added some content?  Try uncommenting the next test: ``test_render_element2`` and see what you get.
 
 This is what I got with my code::
 
@@ -431,7 +431,7 @@ This is what I got with my code::
     html_render.py:23: TypeError
     ====================== 1 failed, 3 passed in 0.08 seconds ======================
 
-Darn -- something is wrong here. And this time it errored out before it even got results to test.  So look and see exactly what the error is. (pytest does a really nice job of showing you the errors)::
+Darn! Something is wrong here. And this time it errored out before it even got results to test.  So look and see exactly what the error is. (pytest does a really nice job of showing you the errors)::
 
                   out_file.write("<{}>\n".format(self.tag))
     >           out_file.write(content)
@@ -460,26 +460,26 @@ And run the tests again::
 
 Same failure -- but pytest does a nice job of showing you what was printed (stdout) when a test fails. So in this case, at the end of the ``__init__`` method, the contents list looks like ``[None]`` -- a list with a single None object in it. No wonder it failed later when we tried to write that None to a file!
 
-But why? -- well, looking at the __init__ -- it looks like content gets set to None by default:
+But why? Well, looking at the ``__init__``, it looks like content gets set to None by default:
 
-    def __init__(self, content=None):
+    ``def __init__(self, content=None):``
 
-and then we put that in the ``self.contents`` list.  What do we want went content is None?  An empty list, so that we can add to it later.  So you need some code that checks for ``None`` (hint: use ``is None`` or ``is not None`` to check for ``None``), and only adds content to the list if it is not None.
+Then we put that in the ``self.contents`` list.  What do we want when content is None?  An empty list, so that we can add to it later.  So you need some code that checks for ``None`` (hint: use ``is None`` or ``is not None`` to check for ``None``), and only adds content to the list if it is not None.
 
-I'll leave it as an exercise for the reader to figure out how to do that -- but make sure all tests are passing before you move on! And once the tests pass, you may want to remove that ``print()`` line.
+I'll leave it as an exercise for the reader to figure out how to do that, but make sure all tests are passing before you move on! And once the tests pass, you may want to remove that ``print()`` line.
 
 .. _render_tutorial_2_A:
 
 Step 2:
 -------
 
-OK, we have nice little class here -- it has a class attribute to store information about the tag -- information that's the same for all instances.
+OK, we have nice little class here; it has a class attribute to store information about the tag, information that's the same for all instances.
 
 And we are storing a list of contents in "self" -- information that each instance needs its own copy of.
 
 And we are using that data to render an element.
 
-So we're ready to move on:
+So we're ready to move on.
 
 Part A
 ......
@@ -489,7 +489,7 @@ Part A
 
 "Create a couple subclasses of ``Element``, for each of ``<html>``, ``<body>``, and ``<p>`` tags. All you should have to do is override the ``tag`` class attribute (you may need to add a ``tag`` class attribute to the ``Element`` class first, if you haven't already)."
 
-So this is very straightforward -- we have a class that represents an element -- and the only difference between basic elements is that they have a different tag. for example::
+So this is very straightforward. We have a class that represents an element, and the only difference between basic elements is that they have a different tag. For example::
 
     <body>
     Some content.
@@ -504,7 +504,7 @@ and::
     </p>
 
 
-The ``<body>`` tag is for the entire contents of an html page, and the ``<p>`` tag is for a paragraph.  But you can see that form of the tags is identical, so we don't have to change much to make classes for these tags. In fact, all we need to change is the ``tag`` class attribute.
+The ``<body>`` tag is for the entire contents of an html page, and the ``<p>`` tag is for a paragraph.  But you can see that the form of the tags is identical, so we don't have to change much to make classes for these tags. In fact, all we need to change is the ``tag`` class attribute.
 
 Before we do that -- let's do some test-driven development. Uncomment the next few tests in ``test_html_render.py``: ``test_html``, ``test_body``, and ``test_p``, and run the tests::
 
@@ -540,11 +540,11 @@ Before we do that -- let's do some test-driven development. Uncomment the next f
     test_html_render.py:142: NameError
     ====================== 3 failed, 4 passed in 0.08 seconds ======================
 
-So we have three failure -- of course we do -- we haven't written code yet!  Yes, this is pedantic, and there is no real reason to run tests you know are going to fail -- but there is a reason to *write* tests that you know are going to fail -- and you have to run them to know that you have written them correctly.
+So we have three failures. Of course we do, because we haven't written code yet!  Yes, this is pedantic, and there is no real reason to run tests you know are going to fail. But there is a reason to *write* tests that you know are going to fail, and you have to run them to know that you have written them correctly.
 
 Now we can write the code for those three new element types. Try to do that yourself first, before you read on.
 
-OK -- did you do something as simple as this?
+OK, did you do something as simple as this?
 
 .. code-block:: python
 
@@ -582,15 +582,15 @@ Let's  run the tests and see if this worked::
 Success!. We now have three different tags.
 
 .. note::
-  Why the ``Html`` element? doesn't the ``Element`` class already use the "html" tag?
-  Indeed it does -- but the goal of the ``Element`` class is to be a base class for the other tags, rather than being a particular element.
+  Why the ``Html`` element? Doesn't the ``Element`` class already use the "html" tag?
+  Indeed it does, but the goal of the ``Element`` class is to be a base class for the other tags, rather than being a particular element.
   Sometimes this is called an "abstract base class": a class that can't do anything by itself, but exists only to provide an interface (and partial functionality) for subclasses.
   But we wanted to be able to test that partial functionality, so we had to give it a tag to use in the initial tests.
-  If you want to be pure about it -- you could use something like "abstract_tag" in the ``Element`` class to make it clear that it isn't supposed to be used alone.  And later on in the assignment, we'll be adding extra functionality to the ``Html`` element.
+  If you want to be pure about it, you could use something like "abstract_tag" in the ``Element`` class to make it clear that it isn't supposed to be used alone.  And later on in the assignment, we'll be adding extra functionality to the ``Html`` element.
 
-Making a subclass where the only thing you change is a single class attribute may seem a bit silly -- and indeed it is. If that were going to be the ONLY difference between all elements, There would be other ways to accomplish that task that would make more sense -- perhaps passing the tag in to the initializer, for instance. But have patience, as we proceed with the exercise, some element types will have more customization.
+Making a subclass where the only thing you change is a single class attribute may seem a bit silly -- and indeed it is. If that were going to be the ONLY difference between all elements, There would be other ways to accomplish that task that would make more sense, perhaps passing the tag in to the initializer, for instance. But have patience, as we proceed with the exercise, some element types will have more customization.
 
-But another thing to keep in mind -- the fact that that is ALL we need to do to get a new type of element demonstrates the power of subclassing -- with that tiny change, we get a new element that we can add content to, and render to a file, etc. With virtually no repeated code.
+But another thing to keep in mind. The fact that writing a new subclass is ALL we need to do to get a new type of element demonstrates the power of subclassing. With the tiny change of adding a subclass, we get a new element that we can add content to, and render to a file, etc., with virtually no repeated code.
 
 .. _render_tutorial_2_B:
 
@@ -661,16 +661,16 @@ Uncomment ``test_subelement`` in the test file, and run the tests::
     html_render.py:26: TypeError
     ====================== 1 failed, 7 passed in 0.11 seconds ======================
 
-Again, the new test failed -- no surprise, we haven't written any new code yet. But do read the report carefully -- it did not fail on an assert -- but rather with a ``TypeError``.  The code itself raised an exception before it could produce results to test.
+Again, the new test failed; no surprise because we haven't written any new code yet. But do read the report carefully; it did not fail on an assert, but rather with a ``TypeError``.  The code itself raised an exception before it could produce results to test.
 
-So now it's time to write the code -- look at where the exception was raised: line 26 in my code, inside the ``render()`` method. The line number will likely be different in your code, but it probably failed on the render method. Looking closer at the error::
+So now it's time to write the code. Look at where the exception was raised: line 26 in my code, inside the ``render()`` method. The line number will likely be different in your code, but it probably failed on the render method. Looking closer at the error::
 
     >           out_file.write(content)
     E           TypeError: string argument expected, got 'P'
 
-It occurred in the file ``write`` method, complaining that it expected to be writing a string to the file, but it got a 'P' -- 'P' is the name of the paragraph element class. So we need a way to write an element to a file. How might we do that? Inside the element's render method, we need to render an element...
+It occurred in the file ``write`` method, complaining that it expected to be writing a string to the file, but it got a ``'P'``. ``'P'`` is the name of the paragraph element class. So we need a way to write an element to a file. How might we do that? Inside the element's render method, we need to render an element...
 
-Well, elements already know how to render themselves -- this is what is meant by a recursive approach -- in the ``render`` method, we want to make use of the ``render`` method itself.
+Well, elements already know how to render themselves. This is what is meant by a recursive approach. In the ``render`` method, we want to make use of the ``render`` method itself.
 
 Looking at the signature of the render method::
 
@@ -690,7 +690,7 @@ it becomes clear -- we render an element by passing the output file to the eleme
             out_file.write("\n")
             out_file.write("</{}>\n".format(self.tag))
 
-So let's update our render by replacing that ``out_file.write()`` call with  a call to the content's ``render`` method:
+So let's update our render by replacing that ``out_file.write()`` call with a call to the content's ``render`` method:
 
 .. code-block:: python
 
@@ -750,7 +750,7 @@ And let's see what happens when we run the tests::
     html_render.py:27: AttributeError
     ====================== 6 failed, 2 passed in 0.12 seconds ======================
 
-Whoaa! six failures! We really broke something! But that is a *good* thing -- it's the whole point of unit tests -- when you are making a change to address one issue, you know right away that you broke previously working code.
+Whoaa! Six failures! We really broke something! But that is a *good* thing. It's the whole point of unit tests. When you are making a change to address one issue, you know right away that you broke previously working code.
 
 So let's see if we can fix these tests, while still allowing us to add the feature we intended to add.
 
@@ -760,10 +760,10 @@ Again -- look carefully at the error, and the solution might pop out at you::
     E           AttributeError: 'str' object has no attribute 'render'
 
 Now we are trying to call a piece of content's ``render`` method, but we got a simple string, which does not *have* a ``render`` method.
-This is the challenge of this part of the exercise -- it's easy to render a string, and it's easy to render an element, but the content list could have either one -- so how do we switch between the two methods?
+This is the challenge of this part of the exercise. It's easy to render a string, and it's easy to render an element, but the content list could have either one. So how do we switch between the two methods?
 
 There are a number of approaches you can take. This is a good time to read the notes about this here: :ref:`notes_on_handling_duck_typing`.
-You may want to try one of the more complex methods -- but for now, we're going to use the one that suggests itself from the error.
+You may want to try one of the more complex methods, but for now, we're going to use the one that suggests itself from the error.
 
 We need to know whether we want to call a ``render()`` method, or simply write the content to the file. How would we know which to do? Again, look at the error:
 We tried to call the render() method of a piece of content, but got an ``AttributeError``. So the way to know whether we can call a render method is to try to call it -- if it works, great! If not, we can catch the exception, and do something else. In this case, the something else is to try to write the content directly to the file:
