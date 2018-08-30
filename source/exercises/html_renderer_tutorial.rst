@@ -793,15 +793,15 @@ And run the tests again::
 
     =========================== 8 passed in 0.03 seconds ===========================
 
-Yeah! all eight tests pass!  I hope you found that at least a little bit satisfying.  And pretty cool, really, only two extra lines of code. This is an application of the EAFP method: it's Easier to Ask Forgiveness than Permission. You simply try to do one thing, and if that raises the exception you expect, than do something else.
+Yeah! all eight tests pass!  I hope you found that at least a little bit satisfying.  And pretty cool, really, that the solution requires only two extra lines of code. This is an application of the EAFP method: it's Easier to Ask Forgiveness than Permission. You simply try to do one thing, and if that raises the exception you expect, than do something else.
 
-It's also taking advantage of Python's "Duck Typing" notice that we don't know if that piece of content is actually an ``Element`` object -- all we know is that it has a render() method that we can pass a file-like object to. Which is quite deliberate -- if some future user (that might be you) wants to write their own element type, that can do that -- and all it needs to do is define a render method.
+It's also taking advantage of Python's "Duck Typing". Notice that we don't know if that piece of content is actually an ``Element`` object. All we know is that it has a ``render()`` method that we can pass a file-like object to. This is quite deliberate. If some future user (that might be you) wants to write their own element type, that code can do that, and all it needs to do is define a render method.
 
 So what are the downsides? Well, there are two:
 
-1. When we successfully call the ``render`` method, we have no idea if it's actually done the right thing -- it could do anything -- if someone puts some completely unrelated object in the content list that happens to have a render method, this is not going to work -- but what are the odds of that?
+1. When we successfully call the ``render`` method, we have no idea if it's actually done the right thing -- it could do anything. If someone puts some completely unrelated object in the content list that happens to have a render method, this is not going to work. But what are the odds of that?
 
-2. This is the bigger one -- if the object *HAS* a render method, but that render method has something wrong with it, then it could conceivably raise an AttributeError itself -- but it would not be the Attribute Error we are expecting. The trick here is that this is very hard to debug.
+2. This is the bigger one: if the object *HAS* a render method, but that render method has something wrong with it, then it could conceivably raise an ``AttributeError`` itself, but it would not be the Attribute Error we are expecting. The trick here is that this is very hard to debug.
 
 However, we are saved by tests. If the render method works in all the other tests, It's not going to raise an AttributeError only in this case. Another reason to have a good test suite.
 
@@ -815,11 +815,11 @@ Now we are getting a little more interesting.
 
 "Create a ``<head>`` element -- a simple subclass."
 
-This is easy -- you know how to do that, yes?
+This is easy; you know how to do that, yes?
 
 But the training wheels are off -- you are going to need to write your own tests now.  So before you create the ``Head`` element class, write a test for it. You should be able to copy and paste one the previous tests, and just change the name of the class and the tag text. Remember to give it a new name, or it will simply replace the previous test.
 
-I like to run the tests as soon as I make a new one -- if nothing else, I can make sure I have one more test!
+I like to run the tests as soon as I make a new one. If nothing else, I can make sure I have one more test!
 
 OK, that should have been straightforward.  Now this part:
 
@@ -829,9 +829,9 @@ OK, that should have been straightforward.  Now this part:
 
       <title> PythonClass - Session 6 example </title>
 
-Some html elements don't tend to have a lot content -- like the document title. So it makes sense to render them all on one line.  This is going to require a new render method.  Since there are multiple types of elements that should be rendered on one line, we want to create a base class for all one-line elements. It should subclass from Element, and override the render method with a new one, which will be pretty much the same as the main ``Element`` method, but without the newlines.
+Some html elements don't tend to have a lot of content, such as the document title. So it makes sense to render them all on one line.  This is going to require a new render method.  Since there are multiple types of elements that should be rendered on one line, we want to create a base class for all one-line elements. It should subclass from ``Element``, and override the render method with a new one, which will be pretty much the same as the main ``Element`` method, but without the newlines.
 
-Before we do that though -- let's write a test for that!  as the ONeLIneTag class is a base class for actual elements that should be rendered on one line, we really don't need to write a test directly for it. We can write one for its first subclass: ``Title``. The title elements should be rendered something like this::
+Before we do that though -- let's write a test for that!  Because the ``ONeLIneTag`` class is a base class for actual elements that should be rendered on one line, we really don't need to write a test directly for it. We can write one for its first subclass: ``Title``. The title elements should be rendered something like this::
 
     <title> PythonClass - title example </title>
 
@@ -839,7 +839,7 @@ Which should be generated by code like this::
 
     Title("PythonClass - title example")
 
-Take a look at one of the other tests to get ideas -- and maybe start with a copy and paste, and then change the names:
+Take a look at one of the other tests to get ideas, and maybe start with a copy and paste, and then change the names:
 
 .. code-block:: python
 
@@ -890,7 +890,7 @@ You can run the tests now if you like -- it will fail due to there being no Titl
     class Title(OneLineTag):
         tag = "title"
 
-The ``pass`` means "do nothing" -- but it is required to satisfy PYhton -- there needs to be *something* in the class definition.  So in this case, we have a ``OneLineTag`` class that is exactly the same as the Element class.  And a Title class that is the same except for the tag. Time to test again::
+The ``pass`` means "do nothing." But it is required to satisfy PYhton. There needs to be *something* in the class definition.  So in this case, we have a ``OneLineTag`` class that is exactly the same as the ``Element`` class,  and a ``Title`` class that is the same except for the tag. Time to test again::
 
     $ pytest
     ============================= test session starts ==============================
@@ -942,7 +942,7 @@ which is what we expected -- we haven't written a new render method yet.  But lo
   pytest is pretty slick with this. It "Captures" the output from print calls, etc, and then only shows them to you if a test fails.
   So you can sprinkle print calls into your tests, and it won't clutter the output -- you'll only see it when a test fails, which is when you need it.
 
-This is a good exercise to go through -- if a new test fails, it lets you know that the test itself is working -- testing what it is supposed to test.
+This is a good exercise to go through. If a new test fails, it lets you know that the test itself is working, testing what it is supposed to test.
 
 So how do we get this test to pass? We need a new render method for ``OneLineTag``.  For now, you can copy the render method from ``Element`` to ``OneLineTag``, and remove the newlines:
 
@@ -960,7 +960,7 @@ So how do we get this test to pass? We need a new render method for ``OneLineTag
                     out_file.write(content)
                 out_file.write("</{}>\n".format(self.tag))
 
-notice that I left the newline in at the end of the closing tag -- we do want a newline there, so the next element won't get rendered on the same line.  And the tests::
+Notice that I left the newline in at the end of the closing tag -- we do want a newline there, so the next element won't get rendered on the same line.  And the tests::
 
     $ pytest
     ============================= test session starts ==============================
