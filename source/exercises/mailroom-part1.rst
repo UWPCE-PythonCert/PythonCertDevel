@@ -4,17 +4,15 @@
 Mailroom Part 1
 ================
 
-**Using Python's basic data types and logic for a full program**
 
-**Assignment Structure:**
+**Overall Assignment Structure**
 
-This assignment is designed in three parts that will make use of your skills as you develop them during this course.
-You will complete and submit Part 1 for your homework in Lesson 3. You will continue to add functionality to your program in the following weeks,
-tackling and submitting Part 2 for Lesson 4,  Part 3 for Lesson 5, and Part 4 for Lesson 6.
-This progressive work will give you a strong foundation for success in the final projects, a Mailroom program using object-oriented programming in lesson 9.
+This is the first in a four-part that will make use of your Python programming skills as you develop them during this course. You will start work on the program in this assignment (Part 1) that will will submit for. Lesson 3. You will submit Part 2 for Lesson 4,  Part 3 for Lesson 5, and Part 4 for Lesson 6.
+
+This progressive work will give you a strong foundation for success in the final project, a Mailroom program using object-oriented programming in lesson 9.
 
 
-Program Goal:
+Overall Program Goal:
 -------------
 
 You work in the mail room at a local charity. Part of your job is to write
@@ -23,7 +21,7 @@ gifts. You are tired of doing this over and over again, so you've decided to
 let Python help you out of a jam and do your work for you.
 
 
-The Program
+The Program: Part 1
 -----------
 
 Write a small command-line script called ``mailroom.py``. This script should be executable. The script should accomplish the following goals:
@@ -33,33 +31,32 @@ Write a small command-line script called ``mailroom.py``. This script should be 
   at first with at least five donors, with between 1 and 3 donations each. You can store that data structure in the global namespace.
 
 * The script should prompt the user (you) to choose from a menu of 3 actions:
-  "Send a Thank You," "Create a Report," or "quit."
+  "Send a Thank You", "Create a Report" or "quit".
 
-Sending a Thank You
+Send a Thank You
 -------------------
 
-* If the user (you) selects 'Send a Thank You', prompt for a Full Name.
+* If the user (you) selects "Send a Thank You" option, prompt for a Full Name.
 
-  * If the user types 'list', show them a list of the donor names and re-prompt.
+  * If the user types ``list`` show them a list of the donor names and re-prompt.
   * If the user types a name not in the list, add that name to the data structure and use it.
   * If the user types a name in the list, use it.
-  * Once a name has been selected, prompt for a donation amount.
-  * Turn the amount into a number; it is OK at this point for the program to crash if someone types a bogus amount.
-  * Once an amount has been given, add that amount to the donation history of
-    the selected user.
-  * Finally, use string formatting to compose an email thanking the donor for
-    their generous donation. Print the email to the terminal and return to the
-    original prompt.
+* Once a name has been selected, prompt for a donation amount.
+
+  * Convert the amount into a number; it is OK at this point for the program to crash if someone types a bogus amount.
+  * Add that amount to the donation history of the selected user.
+ 
+* Finally, use string formatting to compose an email thanking the donor for their generous donation. Print the email to the terminal and return to the original prompt.
 
 It is fine (for now) for the program not to store the names of the new donors that had been added, in other words, to forget new donors once the script quits running.
 
-Creating a Report
+Create a Report
 -----------------
 
 * If the user (you) selected "Create a Report," print a list of your donors,
   sorted by total historical donation amount.
 
-  - Include Donor Name, total donated, number of donations, and average donation amount as values in each row. You do not need to print out all their donations, just the summary info.
+  - Include Donor Name, total donated, number of donations, and average donation amount as values in each row. You do not need to print out all of each donor's donations, just the summary info.
   - Using string formatting, format the output rows as nicely as possible.  The end result should be tabular (values in each column should align with those above and below).
   - After printing this report, return to the original prompt.
 
@@ -86,7 +83,7 @@ tasks can be accomplished by a series of steps.  Write discreet functions
 that accomplish individual steps and call them.
 
 Second, use loops to control the logical flow of your program. Interactive
-programs are a classic use-case for the ``while`` loop.
+programs are a classic use case for the ``while`` loop.
 
 Of course, ``input()`` will be useful here.
 
@@ -99,11 +96,3 @@ about so far in Lessons 1-3. There is no need to go any farther than that for th
 
 If you're having a hard time getting started, or need some pointers, you should read the tutorial here: :ref:`exercise_mailroom_part1_tutorial`
 
-Submission
-----------
-
-As always, put the new file in your student directory in a ``session03``
-directory, and add it to your clone early. Make frequent commits with
-good, clear messages about what you are doing and why.
-
-When you are done, push your changes and make a pull request.
