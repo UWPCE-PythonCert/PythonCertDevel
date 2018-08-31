@@ -31,21 +31,20 @@ Write a small command-line script called ``mailroom.py``. This script should be 
   at first with at least five donors, with between 1 and 3 donations each. You can store that data structure in the global namespace.
 
 * The script should prompt the user (you) to choose from a menu of 3 actions:
-  "Send a Thank You," "Create a Report," or "quit."
+  "Send a Thank You", "Create a Report" or "quit".
 
 Send a Thank You
 -------------------
 
-* If the user (you) selects 'Send a Thank You,' prompt for a Full Name.
+* If the user (you) selects "Send a Thank You" option, prompt for a Full Name.
 
-  * If the user types 'list,' show them a list of the donor names and re-prompt.
+  * If the user types ``list`` show them a list of the donor names and re-prompt.
   * If the user types a name not in the list, add that name to the data structure and use it.
   * If the user types a name in the list, use it.
 * Once a name has been selected, prompt for a donation amount.
 
-  * Input the amount as a number; it is OK at this point for the program to crash if someone types a bogus amount.
-  * Once an amount has been inputted, add that amount to the donation history of
-    the selected user.
+  * Convert the amount into a number; it is OK at this point for the program to crash if someone types a bogus amount.
+  * Add that amount to the donation history of the selected user.
  
 * Finally, use string formatting to compose an email thanking the donor for their generous donation. Print the email to the terminal and return to the original prompt.
 
