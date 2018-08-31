@@ -190,8 +190,8 @@ render_page(page, "test_html_output1.html")
 
 # render_page(page, "test_html_output7.html")
 
-# # Step 8
-# ########
+# # Step 8 and 9
+# ##############
 
 # page = hr.Html()
 

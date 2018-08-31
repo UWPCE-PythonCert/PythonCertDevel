@@ -104,10 +104,11 @@ Lesson 9: Multiple Inheritance
     mailroom-oo.rst
 
 
-Lesson 10: Introduction to Functional Programming
+Lesson 10: Catch up
 -------------------------------------------------
 
-It's no time to catch up on everything you haven't quite finished. IN particular, you should finish a nice complete, fully tested, object oriented mailroom.
+It's now time to catch up on everything you haven't quite finished.
+In particular, you should finish object oriented mailroom that is fully complete and unit tested.
 
 
 Py220: Advanced Python

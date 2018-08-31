@@ -100,7 +100,7 @@
 <li class="toctree-l3"><a class="reference internal" href="index.html#lesson-7-intro-to-object-oriented-programing">Lesson 7: Intro to Object Oriented Programing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#lesson-8-properties-and-magic-methods">Lesson 8: Properties and Magic Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#lesson-9-multiple-inheritance">Lesson 9: Multiple Inheritance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-10-introduction-to-functional-programming">Lesson 10: Introduction to Functional Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-10-catch-up">Lesson 10: Catch up</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a></li>
@@ -177,27 +177,28 @@
             
   <div class="section" id="mailroom-part-4">
 <span id="exercise-mailroom-part4-testing"></span><h1>Mailroom Part 4<a class="headerlink" href="#mailroom-part-4" title="Permalink to this headline">¶</a></h1>
-<p>Add a full suite of unit tests.</p>
-<p>“Full suite” means all the code is tested. In practice, it’s very hard to test the user interaction, but you can test everything else. Make sure that there is as little untested code in the user interaction portion of the program as possible, hardly any logic.</p>
+<p><strong>Add a full suite of unit tests.</strong></p>
+<p>“Full suite” means all the code is tested. In practice, it’s very hard to test the user interaction, but you can test everything else. Therefore you should make sure that there is as little logic and untested code in the user interaction portion of the program as possible.</p>
 <p>This is a big step; you may find that your code is hard to test. If that’s the case, it’s a good sign that you <em>should</em> refactor your code.</p>
 <p>I like to say: “If it’s hard to test, it’s not well structured.”</p>
 <p>Put in the tests <strong>before</strong> you make the other changes below. That’s much of the point of tests. You can know that you haven’t broken anything when you refactor!</p>
 <div class="section" id="guidelines">
 <h2>Guidelines<a class="headerlink" href="#guidelines" title="Permalink to this headline">¶</a></h2>
 <p>Here are some suggestions on what should be refactored in your mailroom code.</p>
-<p>As mentioned above, testing user interaction code is harder (code with <code class="docutils literal notranslate"><span class="pre">print</span></code> and <code class="docutils literal notranslate"><span class="pre">input</span></code> functions), these pieces require more advanced unit testing methodologies which will be revisited in future courses. So you should refactor your code where user interaction code has little business logic in there as possible, it should only deal with interacting with user either by asking them for input or printing out data. This is a good practice in general and we will come back to this concept in later lesson. This refactor will allow you to unit test functions with business logic.</p>
-<p>Below, we will go over what components should be refactored so that we are able to unit test our mailroom - your code should improve and be better modularized if that’s not the case then maybe your refactor approach should be re-visited.</p>
-<p>For unit testing framework you should use <a class="reference external" href="https://docs.pytest.org/en/latest/">pytest</a>, it has a simple interface and rich features.</p>
-<p>You should have 3 main features so far:</p>
+<p>As mentioned above, testing user interaction code is harder (code with <code class="docutils literal notranslate"><span class="pre">print</span></code> and <code class="docutils literal notranslate"><span class="pre">input</span></code> functions) then testing the rest of your code. Testing user interaction code requires more advanced unit testing methodologies that will be revisited in future courses. Therefore, you should refactor your code so that the user interaction code contains as little business logic as possible. It should only interact with the user either by asking them for input or by responding to their request to print out data. Separating business logic from user interaction code is a good practice in general and we will come back to this concept in later lessons.</p>
+<p>The refactor in this lesson will allow you to unit test functions with business logic.</p>
+<p>We will go over the components that should be refactored so that you are able to unit test your mailroom. After the refactor, your code should improve and be better modularized. If that’s not the case then maybe you should revisit your refactor approach.</p>
+<p>For unit testing framework you should use <a class="reference external" href="https://docs.pytest.org/en/latest/">pytest</a>; it has a simple interface and rich features.</p>
+<p>Your code should have 3 main features so far:</p>
 <ul class="simple">
-<li>Send a thank you, which adds a new donor or updates existing donor info.</li>
+<li>Send a thank you (adds a new donor or updates existing donor info)</li>
 <li>Create a report</li>
-<li>Send letters, which creates files</li>
+<li>Send letters (creates files)</li>
 </ul>
 <div class="section" id="send-thank-you">
 <h3>Send Thank You<a class="headerlink" href="#send-thank-you" title="Permalink to this headline">¶</a></h3>
 <p>Even though every mailroom implementation will be unique, most likely this function will require a significant refactor for most of you.
-You can break up the code into components that handle user flow and data manipulation logic. Your unit tests should test the data manipulation logic code: thank you text, adding or updating donors, and listing donors.</p>
+You can break up the code into components that handle user flow and data manipulation logic. Your unit tests should test the data manipulation logic code: generating thank you text, adding or updating donors, and listing donors.</p>
 </div>
 <div class="section" id="create-report">
 <h3>Create Report<a class="headerlink" href="#create-report" title="Permalink to this headline">¶</a></h3>
@@ -216,7 +217,7 @@ Then you can write a unit test for your data logic function.</p>
 <h3>Send Letters<a class="headerlink" href="#send-letters" title="Permalink to this headline">¶</a></h3>
 <p>This function should require very little or no change to make it unit-testable.
 The unit test can assert that a file is created per donor entry (hint: <code class="docutils literal notranslate"><span class="pre">os.path</span></code> module), and that the file content contains text as expected.</p>
-<p>Note that you should test the correct text being generated separately from the writing of file. That way you don’t need to read the file to know it’s correct. So the function that generates the text should be separate from the function that writes the file.</p>
+<p>Note that you should test the file creation separately from testing the file content (that the correct text being generated). That way you don’t need to read each file generated to know it contains correct text. So the function that generates the text should be separate from the function that writes the file.</p>
 <p>For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_letter_text</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Get letter text for file content&quot;&quot;&quot;</span>

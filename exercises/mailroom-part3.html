@@ -101,7 +101,7 @@
 <li class="toctree-l3"><a class="reference internal" href="index.html#lesson-7-intro-to-object-oriented-programing">Lesson 7: Intro to Object Oriented Programing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#lesson-8-properties-and-magic-methods">Lesson 8: Properties and Magic Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#lesson-9-multiple-inheritance">Lesson 9: Multiple Inheritance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-10-introduction-to-functional-programming">Lesson 10: Introduction to Functional Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-10-catch-up">Lesson 10: Catch up</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a></li>
@@ -178,7 +178,7 @@
             
   <div class="section" id="mailroom-part-3">
 <span id="exercise-mailroom-part3-exceptions"></span><h1>Mailroom Part 3<a class="headerlink" href="#mailroom-part-3" title="Permalink to this headline">¶</a></h1>
-<p>Improve your mailroom by adding exceptions and comprehensions</p>
+<p><strong>Improve your mailroom by adding exceptions and comprehensions.</strong></p>
 <div class="section" id="exceptions">
 <h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
 <p>Now that you’ve learned about exception handling, you can update your code to handle errors better, such as when a user inputs bad data.</p>
@@ -195,7 +195,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="k">print</span><span class="p">(</span><span class="n">donor</span><span class="p">)</span> <span class="k">for</span> <span class="n">donor</span> <span class="ow">in</span> <span class="n">donors</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>That’s not the intended use of comprehensions, and will allocate a space for an “empty” result list filled with None values because <code class="docutils literal notranslate"><span class="pre">print</span></code> function does not have a value:</p>
+<p>That’s not the intended use of comprehensions. Because <code class="docutils literal notranslate"><span class="pre">print</span></code> function does not have a value, this code will allocate a space for an “empty” result list filled with None values:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="nb">print</span><span class="p">(</span><span class="n">donor</span><span class="p">)</span> <span class="k">for</span> <span class="n">donor</span> <span class="ow">in</span> <span class="n">donors</span><span class="p">]</span>
 <span class="go">jane</span>
 <span class="go">wendy</span>
