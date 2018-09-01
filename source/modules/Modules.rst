@@ -40,7 +40,7 @@ You can put a one-liner after the colon:
     In [168]: if x > 4: print(x)
     12
 
-But this should only be done if it makes your code **more** readable.
+But this should only be done if it makes your code *more* readable. And that is rare.
 
 So you need both the colon and the indentation to start a new a block.  But the end of the indented section is the only indication of the end of the block.
 
@@ -61,9 +61,10 @@ If you want anyone to take you seriously as a Python developer:
 
 `(PEP 8) <http://legacy.python.org/dev/peps/pep-0008/>`_
 
-Also note: if you DO use tabs (and really, don't do that!) python interprets them as the equivalent of *eight* spaces.  Text editors can display tabs as any number of spaces, and most modern editors default to four -- so this can be *very* confusing! so again:
+.. note::
+  If you *do* use tabs (and really, don't do that!) python interprets them as the equivalent of *eight* spaces.  Text editors can display tabs as any number of spaces, and most modern editors default to four -- so this can be *very* confusing! so again:
 
-**Never mix tabs and spaces in Python code**
+  **Never mix tabs and spaces in Python code**
 
 
 Spaces Elsewhere
@@ -85,7 +86,7 @@ But you should strive for proper style. Isn't this easier to read?
     x = (3 * 4) + (12 / func(x, y, z))
 
 
-*Read PEP 8 and install a linter in your editor.*
+**Read PEP 8 and install a linter in your editor.**
 
 
 Modules and Packages
