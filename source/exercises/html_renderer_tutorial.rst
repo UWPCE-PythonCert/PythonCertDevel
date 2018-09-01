@@ -181,7 +181,9 @@ From the assignment:
 
   It should have a ``render(file_out)`` method that renders the tag and the strings in the content.
 
-We have the render method, but it's rending arbitrary text to the file, not an html tag or contents. So let's add that. First let's add the contents, adding a newline in between to keep it readable.  Remember that there can be multiple pieces of content, so we need to loop though the list:
+We have the render method, but it's rendering arbitrary text to the file, not an html tag or contents. So let's add that.
+
+First let's add the contents, adding a newline in between to keep it readable.  Remember that there can be multiple pieces of content, so we need to loop though the list:
 
 .. code-block:: python
 
@@ -437,7 +439,7 @@ Darn! Something is wrong here. And this time it errored out before it even got r
     >           out_file.write(content)
     E           TypeError: string argument expected, got 'NoneType'
 
-So it failed when we tried to write to the file. We're trying to write a piece of content, and we got a ``NoneType``.  How in the world did a ``NoneType`` (which is the type of None) get in there?
+It failed when we tried to write to the file. We're trying to write a piece of content, and we got a ``NoneType``.  How in the world did a ``NoneType`` (which is the type of None) get in there?
 
 Where does the ``self.contents`` list get created? In the ``__init__``. Let's do a little print debugging here. Add a print to the __init__:
 
@@ -460,11 +462,14 @@ And run the tests again::
 
 Same failure -- but pytest does a nice job of showing you what was printed (stdout) when a test fails. So in this case, at the end of the ``__init__`` method, the contents list looks like ``[None]`` -- a list with a single None object in it. No wonder it failed later when we tried to write that None to a file!
 
-But why? Well, looking at the ``__init__``, it looks like content gets set to None by default:
+But why? Well, looking at the ``__init__``, it looks like content gets set to None by default::
 
-    ``def __init__(self, content=None):``
+.. code-block:: python
 
-Then we put that in the ``self.contents`` list.  What do we want when content is None?  An empty list, so that we can add to it later.  So you need some code that checks for ``None`` (hint: use ``is None`` or ``is not None`` to check for ``None``), and only adds content to the list if it is not None.
+    def __init__(self, content=None):
+
+Then we put that ``None`` in the ``self.contents`` list.  What do we want when content is ``None``?
+An empty list, so that we can add to it later, not a list with a ``None`` object in it.  So you need some code that checks for ``None`` (hint: use ``is None`` or ``is not None`` to check for ``None``), and only adds content to the list if it is *not* ``None``.
 
 I'll leave it as an exercise for the reader to figure out how to do that, but make sure all tests are passing before you move on! And once the tests pass, you may want to remove that ``print()`` line.
 
@@ -540,7 +545,8 @@ Before we do that -- let's do some test-driven development. Uncomment the next f
     test_html_render.py:142: NameError
     ====================== 3 failed, 4 passed in 0.08 seconds ======================
 
-So we have three failures. Of course we do, because we haven't written code yet!  Yes, this is pedantic, and there is no real reason to run tests you know are going to fail. But there is a reason to *write* tests that you know are going to fail, and you have to run them to know that you have written them correctly.
+So we have three failures. Of course we do, because we haven't written any new code yet!
+Yes, this is pedantic, and there is no real reason to run tests you know are going to fail. But there is a reason to *write* tests that you know are going to fail, and you have to run them to know that you have written them correctly.
 
 Now we can write the code for those three new element types. Try to do that yourself first, before you read on.
 
@@ -563,9 +569,9 @@ and this line:
 
 ``    tag = 'body'``
 
-means:  set the ``tag`` class attribute to ``Body``. Since this class attribute was set by the Element tag already -- this is called "overriding" the tag attribute.
+means:  set the ``tag`` class attribute to ``'body'``. Since this class attribute was set on the ``Element`` class already, this is called "overriding" the tag attribute.
 
-The end result is that we now have a class that is exactly the same as the Element class, except with a different tag. Where is that attribute used? It is used in the ``render()`` method.
+The end result is that we now have a class that is exactly the same as the ``Element`` class, except with a different tag. Where is that attribute used? It is used in the ``render()`` method.
 
 Let's  run the tests and see if this worked::
 
@@ -582,15 +588,17 @@ Let's  run the tests and see if this worked::
 Success!. We now have three different tags.
 
 .. note::
-  Why the ``Html`` element? Doesn't the ``Element`` class already use the ``html`` tag?
+  Why the ``Html`` element? Doesn't the ``Element`` class already use the "html" tag?
   Indeed it does, but the goal of the ``Element`` class is to be a base class for the other tags, rather than being a particular element.
   Sometimes this is called an "abstract base class": a class that can't do anything by itself, but exists only to provide an interface (and partial functionality) for subclasses.
   But we wanted to be able to test that partial functionality, so we had to give it a tag to use in the initial tests.
   If you want to be pure about it, you could use something like ``abstract_tag`` in the ``Element`` class to make it clear that it isn't supposed to be used alone.  And later on in the assignment, we'll be adding extra functionality to the ``Html`` element.
 
-Making a subclass where the only thing you change is a single class attribute may seem a bit silly -- and indeed it is. If that were going to be the ONLY difference between all elements, There would be other ways to accomplish that task that would make more sense, perhaps passing the tag in to the initializer, for instance. But have patience, as we proceed with the exercise, some element types will have more customization.
+Making a subclass where the only thing you change is a single class attribute may seem a bit silly -- and indeed it is.
+If that were going to be the *only* difference between all elements, There would be other ways to accomplish that task that would make more sense -- perhaps passing the tag in to the initializer, for instance.
+But have patience, as we proceed with the exercise, some element types will have more customization.
 
-But another thing to keep in mind. The fact that writing a new subclass is ALL we need to do to get a new type of element demonstrates the power of subclassing. With the tiny change of adding a subclass, we get a new element that we can add content to, and render to a file, etc., with virtually no repeated code.
+Another thing to keep in mind. The fact that writing a new subclass is ALL we need to do to get a new type of element demonstrates the power of subclassing. With the tiny change of adding a subclass with a single class attribute, we get a new element that we can add content to, and render to a file, etc., with virtually no repeated code.
 
 .. _render_tutorial_2_B:
 
@@ -668,7 +676,8 @@ So now it's time to write the code. Look at where the exception was raised: line
     >           out_file.write(content)
     E           TypeError: string argument expected, got 'P'
 
-It occurred in the file ``write`` method, complaining that it expected to be writing a string to the file, but it got a ``'P'``. ``'P'`` is the name of the paragraph element class. So we need a way to write an element to a file. How might we do that? Inside the element's render method, we need to render an element...
+It occurred in the file ``write`` method, complaining that it expected to be writing a string to the file, but it got a ``'P'``. ``'P'`` is the name of the paragraph element class.
+So we need a way to write an element to a file. How might we do that? Inside the element's render method, we need to render an element...
 
 Well, elements already know how to render themselves. This is what is meant by a recursive approach. In the ``render`` method, we want to make use of the ``render`` method itself.
 
@@ -795,11 +804,12 @@ And run the tests again::
 
 Yeah! all eight tests pass!  I hope you found that at least a little bit satisfying.  And pretty cool, really, that the solution requires only two extra lines of code. This is an application of the EAFP method: it's Easier to Ask Forgiveness than Permission. You simply try to do one thing, and if that raises the exception you expect, than do something else.
 
-It's also taking advantage of Python's "Duck Typing". Notice that we don't know if that piece of content is actually an ``Element`` object. All we know is that it has a ``render()`` method that we can pass a file-like object to. This is quite deliberate. If some future user (that might be you) wants to write their own element type, that code can do that, and all it needs to do is define a render method.
+It's also taking advantage of Python's "Duck Typing". Notice that we don't know if that piece of content is actually an ``Element`` object. All we know is that it has a ``render()`` method that we can pass a file-like object to.
+This is quite deliberate. If some future user (that might be you) wants to write their own element type, they can write it any way they like, as long as it defines a ``render()`` method that can take a file-like object to write to.
 
-So what are the downsides? Well, there are two:
+So what are the downsides to this method? Well, there are two:
 
-1. When we successfully call the ``render`` method, we have no idea if it's actually done the right thing -- it could do anything. If someone puts some completely unrelated object in the content list that happens to have a render method, this is not going to work. But what are the odds of that?
+1. When we successfully call the ``render`` method, we have no idea if it's actually done the right thing -- it could do anything. If someone puts some completely unrelated object in the content list that happens to have a ``render`` method, this is not going to work. But what are the odds of that?
 
 2. This is the bigger one: if the object *HAS* a render method, but that render method has something wrong with it, then it could conceivably raise an ``AttributeError`` itself, but it would not be the Attribute Error we are expecting. The trick here is that this is very hard to debug.
 
@@ -817,9 +827,9 @@ Now we are getting a little more interesting.
 
 This is easy; you know how to do that, yes?
 
-But the training wheels are off -- you are going to need to write your own tests now.  So before you create the ``Head`` element class, write a test for it. You should be able to copy and paste one the previous tests, and just change the name of the class and the tag text. Remember to give it a new name, or it will simply replace the previous test.
+But the training wheels are off -- you are going to need to write your own tests now.  So before you create the ``Head`` element class, write a test for it. You should be able to copy and paste one of the previous tests, and just change the name of the class and the tag value. Remember to give yo test a new name, or it will simply replace the previous test.
 
-I like to run the tests as soon as I make a new one. If nothing else, I can make sure I have one more test!
+I like to run the tests as soon as I make a new one. If nothing else, I can make sure I have one more test.
 
 OK, that should have been straightforward.  Now this part:
 
@@ -831,7 +841,7 @@ OK, that should have been straightforward.  Now this part:
 
 Some html elements don't tend to have a lot of content, such as the document title. So it makes sense to render them all on one line.  This is going to require a new render method.  Since there are multiple types of elements that should be rendered on one line, we want to create a base class for all one-line elements. It should subclass from ``Element``, and override the render method with a new one, which will be pretty much the same as the main ``Element`` method, but without the newlines.
 
-Before we do that though -- let's write a test for that!  Because the ``ONeLIneTag`` class is a base class for actual elements that should be rendered on one line, we really don't need to write a test directly for it. We can write one for its first subclass: ``Title``. The title elements should be rendered something like this::
+Before we do that though -- let's write a test for that!  Because the ``ONeLineTag`` class is a base class for actual elements that should be rendered on one line, we really don't need to write a test directly for it. We can write one for its first subclass: ``Title``. The title elements should be rendered something like this::
 
     <title> PythonClass - title example </title>
 
@@ -890,7 +900,7 @@ You can run the tests now if you like -- it will fail due to there being no Titl
     class Title(OneLineTag):
         tag = "title"
 
-The ``pass`` means "do nothing." But it is required to satisfy PYhton. There needs to be *something* in the class definition.  So in this case, we have a ``OneLineTag`` class that is exactly the same as the ``Element`` class,  and a ``Title`` class that is the same except for the tag. Time to test again::
+The ``pass`` means "do nothing." But it is required to satisfy Python. There needs to be *something* in the class definition.  So in this case, we have a ``OneLineTag`` class that is exactly the same as the ``Element`` class,  and a ``Title`` class that is the same except for the tag. Time to test again::
 
     $ pytest
     ============================= test session starts ==============================
@@ -931,7 +941,7 @@ The title test failed on this assertion::
 
     >       assert "\n" not in file_contents
 
-wTich is what we expected because we haven't written a new render method yet.  But look at the end of the output, where is says ``-- Captured stdout call --``.  That shows you how the title element is being rendered -- with the newlines. That's there because there is a print in the test:
+Which is what we expected because we haven't written a new render method yet.  But look at the end of the output, where is says ``-- Captured stdout call --``.  That shows you how the title element is being rendered -- with the newlines. That's there because there is a print in the test:
 
 .. code-block:: python
 
