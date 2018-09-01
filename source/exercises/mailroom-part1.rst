@@ -13,7 +13,7 @@ This progressive work will give you a strong foundation for success in the final
 
 
 Overall Program Goal:
--------------
+---------------------
 
 You work in the mail room at a local charity. Part of your job is to write
 incredibly boring, repetitive emails thanking your donors for their generous
@@ -22,7 +22,7 @@ let Python help you out of a jam and do your work for you.
 
 
 The Program: Part 1
------------
+-------------------
 
 Write a small command-line script called ``mailroom.py``. This script should be executable. The script should accomplish the following goals:
 
@@ -45,7 +45,7 @@ Send a Thank You
 
   * Convert the amount into a number; it is OK at this point for the program to crash if someone types a bogus amount.
   * Add that amount to the donation history of the selected user.
- 
+
 * Finally, use string formatting to compose an email thanking the donor for their generous donation. Print the email to the terminal and return to the original prompt.
 
 It is fine (for now) for the program not to store the names of the new donors that had been added, in other words, to forget new donors once the script quits running.
