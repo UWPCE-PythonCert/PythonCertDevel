@@ -4,7 +4,7 @@
 Mailroom Part 3
 =================
 
-Improve your mailroom by adding exceptions and comprehensions
+**Improve your mailroom by adding exceptions and comprehensions.**
 
 Exceptions
 ----------
@@ -31,7 +31,7 @@ with
     [print(donor) for donor in donors]
 
 
-That's not the intended use of comprehensions, and will allocate a space for an "empty" result list filled with None values because ``print`` function does not have a value:
+That's not the intended use of comprehensions. Because ``print`` function does not have a value, this code will allocate a space for an "empty" result list filled with None values:
 
     >>> [print(donor) for donor in donors]
     jane
