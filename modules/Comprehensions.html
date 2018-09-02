@@ -192,14 +192,14 @@
     <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression_with_variable</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>This is such a common pattern that python added syntax to directly support it. THis syntax is known as “comprehensions”. The most common of which is a list comprehension, used to build up a new list. There are a couple others, which we will get too later, but they all share a similar structure.</p>
+<p>This is such a common pattern that python added syntax to directly support it. This syntax is known as “comprehensions”. The most common of which is a list comprehension, used to build up a new list. There are a couple others, which we will get too later, but they all share a similar structure.</p>
 <p>The above structure can be expressed with a single line using a “list comprehension” as so:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">expression_with_variable</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Nice and clear and compact. And the use of the “list” brackets (<code class="docutils literal notranslate"><span class="pre">[...]</span></code>) makes it clear you are making a list.</p>
+<p>Nice and clear and compact, and the use of the “list” brackets (<code class="docutils literal notranslate"><span class="pre">[...]</span></code>) makes it clear you are making a list.</p>
 <p>Recall what an expression is in Python: a bit of code (names and operators) that evaluates to a value. So in the beginning of a comprehension, you can put anything that evaluates to a value – and that value is what gets added to the list.
-This can be a simple (or complex) math operation: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">3</span></code>, or a function or method call: <code class="docutils literal notranslate"><span class="pre">a_string.upper()</span></code>, <code class="docutils literal notranslate"><span class="pre">int(x)</span></code>.
+This can be a simple (or complex) math operation: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">3</span></code>, or a function or method call: <code class="docutils literal notranslate"><span class="pre">a_string.upper()</span></code>, <code class="docutils literal notranslate"><span class="pre">int(x)</span></code>, etc.
 But it can not contain any statements: code that does not return a value, such as assignment (<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">5</span></code>), or <code class="docutils literal notranslate"><span class="pre">for</span></code> loops, or <code class="docutils literal notranslate"><span class="pre">if</span></code> blocks.</p>
 <div class="section" id="nested-loops">
 <h3>Nested Loops<a class="headerlink" href="#nested-loops" title="Permalink to this headline">¶</a></h3>
@@ -241,19 +241,19 @@ But it can not contain any statements: code that does not return a value, such a
 </div>
 <div class="section" id="what-about-filter">
 <h3>What about filter?<a class="headerlink" href="#what-about-filter" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">filter()</span></code> is another functional concept: building a new list with only <em>some</em> of the elements – “filtering” out the ones you don’t want. Python also has a <code class="docutils literal notranslate"><span class="pre">filter()</span></code> function, also pre-dating comprehensions, but you can do it with a comprehension as well, but it does the application of the expression and the filtering in one construct.</p>
-<p>This is to support the common case of having a conditional in the loop:</p>
+<p>“filtering” is another functional concept: building a new list with only <em>some</em> of the elements – “filtering” out the ones you don’t want. Python has a <code class="docutils literal notranslate"><span class="pre">filter()</span></code> function, also pre-dating comprehensions, but you can do it with a comprehension as well, and it does the application of the expression and the filtering in one construct, rather than having to nest <code class="docutils literal notranslate"><span class="pre">map</span></code> and <code class="docutils literal notranslate"><span class="pre">filter</span></code> calls.</p>
+<p>This supports the common case of having a conditional in the loop:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">something_is_true</span><span class="p">:</span>
         <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>You can do this kind of “filtering” by adding a conditional to the comprehension:</p>
+<p>This kind of “filtering” loop can be achieved by adding a conditional to the comprehension:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">expr</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">a_list</span> <span class="k">if</span> <span class="n">something_is_true</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>This is expressing the “filter” pattern and the “map” pattern at the same time – one reason I like comprehensions more.</p>
+<p>This is expressing the “filter” pattern and the “map” pattern at the same time – one reason I like the comprehension sytax so much.</p>
 <p class="rubric">Examples:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [341]: </span><span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
 <span class="gh">Out[341]: </span><span class="go">[0, 1, 4]</span>
@@ -275,21 +275,24 @@ But it can not contain any statements: code that does not return a value, such a
  <span class="o">....</span>
 </pre></div>
 </div>
+<p>Note that the last one was only filtering (<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">&quot;Error&quot;</span> <span class="pre">in</span> <span class="pre">name</span></code>), without applying any expression to the items (<code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">for</span> <span class="pre">name</span></code>).</p>
 </div>
 </div>
 <div class="section" id="set-comprehensions">
 <h2>Set Comprehensions<a class="headerlink" href="#set-comprehensions" title="Permalink to this headline">¶</a></h2>
-<p>You can do a similar thing with sets, too:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_set</span> <span class="o">=</span> <span class="p">{</span> <span class="n">expression_with_variable</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_sequence</span> <span class="p">}</span>
+<p>You can do a similar thing with sets, as well:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_set</span> <span class="o">=</span> <span class="p">{</span><span class="n">expression_with_variable</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>The curly brackets (<code class="docutils literal notranslate"><span class="pre">{...}</span></code>) indicate a set.</p>
-<p>Results in the same set as this for loop:</p>
+<p>This results in the same set as this for loop:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">:</span>
     <span class="n">new_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">expression_with_variable</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>or, indeed, the same as passing a list comp to <code class="docutils literal notranslate"><span class="pre">set()</span></code>.</p>
+<p>new_set = set([expression_with_variable for variable in a_sequence])</p>
 <p><strong>Example:</strong> Finding all the vowels in a string…</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;a not very long string&quot;</span>
 
@@ -301,13 +304,13 @@ But it can not contain any statements: code that does not return a value, such a
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Why did I use <code class="docutils literal notranslate"><span class="pre">set('aeiou')</span></code> rather than just <cite>aeiou</cite> ? <code class="docutils literal notranslate"><span class="pre">in</span></code> works with strings, but is it efficient?</p>
+<p class="last">Why did I use <code class="docutils literal notranslate"><span class="pre">set('aeiou')</span></code> rather than just <cite>aeiou</cite> ? … <code class="docutils literal notranslate"><span class="pre">in</span></code> works with strings as well, but is it efficient?</p>
 </div>
 </div>
 <div class="section" id="dict-comprehensions">
 <h2>Dict Comprehensions<a class="headerlink" href="#dict-comprehensions" title="Permalink to this headline">¶</a></h2>
 <p>Also with dictionaries</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_dict</span> <span class="o">=</span> <span class="p">{</span> <span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">}</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>Same as this for loop:</p>
@@ -324,7 +327,7 @@ But it can not contain any statements: code that does not return a value, such a
 </pre></div>
 </div>
 <div class="section" id="a-bit-of-history">
-<h3>A bit of history:<a class="headerlink" href="#a-bit-of-history" title="Permalink to this headline">¶</a></h3>
+<h3>A bit of History:<a class="headerlink" href="#a-bit-of-history" title="Permalink to this headline">¶</a></h3>
 <p>dict comps are not as useful as they used to be, now that we have the <code class="docutils literal notranslate"><span class="pre">dict()</span></code>  constructor.</p>
 <p>In the early days of Python the only way to create a dict was with a literal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a_dict</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># an empty dict</span>
@@ -390,7 +393,7 @@ But it can not contain any statements: code that does not return a value, such a
 </div>
 </div>
 <div class="section" id="generator-expressions">
-<h2>generator expressions<a class="headerlink" href="#generator-expressions" title="Permalink to this headline">¶</a></h2>
+<h2>Generator Expressions<a class="headerlink" href="#generator-expressions" title="Permalink to this headline">¶</a></h2>
 <p>There is yet another type of comprehension: generator comprehensions, technically known as “generator expressions”. They are very much like a list comprehension, except that they evaluate to an lazy-evaluated “iterable”, rather than a list. That is, they <em>generate</em> the items on the fly.</p>
 <p>This is useful, because we often create a comprehension simply to loop over it right away:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">]:</span>
@@ -398,8 +401,8 @@ But it can not contain any statements: code that does not return a value, such a
 </pre></div>
 </div>
 <p>In this case, the comprehension: <code class="docutils literal notranslate"><span class="pre">[y**2</span> <span class="pre">for</span> <span class="pre">y</span> <span class="pre">in</span> <span class="pre">a_sequence]</span></code> iterates over <code class="docutils literal notranslate"><span class="pre">a_sequence</span></code>, computes the square of each item, and creates a whole new list with the new values.
-All this, just so it can be iterated over again right away. If the original sequence is large (or is itself a lazy-evaluated iterable), the the step of creating the extra list can be expensive.</p>
-<p>generator comprehensions, on the other hand, create an iterable evaluates the items as they are iterated over, rather than all at once ahead of time – so the entire collection is never stored.</p>
+All this, just so it can be iterated over again right away. If the original sequence is large (or is itself a lazy-evaluated iterable), then the step of creating the extra list can be expensive and unnecessary.</p>
+<p>Generator comprehensions, on the other hand, create an iterable that evaluates the items as they are iterated over, rather than all at once ahead of time – so the entire collection is never stored.</p>
 <p>The syntax for a generator comprehension is the same as a list comp, except it uses regular parentheses:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">)</span>
 </pre></div>
@@ -434,13 +437,14 @@ All this, just so it can be iterated over again right away. If the original sequ
 <span class="go">9</span>
 </pre></div>
 </div>
+<p>You will learn more about generators, and other ways to make them, in future lessons.</p>
 <p>Let’s use a little function to make this clear:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;test called with: &quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 <span class="gp">   ...: </span>    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<p>It simply returns the square of the passed-in value, but prints it as it does so – so we can see when it is called.
+<p>It simply returns the square of the passed-in value, but prints it as it does so, so we can see when it is called.
 If we use it in a list comp:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="p">[</span><span class="n">test</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
 <span class="go">test called with:  0</span>
@@ -449,12 +453,12 @@ If we use it in a list comp:</p>
 <span class="gh">Out[10]: </span><span class="go">[0, 1, 4]</span>
 </pre></div>
 </div>
-<p>We see that test gets called for all the values, and then a list is returned wth all the results.
+<p>We see that test gets called for all the values, and then a list is returned with all the results.
 But if we use it in a generator comprehension:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">test</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>nothing gets printed (the function has not been called) until you loop through it:</p>
+<p>Nothing gets printed (the function has not been called) until you loop through it:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">g</span><span class="p">:</span>
 <span class="go">    ...:     print(i)</span>
 <span class="go">    ...:</span>
@@ -466,7 +470,8 @@ But if we use it in a generator comprehension:</p>
 <span class="go">4</span>
 </pre></div>
 </div>
-<p>you can see that <code class="docutils literal notranslate"><span class="pre">test()</span></code> is getting called <em>as</em> the loop is run. You usually don’t put assign a generator expression to a variable, but rather, loop through it right away:</p>
+<p>You can see that <code class="docutils literal notranslate"><span class="pre">test()</span></code> is getting called for each item <em>as</em> the loop is run.</p>
+<p>You usually don’t assign a generator expression to a variable, but rather, loop through it right away:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [17]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="n">test</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)):</span>
 <span class="go">    ...:     print(i)</span>
 <span class="go">    ...:</span>
@@ -485,7 +490,7 @@ But if we use it in a generator comprehension:</p>
 <p>If you are going to immediately loop through the items created by the comprehension, use a generator comprehension.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The “official” term is “generator expression” – that is what you will see in the Python docs, and a lot of online discussions. I’ve used the term “generator comprehension” to better make clear the association with list comprehensions.</p>
+<p class="last">The “official” term is “generator expression” – that is what you will see in the Python docs, and a lot of online discussions. I’ve used the term “generator comprehension” here to better make clear the association with list comprehensions.</p>
 </div>
 </div>
 </div>

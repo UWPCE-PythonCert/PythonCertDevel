@@ -205,7 +205,7 @@
 <span class="go">12</span>
 </pre></div>
 </div>
-<p>But this should only be done if it makes your code <strong>more</strong> readable.</p>
+<p>But this should only be done if it makes your code <em>more</em> readable. And that is rare.</p>
 <p>So you need both the colon and the indentation to start a new a block.  But the end of the indented section is the only indication of the end of the block.</p>
 </div>
 <div class="section" id="spaces-vs-tabs">
@@ -220,8 +220,11 @@
 <p>If you want anyone to take you seriously as a Python developer:</p>
 <p><strong>Always use four spaces – really!</strong></p>
 <p><a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/">(PEP 8)</a></p>
-<p>Also note: if you DO use tabs (and really, don’t do that!) python interprets them as the equivalent of <em>eight</em> spaces.  Text editors can display tabs as any number of spaces, and most modern editors default to four – so this can be <em>very</em> confusing! so again:</p>
-<p><strong>Never mix tabs and spaces in Python code</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If you <em>do</em> use tabs (and really, don’t do that!) python interprets them as the equivalent of <em>eight</em> spaces.  Text editors can display tabs as any number of spaces, and most modern editors default to four – so this can be <em>very</em> confusing! so again:</p>
+<p class="last"><strong>Never mix tabs and spaces in Python code</strong></p>
+</div>
 </div>
 <div class="section" id="spaces-elsewhere">
 <h3>Spaces Elsewhere<a class="headerlink" href="#spaces-elsewhere" title="Permalink to this headline">¶</a></h3>
@@ -235,7 +238,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">12</span> <span class="o">/</span> <span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">))</span>
 </pre></div>
 </div>
-<p><em>Read PEP 8 and install a linter in your editor.</em></p>
+<p><strong>Read PEP 8 and install a linter in your editor.</strong></p>
 </div>
 </div>
 <div class="section" id="modules-and-packages">
@@ -440,6 +443,52 @@
 <p>Another key point to keep in mind is that all code files in a given python program are sharing the same modules. So if you change a value in a module, that value’s change will be reflected in other parts of the code that have imported that same module.</p>
 <p>This can create dangerous side effects and hard to find bugs if you change anything in an imported module, but it can also be used as a handy way to store truly global state, like application preferences, for instance.</p>
 <p>A rule of thumb for managing global state is to have only <em>one</em> part of your code change the values, and everywhere else considers them read-only. You can’t enforce this, but you can structure you own code that way.</p>
+<p>Let’s take a look at an example of this.</p>
+<p>Create three modules (python files):</p>
+<p><code class="docutils literal notranslate"><span class="pre">mod1.py</span></code>, <code class="docutils literal notranslate"><span class="pre">mod2.py</span></code>, <code class="docutils literal notranslate"><span class="pre">mod3.py</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">mod1.py</span></code> is very simple – one name declared:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">mod2.py</span></code> is where a bit actually goes on:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="kn">import</span> <span class="nn">mod1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;In mod2: mod1.x = {mod1.x}&quot;</span><span class="p">)</span>
+
+<span class="nb">input</span><span class="p">(</span><span class="s2">&quot;pausing (hit enter to continue &gt;&quot;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;importing mod3&quot;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">mod3</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Still in mod2: mod1.x = {mod1.x}&quot;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;mod3 changed the value in mod1, and that change shows up in mod2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, we import <code class="docutils literal notranslate"><span class="pre">mod1</span></code>, and we can now see the names defined in it, and print the value of <code class="docutils literal notranslate"><span class="pre">x</span></code>. Then it pauses, waiting for input. After the user hits the &lt;enter&gt; key, it then imports <code class="docutils literal notranslate"><span class="pre">mod3</span></code>, and again prints the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> that is in <code class="docutils literal notranslate"><span class="pre">mod1</span></code>. Let’s now look at <code class="docutils literal notranslate"><span class="pre">mod3.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mod1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;In mod3 -- changing the value of mod1.x&quot;</span><span class="p">)</span>
+
+<span class="n">mod1</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">555</span>
+</pre></div>
+</div>
+<p>Other than the print – all <code class="docutils literal notranslate"><span class="pre">mod3</span></code> does is re-set the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> that is on <code class="docutils literal notranslate"><span class="pre">mod1</span></code>.
+Running <code class="docutils literal notranslate"><span class="pre">mod2.py</span></code> results in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python mod2.py
+In mod2: mod1.x = 5
+pausing (hit enter to continue &gt;
+importing mod3
+In mod3 -- changing the value of mod1.x
+Still in mod2: mod1.x = 555
+mod3 changed the value in mod1, and that change shows up in mod2
+</pre></div>
+</div>
+<p>You can see that when <code class="docutils literal notranslate"><span class="pre">mod2</span></code> changed the value of <code class="docutils literal notranslate"><span class="pre">mod1.x</span></code>, that changed the value everywhere that <code class="docutils literal notranslate"><span class="pre">mod1</span></code> is imported. You want to be very careful about this.</p>
+<p>If you are writing <code class="docutils literal notranslate"><span class="pre">mod2.py</span></code>, and did not write <code class="docutils literal notranslate"><span class="pre">mod3</span></code> (or wrote it long enough ago that you don’t remember its details), you might be very surprised that a value in <code class="docutils literal notranslate"><span class="pre">mod1</span></code> changes simply because you imported <code class="docutils literal notranslate"><span class="pre">mod3</span></code>.  This is known as a “side effect”, and you generally want to avoid them!</p>
 </div>
 </div>
 </div>

@@ -24,7 +24,7 @@ Consider this common ``for`` loop structure:
     for variable in a_list:
         new_list.append(expression_with_variable))
 
-This is such a common pattern that python added syntax to directly support it. THis syntax is known as "comprehensions". The most common of which is a list comprehension, used to build up a new list. There are a couple others, which we will get too later, but they all share a similar structure.
+This is such a common pattern that python added syntax to directly support it. This syntax is known as "comprehensions". The most common of which is a list comprehension, used to build up a new list. There are a couple others, which we will get too later, but they all share a similar structure.
 
 The above structure can be expressed with a single line using a "list comprehension" as so:
 
@@ -32,10 +32,10 @@ The above structure can be expressed with a single line using a "list comprehens
 
     new_list = [expression_with_variable for variable in a_list]
 
-Nice and clear and compact. And the use of the "list" brackets (``[...]``) makes it clear you are making a list.
+Nice and clear and compact, and the use of the "list" brackets (``[...]``) makes it clear you are making a list.
 
 Recall what an expression is in Python: a bit of code (names and operators) that evaluates to a value. So in the beginning of a comprehension, you can put anything that evaluates to a value -- and that value is what gets added to the list.
-This can be a simple (or complex) math operation: ``x * 3``, or a function or method call: ``a_string.upper()``, ``int(x)``.
+This can be a simple (or complex) math operation: ``x * 3``, or a function or method call: ``a_string.upper()``, ``int(x)``, etc.
 But it can not contain any statements: code that does not return a value, such as assignment (``x = 5``), or ``for`` loops, or ``if`` blocks.
 
 
@@ -94,9 +94,9 @@ Python does have a ``map()`` function, which pre-dates comprehensions. But it do
 What about filter?
 ..................
 
-``filter()`` is another functional concept: building a new list with only *some* of the elements -- "filtering" out the ones you don't want. Python also has a ``filter()`` function, also pre-dating comprehensions, but you can do it with a comprehension as well, but it does the application of the expression and the filtering in one construct.
+"filtering" is another functional concept: building a new list with only *some* of the elements -- "filtering" out the ones you don't want. Python has a ``filter()`` function, also pre-dating comprehensions, but you can do it with a comprehension as well, and it does the application of the expression and the filtering in one construct, rather than having to nest ``map`` and ``filter`` calls.
 
-This is to support the common case of having a conditional in the loop:
+This supports the common case of having a conditional in the loop:
 
 .. code-block:: python
 
@@ -105,13 +105,13 @@ This is to support the common case of having a conditional in the loop:
         if something_is_true:
             new_list.append(expression)
 
-You can do this kind of "filtering" by adding a conditional to the comprehension:
+This kind of "filtering" loop can be achieved by adding a conditional to the comprehension:
 
 .. code-block:: python
 
     new_list = [expr for var in a_list if something_is_true]
 
-This is expressing the "filter" pattern and the "map" pattern at the same time -- one reason I like comprehensions more.
+This is expressing the "filter" pattern and the "map" pattern at the same time -- one reason I like the comprehension sytax so much.
 
 
 .. rubric:: Examples:
@@ -140,24 +140,31 @@ Get creative....
      'EOFError',
      ....
 
+Note that the last one was only filtering (``if "Error" in name``), without applying any expression to the items (``name for name``).
+
+
 Set Comprehensions
 ------------------
 
-You can do a similar thing with sets, too:
+You can do a similar thing with sets, as well:
 
 .. code-block:: python
 
-    new_set = { expression_with_variable for variable in a_sequence }
+    new_set = {expression_with_variable for variable in a_sequence}
 
 The curly brackets (``{...}``) indicate a set.
 
-Results in the same set as this for loop:
+This results in the same set as this for loop:
 
 .. code-block:: python
 
     new_set = set()
     for variable in a_sequence:
         new_set.add(expression_with_variable)
+
+or, indeed, the same as passing a list comp to ``set()``.
+
+new_set = set([expression_with_variable for variable in a_sequence])
 
 
 **Example:** Finding all the vowels in a string...
@@ -173,7 +180,7 @@ Results in the same set as this for loop:
 
 .. note::
 
-  Why did I use ``set('aeiou')`` rather than just `aeiou` ? ``in`` works with strings, but is it efficient?
+  Why did I use ``set('aeiou')`` rather than just `aeiou` ? ... ``in`` works with strings as well, but is it efficient?
 
 
 Dict Comprehensions
@@ -183,7 +190,7 @@ Also with dictionaries
 
 .. code-block:: python
 
-    new_dict = { key: value for variable in a_sequence}
+    new_dict = {key: value for variable in a_sequence}
 
 
 Same as this for loop:
@@ -205,7 +212,7 @@ A dict comprehension also uses curly brackets -- Python knows it's a dict compre
               3: 'this_3', 4: 'this_4'}
 
 
-A bit of history:
+A bit of History:
 .................
 
 dict comps are not as useful as they used to be, now that we have the ``dict()``  constructor.
@@ -287,7 +294,7 @@ dict comps are still nice if you need to filter the results, though:
     Out[17]: {1: 'fred', 2: 'john'}
 
 
-generator expressions
+Generator Expressions
 ---------------------
 
 There is yet another type of comprehension: generator comprehensions, technically known as "generator expressions". They are very much like a list comprehension, except that they evaluate to an lazy-evaluated "iterable", rather than a list. That is, they *generate* the items on the fly.
@@ -300,9 +307,9 @@ This is useful, because we often create a comprehension simply to loop over it r
         outfile.write(f"The number is: {x}")
 
 In this case, the comprehension: ``[y**2 for y in a_sequence]`` iterates over ``a_sequence``, computes the square of each item, and creates a whole new list with the new values.
-All this, just so it can be iterated over again right away. If the original sequence is large (or is itself a lazy-evaluated iterable), the the step of creating the extra list can be expensive.
+All this, just so it can be iterated over again right away. If the original sequence is large (or is itself a lazy-evaluated iterable), then the step of creating the extra list can be expensive and unnecessary.
 
-generator comprehensions, on the other hand, create an iterable evaluates the items as they are iterated over, rather than all at once ahead of time -- so the entire collection is never stored.
+Generator comprehensions, on the other hand, create an iterable that evaluates the items as they are iterated over, rather than all at once ahead of time -- so the entire collection is never stored.
 
 The syntax for a generator comprehension is the same as a list comp, except it uses regular parentheses::
 
@@ -344,6 +351,8 @@ A generator is an object that can be iterated over with a for loop, and it will 
     4
     9
 
+You will learn more about generators, and other ways to make them, in future lessons.
+
 Let's use a little function to make this clear:
 
 .. code-block:: ipython
@@ -352,7 +361,7 @@ Let's use a little function to make this clear:
        ...:     print("test called with: ", x)
        ...:     return x ** 2
 
-It simply returns the square of the passed-in value, but prints it as it does so -- so we can see when it is called.
+It simply returns the square of the passed-in value, but prints it as it does so, so we can see when it is called.
 If we use it in a list comp:
 
 .. code-block:: ipython
@@ -363,14 +372,14 @@ If we use it in a list comp:
     test called with:  2
     Out[10]: [0, 1, 4]
 
-We see that test gets called for all the values, and then a list is returned wth all the results.
+We see that test gets called for all the values, and then a list is returned with all the results.
 But if we use it in a generator comprehension:
 
 .. code-block:: ipython
 
     In [11]: g = (test(x) for x in range(3))
 
-nothing gets printed (the function has not been called) until you loop through it:
+Nothing gets printed (the function has not been called) until you loop through it:
 
 .. code-block:: ipython
 
@@ -384,7 +393,9 @@ nothing gets printed (the function has not been called) until you loop through i
     test called with:  2
     4
 
-you can see that ``test()`` is getting called *as* the loop is run. You usually don't put assign a generator expression to a variable, but rather, loop through it right away:
+You can see that ``test()`` is getting called for each item *as* the loop is run.
+
+You usually don't assign a generator expression to a variable, but rather, loop through it right away:
 
 .. code-block:: ipython
 
@@ -409,5 +420,5 @@ If you are going to immediately loop through the items created by the comprehens
 
 .. note::
 
-  The "official" term is "generator expression" -- that is what you will see in the Python docs, and a lot of online discussions. I've used the term "generator comprehension" to better make clear the association with list comprehensions.
+  The "official" term is "generator expression" -- that is what you will see in the Python docs, and a lot of online discussions. I've used the term "generator comprehension" here to better make clear the association with list comprehensions.
 

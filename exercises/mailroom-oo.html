@@ -98,7 +98,7 @@
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Mailroom - Object Oriented</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-10-introduction-to-functional-programming">Lesson 10: Introduction to Functional Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-10-catch-up">Lesson 10: Catch up</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a></li>
@@ -253,8 +253,9 @@ Remember, if you are writing code that only accesses information about a single 
 <p class="last">Technically, console print statements don’t belong in your data classes. However, for some features of this program, such as “send letters,” we are simply printing instead of “sending,” so it is ok for this feature to reside in the data class. But do keep integration of console print statements with data classes to a minimum. Ideally, the data class methods return a string, and the UI code does the printing.</p>
 </div>
 <p>Why is this separation of data and method so important?</p>
-<p>The idea here is that we should be able to fairly easy replace this CLI program with a different type of interface, such as a GUI (Graphical User Interface), without having to make any changes to our data classes.
-The only thing that would need to change with a potential GUI feature is implementing actual GUI elements to use those same classes.</p>
+<p>The idea here is that we should be able to fairly easy replace this CLI program with a different type of interface,
+such as a GUI (Graphical User Interface), without having to make any changes to our data classes.
+If that was the case, then you would implement the GUI elements and use your data classes the same way as they are used in CLI.</p>
 </div>
 </div>
 <div class="section" id="test-driven-development">
