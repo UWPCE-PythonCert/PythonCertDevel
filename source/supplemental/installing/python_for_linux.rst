@@ -11,6 +11,8 @@ Debian and Related Distros (Ubuntu, Linux Mint)
 Python
 -------
 
+For this program, you need Python3.6.* or 3.7.*
+
 Debian distros already have the stable python2 and python3 releases preinstalled (`Debian Wiki <https://wiki.debian.org/Python>`_).
 
 Try the following command:
@@ -22,7 +24,7 @@ Try the following command:
   [GCC 4.9.2 on linux]
   >>>
 
-I'm pretty sure that 18.4 (the most recent long term support release) has 3.6
+I'm pretty sure that 18.4 (the most recent long term support release) has 3.6, if so, you are set.
 
 That's nice, which one is the default version? Just type ``python`` to see. It's probably python2 still:
 
@@ -54,18 +56,23 @@ If you want to make ``python3.6`` the default version then add the line ``alias 
   [GCC 4.9.2 on linux]
   >>>
 
-Note: your version number may vary, but it will be a Python 3 version. And you may not have pip and ipython installed yet, but you will as you follow the instructions below.
+Alternatively, you can always remember to type ``python3`` whenever you want Python.
+
+Note: your version number may vary, but it needs to be ``3.6.*`` or ``3.7.*``
+
+You may not have pip and ipython installed yet, but you will as you follow the instructions below.
 
 If you don't have the version you want installed then use the package manager to find and install it:
 
 .. code-block:: bash
 
    $ # search the package manager for it
-   $ sudo apt-cache search python | grep '^python3.6\ -'
-   python3.6 - Interactive high-level object-oriented language (version 3.6)
+   $ sudo apt-cache search python | grep '^python3.7\ -'
+   python3.7 - Interactive high-level object-oriented language (version 3.7)
    $ # install it
-   $ sudo apt-get install python3.6
+   $ sudo apt-get install python3.7
 
+(If you cant find 3.7, try 3.6 instead)
 
 Terminal
 ---------
@@ -119,14 +126,15 @@ Which often works, but also can invoke the *wrong* version of pip. The above com
 
   $ python3 -m pip install something_or_other
 
-calls Python, and tells it to run the ``pip`` module. It is exactly the same as calling pip directly, except that you are assured that you are getting the version of pip connected the version of python that you are running.
+calls Python, and tells it to run the ``pip`` module. It is exactly the same as calling pip directly, except that you are assured that you are getting the version of pip connected the version of python that you are running (in this case python3).
+
 
 iPython
 --------
 
 One extra package we are going to use in class is ``iPython``::
 
-  $ sudo python3 -m pip install ipython[all]
+  $ sudo python3 -m pip install ipython
 
 You should now be able to run ``iPython``::
 
@@ -155,7 +163,7 @@ Fedora and Red Hat Related Distros (CentOS)
 
 .. warning::
 
-	CentOS is probably the most popular distro of these related flavors. However, getting Python3 on it can be a pain. You have been warned!
+	CentOS is probably the most popular distro of these related flavors. However, getting Python3 on it can be a pain. You have been warned! (but there are lots of tutorials on the web -- google "install python3 on CentOS")
 
 
 Python
@@ -285,3 +293,4 @@ Fedora Wiki
 =============
 
 https://fedoraproject.org/wiki/Packaging:Python
+
