@@ -40,7 +40,6 @@ If you are not sure, then read on ...
 The Command Line (cli)
 ----------------------
 
-
 Having some facility on the command line is important for a software developer.
 
 We won't cover this much in class, so if you are not comfortable,
@@ -53,7 +52,6 @@ We have some resources here: `PythonResources--command line <http://uwpce-python
 Most of the demos in class, etc., will be done using the "bash" command line shell on OS-X or Linux.
 
 Windows provides the "DOS" command line, which is OK, but pretty old and limited, or "Power Shell," a more modern, powerful, flexible command shell.
-
 
 If you are comfortable with either of these, go for it.
 
@@ -140,7 +138,6 @@ The Editor
 
 Typing code in an interpreter is great for exploring.
 
-
 But for anything "real," you'll want to save the work you are doing in a more permanent fashion.
 
 This is where a "programmer's text editor" fits in.
@@ -205,9 +202,6 @@ An IDE, once set up, can hide a a lot of what is going on under the hood.  Parti
 You may want to try the educational edition of PyCharm, which some people like a lot:
 
 https://www.jetbrains.com/pycharm-edu/
-
-
-
 
 .. _testing_your_setup:
 
