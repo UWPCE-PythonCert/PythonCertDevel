@@ -42,7 +42,6 @@ The Call Stack
 
 http://www.pythontutor.com/visualize.html#mode=edit
 
-.. nextslide::
 
 Visualize the stack!
 --------------------
@@ -50,10 +49,8 @@ Visualize the stack!
 .. image:: /_static/program_callstack.png
    :height: 580 px
 
-.. nextslide::
 
 .. rubric:: How deep can that stack be?
-   :name: how-deep-can-that-stack-be
 
 ::
 
@@ -72,7 +69,6 @@ That value can be changed with sys.setrecursionlimit(N)
 
 If we try to put more than sys.getrecursionlimit() frames on the stack, we get a RecursionError (derived from RuntimeError), which is python's version of StackOverflow
 
-.. nextslide::
 
 .. code-block:: ipython
 
@@ -105,7 +101,6 @@ an exception will be raised
 The exception will bubble up the call stack until it is handled. If it's
 not handled anywhere in the stack, the interpreter will exit the program.
 
-.. nextslide::
 
 At each level in the stack, a handler can either:
 
@@ -128,8 +123,6 @@ The most basic form uses the builtins try and except
         except ValueError as e:
             print("The argument does not contain numbers\n", e)
 
-
-.. nextslide::
 
 A few more builtins for exception handling: finally, else, and raise
 --------------------------------------------------------------------
@@ -157,8 +150,6 @@ A few more builtins for exception handling: finally, else, and raise
     print('this is only printed if there is no uncaught exception')
 
 
-.. nextslide::
-
 It is even possible to use a try block without the exception clause:
 
 ::
@@ -168,8 +159,6 @@ It is even possible to use a try block without the exception clause:
     finally:
         print('did it work? why would you do this?')
 
-
-.. nextslide::
 
 .. rubric:: Built-in exceptions
    :name: built-in-exceptions
@@ -194,8 +183,6 @@ If no builtin exceptions work, define a new exception type by subclassing Except
 
     raise MyException("An exception doesn't always prove the rule!")
 
-.. nextslide::
-
 It is possible, but discouraged to catch all exceptions.
 
 ::
@@ -210,7 +197,6 @@ An exception to this exception rule is when you are running a service that shoul
 like a web server. In this case, it is extremely important to have very good logging so that you
 have reports of exactly what happened and what exception would have been thrown.
 
-.. nextslide::
 
 .. rubric:: Further reading
    :name: further-reading
@@ -218,7 +204,6 @@ have reports of exactly what happened and what exception would have been thrown.
 -  http://docs.python.org/3/library/exceptions.html
 -  http://docs.python.org/3/tutorial/errors.html
 
-.. nextslide::
 
 Debugging
 ---------
@@ -231,10 +216,9 @@ Debugging
 - Small, tested functions are easier to debug.
 - Find a bug, make a test, so it doesn't come back
 
-.. nextslide::
-
 
 Tools
+.....
 
 -  interpreter hints
 -  print()
@@ -244,9 +228,8 @@ Tools
 -  debuggers
 
 
-.. nextslide::
-
 The Stack Trace
+...............
 
 You already know what it looks like. Simple traceback:
 
@@ -265,23 +248,16 @@ You already know what it looks like. Simple traceback:
 But things can quickly get complicated. You may have already run into stacktraces that go on for a 50 lines or more.
 
 
-.. nextslide::
-
-
 Some helpful hints with stacktraces:
+....................................
 
 - May seem obvious, but... Read it carefully!
 - What is the error? Try reading it aloud.
 - The first place to look is the bottom.
 - Trace will show the line number and file of exception/calling functions.
-- More than likely the error is in your code, not established packages 
+- More than likely the error is in your code, not established packages
   - look at lines in your code mentioned in the stacktrace first
   - Sometimes that error was triggered by something else, and you need to look higher. (probably more than one file in the stacktrace is your code)
-
-
-
-
-.. nextslide::
 
 
 If that fails you...
@@ -291,9 +267,6 @@ If that fails you...
 - Debugger
 - Save (and print) intermediate results from long expressions
 - Try out bits of code at the command line
-
-
-.. nextslide::
 
 If all else fails...
 
@@ -306,26 +279,23 @@ Write out an email that describes the problem:
 Often after writing out this email, you will realize what you forgot to check, and more often than not, this will happen just after you hit send. Good places to send these emails are other people on same project and mailing list for software package. For the purpose of this class, of course, copy it into slack or the class email list.
 
 
-.. nextslide::
-
 Print
+.....
 
 - print("my_module.py: my_variable: ", my_variable)
 - can use print statements to make sure you are editing a file in the stack
 
 
-.. nextslide::
-
-Console debuggers
+Console Debuggers
+.................
 
 -  pdb/ipdb
 
 GUI debuggers (more about these below)
+......................................
 
 -  Winpdb
 -  IDEs: Eclipse, Wing IDE, PyCharm, Visual Studio Code
-
-.. nextslide::
 
 .. rubric:: help from the interpreter
    :name: help-from-the-interpreter
@@ -349,42 +319,34 @@ Verbose (trace import statements)
 
 Forces interpreter to remain active, and still in scope
 
-
-.. nextslide::
-
-
 Useful tools from interpreter:
+..............................
 
 - In IPython, 'who' will list all currently defined variables
 - locals()
 - globals()
 - dir()
 
-.. nextslide::
-
 .. rubric:: `Pdb - The Python
    Debugger <http://docs.python.org/2/library/pdb.html>`__
    :name: pdb---the-python-debugger
 
-Pros:
+.. rubric:: Pros:
 
 -  You have it already, ships with the standard library
 -  Easy remote debugging (since it is non-graphical, see remote-pdb for true remote debugging)
 -  Works with any development environment
 
-Cons:
+.. rubric:: Cons:
 
 -  Steep-ish learning curve
 -  Easy to get lost in a deep stack
 -  Watching variables isn't hard, but non-trivial
 
-.. nextslide::
-
-.. rubric:: `Pdb - The Python
-   Debugger <http://docs.python.org/2/library/pdb.html>`__
-   :name: pdb---the-python-debugger-1
+.. rubric:: `Pdb - The Python Debugger <https://docs.python.org/3.7/library/pdb.html>`_
 
 The 4-fold ways of invoking pdb
+...............................
 
 -  Postmortem mode
 -  Run mode
@@ -396,8 +358,6 @@ can replace it with 'ipdb'. ipdb is the ipython enhanced version of pdb
 which is mostly compatible, and generally easier to work with. But it
 doesn't ship with Python.
 
-.. nextslide::
-
 .. rubric:: Postmortem mode
    :name: postmortem-mode
 
@@ -405,36 +365,30 @@ For analyzing crashes due to uncaught exceptions
 
 ::
 
-          python -i script.py
-          import pdb; pdb.pm()
+  python -i script.py
+  import pdb; pdb.pm()
 
 More info on using Postmortem mode:
 
 http://www.almarklein.org/pm-debugging.html
-
-.. nextslide::
 
 .. rubric:: Run mode
    :name: run-mode
 
 ::
 
-          pdb.run('some.expression()')
-
-.. nextslide::
+  pdb.run('some.expression()')
 
 .. rubric:: Script mode
    :name: script-mode
 
 ::
 
-          python -m pdb script.py
+  python -m pdb script.py
 
 
 "-m [module]" finds [module] in sys.path and executes it as a script
 
-
-.. nextslide::
 
 .. rubric:: Trace mode
    :name: trace-mode
@@ -444,31 +398,26 @@ halt:
 
 ::
 
-          import pdb; pdb.set_trace()
+  import pdb; pdb.set_trace()
 
 
 It's not always OK/possible to modify your code in order to debug it,
 but this is often the quickest way to begin inspecting state
 
-.. nextslide::
-
 .. rubric:: pdb in ipython
    :name: pdb-in-ipython
 
-::
+.. code-block:: ipython
 
+    In [2]: pdb
+    Automatic pdb calling has been turned ON
 
-          In [2]: pdb
-          Automatic pdb calling has been turned ON
+    %run app.py
 
-          %run app.py
+    # now halts execution on uncaught exception
 
-          # now halts execution on uncaught exception
-
-If you forget to turn on pdb, the magic command %debug will activate the
+If you forget to turn on pdb, the magic command ``%debug`` will activate the
 debugger (in 'post-mortem mode').
-
-.. nextslide::
 
 .. rubric:: Navigating pdb
    :name: navigating-pdb
@@ -484,9 +433,6 @@ to the first letter.
     pdb> pp a_variable  # pretty-print a_variable
     pdb> where  # print stack trace, bottom is most recent command
     pdb> list  # list the code including and surrounding the current running code
-
-
-.. nextslide::
 
 To repeat the current command, press only the Enter key
 
@@ -510,8 +456,6 @@ To repeat the current command, press only the Enter key
       pdb> commands
 
 
-.. nextslide::
-
 .. rubric:: Breakpoints
    :name: breakpoints
 
@@ -531,22 +475,17 @@ To repeat the current command, press only the Enter key
       the .py suffix may be omitted.
 
 
-.. nextslide::
-
 Can use up, down, where and list to evalutate where you are, and use that to
 set a new breakpoint in code coming up. Useful for getting out of rabbit holes.
 
 ::
 
-      pdb> break api.py:21 # set a breakpoint file:line #
-      pdb> break  # list breakpoints
-      pdb> clear 1  # get rid of first breakpoint
-      pdb> break 35  # set a breakpoint in current file at line 35
-      # print lines in range
-      pdb> list 1,28
-
-
-.. nextslide::
+  pdb> break api.py:21 # set a breakpoint file:line #
+  pdb> break  # list breakpoints
+  pdb> clear 1  # get rid of first breakpoint
+  pdb> break 35  # set a breakpoint in current file at line 35
+  # print lines in range
+  pdb> list 1,28
 
 
 You can also delete(clear), disable and enable breakpoints
@@ -554,52 +493,31 @@ You can also delete(clear), disable and enable breakpoints
 
 ::
 
-          clear [bpnumber [bpnumber...]]
+  clear [bpnumber [bpnumber...]]
 
-          disable [bpnumber [bpnumber...]]
+  disable [bpnumber [bpnumber...]]
 
-          enable [bpnumber [bpnumber...]]
+  enable [bpnumber [bpnumber...]]
 
-
-.. nextslide::
 
 .. rubric:: Conditional Breakpoints
    :name: conditional-breakpoints
 
 ::
 
-          pdb> break 9, j>3
-          Breakpoint 1 at .../pdb_break.py:9
+    pdb> break 9, j>3
+    Breakpoint 1 at .../pdb_break.py:9
 
-          pdb> break
-          Num Type         Disp Enb   Where
-          1   breakpoint   keep yes   at .../pdb_break.py:9
-                  stop only if j>3
+    pdb> break
+    Num Type         Disp Enb   Where
+    1   breakpoint   keep yes   at .../pdb_break.py:9
+            stop only if j>3
 
 Condition can be used to add a conditional to an existing breakpoint
 
 
+.. rubric:: Invoking pdb with pytest
 
-.. nextslide::
-
-.. rubric:: Invoking pdb with nose
-   :name: invoking-pdb-with-nose
-
-On error condition, drop to pdb
-
-::
-
-    nosetests --pdb
-
-
-On test failure, drop to pdb:
-
-::
-
-    nosetests --pdb-failures
-
-
-.. nextslide::
 
 pytest allows one to drop into the PDB prompt via a command line option::
 
@@ -613,8 +531,6 @@ test to understand a certain failure situation::
   pytest --pdb --maxfail=3  # drop to PDB for first three failures
 
 
-.. nextslide::
-
 Try some debugging! Here is a fun tutorial intro to pdb that someone created:
 
 https://github.com/spiside/pdb-tutorial
@@ -623,7 +539,7 @@ https://github.com/spiside/pdb-tutorial
 Python IDEs
 -----------
 
-**PyCharm**
+.. rubric:: PyCharm
 
 From JetBrains, --- integrates some of their vast array of development
 tools
@@ -632,9 +548,8 @@ Free Community Edition (CE) is available
 
 Good visual debugging support
 
-.. nextslide::
 
-**Eclipse**
+.. rubric:: Eclipse
 
 A multi-language IDE
 
@@ -650,9 +565,7 @@ Further reading
 http://pydev.org/manual_adv_debugger.html
 
 
-.. nextslide::
-
-**Visual Studio Code**
+.. rubric:: Visual Studio Code
 
 Visual Studio Code has support for Python
 
@@ -661,9 +574,7 @@ Visual Studio Code has support for Python
 https://code.visualstudio.com/
 
 
-.. nextslide::
-
-**winpdb**
+.. rubric:: winpdb
 
 A multi platform Python debugger with threading support
 
@@ -683,12 +594,4 @@ remote-pdb
 
 https://pypi.python.org/pypi/remote-pdb
 
-or older package rpdb
-
-https://pypi.python.org/pypi/rpdb
-
-(only tested to Python 3.1)
-
-Questions?
-----------
 

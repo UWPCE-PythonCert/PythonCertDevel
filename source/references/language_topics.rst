@@ -141,6 +141,10 @@ Recent versions of Python have added support for asynchronous programming. It is
 
 Here are some resources to help you "get" it:
 
+A simple introduction to Python’s asyncio
+
+https://hackernoon.com/a-simple-introduction-to-pythons-asyncio-595d9c9ecf8c
+
 Asynchronous Python -- Await the Future
 
 https://hackernoon.com/asynchronous-python-45df84b82434#.kpwejkin2
@@ -234,4 +238,17 @@ http://docopt.org/
   Click is a Python package for creating beautiful command line interfaces in a composable way with as little code as necessary. It’s the “Command Line Interface Creation Kit”. It’s highly configurable but comes with sensible defaults out of the box.
 
 http://click.pocoo.org/
+
+
+Network Programming
+===================
+
+Sockets
+-------
+
+Sockets are the lower-level backbone of internet programming -- underneith http and all that. And working directly with sockets has gotten more popular with the advetn of WebSockets. So good to have a bit of an understanding of them:
+
+Here's a nice into / tutorial:
+
+https://realpython.com/python-sockets/
 
