@@ -11,7 +11,7 @@ Minimal Setup
 
 Although it is OK to use different tools, there are some requirements to successfully do the work the program requires:
 
-#. cPython version 3.6.*
+#. cPython version 3.6.* or 3.7.*
 #. A way to edit Python files (Programmers Text Editor)
 #. A way to run your code -- command line, IDE, etc.
 #. A way to use the "git" source code version control system
@@ -68,7 +68,7 @@ In order to be productive in this program, you need to be able to do the followi
 * Manipulate files and write and save Python code in files.
   You really, really want a "real" programmer's editor for this.
 
-* Run your code with Python 3.6
+* Run your code with Python 3.6 or 3.7
 
 * Run the iPython interactive interpreter
 
@@ -352,20 +352,20 @@ Create a file called ``install_test.py``, with the following content:
     print("This is my first python program")
 
     version = sys.version_info
-
+    version_string = "{}.{}".format(version.major, version.minor)
     if version.major == 3:
-        if version.minor != 6:
-            print("You should be running version 3.6")
+        if version.minor not in (6, 7):
+            print("You should be running version 3.6 or 3.7")
         else:
-            print("You are running python3.6 -- all good!")
+            print("You are running python{} -- all good!".format(version_string))
     else:
         print("You need to run Python 3!")
-        print("This is version: {}.{}".format(version.major, version.minor))
+        print("This is version: {}".format(version_string))
 
 Run it with your version of python. It should result in::
 
     This is my first python program
-    You are running python3.6 -- all good!
+    You are running python3.7 -- all good!
 
 If you get something else -- figure out why and fix it!
 

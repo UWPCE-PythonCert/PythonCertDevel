@@ -219,7 +219,7 @@
 <h2>Minimal Setup<a class="headerlink" href="#minimal-setup" title="Permalink to this headline">¶</a></h2>
 <p>Although it is OK to use different tools, there are some requirements to successfully do the work the program requires:</p>
 <ol class="arabic simple">
-<li>cPython version 3.6.*</li>
+<li>cPython version 3.6.* or 3.7.*</li>
 <li>A way to edit Python files (Programmers Text Editor)</li>
 <li>A way to run your code – command line, IDE, etc.</li>
 <li>A way to use the “git” source code version control system</li>
@@ -264,7 +264,7 @@
 <ul class="simple">
 <li>Manipulate files and write and save Python code in files.
 You really, really want a “real” programmer’s editor for this.</li>
-<li>Run your code with Python 3.6</li>
+<li>Run your code with Python 3.6 or 3.7</li>
 <li>Run the iPython interactive interpreter</li>
 <li>Install new packages with pip</li>
 <li>Use the git source code management system (with gitHub)</li>
@@ -462,20 +462,20 @@ characters hidden behind the scenes.</p>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;This is my first python program&quot;</span><span class="p">)</span>
 
 <span class="n">version</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span>
-
+<span class="n">version_string</span> <span class="o">=</span> <span class="s2">&quot;{}.{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version</span><span class="o">.</span><span class="n">major</span><span class="p">,</span> <span class="n">version</span><span class="o">.</span><span class="n">minor</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">version</span><span class="o">.</span><span class="n">major</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">version</span><span class="o">.</span><span class="n">minor</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;You should be running version 3.6&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">version</span><span class="o">.</span><span class="n">minor</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;You should be running version 3.6 or 3.7&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;You are running python3.6 -- all good!&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;You are running python{} -- all good!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version_string</span><span class="p">))</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;You need to run Python 3!&quot;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;This is version: {}.{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version</span><span class="o">.</span><span class="n">major</span><span class="p">,</span> <span class="n">version</span><span class="o">.</span><span class="n">minor</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;This is version: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version_string</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Run it with your version of python. It should result in:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>This is my first python program
-You are running python3.6 -- all good!
+You are running python3.7 -- all good!
 </pre></div>
 </div>
 <p>If you get something else – figure out why and fix it!</p>
