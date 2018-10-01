@@ -99,6 +99,8 @@ Type ``ctrl+Z`` to get out (or ``exit()``)
 
 Note: if you have trouble running ``python`` command in your gitbash (it hangs), try running this instead: ``winpty python``. To avoid having to type ``winpty python`` all the time, it's strongly recommended that you create an alias like below:
 
+::
+
   $ echo "alias python='winpty python'" >> ~/.bashrc
 
 You will need to close the current bash window and restart a new one to get this alias. Then from now on, you can just type ``python`` and it should work on git bash (no more hanging) as well.
