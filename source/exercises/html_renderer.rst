@@ -343,6 +343,16 @@ Create a ``SelfClosingTag`` subclass of Element, to render tags like::
 
    <hr /> and <br /> (horizontal rule and line break).
 
+(See: https://www.w3schools.com/tags/tag_hr.asp)
+
+For example you should be able to use this code::
+
+    Hr(width=400)
+
+To get this result::
+
+    <hr width="400" />
+
 You will need to override the render method to render just the one tag and attributes, if any.
 
 Note that self closing tags can't have any content. Make sure that your SelfClosingTag element raises an exception if someone tries to put in any content -- probably a ``TypeError``.
@@ -355,6 +365,7 @@ Can you refactor the common parts into a separate method that all the render met
 
 See: :download:`test_html_output5.html  <../examples/html_render/test_html_output5.html>`
 
+
 Step 6:
 -------
 
@@ -365,6 +376,11 @@ Create an ``A`` class for an anchor (link) element. Its constructor should look 
 where ``link`` is the link, and ``content`` is what you see. It can be called like so::
 
     A("http://google.com", "link to google")
+
+and it should render like::
+
+    <a href="http://google.com">link to google</a>
+
 
 You should be able to subclass from ``Element``, and only override the ``__init__`` --- calling the ``Element`` ``__init__`` from the  ``A`` ``__init__``
 

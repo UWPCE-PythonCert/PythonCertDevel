@@ -44,6 +44,8 @@ If you want to make ``python3.6`` the default version then add the line ``alias 
   >>>
 
   $ echo "alias python=python3" >> ~/.bashrc
+  $ echo "alias pip=pip3" >> ~/.bashrc
+  $ echo "alias ipython=ipython3" >> ~/.bashrc
   $ source ~/.bashrc
 
   $ # after the change
@@ -51,6 +53,8 @@ If you want to make ``python3.6`` the default version then add the line ``alias 
   Python 3.6.3 (default, March 26 2017, 15:33:32)
   [GCC 4.9.2 on linux]
   >>>
+
+Note: your version number may vary, but it will be a Python 3 version. And you may not have pip and ipython installed yet, but you will as you follow the instructions below.
 
 If you don't have the version you want installed then use the package manager to find and install it:
 

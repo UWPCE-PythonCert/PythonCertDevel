@@ -1,3 +1,5 @@
+:orphan:
+
 .. _exercise_mailroom_fp:
 
 #####################

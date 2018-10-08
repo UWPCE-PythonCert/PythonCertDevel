@@ -1,7 +1,7 @@
 .. _html_renderer_tutorial:
 
 #######################################
-Tutorial for the html render assignment
+Tutorial for the Html Render Assignment
 #######################################
 
 If you are finding that you don't really know where to start with the html render assignemnt, this tutorial will walk you through the process.
@@ -15,7 +15,9 @@ Step 1:
 
 Step one is a biggie -- that's 'cause you need a fair bit all working before you can actually have anything to test, really. But let's take it bit by bit.
 
-First, we are doing test driven development, and we already have a test or two. So let's run those, and see what we get:
+First, we are doing test driven development, and we already have a test or two. So let's run those, and see what we get.
+
+You should now be in a terminal with the current working directory set to where you downloaded ``html_render.py`` and ``test_html_render.py``. If you run pytest, it will find the ``test_html_render.py`` file and run the tests in it:
 
 .. code-block:: bash
 
@@ -144,7 +146,7 @@ So we need to add a tiny bit of code:
         def __init__(self, content=None):
             pass
 
-That's not much -- will the test pass now? Probably not, we aren't doing anything with the tag. But you can run it to see if you like. It's always good to run tests frequently to make sure you haven't inadvertently broken anything.
+That's not much -- will the test pass now? Probably not, we aren't doing anything with the tag. But you can run it to see if you'd like. It's always good to run tests frequently to make sure you haven't inadvertently broken anything.
 
 Back to the task at hand:
 
@@ -154,7 +156,7 @@ Back to the task at hand:
 
   So your class will need a way to store the content in a way that you can keep adding more to it.
 
-OK, so we need a way to store the content -- both what gets passed in to the ``__init__`` and what gets added with the ``append method``.  We need a data structure that can hold an ordered list of things, and can be added to in the future -- sounds like a list to me. So let's create a list in __init__ and store it in ``self`` for use by the other methods:
+OK, so we need a way to store the content -- both what gets passed in to the ``__init__`` and what gets added with the ``append`` method.  We need a data structure that can hold an ordered list of things, and can be added to in the future -- sounds like a list to me. So let's create a list in __init__ and store it in ``self`` for use by the other methods:
 
 .. code-block:: python
 
@@ -276,7 +278,112 @@ Now run the tests again::
 
     =========================== 3 passed in 0.02 seconds ===========================
 
-Whoo Hoo!  All tests pass! But wait, there's more -- comprehensive testing is difficult -- we tested that you could initialize the elemnt with one piece of content, and then add another.  But what if you initialized it with nothing, and then added some?  Uncomment the next test: ``test_render_element2`` -- and see what you get.
+Whoo Hoo!  All tests pass! But wait, there's more. Comprehensive testing is difficult. We tested that you could initialize the element with one piece of content, and then add another, and we checked that the opening and closing tag are there correctly. But is it actually rendering correctly? We may not have tested for everything. So we should take a look at the results, and see how it's doing. My trick for this is to print what I want to see in the test::
+
+    print(file_contents)
+
+and add a forced test failure at the end of the test, so we'll see that print::
+
+    assert False
+
+And let's run it::
+
+    =================================== FAILURES ===================================
+    _____________________________ test_render_element ______________________________
+
+        def test_render_element():
+            """
+            Tests whether the Element can render two pieces of text
+            So it is also testing that the append method works correctly.
+
+            It is not testing whether indentation or line feeds are correct.
+            """
+            e = Element("this is some text")
+            e.append("and this is some more text")
+
+            # This uses the render_results utility above
+            file_contents = render_result(e).strip()
+            print(file_contents)
+            # making sure the content got in there.
+            assert("this is some text") in file_contents
+            assert("and this is some more text") in file_contents
+
+            # make sure it's in the right order
+            assert file_contents.index("this is") < file_contents.index("and this")
+
+            # making sure the opening and closing tags are right.
+            assert file_contents.startswith("<html>")
+            assert file_contents.endswith("</html>")
+    >       assert False
+    E       assert False
+
+    test_html_render.py:82: AssertionError
+    ----------------------------- Captured stdout call -----------------------------
+    <html>
+    this is some text
+    </html>
+    <html>
+    and this is some more text
+    </html>
+
+It failed on the assert False -- good sign, it didn't fail before that.  We can now look at the results we printed, and whoops! we actually got *two* html elements, rather than one with two pieces of content. Why is that? Before you look at the code again, let's make sure the test catches that and fails. How about this?
+
+.. code-block:: python
+
+    assert file_contents.count("<html>") == 1
+    assert file_contents.count("</html>") == 1
+
+And it does indeed fail on this line::
+
+    >       assert file_contents.count("<html>") == 1
+    E       AssertionError: assert 2 == 1
+    E        +  where 2 = <built-in method count of str object at 0x103967030>('<html>')
+    E        +    where <built-in method count of str object at 0x103967030> = '<html>\nthis is some text\n</html>\n<html>\nand this is some more text\n</html>'.count
+
+    test_html_render.py:83: AssertionError
+
+Now that we know we can test for the issue -- we can try to fix it, and we'll know it's fixed when the tests pass.
+
+So looking at the code -- why did I get two ``<html>`` tags?
+
+.. code-block:: python
+
+    def render(self, out_file):
+        # loop through the list of contents:
+        for content in self.contents:
+            out_file.write("<{}>\n".format(self.tag))
+            out_file.write(content)
+            out_file.write("\n")
+            out_file.write("</{}>\n".format(self.tag))
+
+Hmm -- when are those tags getting rendered? *inside* the loops through the contents! oops! we want to write the tag *before* the loop, and the closing tag *after* loop. (Did you notice that the first time? I hope so.) So a little restructuring is in order.
+
+.. code-block:: python
+
+    def render(self, out_file):
+        # loop through the list of contents:
+        out_file.write("<{}>\n".format(self.tag))
+        for content in self.contents:
+            out_file.write(content)
+            out_file.write("\n")
+        out_file.write("</{}>\n".format(self.tag))
+
+That's it -- let's see if the tests pass now::
+
+
+    >       assert False
+    E       assert False
+
+    test_html_render.py:86: AssertionError
+    ----------------------------- Captured stdout call -----------------------------
+    <html>
+    this is some text
+    and this is some more text
+    </html>
+
+mine failed on the ``assert False`` -- so the actual test passed -- good. And the rendered html tag looks right, too. So we can go ahead and remove that ``assert False``, and move on!
+
+We have tested to see that we could initialize with one piece of content, and then add another, but what if you initialized it with nothing, and then added some?  Try uncommenting the next test: ``test_render_element2`` -- and see what you get.
 
 This is what I got with my code::
 
@@ -472,7 +579,7 @@ Let's  run the tests and see if this worked::
 
     =========================== 7 passed in 0.02 seconds ===========================
 
-Success!. WE now have three different tags.
+Success!. We now have three different tags.
 
 .. note::
   Why the ``Html`` element? doesn't the ``Element`` class already use the "html" tag?
@@ -554,7 +661,7 @@ Uncomment ``test_subelement`` in the test file, and run the tests::
     html_render.py:26: TypeError
     ====================== 1 failed, 7 passed in 0.11 seconds ======================
 
-Again, the new test failed -- no surprise, we haven't written any new code yes. But do read the report carefully -- it did not fail on an assert -- but rather with a ``TypeError``.  The code itself raised an exception before it could produce results to test.
+Again, the new test failed -- no surprise, we haven't written any new code yet. But do read the report carefully -- it did not fail on an assert -- but rather with a ``TypeError``.  The code itself raised an exception before it could produce results to test.
 
 So now it's time to write the code -- look at where the exception was raised: line 26 in my code, inside the ``render()`` method. The line number will likely be different in your code, but it probably failed on the render method. Looking closer at the error::
 
@@ -647,13 +754,13 @@ Whoaa! six failures! We really broke something! But that is a *good* thing -- it
 
 So let's see if we can fix these tests, while still allowing us to add the feature we intended to add.
 
-Again -- look carefully at the error, and the solution might pop out at us::
+Again -- look carefully at the error, and the solution might pop out at you::
 
     >           content.render(out_file)
     E           AttributeError: 'str' object has no attribute 'render'
 
 Now we are trying to call a piece of content's ``render`` method, but we got a simple string, which does not *have* a ``render`` method.
-This is the challenge of this part of teh excercise -- it's easy to render a string, and it's easy to render an element, but the content list could have either one -- so how do we switch between the two methods?
+This is the challenge of this part of the exercise -- it's easy to render a string, and it's easy to render an element, but the content list could have either one -- so how do we switch between the two methods?
 
 There are a number of approaches you can take. This is a good time to read the notes about this here: :ref:`notes_on_handling_duck_typing`.
 You may want to try one of the more complex methods -- but for now, we're going to use the one that suggests itself from the error.
@@ -835,13 +942,14 @@ which is what we expected -- we haven't written a new render method yet.  But lo
   pytest is pretty slick with this. It "Captures" the output from print calls, etc, and then only shows them to you if a test fails.
   So you can sprinkle print calls into your tests, and it won't clutter the output -- you'll only see it when a test fails, which is when you need it.
 
-This is a good exercise to go through -- if a new test fails, it lets you know that it is indeed working -- testing what it is supposed to test.
+This is a good exercise to go through -- if a new test fails, it lets you know that the test itself is working -- testing what it is supposed to test.
 
 So how do we get this test to pass? We need a new render method for ``OneLineTag``.  For now, you can copy the render method from ``Element`` to ``OneLineTag``, and remove the newlines:
 
 .. code-block:: python
 
     class OneLineTag(Element):
+
         def render(self, out_file):
             # loop through the list of contents:
             for content in self.contents:
@@ -920,7 +1028,7 @@ and run the tests::
     html_render.py:57: NotImplementedError
     ===================== 1 failed, 10 passed in 0.09 seconds ======================
 
-hmm -- it raised a NotImplementedError, whih is what we want -- but it is logging as a test failure.  An exception raised in a test is going to cause a failure -- but what we want is for the test to pass only *if* that exception is raised.
+hmm -- it raised a NotImplementedError, which is what we want -- but it is logging as a test failure.  An exception raised in a test is going to cause a failure -- but what we want is for the test to pass only *if* that exception is raised.
 Fortunately, pytest has a utility to do just that. make sure there is an ``import pytest`` in your test file, and then add this code:
 
 .. code-block:: python
@@ -933,7 +1041,7 @@ Fortunately, pytest has a utility to do just that. make sure there is an ``impor
         with pytest.raises(NotImplementedError):
             e.append("some more content")
 
-that ``with`` is a "context manager" (kind of like the file open one). More on that later in the course, but what this means is that the test will pass if an only if the code inside that ``with`` block raised a ``NotImplementedError``.  If it raises something else, or it doesn't raise an exception at all -- then the test will fail.
+That ``with`` is a "context manager" (kind of like the file ``open()`` one). More on that later in the course, but what this means is that the test will pass if and only if the code inside that ``with`` block raised a ``NotImplementedError``.  If it raises something else, or it doesn't raise an exception at all -- then the test will fail.
 
 OK -- I've got 11 tests passing now. How about you? Time for the next step.
 
@@ -942,78 +1050,543 @@ OK -- I've got 11 tests passing now. How about you? Time for the next step.
 Step 4.
 -------
 
-Now we want to make our elements more feature-full -- supporting attributes to the tag.  First, a tiny bit of html (XML) reminder. elements can have both content and attributes.
-(`html attributes <https://www.w3schools.com/html/html_attributes.asp>`_)
-A full element might look like this:
+From the exercise instructions:
 
-<p id="warning" style="color:red">I am a paragraph</p>
+"Extend the ``Element`` class to accept a set of attributes as keywords to the constructor, e.g. ``run_html_render.py``"
 
-each attribute is separated from the others by a space, and used the::
+If you don't know what attributes of an element are, read up a bit more on html on the web, and/or take another look at :ref:`html_primer`. But in short, attributes are a way to "customize" an element -- give it some extra information. The syntax looks like this::
 
-  attribute_name="attribute value"
+    <p style="text-align: center" id="intro">
 
-form.
+Inside the opening tag, there is the tag name, then a space, then the attributes separated by spaces. Each attribute is a ``name="value"`` pair, with the name in plain text, and the value in quotes.
 
-We need to add a few features to make this code work:
- * A way to pass the attributes to the ``Element.__init__``
- * A way to store the attributes
- * A way to render the attributes in the opening tag.
-
-To pass the attributes in it would be nice to leverage smpiel keywork arguments like so:
+Note that these name:value pairs look a lot like python keyword arguments, which lends itself to an initialization signature. For the above example, we would create the element like so:
 
 .. code-block:: python
 
-    Element("some text content", id="TheList", style="line-height:200%")
+  el = P("A paragraph of text", style="text-align: center", id="intro")
 
-Remember test-driven development: let's write a test, and then we can make that code work. Here is my first simple test:
+Which should result in the following html::
+
+    <p style="text-align: center" id="intro">
+    a paragraph of text
+    </p>
+
+
+Now that we know how to initialize an element with attributes, and how it should get rendered, we can write a test that will check if the attributes are rendered correctly. Something like:
 
 .. code-block:: python
 
-    def test_attrs1():
-        """
-        test that attributes get rendered correctly
-        """
-        # create a P element with a couple attributes
-        p = P("I am a paragraph", id="warning", style="color:red")
-        # <p id="warning" style="color:red">I am a paragraph</p>
+    def test_attributes():
+        e = P("A paragraph of text", style="text-align: center", id="intro")
 
         file_contents = render_result(e).strip()
-        print(file_contents)
+        print(file_contents)  # so we can see it if the test fails
 
-        assert False
+        # note: The previous tests should make sure that the tags are getting
+        #       properly rendered, so we don't need to test that here.
+        #       so using only a "P" tag is fine
+        assert "A paragraph of text" in file_contents
+        # but make sure the embedded element's tags get rendered!
+        # first test the end tag is there -- same as always:
+        assert file_contents.endswith("</p>")
 
-Note that I'm using the ``P`` element - I could use any element, as they all share the render method of the base class.  Note also that after creating the element, the test renders it, prints the result, and then has an ``assert False``. The ``assert False`` is a trick to assure that an incomplete test fails -- that way, we will see what's printed. And we want to be sure it fails because it doesn't yet test if the element is rendered correctly. Running the tests::
+        # but now the opening tag is far more complex
+        # but it starts the same:
+        assert file_contents.startswith("<p")
 
-    $ pytest
-    ============================= test session starts ==============================
-    platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
-    rootdir: /Users/Chris/Junk/lesson07, inifile:
-    collected 12 items
-
-    test_html_render.py ...........F                                         [100%]
+Note that this doesn't (yet) test that the attributes are actually rendered, but it does test that you can pass them in to constructor. What happens when we run this test? ::
 
     =================================== FAILURES ===================================
-    _________________________________ test_attrs1 __________________________________
+    _______________________________ test_attributes ________________________________
 
-        def test_attrs1():
-            """
-            test that attributes get rendered correctly
-            """
-            # create a P element with a couple attributes
-    >       p = P("I am a paragraph", id="warning", style="color:red")
-    E       TypeError: __init__() got an unexpected keyword argument 'id'
+        def test_attributes():
+    >       e = P("A paragraph of text", style="text-align: center", id="intro")
+    E       TypeError: __init__() got an unexpected keyword argument 'style'
 
-    test_html_render.py:220: TypeError
-    ===================== 1 failed, 11 passed in 0.15 seconds ======================
+    test_html_render.py:217: TypeError
+    ===================== 1 failed, 11 passed in 0.19 seconds ======================
+
+Yes, the new test failed -- isn't TDD a bit hard on the ego? So many failures! But why? well, we passed in the ``style`` and ``id`` attributes as keyword arguments -- but the ``__init__`` doesn't expect those arguments -- hence the failure.
+
+So should be add those two as keyword parameters? Well, no we shouldn't -- because those are two arbitrary attribute names -- we need to support virtually any attribute name. So how do you write a method that will accept ANY keyword argument? Time for our old friend ``**kwargs``. ``**kwargs**`` will allow any keyword argument to be used, and will store them in the ``kwargs`` dict. So time to update the ``Element.__init__`` like so:
+
+.. code-block:: python
+
+    def __init__(self, content=None, **kwargs):
+
+But then, make sure to *do* something with the ``kwargs`` dict -- you need to store those somewhere. Remember that they are a collection of attribute names and values -- and you will need them again when it's time to render the opening tag. How do you store something so that it can be used in another method? I'll leave that as an exercise for the reader.
+
+And lets try to run the tests again::
+
+    ========================== 12 passed in 0.07 seconds ===========================
+
+They passed! Great, but did we test whether the attributes get rendered in the tag correctly? No -- not yet, let's make sure to add that.  It may be helpful to add and ``assert False`` in there, so we can see what our tag looks like while we work on it::
+
+    ...
+           assert False
+    E       assert False
+
+    test_html_render.py:243: AssertionError
+    ----------------------------- Captured stdout call -----------------------------
+    <p>
+    A paragraph of text
+    </p>
+    ===================== 1 failed, 11 passed in 0.11 seconds ======================
+
+OK, so we have a regular old <p> element -- no attributes at all -- no surprise here.  Let's first add a couple tests for the attributes:
+
+.. code-block:: python
+
+    # order of the tags is not important in html, so we need to
+    # make sure not to test for that
+    # but each attribute should be there:
+    assert 'style="text-align: center"' in file_contents
+    assert 'id="intro"' in file_contents
+
+We know the tests will fail -- so let's go straight to the code. We need to update our ``render()`` method to put the attributes in the opening tag. Let's remind ourselves what this needs to look like::
+
+    <p style="text-align: center" id="intro">
+
+So we need to render the ``<``, then the ``p``, then a bunch of attribute name=value pairs. Let's start with breaking up the rendering of the opening tag, and make sure the existing tests still pass.
+
+.. code-block:: python
+
+    def render(self, out_file):
+        # loop through the list of contents:
+        open_tag = ["<{}".format(self.tag)]
+        open_tag.append(">\n")
+        out_file.write("".join(open_tag))
+        ...
+
+OK -- the rest of the tests are still passing for me -- I haven't broken anything else. Now to add code to render the attributes. You'll need to write some sort of loop to loop through each attribute -- probably looping through the keys and the values::
+
+.. code-block:: python
+
+    for key, value in self.attributes:
+
+then you can render them in html form inside that loop.
+
+Once you've done that, run the tests again. When I do that, mine passes the asserts checking the attributes, but fails on the ``assert False``, so I can see how it's rendering::
+
+    >       assert False
+    E       assert False
+
+    test_html_render.py:247: AssertionError
+    ----------------------------- Captured stdout call -----------------------------
+    <pid="intro" style="text-align: center">
+    A paragraph of text
+    </p>
+    ===================== 1 failed, 11 passed in 0.11 seconds ======================
+
+Hmmm -- the attributes are rendered correctly, but there is no space between the "p" (that tag name) and the first attribute. So let's update our tests to make sure that we check for that:
+
+.. code-block:: python
+
+        assert file_contents.startswith("<p ") # make sure there's space after the p
+
+note that I added a space after the "p" in the test. Now my test is failing on that line, so I need to fix it -- I've added an extra space in there, and now my test passes, and I like how it's rendered::
+
+    <p style="text-align: center" id="intro">
+    A paragraph of text
+    </p>
+
+However, my code for rendering the opening tag is a bit klunky -- how about yours? Perhaps you'd like to refactor it? Before you do that, you might want to make your tests a bit more robust. This is really tricky, it's very hard to test for everytihng that might go wrong, without nailing down the expected results to much. For example, in this case, we haven't tested that there is a space between the two attributes. IN fact, this would pass our test::
+
+    <p style="text-align: center"id="intro">
+    A paragraph of text
+    </p>
+
+See how there is no space before "id"? But the order of the attributes is arbitrary, so we don't want to assume that the style will come before id. You could get really fnacy with parsing the results, but I think we could get away with assuring there are the right number of spaces in there in the opening tag.
+
+.. code-block:: python
+
+    assert file_contents[:file_contents.index(">")].count(" ") == 3
+
+This now fails with my broken code, but passes when I fix it with that space between the attributes. What else might you want to check to make sure it's all good?
+
+Here's my final test for attribute rendering:
+
+.. code-block:: python
+
+    def test_attributes():
+        e = P("A paragraph of text", style="text-align: center", id="intro")
+
+        file_contents = render_result(e).strip()
+        print(file_contents)  # so we can see it if the test fails
+
+        # note: The previous tests should make sure that the tags are getting
+        #       properly rendered, so we don't need to test that here.
+        #       so using only a "P" tag is fine
+        assert "A paragraph of text" in file_contents
+        # but make sure the embedded element's tags get rendered!
+        # first test the end tag is there -- same as always:
+        assert file_contents.endswith("</p>")
+
+        # but now the opening tag is far more complex
+        # but it starts the same:
+        assert file_contents.startswith("<p ") # make sure there's space after the p
+
+        # order of the tags is not important in html, so we need to
+        # make sure not to test for that
+        # but each attribute should be there:
+        assert 'style="text-align: center"' in file_contents
+        assert 'id="intro"' in file_contents
+
+        # # just to be sure -- there should be a closing bracket to the opening tag
+        assert file_contents[:-1].index(">") > file_contents.index('id="intro"')
+        assert file_contents[:file_contents.index(">")].count(" ") == 3
+
+With this test in place, you can safely refactor your attribute rendering if you like. I know I did.
+
+Step 5:
+-------
+
+Create a ``SelfClosingTag`` subclass of Element, to render tags like::
+
+   <hr /> and <br /> (horizontal rule and line break)."
+
+Including with attributes::
+
+    <hr width="400" />
+
+So let's start with two tests:
+
+.. code-block:: python
+
+    def test_hr():
+        """a simple horizontal rule with no attributes"""
+        hr = Hr()
+        file_contents = render_result(hr)
+        print(file_contents)
+        assert file_contents == '<hr />\n'
 
 
+    def test_hr_attr():
+        """a horizontal rule with an attribute"""
+        hr = Hr(width=400)
+        file_contents = render_result(hr)
+        print(file_contents)
+        assert file_contents == '<hr width="400" />\n'
+
+Which, of course, will fail initially.
+
+We'll want multiple self closing tags -- so we'll start with a base class, and then derive the Hr tag from that:
+
+.. code-block:: python
+
+    class SelfClosingTag(Element):
+        pass
 
 
+    class Hr(SelfClosingTag):
+        tag = "hr"
+
+Test still fails -- but gets further.
+You'll need to override the ``render()`` method:
+
+.. code-block:: python
+
+    class SelfClosingTag(Element):
+
+        def render(self, outfile):
+            # put rendering code here.
+
+What needs to be there? Well, self closing tags can have attributes, same as other elements.
+So we need a lot of the same code here as with the other ``render()`` methods.  You could copy and paste the ``Element.render()`` method, and edit it a bit.  But that's a "Bad Idea" -- remember DRY? (Don't Repeat Yourself).
+You really don't want two copies of that attribute rendering code you worked so hard on.
+How do we avoid that? We take advantage of the power of subclassing. If you put the code to render the opening (and closing) tags in it's own method, then we can call that method from multiple render methods, something like:
+
+.. code-block:: python
+
+    def render(self, out_file):
+        # loop through the list of contents:
+        out_file.write(self._open_tag())
+        out_file.write("\n")
+        for content in self.contents:
+            try:
+                content.render(out_file)
+            except AttributeError:
+                out_file.write(content)
+                out_file.write("\n")
+        out_file.write(self._close_tag())
+        out_file.write("\n")
+
+So instead of making the tag in the render method itself, we call the ``_open_tag`` and ``_close_tag`` methods. Note that I gave those names with a single underscore at the beginning. This is a Python convention for indicating a "private" method -- one that is expected to be used internally, rather than by client code.
+
+Are all the existing tests still passing?
+
+Now that you've got the tag-building code in its own method, we can give the self closing tag a render method something like this:
+
+.. code-block:: python
+
+    def render(self, outfile):
+        tag = self._open_tag()[:-1] + " />\n"
+        outfile.write(tag)
+
+And do your tests pass? Once they do add a couple more for the "br" element:
+
+.. code-block:: python
+
+    def test_br():
+        br = Br()
+        file_contents = render_result(br)
+        print(file_contents)
+        assert file_contents == "<br />\n"
 
 
+    def test_content_in_br():
+        with pytest.raises(TypeError):
+            br = Br("some content")
 
 
+    def test_append_content_in_br():
+        with pytest.raises(TypeError):
+            br = Br()
+            br.append("some content")
+
+Getting that first test to pass should be straightforward -- but what about the other two? Self closing tags are now supposed to contain any content. So you want your ``SelfClosingTag`` class to raise an exception if you try to create one with some content. But you also want it to raise an exception if you try to append content. So do we need to override both the ``__init__()`` and ``append()`` methods? Maybe not.
+
+The ``__init__`` needs to do some other initializing, so not as easy to override as ``append``.  Let's start with the ``append`` method. We need it to do nothing other than raise a ``TypeError``:
+
+.. code-block:: python
+
+    def append(self, *args):
+        raise TypeError("You can not add content to a SelfClosingTag")
+
+And run your tests. I still get a single failure::
+
+    =================================== FAILURES ===================================
+    ______________________________ test_content_in_br ______________________________
+
+        def test_content_in_br():
+            with pytest.raises(TypeError):
+    >           br = Br("some content")
+    E           Failed: DID NOT RAISE <class 'TypeError'>
+
+    test_html_render.py:297: Failed
+    ===================== 1 failed, 17 passed in 0.08 seconds ======================
+
+So ``append`` did the right thing. But we still have a failure when we try to initialize it with content. So we want to override the ``__init__``, check if there was any content passed in, and if there was, raise an error. Andn if not, then call the usual ``__init__``.
+
+.. code-block:: python
+
+    class SelfClosingTag(Element):
+
+        def __init__(self, content=None, **kwargs):
+            if content is not None:
+                raise TypeError("SelfClosingTag can not contain any content")
+            super().__init__(content=content, **kwargs)
+
+What's that ``super()`` call? That's a way to call a method on the "super class'" -- that is, the class that this class is derived from. In this case, that's exactly the same as if we had written:
+
+.. code-block:: python
+
+        def __init__(self, content=None, **kwargs):
+            if content is not None:
+                raise TypeError("SelfClosingTag can not contain any content")
+            Element.__init__(self, content=content, **kwargs)
+
+But ``super`` provides some extra features if you are doing multiple inheritance. And it makes your intentions clear.
+
+I've now got 18 tests passing -- how about you? And I can also uncomment step 5 in ``run_html_render.py``, and get something reasonable::
+
+    $ python run_html_render.py
+    <html>
+    <head>
+    <title>PythonClass = Revision 1087:</title>
+    </head>
+    <body>
+    <p style="text-align: center; font-style: oblique;">
+    Here is a paragraph of text -- there could be more of them, but this is enough  to show that we can do some text
+    </p>
+    <hr />
+    </body>
+    </html>
+
+If you get anything very different than this -- write some tests to catch the error, and then fix them :-)
 
 
+Step 6:
+-------
+
+Create an ``A`` class for an anchor (link) element. Its constructor should look like::
+
+    A(self, link, content)
+
+where ``link`` is the link, and ``content`` is what you see. It can be called like so::
+
+    A("http://google.com", "link to google")
+
+and it should render like::
+
+    <a href="http://google.com">link to google</a>
+
+Notice that while the a ("anchor") tag is kind of special, the link is simply and "href" (hyperlink reference) attribute. So we should be able to use most of our existing code, but simply add the link as another attribute.
+
+You know that drill now -- create a test first -- one that makes the above call, and then checks that you get the results expected. Notice that this is a single line tag, so it should subclass from OneLineTag. If I start with that, I get::
+
+    =================================== FAILURES ===================================
+    _________________________________ test_anchor __________________________________
+
+        def test_anchor():
+    >       a = A("http://google.com", "link to google")
+    E       TypeError: __init__() takes from 1 to 2 positional arguments but 3 were given
+
+    test_html_render.py:307: TypeError
+
+Hmm -- a TypeError in the ``__init__``, well that makes sense, we need to be able to pass the link in to it. We will need to override it, of course:
+
+.. code-block:: python
+
+    class A(OneLineTag):
+
+        tag = 'a'
+
+        def __init__(self, link, content=None, **kwargs):
+            super().__init__(content, **kwargs)
+
+Notice that I added the "link" parameter at the beginning, and the rest of the parameters are the same as for the base ``Element`` class. This is good approach. If you need to add an extra parameter when subclassing, put it at the front of the parameter list. We then call ``super().__init__`` with the content and any other keyword arguments. We haven't actually done anything with the link, but when I run the tests, it gets further, failing on the rendering.
+
+So we need to do something with the link. But what? Do we need a new render method? Maybe not. After all, the link is really just the value of the "href" attribute. So we can simply create an href attribute, and the existing rendering code should work.
+
+How are the attributes passed in? They are passed in in the ``kwargs`` dict. So we can simply add the link to the ``kwargs`` dict before calling the superclass initializer:
+
+.. code-block:: python
+
+    def __init__(self, link, content=None, **kwargs):
+        kwargs['href'] = link
+        super().__init__(content, **kwargs)
+
+And run the tests::
+
+    =================================== FAILURES ===================================
+    _________________________________ test_anchor __________________________________
+
+        def test_anchor():
+            a = A("http://google.com", "link to google")
+            file_contents = render_result(a)
+            print(file_contents)
+    >       assert file_contents.startswith('<a ')
+    E       AssertionError: assert False
+    E        +  where False = <built-in method startswith of str object at 0x1105e28e8>('<a ')
+    E        +    where <built-in method startswith of str object at 0x1105e28e8> = '<a>link to google</a>\n'.startswith
+
+    test_html_render.py:310: AssertionError
+    ----------------------------- Captured stdout call -----------------------------
+    <a>link to google</a>
+
+    ===================== 1 failed, 18 passed in 0.07 seconds =====================
+
+Darn -- not passing! (did yours pass?) Even though we added the ``href`` to the kwargs dict, it didn't get put in the attributes of the tag.  Why not? Think carefully about the code. Where should the attributes be added? In the ``render()`` method.
+But *which* render method is being used here? Well, the ``A`` class is a subclass of ``OneLineTag``, which has defined its own ``render()`` method.
+So take a look at the ``OneLineTag`` ``render()`` method. Oops, mine doesn't have anything in to render attributes -- I wrote that before we added that feature.
+So it's now time to go in and edit that render method to use the ``_open_tag`` and ``_close_tag`` methods.
+
+The tests should all pass now -- and you have a working anchor element.
+
+Step 7:
+-------
+
+Making the list elements is pretty straightforward -- go ahead and do those -- and write some tests for them!
+
+Header Elements
+...............
+
+You should have the tools to do this. First, write a couple tests.
+
+Then decide what to subclass for the header elements? WHich of the base classes you've developed are most like a header?
+
+Then think about how you will update the ``__init__`` of your header subclass. It will need to take an extra parameter -- the level of the header:
+
+.. code-block:: python
+
+    def __init__(self, level, content=None, **kwargs):
+
+But what to do with the level parameter? In this case, each level will have a different tag: ``h1``, ``h2``, etc. So you need to set the tag in the ``__init__``. So far, the tag has been a class attribute -- all instances of the class have the same tag.
+In this case, each instance can have a different tag -- determined at initialization time. But how to override a class attribute? Think about how you access that attribute in your render methods: ``self.tag``.
+When you make a reference to ``self.something``, Python first checks if "something" is an instance attribute. then, if not, it checks for a class attribute, and if not, then it looks in the superclasses.
+So in this case, of you set an instance attribute for teh tag -- that is what will be found in the other methods. So in the ``__init__``, you can set ``self.tag=the_new_tag_value``, which will be ``h1``, or ``h2``, or ...
+
+Step 8:
+-------
+
+You have all the tools now for making a proper html element -- it should reender as so::
+
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <meta charset="UTF-8" />
+  <title>Python Class Sample page</title>
+  </head>
+  ...
+
+That is, put a doctype tag at the top, before the html opening tag.
+
+(note that that may break an earlier test -- update that test!)
+
+Step 9:
+-------
+
+**Adding Indentation**
+
+Be sure to read the instructions for this carefully -- this is a bit tricky. But it's also fairly straightforward once you "get it". The trick here is that a given element can be indented some arbitrary amount -- and there is no way to know until render time how deep it is. But when a given element is rendering itself, it needs to know how deep it's indented, and it knows that the sub-elements need to be indented one more level. So by passing a parameter to each ``render()`` method that tells that element how much to indent itself, we can build a flexible system.
+
+Begin by uncommenting the tests in the test file for indentation:
+
+``test_indent``, ``test_indent_contents``, ``test_multiple_indent``, and ``test_element_indent1``.
 
 
+These are probably not comprehensive, but they should get you started. If you see something odd in your results, make sure to add a test for that before you fix it.
+
+Running these new tests should result in 4 failures -- many (all?) of them like this::
+
+  AttributeError: type object 'Element' has no attribute 'indent'
+
+So the first step is to give you Element base class a ``indent`` attribute. This is the amount that you want one level of indentation to be -- maybe two or four spaces. You want everything the be indented the same amount, so it makes sense that you put it as a class attribute of the base class -- then *all* elements will inherit the same value. And you can change it in that one place if you want.
+
+Once I add the ``indent`` parameter, I still get four failures -- three of them are for the results being incorrect -- which makes sense, we haven't implemented that code yet. One of them is::
+
+            # this so the tests will work before we tackle indentation
+            if ind:
+    >           element.render(outfile, ind)
+    E           TypeError: render() takes 2 positional arguments but 3 were given
+
+This is the next one to tackle -- our ``render`` methods all need to take an additional optional parameter -- the current level of indentation. Remember to add that to *all* of your render methods:
+
+.. code-block:: python
+
+    def render(self, out_file, cur_ind=""):
+
+Once I do that, I still get four failures -- but they are all about the rendered results being incorrect -- they do not have the indentation levels right.
+
+Now it's time to go in one by one and add indentation code to get those tests to pass.
+
+I got them all to pass. But when I rendered a full page (by running ``run_html_render.py``), I found some issues. The elements that overrode the ``render()`` methods where not indented properly: ``OneLineTag`` and ``SelfClosingTag``.
+
+Write at least one test for each of those, and then go fix those render method!
+
+What have you done?
+-------------------
+
+**Congrats!**
+
+You've gotten to the end of the project. By going through this whole procedure, you've done a lot of test-driven development, and built up a class system that takes advantage of the key features of object oriented systems in Python. I hope this has given you a better understanding of:
+
+* class attributes vs. instance attributes
+
+* subclassing
+
+* overriding:
+
+  - class attributes
+
+  - class attributes with instance attributes
+
+  - methods
+
+* calling a superclass' method from an overridden method.
+
+* defining a "private" method to be used by sub-classes overridden methods to make DRY code.
+
+* polymorphism -- having multiple classes all be used in the same way (calling the ``render`` method in this case)

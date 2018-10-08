@@ -29,6 +29,8 @@ Double click and install.
 
 Ensure that the Install launcher for all users (recommended) and the Add Python 3.7 to PATH checkboxes at the bottom are checked.
 
+**Add Python 3.7 to PATH step is important!** If this is not checked then when you try to run your python code it won't be able to find the executable.
+
 See: `Installing Python on Windows <https://www.ics.uci.edu/~pattis/common/handouts/pythoneclipsejava/python.html>`_
 
 .. _git_bash:
@@ -38,29 +40,51 @@ Terminal
 
 If you are confident in your use of the "DOS Box" or "powershell", command lines, feel free to use one of those. However, your life may be easier if you install "Git Bash", as then you can follow unix-style terminal instructions exactly, and do not have to translate. Also, your instructors are more experienced with Bash.
 
-From now on, if you hear the terms "bash", "shell" or "terminal", or "commandline" know that this is the application that is being referred to. We will use those tems interchangably to mean ANY command line.
+From now on, if you hear the terms "bash", "shell" or "terminal", or "commandline" know that this is the application that is being referred to. We will use those terms interchangably to mean ANY command line.
 
 When you install Git Bash, you are installing git (and a git gui) as well, thus killing two birds with one stone!
 
 https://git-for-windows.github.io/
 
+Select the download button on the page and launch downloaded executable, then follow the prompts. On "Choosing default editor used by Git" step it is best to select Notepad++ (which you need to have installed first) unless you are comfortable with non-graphical editors like vim.
+You can go through the rest of the prompts using default values. Once you are done, a terminal window should pop up - try out some commands like ``ls`` or ``git help``.
+
 You can use this git with the DOS box or Powershell as well.
 
-This is also a good bet for running Python -- If you use the Git Bash shell, you can use the same commands as Linux and OS-X users. Regardless of which shell you choose, you will need to add Python to your environment. It is possible that this was done during the installation of Python. If you type 'which python' into your terminal, and get back the answer '/c/python34/python', then you are good to go, otherwise, follow the instructions here:
+This is also a good bet for running Python -- If you use the Git Bash shell, you can use the same commands as Linux and OS-X users. Regardless of which shell you choose, you will need to add Python to your environment. It is possible that this was done during the installation of Python. If you type 'which python' into your terminal, and get back the answer '/c/python34/python', then you are good to go, otherwise (which shouldn't happen if you checked the "Add Python 3.7 to PATH" checkbox when you installed Python above), follow the instructions here:
 
 http://www.computerhope.com/issues/ch000549.htm
 
 You will want to add:
 
-``C:\Python37``
+``C:\Users\YourUserName\AppData\Local\Programs\Python\Python37``
 
 and
 
-``C:\Python37\Scripts``
+``C:\Users\YourUserName\AppData\Local\Programs\Python\Python37\Scripts``
 
 to ``PATH``
 
-Once you have done that, you should be able to type ``python3`` at the command prompt, and get something like:
+Here are steps for updating path:
+
+::
+
+    cd
+    touch .bash_profile
+
+You can edit this file using Notepad, locate this file in File Explorer in This PC > Local Disk > Users > YourUsername
+
+Add to the file (file should be empty):
+
+::
+
+    PATH=$PATH:/C/Users/YourUserName/AppData/Local/Programs/Python/Python37:/C/Users/YourUserName/AppData/Local/Programs/Python/Scripts
+
+Note: your python executable may be located in a different path, to check the path you need to start windows shell (``cmd``) and type ``where python`` - this command will output where python is currently installed.
+
+Save the file and start a new gitbash shell.
+
+Once you have done that, you should be able to type ``python`` at the command prompt, and get something like:
 
 ::
 
@@ -73,6 +97,11 @@ This is the Python interpreter.
 
 Type ``ctrl+Z`` to get out (or ``exit()``)
 
+Note: if you have trouble running ``python`` command in your gitbash (it hangs), try running this instead: ``winpty python``. To avoid having to type ``winpty python`` all the time, it's strongly recommended that you create an alias like below:
+
+  $ echo "alias python='winpty python'" >> ~/.bashrc
+
+You will need to close the current bash window and restart a new one to get this alias. Then from now on, you can just type ``python`` and it should work on git bash (no more hanging) as well.
 
 git
 ---
@@ -101,16 +130,16 @@ You can now use pip to install other packages.
 
 .. code-block:: bash
 
-  $ python3 -m pip install --upgrade pip
+  $ python -m pip install --upgrade pip
 
 Using pip:
 ----------
 
 To use pip to install a package, you invoke it with this command::
 
-  python3 -m pip install the_name_of_the_package
+  python -m pip install the_name_of_the_package
 
-Where ``python3`` is the command you use to invoke the Python you want to use (could be ``python``)
+Where ``python`` is the command you use to invoke the Python you want to use .
 
 **NOTE:** You will frequently see advice to use pip like so::
 
@@ -118,7 +147,7 @@ Where ``python3`` is the command you use to invoke the Python you want to use (c
 
 Which often works, but also can invoke the *wrong* version of pip. The above command::
 
-  $ python3 -m pip install something_or_other
+  $ python -m pip install something_or_other
 
 calls Python, and tells it to run the ``pip`` module. It is exactly the same as calling pip directly, except that you are assured that you are getting the version of pip connected the version of Python that you are running.
 
@@ -162,35 +191,41 @@ For Python:
 
 ::
 
-  MacBook-Pro:PythonCertDevel Chris$ python3
-  Python 3.7.0 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06)
-  [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+  hosun@DESKTOP-GJT06Q0 MINGW64 ~
+  $ python
+  Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:59:51) [MSC v.1914 64 bit (AMD64)] on win32
   Type "help", "copyright", "credits" or "license" for more information.
   >>> ^Z
+
 
 For iPython:
 
 ::
 
-  MacBook-Pro:PythonCertDevel Chris$ ipython
-  Python 3.7.0 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06)
+  hosun@DESKTOP-GJT06Q0 MINGW64 ~
+  $ ipython
+  Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:59:51) [MSC v.1914 64 bit (AMD64)]
   Type 'copyright', 'credits' or 'license' for more information
-  IPython 6.1.0 -- An enhanced Interactive Python. Type '?' for help.
-
+  IPython 6.5.0 -- An enhanced Interactive Python. Type '?' for help.
+  
   In [1]:
-
   Do you really want to exit ([y]/n)? y
+
 
 For pip:
 
 ::
 
-  MacBook-Pro:PythonCertDevel Chris$ python3 -m pip --version
-  pip 9.0.1 from /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages (python 3.6)
+  hosun@DESKTOP-GJT06Q0 MINGW64 ~
+  $ python -m pip --version
+  pip 18.0 from C:\Python37\lib\site-packages\pip (python 3.7)
+
 
 For git:
 
 ::
 
-  MacBook-Pro:PythonCertDevel Chris$ git --version
-  git version 2.15.0
+  hosun@DESKTOP-GJT06Q0 MINGW64 ~
+  $ git --version
+  git version 2.18.3.windows.1
+

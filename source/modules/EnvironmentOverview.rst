@@ -40,6 +40,7 @@ If you are not sure, then read on ...
 The Command Line (cli)
 ----------------------
 
+
 Having some facility on the command line is important for a software developer.
 
 We won't cover this much in class, so if you are not comfortable,
@@ -53,11 +54,11 @@ Most of the demos in class, etc., will be done using the "bash" command line she
 
 Windows provides the "DOS" command line, which is OK, but pretty old and limited, or "Power Shell," a more modern, powerful, flexible command shell.
 
+
 If you are comfortable with either of these, go for it.
 
 If not, you can use the "git Bash" shell, which is much like the bash shell on OS-X and Linux. Or, on Windows 10, look into the "bash shell for Windows," otherwise known as the "Windows Subsystem for Linux." More info is available here:
 `PythonResources--Windows Bash  <http://uwpce-pythoncert.github.io/PythonResources/DevEnvironment/windows_bash.html>`_
-
 
 Accessing the Command Line
 --------------------------
@@ -76,6 +77,7 @@ OS-X
 ....
 
 On The Mac, you can add a "New Terminal at Folder" right-click menu item by:
+
 
    Head into System Preferences and select Keyboard > Shortcuts > Services. Find "New Terminal at Folder" in the settings and click the box. Now, when you're in Finder, just right-click a folder and you're shown the open to open Terminal. When you do, it'll start right in the folder you're in.
 
@@ -124,6 +126,7 @@ More on that here:
 
 :ref:`how_to_run_a_python_file`
 
+
 Other interpreters
 ..................
 
@@ -136,6 +139,7 @@ The Editor
 ----------
 
 Typing code in an interpreter is great for exploring.
+
 
 But for anything "real," you'll want to save the work you are doing in a more permanent fashion.
 
@@ -306,6 +310,5 @@ Other Helpful Hints
 There are a number of other assorted helpful materials here:
 
 :ref:`supplemental_materials`
-
 
 
