@@ -40,8 +40,6 @@ In-class Activities
 
     ../modules/Git
 
-    ../modules/lightning_talks
-
     ../modules/BasicPython
 
     ../modules/Py2vsPy3

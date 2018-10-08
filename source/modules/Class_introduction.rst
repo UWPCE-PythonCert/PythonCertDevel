@@ -18,14 +18,21 @@ In which you are introduced to this class, your instructors, your environment an
 
 
 Who are we?
------------
+===========
 
+Introduction to your instructors.
 
 Who are you?
 ------------
 
+Despite the common myth of the lone programmer, most software development is a collaborative activity.  As such, we encourage students in this program to work together whenever possible.
 
-  Tell us a tiny bit about yourself:
+As you will be working with your fellow students for the rest of the program
+Take a couple minutes now to get to know your neighbors -- what is their favorite coffee shop or bar?
+
+Then we'll go around the room and introduce ourselves:
+
+Tell us a tiny bit about yourself:
 
 * name
 * programming background: what languages have you used?
@@ -36,7 +43,7 @@ Who are you?
 Introduction to This Class
 ==========================
 
-The overall class is managed by a learning managment system -- Canvas or EdX.
+The overall class is managed by a learning management system -- Canvas or EdX.
 
 You have gotten a link to the instance for the class sent to you.
 
@@ -49,7 +56,7 @@ for this program.
 
 This means that the "homework" will be reading, watching videos, coding, etc.
 
-And class time will be spent primarly coding:
+And class time will be spent primarily coding:
 
  * Still some lecture -- as little as possible
  * Lots of demos
@@ -58,9 +65,9 @@ And class time will be spent primarly coding:
    - In small groups
    - Instructor led.
 
-This means that you are expected to complete the reading BEFORE each class. That way, we don't have to take class time introducing the basic material and can focus on questions and applying what you've read about.
+This means that you are expected to complete the reading (and video watching) BEFORE each class. That way, we don't have to take class time introducing the basic material and can focus on questions and applying what you've read about.
 
-Interrupt with questions -- please!
+Interrupt us with questions -- please!
 
 (Some of the best learning prompted by questions)
 
@@ -71,7 +78,7 @@ Homework:
 
 * Exercises will be started in class -- but you can finish them at home.
 
-* You are adults -- it's up to you to do the homework. But if you dont code, you won't learn to code...
+* You are adults -- it's up to you to do the homework. But if you don't code, you won't learn to code...
 
 * To submit your work, you can do a gitHub "pull request" to the class repo.
 
@@ -80,17 +87,14 @@ There is a video about that, and we will show you in the first class as well.
 Communication
 -------------
 
-**Mailing list:**
+**MS Teams:**
 
-You should have been subscribed to the mailing list, if not talk to your instructors.
+There has been an MS Team channel set up for this class. You should have been invited to join -- if not, let your instructors know.
 
-We will be using this list to communicate with you. If you have not gotten notes from the list -- make sure to let your instructors know, and we'll make sure to add you.
+Anything Python related is fair game. Keep general discussion about the class or Python in the main channel, and maybe set up separate channels for particular assignments.
 
-Slack may set up a slack channel for discussions. Anything python related is fair game.  We'll poll the class in the first session to decide if that would be helpful.
+We highly encourage you to work together. You will learn at a much deeper level if you work together, and it gets you ready to collaborate with colleagues.
 
-We highly encourage you to work together. You will learn at a much deeper level if you work together, and it gets you ready to collaborate with colleagues. If you have never used slack before, you may want to look at their intro:
-
-https://get.slack.help/hc/en-us/articles/115004071768
 
 Office Hours
 ------------
@@ -102,3 +106,37 @@ Please feel free to attend even if you do not have a specific question. It is an
 What are good times for you?
 
 And what locations?
+
+.. _lightning_talks:
+
+Lightning Talks
+===============
+
+"Lightning Talks" are a tradition in open-source technical conferences (and maybe others?).  The idea is that people can do a quick talk about a topic of their choice -- much lower pressure than a "real" talk -- but gives folks a chance to show off something they have worked on.
+
+For this class, it's a chance to us to learn a bit about each-other and maybe something new about Python.
+
+Each of you will be required to give one lightning talk at some point during the course.
+
+**Lightning Talks Requirements**
+
+ * 5 minutes each (including setup) - no kidding!
+ * Every student will give one
+ * Purposes: introduce yourself, share interests, show Python applications
+ * Any topic you like that is related to Python -- according to you!
+
+Schedule the lightning talks:
+-----------------------------
+
+We need to schedule your lightning talks.
+
+**Let's use Python for that !**
+
+There is a class list in the class repo here:
+
+``examples/session01/students.txt``
+
+Let's write a script to generate a random talk schedule...
+
+
+
