@@ -1057,7 +1057,6 @@ OK, I've got 11 tests passing now. How about you? Time for the next step.
 
 .. _render_tutorial_4:
 
-
 Step 4.
 -------
 
@@ -1591,7 +1590,9 @@ You've gotten to the end of the project. By going through this whole procedure, 
 * overriding:
 
   - class attributes
+
   - class attributes with instance attributes
+
   - methods
 
 * calling a superclass' method from an overridden method.
