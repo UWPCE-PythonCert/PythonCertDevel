@@ -36,9 +36,9 @@ Who are you?
 Introduction to This Class
 ==========================
 
-The overall class is managed by a learning managment system -- Canvs or EdX.
+The overall class is managed by a learning managment system -- Canvas or EdX.
 
-You have gotten a link to the instance for the class sent to you. IN fact, you probably found this page with a link from there.
+You have gotten a link to the instance for the class sent to you.
 
 Class Structure
 ---------------

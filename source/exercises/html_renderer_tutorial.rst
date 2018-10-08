@@ -942,6 +942,78 @@ OK -- I've got 11 tests passing now. How about you? Time for the next step.
 Step 4.
 -------
 
+Now we want to make our elements more feature-full -- supporting attributes to the tag.  First, a tiny bit of html (XML) reminder. elements can have both content and attributes.
+(`html attributes <https://www.w3schools.com/html/html_attributes.asp>`_)
+A full element might look like this:
+
+<p id="warning" style="color:red">I am a paragraph</p>
+
+each attribute is separated from the others by a space, and used the::
+
+  attribute_name="attribute value"
+
+form.
+
+We need to add a few features to make this code work:
+ * A way to pass the attributes to the ``Element.__init__``
+ * A way to store the attributes
+ * A way to render the attributes in the opening tag.
+
+To pass the attributes in it would be nice to leverage smpiel keywork arguments like so:
+
+.. code-block:: python
+
+    Element("some text content", id="TheList", style="line-height:200%")
+
+Remember test-driven development: let's write a test, and then we can make that code work. Here is my first simple test:
+
+.. code-block:: python
+
+    def test_attrs1():
+        """
+        test that attributes get rendered correctly
+        """
+        # create a P element with a couple attributes
+        p = P("I am a paragraph", id="warning", style="color:red")
+        # <p id="warning" style="color:red">I am a paragraph</p>
+
+        file_contents = render_result(e).strip()
+        print(file_contents)
+
+        assert False
+
+Note that I'm using the ``P`` element - I could use any element, as they all share the render method of the base class.  Note also that after creating the element, the test renders it, prints the result, and then has an ``assert False``. The ``assert False`` is a trick to assure that an incomplete test fails -- that way, we will see what's printed. And we want to be sure it fails because it doesn't yet test if the element is rendered correctly. Running the tests::
+
+    $ pytest
+    ============================= test session starts ==============================
+    platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
+    rootdir: /Users/Chris/Junk/lesson07, inifile:
+    collected 12 items
+
+    test_html_render.py ...........F                                         [100%]
+
+    =================================== FAILURES ===================================
+    _________________________________ test_attrs1 __________________________________
+
+        def test_attrs1():
+            """
+            test that attributes get rendered correctly
+            """
+            # create a P element with a couple attributes
+    >       p = P("I am a paragraph", id="warning", style="color:red")
+    E       TypeError: __init__() got an unexpected keyword argument 'id'
+
+    test_html_render.py:220: TypeError
+    ===================== 1 failed, 11 passed in 0.15 seconds ======================
+
+
+
+
+
+
+
+
+
 
 
 
