@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Slicing &mdash; PythonCert 4.0 documentation</title>
+  <title>Slicing &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -24,25 +24,17 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -64,7 +56,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -89,7 +81,7 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Topic Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references/index.html">Resources for Specific Python Topics</a></li>
@@ -104,7 +96,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PythonCert</a>
@@ -112,9 +104,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -166,7 +159,7 @@ original sequence.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>Slicing uses the indexing operator: <code class="docutils literal"><span class="pre">[]</span></code></p>
+<p>Slicing uses the indexing operator: <code class="docutils literal notranslate"><span class="pre">[]</span></code></p>
 <p>… but with a twist.</p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -174,11 +167,11 @@ original sequence.</p>
 </div>
 </div>
 <div class="section" id="sequence-start-end">
-<h2><code class="docutils literal"><span class="pre">sequence[start:end]</span></code><a class="headerlink" href="#sequence-start-end" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">sequence[start:end]</span></code><a class="headerlink" href="#sequence-start-end" title="Permalink to this headline">¶</a></h2>
 <p>Returns:</p>
 </div>
 <div class="section" id="sequence-i-for-which-start-i-end">
-<h2><code class="docutils literal"><span class="pre">sequence[i]</span> <span class="pre">for</span> <span class="pre">which</span> <span class="pre">start</span> <span class="pre">&lt;=</span> <span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">end</span></code><a class="headerlink" href="#sequence-i-for-which-start-i-end" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">sequence[i]</span> <span class="pre">for</span> <span class="pre">which</span> <span class="pre">start</span> <span class="pre">&lt;=</span> <span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">end</span></code><a class="headerlink" href="#sequence-i-for-which-start-i-end" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -191,7 +184,7 @@ original sequence.</p>
 <div class="line"><br /></div>
 </div>
 <p>Think of the indexes as pointing to the spaces between the items:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="n">a</span>       <span class="n">b</span>   <span class="n">u</span>   <span class="n">n</span>   <span class="n">c</span>   <span class="n">h</span>       <span class="n">o</span>   <span class="n">f</span>       <span class="n">w</span>   <span class="n">o</span>   <span class="n">r</span>   <span class="n">d</span>   <span class="n">s</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">a</span>       <span class="n">b</span>   <span class="n">u</span>   <span class="n">n</span>   <span class="n">c</span>   <span class="n">h</span>       <span class="n">o</span>   <span class="n">f</span>       <span class="n">w</span>   <span class="n">o</span>   <span class="n">r</span>   <span class="n">d</span>   <span class="n">s</span>
 <span class="o">|</span>   <span class="o">|</span>   <span class="o">|</span>   <span class="o">|</span>   <span class="o">|</span>   <span class="o">|</span>   <span class="o">|</span>   <span class="o">|</span>   <span class="o">|</span>   <span class="o">|</span>   <span class="o">|</span>   <span class="o">|</span>   <span class="o">|</span>   <span class="o">|</span>   <span class="o">|</span>   <span class="o">|</span>
 <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>   <span class="mi">4</span>   <span class="mi">5</span>   <span class="mi">6</span>   <span class="mi">7</span>   <span class="mi">8</span>   <span class="mi">9</span>  <span class="mi">10</span>  <span class="mi">11</span>  <span class="mi">12</span>  <span class="mi">13</span>  <span class="mi">14</span>  <span class="mi">15</span>
 </pre></div>
@@ -203,16 +196,16 @@ original sequence.</p>
 <div class="section" id="nifty-slicing-properties">
 <h2>Nifty Slicing Properties<a class="headerlink" href="#nifty-slicing-properties" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="len-seq-a-b-b-a">
-<h3><code class="docutils literal"><span class="pre">len(seq[a:b])</span> <span class="pre">==</span> <span class="pre">b-a</span></code><a class="headerlink" href="#len-seq-a-b-b-a" title="Permalink to this headline">¶</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">len(seq[a:b])</span> <span class="pre">==</span> <span class="pre">b-a</span></code><a class="headerlink" href="#len-seq-a-b-b-a" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="len-seq-b-b">
-<h3><code class="docutils literal"><span class="pre">len(seq[:b])</span> <span class="pre">==</span> <span class="pre">b</span></code><a class="headerlink" href="#len-seq-b-b" title="Permalink to this headline">¶</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">len(seq[:b])</span> <span class="pre">==</span> <span class="pre">b</span></code><a class="headerlink" href="#len-seq-b-b" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="id1">
-<h3><code class="docutils literal"><span class="pre">len(seq[-b:])</span> <span class="pre">==</span> <span class="pre">b</span></code><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">len(seq[-b:])</span> <span class="pre">==</span> <span class="pre">b</span></code><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="seq-b-seq-b-seq">
-<h3><code class="docutils literal"><span class="pre">seq[:b]</span> <span class="pre">+</span> <span class="pre">seq[b:]</span> <span class="pre">==</span> <span class="pre">seq</span></code><a class="headerlink" href="#seq-b-seq-b-seq" title="Permalink to this headline">¶</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">seq[:b]</span> <span class="pre">+</span> <span class="pre">seq[b:]</span> <span class="pre">==</span> <span class="pre">seq</span></code><a class="headerlink" href="#seq-b-seq-b-seq" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -223,9 +216,7 @@ original sequence.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -234,11 +225,11 @@ original sequence.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -256,7 +247,8 @@ original sequence.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -270,19 +262,13 @@ original sequence.</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

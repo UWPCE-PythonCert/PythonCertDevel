@@ -40,7 +40,7 @@ You can put a one-liner after the colon:
     In [168]: if x > 4: print(x)
     12
 
-But this should only be done if it makes your code **more** readable.
+But this should only be done if it makes your code *more* readable. And that is rare.
 
 So you need both the colon and the indentation to start a new a block.  But the end of the indented section is the only indication of the end of the block.
 
@@ -61,9 +61,10 @@ If you want anyone to take you seriously as a Python developer:
 
 `(PEP 8) <http://legacy.python.org/dev/peps/pep-0008/>`_
 
-Also note: if you DO use tabs (and really, don't do that!) python interprets them as the equivalent of *eight* spaces.  Text editors can display tabs as any number of spaces, and most modern editors default to four -- so this can be *very* confusing! so again:
+.. note::
+  If you *do* use tabs (and really, don't do that!) python interprets them as the equivalent of *eight* spaces.  Text editors can display tabs as any number of spaces, and most modern editors default to four -- so this can be *very* confusing! so again:
 
-**Never mix tabs and spaces in Python code**
+  **Never mix tabs and spaces in Python code**
 
 
 Spaces Elsewhere
@@ -85,7 +86,7 @@ But you should strive for proper style. Isn't this easier to read?
     x = (3 * 4) + (12 / func(x, y, z))
 
 
-*Read PEP 8 and install a linter in your editor.*
+**Read PEP 8 and install a linter in your editor.**
 
 
 Modules and Packages
@@ -369,6 +370,70 @@ Another key point to keep in mind is that all code files in a given python progr
 This can create dangerous side effects and hard to find bugs if you change anything in an imported module, but it can also be used as a handy way to store truly global state, like application preferences, for instance.
 
 A rule of thumb for managing global state is to have only *one* part of your code change the values, and everywhere else considers them read-only. You can't enforce this, but you can structure you own code that way.
+
+Let's take a look at an example of this.
+
+Create three modules (python files):
+
+``mod1.py``, ``mod2.py``, ``mod3.py``
+
+``mod1.py`` is very simple -- one name declared:
+
+.. code-block:: python
+
+    x = 5
+
+``mod2.py`` is where a bit actually goes on:
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+
+    import mod1
+
+    print(f"In mod2: mod1.x = {mod1.x}")
+
+    input("pausing (hit enter to continue >")
+
+    print("importing mod3")
+
+    import mod3
+
+    print(f"Still in mod2: mod1.x = {mod1.x}")
+
+    print("mod3 changed the value in mod1, and that change shows up in mod2")
+
+Here, we import ``mod1``, and we can now see the names defined in it, and print the value of ``x``. Then it pauses, waiting for input. After the user hits the <enter> key, it then imports ``mod3``, and again prints the value of ``x`` that is in ``mod1``. Let's now look at ``mod3.py``:
+
+.. code-block:: python
+
+    import mod1
+
+    print("In mod3 -- changing the value of mod1.x")
+
+    mod1.x = 555
+
+Other than the print -- all ``mod3`` does is re-set the value of ``x`` that is on ``mod1``.
+Running ``mod2.py`` results in::
+
+    $ python mod2.py
+    In mod2: mod1.x = 5
+    pausing (hit enter to continue >
+    importing mod3
+    In mod3 -- changing the value of mod1.x
+    Still in mod2: mod1.x = 555
+    mod3 changed the value in mod1, and that change shows up in mod2
+
+You can see that when ``mod2`` changed the value of ``mod1.x``, that changed the value everywhere that ``mod1`` is imported. You want to be very careful about this.
+
+If you are writing ``mod2.py``, and did not write ``mod3`` (or wrote it long enough ago that you don't remember its details), you might be very surprised that a value in ``mod1`` changes simply because you imported ``mod3``.  This is known as a "side effect", and you generally want to avoid them!
+
+
+
+
+
+
+
 
 
 

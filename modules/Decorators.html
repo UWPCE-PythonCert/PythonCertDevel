@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Decorators &mdash; PythonCert 4.0 documentation</title>
+  <title>Decorators &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="up" title="Topic Notes" href="index.html"/>
-        <link rel="next" title="Context Managers" href="ContextManagers.html"/>
-        <link rel="prev" title="Closures and Function Currying" href="Closures.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Context Managers" href="ContextManagers.html" />
+    <link rel="prev" title="Closures and Function Currying" href="Closures.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -67,7 +58,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -129,7 +120,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PythonCert</a>
@@ -137,9 +128,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -192,7 +184,7 @@
 other objects.</p>
 <p>Because of this fact, you can write functions that take functions as
 arguments and/or return functions as values:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">substitute</span><span class="p">(</span><span class="n">a_function</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">substitute</span><span class="p">(</span><span class="n">a_function</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">new_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;I&#39;m not that other function&quot;</span>
     <span class="k">return</span> <span class="n">new_function</span>
@@ -213,13 +205,13 @@ returns a function as a return value.”</p>
 <h2>An Example<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h2>
 <p>Imagine you are trying to debug a module with a number of functions like this
 one:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 </pre></div>
 </div>
 <p>You want to see when each function is called, with what arguments and
 with what result. So you rewrite each function as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Function &#39;add&#39; called with args: {}, {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Result --&gt; {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
@@ -229,7 +221,7 @@ with what result. So you rewrite each function as follows:</p>
 <p>That’s not particularly nice, especially if you have lots of functions
 in your module.</p>
 <p>Now imagine we defined the following, more generic <em>decorator</em>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">logged_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">logged_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">logged</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Function {} called&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">args</span><span class="p">:</span>
@@ -243,11 +235,11 @@ in your module.</p>
 </pre></div>
 </div>
 <p>We could then make logging versions of our module functions:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">logging_add</span> <span class="o">=</span> <span class="n">logged_func</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">logging_add</span> <span class="o">=</span> <span class="n">logged_func</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Then, where we want to see the results, we can use the logged version:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [37]: </span><span class="n">logging_add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [37]: </span><span class="n">logging_add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="go">Function &#39;add&#39; called</span>
 <span class="go">    with args: (3, 4)</span>
 <span class="go">     Result --&gt; 7</span>
@@ -259,7 +251,7 @@ had the old one.</p>
 <p>It’d be nicer if we could just call the old function and have it log.</p>
 <p>Remembering that you can easily rebind symbols in Python using <em>assignment
 statements</em> leads you to this form:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">logged_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">logged_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="c1"># implemented above</span>
 
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
@@ -268,8 +260,8 @@ statements</em> leads you to this form:</p>
 </pre></div>
 </div>
 <p>And now you can simply use the code you’ve already written and calls to
-<code class="docutils literal"><span class="pre">add</span></code> will be logged:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [41]: </span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<code class="docutils literal notranslate"><span class="pre">add</span></code> will be logged:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [41]: </span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="go">Function &#39;add&#39; called</span>
 <span class="go">    with args: (3, 4)</span>
 <span class="go">     Result --&gt; 7</span>
@@ -282,16 +274,16 @@ statements</em> leads you to this form:</p>
 <p>Rebinding the name of a function to the result of calling a decorator on that
 function is called <strong>decoration</strong>.</p>
 <p>Because this is so common, Python provides a special operator to perform it
-more <em>declaratively</em>: the <code class="docutils literal"><span class="pre">&#64;</span></code> operator – I told you I’d eventually explain what was going on under the hood with
+more <em>declaratively</em>: the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> operator – I told you I’d eventually explain what was going on under the hood with
 that weird <cite>&#64;</cite> symbol.</p>
 <p>This is rebinding the name:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 <span class="n">add</span> <span class="o">=</span> <span class="n">logged_func</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>And this means exactly the same thing, with the decoration syntax:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@logged_func</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@logged_func</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 </pre></div>
@@ -299,7 +291,7 @@ that weird <cite>&#64;</cite> symbol.</p>
 <p>The declarative form (called a decorator expression) is far more common,
 but both have the identical result, and can be used interchangeably.</p>
 <p>Here’s another simple example. First we define a decorator – note that it is a function that takes an argument, and returns a function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="k">def</span> <span class="nf">my_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="k">def</span> <span class="nf">my_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
    <span class="o">...</span><span class="p">:</span>      <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span>
    <span class="o">...</span><span class="p">:</span>          <span class="k">print</span><span class="p">(</span><span class="s1">&#39;running inner&#39;</span><span class="p">)</span>
    <span class="o">...</span><span class="p">:</span>      <span class="k">return</span> <span class="n">inner</span>
@@ -307,7 +299,7 @@ but both have the identical result, and can be used interchangeably.</p>
 </pre></div>
 </div>
 <p>And we can apply it with the regular calling and rebinding syntax:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="k">def</span> <span class="nf">other_func</span><span class="p">():</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="k">def</span> <span class="nf">other_func</span><span class="p">():</span>
 <span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;running other_func&#39;</span><span class="p">)</span>
 
 <span class="gp">In [3]: </span><span class="n">other_func</span><span class="p">()</span>
@@ -324,7 +316,7 @@ but both have the identical result, and can be used interchangeably.</p>
 </div>
 <p>Notice that other_func is now the “inner” function, which lives in the “my_decorator” namespace…</p>
 <p>And this is the same with the decoration syntax:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="nd">@my_decorator</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="nd">@my_decorator</span>
    <span class="o">...</span><span class="p">:</span> <span class="k">def</span> <span class="nf">other_func</span><span class="p">():</span>
    <span class="o">...</span><span class="p">:</span>      <span class="k">print</span><span class="p">(</span><span class="s1">&#39;running other_func&#39;</span><span class="p">)</span>
    <span class="o">...</span><span class="p">:</span>
@@ -344,7 +336,7 @@ but both have the identical result, and can be used interchangeably.</p>
 <h2>Callables<a class="headerlink" href="#callables" title="Permalink to this headline">¶</a></h2>
 <p>Our original definition of a <em>decorator</em> was nice and simple, but a tiny bit incomplete.</p>
 <p>In reality, decorators can be used with anything that is <em>callable</em>.</p>
-<p>Remember that a <em>callable</em> is a function, a class object, a method in a class, or a instance of a class that implements the <code class="docutils literal"><span class="pre">__call__</span></code> special method.</p>
+<p>Remember that a <em>callable</em> is a function, a class object, a method in a class, or a instance of a class that implements the <code class="docutils literal notranslate"><span class="pre">__call__</span></code> special method.</p>
 <p>So in fact the definition should be updated as follows:</p>
 <blockquote>
 <div>“A decorator is a callable that takes a callable as an argument and returns a callable as a return value.”</div></blockquote>
@@ -353,7 +345,7 @@ but both have the identical result, and can be used interchangeably.</p>
 <h2>An Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>Consider a decorator that would save the results of calling an expensive
 function with given arguments so that it would not have to be re-computed with the same input (which is known an memoizing…).</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Memoize</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Memoize</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    memoize decorator from avinash.vora</span>
 <span class="sd">    http://avinashv.net/2008/04/python-decorators-syntactic-sugar/</span>
@@ -371,7 +363,7 @@ function with given arguments so that it would not have to be re-computed with t
 </pre></div>
 </div>
 <p>Let’s try that out with a potentially expensive function:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [56]: </span><span class="nd">@Memoize</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [56]: </span><span class="nd">@Memoize</span>
 <span class="gp">   ....: </span><span class="k">def</span> <span class="nf">sum2x</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
 <span class="gp">   ....:</span>
@@ -391,7 +383,7 @@ how much difference it made?</p>
 <h2>Nested Decorators<a class="headerlink" href="#nested-decorators" title="Permalink to this headline">¶</a></h2>
 <p>You can stack decorator expressions.  The result is like calling each
 decorator in order, from bottom to top:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@decorator_two</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@decorator_two</span>
 <span class="nd">@decorator_one</span>
 <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">pass</span>
@@ -403,7 +395,7 @@ decorator in order, from bottom to top:</p>
 </pre></div>
 </div>
 <p>Let’s define another decorator that will time how long a given call takes:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="k">def</span> <span class="nf">timed_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">timed</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -416,7 +408,7 @@ decorator in order, from bottom to top:</p>
 </div>
 <p>And now we can use this new decorator stacked along with our memoizing
 decorator:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [71]: </span><span class="nd">@timed_func</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [71]: </span><span class="nd">@timed_func</span>
 <span class="gp">   ....: </span><span class="nd">@Memoize</span>
 <span class="gp">   ....: </span><span class="k">def</span> <span class="nf">sum2x</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
@@ -434,13 +426,13 @@ decorator:</p>
 <p>The purpose of the outer function in the decorator is to receive the function to be decorated, adding anything to scope that should be there before the decorated function is called.</p>
 <p>The inner function runs the function being decorated, so its inputs are the same as the function being decorated.</p>
 <p>How do we add more input parameters to our decorator? Like this example from Django:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@register.filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;cut&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@register.filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;cut&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">cut</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Add yet another function in scope:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">real_decorator</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
         <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
             <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Congratulations. You decorated a function that does</span>
@@ -462,26 +454,26 @@ decorator:</p>
 <h2>Examples from the Standard Library<a class="headerlink" href="#examples-from-the-standard-library" title="Permalink to this headline">¶</a></h2>
 <p>It’s going to be a lot more common for you to use pre-defined decorators than for you to be writing your own.</p>
 <p>We’ve seen a few already:</p>
-<p>For example, <code class="docutils literal"><span class="pre">&#64;staticmethod</span></code> and <code class="docutils literal"><span class="pre">&#64;classmethod</span></code> can also be used as simple
+<p>For example, <code class="docutils literal notranslate"><span class="pre">&#64;staticmethod</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;classmethod</span></code> can also be used as simple
 callables, without the nifty decorator expression:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 </pre></div>
 </div>
 <p>Is exactly the same as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
     <span class="n">add</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Note that the “<code class="docutils literal"><span class="pre">def</span></code>” binds the name <code class="docutils literal"><span class="pre">add</span></code>, then the next line
+<p>Note that the “<code class="docutils literal notranslate"><span class="pre">def</span></code>” binds the name <code class="docutils literal notranslate"><span class="pre">add</span></code>, then the next line
 rebinds it.</p>
-<p>[Note that this is exactly how you defined a <code class="docutils literal"><span class="pre">staticmethod</span></code> before the decoration syntax was added in python 2.4]</p>
-<p>The <code class="docutils literal"><span class="pre">classmethod()</span></code> builtin can do the same thing:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># in declarative style</span>
+<p>[Note that this is exactly how you defined a <code class="docutils literal notranslate"><span class="pre">staticmethod</span></code> before the decoration syntax was added in python 2.4]</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">classmethod()</span></code> builtin can do the same thing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># in declarative style</span>
 <span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_iterable</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">seq</span><span class="p">):</span>
@@ -498,9 +490,9 @@ rebinds it.</p>
 <div class="section" id="property">
 <h2>property()<a class="headerlink" href="#property" title="Permalink to this headline">¶</a></h2>
 <p>Remember the property() built in?</p>
-<p>Perhaps most commonly, you’ll see the <code class="docutils literal"><span class="pre">property()</span></code> builtin used this way.</p>
+<p>Perhaps most commonly, you’ll see the <code class="docutils literal notranslate"><span class="pre">property()</span></code> builtin used this way.</p>
 <p>Previously, we saw this code:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="nd">@property</span>
@@ -515,7 +507,7 @@ rebinds it.</p>
 </pre></div>
 </div>
 <p>But this could also be accomplished like so:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="k">def</span> <span class="nf">getx</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -528,11 +520,11 @@ rebinds it.</p>
                  <span class="s2">&quot;I&#39;m the &#39;x&#39; property.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><a class="reference download internal" href="../_downloads/property_ugly.py" download=""><code class="xref download docutils literal"><span class="pre">property_ugly.py</span></code></a></p>
+<p><a class="reference download internal" href="../_downloads/property_ugly.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">property_ugly.py</span></code></a></p>
 <p>Note that in this case, the decorator object returned by the property decorator
 itself implements additional decorators as attributes on the returned method
 object. So you could actually do this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -546,19 +538,19 @@ object. So you could actually do this:</p>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">deleter</span><span class="p">(</span><span class="n">_del_x</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>But that’s getting really ugly! Makes you appreciate the <code class="docutils literal"><span class="pre">&#64;</span></code>, doesn’t it?</p>
+<p>But that’s getting really ugly! Makes you appreciate the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>, doesn’t it?</p>
 </div>
 <div class="section" id="import-time-vs-run-time">
 <h2>Import Time vs. Run Time<a class="headerlink" href="#import-time-vs-run-time" title="Permalink to this headline">¶</a></h2>
 <p>Decorators are run at import time. Run this code and see what happens when:</p>
-<p><a class="reference download internal" href="../_downloads/play_with_imports.py" download=""><code class="xref download docutils literal"><span class="pre">play_with_imports.py</span></code></a></p>
+<p><a class="reference download internal" href="../_downloads/play_with_imports.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">play_with_imports.py</span></code></a></p>
 </div>
 <div class="section" id="what-if-my-decorated-function-uses-unknown-inputs">
 <h2>What if my decorated function uses unknown inputs?<a class="headerlink" href="#what-if-my-decorated-function-uses-unknown-inputs" title="Permalink to this headline">¶</a></h2>
 <p>If you don’t know what parameters the decorated function will take (and you usually don’t), you want to make sure the inner function that you are replacing the decorated function with takes ANY arguments, and passes them on to the decorated function.</p>
-<p><code class="docutils literal"><span class="pre">*args,</span> <span class="pre">**kwargs</span></code> is your friend here:</p>
+<p><code class="docutils literal notranslate"><span class="pre">*args,</span> <span class="pre">**kwargs</span></code> is your friend here:</p>
 <p>A decorator that wraps an html <cite>&lt;p&gt;</cite> tag around the output of any decorated function.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">p_decorate</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">p_decorate</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">func_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;&lt;p&gt;{0}&lt;/p&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">func_wrapper</span>
@@ -590,7 +582,7 @@ object. So you could actually do this:</p>
 <h3>LAB<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h3>
 <p>A little excercise. See the “p_decorate” decorator defined above – it wrapped an html &lt;p&gt; tag (paragraph) around the results of any function that returned a string.</p>
 <p>Can you make a version that will wrap any other tag – specified as a parameter of the decorator itself? For example:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="go">@add_tag(&#39;p&#39;)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go">@add_tag(&#39;p&#39;)</span>
 <span class="go">    def get_fullname(first_name, last_name):</span>
 <span class="go">        return f&quot;{first_name} {last_name}&quot;</span>
 
@@ -598,9 +590,9 @@ object. So you could actually do this:</p>
 <span class="gh">Out[124]: </span><span class="go">&#39;&lt;p&gt;Chris Barker&lt;/p&gt;&#39;</span>
 </pre></div>
 </div>
-<p>Just like the <code class="docutils literal"><span class="pre">p_decorate</span></code> one above.</p>
+<p>Just like the <code class="docutils literal notranslate"><span class="pre">p_decorate</span></code> one above.</p>
 <p>But:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="go">@add_tag(&#39;div&#39;)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go">@add_tag(&#39;div&#39;)</span>
 <span class="go">    def get_fullname(first_name, last_name):</span>
 <span class="go">        return f&quot;{first_name} {last_name}&quot;</span>
 
@@ -622,9 +614,7 @@ object. So you could actually do this:</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -642,11 +632,11 @@ object. So you could actually do this:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -664,7 +654,8 @@ object. So you could actually do this:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -678,19 +669,13 @@ object. So you could actually do this:</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

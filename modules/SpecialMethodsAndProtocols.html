@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Special Methods &amp; Protocols &mdash; PythonCert 4.0 documentation</title>
+  <title>Special Methods &amp; Protocols &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="up" title="Topic Notes" href="index.html"/>
-        <link rel="next" title="Multiple Inheritance" href="MultipleInheritance.html"/>
-        <link rel="prev" title="Static and Class Methods" href="StaticAndClassMethods.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Multiple Inheritance" href="MultipleInheritance.html" />
+    <link rel="prev" title="Static and Class Methods" href="StaticAndClassMethods.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -67,7 +58,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -112,6 +103,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#assorted-additional-topics">Assorted Additional Topics</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../exercises/index.html">Exercises</a></li>
@@ -128,7 +120,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PythonCert</a>
@@ -136,9 +128,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -189,25 +182,25 @@
 <div class="section" id="what-s-in-a-name">
 <h2>What’s in a Name?<a class="headerlink" href="#what-s-in-a-name" title="Permalink to this headline">¶</a></h2>
 <p>We’ve seen at least one special method so far:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="fm">__init__</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span>
 </pre></div>
 </div>
 <p>It’s all in the double underscores…</p>
 <p>Pronounced “dunder”</p>
-<p>try: <code class="docutils literal"><span class="pre">dir(2)</span></code>  or <code class="docutils literal"><span class="pre">dir(list)</span></code></p>
+<p>try: <code class="docutils literal notranslate"><span class="pre">dir(2)</span></code>  or <code class="docutils literal notranslate"><span class="pre">dir(list)</span></code></p>
 </div>
 <div class="section" id="generally-useful-special-methods">
 <h2>Generally Useful Special Methods<a class="headerlink" href="#generally-useful-special-methods" title="Permalink to this headline">¶</a></h2>
 <p>Most classes should at least have these special methods:</p>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">object.__str__</span></code>:</dt>
+<dt><code class="docutils literal notranslate"><span class="pre">object.__str__</span></code>:</dt>
 <dd>Called by the str() built-in function and by the print function to compute
 the <em>informal</em> string representation of an object.</dd>
-<dt><code class="docutils literal"><span class="pre">object.__repr__</span></code>:</dt>
+<dt><code class="docutils literal notranslate"><span class="pre">object.__repr__</span></code>:</dt>
 <dd><p class="first">Called by the repr() built-in function to compute the <em>official</em> string representation of an object.</p>
-<p>Ideally: <code class="docutils literal"><span class="pre">eval(</span> <span class="pre">repr(something)</span> <span class="pre">)</span> <span class="pre">==</span> <span class="pre">something</span></code></p>
+<p>Ideally: <code class="docutils literal notranslate"><span class="pre">eval(</span> <span class="pre">repr(something)</span> <span class="pre">)</span> <span class="pre">==</span> <span class="pre">something</span></code></p>
 <p>This means that the “repr” is what you type to create the object. In practice, this is impractical for complex objects… but it is still a more “formal” form.</p>
-<p class="last">Note that if you don’t define a <code class="docutils literal"><span class="pre">__str__</span></code> method, then the <code class="docutils literal"><span class="pre">__repr__</span></code> will be used. And the base class (<code class="docutils literal"><span class="pre">object</span></code>) has a <code class="docutils literal"><span class="pre">__repr__</span></code> defined, so every class automatically gets one – but it’s ugly :-)</p>
+<p class="last">Note that if you don’t define a <code class="docutils literal notranslate"><span class="pre">__str__</span></code> method, then the <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> will be used. And the base class (<code class="docutils literal notranslate"><span class="pre">object</span></code>) has a <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> defined, so every class automatically gets one – but it’s ugly :-)</p>
 </dd>
 </dl>
 </div>
@@ -220,7 +213,7 @@ the <em>informal</em> string representation of an object.</dd>
 <div class="section" id="the-numerics-protocol">
 <h2>The Numerics Protocol<a class="headerlink" href="#the-numerics-protocol" title="Permalink to this headline">¶</a></h2>
 <p>Do you want your class to behave like a number? Implement these methods:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">object</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">object</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 <span class="nb">object</span><span class="o">.</span><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 <span class="nb">object</span><span class="o">.</span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 <span class="nb">object</span><span class="o">.</span><span class="n">__matmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
@@ -240,10 +233,10 @@ the <em>informal</em> string representation of an object.</dd>
 </div>
 <div class="section" id="operator-overloading">
 <h2>Operator Overloading<a class="headerlink" href="#operator-overloading" title="Permalink to this headline">¶</a></h2>
-<p>Most of the previous examples map to “operators”: <code class="docutils literal"><span class="pre">+,</span> <span class="pre">-</span> <span class="pre">,</span> <span class="pre">*,</span> <span class="pre">//,</span> <span class="pre">/,</span> <span class="pre">%</span></code> etc. This is often known as “operator overloading”, as you are redefining what the operators mean for that specific type.</p>
+<p>Most of the previous examples map to “operators”: <code class="docutils literal notranslate"><span class="pre">+,</span> <span class="pre">-</span> <span class="pre">,</span> <span class="pre">*,</span> <span class="pre">//,</span> <span class="pre">/,</span> <span class="pre">%</span></code> etc. This is often known as “operator overloading”, as you are redefining what the operators mean for that specific type.</p>
 <p>Note that you can define these operators to do ANYTHING you want – but it is a really good idea to only define them to mean something that makes sense in the usual way.</p>
-<p>One interesting exception to this rule is the <code class="docutils literal"><span class="pre">pathlib.Path</span></code> class, that has defined <code class="docutils literal"><span class="pre">__truediv__</span></code> to mean path concatenation:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="kn">import</span> <span class="nn">pathlib</span>
+<p>One interesting exception to this rule is the <code class="docutils literal notranslate"><span class="pre">pathlib.Path</span></code> class, that has defined <code class="docutils literal notranslate"><span class="pre">__truediv__</span></code> to mean path concatenation:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="kn">import</span> <span class="nn">pathlib</span>
 
 <span class="gp">In [20]: </span><span class="n">p1</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
 
@@ -259,14 +252,14 @@ the <em>informal</em> string representation of an object.</dd>
 <div class="section" id="comparing">
 <h2>Comparing<a class="headerlink" href="#comparing" title="Permalink to this headline">¶</a></h2>
 <p>If you want your objects to be comparable:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">&gt;</span> <span class="n">B</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">&gt;</span> <span class="n">B</span>
 <span class="n">A</span> <span class="o">&lt;</span> <span class="n">B</span>
 <span class="n">A</span> <span class="o">&gt;=</span> <span class="n">B</span>
 </pre></div>
 </div>
 <p>etc…</p>
 <p>There is a full set of magic methods you can use to override the “comparison operators”</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="fm">__lt__</span> <span class="p">:</span> <span class="o">&lt;</span>  <span class="p">(</span><span class="n">less</span> <span class="n">than</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="fm">__lt__</span> <span class="p">:</span> <span class="o">&lt;</span>  <span class="p">(</span><span class="n">less</span> <span class="n">than</span><span class="p">)</span>
 <span class="fm">__le__</span> <span class="p">:</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">less</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span><span class="p">)</span>
 <span class="fm">__eq__</span> <span class="p">:</span> <span class="o">==</span> <span class="p">(</span><span class="n">equal</span><span class="p">)</span>
 <span class="fm">__ge__</span> <span class="p">:</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">greater</span> <span class="n">than</span> <span class="ow">or</span> <span class="n">equal</span><span class="p">)</span>
@@ -275,7 +268,7 @@ the <em>informal</em> string representation of an object.</dd>
 </pre></div>
 </div>
 <p>These are known as the “rich comparison” operators, as they allow fuller featured comparisons. In particular, they are used by numpy to provide “element-wise” comparison – that is, comparing two arrays yields an array of results, rather than a single result:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="gp">In [27]: </span><span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
 
@@ -292,15 +285,15 @@ the <em>informal</em> string representation of an object.</dd>
 </div>
 <div class="section" id="total-ordering">
 <h2>Total Ordering<a class="headerlink" href="#total-ordering" title="Permalink to this headline">¶</a></h2>
-<p>You may notice that those operators are kind of redundant – if <code class="docutils literal"><span class="pre">A</span> <span class="pre">&gt;</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">True</span></code> then we know that <code class="docutils literal"><span class="pre">A</span> <span class="pre">&lt;</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">False</span></code> and <code class="docutils literal"><span class="pre">A</span> <span class="pre">&lt;=</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">False</span></code>.</p>
+<p>You may notice that those operators are kind of redundant – if <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&gt;</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">True</span></code> then we know that <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&lt;</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">False</span></code> and <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&lt;=</span> <span class="pre">B</span> <span class="pre">is</span> <span class="pre">False</span></code>.</p>
 <p>In fact, there is a mathematical / computer science concept known as “Total Order”: (<a class="reference external" href="https://en.wikipedia.org/wiki/Total_order">https://en.wikipedia.org/wiki/Total_order</a>), which strictly defines “well behaved” objects in this regard.</p>
 <p>There may be some special cases, where these rules may not apply for your classes (though I can’t think of any :-) ), but for the most part, you want your classes, if they support comparisons at all, to be well behaved, or “total ordered”.</p>
 <p>Because this is the common case, Python comes with a nifty utility that implements total ordering for you:</p>
 <p><a class="reference external" href="https://docs.python.org/3.6/library/functools.html#functools.total_ordering">https://docs.python.org/3.6/library/functools.html#functools.total_ordering</a></p>
-<p>It can be found in the functools module, and allows you to specify __eq__ and only one of: <code class="docutils literal"><span class="pre">__lt__()</span></code>, <code class="docutils literal"><span class="pre">__le__()</span></code>, <code class="docutils literal"><span class="pre">__gt__()</span></code>, or <code class="docutils literal"><span class="pre">__ge__()</span></code>.  It will then fill in the others for you.</p>
-<p>Note: if you define only one, it should be <code class="docutils literal"><span class="pre">__lt__</span></code>, because this is the one used for sorting (see below for more about that).</p>
+<p>It can be found in the functools module, and allows you to specify __eq__ and only one of: <code class="docutils literal notranslate"><span class="pre">__lt__()</span></code>, <code class="docutils literal notranslate"><span class="pre">__le__()</span></code>, <code class="docutils literal notranslate"><span class="pre">__gt__()</span></code>, or <code class="docutils literal notranslate"><span class="pre">__ge__()</span></code>.  It will then fill in the others for you.</p>
+<p>Note: if you define only one, it should be <code class="docutils literal notranslate"><span class="pre">__lt__</span></code>, because this is the one used for sorting (see below for more about that).</p>
 <p>Here is the truncated example from the docs:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@total_ordering</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@total_ordering</span>
 <span class="k">class</span> <span class="nc">Student</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">lastname</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">firstname</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="o">==</span>
@@ -310,24 +303,24 @@ the <em>informal</em> string representation of an object.</dd>
                 <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">lastname</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">other</span><span class="o">.</span><span class="n">firstname</span><span class="o">.</span><span class="n">lower</span><span class="p">()))</span>
 </pre></div>
 </div>
-<p>Note that this makes it a lot easier than implementing all six comparison operators. However, if you read the doc, it lets you know that <code class="docutils literal"><span class="pre">total_ordering</span></code> has poor performance – it is doing extra method call re-direction when the operators are used. If performance matters to your use case (and it probably doesn’t), you need to write all six comparison dunders.</p>
+<p>Note that this makes it a lot easier than implementing all six comparison operators. However, if you read the doc, it lets you know that <code class="docutils literal notranslate"><span class="pre">total_ordering</span></code> has poor performance – it is doing extra method call re-direction when the operators are used. If performance matters to your use case (and it probably doesn’t), you need to write all six comparison dunders.</p>
 </div>
 <div class="section" id="sorting">
 <h2>Sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">¶</a></h2>
 <p>Python has a handful of sorting methods built in:</p>
-<p><code class="docutils literal"><span class="pre">list.sort()</span></code> – for sorting a list in place.
-<code class="docutils literal"><span class="pre">sorted(iterable)</span></code> – for creating a sorted copy of an iterable (sequence).</p>
+<p><code class="docutils literal notranslate"><span class="pre">list.sort()</span></code> – for sorting a list in place.
+<code class="docutils literal notranslate"><span class="pre">sorted(iterable)</span></code> – for creating a sorted copy of an iterable (sequence).</p>
 <p>And a couple of more obscure ones.</p>
-<p>In order for your custom objects to be sortable, they need the <code class="docutils literal"><span class="pre">__lt__</span></code> (less than) magic method defined – that’s about it.</p>
-<p>So if you are using the <code class="docutils literal"><span class="pre">total_ordering</span></code> decorator, it’s best to define <code class="docutils literal"><span class="pre">__eq__</span></code> and <code class="docutils literal"><span class="pre">__lt__</span></code> – that way sorting will be able to use a “native” method for sorting, and maybe get better performance.</p>
+<p>In order for your custom objects to be sortable, they need the <code class="docutils literal notranslate"><span class="pre">__lt__</span></code> (less than) magic method defined – that’s about it.</p>
+<p>So if you are using the <code class="docutils literal notranslate"><span class="pre">total_ordering</span></code> decorator, it’s best to define <code class="docutils literal notranslate"><span class="pre">__eq__</span></code> and <code class="docutils literal notranslate"><span class="pre">__lt__</span></code> – that way sorting will be able to use a “native” method for sorting, and maybe get better performance.</p>
 </div>
 <div class="section" id="sort-key-methods">
 <h2>Sort key methods<a class="headerlink" href="#sort-key-methods" title="Permalink to this headline">¶</a></h2>
-<p>By default, the sorting methods use <code class="docutils literal"><span class="pre">__lt__</span></code> for comparison, and that algorithm calls <code class="docutils literal"><span class="pre">__lt__</span></code> O(n log(n)) times. But if you pass a “key” function in to the sort call:</p>
-<p><code class="docutils literal"><span class="pre">a_list.sort(key=key_fun)</span></code></p>
+<p>By default, the sorting methods use <code class="docutils literal notranslate"><span class="pre">__lt__</span></code> for comparison, and that algorithm calls <code class="docutils literal notranslate"><span class="pre">__lt__</span></code> O(n log(n)) times. But if you pass a “key” function in to the sort call:</p>
+<p><code class="docutils literal notranslate"><span class="pre">a_list.sort(key=key_fun)</span></code></p>
 <p>then the key_fun is only called n times, and if the key returns a simple type, like an integer or float, then the sorting will be faster.</p>
 <p>So it often helps to provide a sort_key() method on your class, so it can be passed in to the sort methods:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Simple</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Simple</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    simple class to demonstrate a simple sorting key method</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -340,11 +333,11 @@ the <em>informal</em> string representation of an object.</dd>
 </pre></div>
 </div>
 <p>And to use it:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">list_of_Simple_objects</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">Simple</span><span class="o">.</span><span class="n">sort_key</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">list_of_Simple_objects</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">Simple</span><span class="o">.</span><span class="n">sort_key</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See: <a class="reference download internal" href="../_downloads/sort_key.py" download=""><code class="xref download docutils literal"><span class="pre">sort_key.py</span></code></a> for a complete example with timing. Here is an example of running it:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Timing</span> <span class="k">for</span> <span class="mi">10000</span> <span class="n">items</span>
+<p>See: <a class="reference download internal" href="../_downloads/sort_key.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">sort_key.py</span></code></a> for a complete example with timing. Here is an example of running it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Timing</span> <span class="k">for</span> <span class="mi">10000</span> <span class="n">items</span>
 <span class="n">regular</span> <span class="n">sort</span> <span class="n">took</span><span class="p">:</span> <span class="mf">0.04288</span><span class="n">s</span>
 <span class="n">key</span> <span class="n">sort</span> <span class="n">took</span><span class="p">:</span> <span class="mf">0.004779</span><span class="n">s</span>
 <span class="n">performance</span> <span class="n">improvement</span> <span class="n">factor</span><span class="p">:</span> <span class="mf">8.9726</span>
@@ -356,15 +349,15 @@ the <em>informal</em> string representation of an object.</dd>
 <h2>An Example<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h2>
 <p>Each of these methods supports a common Python operation.</p>
 <p>For example, to make ‘+’ work with a sequence type in a vector-like fashion,
-implement <code class="docutils literal"><span class="pre">__add__</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+implement <code class="docutils literal notranslate"><span class="pre">__add__</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;return the element-wise vector sum of self and v</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">vector</span><span class="p">([</span><span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span> <span class="k">for</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">)])</span>
 </pre></div>
 </div>
-<p>[a slightly more complete example may be seen here <a class="reference download internal" href="../_downloads/vector.py" download=""><code class="xref download docutils literal"><span class="pre">vector.py</span></code></a>]</p>
+<p>[a slightly more complete example may be seen here <a class="reference download internal" href="../_downloads/vector.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">vector.py</span></code></a>]</p>
 <div class="section" id="emulating-standard-types">
 <h3>Emulating Standard types<a class="headerlink" href="#emulating-standard-types" title="Permalink to this headline">¶</a></h3>
 <p>Making your classes behave like the built-ins.</p>
@@ -373,7 +366,7 @@ implement <code class="docutils literal"><span class="pre">__add__</span></code>
 <div class="section" id="the-container-protocol">
 <h2>The Container Protocol<a class="headerlink" href="#the-container-protocol" title="Permalink to this headline">¶</a></h2>
 <p>Want to make a container type? Here’s what you need:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">object</span><span class="o">.</span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">object</span><span class="o">.</span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 <span class="nb">object</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
 <span class="nb">object</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 <span class="nb">object</span><span class="o">.</span><span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
@@ -384,42 +377,42 @@ implement <code class="docutils literal"><span class="pre">__add__</span></code>
 <span class="nb">object</span><span class="o">.</span><span class="fm">__index__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">__len__</span></code> is called when len(object) is called.</p>
-<p><code class="docutils literal"><span class="pre">__reversed__</span></code> is called when reversed(object) is called.</p>
-<p><code class="docutils literal"><span class="pre">__contains__</span></code> is called with <code class="docutils literal"><span class="pre">in</span></code> is used: <code class="docutils literal"><span class="pre">something</span> <span class="pre">in</span> <span class="pre">object</span></code></p>
-<p><code class="docutils literal"><span class="pre">__iter__</span></code> is used for iteration – called when in a for loop.</p>
-<p><code class="docutils literal"><span class="pre">__index__</span></code> is used to convert the object into an integer for indexing. So you don’t define this in a container type but rather define it for a type so it can be used as an index.  If you have a class that could reasonably be interpreted as an index, you should define this. It should return an integer.  This was added to support multiple integer types for numpy.</p>
+<p><code class="docutils literal notranslate"><span class="pre">__len__</span></code> is called when len(object) is called.</p>
+<p><code class="docutils literal notranslate"><span class="pre">__reversed__</span></code> is called when reversed(object) is called.</p>
+<p><code class="docutils literal notranslate"><span class="pre">__contains__</span></code> is called with <code class="docutils literal notranslate"><span class="pre">in</span></code> is used: <code class="docutils literal notranslate"><span class="pre">something</span> <span class="pre">in</span> <span class="pre">object</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">__iter__</span></code> is used for iteration – called when in a for loop.</p>
+<p><code class="docutils literal notranslate"><span class="pre">__index__</span></code> is used to convert the object into an integer for indexing. So you don’t define this in a container type but rather define it for a type so it can be used as an index.  If you have a class that could reasonably be interpreted as an index, you should define this. It should return an integer.  This was added to support multiple integer types for numpy.</p>
 </div>
 <div class="section" id="indexing-and-slicing">
 <h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">__getitem__</span></code> and <code class="docutils literal"><span class="pre">set__item__</span></code> are used when indexing:</p>
-<p><code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">object[i]</span></code> calls <code class="docutils literal"><span class="pre">__getitem__</span></code>, and <code class="docutils literal"><span class="pre">object[i]</span> <span class="pre">=</span> <span class="pre">something</span></code> calls <code class="docutils literal"><span class="pre">__setitem__</span></code>.</p>
-<p>But indexing is pretty complex in python. There is simple indexing: <code class="docutils literal"><span class="pre">object[i]</span></code>, but there is also slicing: <code class="docutils literal"><span class="pre">object[i:j:skip]</span></code></p>
-<p>When you implement <code class="docutils literal"><span class="pre">__getitem__(self,</span> <span class="pre">index)</span></code>, <code class="docutils literal"><span class="pre">index</span></code> will simply be the index if it’s a simple index, but if it’s slicing, it will be a <code class="docutils literal"><span class="pre">slice</span></code> object. Python also supports multiple slices:</p>
-<p><code class="docutils literal"><span class="pre">object[a:b,c:d]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> and <code class="docutils literal notranslate"><span class="pre">set__item__</span></code> are used when indexing:</p>
+<p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">object[i]</span></code> calls <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code>, and <code class="docutils literal notranslate"><span class="pre">object[i]</span> <span class="pre">=</span> <span class="pre">something</span></code> calls <code class="docutils literal notranslate"><span class="pre">__setitem__</span></code>.</p>
+<p>But indexing is pretty complex in python. There is simple indexing: <code class="docutils literal notranslate"><span class="pre">object[i]</span></code>, but there is also slicing: <code class="docutils literal notranslate"><span class="pre">object[i:j:skip]</span></code></p>
+<p>When you implement <code class="docutils literal notranslate"><span class="pre">__getitem__(self,</span> <span class="pre">index)</span></code>, <code class="docutils literal notranslate"><span class="pre">index</span></code> will simply be the index if it’s a simple index, but if it’s slicing, it will be a <code class="docutils literal notranslate"><span class="pre">slice</span></code> object. Python also supports multiple slices:</p>
+<p><code class="docutils literal notranslate"><span class="pre">object[a:b,c:d]</span></code></p>
 <p>These are used in numpy to support multi-dimensional arrays, for instance.</p>
 <p>In this case, a tuple of slice objects is passed in.</p>
-<p>See: <a class="reference download internal" href="../_downloads/index_slicing.py" download=""><code class="xref download docutils literal"><span class="pre">index_slicing.py</span></code></a></p>
+<p>See: <a class="reference download internal" href="../_downloads/index_slicing.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">index_slicing.py</span></code></a></p>
 </div>
 <div class="section" id="callable-classes">
 <h2>Callable classes<a class="headerlink" href="#callable-classes" title="Permalink to this headline">¶</a></h2>
 <p>We’ve been using functions a lot:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_fun</span><span class="p">(</span><span class="n">something</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_fun</span><span class="p">(</span><span class="n">something</span><span class="p">):</span>
     <span class="n">do_something</span>
     <span class="o">...</span>
     <span class="k">return</span> <span class="n">something</span>
 </pre></div>
 </div>
 <p>And then we can call it:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">my_fun</span><span class="p">(</span><span class="n">some_arguments</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">my_fun</span><span class="p">(</span><span class="n">some_arguments</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>But what if we need to store some data to know how to evaluate that function?</p>
 <p>Example: a function that computes a quadratic function:</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[y = a x^2 + bx + c\]</div>
 <p>You could pass in a, b and c each time:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quadratic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quadratic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
 </pre></div>
 </div>
@@ -431,7 +424,7 @@ implement <code class="docutils literal"><span class="pre">__add__</span></code>
 <h2>“Callables”<a class="headerlink" href="#callables" title="Permalink to this headline">¶</a></h2>
 <p>Various places in Python expect a “callable” – something that you can
 call like a function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a_result</span> <span class="o">=</span> <span class="n">something</span><span class="p">(</span><span class="n">some_arguments</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a_result</span> <span class="o">=</span> <span class="n">something</span><span class="p">(</span><span class="n">some_arguments</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>“Something” in this case is often a function, but can be anything else
@@ -442,19 +435,19 @@ function object?</p>
 <div class="section" id="custom-callable-objects">
 <h2>Custom callable objects<a class="headerlink" href="#custom-callable-objects" title="Permalink to this headline">¶</a></h2>
 <p>The trick is one of Python’s “magic methods”</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="fm">__call__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__call__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>If you define a <code class="docutils literal"><span class="pre">__call__</span></code> method in your class, it will be used when
+<p>If you define a <code class="docutils literal notranslate"><span class="pre">__call__</span></code> method in your class, it will be used when
 code “calls” an instance of your class:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Callable</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Callable</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">.....</span><span class="p">)</span>
         <span class="n">some_initilization</span>
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">some_parameters</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Then you can do:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">callable_instance</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">(</span><span class="n">some_arguments</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">callable_instance</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">(</span><span class="n">some_arguments</span><span class="p">)</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">callable_instance</span><span class="p">(</span><span class="n">some_arguments</span><span class="p">)</span>
 </pre></div>
@@ -465,17 +458,17 @@ code “calls” an instance of your class:</p>
 <p>An example of writing a callable class:</p>
 <p>Write a class for a quadratic equation.</p>
 <ul class="simple">
-<li>The initializer for that class should take the parameters: <code class="docutils literal"><span class="pre">a,</span> <span class="pre">b,</span> <span class="pre">c</span></code></li>
+<li>The initializer for that class should take the parameters: <code class="docutils literal notranslate"><span class="pre">a,</span> <span class="pre">b,</span> <span class="pre">c</span></code></li>
 <li>It should store those parameters as attributes.</li>
 <li>The resulting instance should evaluate the function when called, and return the result:</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">my_quad</span> <span class="o">=</span> <span class="n">Quadratic</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_quad</span> <span class="o">=</span> <span class="n">Quadratic</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">my_quad</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Here’s one way to do that:
-<a class="reference download internal" href="../_downloads/quadratic.py" download=""><code class="xref download docutils literal"><span class="pre">quadratic.py</span></code></a></p>
+<a class="reference download internal" href="../_downloads/quadratic.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">quadratic.py</span></code></a></p>
 </div>
 <div class="section" id="protocols-in-summary">
 <h2>Protocols in Summary<a class="headerlink" href="#protocols-in-summary" title="Permalink to this headline">¶</a></h2>
@@ -497,9 +490,7 @@ code “calls” an instance of your class:</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -517,11 +508,11 @@ code “calls” an instance of your class:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -539,7 +530,8 @@ code “calls” an instance of your class:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -553,19 +545,13 @@ code “calls” an instance of your class:</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

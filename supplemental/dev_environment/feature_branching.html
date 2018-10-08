@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Feature Branching &mdash; PythonCert 4.0 documentation</title>
+  <title>Feature Branching &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../../index.html"/>
-        <link rel="up" title="Setting Up A Development Environment For Python" href="index.html"/>
-        <link rel="next" title="Working with Virtualenv" href="virtualenv.html"/>
-        <link rel="prev" title="git Overview" href="git_overview.html"/> 
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Working with Virtualenv" href="virtualenv.html" />
+    <link rel="prev" title="git Overview" href="git_overview.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -67,7 +58,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -92,7 +83,7 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../modules/index.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/index.html">Topic Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../exercises/index.html">Exercises</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Supplemental Materials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../HowToRunAPythonFile.html">How to run a python file</a></li>
@@ -119,6 +110,8 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#specific-python-notes">Specific Python Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#more-about-git">More about git</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../references/index.html">Resources for Specific Python Topics</a></li>
@@ -133,7 +126,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">PythonCert</a>
@@ -141,9 +134,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -225,17 +219,17 @@ either use the command line or the UI.</p>
 <h4>Creating feature branch via Command Line<a class="headerlink" href="#creating-feature-branch-via-command-line" title="Permalink to this headline">¶</a></h4>
 <p>First make sure you’re on master and make sure you have the latest
 changes</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git checkout master
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout master
 
 git pull
 </pre></div>
 </div>
 <p>Next you will create a new branch (-b flag) based of master</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git checkout -b &lt;new_feature_branch_name&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout -b &lt;new_feature_branch_name&gt;
 </pre></div>
 </div>
 <p>Here is the full example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git checkout master
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout master
 
 Already on <span class="s1">&#39;master&#39;</span>
 
@@ -248,7 +242,7 @@ $ git checkout -b lesson1/assignment1
 Switched to a new branch <span class="s1">&#39;lesson1/assignment1&#39;</span>
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git branch
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git branch
   branch_name1
   another_branch
 * lesson1/assignment1 &lt;------- The asterisk here indicates your current branch
@@ -259,7 +253,7 @@ Switched to a new branch <span class="s1">&#39;lesson1/assignment1&#39;</span>
 make commits to this branch. There should be no difference.. when you’re
 ready to push your changes you would now push to your feature branch
 instead of master:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git push origin &lt;new_feature_branch_name&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push origin &lt;new_feature_branch_name&gt;
 </pre></div>
 </div>
 </div>
@@ -269,14 +263,14 @@ instead of master:</p>
 <a class="reference internal image-reference" href="../../_images/feature_branching_img2.png"><img alt="../../_images/feature_branching_img2.png" src="../../_images/feature_branching_img2.png" style="width: 335.0px; height: 281.0px;" /></a>
 <p>Initially you should only see master branch listed. Within that dropdown
 type the name of the new feature branch, for this example we will call
-it <code class="docutils literal"><span class="pre">lesson1/assignment1</span></code></p>
+it <code class="docutils literal notranslate"><span class="pre">lesson1/assignment1</span></code></p>
 <a class="reference internal image-reference" href="../../_images/feature_branching_img3.png"><img alt="../../_images/feature_branching_img3.png" src="../../_images/feature_branching_img3.png" style="width: 347.0px; height: 249.0px;" /></a>
 <p>Once you start typing the name of the branch, and if it does not
 currently exist, you will get a prompt to create new branch. Click into
 highlighted area (colors may differ based on browser or theme) and now
 you have a new branch!</p>
 <p>Go into command line and check out this new branch:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git pull
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git pull
 
 $ git checkout lesson1/assignment1
 
@@ -314,24 +308,24 @@ Create the PR.</p>
 <h5>Command Line<a class="headerlink" href="#command-line" title="Permalink to this headline">¶</a></h5>
 <p>note that you can always verify you are in your forked version by
 running the command below which should show URL of origin</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git remote show origin
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git remote show origin
 </pre></div>
 </div>
 <p>Now check out master and make sure it is up to date</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git checkout master
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout master
 
 git pull
 </pre></div>
 </div>
-<p>Next merge your feature branch (in our example <code class="docutils literal"><span class="pre">lesson1/assignment1</span></code>
+<p>Next merge your feature branch (in our example <code class="docutils literal notranslate"><span class="pre">lesson1/assignment1</span></code>
 into master</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git merge --no-ff lesson1/assignment1
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git merge --no-ff lesson1/assignment1
 </pre></div>
 </div>
 <p>Next you will be prompted to commit with pre-populated commit message,
 then save and close.</p>
 <p>Finish up with</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git push origin master
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push origin master
 </pre></div>
 </div>
 </div>
@@ -359,9 +353,7 @@ feature branch on the far right.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -379,11 +371,11 @@ feature branch on the far right.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -401,7 +393,8 @@ feature branch on the far right.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'4.0',
+            VERSION:'5.0',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -415,19 +408,13 @@ feature branch on the far right.</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

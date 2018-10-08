@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Exception Handling &mdash; PythonCert 4.0 documentation</title>
+  <title>Exception Handling &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="up" title="Topic Notes" href="index.html"/>
-        <link rel="next" title="Comprehensions" href="Comprehensions.html"/>
-        <link rel="prev" title="Documentation" href="Documentation.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Comprehensions" href="Comprehensions.html" />
+    <link rel="prev" title="Documentation" href="Documentation.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -67,7 +58,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -132,7 +123,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PythonCert</a>
@@ -140,9 +131,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -203,7 +195,7 @@
 <h2>Handling Exceptions<a class="headerlink" href="#handling-exceptions" title="Permalink to this headline">¶</a></h2>
 <p>Exceptions are handled with a “try – except” block.</p>
 <p>This provides another branching structure (kind of like if) – a way for different code to run depending on what happens.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">do_something</span><span class="p">()</span>
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;missing.txt&#39;</span><span class="p">)</span>
     <span class="n">process</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>   <span class="c1"># never called if file missing</span>
@@ -213,9 +205,9 @@
 </div>
 </div>
 <div class="section" id="bare-except">
-<h2>Bare <code class="docutils literal"><span class="pre">except</span></code><a class="headerlink" href="#bare-except" title="Permalink to this headline">¶</a></h2>
+<h2>Bare <code class="docutils literal notranslate"><span class="pre">except</span></code><a class="headerlink" href="#bare-except" title="Permalink to this headline">¶</a></h2>
 <p><em>Never</em> do this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">do_something</span><span class="p">()</span>
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;missing.txt&#39;</span><span class="p">)</span>
     <span class="n">process</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>   <span class="c1"># never called if file missing</span>
@@ -223,7 +215,7 @@
     <span class="k">print</span> <span class="s2">&quot;couldn&#39;t find missing.txt&quot;</span>
 </pre></div>
 </div>
-<p>If you don’t specify a particular exception, <code class="docutils literal"><span class="pre">except</span></code> will catch <em>All</em> exceptions.</p>
+<p>If you don’t specify a particular exception, <code class="docutils literal notranslate"><span class="pre">except</span></code> will catch <em>All</em> exceptions.</p>
 <p><strong>Always</strong> capture the <em>particular</em> Exception(s) you know how to handle.</p>
 <p>Trust me, you can’t anticipate everything, and you want the exception to propagate if it is not expected when you wrote the code.</p>
 </div>
@@ -231,7 +223,7 @@
 <h2>Testing for errors “by hand”:<a class="headerlink" href="#testing-for-errors-by-hand" title="Permalink to this headline">¶</a></h2>
 <p>Use Exceptions, rather than your own tests:</p>
 <p>Don’t do this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">do_something</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">do_something</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;missing.txt&#39;</span><span class="p">):</span>
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;missing.txt&#39;</span><span class="p">)</span>
     <span class="n">process</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
@@ -244,20 +236,20 @@
 <h2>Example from mailroom exercise:<a class="headerlink" href="#example-from-mailroom-exercise" title="Permalink to this headline">¶</a></h2>
 <p>You want to convert the user’s input into an integer. And you want to give a nice message if the user didn’t provide a valid input.</p>
 <p>So you could do this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">num_in</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">num_in</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
     <span class="n">num_in</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_in</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>But – <code class="docutils literal"><span class="pre">int(num_in)</span></code> will only work if the string can be converted to an integer.</p>
+<p>But – <code class="docutils literal notranslate"><span class="pre">int(num_in)</span></code> will only work if the string can be converted to an integer.</p>
 <p>So you can also do:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">num_in</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_in</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Input must be an integer, try again.&quot;</span><span class="p">)</span>
     <span class="k">continue</span>
 </pre></div>
 </div>
-<p>This is particularly helpful for things like converting to a float – much more complicated to check – and all that logic is already in the <code class="docutils literal"><span class="pre">float()</span></code> constructor.</p>
+<p>This is particularly helpful for things like converting to a float – much more complicated to check – and all that logic is already in the <code class="docutils literal notranslate"><span class="pre">float()</span></code> constructor.</p>
 <p>Or let the Exception be raised if you can’t handle it.</p>
 </div>
 <div class="section" id="eafp">
@@ -281,9 +273,9 @@
 <p>This results in much better debugging info when an error does occur.  The user will see the exception, and where in the code it happened, etc.</p>
 </div>
 <div class="section" id="exceptions-finally">
-<h2>Exceptions – <code class="docutils literal"><span class="pre">finally</span></code><a class="headerlink" href="#exceptions-finally" title="Permalink to this headline">¶</a></h2>
+<h2>Exceptions – <code class="docutils literal notranslate"><span class="pre">finally</span></code><a class="headerlink" href="#exceptions-finally" title="Permalink to this headline">¶</a></h2>
 <p>There is another component to exception handling control structures:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">do_something</span><span class="p">()</span>
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;missing.txt&#39;</span><span class="p">)</span>
     <span class="n">process</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>   <span class="c1"># never called if file missing</span>
@@ -293,20 +285,20 @@
     <span class="n">do_some_clean</span><span class="o">-</span><span class="n">up</span>
 </pre></div>
 </div>
-<p>The code in the <code class="docutils literal"><span class="pre">finally:</span></code>  clause will always run.</p>
+<p>The code in the <code class="docutils literal notranslate"><span class="pre">finally:</span></code>  clause will always run.</p>
 <p>This is really important if your code does anything before the exception occurred that needs to be cleaned up – open database connection, etc…</p>
 <p><strong>NOTE:</strong> In the above example, you can often avoid all that exception handling code using a with statement:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;missing.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;missing.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">process</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In this case, the file will be properly closed regardless. And many other systems, like database managers, etc. can also be used with <code class="docutils literal"><span class="pre">with</span></code>.</p>
+<p>In this case, the file will be properly closed regardless. And many other systems, like database managers, etc. can also be used with <code class="docutils literal notranslate"><span class="pre">with</span></code>.</p>
 <p>This is known as a “context manager”, and was added to Python specifically to handle the common cases that required finally clauses. But if your use case does not already have a context manager that handles the cleanup you may need.</p>
 </div>
 <div class="section" id="exceptions-else">
-<h2>Exceptions – <code class="docutils literal"><span class="pre">else</span></code><a class="headerlink" href="#exceptions-else" title="Permalink to this headline">¶</a></h2>
+<h2>Exceptions – <code class="docutils literal notranslate"><span class="pre">else</span></code><a class="headerlink" href="#exceptions-else" title="Permalink to this headline">¶</a></h2>
 <p>Yet another flow control option:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">do_something</span><span class="p">()</span>
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;missing.txt&#39;</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
@@ -315,18 +307,18 @@
     <span class="n">process</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="c1"># only called if there was no exception</span>
 </pre></div>
 </div>
-<p>So the <code class="docutils literal"><span class="pre">else</span></code> block only runs if there was no exception. That was also the case in the previous code, so what’s the difference?</p>
+<p>So the <code class="docutils literal notranslate"><span class="pre">else</span></code> block only runs if there was no exception. That was also the case in the previous code, so what’s the difference?</p>
 <p><strong>Advantage of ``else``:</strong></p>
-<p>Using the <code class="docutils literal"><span class="pre">else</span></code> block lets you catch the exception as close to where it occurred as possible – always a good thing.</p>
-<p>Why? – because maybe the “process(f)” could raise an exception, too? Then you don’t know if the exception came from the <code class="docutils literal"><span class="pre">open()</span></code> call or in some code after that.</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">else</span></code> block lets you catch the exception as close to where it occurred as possible – always a good thing.</p>
+<p>Why? – because maybe the “process(f)” could raise an exception, too? Then you don’t know if the exception came from the <code class="docutils literal notranslate"><span class="pre">open()</span></code> call or in some code after that.</p>
 <p>This bears repeating:</p>
 <p><strong>Always catch exceptions as close to where they might occur as you can</strong>.</p>
 </div>
 <div class="section" id="exceptions-using-the-exception-object">
 <h2>Exceptions – using the Exception object<a class="headerlink" href="#exceptions-using-the-exception-object" title="Permalink to this headline">¶</a></h2>
-<p>What can you do in an <code class="docutils literal"><span class="pre">except</span></code> block?</p>
+<p>What can you do in an <code class="docutils literal notranslate"><span class="pre">except</span></code> block?</p>
 <p>If your code can continue along fine, you can do very little and move along:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">do_something</span><span class="p">()</span>
 <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;That wasn&#39;t any good&quot;</span><span class="p">)</span>
@@ -334,16 +326,16 @@
 </div>
 <p>And that’s that.</p>
 <p>But if your code <em>can’t</em> continue on, you can re-raise the exception:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">do_something</span><span class="p">()</span>
 <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;That wasn&#39;t any good&quot;</span><span class="p">)</span>
     <span class="k">raise</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">raise</span></code> statement will re-raise the same exception object, where it may get caught higher up in the code, or even end the program.</p>
-<p>Exception objects are full-fledged Python objects – they can contain data, and you can add data to them. You can give a name to a raised Exception with <code class="docutils literal"><span class="pre">as</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<p>The <code class="docutils literal notranslate"><span class="pre">raise</span></code> statement will re-raise the same exception object, where it may get caught higher up in the code, or even end the program.</p>
+<p>Exception objects are full-fledged Python objects – they can contain data, and you can add data to them. You can give a name to a raised Exception with <code class="docutils literal notranslate"><span class="pre">as</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">do_something</span><span class="p">()</span>
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;missing.txt&#39;</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">IOError</span> <span class="k">as</span> <span class="n">the_error</span><span class="p">:</span>
@@ -354,13 +346,13 @@
 </div>
 <p>This prints the exception, then adds some extra information to it, and then re-raises the same exception object – so it will have that extra data when it gets handled higher up on the stack.</p>
 <p>This is particularly useful if you catch more than one exception:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">except</span> <span class="p">(</span><span class="ne">IOError</span><span class="p">,</span> <span class="n">BufferError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">the_error</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">except</span> <span class="p">(</span><span class="ne">IOError</span><span class="p">,</span> <span class="n">BufferError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">the_error</span><span class="p">:</span>
     <span class="n">do_something_with</span><span class="p">(</span><span class="n">the_error</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You may want to do something different depending on which exception it is. And you can inspect the Exception object to find out more about it.  Each Exception has different information attached to it – you’ll need to read its docs to see.</p>
 <p>For an example – try running this code:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <dl class="docutils">
@@ -371,25 +363,25 @@
 …:     print(dir(err))
 …:     the_err = err</dd>
 </dl>
-<p>The <code class="docutils literal"><span class="pre">print(dir(err))</span></code> will print all the names (attributes) in the error object. A number of those are ordinary names that all objects have, but a few are specific to this error.</p>
-<p>the <code class="docutils literal"><span class="pre">the_err</span></code> = err line is there so that we can keep a name bound to the err after the code is run. <code class="docutils literal"><span class="pre">err</span></code> as bound by the except line only exists inside the following block.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">print(dir(err))</span></code> will print all the names (attributes) in the error object. A number of those are ordinary names that all objects have, but a few are specific to this error.</p>
+<p>the <code class="docutils literal notranslate"><span class="pre">the_err</span></code> = err line is there so that we can keep a name bound to the err after the code is run. <code class="docutils literal notranslate"><span class="pre">err</span></code> as bound by the except line only exists inside the following block.</p>
 <p>Now that we have a name to access it, we can look at some of its attributes. The name of the file that was attempted to be opened:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [35]: </span><span class="n">the_err</span><span class="o">.</span><span class="n">filename</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [35]: </span><span class="n">the_err</span><span class="o">.</span><span class="n">filename</span>
 <span class="gh">Out[35]: </span><span class="go">&#39;blah&#39;</span>
 </pre></div>
 </div>
 <p>The message that will be pronted is usually in the “args” attribute:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [37]: </span><span class="n">the_err</span><span class="o">.</span><span class="n">args</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [37]: </span><span class="n">the_err</span><span class="o">.</span><span class="n">args</span>
 <span class="gh">Out[37]: </span><span class="go">(2, &#39;No such file or directory&#39;)</span>
 </pre></div>
 </div>
-<p>the <code class="docutils literal"><span class="pre">.__traceback__</span></code> attribute hold the actual traceback object – all the information about the context the exception was raised in. That can inpsected to get all sorts of info. tHat is very advanced stuff, but you can investigate the <code class="docutils literal"><span class="pre">inspect</span></code> module if you want to know how.</p>
+<p>the <code class="docutils literal notranslate"><span class="pre">.__traceback__</span></code> attribute hold the actual traceback object – all the information about the context the exception was raised in. That can inpsected to get all sorts of info. tHat is very advanced stuff, but you can investigate the <code class="docutils literal notranslate"><span class="pre">inspect</span></code> module if you want to know how.</p>
 </div>
 <div class="section" id="multiple-exceptions">
 <h2>Multiple Exceptions<a class="headerlink" href="#multiple-exceptions" title="Permalink to this headline">¶</a></h2>
-<p>As seen above, you can catch multiple exceptions in an <code class="docutils literal"><span class="pre">except</span></code> statement</p>
-<p>If you want to do something completely different with each exception type, you can have multiple <code class="docutils literal"><span class="pre">except</span></code> blocks:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<p>As seen above, you can catch multiple exceptions in an <code class="docutils literal notranslate"><span class="pre">except</span></code> statement</p>
+<p>If you want to do something completely different with each exception type, you can have multiple <code class="docutils literal notranslate"><span class="pre">except</span></code> blocks:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
    <span class="n">some_code</span>
 <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
     <span class="n">handle_the_error</span>
@@ -399,8 +391,8 @@
     <span class="n">handle_the_error</span>
 </pre></div>
 </div>
-<p>So a full-featured <code class="docutils literal"><span class="pre">try</span></code> block has all of this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<p>So a full-featured <code class="docutils literal notranslate"><span class="pre">try</span></code> block has all of this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
    <span class="n">some_code</span>
 <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
     <span class="n">handle_the_error</span>
@@ -413,11 +405,11 @@
     <span class="n">some</span> <span class="n">code</span> <span class="n">to</span> <span class="n">run</span> <span class="n">always</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>The minimal try block is a <code class="docutils literal"><span class="pre">try</span></code>, and one <code class="docutils literal"><span class="pre">except</span></code>.</p>
+<p>The minimal try block is a <code class="docutils literal notranslate"><span class="pre">try</span></code>, and one <code class="docutils literal notranslate"><span class="pre">except</span></code>.</p>
 </div>
 <div class="section" id="raising-exceptions">
 <h2>Raising Exceptions<a class="headerlink" href="#raising-exceptions" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ZeroDivisionError</span><span class="p">(</span><span class="s2">&quot;b can not be zero&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -426,17 +418,17 @@
 </div>
 <p>(OK, this is a stupid example, as that error will be raised for you anyway. But bear with me).</p>
 <p>When you call it:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [515]: </span><span class="n">divide</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [515]: </span><span class="n">divide</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">ZeroDivisionError: b can not be zero</span>
 </pre></div>
 </div>
-<p>Note how you can pass a message to the exception object constructor. It will get printed when the exception is printed. (and it is stored the in the Exception object’s <code class="docutils literal"><span class="pre">.args</span></code> attribute)</p>
+<p>Note how you can pass a message to the exception object constructor. It will get printed when the exception is printed. (and it is stored the in the Exception object’s <code class="docutils literal notranslate"><span class="pre">.args</span></code> attribute)</p>
 </div>
 <div class="section" id="built-in-exceptions">
 <h2>Built in Exceptions<a class="headerlink" href="#built-in-exceptions" title="Permalink to this headline">¶</a></h2>
 <p>You can create your own custom exceptions.</p>
 <p>But…</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">exp</span> <span class="o">=</span> \
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">exp</span> <span class="o">=</span> \
  <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">__builtin__</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;Error&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span>
 <span class="mi">48</span>
@@ -450,13 +442,13 @@
 <h2>Choosing an Exception<a class="headerlink" href="#choosing-an-exception" title="Permalink to this headline">¶</a></h2>
 <p>Choose the best match you can for the built in Exception you raise.</p>
 <p>Example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
     <span class="k">raise</span> <span class="ne">ValueError</span>
 </pre></div>
 </div>
 <p>Is the <em>value</em> of the input the problem here?</p>
 <p>Nope: the <em>type</em> of the input is the problem:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
     <span class="k">raise</span> <span class="ne">TypeError</span>
 </pre></div>
 </div>
@@ -469,7 +461,7 @@
 <p>I write the code without a try block, pass in “bad data”, or somehow trigger the exception, then see what it is.</p>
 <p>Example:</p>
 <p>What if the file I want to read doesn’t exist?</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;some_non_existant_file&quot;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;some_non_existant_file&quot;</span><span class="p">)</span>
 <span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="nn">&lt;ipython-input-7-a18e010ecdd0&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
@@ -479,18 +471,16 @@
 </pre></div>
 </div>
 <p>Now I know to use:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
 </pre></div>
 </div>
-<p>In the <code class="docutils literal"><span class="pre">try</span></code> block where I am opening the file.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">try</span></code> block where I am opening the file.</p>
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -508,11 +498,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -530,7 +520,8 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -544,19 +535,13 @@
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

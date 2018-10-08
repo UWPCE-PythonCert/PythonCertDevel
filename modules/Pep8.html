@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Coding Style and Linting &mdash; PythonCert 4.0 documentation</title>
+  <title>Coding Style and Linting &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="up" title="Topic Notes" href="index.html"/>
-        <link rel="next" title="Testing" href="Testing_advanced.html"/>
-        <link rel="prev" title="Context Managers" href="ContextManagers.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Code Reviews" href="CodeReviews.html" />
+    <link rel="prev" title="Performance and Profiling" href="Profiling.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -67,7 +58,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -94,30 +85,16 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Topic Notes</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="index.html#py210-introduction-to-python">Py210: Introduction to Python</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="IteratorsAndGenerators.html">Iterators and Generators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="CodeReviews.html">Code Reviews</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Closures.html">Closures and Function Currying</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Decorators.html">Decorators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ContextManagers.html">Context Managers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#assorted-additional-topics">Assorted Additional Topics</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Coding Style and Linting</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#pep-8">pep-8</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pythonic-style">Pythonic Style</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Testing_advanced.html">Testing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Logging.html">Logging and the logging module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Debugging.html">Debugging</a></li>
-<li class="toctree-l3"><a class="reference internal" href="MetaProgramming.html">Metaprogramming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CodeReviews.html">Code Reviews</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Packaging.html">Packages and Packaging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PersistanceAndSerialization.html">Persistence and Serialization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="NoSQL.html">No SQL Databases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="GraphDatabases.html">Graph Databases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Concurrency.html">Concurrent Programming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ThreadingMultiprocessing.html">Threading and multiprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Coroutines.html">Notes on Coroutines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Async.html">Asychronous Programming</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Profiling.html">Performance and Profiling</a></li>
 </ul>
 </li>
 </ul>
@@ -136,7 +113,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PythonCert</a>
@@ -144,9 +121,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -249,7 +227,7 @@ But do check your editor at some point – or if something weird happens.</p>
 interpreter will throw a SyntaxError when it reaches it.</p>
 </li>
 <li><p class="first">For py2, if you want to use non-ascii encoding, UTF-8 for example, insert</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># coding: utf-8</span>
 </pre></div>
 </div>
 <p>near the top of the file.</p>
@@ -259,7 +237,7 @@ interpreter will throw a SyntaxError when it reaches it.</p>
 <div class="section" id="comparing-to-singletons">
 <h4>Comparing to Singletons<a class="headerlink" href="#comparing-to-singletons" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li>When comparing with singletons such as None, use <code class="docutils literal"><span class="pre">x</span> <span class="pre">is</span> <span class="pre">None</span></code>, not <code class="docutils literal"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">None</span></code>. <a class="reference external" href="http://jaredgrubb.blogspot.com/2009/04/python-is-none-vs-none.html">Why?</a> ( also <code class="docutils literal"><span class="pre">x</span> <span class="pre">is</span> <span class="pre">True</span></code> and <code class="docutils literal"><span class="pre">x</span> <span class="pre">is</span> <span class="pre">False</span></code>)</li>
+<li>When comparing with singletons such as None, use <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">is</span> <span class="pre">None</span></code>, not <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">None</span></code>. <a class="reference external" href="http://jaredgrubb.blogspot.com/2009/04/python-is-none-vs-none.html">Why?</a> ( also <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">is</span> <span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">is</span> <span class="pre">False</span></code>)</li>
 </ul>
 </div>
 </div>
@@ -293,7 +271,7 @@ blank line:<ol class="arabic">
 <li>local application/library specific imports</li>
 </ol>
 </li>
-<li>avoid wildcard imports (<code class="docutils literal"><span class="pre">import</span> <span class="pre">*</span></code>) to keep the namespace clean for
+<li>avoid wildcard imports (<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">*</span></code>) to keep the namespace clean for
 both humans and automated tools</li>
 </ul>
 </div>
@@ -302,9 +280,9 @@ both humans and automated tools</li>
 <p>Python does not have a mechanism for restricting access to a variable or method, but it does have culture and convention.</p>
 <p>The default is public. This works for most things.</p>
 <p>If you do not want people to change your attribute or method, and especially if you do not want people to depend on this attribute or method always remaining the same, make it private by using a single underscore in front.</p>
-<p><code class="docutils literal"><span class="pre">_my_private_method</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">_my_private_method</span></code></p>
 <p>If you are particularly paranoid: A non-public attribute has two leading underscores and no trailing underscores and triggers Python’s name mangling.</p>
-<p><code class="docutils literal"><span class="pre">__my_paranoid_method</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">__my_paranoid_method</span></code></p>
 </div>
 <div class="section" id="continuing-long-lines">
 <h3>Continuing long lines<a class="headerlink" href="#continuing-long-lines" title="Permalink to this headline">¶</a></h3>
@@ -314,17 +292,17 @@ both humans and automated tools</li>
 <div class="section" id="lots-of-arguments-or-parameters">
 <h4>Lots of Arguments or Parameters:<a class="headerlink" href="#lots-of-arguments-or-parameters" title="Permalink to this headline">¶</a></h4>
 <p>If your function defintion or call can fit on one line, great:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
    <span class="n">some_code</span>
 </pre></div>
 </div>
 <p>but if not:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="p">,</span> <span class="n">arg4</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">kwargument</span><span class="o">=</span><span class="s2">&quot;a_default&quot;</span><span class="p">,</span> <span class="n">kwargument2</span><span class="o">=</span><span class="s2">&quot;some other value&quot;</span><span class="p">,</span> <span class="n">yet_another</span><span class="o">=</span><span class="n">something</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="p">,</span> <span class="n">arg4</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">kwargument</span><span class="o">=</span><span class="s2">&quot;a_default&quot;</span><span class="p">,</span> <span class="n">kwargument2</span><span class="o">=</span><span class="s2">&quot;some other value&quot;</span><span class="p">,</span> <span class="n">yet_another</span><span class="o">=</span><span class="n">something</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
    <span class="n">some_code</span>
 </pre></div>
 </div>
 <p>Then you need to break it. You can break it after a few arguments, when you run out of space, but I find that very hard to read. So – if they don’t all fit on one line, put them each on their own line:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span>
         <span class="n">arg2</span><span class="p">,</span>
         <span class="n">arg3</span><span class="p">,</span>
         <span class="n">arg4</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
@@ -354,16 +332,16 @@ pycodestyle, and mccabe, a code complexity analyzer</li>
 <div class="section" id="pylint">
 <h3>pylint<a class="headerlink" href="#pylint" title="Permalink to this headline">¶</a></h3>
 <p>Interesting options:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">d</span> <span class="p">(</span><span class="n">msg</span> <span class="n">ids</span><span class="p">),</span> <span class="o">--</span><span class="n">disable</span><span class="o">=</span><span class="p">(</span><span class="n">msg</span> <span class="n">ids</span><span class="p">)</span>      <span class="n">Disable</span> <span class="n">the</span> <span class="n">messages</span> <span class="n">identified</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">messages</span> <span class="n">table</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">d</span> <span class="p">(</span><span class="n">msg</span> <span class="n">ids</span><span class="p">),</span> <span class="o">--</span><span class="n">disable</span><span class="o">=</span><span class="p">(</span><span class="n">msg</span> <span class="n">ids</span><span class="p">)</span>      <span class="n">Disable</span> <span class="n">the</span> <span class="n">messages</span> <span class="n">identified</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">messages</span> <span class="n">table</span>
 <span class="o">--</span><span class="n">generate</span><span class="o">-</span><span class="n">rcfile</span><span class="o">/--</span><span class="n">rcfile</span>             <span class="n">Saves</span><span class="o">/</span><span class="n">restores</span> <span class="n">a</span> <span class="n">configuration</span>
 </pre></div>
 </div>
 <p>Poor code example:</p>
-<p><a class="reference download internal" href="../_downloads/listing1.py" download=""><code class="xref download docutils literal"><span class="pre">listing1.py</span></code></a></p>
+<p><a class="reference download internal" href="../_downloads/listing1.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">listing1.py</span></code></a></p>
 <p>was adapted from <a class="reference external" href="http://doughellmann.com/2008/03/01/static-code-analizers-for-python.html">Doug Hellman</a></p>
 <p>What can you spot as an error, bad practice, or poor style?</p>
 <p>Now see what pylint listing1.py has to say:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pip install pylint
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install pylint
 
 $ pylint listing1.py
 </pre></div>
@@ -373,7 +351,7 @@ $ pylint listing1.py
 <h3>pyflakes<a class="headerlink" href="#pyflakes" title="Permalink to this headline">¶</a></h3>
 <p>Doesn’t check style, just checks for functional errors, but does not run code.</p>
 <p>Now see what pyflakes listing1.py has to say</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pip install pyflakes
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install pyflakes
 
 $ pyflakes listing1.py
 </pre></div>
@@ -385,12 +363,12 @@ $ pyflakes listing1.py
 <p>Used to be called “pep8” – but Guido didn’t like that it gave a tool apparent authority – so they changed it.</p>
 <p>Only checks style</p>
 <p>Interesting options:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">statistics</span>         <span class="n">count</span> <span class="n">errors</span> <span class="ow">and</span> <span class="n">warnings</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">statistics</span>         <span class="n">count</span> <span class="n">errors</span> <span class="ow">and</span> <span class="n">warnings</span>
 <span class="o">--</span><span class="n">count</span>              <span class="nb">print</span> <span class="n">total</span> <span class="n">number</span> <span class="n">of</span> <span class="n">errors</span> <span class="ow">and</span> <span class="n">warnings</span> <span class="n">to</span> <span class="n">standard</span> <span class="n">error</span> <span class="ow">and</span> <span class="nb">set</span> <span class="n">exit</span> <span class="n">code</span> <span class="n">to</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">total</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">null</span>
 </pre></div>
 </div>
 <p>Now see what pycodestyle listing1.py has to say</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pip install pycodestyle
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install pycodestyle
 
 $ pycodestyle listing1.py
 </pre></div>
@@ -405,11 +383,11 @@ is a “microtool” written by Ned Batchelder (author of coverage) for
 assessing
 <a class="reference external" href="http://en.wikipedia.org/wiki/Cyclomatic_complexity">Cyclomatic Complexity</a></p>
 <p>Interesting options:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">--</span><span class="nb">max</span><span class="o">-</span><span class="n">complexity</span><span class="o">=</span><span class="n">N</span>    <span class="n">McCabe</span> <span class="n">complexity</span> <span class="n">threshold</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="nb">max</span><span class="o">-</span><span class="n">complexity</span><span class="o">=</span><span class="n">N</span>    <span class="n">McCabe</span> <span class="n">complexity</span> <span class="n">threshold</span>
 </pre></div>
 </div>
 <p>Now see what flake8 listing1.py has to say</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pip install pycodestyle
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install pycodestyle
 
 $ pycodestyle listing1.py
 </pre></div>
@@ -420,8 +398,8 @@ $ pycodestyle listing1.py
 <div class="section" id="skipping-particular-lines">
 <h3>skipping particular lines<a class="headerlink" href="#skipping-particular-lines" title="Permalink to this headline">¶</a></h3>
 <p>Each of the tools has a way to mark particular lines to be ignored.</p>
-<p>For instance, flake8 has the <code class="docutils literal"><span class="pre">#</span> <span class="pre">noqa</span></code> marker. It’s a comment as far as Python is concerned, but flake8 will skip that line if you mark it that way:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">functionName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+<p>For instance, flake8 has the <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">noqa</span></code> marker. It’s a comment as far as Python is concerned, but flake8 will skip that line if you mark it that way:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">functionName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
     <span class="n">local</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">5</span>  <span class="c1"># noqa</span>
     <span class="n">module_variable</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="mi">5</span>
     <span class="k">return</span> <span class="n">module_variable</span>
@@ -432,7 +410,7 @@ $ pycodestyle listing1.py
 <div class="section" id="analyzing-a-large-codebase-in-the-wild">
 <h3>Analyzing a large codebase in the wild<a class="headerlink" href="#analyzing-a-large-codebase-in-the-wild" title="Permalink to this headline">¶</a></h3>
 <p>It can be instructive to see what happens if you run these tools on a large established code base…</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pip install django
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install django
 
   <span class="nb">cd</span> /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages
 
@@ -445,7 +423,7 @@ $ pycodestyle listing1.py
 <div class="section" id="code-analysis-tool-battle-royale">
 <h3>Code Analysis Tool Battle Royale<a class="headerlink" href="#code-analysis-tool-battle-royale" title="Permalink to this headline">¶</a></h3>
 <p>Try this!</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pylint flake8
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pylint flake8
 $ flake8 pylint
 </pre></div>
 </div>
@@ -475,18 +453,16 @@ slip by</li>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Testing_advanced.html" class="btn btn-neutral float-right" title="Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="CodeReviews.html" class="btn btn-neutral float-right" title="Code Reviews" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ContextManagers.html" class="btn btn-neutral" title="Context Managers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Profiling.html" class="btn btn-neutral" title="Performance and Profiling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -495,11 +471,11 @@ slip by</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -517,7 +493,8 @@ slip by</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -531,19 +508,13 @@ slip by</li>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

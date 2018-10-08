@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Iteration &mdash; PythonCert 4.0 documentation</title>
+  <title>Iteration &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="up" title="Topic Notes" href="index.html"/>
-        <link rel="next" title="Strings" href="Strings.html"/>
-        <link rel="prev" title="Python Sequences" href="Sequences.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Strings" href="Strings.html" />
+    <link rel="prev" title="Python Sequences" href="Sequences.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -67,7 +58,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -130,7 +121,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PythonCert</a>
@@ -138,9 +129,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -189,8 +181,8 @@
 <p>Repetition, Repetition, Repetition, Repe…</p>
 <div class="section" id="for-loops">
 <h2>For Loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">¶</a></h2>
-<p>We’ve seen simple iteration over a sequence with <code class="docutils literal"><span class="pre">for</span> <span class="pre">...</span> <span class="pre">in</span></code>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [170]: </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s2">&quot;a string&quot;</span><span class="p">:</span>
+<p>We’ve seen simple iteration over a sequence with <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">...</span> <span class="pre">in</span></code>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [170]: </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s2">&quot;a string&quot;</span><span class="p">:</span>
 <span class="gp">   .....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="gp">   .....:</span>
 <span class="go">a</span>
@@ -205,14 +197,14 @@
 </div>
 <div class="section" id="no-indexing-required">
 <h3>No Indexing Required<a class="headerlink" href="#no-indexing-required" title="Permalink to this headline">¶</a></h3>
-<p>Contrast this with other languages, where you must build and use an <code class="docutils literal"><span class="pre">index</span></code> to iterate through an array.</p>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<p>Contrast this with other languages, where you must build and use an <code class="docutils literal notranslate"><span class="pre">index</span></code> to iterate through an array.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
     <span class="nx">alert</span><span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="s2">&quot;) &quot;</span> <span class="o">+</span> <span class="nx">value</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>If you <em>do</em> need an index, you can use <code class="docutils literal"><span class="pre">enumerate</span></code>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [140]: </span><span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">letter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s1">&#39;Python&#39;</span><span class="p">):</span>
+<p>If you <em>do</em> need an index, you can use <code class="docutils literal notranslate"><span class="pre">enumerate</span></code>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [140]: </span><span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">letter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s1">&#39;Python&#39;</span><span class="p">):</span>
 <span class="gp">   .....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">letter</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
 <span class="gp">   .....:</span>
 <span class="go">0 P 1 y 2 t 3 h 4 o 5 n</span>
@@ -220,9 +212,9 @@
 </div>
 </div>
 <div class="section" id="range-and-for-loops">
-<h3><code class="docutils literal"><span class="pre">range</span></code> and <code class="docutils literal"><span class="pre">for</span></code> Loops<a class="headerlink" href="#range-and-for-loops" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal"><span class="pre">range</span></code> builtin is useful for looping a known number of times:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [171]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<h3><code class="docutils literal notranslate"><span class="pre">range</span></code> and <code class="docutils literal notranslate"><span class="pre">for</span></code> Loops<a class="headerlink" href="#range-and-for-loops" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">range</span></code> builtin is useful for looping a known number of times:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [171]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
 <span class="gp">   .....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="gp">   .....:</span>
 <span class="go">0</span>
@@ -232,9 +224,9 @@
 <span class="go">4</span>
 </pre></div>
 </div>
-<p>But you don’t really need to do anything at all with <code class="docutils literal"><span class="pre">i</span></code></p>
+<p>But you don’t really need to do anything at all with <code class="docutils literal notranslate"><span class="pre">i</span></code></p>
 <p>In fact, it’s a common convention to make this clear with a “nothing” name:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [21]: </span><span class="k">for</span> <span class="n">__</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [21]: </span><span class="k">for</span> <span class="n">__</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
 <span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
 <span class="gp">   ....:</span>
 <span class="go">*</span>
@@ -248,7 +240,7 @@
 <div class="section" id="no-namespace">
 <h3>No Namespace<a class="headerlink" href="#no-namespace" title="Permalink to this headline">¶</a></h3>
 <p>Be alert that a loop does not create a local namespace:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [172]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [172]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="gp">In [173]: </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
 <span class="gp">   .....: </span>    <span class="k">pass</span>
 <span class="gp">   .....:</span>
@@ -260,9 +252,9 @@
 <div class="section" id="loop-control">
 <h3>Loop Control<a class="headerlink" href="#loop-control" title="Permalink to this headline">¶</a></h3>
 <p>Sometimes you want to interrupt or alter the flow of control through a loop.</p>
-<p>Loops can be controlled in two ways, with <code class="docutils literal"><span class="pre">break</span></code> and <code class="docutils literal"><span class="pre">continue</span></code>.</p>
-<p>The <code class="docutils literal"><span class="pre">break</span></code> keyword will cause a loop to immediately terminate:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [141]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">):</span>
+<p>Loops can be controlled in two ways, with <code class="docutils literal notranslate"><span class="pre">break</span></code> and <code class="docutils literal notranslate"><span class="pre">continue</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">break</span></code> keyword will cause a loop to immediately terminate:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [141]: </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">):</span>
 <span class="gp">   .....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="gp">   .....: </span>    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
 <span class="gp">   .....: </span>        <span class="k">break</span>
@@ -270,9 +262,9 @@
 <span class="go">0 1 2 3 4 5... 46 47 48 49 50 51</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">continue</span></code> keyword will skip later statements in the loop block, but
+<p>The <code class="docutils literal notranslate"><span class="pre">continue</span></code> keyword will skip later statements in the loop block, but
 allow iteration to continue:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [143]: </span><span class="k">for</span> <span class="ow">in</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">):</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [143]: </span><span class="k">for</span> <span class="ow">in</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">):</span>
 <span class="gp">   .....: </span>    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
 <span class="gp">   .....: </span>        <span class="k">break</span>
 <span class="gp">   .....: </span>    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">25</span><span class="p">:</span>
@@ -286,10 +278,10 @@ allow iteration to continue:</p>
 </div>
 <div class="section" id="else">
 <h3>else<a class="headerlink" href="#else" title="Permalink to this headline">¶</a></h3>
-<p>For loops can also take an optional <code class="docutils literal"><span class="pre">else</span></code> block.</p>
+<p>For loops can also take an optional <code class="docutils literal notranslate"><span class="pre">else</span></code> block.</p>
 <p>This is <strong>not</strong> a feature of most languages, but it can be handy.</p>
 <p>Executed only when the loop exits normally (not via break):</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [147]: </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [147]: </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
 <span class="gp">   .....: </span>    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
 <span class="gp">   .....: </span>        <span class="k">break</span>
 <span class="gp">   .....: </span><span class="k">else</span><span class="p">:</span>
@@ -305,8 +297,8 @@ allow iteration to continue:</p>
 </pre></div>
 </div>
 <p>This is a really nice, unique Python feature!</p>
-<p>If Python didn’t have <code class="docutils literal"><span class="pre">else</span></code> on loops, you’d need to set a flag, something like:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">it_did_break</span> <span class="o">=</span> <span class="bp">False</span>
+<p>If Python didn’t have <code class="docutils literal notranslate"><span class="pre">else</span></code> on loops, you’d need to set a flag, something like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">it_did_break</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
         <span class="n">it_did_break</span> <span class="o">=</span> <span class="bp">True</span>
@@ -322,21 +314,21 @@ allow iteration to continue:</p>
 <div class="section" id="while-loops">
 <h2>While Loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">¶</a></h2>
 <p>While loops are different – they are not for iterating over a collection, but rather for repeating something an unknown number of times – and maybe even forever – or until the program terminates.</p>
-<p>The <code class="docutils literal"><span class="pre">while</span></code> keyword is for when you don’t know how many loops you need.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">while</span></code> keyword is for when you don’t know how many loops you need.</p>
 <p>It continues to execute the body until the associated condition does not evaluate to True:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">a_condition</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">a_condition</span><span class="p">:</span>
    <span class="n">some_code</span>
    <span class="n">in_the_body</span>
 </pre></div>
 </div>
 <div class="section" id="while-vs-for">
-<h3><code class="docutils literal"><span class="pre">while</span></code> vs. <code class="docutils literal"><span class="pre">for</span></code><a class="headerlink" href="#while-vs-for" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">while</span></code>  is more general than <code class="docutils literal"><span class="pre">for</span></code></p>
-<p>– you can always express <code class="docutils literal"><span class="pre">for</span></code> as <code class="docutils literal"><span class="pre">while</span></code>, but not always vice-versa.</p>
-<p><code class="docutils literal"><span class="pre">while</span></code>  is more error-prone – requires some care to terminate.</p>
-<p>The loop body must make progress, so the associated condition can become <code class="docutils literal"><span class="pre">False</span></code>.</p>
+<h3><code class="docutils literal notranslate"><span class="pre">while</span></code> vs. <code class="docutils literal notranslate"><span class="pre">for</span></code><a class="headerlink" href="#while-vs-for" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">while</span></code>  is more general than <code class="docutils literal notranslate"><span class="pre">for</span></code></p>
+<p>– you can always express <code class="docutils literal notranslate"><span class="pre">for</span></code> as <code class="docutils literal notranslate"><span class="pre">while</span></code>, but not always vice-versa.</p>
+<p><code class="docutils literal notranslate"><span class="pre">while</span></code>  is more error-prone – requires some care to terminate.</p>
+<p>The loop body must make progress, so the associated condition can become <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <p>Care must be taken to avoid an unintended error – infinite loops:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
@@ -344,8 +336,8 @@ allow iteration to continue:</p>
 </div>
 <div class="section" id="terminating-a-while-loop">
 <h3>Terminating a while Loop<a class="headerlink" href="#terminating-a-while-loop" title="Permalink to this headline">¶</a></h3>
-<p>Use <code class="docutils literal"><span class="pre">break</span></code>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [150]: </span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+<p>Use <code class="docutils literal notranslate"><span class="pre">break</span></code>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [150]: </span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
 <span class="gp">   .....: </span>    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="gp">   .....: </span>    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
 <span class="gp">   .....: </span>        <span class="k">break</span>
@@ -355,7 +347,7 @@ allow iteration to continue:</p>
 </pre></div>
 </div>
 <p>Set a flag:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [156]: </span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [156]: </span><span class="kn">import</span> <span class="nn">random</span>
 <span class="gp">In [157]: </span><span class="n">keep_going</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="gp">In [158]: </span><span class="k">while</span> <span class="n">keep_going</span><span class="p">:</span>
 <span class="gp">   .....: </span>    <span class="n">num</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
@@ -367,7 +359,7 @@ allow iteration to continue:</p>
 </pre></div>
 </div>
 <p>Use a condition:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [161]: </span><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [161]: </span><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
 <span class="gp">   .....: </span>    <span class="n">i</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
 <span class="gp">   .....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="gp">   .....:</span>
@@ -377,11 +369,11 @@ allow iteration to continue:</p>
 </div>
 <div class="section" id="similarities">
 <h3>Similarities<a class="headerlink" href="#similarities" title="Permalink to this headline">¶</a></h3>
-<p>Both <code class="docutils literal"><span class="pre">for</span></code> and <code class="docutils literal"><span class="pre">while</span></code> loops can use <code class="docutils literal"><span class="pre">break</span></code> and <code class="docutils literal"><span class="pre">continue</span></code> for
+<p>Both <code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">while</span></code> loops can use <code class="docutils literal notranslate"><span class="pre">break</span></code> and <code class="docutils literal notranslate"><span class="pre">continue</span></code> for
 internal flow control.</p>
-<p>Both <code class="docutils literal"><span class="pre">for</span></code> and <code class="docutils literal"><span class="pre">while</span></code> loops can have an optional <code class="docutils literal"><span class="pre">else</span></code> block.</p>
-<p>In both loops, the statements in the <code class="docutils literal"><span class="pre">else</span></code> block are only executed if the
-loop terminates normally (no <code class="docutils literal"><span class="pre">break</span></code>).</p>
+<p>Both <code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">while</span></code> loops can have an optional <code class="docutils literal notranslate"><span class="pre">else</span></code> block.</p>
+<p>In both loops, the statements in the <code class="docutils literal notranslate"><span class="pre">else</span></code> block are only executed if the
+loop terminates normally (no <code class="docutils literal notranslate"><span class="pre">break</span></code>).</p>
 </div>
 </div>
 <div class="section" id="pythonic-iteration">
@@ -392,11 +384,11 @@ loop terminates normally (no <code class="docutils literal"><span class="pre">br
 <h3>Nifty for loop tricks<a class="headerlink" href="#nifty-for-loop-tricks" title="Permalink to this headline">¶</a></h3>
 <p><strong>tuple unpacking:</strong></p>
 <p>remember this?</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
 </pre></div>
 </div>
 <p>You can do that in a for loop, also:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
 
 <span class="gp">In [5]: </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
 <span class="go">            print(&quot;i:{}, j:{}&quot;.format(i, j))</span>
@@ -410,8 +402,8 @@ loop terminates normally (no <code class="docutils literal"><span class="pre">br
 <div class="section" id="looping-through-two-iterables-at-once">
 <h3>Looping through two iterables at once:<a class="headerlink" href="#looping-through-two-iterables-at-once" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><code class="docutils literal"><span class="pre">zip</span></code></div></blockquote>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div><code class="docutils literal notranslate"><span class="pre">zip</span></code></div></blockquote>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 
 <span class="gp">In [11]: </span><span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 
@@ -424,15 +416,15 @@ loop terminates normally (no <code class="docutils literal"><span class="pre">br
 </pre></div>
 </div>
 <p>There can be more than two:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">l3</span><span class="p">,</span> <span class="n">l4</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">l3</span><span class="p">,</span> <span class="n">l4</span><span class="p">):</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="need-the-index-and-the-item">
 <h3>Need the index and the item?<a class="headerlink" href="#need-the-index-and-the-item" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><code class="docutils literal"><span class="pre">enumerate</span></code></div></blockquote>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;that&#39;</span><span class="p">,</span> <span class="s1">&#39;the other&#39;</span><span class="p">]</span>
+<div><code class="docutils literal notranslate"><span class="pre">enumerate</span></code></div></blockquote>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;that&#39;</span><span class="p">,</span> <span class="s1">&#39;the other&#39;</span><span class="p">]</span>
 
 <span class="gp">In [3]: </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
 <span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;the {:d}th item is: {:s}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">item</span><span class="p">))</span>
@@ -448,9 +440,7 @@ loop terminates normally (no <code class="docutils literal"><span class="pre">br
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -468,11 +458,11 @@ loop terminates normally (no <code class="docutils literal"><span class="pre">br
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -490,7 +480,8 @@ loop terminates normally (no <code class="docutils literal"><span class="pre">br
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -504,19 +495,13 @@ loop terminates normally (no <code class="docutils literal"><span class="pre">br
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>String Formatting Exercise &mdash; PythonCert 4.0 documentation</title>
+  <title>String Formatting Exercise &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="up" title="Exercises" href="index.html"/>
-        <link rel="next" title="Trapezoidal Rule" href="trapezoid.html"/>
-        <link rel="prev" title="Sparse Array Exercise" href="sparse_array.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mailroom: A complete program" href="mailroom.html" />
+    <link rel="prev" title="List Lab" href="list_lab.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -67,7 +58,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -94,53 +85,27 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Topic Notes</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Exercises</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="submitting_to_gitHub.html">Submitting your work to gitHub</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_pushups.html">Python Pushups</a></li>
-<li class="toctree-l2"><a class="reference internal" href="args_kwargs_lab.html">Args and Kwargs LAB</a></li>
-<li class="toctree-l2"><a class="reference internal" href="circle_class.html">Circle Class Exercise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dict_lab.html">Dictionary and Set Lab</a></li>
-<li class="toctree-l2"><a class="reference internal" href="exceptions_lab.html">Exceptions Lab</a></li>
-<li class="toctree-l2"><a class="reference internal" href="except_exercise.html">Exceptions Exercise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="comprehensions_lab.html">Comprehensions Lab</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fib_and_lucas.html">Fibonacci Series Exercise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="file_lab.html">File Exercise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fizz_buzz.html">Fizz Buzz Exercise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="grid_printer.html">Grid Printer Exercise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="html_renderer.html">HTML Renderer Exercise</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kata_fourteen.html">Kata Fourteen: Tom Swift Under Milk Wood</a></li>
-<li class="toctree-l2"><a class="reference internal" href="list_lab.html">List Lab</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mailroom.html">Mailroom: A complete program</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unit_testing.html">Introduction To Unit Testing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="roman.html">Roman/Arabic Numeral Converter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rot13.html">ROT13</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slicing.html">Slicing Lab</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lambda_magic.html">lambda and keyword Magic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sparse_array.html">Sparse Array Exercise</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">String Formatting Exercise</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#goal">Goal</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#procedure">Procedure</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#task-one">Task One</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task-two">Task Two</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task-three">Task Three</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dynamically-building-up-format-strings">Dynamically Building up format strings</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task-four">Task Four</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task-five">Task Five</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task-six">Task Six</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#py210-introduction-to-python">Py210: Introduction to Python</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-1-introductions-and-setting-up-your-environment">Lesson 1: Introductions and Setting up your Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-2-basic-python-and-functions">Lesson 2: Basic Python and Functions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#lesson-3-booleans-sequences-iteration-and-strings">Lesson 3: Booleans, Sequences, Iteration, and Strings</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="slicing.html">Slicing Lab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list_lab.html">List Lab</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">String Formatting Exercise</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mailroom.html">Mailroom: A complete program</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#resources-on-string-formatting">Resources on string formatting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#submitting-your-work">Submitting Your Work</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-4-dictionaries-sets-and-files">Lesson 4: Dictionaries, Sets, and Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-5-exceptions-modules-and-comprehensions">Lesson 5: Exceptions, Modules, and Comprehensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-6-unit-testing-and-advanced-argument-passing">Lesson 6: Unit Testing and Advanced Argument Passing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-7-intro-to-object-oriented-programing">Lesson 7: Intro to Object Oriented Programing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-8-properties-and-magic-methods">Lesson 8: Properties and Magic Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-9-multiple-inheritance">Lesson 9: Multiple Inheritance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#lesson-10-introduction-to-functional-programming">Lesson 10: Introduction to Functional Programming</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="trapezoid.html">Trapezoidal Rule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mailroom-oo.html">Mailroom - Object Oriented</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mailroom-fp.html">Mailroom - Functional</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mailroom-pkg.html">Mailroom – as a Python Package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mailroom-decorator.html">Mailroom – Decoratoring it</a></li>
-<li class="toctree-l2"><a class="reference internal" href="context-managers-exercise.html">A Couple Handy Context Managers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mailroom-mock.html">Mocking Mailroom</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mailroom-meta.html">Mailroom – metaprogramming it!</a></li>
-<li class="toctree-l2"><a class="reference internal" href="threaded_downloader.html">Threaded Web Scraper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#py220-advanced-python">Py220: Advanced Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#assorted-additional-exercises">Assorted Additional Exercises</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../supplemental/index.html">Supplemental Materials</a></li>
@@ -156,7 +121,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PythonCert</a>
@@ -164,9 +129,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -227,9 +193,9 @@
 <ul>
 <li><p class="first">Write a format string that will take the following four element tuple:</p>
 <blockquote>
-<div><p><code class="docutils literal"><span class="pre">(</span> <span class="pre">2,</span> <span class="pre">123.4567,</span> <span class="pre">10000,</span> <span class="pre">12345.67)</span></code></p>
+<div><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">2,</span> <span class="pre">123.4567,</span> <span class="pre">10000,</span> <span class="pre">12345.67)</span></code></p>
 <p>and produce:</p>
-<p><code class="docutils literal"><span class="pre">'file_002</span> <span class="pre">:</span>&#160;&#160; <span class="pre">123.46,</span> <span class="pre">1.00e+04,</span> <span class="pre">1.23e+04'</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">'file_002</span> <span class="pre">:</span>&#160;&#160; <span class="pre">123.46,</span> <span class="pre">1.00e+04,</span> <span class="pre">1.23e+04'</span></code></p>
 </div></blockquote>
 </li>
 </ul>
@@ -238,14 +204,14 @@
 <li>The first element is used to generate a filename that can help with file sorting. The idea behind the “file_002” is that if you have a bunch of files that you want to name with numbers that can be sorted, you need to “pad” the numbers with zeros to get the right sort order.</li>
 </ol>
 <p>To illustrate this further let’s look at an example:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">fnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;file1&#39;</span><span class="p">,</span> <span class="s1">&#39;file2&#39;</span><span class="p">,</span> <span class="s1">&#39;file10&#39;</span><span class="p">,</span> <span class="s1">&#39;file11&#39;</span><span class="p">]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">fnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;file1&#39;</span><span class="p">,</span> <span class="s1">&#39;file2&#39;</span><span class="p">,</span> <span class="s1">&#39;file10&#39;</span><span class="p">,</span> <span class="s1">&#39;file11&#39;</span><span class="p">]</span>
 <span class="gp">In [11]: </span><span class="n">fnames</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 <span class="gp">In [12]: </span><span class="n">fnames</span>
 <span class="gh">Out[12]: </span><span class="go">[&#39;file1&#39;, &#39;file10&#39;, &#39;file11&#39;, &#39;file2&#39;]</span>
 </pre></div>
 </div>
 <p>That is probably not what you wanted. However:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">fnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;file001&#39;</span><span class="p">,</span> <span class="s1">&#39;file002&#39;</span><span class="p">,</span> <span class="s1">&#39;file010&#39;</span><span class="p">,</span> <span class="s1">&#39;file011&#39;</span><span class="p">]</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">fnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;file001&#39;</span><span class="p">,</span> <span class="s1">&#39;file002&#39;</span><span class="p">,</span> <span class="s1">&#39;file010&#39;</span><span class="p">,</span> <span class="s1">&#39;file011&#39;</span><span class="p">]</span>
 <span class="gp">In [3]: </span><span class="nb">sorted</span><span class="p">(</span><span class="n">fnames</span><span class="p">)</span>
 <span class="gh">Out[3]: </span><span class="go">[&#39;file001&#39;, &#39;file002&#39;, &#39;file010&#39;, &#39;file011&#39;]</span>
 </pre></div>
@@ -270,10 +236,10 @@
 <ul class="simple">
 <li>Rewrite:</li>
 </ul>
-<p><code class="docutils literal"><span class="pre">&quot;the</span> <span class="pre">3</span> <span class="pre">numbers</span> <span class="pre">are:</span> <span class="pre">{:d},</span> <span class="pre">{:d},</span> <span class="pre">{:d}&quot;.format(1,2,3)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;the</span> <span class="pre">3</span> <span class="pre">numbers</span> <span class="pre">are:</span> <span class="pre">{:d},</span> <span class="pre">{:d},</span> <span class="pre">{:d}&quot;.format(1,2,3)</span></code></p>
 <p>to take an arbitrary number of values.</p>
-<p>Hint: You can pass in a tuple of values to a function with a <code class="docutils literal"><span class="pre">*</span></code>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [52]: </span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<p>Hint: You can pass in a tuple of values to a function with a <code class="docutils literal notranslate"><span class="pre">*</span></code>:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [52]: </span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="gp">In [53]: </span><span class="s2">&quot;the 3 numbers are: {:d}, {:d}, {:d}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
 <span class="gh">Out[53]: </span><span class="go">&#39;the 3 numbers are: 1, 2, 3&#39;</span>
@@ -281,8 +247,8 @@
 </div>
 <p>The idea here is that you may have a tuple of three numbers, but might also have 4 or 5 or 2 or….</p>
 <p>so you can dynamically build up the format string to accommodate the length of the tuple.</p>
-<p>The string object has the <code class="docutils literal"><span class="pre">format()</span></code> method, so you can call it with a string that is bound to a name, not just a string literal. For example:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">form_string</span> <span class="o">=</span> <span class="s2">&quot;{:d}, {:d}&quot;</span>
+<p>The string object has the <code class="docutils literal notranslate"><span class="pre">format()</span></code> method, so you can call it with a string that is bound to a name, not just a string literal. For example:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">form_string</span> <span class="o">=</span> <span class="s2">&quot;{:d}, {:d}&quot;</span>
 
 <span class="gp">In [17]: </span><span class="n">nums</span> <span class="o">=</span> <span class="p">(</span><span class="mi">34</span><span class="p">,</span> <span class="mi">56</span><span class="p">)</span>
 
@@ -292,7 +258,7 @@
 </div>
 <p>So in the example above, how would you make a form_string that was the right length for an arbitrary tuple?</p>
 <p>Put your code in a function that will return the final string like so:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">formatter</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">formatter</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="gh">Out[20]: </span><span class="go">&#39;the 3 numbers are: 2, 3, 5&#39;</span>
 
 <span class="gp">In [21]: </span><span class="n">formatter</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
@@ -300,7 +266,7 @@
 </pre></div>
 </div>
 <p>It will look like:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">formatter</span><span class="p">(</span><span class="n">in_tuple</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">formatter</span><span class="p">(</span><span class="n">in_tuple</span><span class="p">):</span>
     <span class="n">do_something_here_to_make_a_format_string</span>
 
     <span class="k">return</span> <span class="n">form_string</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">in_tuple</span><span class="p">)</span>
@@ -312,9 +278,9 @@
 <ul>
 <li><p class="first">Given a 5 element tuple:</p>
 <blockquote>
-<div><p><code class="docutils literal"><span class="pre">(</span> <span class="pre">4,</span> <span class="pre">30,</span> <span class="pre">2017,</span> <span class="pre">2,</span> <span class="pre">27)</span></code></p>
+<div><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">4,</span> <span class="pre">30,</span> <span class="pre">2017,</span> <span class="pre">2,</span> <span class="pre">27)</span></code></p>
 <p>use string formating to print:</p>
-<p><code class="docutils literal"><span class="pre">'02</span> <span class="pre">27</span> <span class="pre">2017</span> <span class="pre">04</span> <span class="pre">30'</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">'02</span> <span class="pre">27</span> <span class="pre">2017</span> <span class="pre">04</span> <span class="pre">30'</span></code></p>
 </div></blockquote>
 </li>
 </ul>
@@ -325,13 +291,13 @@
 <p>f-strings are new to Python (version 3.6), but are very powerful and efficient. This means they are worth understanding and using. And this is made easier than it might be because they use the same, familiar formatting language that is conventionally used in Python (in .format()).</p>
 <p>So in this exercise we are going to specifically use f-strings.</p>
 <p>Here’s the simplest example, to show how you can use available variables in a f-string:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Andy&#39;</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Andy&#39;</span>
 <span class="gp">In [3]: </span><span class="n">f</span><span class="s1">&#39;Your name is {name}&#39;</span>
 <span class="gh">Out[3]: </span><span class="go">&#39;Your name is Andy&#39;</span>
 </pre></div>
 </div>
 <p>In addition to referencing variables in the local scope, f-strings can evaluate simple expressions in line like so:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">f</span><span class="s2">&quot;Your name is {name.upper()}&quot;</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">f</span><span class="s2">&quot;Your name is {name.upper()}&quot;</span>
 <span class="gh">Out[5]: </span><span class="go">&#39;Your name is ANDY&#39;</span>
 
 <span class="gp">In [6]: </span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;andy&quot;</span>
@@ -341,7 +307,7 @@
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
 
 <span class="gp">In [9]: </span><span class="n">b</span> <span class="o">=</span> <span class="mi">10</span>
 
@@ -352,12 +318,12 @@
 <ul>
 <li><p class="first">Here’s a task for you: Given the following four element list:</p>
 <blockquote>
-<div><p><code class="docutils literal"><span class="pre">['oranges',</span> <span class="pre">1.3,</span> <span class="pre">'lemons',</span> <span class="pre">1.1]</span></code></p>
+<div><p><code class="docutils literal notranslate"><span class="pre">['oranges',</span> <span class="pre">1.3,</span> <span class="pre">'lemons',</span> <span class="pre">1.1]</span></code></p>
 </div></blockquote>
 </li>
 <li><p class="first">Write an f-string that will display:</p>
 <blockquote>
-<div><p><code class="docutils literal"><span class="pre">The</span> <span class="pre">weight</span> <span class="pre">of</span> <span class="pre">an</span> <span class="pre">orange</span> <span class="pre">is</span> <span class="pre">1.3</span> <span class="pre">and</span> <span class="pre">the</span> <span class="pre">weight</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">lemon</span> <span class="pre">is</span> <span class="pre">1.1</span></code></p>
+<div><p><code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">weight</span> <span class="pre">of</span> <span class="pre">an</span> <span class="pre">orange</span> <span class="pre">is</span> <span class="pre">1.3</span> <span class="pre">and</span> <span class="pre">the</span> <span class="pre">weight</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">lemon</span> <span class="pre">is</span> <span class="pre">1.1</span></code></p>
 </div></blockquote>
 </li>
 <li><p class="first">Now see if you can change the f-string so that it displays the names of the fruit in upper case, and the weight 20% higher (that is 1.2 times higher).</p>
@@ -371,7 +337,7 @@
 <blockquote>
 <div>‘First               $99.01    Second              $88.09  ‘</div></blockquote>
 <p>One way to do that is:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="s1">&#39;{:20}{:10}{:20}{:8}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;First&#39;</span><span class="p">,</span> <span class="s1">&#39;$99.01&#39;</span><span class="p">,</span> <span class="s1">&#39;Second&#39;</span><span class="p">,</span> <span class="s1">&#39;$88.09&#39;</span><span class="p">)</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;{:20}{:10}{:20}{:8}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;First&#39;</span><span class="p">,</span> <span class="s1">&#39;$99.01&#39;</span><span class="p">,</span> <span class="s1">&#39;Second&#39;</span><span class="p">,</span> <span class="s1">&#39;$88.09&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In this simple example everything aligns nicely. But that will not be the case when the numbers to the left of the decimal place vary.
@@ -402,18 +368,16 @@ Then you will need to use alignment specifiers. Do some research on this using t
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="trapezoid.html" class="btn btn-neutral float-right" title="Trapezoidal Rule" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mailroom.html" class="btn btn-neutral float-right" title="Mailroom: A complete program" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sparse_array.html" class="btn btn-neutral" title="Sparse Array Exercise" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="list_lab.html" class="btn btn-neutral" title="List Lab" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -422,11 +386,11 @@ Then you will need to use alignment specifiers. Do some research on this using t
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -444,7 +408,8 @@ Then you will need to use alignment specifiers. Do some research on this using t
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -458,19 +423,13 @@ Then you will need to use alignment specifiers. Do some research on this using t
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

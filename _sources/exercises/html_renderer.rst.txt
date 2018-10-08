@@ -65,7 +65,7 @@ Unit tests
 
 Running the ``run_html_render.py`` script is a (simple) form of integration testing -- it checks how the individual components are working together. But we also want to make sure each individual *unit* (class, method) of code works. So to do that, we'll use:
 
-**test driven development**
+**Test Driven Development**
 
 In addition to checking if the output is what you expect with the running script -- you should also write unit tests as you go.
 
@@ -88,14 +88,39 @@ But it is NOT comprehensive -- you will need to add more tests at every step!
 
 You can run ``pytest`` on that test file first thing -- it should pass two tests (that you can create an Element object -- not that it works) and fail one -- one that actually starts to test functionality.
 
+**NOTE** if you are lost, take a look at the tutorial here:
+:ref:`html_renderer_tutorial`. But do try to do it yourself first.
+
+Step 0:
+-------
+
+Before you can start writing code, you need to get setup.
+
+* In your directory in the class repo called ``lesson07``
+* In that directory, you can start working on the code. Start by putting the files you just downloaded in that dir:
+
+  - ``html_render.py``, ``run_html_render.py``,
+    ``sample_html.html``, ``test_html_render.py``
+
+* Add those files to your git repo:
+
+  - ``git add *.py sample_html.html``
+
+
 Step 1:
 -------
 
+.. rubric:: 1a.
+
 Create an ``Element`` class for rendering an html element (xml element).
 
-It should a class attribute for the tag name ("html" first).
+There is a skeleton for one in ``html_render.py`` -- it has just enough so that the first few tests in ``test_html_render.py`` can run -- though that won't pass!
 
-The initializer signature should look like
+Do run those tests first -- then add the code to make them pass.
+
+The ``Element`` class should have a class attribute for the tag name ("html" first).
+
+The initializer signature should look like:
 
 .. code-block:: python
 
@@ -103,7 +128,9 @@ The initializer signature should look like
 
 Where ``content`` is expected to be a string -- and defaults to nothing.
 
-It should have an ``append`` method that can add another string to the content.
+.. rubric:: 1b.
+
+The class should have an ``append`` method that can add another string to the content.
 
 (The ``html_render.py`` file you downloaded above should have a skeleton for this class in it.)
 
@@ -119,12 +146,13 @@ If the *is* phrase makes sense, then subclassing would makes sense. If the *uses
 
 So no -- you don't want ``Element`` to subclass from list.
 
+.. rubric:: 1c.
+
 It should have a ``render(file_out)`` method that renders the tag and the strings in the content.
 
 ``file_out`` could be any open, writable file-like object ( i.e. have a ``write()`` method ). This is what you get from the ``open()`` function -- but there are other kinds of file-like objects. The html will be rendered to this file-like object.
 
-
-NOTE: html is not sensitive to newlines -- but you don't want all your html on one line. so put a newline in after each tag and each content string. Later on in the assignment, you'll add indentation as well!
+**NOTE:** html is not sensitive to newlines -- but you don't want all your html on one line. so put a newline in after each tag and each content string. Later on in the assignment, you'll add indentation as well!
 
 So this ``render()`` method takes a file-like object, and calls its ``write()`` method, writing the html for a tag.
 
@@ -149,6 +177,8 @@ Will result in a file with something like this in it:
 That is, you should now be able to render an html tag with text in it as content.
 
 See: step 1. in ``run_html_render.py`` and the test code.
+
+If you are stuck -- see the tutorial:  :ref:`render_tutorial_1`
 
 Step 2:
 -------
@@ -182,15 +212,18 @@ You may note that the ``Element`` class really doesn't do anything by itself -- 
 
 And of course these subclasses are pretty simple -- only overriding one class attribute.  If that's all you need to do to specialize, there are other ways than subclassing to do it. But bear with us -- other element subclasses will require more specialization.
 
+If you are stuck -- see the tutorial: :ref:`render_tutorial_2_A`
 
 Part B:
 .......
 
 Now it gets fun!
 
+Now that you have multipel types of elements, it's worth looking a bit at how html works. A given element can hold text, but it can *also* hold other elements. So we need to update our ``Element`` classes to support that.
+
 Extend the ``Element.render()`` method so that it can render other elements inside the tag in addition to strings. A recursion-like approach should do it. i.e. it can call the ``render()`` method of the elements it contains.
 
-so you should be able to ``append`` an element to another element -- not just text.
+You should be able to ``append`` an element to another element -- not just text.
 
 If this recursion-like idea doesn't make sense to you, take a look at this blog post, which talks about recursive algorithms:
 
@@ -230,6 +263,8 @@ Should result in something like:
 See: :download:`test_html_output2.html  <../examples/html_render/test_html_output2.html>`
 
 NOTE: when you run step 2 in ``run_html_render.py``, you will want to comment out step 1 -- that way you'll only get one set of output.
+
+If you are stuck -- see the tutorial: :ref:`render_tutorial_2_B`
 
 Step 3:
 -------
@@ -308,6 +343,16 @@ Create a ``SelfClosingTag`` subclass of Element, to render tags like::
 
    <hr /> and <br /> (horizontal rule and line break).
 
+(See: https://www.w3schools.com/tags/tag_hr.asp)
+
+For example you should be able to use this code::
+
+    Hr(width=400)
+
+To get this result::
+
+    <hr width="400" />
+
 You will need to override the render method to render just the one tag and attributes, if any.
 
 Note that self closing tags can't have any content. Make sure that your SelfClosingTag element raises an exception if someone tries to put in any content -- probably a ``TypeError``.
@@ -320,6 +365,7 @@ Can you refactor the common parts into a separate method that all the render met
 
 See: :download:`test_html_output5.html  <../examples/html_render/test_html_output5.html>`
 
+
 Step 6:
 -------
 
@@ -330,6 +376,11 @@ Create an ``A`` class for an anchor (link) element. Its constructor should look 
 where ``link`` is the link, and ``content`` is what you see. It can be called like so::
 
     A("http://google.com", "link to google")
+
+and it should render like::
+
+    <a href="http://google.com">link to google</a>
+
 
 You should be able to subclass from ``Element``, and only override the ``__init__`` --- calling the ``Element`` ``__init__`` from the  ``A`` ``__init__``
 

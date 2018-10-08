@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Concurrent Programming &mdash; PythonCert 4.0 documentation</title>
+  <title>Concurrent Programming &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PythonCert 4.0 documentation" href="../index.html"/>
-        <link rel="up" title="Topic Notes" href="index.html"/>
-        <link rel="next" title="Threading and multiprocessing" href="ThreadingMultiprocessing.html"/>
-        <link rel="prev" title="Graph Databases" href="GraphDatabases.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Threading and multiprocessing" href="ThreadingMultiprocessing.html" />
+    <link rel="prev" title="Graph Databases" href="GraphDatabases.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -67,7 +58,7 @@
             
             
               <div class="version">
-                4.0
+                5.0
               </div>
             
           
@@ -130,7 +121,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PythonCert</a>
@@ -138,9 +129,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -308,8 +300,8 @@ independently, so processes do not share data!</p>
 <p>Mulitple processes best to speed up CPU bound operations.</p>
 <p>The Python interpreter isn’t lightweight!</p>
 <p>Communication between processes can be achieved via:</p>
-<p><code class="docutils literal"><span class="pre">multiprocessing.Queue</span></code></p>
-<p><code class="docutils literal"><span class="pre">multiprocessing.Pipe</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">multiprocessing.Queue</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">multiprocessing.Pipe</span></code></p>
 <p>and regular IPC (inter-process communication)</p>
 <p>Data moved between processes must be pickleable</p>
 </div>
@@ -417,7 +409,7 @@ have no GIL</p>
 </div></blockquote>
 </div>
 <div class="section" id="mutex-locks-threading-lock">
-<h3>Mutex locks (<code class="docutils literal"><span class="pre">threading.Lock</span></code>)<a class="headerlink" href="#mutex-locks-threading-lock" title="Permalink to this headline">¶</a></h3>
+<h3>Mutex locks (<code class="docutils literal notranslate"><span class="pre">threading.Lock</span></code>)<a class="headerlink" href="#mutex-locks-threading-lock" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Probably most common</li>
@@ -428,7 +420,7 @@ have no GIL</p>
 </ul>
 </div></blockquote>
 <p>Easiest with context manager:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">x_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
 
 <span class="c1"># Example critical section</span>
@@ -440,22 +432,22 @@ have no GIL</p>
 <p>Or use RLock for code-based locking (locking function/method execution rather than data access)</p>
 </div>
 <div class="section" id="subprocesses-subprocess">
-<h3>Subprocesses (<code class="docutils literal"><span class="pre">subprocess</span></code>)<a class="headerlink" href="#subprocesses-subprocess" title="Permalink to this headline">¶</a></h3>
+<h3>Subprocesses (<code class="docutils literal notranslate"><span class="pre">subprocess</span></code>)<a class="headerlink" href="#subprocesses-subprocess" title="Permalink to this headline">¶</a></h3>
 <p>Subprocesses are completely separate processes invoked from a master process (your python program).</p>
 <p>Usually used to call non-python programs (shell commands). But of course, a Python program can be a command line program as well, so you can call either your or other python programs this way.</p>
 <p>Easy invocation:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
 
 <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;ls&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The program halts while waiting for the subprocess to finish. (unless you call it from a thread!)</p>
 <p>You can control communication with the subprocess via:</p>
-<p><code class="docutils literal"><span class="pre">stdout</span></code>, <code class="docutils literal"><span class="pre">stdin</span></code>, <code class="docutils literal"><span class="pre">stderr</span></code> with:</p>
-<p><code class="docutils literal"><span class="pre">subprocess.Popen</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">stdout</span></code>, <code class="docutils literal notranslate"><span class="pre">stdin</span></code>, <code class="docutils literal notranslate"><span class="pre">stderr</span></code> with:</p>
+<p><code class="docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></p>
 <p>Lots of options there!</p>
 <div class="section" id="pipes-and-pickle-and-subprocess">
-<h4>Pipes and <code class="docutils literal"><span class="pre">pickle</span></code> and <code class="docutils literal"><span class="pre">subprocess</span></code><a class="headerlink" href="#pipes-and-pickle-and-subprocess" title="Permalink to this headline">¶</a></h4>
+<h4>Pipes and <code class="docutils literal notranslate"><span class="pre">pickle</span></code> and <code class="docutils literal notranslate"><span class="pre">subprocess</span></code><a class="headerlink" href="#pipes-and-pickle-and-subprocess" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>Very low level, for the brave of heart</li>
@@ -474,9 +466,7 @@ have no GIL</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -494,11 +484,11 @@ have no GIL</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Rick Riehle, Joseph Schilz. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -516,7 +506,8 @@ have no GIL</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.0',
+            VERSION:'5.0',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -530,19 +521,13 @@ have no GIL</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>
