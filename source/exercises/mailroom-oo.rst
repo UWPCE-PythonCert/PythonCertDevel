@@ -9,7 +9,7 @@ Goal: Refactor the mailroom program using classes to help organize the code.
 
 The functionality is the same as the earlier mailroom:
 
-:ref:`exercise_mailroom`
+:ref:`exercise_mailroom_part1`
 
 But this time, we want to use an OO approach to better structure the code to make it more extensible.
 
@@ -37,7 +37,7 @@ As you design appropriate classes, keep in mind these three guidelines for good 
 The Program
 -----------
 
-See: :ref:`exercise_mailroom` to remind yourself what the program needs to do.
+See: :ref:`exercise_mailroom_part1` to remind yourself what the program needs to do.
 
 
 Suggestions
