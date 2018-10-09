@@ -190,7 +190,7 @@ from pre-existing classes called base classes or super classes.</p>
 <h3>Subclassing<a class="headerlink" href="#subclassing" title="Permalink to this headline">¶</a></h3>
 <p>A subclass “inherits” all the attributes (methods, etc) of the parent class.</p>
 <p>You can then change (“override”) some or all of the attributes to change the behavior.</p>
-<p>You can also add new attributes to extend the behavior.</p>
+<p>You can also add new attributes to extend the behavior.  You create a subclass by passing the superclass to the class statement.</p>
 <p>The simplest subclass in Python:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">A_subclass</span><span class="p">(</span><span class="n">The_superclass</span><span class="p">):</span>
     <span class="k">pass</span>
@@ -233,12 +233,14 @@ from pre-existing classes called base classes or super classes.</p>
 </pre></div>
 </div>
 <p>all the instances will have the new method.</p>
-<p>Here’s a program design suggestion:</p>
-<p>Whenever you override a method, the interface of the new method should be the same as the old.  It should take the same parameters, return the same type, and obey the same preconditions and postconditions.</p>
+<p><strong>Here’s a program design suggestion:</strong></p>
+<blockquote>
+<div><p>Whenever you override a method, the interface of the new method should be the same as the old.  It should take the same parameters, return the same type, and obey the same preconditions and postconditions.</p>
 <p>If you obey this rule, you will find that any function designed to work with an instance of a superclass, like a Deck, will also work with instances of subclasses like a Hand or PokerHand.  If you violate this rule, your code will collapse like (sorry) a house of cards.</p>
+</div></blockquote>
 </div>
 <div class="section" id="overriding-init">
-<h3>Overriding __init__<a class="headerlink" href="#overriding-init" title="Permalink to this headline">¶</a></h3>
+<h3>Overriding <code class="docutils literal notranslate"><span class="pre">__init__</span></code><a class="headerlink" href="#overriding-init" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">__init__</span></code> is a common method to override.</p>
 <p>You often need to call the super class <code class="docutils literal notranslate"><span class="pre">__init__</span></code>  as well.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>

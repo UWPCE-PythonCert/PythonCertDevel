@@ -200,39 +200,39 @@ refactorability, testability, etc…</p>
 within a set of functions designed to ensure that
 the data are used appropriately, and to assist in
 that use”</div>
-</div>
-<div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><a class="reference external" href="http://en.wikipedia.org/wiki/Object-oriented_programming">http://en.wikipedia.org/wiki/Object-oriented_programming</a></p>
+<ul class="simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Object-oriented_programming">http://en.wikipedia.org/wiki/Object-oriented_programming</a></li>
+</ul>
 <p><strong>Even simpler:</strong></p>
 <p>“Objects are data and the functions that act on them in one place.”</p>
 <p>This is the core of “encapsulation”</p>
 </div>
 <div class="section" id="the-dominant-model">
 <h3>The Dominant Model<a class="headerlink" href="#the-dominant-model" title="Permalink to this headline">¶</a></h3>
-<p>OO is the dominant model for the past couple decades, but it is not the only model, and languages such as Python increasingly mix and blend models.</p>
+<p>OO is the dominant model for the past couple decades, but it is not the only model, and languages such as Python increasingly mix and blend models (such as  Procedural, Object Oriented, Functional).  In Python, it is best to choose the approach that best solves your problem.</p>
 </div>
 <div class="section" id="object-oriented-concepts">
 <h3>Object Oriented Concepts<a class="headerlink" href="#object-oriented-concepts" title="Permalink to this headline">¶</a></h3>
 <p>These are all terms you will hear when talking about Object Oriented Programming:</p>
 <dl class="docutils">
 <dt>Class</dt>
-<dd>A category of objects: particular data and behavior: for example, a “circle” (same as a type in Python).</dd>
+<dd>A category of objects: particular data and behavior: for example, a “circle” (same as a “type” in Python).</dd>
 <dt>Instance</dt>
 <dd>A particular object of a class: a specific circle.</dd>
 <dt>Object</dt>
 <dd>The general case of an instance – really any value (in Python anyway). This term is a bit overloaded – it also is the generic term for any class. So a class is a particular kind of object.</dd>
 <dt>Attribute</dt>
 <dd>Something that belongs to an object (or class): generally thought of
-as a variable, or single object, as opposed to a …</dd>
+as a simple value, variable, or single object, as opposed to a …</dd>
 <dt>Method</dt>
-<dd>A function that belongs to a class. In Python, functions <em>are</em> semantically the same as any other type – so all methods are “attributes”, but not all attributes are methods –methods are the functions – or more strictly speaking the ‘callable’ attributes.</dd>
+<dd>A function that belongs to a class. In Python, functions <em>are</em> semantically the same as any other type – so all methods are “attributes”, but not all attributes are methods. Methods are the functions, or more strictly speaking: the ‘callable’ attributes.</dd>
 <dt>Encapsulation</dt>
 <dd>The approach where the details of the structure are “hidden” in a class – the user of the class does not need to know how the data is stored (and may not be able to know…)</dd>
 <dt>Data Protection</dt>
-<dd>This is the cocept that classes can hide data from outside access (sometimes called “private” attributes. Python does not strictly support data protection.</dd>
-<dt>Class vs Instance attributes</dt>
+<dd>This is the concept that classes can hide data from outside access (sometimes called “private” attributes. Python does not strictly support data protection.</dd>
+<dt>Class vs. Instance Attributes</dt>
 <dd>Attributes can be attached to a class – that is, shared by all instances of that class, or they can be attached to only that instance.</dd>
 <dt>Subclassing</dt>
 <dd>Subclassing is making a special version of a class. It is a class itself, but it gets (“inherits”) all the attributes and methods of its “parent” class. This makes it easy to re-use code.</dd>
@@ -248,17 +248,15 @@ as a variable, or single object, as opposed to a …</dd>
 <h3>Python and OO<a class="headerlink" href="#python-and-oo" title="Permalink to this headline">¶</a></h3>
 <p>Is Python a “True” Object-Oriented Language?</p>
 <p>What are its strengths and weaknesses vis-a-vis OO?</p>
-<p>Python does support all of the above concepts (except data protection).</p>
 <p>But it does not support <em>full</em> encapsulation, i.e., it does not require classes, and classes don’t have “private” attributes.</p>
 <p><strong>but …</strong></p>
 <p>Folks can’t even agree on what OO “really” means.</p>
-<p>See: The Quarks of Object-Oriented Development</p>
+<p>See: <a class="reference external" href="http://ontheturingtest.blogspot.com/2013/11/the-quarks-of-objected-orientation-la.html">The Quarks of Object-Oriented Development</a></p>
 <blockquote>
 <div><ul class="simple">
 <li>Deborah J. Armstrong</li>
 </ul>
 </div></blockquote>
-<p><a class="reference external" href="http://ontheturingtest.blogspot.com/2013/11/the-quarks-of-objected-orientation-la.html">http://ontheturingtest.blogspot.com/2013/11/the-quarks-of-objected-orientation-la.html</a></p>
 </div>
 <div class="section" id="object-oriented-design">
 <h3>Object Oriented Design<a class="headerlink" href="#object-oriented-design" title="Permalink to this headline">¶</a></h3>
@@ -282,10 +280,10 @@ as a variable, or single object, as opposed to a …</dd>
 </div>
 <div class="section" id="you-can-do-oo-in-c">
 <h3>You can do OO in C<a class="headerlink" href="#you-can-do-oo-in-c" title="Permalink to this headline">¶</a></h3>
-<p>Which today is not considered an OO Language.</p>
-<p>See the GTK+ project.</p>
+<p>Which today is not considered an OO Language. See the GTK+ project.</p>
 <p>So OO is really a design approach – putting the data together with the functions that manipulate that data. It isn’t defined by language features.</p>
-<p>That being said: OO languages give you some handy tools to make it easier (and safer):</p>
+<p>That being said: OO languages give you some handy tools to make it easier
+(and safer):</p>
 <blockquote>
 <div><ul class="simple">
 <li>Polymorphism (duck typing gives you this)</li>
@@ -312,6 +310,7 @@ as a variable, or single object, as opposed to a …</dd>
 <p>You may also find that you need multiple “things” that have slightly different properties or behavior – that is a case for subclassing.</p>
 <p>As you learn what is possible, this will all start to make more sense.</p>
 <p>So time to move on to how to actually <strong>do</strong> OO in Python!</p>
+<p>Here’s how to do it in Python: <a class="reference internal" href="PythonClasses.html#python-classes"><span class="std std-ref">Python Classes</span></a></p>
 </div>
 </div>
 </div>

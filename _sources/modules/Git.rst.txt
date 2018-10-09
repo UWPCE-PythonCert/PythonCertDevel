@@ -26,7 +26,7 @@ That last one is a bit tricky, and is not necessary to understand right out of t
 
 There are other versioning systems, such as Mercurial and Subversion (and commercial offerings), but Git is the most popular.
 
-It is incredibly important to learn and understand versioning control to work as a developer today, so we have incorporated Git into our work flow for submitting students' work in this class.
+It is incredibly important to learn and understand version control to work as a developer today, so we have incorporated Git into our work flow for submitting students' work in this class.
 
 
 Setting up Git
@@ -86,7 +86,7 @@ Repositories
 A repository is just a collection of files that 'belong together'.
 
 Since ``git`` is a *distributed* versioning system, there is no **primary**
-repository that serves as the one to rule them all. This simply means that all repositories should look the same.
+repository that serves as the one to rule them all. This simply means that all repositories on each users machine should look the same.
 
 However, to keep things sane, there is generally one "central" repository chosen that users check with for changes. For us this is the one hosted on GitHub in the UWPCE-PythonCert-ClassRepos organization.
 
@@ -124,9 +124,11 @@ The class repositories are on *GitHub* in the *UWPCE-PythonCert-ClassRepos* orga
    :width: 50%
    :class: center
 
+https://github.com/UWPCE-PythonCert-ClassRepos
+
 Each class will have a repository created specifically for it, called something like: "Wi2018-Online".
 
-In examples below it is called YourClassRepoNameHere, so replace that in your head with the name of your class's repository.
+In examples below it is called YourClassRepoNameHere, so replace that in your head with the name of your class' repository.
 
 This class repository will include examples and relevant materials (and some exercise solutions) will be added throughout the class.
 
@@ -172,7 +174,7 @@ From that directory, run
 
     $ git clone https://github.com/your_github_id/YourClassRepoNameHere
 
-Be sure to replace "YourClassRepoNameHere" with the name of your class repository (you can get the url by going to the class repo on gitHub and clicking “clone or download”).
+Be sure to replace "YourClassRepoNameHere" with the name of your class repository (you can get the url by going to the class repo on gitHub and clicking "clone or download").
 
 This will download the repository from your GitHub account into the local directory that you ran the git *clone* command from.
 
@@ -190,6 +192,8 @@ locations.
 For this class, you will add an *upstream* remote to our local copy that points to the original copy of the material in the
 ``UWPCE-PythonCert-ClassRepos`` account, and we will call it, appropriately, "upstream". Change directories into your local version of the class
 repository and run (remembering to use the name of your class):
+
+(you can get that full url by going to GitHub, finding the repo, and copying the "clone" url)
 
 .. code-block:: bash
 

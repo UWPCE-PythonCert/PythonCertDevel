@@ -26,7 +26,7 @@ A subclass "inherits" all the attributes (methods, etc) of the parent class.
 
 You can then change ("override") some or all of the attributes to change the behavior.
 
-You can also add new attributes to extend the behavior.
+You can also add new attributes to extend the behavior.  You create a subclass by passing the superclass to the class statement.
 
 The simplest subclass in Python:
 
@@ -82,13 +82,13 @@ Same thing, but with methods (remember, a method *is* an attribute in Python)
 all the instances will have the new method.
 
 
-Here's a program design suggestion:
+**Here's a program design suggestion:**
 
-Whenever you override a method, the interface of the new method should be the same as the old.  It should take the same parameters, return the same type, and obey the same preconditions and postconditions.
+  Whenever you override a method, the interface of the new method should be the same as the old.  It should take the same parameters, return the same type, and obey the same preconditions and postconditions.
 
-If you obey this rule, you will find that any function designed to work with an instance of a superclass, like a Deck, will also work with instances of subclasses like a Hand or PokerHand.  If you violate this rule, your code will collapse like (sorry) a house of cards.
+  If you obey this rule, you will find that any function designed to work with an instance of a superclass, like a Deck, will also work with instances of subclasses like a Hand or PokerHand.  If you violate this rule, your code will collapse like (sorry) a house of cards.
 
-Overriding \_\_init\_\_
+Overriding ``__init__``
 -----------------------
 
 ``__init__`` is a common method to override.

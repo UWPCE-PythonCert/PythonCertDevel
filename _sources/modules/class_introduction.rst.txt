@@ -78,7 +78,7 @@ Homework:
 
 * Exercises will be started in class -- but you can finish them at home.
 
-* You are adults -- it's up to you to do the homework. But if you don't code, you won't learn to code...
+* You are adults -- it's up to you to do the homework. But if you don't code, you won't learn to code. And we can't give you a certificate if you haven't demonstrated that you've done the work.
 
 * To submit your work, you can do a gitHub "pull request" to the class repo.
 
