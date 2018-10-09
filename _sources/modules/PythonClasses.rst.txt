@@ -279,6 +279,7 @@ So when you are deciding where to "put" something, you need to think about wheth
     In [13]: c2.x
     Out[13]: [1, 2, 3, 100, 2222]
 
+So here we changed ``x`` on the *class* object, ``C``, and the change showed up in all the instances, ``c1`` and ``c2``.
 
 
 Typical methods
