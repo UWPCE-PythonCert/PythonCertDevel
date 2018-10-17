@@ -177,15 +177,15 @@ statements:
 
 ::
 
-                      if x is False:
+                      if x == False:
     x or y               return y
                       else: return x
 
-                      if x is False:
+                      if x == False:
     x and y              return x
                       else: return y
 
-                      if x is False:
+                      if x == False:
     not x                return True
                       else: return False
 
