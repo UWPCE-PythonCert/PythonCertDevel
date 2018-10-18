@@ -31,10 +31,9 @@ What is Object Oriented Programming?
     within a set of functions designed to ensure that
     the data are used appropriately, and to assist in
     that use"
-
 |
 
-http://en.wikipedia.org/wiki/Object-oriented_programming
+- http://en.wikipedia.org/wiki/Object-oriented_programming
 
 
 **Even simpler:**
@@ -47,7 +46,8 @@ This is the core of "encapsulation"
 The Dominant Model
 ------------------
 
-OO is the dominant model for the past couple decades, but it is not the only model, and languages such as Python increasingly mix and blend models.
+OO is the dominant model for the past couple decades, but it is not the only model, and languages such as Python increasingly mix and blend models (such as  Procedural, Object Oriented, Functional).  In Python, it is best to choose the approach that best solves your problem.
+
 
 Object Oriented Concepts
 ------------------------
@@ -56,7 +56,7 @@ These are all terms you will hear when talking about Object Oriented Programming
 
 
 Class
-  A category of objects: particular data and behavior: for example, a "circle" (same as a type in Python).
+  A category of objects: particular data and behavior: for example, a "circle" (same as a "type" in Python).
 
 Instance
   A particular object of a class: a specific circle.
@@ -66,18 +66,18 @@ Object
 
 Attribute
   Something that belongs to an object (or class): generally thought of
-  as a variable, or single object, as opposed to a ...
+  as a simple value, variable, or single object, as opposed to a ...
 
 Method
-  A function that belongs to a class. In Python, functions *are* semantically the same as any other type -- so all methods are "attributes", but not all attributes are methods --methods are the functions -- or more strictly speaking the 'callable' attributes.
+  A function that belongs to a class. In Python, functions *are* semantically the same as any other type -- so all methods are "attributes", but not all attributes are methods. Methods are the functions, or more strictly speaking: the 'callable' attributes.
 
 Encapsulation
   The approach where the details of the structure are "hidden" in a class -- the user of the class does not need to know how the data is stored (and may not be able to know...)
 
 Data Protection
-  This is the cocept that classes can hide data from outside access (sometimes called "private" attributes. Python does not strictly support data protection.
+  This is the concept that classes can hide data from outside access (sometimes called "private" attributes. Python does not strictly support data protection.
 
-Class vs Instance attributes
+Class vs. Instance Attributes
   Attributes can be attached to a class -- that is, shared by all instances of that class, or they can be attached to only that instance.
 
 Subclassing
@@ -99,19 +99,15 @@ Is Python a "True" Object-Oriented Language?
 
 What are its strengths and weaknesses vis-a-vis OO?
 
-Python does support all of the above concepts (except data protection).
-
 But it does not support *full* encapsulation, i.e., it does not require classes, and classes don't have "private" attributes.
 
 **but ...**
 
 Folks can't even agree on what OO "really" means.
 
-See: The Quarks of Object-Oriented Development
+See: `The Quarks of Object-Oriented Development <http://ontheturingtest.blogspot.com/2013/11/the-quarks-of-objected-orientation-la.html>`_
 
   - Deborah J. Armstrong
-
-http://ontheturingtest.blogspot.com/2013/11/the-quarks-of-objected-orientation-la.html
 
 Object Oriented Design
 ----------------------
@@ -137,13 +133,12 @@ Python's roots
 You can do OO in C
 ------------------
 
-Which today is not considered an OO Language.
-
-See the GTK+ project.
+Which today is not considered an OO Language. See the GTK+ project.
 
 So OO is really a design approach -- putting the data together with the functions that manipulate that data. It isn't defined by language features.
 
-That being said: OO languages give you some handy tools to make it easier (and safer):
+That being said: OO languages give you some handy tools to make it easier
+(and safer):
 
   * Polymorphism (duck typing gives you this)
   * Inheritance
@@ -178,10 +173,4 @@ As you learn what is possible, this will all start to make more sense.
 
 So time to move on to how to actually **do** OO in Python!
 
-
-
-
-
-
-
-
+Here's how to do it in Python: :ref:`python_classes`

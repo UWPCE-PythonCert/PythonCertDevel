@@ -38,7 +38,7 @@ So -- if you get this error, simply add the parentheses:
 
 .. code-block:: ipython
 
-  In [16]: print ("this")
+  In [16]: print("this")
   this
 
 Division
@@ -76,6 +76,19 @@ And in Python2, you can get the behavior of Python3 with "true division":
 
 For the most part, you just need to be a bit careful with the rare cases where Python2 code counts on integer division.
 
+Iterators vs Lists
+------------------
+
+In Python2, a number of functions returned a full list of the contents. But most of the time, you didn't need a list -- you only needed a way to loop through all the items returned. Such an object is called an "iterable" -- more about that later in the class. But for now, if you get an error like::
+
+  TypeError: 'dict_keys' object does not support indexing
+
+Then you likely got an iterator, rather than a "proper" list.  You can fix this by making a list out of it::
+
+  list(an_iterator)
+
+the list constructor will make a list out of any iterable.  So you can now index it, etc.
+
 Other Python2 / Python3 differences
 -----------------------------------
 
@@ -85,4 +98,4 @@ Most of the other differences are essentially implementation details, like getti
 
 There are also a few syntax differences with more advanced topics: Exceptions, ``super()``, etc.
 
-We'll talk about all that when we cover those topics.
+We'll talk about all that when we cover those topics as well.
