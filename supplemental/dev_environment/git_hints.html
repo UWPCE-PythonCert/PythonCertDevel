@@ -349,6 +349,40 @@ Date:   Tue Oct 31 18:59:31 2017 -0700
 <div>“Branch early, merge often”</div></blockquote>
 <p>It’s a good way to work – branching and merging is easy enough it git that it pays off to do it often.</p>
 </div>
+<div class="section" id="detached-head">
+<h3>“detached HEAD”<a class="headerlink" href="#detached-head" title="Permalink to this headline">¶</a></h3>
+<p>Above, we talked about using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code> to restore a file to the state it was in in a previous commit, like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="mf">8e5908</span><span class="n">a37d7d</span> <span class="n">examples</span><span class="o">/</span><span class="n">Session05</span><span class="o">/</span><span class="n">maillroom_test</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>But what happens if you do a checkout with a commit, and no specific file?</p>
+<p>It does what you might expect – puts ALL the files back the way they were at that commit. But there is a hitch … let’s see what happens when I do that:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout c03bb5b2c401c
+Note: checking out &#39;c03bb5b2c401c&#39;.
+
+You are in &#39;detached HEAD&#39; state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b &lt;new-branch-name&gt;
+
+HEAD is now at c03bb5b adding print_grid from class
+</pre></div>
+</div>
+<p>So the files are set to the old state – but now there is that note about “detached HEAD” – this means that changes you make, even commits, will not effect the git repo. IF you want to start from here and make changes that will stick, you need to do what it says, and make a new branch.  But what it DOESN’T tell you is how to simpel “re-attach” the HEAD. Turns out there is an easy way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout -
+  Previous HEAD position was c03bb5b adding print_grid from class
+  Switched to branch &#39;master&#39;
+  Your branch is up to date with &#39;origin/master&#39;.
+</pre></div>
+</div>
+<p>the dash means “the branch or commit you were on before your last checkout command”.</p>
+<p>For more info about “detached HEAD”, see:</p>
+<p><a class="reference external" href="https://howtogit.net/recipes/getting-out-of-detached-head-state.html">https://howtogit.net/recipes/getting-out-of-detached-head-state.html</a></p>
+</div>
 </div>
 </div>
 

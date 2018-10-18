@@ -248,8 +248,43 @@ There is a saying in the git world:
 
 It's a good way to work -- branching and merging is easy enough it git that it pays off to do it often.
 
+"detached HEAD"
+---------------
 
+Above, we talked about using ``git checkout`` to restore a file to the state it was in in a previous commit, like so::
 
+    git checkout 8e5908a37d7d examples/Session05/maillroom_test.py
+
+But what happens if you do a checkout with a commit, and no specific file?
+
+It does what you might expect -- puts ALL the files back the way they were at that commit. But there is a hitch ... let's see what happens when I do that::
+
+    $ git checkout c03bb5b2c401c
+    Note: checking out 'c03bb5b2c401c'.
+
+    You are in 'detached HEAD' state. You can look around, make experimental
+    changes and commit them, and you can discard any commits you make in this
+    state without impacting any branches by performing another checkout.
+
+    If you want to create a new branch to retain commits you create, you may
+    do so (now or later) by using -b with the checkout command again. Example:
+
+      git checkout -b <new-branch-name>
+
+    HEAD is now at c03bb5b adding print_grid from class
+
+So the files are set to the old state -- but now there is that note about "detached HEAD" -- this means that changes you make, even commits, will not effect the git repo. IF you want to start from here and make changes that will stick, you need to do what it says, and make a new branch.  But what it DOESN'T tell you is how to simpel "re-attach" the HEAD. Turns out there is an easy way::
+
+  $ git checkout -
+    Previous HEAD position was c03bb5b adding print_grid from class
+    Switched to branch 'master'
+    Your branch is up to date with 'origin/master'.
+
+the dash means "the branch or commit you were on before your last checkout command".
+
+For more info about "detached HEAD", see:
+
+https://howtogit.net/recipes/getting-out-of-detached-head-state.html
 
 
 
