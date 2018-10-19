@@ -10,11 +10,7 @@ In this exercise we will reinforce the important concepts of string formatting, 
 
 Procedure
 =========
-Be sure to follow all the steps described in the Procedure section at:
-
-https://canvas.uw.edu/courses/1200526/assignments/3970003?module_item_id=7963708
-
-but this time, creating a new file called strformat_lab.py in your student dir in the class repo.
+Create a new file called ``strformat_lab.py`` in your student dir in the class repo.
 
 When the empty script is available and runnable, complete the following four tasks.
 
