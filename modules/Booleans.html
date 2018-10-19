@@ -204,9 +204,10 @@
 <span class="gh">Out[2]: </span><span class="go">345</span>
 </pre></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">bool(something)</span></code> will always evaluate to either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </div>
-<div class="section" id="what-is-false">
-<h2>What is False?<a class="headerlink" href="#what-is-false" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-is-falsy">
+<h2>What is Falsy?<a class="headerlink" href="#what-is-falsy" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first"><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
 </li>
@@ -219,7 +220,7 @@
 </li>
 <li><p class="first">Any empty sequence, for example, <code class="docutils literal notranslate"><span class="pre">&quot;&quot;,</span> <span class="pre">(),</span> <span class="pre">[]</span></code>.</p>
 </li>
-<li><p class="first">Any empty mapping, for example, <code class="docutils literal notranslate"><span class="pre">{}</span></code> .</p>
+<li><p class="first">Any empty mapping, for example, <code class="docutils literal notranslate"><span class="pre">dict()</span></code>.</p>
 </li>
 <li><p class="first">Instances of user-defined classes:</p>
 <blockquote>
@@ -237,8 +238,8 @@
 </ul>
 <p>(Don’t worry about that last one – what that means is that user-defined types can control their truthiness behavior).</p>
 </div>
-<div class="section" id="what-is-true">
-<h2>What is True?<a class="headerlink" href="#what-is-true" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-is-truthy">
+<h2>What is Truthy?<a class="headerlink" href="#what-is-truthy" title="Permalink to this headline">¶</a></h2>
 <p>Everything else.</p>
 </div>
 <div class="section" id="pythonic-booleans">
@@ -288,7 +289,7 @@ of this operand:</p>
 </div>
 <div class="section" id="shortcutting">
 <h2>Shortcutting<a class="headerlink" href="#shortcutting" title="Permalink to this headline">¶</a></h2>
-<p>If you think about it, what <code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code> are doing is as little work as possible. They will only evaluate as much as they need to get the answer.</p>
+<p><code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code> returning teh first value that determines the result is known as “shortcutting”.  If you think about it, what <code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code> are doing is as little work as possible. They will only evaluate as much as they need to get the answer.</p>
 <p>Think about <code class="docutils literal notranslate"><span class="pre">and</span></code>: it is testing if <em>both</em> the operands are True. If the first one is False, there is no need to bother checking the second.</p>
 <p>Alternatively, <code class="docutils literal notranslate"><span class="pre">or</span></code> is trying to see if only one of the operands is True. So if the first one is True, it can stop, and does not need to evaluate the second.</p>
 <p>Also key is that if an operation is “shortcut” – the second part of the expression will not be evaluated – so it could be an invalid expression that will never raise an error:</p>
@@ -309,16 +310,16 @@ of this operand:</p>
 <p>In this case, the second expression needs to be evaluated – so it DID raise an error.</p>
 <p>This can be exploited to provide compact logic – but it can also hide bugs!</p>
 <p>Because of the return value of the boolean operators, you can write concise
-statements:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                  <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+statements, rather than a full <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">--</span> <span class="pre">else</span></code> block like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                  <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
 <span class="n">x</span> <span class="ow">or</span> <span class="n">y</span>               <span class="k">return</span> <span class="n">y</span>
                   <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">x</span>
 
-                  <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                  <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
 <span class="n">x</span> <span class="ow">and</span> <span class="n">y</span>              <span class="k">return</span> <span class="n">x</span>
                   <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="n">y</span>
 
-                  <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                  <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
 <span class="ow">not</span> <span class="n">x</span>                <span class="k">return</span> <span class="kc">True</span>
                   <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
