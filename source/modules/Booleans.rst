@@ -45,8 +45,10 @@ This is similar to making an integer out of another value, such a float or a str
     In [2]: int("345")
     Out[2]: 345
 
+``bool(something)`` will always evaluate to either ``True`` or ``False``.
 
-What is False?
+
+What is Falsy?
 --------------
 
 * ``None``
@@ -59,7 +61,7 @@ What is False?
 
     - Any empty sequence, for example, ``"", (), []``.
 
-    - Any empty mapping, for example, ``{}`` .
+    - Any empty mapping, for example, ``dict()``.
 
     - Instances of user-defined classes:
 
@@ -71,8 +73,8 @@ What is False?
 
 (Don't worry about that last one -- what that means is that user-defined types can control their truthiness behavior).
 
-What is True?
--------------
+What is Truthy?
+---------------
 
 Everything else.
 
@@ -141,7 +143,7 @@ of this operand:
 Shortcutting
 ------------
 
-If you think about it, what ``and`` and ``or`` are doing is as little work as possible. They will only evaluate as much as they need to get the answer.
+``and`` and ``or`` returning teh first value that determines the result is known as "shortcutting".  If you think about it, what ``and`` and ``or`` are doing is as little work as possible. They will only evaluate as much as they need to get the answer.
 
 Think about ``and``: it is testing if *both* the operands are True. If the first one is False, there is no need to bother checking the second.
 
@@ -171,21 +173,20 @@ In this case, the second expression needs to be evaluated -- so it DID raise an 
 This can be exploited to provide compact logic -- but it can also hide bugs!
 
 
-
 Because of the return value of the boolean operators, you can write concise
-statements:
+statements, rather than a full ``if -- else`` block like so:
 
 ::
 
-                      if x is False:
+                      if bool(x) is False:
     x or y               return y
                       else: return x
 
-                      if x is False:
+                      if bool(x) is False:
     x and y              return x
                       else: return y
 
-                      if x is False:
+                      if bool(x) is False:
     not x                return True
                       else: return False
 
