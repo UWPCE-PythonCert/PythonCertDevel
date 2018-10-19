@@ -66,7 +66,7 @@ author_list = ["Natasha Aleksandrova",
                "Andy Miles"
                "Rick Riehle",
                "Joseph Schilz",
-               "Joseph Sheedy"
+               "Joseph Sheedy",
                "Hosung Song"
                ]
 

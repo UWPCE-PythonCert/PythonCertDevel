@@ -57,7 +57,7 @@ Calling the dict type object constructor:
     >>> dict(key1=3, key2= 5)
     {'key1': 3, 'key2': 5}
 
-    # creating and empty dict, and then populating it:
+    # creating an empty dict, and then populating it:
     >>> d = {}
     >>> d['key1'] = 3
     >>> d['key2'] = 5
@@ -181,7 +181,7 @@ Traditionally, dictionaries have had no defined order. See this example from Pyt
 Note how I defined the dict in a natural order, but when it gets printed, or you display the keys, they are in a different order.
 
 However, In cPython 3.6, the internal implementation was changed, and it *does* happen to preserve order. In cPython 3.6, that is considered an implementation detail -- and you should not count on it! However, as of cPython 3.7, dictionaries preserving order will be part of the language specification. This was declared by Guido on the python-dev mailing list on
-`Dec 15, 2017 <https://mail.python.org/pipermail/python-dev/2017-December/151283.html>`
+Dec 15, 2017 <https://mail.python.org/pipermail/python-dev/2017-December/151283.html>.
 
 .. code-block:: ipython
 
