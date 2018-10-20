@@ -36,7 +36,7 @@ Exercises:
 
 3. Optional: :ref:`exercise_exceptions_lab`
 
-4. Update mailroom with Exceptions: :ref:`exercise_mailroom_exceptions`
+4. Update mailroom with Exceptions: :ref:`exercise_mailroom_part3_exceptions`
 
 
 Post-class Activities
