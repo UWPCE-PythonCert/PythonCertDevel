@@ -212,7 +212,7 @@ Building the Trigrams dict
 
 So you've got a list of words, and you need to build up a dict like one of the above.
 
-It time to create a python file and start writting some code!
+It's time to create a python file and start writting some code!
 
 .. code-block:: python
 
@@ -244,7 +244,7 @@ So how do you actually build up that dict? That's kind of the point of the exerc
 
 **Looping through the words**
 
-Obviously you need to loop through all the words, so a ``for loop`` makes sense. However, this is a bit tricky. Usually in Python you loop through all the items in a list, and don't worry about the indices:
+Obviously you need to loop through all the words, so a ``for`` loop makes sense. However, this is a bit tricky. Usually in Python you loop through all the items in a list, and don't worry about the indices:
 
 .. code-block:: python
 
@@ -256,7 +256,7 @@ So contrary to the usual practice, an index can be helpful here:
 
 .. code-block:: python
 
-  for i in len(words)-2: # why -2 ?
+  for i in range(len(words)-2): # why -2 ?
      pair = words[i:i + 2]
      follower = words[i + 2]
 
@@ -264,7 +264,7 @@ So contrary to the usual practice, an index can be helpful here:
 
 For each pair in the text, you need to add it to the dict. But:
 
-- words[i:i + 2] is a list with two words in it. Can that be used as a key in a dict? (Try it.) If not, how can you make a valid key out of it?
+- ``words[i:i + 2]`` is a list with two words in it. Can that be used as a key in a dict? (Try it.) If not, how can you make a valid key out of it?
 
 - As you loop through the text, you will collect pairs of words. Each time, a given pair may already be in the dict.
 
@@ -272,7 +272,7 @@ For each pair in the text, you need to add it to the dict. But:
 
     ("may", "I"): ["wish"]
 
-  - If the pair already is in the dict, then you want to add the follower (the second word in the pair) to the list that's already there
+  - If the pair already is in the dict, then you want to add the follower (the second word in the pair) to the list that's already there::
 
     ("wish", "I"): ["may", "might"]
 
@@ -294,7 +294,7 @@ Using the Trigrams dict
 
 This is the fun part. Once you have a mapping of word pairs to following words, you can build up some new "fake" text. Re-read the previous sections again to remind yourself of the procedure. Here are a couple of additional hints and questions to consider:
 
-- The ```random`` module <https://docs.python.org/3/library/random.html#module-random>`_ is your friend here:
+- The ``random`` module <https://docs.python.org/3/library/random.html#module-random> is your friend here:
 
 .. code-block:: python
 
@@ -357,7 +357,7 @@ Do get the full trigrams code working first, then play with some of the fancier 
 Code Structure
 --------------
 
-Break your code down into a handful of separate functions. This way you can test each on its own, and it's easier to refactor one part without messing with the others.  For instance, your __main__ block might look something like:
+Break your code down into a handful of separate functions. This way you can test each on its own, and it's easier to refactor one part without messing with the others.  For instance, your ``__main__`` block might look something like:
 
 .. code-block:: python
 

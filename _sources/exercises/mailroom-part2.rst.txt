@@ -50,7 +50,7 @@ In the first version of mailroom, you generated a letter to a donor who had just
 
 In this version of your program, add a function (and a menu item to invoke it), that goes through all the donors in your donor data structure, generates a thank you letter for each donor, and writes each letter to disk as a text file.
 
-Your main menu may look something like:
+Your main menu may look something like::
 
   Choose an action:
 

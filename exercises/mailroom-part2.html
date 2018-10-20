@@ -212,13 +212,14 @@ big template, rather than building up a big string that produces the letter in p
 <p>In the first version of mailroom, you generated a letter to a donor who had just made a new donation, and printed it to the screen.</p>
 <p>In this version of your program, add a function (and a menu item to invoke it), that goes through all the donors in your donor data structure, generates a thank you letter for each donor, and writes each letter to disk as a text file.</p>
 <p>Your main menu may look something like:</p>
-<blockquote>
-<div><p>Choose an action:</p>
-<p>1 - Send a Thank You to a single donor.
-2 - Create a Report.
-3 - Send letters to all donors.
-4 - Quit</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Choose</span> <span class="n">an</span> <span class="n">action</span><span class="p">:</span>
+
+<span class="mi">1</span> <span class="o">-</span> <span class="n">Send</span> <span class="n">a</span> <span class="n">Thank</span> <span class="n">You</span> <span class="n">to</span> <span class="n">a</span> <span class="n">single</span> <span class="n">donor</span><span class="o">.</span>
+<span class="mi">2</span> <span class="o">-</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">Report</span><span class="o">.</span>
+<span class="mi">3</span> <span class="o">-</span> <span class="n">Send</span> <span class="n">letters</span> <span class="n">to</span> <span class="nb">all</span> <span class="n">donors</span><span class="o">.</span>
+<span class="mi">4</span> <span class="o">-</span> <span class="n">Quit</span>
+</pre></div>
+</div>
 <p>The letters should each get a unique file name – you can keep it really simple and just use the donor’s name or add a date timestamp for additional uniqueness.</p>
 <p>You want to avoid specifying a hardcoded file path when creating the files, for example don’t to this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/home/users/bob/dev/mailroom/thank_you.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
@@ -271,7 +272,7 @@ To identify a temporary directory you can use a handy function like <a class="re
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>

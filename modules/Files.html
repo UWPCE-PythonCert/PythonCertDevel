@@ -188,7 +188,10 @@
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">secret_data</span></code> is a string</p>
-<p>NOTE: these days, you probably need to use Unicode for text – we’ll get to that later…</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In Python 3, files are opened by default in text mode, and the default encoding is UTF-8. This means that in the usual case, you get a proper Unicode string to work with, as UTF-8 is the most common encoding for text. Also, it is ASCII compatible, so ASCII Files with “just work”. IF “Unicode” and “ASCII” mean nothing to you – don’t worry about it, just know that things will usually work for text, even non-English text. And if you get odd characters or an <code class="docutils literal notranslate"><span class="pre">EncodingError</span></code>, then your file is not UTF-8, and it’s time to Google “Python Unicode”. (more info here: <a class="reference internal" href="Unicode.html#unicode"><span class="std std-ref">Unicode in Python</span></a>)</p>
+</div>
 </div>
 <div class="section" id="binary-files">
 <h3>Binary Files<a class="headerlink" href="#binary-files" title="Permalink to this headline">¶</a></h3>
@@ -212,7 +215,7 @@
 <p>These follow the Unix conventions, and aren’t all that well documented
 in the Python docs. But these BSD docs make it pretty clear:</p>
 <p><a class="reference external" href="http://www.manpagez.com/man/3/fopen/">http://www.manpagez.com/man/3/fopen/</a></p>
-<p><strong>Gotcha</strong> – ‘w’ modes always clear the file.</p>
+<p><strong>Gotcha</strong> – ‘w’ modes always clear the file if it already exists!</p>
 </div>
 <div class="section" id="text-file-notes">
 <h3>Text File Notes<a class="headerlink" href="#text-file-notes" title="Permalink to this headline">¶</a></h3>
@@ -249,7 +252,7 @@ in the Python docs. But these BSD docs make it pretty clear:</p>
     <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(the file object is an iterator!)</p>
+<p>(The file object is an iterable that iterates through the lines in a text file.)</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;secrets.txt&#39;</span><span class="p">)</span>
 <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
     <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
@@ -258,14 +261,16 @@ in the Python docs. But these BSD docs make it pretty clear:</p>
     <span class="n">do_something_with_line</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>We will learn more about the keyword with later, but for now, just understand
-the syntax and the advantage over the try-finally block:</p>
+<p>We will learn more about the keyword <code class="docutils literal notranslate"><span class="pre">with</span></code> later (it creates a “context manager”), but for now, just understand the syntax and the advantage over simply opening the file:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;workfile&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">read_data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">f</span><span class="o">.</span><span class="n">closed</span>
 <span class="bp">True</span>
 </pre></div>
 </div>
+<p>You use <code class="docutils literal notranslate"><span class="pre">with</span></code> to open the file, and assign it a name (<code class="docutils literal notranslate"><span class="pre">f</span></code> in this case).
+The file remains open while in the <code class="docutils literal notranslate"><span class="pre">with</span></code> block.
+At the end of the <code class="docutils literal notranslate"><span class="pre">with</span></code> block, the file is unconditionally closed, even if an Exception is raised.  You code will (mostly) work without it, but it’s a good habit to get into to always use <code class="docutils literal notranslate"><span class="pre">with</span></code> to open a file.</p>
 </div>
 <div class="section" id="file-writing">
 <h3>File Writing<a class="headerlink" href="#file-writing" title="Permalink to this headline">¶</a></h3>
@@ -294,29 +299,36 @@ the syntax and the advantage over the try-finally block:</p>
 </div>
 </div>
 <div class="section" id="stringio">
-<h3>StringIO<a class="headerlink" href="#stringio" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">417</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">io</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">420</span><span class="p">]:</span> <span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">421</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;somestuff&quot;</span><span class="p">)</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">422</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">423</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">423</span><span class="p">]:</span> <span class="s1">&#39;somestuff&#39;</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">424</span><span class="p">]:</span> <span class="n">stuff</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">425</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<h3><code class="docutils literal notranslate"><span class="pre">StringIO</span></code><a class="headerlink" href="#stringio" title="Permalink to this headline">¶</a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">StringIO</span></code> method is a “file like” object that stores the content in memory.
+That is, it has all the methods of a file, and behaves the same way, but never writes anything to disk.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">io</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">f</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;some stuff&quot;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="mi">10</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="mi">0</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="s1">&#39;some stuff&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">11</span><span class="p">]:</span> <span class="s1">&#39;some stuff&#39;</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">12</span><span class="p">]:</span> <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>(This can be handy for testing file handling code…)</p>
-<p>There is also cStringIO – a bit faster.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cStringIO</span> <span class="kn">import</span> <span class="n">StringIO</span>
-</pre></div>
-</div>
 </div>
 </div>
 <div class="section" id="paths-and-directories">
 <h2>Paths and Directories<a class="headerlink" href="#paths-and-directories" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="paths">
 <h3>Paths<a class="headerlink" href="#paths" title="Permalink to this headline">¶</a></h3>
-<p>Paths are generally handled with simple strings (or Unicode strings).</p>
+<p>Paths are generally handled with simple strings.</p>
 <p>Relative paths:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;secret.txt&#39;</span>
 <span class="s1">&#39;./secret.txt&#39;</span>
@@ -326,11 +338,11 @@ the syntax and the advantage over the try-finally block:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;/home/chris/secret.txt&#39;</span>
 </pre></div>
 </div>
-<p>Either work with <code class="docutils literal notranslate"><span class="pre">open()</span></code> , etc.</p>
-<p>(A working directory only makes sense with command-line programs.)</p>
+<p>Either works with <code class="docutils literal notranslate"><span class="pre">open()</span></code> , etc.</p>
+<p>Relative paths are relative to the current working directory, which is only relevant to command-line programs.</p>
 </div>
 <div class="section" id="os-module">
-<h3>os module<a class="headerlink" href="#os-module" title="Permalink to this headline">¶</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">os</span></code> module<a class="headerlink" href="#os-module" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
 <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">()</span>
@@ -363,17 +375,20 @@ the syntax and the advantage over the try-finally block:</p>
 <p><code class="docutils literal notranslate"><span class="pre">pathlib</span></code> is a package for handling paths in an OO way:</p>
 <p><a class="reference external" href="http://pathlib.readthedocs.org/en/pep428/">http://pathlib.readthedocs.org/en/pep428/</a></p>
 <p>All the stuff in os.path and more:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [64]: </span><span class="kn">import</span> <span class="nn">pathlib</span>
-<span class="gp">In [65]: </span><span class="n">pth</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">)</span>
-<span class="gp">In [66]: </span><span class="n">pth</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()</span>
-<span class="gh">Out[66]: </span><span class="go">True</span>
-<span class="gp">In [67]: </span><span class="n">pth</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
-<span class="gh">Out[67]: </span><span class="go">PosixPath(&#39;/Users/Chris/PythonStuff/UWPCE/IntroPython2015&#39;)</span>
-<span class="gp">In [68]: </span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">pth</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
-<span class="go">             print(f)</span>
-<span class="go">junk2.txt</span>
-<span class="go">junkfile.txt</span>
-<span class="go">...</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="kn">import</span> <span class="nn">pathlib</span>
+
+<span class="gp">In [15]: </span><span class="n">pth</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">)</span>
+
+<span class="gp">In [16]: </span><span class="n">pth</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()</span>
+<span class="gh">Out[16]: </span><span class="go">True</span>
+
+<span class="gp">In [17]: </span><span class="n">pth</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
+<span class="gh">Out[17]: </span><span class="go">PosixPath(&#39;/Users/Chris/PythonStuff/UWPCE/Fall2018-PY210A/examples/Session02&#39;)</span>
+
+<span class="gp">In [18]: </span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">pth</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+<span class="go">    ...:     print(f)</span>
+<span class="go">    ...:</span>
+<span class="go">    ...:</span>
 </pre></div>
 </div>
 <p>And it has a really nifty way to join paths, by overloading the “division” operator:</p>
@@ -409,7 +424,7 @@ the syntax and the advantage over the try-finally block:</p>
 <div class="section" id="what-this-means-to-you">
 <h3>What this means to you<a class="headerlink" href="#what-this-means-to-you" title="Permalink to this headline">¶</a></h3>
 <p>Unless you are writing a path manipulation library, or a library that deals with paths other than with the stdlib packages (like <code class="docutils literal notranslate"><span class="pre">open()</span></code>), all you need to know is that you can use <code class="docutils literal notranslate"><span class="pre">Path</span></code> objects most places you need a path.</p>
-<p>I expect we will see expanded use of pathlib as python 3.6 becomes widely used.</p>
+<p>I expect we will see expanded use of pathlib as python 3.6 and 3.7 becomes widely used.</p>
 </div>
 </div>
 <div class="section" id="some-added-notes">
@@ -425,8 +440,7 @@ the syntax and the advantage over the try-finally block:</p>
 <span class="n">do_other_stuff</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">with</span></code> invokes a context manager – which can be confusing, but for now,
-just follow this pattern – it really is more robust.</p>
+<p><code class="docutils literal notranslate"><span class="pre">with</span></code> invokes a context manager – which can be confusing, but for now, just follow this pattern – it really is more robust.</p>
 <p>And you can even do two at once:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">dest</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
     <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">infile</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
@@ -488,7 +502,7 @@ just follow this pattern – it really is more robust.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>

@@ -220,7 +220,7 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">dict</span><span class="p">(</span><span class="n">key1</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">key2</span><span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 <span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
 
-<span class="c1"># creating and empty dict, and then populating it:</span>
+<span class="c1"># creating an empty dict, and then populating it:</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;key2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
@@ -321,7 +321,7 @@
 </div>
 <p>Note how I defined the dict in a natural order, but when it gets printed, or you display the keys, they are in a different order.</p>
 <p>However, In cPython 3.6, the internal implementation was changed, and it <em>does</em> happen to preserve order. In cPython 3.6, that is considered an implementation detail – and you should not count on it! However, as of cPython 3.7, dictionaries preserving order will be part of the language specification. This was declared by Guido on the python-dev mailing list on
-<cite>Dec 15, 2017 &lt;https://mail.python.org/pipermail/python-dev/2017-December/151283.html&gt;</cite></p>
+Dec 15, 2017 &lt;<a class="reference external" href="https://mail.python.org/pipermail/python-dev/2017-December/151283.html">https://mail.python.org/pipermail/python-dev/2017-December/151283.html</a>&gt;.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go">In Python 3.6, the above code results in:</span>
 
 <span class="gp">In [9]: </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">}</span>
@@ -685,7 +685,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph SheedyHosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
 
     </p>
   </div>
