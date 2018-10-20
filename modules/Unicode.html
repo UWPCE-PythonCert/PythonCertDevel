@@ -172,14 +172,9 @@
             
   <div class="section" id="unicode-in-python">
 <span id="unicode"></span><h1>Unicode in Python<a class="headerlink" href="#unicode-in-python" title="Permalink to this headline">¶</a></h1>
-<p class="medium">A quick run-down of Unicode,</p>
-<p class="medium">Its use in Python 2 and 3,</p>
-<p class="medium">and some of the gotchas that arise.</p>
-<div class="medium line-block">
-<div class="line"><br /></div>
-<div class="line">- Chris Barker</div>
-<div class="line"><br /></div>
-</div>
+<p>A quick run-down of Unicode,</p>
+<p>Its use in Python 2 and 3,</p>
+<p>and some of the gotchas that arise.</p>
 <div class="section" id="history">
 <h2>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h2>
 <p>A bit about where all this mess came from…</p>
@@ -187,16 +182,17 @@
 <h3>What the heck is Unicode anyway?<a class="headerlink" href="#what-the-heck-is-unicode-anyway" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>First there was chaos…<ul>
-<li>Different machines used different encodings</li>
+<li>Different machines used different encodings – different ways of mapping
+binary data that the computer stores to letters.</li>
 </ul>
 </li>
 <li>Then there was ASCII – and all was good (7 bit), 127 characters<ul>
 <li>(for English speakers, anyway)</li>
 </ul>
 </li>
-<li>But each vendor used the top half (127-255) for different things.<ul>
+<li>But each vendor used the top half of 8bit bytes (127-255) for different things.<ul>
 <li>MacRoman, Windows 1252, etc…</li>
-<li>There is now “latin-1”, but still a lot of old files around</li>
+<li>There is now “latin-1”, but still a lot of old files around.</li>
 </ul>
 </li>
 <li>Non-Western European languages required totally incompatible 1-byte encodings</li>
@@ -208,7 +204,7 @@
 <dl class="docutils">
 <dt>The Unicode idea is pretty simple:</dt>
 <dd><ul class="first last simple">
-<li>one “code point” for all characters in all languages</li>
+<li>One “code point” for all characters in all languages</li>
 </ul>
 </dd>
 <dt>But how do you express that in bytes?</dt>
@@ -221,8 +217,7 @@
 <dd><ul class="first last simple">
 <li>An encoding is a way to map specific bytes to a code point.</li>
 <li>Each code point can be represented by one or more bytes.</li>
-<li>each encoding is different – if you don’tknow the encoding, you don’t
-know how to interpret the bytes!</li>
+<li>Each encoding is different – if you don’t know the encoding, you don’t know how to interpret the bytes! (though maybe you can guess…)</li>
 </ul>
 </dd>
 </dl>
@@ -239,7 +234,7 @@ Positively Must Know About Unicode and Character Sets (No Excuses!)</p>
 <li>Python provides some abstractions to make it easier to deal with bytes</li>
 </ul>
 <p><strong>Unicode is a biggie</strong></p>
-<p>actually, dealing with numbers rather than bytes is big</p>
+<p>Actually, dealing with numbers rather than bytes is big</p>
 <p>– but we take that for granted</p>
 </div>
 </div>
@@ -247,16 +242,16 @@ Positively Must Know About Unicode and Character Sets (No Excuses!)</p>
 <h2>Mechanics<a class="headerlink" href="#mechanics" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="what-are-strings">
 <h3>What are strings?<a class="headerlink" href="#what-are-strings" title="Permalink to this headline">¶</a></h3>
-<p>Py2 strings are sequences of bytes</p>
-<p>Unicode strings are sequences of platonic characters</p>
-<p>It’s almost one code point per character – but there are complications
-with combined characters: accents, etc.</p>
+<p>Py2 strings were simply sequences of bytes.  When text was one per charater that worked fine.</p>
+<p>Py3 strings (or Unicode strings in py2) are sequences of platonic characters.</p>
+<p>It’s almost one code point per character – there are complications
+with combined characters: accents, etc – but we can mostly ignore those.</p>
 <p>Platonic characters cannot be written to disk or network!</p>
 <p>(ANSI: one character == one byte – so easy!)</p>
 </div>
 <div class="section" id="strings-vs-unicode">
-<h3>Strings vs unicode<a class="headerlink" href="#strings-vs-unicode" title="Permalink to this headline">¶</a></h3>
-<p>Python 2 has two types that let you work with text:</p>
+<h3>Strings vs Unicode<a class="headerlink" href="#strings-vs-unicode" title="Permalink to this headline">¶</a></h3>
+<p>Python 2 had two types that let you work with text:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">str</span></code></li>
 <li><code class="docutils literal notranslate"><span class="pre">unicode</span></code></li>
@@ -271,21 +266,32 @@ with combined characters: accents, etc.</p>
 <span class="gh">Out[86]: </span><span class="go">True</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">bytes</span></code> is there for py3 compatibility – but it’s good for making your
-intentions clear, too.</p>
+<p><code class="docutils literal notranslate"><span class="pre">bytes</span></code> is there in py2 for py3 compatibility – but it’s good for making your intentions clear, too.</p>
+<p>py3 is more clear:</p>
+<blockquote>
+<div><code class="docutils literal notranslate"><span class="pre">str</span></code> for text
+<code class="docutils literal notranslate"><span class="pre">byte</span></code> for binary data</div></blockquote>
 </div>
 <div class="section" id="id2">
 <h3>Unicode<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">unicode</span></code> object lets you work with characters</p>
-<p>It has all the same methods as the string object.</p>
-<p><strong>“encoding”</strong> is converting from a unicode object to bytes</p>
-<p><strong>“decoding”</strong> is converting from bytes to a unicode object</p>
+<p>The py3 string (py2 <code class="docutils literal notranslate"><span class="pre">Unicode</span></code>) object lets you work with characters, instead of bytes.</p>
+<p>It has all the same methods you’d expect a string object to have.</p>
+</div>
+<div class="section" id="encoding-decoding">
+<h3>Encoding / Decoding<a class="headerlink" href="#encoding-decoding" title="Permalink to this headline">¶</a></h3>
+<p>If you need to deal with the actual bytes for some reason, you may need to convert between a string object and a particular set of bytes.</p>
+<p><strong>“encoding”</strong> is converting from a string object to bytes</p>
+<p><strong>“decoding”</strong> is converting from bytes to a string object</p>
 <p>(sometimes this feels backwards…)</p>
 <p>And can get even more confusing with py2 strings being <em>both</em> text and bytes!</p>
+<p>This is actually one of teh biggest differences between Python 2 and Python 3. As an ordinary user (particulary one that used English…), you may not notice – text is text, and things generally “just work”, but under the hood it is very different, and folks writting libraries for things like internet protocols struggle with the differences.</p>
 </div>
 <div class="section" id="using-unicode-in-py2">
 <h3>Using unicode in Py2<a class="headerlink" href="#using-unicode-in-py2" title="Permalink to this headline">¶</a></h3>
-<p>Built in functions</p>
+<p>IF you do need to write Python2 code, you really should use Unicode.</p>
+<p>Here are the basics:</p>
+<div class="section" id="built-in-functions">
+<h4>Built in functions<a class="headerlink" href="#built-in-functions" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">ord</span><span class="p">()</span>
 <span class="nb">chr</span><span class="p">()</span>
 <span class="nb">unichr</span><span class="p">()</span>
@@ -293,7 +299,9 @@ intentions clear, too.</p>
 <span class="nb">unicode</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The codecs module</p>
+</div>
+<div class="section" id="the-codecs-module">
+<h4>The codecs module<a class="headerlink" href="#the-codecs-module" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">codecs</span>
 <span class="n">codecs</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
 <span class="n">codecs</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
@@ -301,8 +309,10 @@ intentions clear, too.</p>
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="encoding-and-decoding">
 <h3>Encoding and Decoding<a class="headerlink" href="#encoding-and-decoding" title="Permalink to this headline">¶</a></h3>
+<p>(Python 2!)</p>
 <p><strong>Encoding:</strong> text to bytes – you get a bytes (str) object</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [17]: </span><span class="sa">u</span><span class="s2">&quot;this&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
 <span class="gh">Out[17]: </span><span class="go">&#39;this&#39;</span>
@@ -331,7 +341,7 @@ intentions clear, too.</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>escape the unicode characters:</li>
+<li>Escape the unicode characters:</li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="sa">u</span><span class="s2">&quot;The integral sign: </span><span class="se">\u222B</span><span class="s2">&quot;</span>
 <span class="k">print</span> <span class="sa">u</span><span class="s2">&quot;The integral sign: </span><span class="se">\N{integral}</span><span class="s2">&quot;</span>
@@ -342,7 +352,7 @@ intentions clear, too.</p>
 <dt>One example:</dt>
 <dd><a class="reference external" href="http://inamidst.com/stuff/unidata/">http://inamidst.com/stuff/unidata/</a></dd>
 </dl>
-<p><code class="xref download docutils literal notranslate"><span class="pre">hello_unicode.py</span></code>.</p>
+<p><a class="reference download internal" href="../_downloads/hello_unicode.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">hello_unicode.py</span></code></a>.</p>
 </div>
 <div class="section" id="using-unicode">
 <h3>Using Unicode<a class="headerlink" href="#using-unicode" title="Permalink to this headline">¶</a></h3>
@@ -359,7 +369,7 @@ intentions clear, too.</p>
 <p>The default encoding will get used in unexpected places!</p>
 </div>
 <div class="section" id="using-unicode-everywhere">
-<h3>Using unicode everywhere<a class="headerlink" href="#using-unicode-everywhere" title="Permalink to this headline">¶</a></h3>
+<h3>Using Unicode everywhere<a class="headerlink" href="#using-unicode-everywhere" title="Permalink to this headline">¶</a></h3>
 <p>Python 2.6 and above have a nice feature to make it easier to use unicode everywhere</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
 </pre></div>
@@ -376,6 +386,7 @@ intentions clear, too.</p>
 </pre></div>
 </div>
 <p>NOTE: You can still get py2 strings from other sources!</p>
+<p>This is a really good idea if you want to write code compatible with Python2 and 3</p>
 </div>
 <div class="section" id="encodings">
 <h3>Encodings<a class="headerlink" href="#encodings" title="Permalink to this headline">¶</a></h3>
@@ -398,9 +409,9 @@ intentions clear, too.</p>
 <p>Probably the one you’ll use most – most common in Internet protocols (xml, JSON, etc.)</p>
 <p>Nice properties:</p>
 <ul class="simple">
-<li>ASCII compatible: first 127 characters are the same</li>
+<li>ASCII compatible: First 127 characters are the same</li>
 <li>Any ascii string is a utf-8 string</li>
-<li>compact for mostly-english text.</li>
+<li>Compact for mostly-english text.</li>
 </ul>
 <p>Gotchas:</p>
 <ul class="simple">
@@ -410,8 +421,8 @@ intentions clear, too.</p>
 </div>
 <div class="section" id="utf-16">
 <h3>UTF-16<a class="headerlink" href="#utf-16" title="Permalink to this headline">¶</a></h3>
-<p>Kind of like UTF-8, except it uses at least 16bits (2 bytes) for each character: not ASCII compatible.</p>
-<p>But is still needs more than two bytes for some code points, so you still can’t process</p>
+<p>Kind of like UTF-8, except it uses at least 16bits (2 bytes) for each character: NOT ASCII compatible.</p>
+<p>But is still needs more than two bytes for some code points, so you still can’t process it as one per character.</p>
 <p>In C/C++ held in a “wide char” or “wide string”.</p>
 <p>MS Windows uses UTF-16, as does (I think) Java.</p>
 </div>
@@ -430,7 +441,7 @@ intentions clear, too.</p>
 <div class="section" id="latin-1">
 <h3>Latin-1<a class="headerlink" href="#latin-1" title="Permalink to this headline">¶</a></h3>
 <p><strong>NOT Unicode</strong>:</p>
-<p>a 1-byte per char encoding.</p>
+<p>A 1-byte per char encoding.</p>
 <ul class="simple">
 <li>Superset of ASCII suitable for Western European languages.</li>
 <li>The most common one-byte per char encoding for European text.</li>
@@ -440,7 +451,7 @@ intentions clear, too.</p>
 <li>Useful if you don’t know the encoding – at least it won’t raise an Exception</li>
 <li>Useful if you need to work with combined text+binary data.</li>
 </ul>
-<p><code class="xref download docutils literal notranslate"><span class="pre">latin1_test.py</span></code>.</p>
+<p><a class="reference download internal" href="../_downloads/latin1_test.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">latin1_test.py</span></code></a>.</p>
 </div>
 <div class="section" id="unicode-docs">
 <h3>Unicode Docs<a class="headerlink" href="#unicode-docs" title="Permalink to this headline">¶</a></h3>
@@ -486,7 +497,7 @@ intentions clear, too.</p>
 </ul>
 <p>NOPE: it swallows it instead.</p>
 </div></blockquote>
-<p><code class="xref download docutils literal notranslate"><span class="pre">exception_test.py</span></code>.</p>
+<p><a class="reference download internal" href="../_downloads/exception_test.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">exception_test.py</span></code></a>.</p>
 </div>
 <div class="section" id="unicode-in-python-3">
 <h3>Unicode in Python 3<a class="headerlink" href="#unicode-in-python-3" title="Permalink to this headline">¶</a></h3>
@@ -509,35 +520,38 @@ intentions clear, too.</p>
 <ul class="simple">
 <li>Find some nifty non-ascii characters you might use.<ul>
 <li>Create a unicode object with them in two different ways.</li>
-<li><code class="xref download docutils literal notranslate"><span class="pre">here</span></code> is one example</li>
+<li><a class="reference download internal" href="../_downloads/hello_unicode.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> is one example</li>
 </ul>
 </li>
 <li>Read the contents into unicode objects:</li>
 </ul>
 <blockquote>
 <div><ul class="simple">
-<li><code class="xref download docutils literal notranslate"><span class="pre">ICanEatGlass.utf8.txt</span></code></li>
-<li><code class="xref download docutils literal notranslate"><span class="pre">ICanEatGlass.utf16.txt</span></code></li>
+<li><a class="reference download internal" href="../_downloads/ICanEatGlass.utf8.txt" download=""><code class="xref download docutils literal notranslate"><span class="pre">ICanEatGlass.utf8.txt</span></code></a></li>
+<li><a class="reference download internal" href="../_downloads/ICanEatGlass.utf16.txt" download=""><code class="xref download docutils literal notranslate"><span class="pre">ICanEatGlass.utf16.txt</span></code></a></li>
 </ul>
 </div></blockquote>
 <p>and / or</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="xref download docutils literal notranslate"><span class="pre">text.utf8</span></code></li>
-<li><code class="xref download docutils literal notranslate"><span class="pre">text.utf16</span></code></li>
-<li><code class="xref download docutils literal notranslate"><span class="pre">text.utf32</span></code></li>
+<li><a class="reference download internal" href="../_downloads/text.utf8" download=""><code class="xref download docutils literal notranslate"><span class="pre">text.utf8</span></code></a></li>
+<li><a class="reference download internal" href="../_downloads/text.utf16" download=""><code class="xref download docutils literal notranslate"><span class="pre">text.utf16</span></code></a></li>
+<li><a class="reference download internal" href="../_downloads/text.utf32" download=""><code class="xref download docutils literal notranslate"><span class="pre">text.utf32</span></code></a></li>
 </ul>
 </div></blockquote>
 <ul class="simple">
 <li>write some of the text from the first exercise to file – read that file back in.</li>
 </ul>
+</div>
+<div class="section" id="some-help">
+<h3>Some Help<a class="headerlink" href="#some-help" title="Permalink to this headline">¶</a></h3>
 <p>reference: <a class="reference external" href="http://inamidst.com/stuff/unidata/">http://inamidst.com/stuff/unidata/</a></p>
-<p>NOTE: if your terminal does not support unicode – you’ll get an error trying
-to print. Try a different terminal or IDE, or google for a solution.</p>
+<p>NOTE: if your terminal does not support unicode – you’ll get an error trying to print.
+Try a different terminal or IDE, or google for a solution.</p>
 </div>
 <div class="section" id="challenge-unicode-lab">
 <h3>Challenge Unicode LAB<a class="headerlink" href="#challenge-unicode-lab" title="Permalink to this headline">¶</a></h3>
-<p>We saw this earlier</p>
+<p>Here is an error in Python2:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [38]: </span><span class="sa">u</span><span class="s1">&#39;to </span><span class="se">\N{INFINITY}</span><span class="s1"> and beyond!&#39;</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
 <span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">UnicodeEncodeError</span><span class="g g-Whitespace">                        </span>Traceback (most recent call last)
@@ -570,7 +584,7 @@ to print. Try a different terminal or IDE, or google for a solution.</p>
 <p>Read:</p>
 <p><a class="reference external" href="http://axialcorps.com/2014/03/20/unicode-str/">http://axialcorps.com/2014/03/20/unicode-str/</a></p>
 <p>See if you can figure out the decorators:</p>
-<p><code class="xref download docutils literal notranslate"><span class="pre">unicodify.py</span></code>.</p>
+<p><a class="reference download internal" href="../_downloads/unicodify.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">unicodify.py</span></code></a>.</p>
 <p>(This is advanced Python JuJu: Aren’t you glad I didn’t ask you to write that yourself?)</p>
 </div>
 </div>

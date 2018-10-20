@@ -53,7 +53,7 @@ Exercises:
 Testing mailroom:
 .................
 
-:ref:`exercise_mailroom_testing`
+:ref:`exercise_mailroom_part4_testing`
 
 Write a complete set of unit tests for your mailroom program.
 

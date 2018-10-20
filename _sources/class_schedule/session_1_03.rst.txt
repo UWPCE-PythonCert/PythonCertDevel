@@ -68,7 +68,7 @@ Mailroom Exercises
 
 You've now got the basics of the language down -- enough to write the first full "program":
 
-:ref:`exercise_mailroom`
+:ref:`exercise_mailroom_part1`
 
 
 Post-class Activites
