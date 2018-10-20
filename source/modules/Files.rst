@@ -107,7 +107,7 @@ Common Idioms
         do_something_with_line()
 
 
-We will learn more about the keyword with later, but for now, just understand
+We will learn more about the keyword ``with`` later, but for now, just understand
 the syntax and the advantage over the try-finally block:
 
 .. code-block:: python
@@ -192,11 +192,11 @@ Absolute paths:
     '/home/chris/secret.txt'
 
 
-Either work with ``open()`` , etc.
+Either works with ``open()`` , etc.
 
 (A working directory only makes sense with command-line programs.)
 
-os module
+``os`` module
 ----------
 
 .. code-block:: python
