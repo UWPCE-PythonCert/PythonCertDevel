@@ -271,9 +271,9 @@
 </div>
 <p>There is some real code in the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> and <code class="docutils literal notranslate"><span class="pre">_Draw</span></code> – but those are still the only two methods that need to be defined to make a fully functional drawobject.</p>
 <p>FloatCanvas has a lot of complications with handling mouse events, and managing pens and brushes, and what have you, so a very trimmed down version, using the Python Imaging Library, is here to check out and modify:</p>
-<p><a class="reference download internal" href="../_downloads/object_canvas.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">object_canvas.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/66aa871d6ad84a31ca76fcf0c1fae451/object_canvas.py"><code class="xref download docutils literal notranslate"><span class="pre">object_canvas.py</span></code></a></p>
 <p>and</p>
-<p><a class="reference download internal" href="../_downloads/test_object_canvas.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">test_object_canvas.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/38373775893a423f2c2aba2faec4dd37/test_object_canvas.py"><code class="xref download docutils literal notranslate"><span class="pre">test_object_canvas.py</span></code></a></p>
 <p>This code requires the Python Imaging Library to do the rendering.  You can get it by installing the “pillow” package from PyPi:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pillow</span>
 </pre></div>
@@ -297,7 +297,7 @@
 <p>In Python, everything is descended from ‘object’.  Thus, the moment you invoke multiple inheritance you have the diamond problem.</p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem">https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem</a></p>
 <p>Here is a toy Python example:</p>
-<p><a class="reference download internal" href="../_downloads/diamond.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">diamond.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/504a40b8f13eb5945d2ca398fc85bbef/diamond.py"><code class="xref download docutils literal notranslate"><span class="pre">diamond.py</span></code></a></p>
 <p>Take a look at that code – run it, and notice that class <code class="docutils literal notranslate"><span class="pre">A</span></code>’s method gets run twice. Make sure you know why it is doing what it is doing.</p>
 </div>
 <div class="section" id="super">
@@ -447,7 +447,7 @@ of the external interface for your class, like it or not.</li>
 <div class="section" id="example">
 <h3>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
 <p>First, let’s look at the diamond problem again – this time using super:</p>
-<p><a class="reference download internal" href="../_downloads/diamond_super.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">diamond_super.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/be4acb33d33e347858d6bd0f1b33941d/diamond_super.py"><code class="xref download docutils literal notranslate"><span class="pre">diamond_super.py</span></code></a></p>
 <p>in this case, we are using <code class="docutils literal notranslate"><span class="pre">super()</span></code>, rather than specifically calling the methods of the superclasses:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">D</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">do_your_stuff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -467,7 +467,7 @@ of the external interface for your class, like it or not.</li>
 <div class="section" id="some-more-experiments-with-super">
 <h3>Some more experiments with <code class="docutils literal notranslate"><span class="pre">super</span></code><a class="headerlink" href="#some-more-experiments-with-super" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">super</span></code> takes a while to wrap your head around – try running the code in:</p>
-<p><a class="reference download internal" href="../_downloads/super_test.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">super_test.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/4c50dd5e03ae254da451bd03ec1a64d4/super_test.py"><code class="xref download docutils literal notranslate"><span class="pre">super_test.py</span></code></a></p>
 <p>See if you can follow all that!</p>
 </div>
 </div>
@@ -493,7 +493,7 @@ of the external interface for your class, like it or not.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 3.0 license
 
     </p>
   </div>
@@ -512,21 +512,14 @@ of the external interface for your class, like it or not.</li>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'5.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 

@@ -399,14 +399,14 @@
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;done with loop&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><a class="reference download internal" href="../_downloads/ultra_simple.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">ultra_simple.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/aacecd311eff3957334935a7aa310ec2/ultra_simple.py"><code class="xref download docutils literal notranslate"><span class="pre">ultra_simple.py</span></code></a></p>
 <p>Still not very interesting – technically async, but with only one coroutine, not much to it.</p>
 <p><strong>NOTE:</strong> The event loop requires some setup, and it’s not very happy when you stop and try to restart it. So you may have issues if you run this kind of code from iPython – each time you run it, you’re still in the same Python process, so the event loop is whatever state it was left by the previous code. If you get any errors, simply restart iPython, or just run the scripts by themselves:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python ultra_simple.py
 </pre></div>
 </div>
 <p>So let’s see an even more interesting example:</p>
-<p><a class="reference download internal" href="../_downloads/async_timer.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">async_time.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/dddc40fd6ed3a27405afab20e728bf6b/async_timer.py"><code class="xref download docutils literal notranslate"><span class="pre">async_time.py</span></code></a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
@@ -482,7 +482,7 @@
 <p>This will run the function in the specified Executor:</p>
 <p><a class="reference external" href="https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.Executor">https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.Executor</a></p>
 <p>If Executor is None – the default is used.</p>
-<p><a class="reference download internal" href="../_downloads/async_executor.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">async_executor.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/3d5205164d060d835b1e307b3a065392/async_executor.py"><code class="xref download docutils literal notranslate"><span class="pre">async_executor.py</span></code></a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
@@ -546,7 +546,7 @@
 <p>Sometimes you have a bunch of individual tasks to complete, but it does not matter in what order they are done.</p>
 <p><code class="docutils literal notranslate"><span class="pre">asyncio.gather()</span></code> collects a bunch of individual coroutines (or futures) together, runs them all (in parallel), and puts the results in a list.</p>
 <p>Remember that they are now run in arbitrary order.</p>
-<p><a class="reference download internal" href="../_downloads/gather.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">gather.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/a60a6e80725339c89b00f1e42172d97b/gather.py"><code class="xref download docutils literal notranslate"><span class="pre">gather.py</span></code></a></p>
 </div>
 </div>
 <div class="section" id="doing-real-work-with-async">
@@ -601,16 +601,16 @@ of what is in asyncio, as they existed before asyncio existed)</p>
 <p>Turns out that it’s a picky API – and I can’t get the async version to work – maybe the server gets upset when you hit it too hard?</p>
 <p>Can you get it to work?</p>
 <p>Synchronous version:
-<a class="reference download internal" href="../_downloads/nba_stats_sync.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">nba_stats_sync.py</span></code></a></p>
+<a class="reference download internal" download="" href="../_downloads/ca84c5fc5375737c0bac6aa6b8b86196/nba_stats_sync.py"><code class="xref download docutils literal notranslate"><span class="pre">nba_stats_sync.py</span></code></a></p>
 <p>And the Asynchronous version:
-<a class="reference download internal" href="../_downloads/nba_stats_async.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">nba_stats_async.py</span></code></a></p>
+<a class="reference download internal" download="" href="../_downloads/d9bbe1361693e18471ca7fb0f137cc0a/nba_stats_async.py"><code class="xref download docutils literal notranslate"><span class="pre">nba_stats_async.py</span></code></a></p>
 <div class="section" id="one-that-works">
 <h4>One that works:<a class="headerlink" href="#one-that-works" title="Permalink to this headline">¶</a></h4>
 <p>Here is a similar example that works:</p>
 <p>This is a “classic” regular old synchronous version:</p>
-<p><a class="reference download internal" href="../_downloads/get_news_sync.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">get_news_sync.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/b9d5987b1362f0687dabb2e4367ae9f2/get_news_sync.py"><code class="xref download docutils literal notranslate"><span class="pre">get_news_sync.py</span></code></a></p>
 <p>and here is an async version</p>
-<p><a class="reference download internal" href="../_downloads/get_news_async.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">get_news_async.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/5c70941dd540d03b787c9971b7a5fb31/get_news_async.py"><code class="xref download docutils literal notranslate"><span class="pre">get_news_async.py</span></code></a></p>
 <p>Let’s take a look.</p>
 <p>TODO: Look at async example in multi-threading server example.</p>
 </div>
@@ -651,7 +651,7 @@ this guy can write code faster than most of us can read it…</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 3.0 license
 
     </p>
   </div>
@@ -670,21 +670,14 @@ this guy can write code faster than most of us can read it…</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'5.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 

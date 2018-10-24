@@ -288,7 +288,7 @@ more of the nifty python <em>special methods</em></p>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">handle_error</span>
 </pre></div>
 </div>
-<p><a class="reference download internal" href="../_downloads/context_manager.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">context_manager.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/f220499f8ffae51212a85d320a53801c/context_manager.py"><code class="xref download docutils literal notranslate"><span class="pre">context_manager.py</span></code></a></p>
 <p>This class doesn’t do much of anything, but playing with it can help
 clarify the order in which things happen:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="o">%</span><span class="k">paste</span>
@@ -413,7 +413,7 @@ clarify the order in which things happen:</p>
             <span class="k">yield</span> <span class="n">file_obj</span>
 </pre></div>
 </div>
-<p><a class="reference download internal" href="../_downloads/file_yielder.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">file_yielder.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/239169aaefd05a6f3c571eb510d8dfb4/file_yielder.py"><code class="xref download docutils literal notranslate"><span class="pre">file_yielder.py</span></code></a></p>
 <p>So the <code class="docutils literal notranslate"><span class="pre">yield</span></code> is inside the file context manager, so that state will be preserved while the file object is in use.</p>
 <p>This generator can be used like so:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">file_yielder</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;*.py&quot;</span><span class="p">):</span>
@@ -445,7 +445,7 @@ clarify the order in which things happen:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 3.0 license
 
     </p>
   </div>
@@ -464,21 +464,14 @@ clarify the order in which things happen:</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'5.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 

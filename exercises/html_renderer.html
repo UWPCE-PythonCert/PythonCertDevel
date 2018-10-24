@@ -186,7 +186,7 @@
 <p>The goal is to create a set of classes to render html pages – in a “pretty printed” way.</p>
 <p>i.e. nicely indented and human readable.</p>
 <p>We’ll try to get to all the features required to render this file:</p>
-<p><a class="reference download internal" href="../_downloads/sample_html.html" download=""><code class="xref download docutils literal notranslate"><span class="pre">sample_html.html</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/fff94ef4eca7d0cf46814d846a406bc5/sample_html.html"><code class="xref download docutils literal notranslate"><span class="pre">sample_html.html</span></code></a></p>
 <p>Take a look at it by opening it in your text editor. And also in a browser to see how it’s rendered.</p>
 <p>If you don’t know html – just look at the example and copy that. And you can read the: <a class="reference internal" href="#html-primer"><span class="std std-ref">HTML Primer</span></a> at the end of this page for enough to do this exercise. And anyone working with computers these days would benefit from at least a passing familiarity with html.</p>
 <p>The exercise is broken down into a number of steps – each requiring a few more OO concepts in Python.</p>
@@ -203,9 +203,9 @@
 <div class="section" id="general-instructions">
 <h3>General Instructions:<a class="headerlink" href="#general-instructions" title="Permalink to this headline">¶</a></h3>
 <p>You can start with the framework in:</p>
-<p><a class="reference download internal" href="../_downloads/html_render.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">html_render.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/a3388d54221c66f7a2ebc958b4d53de5/html_render.py"><code class="xref download docutils literal notranslate"><span class="pre">html_render.py</span></code></a></p>
 <p>For each step, add the required functionality. There is example code to run your code for each step in:</p>
-<p><a class="reference download internal" href="../_downloads/run_html_render.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">run_html_render.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/5cd27ac8e401a12432165f8335f6affd/run_html_render.py"><code class="xref download docutils literal notranslate"><span class="pre">run_html_render.py</span></code></a></p>
 <p>You should be able to run that code at each step, uncommenting each new step in <code class="docutils literal notranslate"><span class="pre">run_html_render.py</span></code> as you go.</p>
 <p>It builds up an html tree, and then calls the <code class="docutils literal notranslate"><span class="pre">render()</span></code> method of your element to render the page.</p>
 <p>It uses a <code class="docutils literal notranslate"><span class="pre">StringIO</span></code> object (like a file, but in memory) to render to memory, then dumps it to the console, and writes a file. Take a look at the render_page function at the top of the file to make sure you understand it.</p>
@@ -228,7 +228,7 @@
 </ol>
 </div></blockquote>
 <p>A start of a test file is provided here:</p>
-<p><a class="reference download internal" href="../_downloads/test_html_render.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">test_html_render.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/4a97bdc42258cdd5828de108b0ba78d8/test_html_render.py"><code class="xref download docutils literal notranslate"><span class="pre">test_html_render.py</span></code></a></p>
 <p>It has a few tests for the first few steps – uncomment them as you go along.</p>
 <p>But it is NOT comprehensive – you will need to add more tests at every step!</p>
 <p>You can run <code class="docutils literal notranslate"><span class="pre">pytest</span></code> on that test file first thing – it should pass two tests (that you can create an Element object – not that it works) and fail one – one that actually starts to test functionality.</p>
@@ -352,7 +352,7 @@ another small paragraph
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<p>See: <a class="reference download internal" href="../_downloads/test_html_output2.html" download=""><code class="xref download docutils literal notranslate"><span class="pre">test_html_output2.html</span></code></a></p>
+<p>See: <a class="reference download internal" download="" href="../_downloads/ca47a55cc8b3649f00d46a1c1e16694b/test_html_output2.html"><code class="xref download docutils literal notranslate"><span class="pre">test_html_output2.html</span></code></a></p>
 <p>NOTE: when you run step 2 in <code class="docutils literal notranslate"><span class="pre">run_html_render.py</span></code>, you will want to comment out step 1 – that way you’ll only get one set of output.</p>
 <p>If you are stuck – see the tutorial: <a class="reference internal" href="html_renderer_tutorial.html#render-tutorial-2-b"><span class="std std-ref">Part B:</span></a></p>
 </div>
@@ -371,7 +371,7 @@ another small paragraph
 <p>Create a <code class="docutils literal notranslate"><span class="pre">Title</span></code> subclass of <code class="docutils literal notranslate"><span class="pre">OneLineTag</span></code> class for the title.</p>
 <p>You should now be able to render an html doc with a head element, with a
 title element in that, and a body element with some <code class="docutils literal notranslate"><span class="pre">&lt;P&gt;</span></code> elements and some text.</p>
-<p>See <a class="reference download internal" href="../_downloads/test_html_output3.html" download=""><code class="xref download docutils literal notranslate"><span class="pre">test_html_output3.html</span></code></a></p>
+<p>See <a class="reference download internal" download="" href="../_downloads/13f782aadeafdc211a0beecb96ab6e9e/test_html_output3.html"><code class="xref download docutils literal notranslate"><span class="pre">test_html_output3.html</span></code></a></p>
 </div>
 <div class="section" id="step-4">
 <h3>Step 4:<a class="headerlink" href="#step-4" title="Permalink to this headline">¶</a></h3>
@@ -383,7 +383,7 @@ title element in that, and a body element with some <code class="docutils litera
 <p>The render method will need to be extended to render the attributes properly.</p>
 <p>Note that you may now have <em>two</em> render methods – the one in the <code class="docutils literal notranslate"><span class="pre">Element</span></code> base class, and the one in the <code class="docutils literal notranslate"><span class="pre">OneLineTag</span></code> class. They both need to be be able to handle attributes. But <strong>DRY</strong> – so see if you can factor the code so the code that makes the opening tag, with the attributes is not repeated.</p>
 <p>You can now render some <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code> tags (and others) with attributes.</p>
-<p>See: <a class="reference download internal" href="../_downloads/test_html_output4.html" download=""><code class="xref download docutils literal notranslate"><span class="pre">test_html_output4.html</span></code></a></p>
+<p>See: <a class="reference download internal" download="" href="../_downloads/c7f84bc9936f8d50a72d3ce2a38cbe70/test_html_output4.html"><code class="xref download docutils literal notranslate"><span class="pre">test_html_output4.html</span></code></a></p>
 <p>NOTE: if you do “proper” CSS+html, then you wouldn’t specify style directly in element attributes.</p>
 <p>Rather you would set the “class” attribute:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">p</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;intro&quot;</span><span class="o">&gt;</span>
@@ -429,7 +429,7 @@ So it can’t be used as a keyword argument.</p>
 <p>Create a couple subclasses of <code class="docutils literal notranslate"><span class="pre">SelfClosingTag</span></code> for <code class="docutils literal notranslate"><span class="pre">&lt;hr</span> <span class="pre">/&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;br</span> <span class="pre">/&gt;</span></code></p>
 <p>Note that you now have maybe three render methods – is there repeated code in them?</p>
 <p>Can you refactor the common parts into a separate method that all the render methods can call? And do all your tests still pass (you do have tests for everything, don’t you?) after refactoring?</p>
-<p>See: <a class="reference download internal" href="../_downloads/test_html_output5.html" download=""><code class="xref download docutils literal notranslate"><span class="pre">test_html_output5.html</span></code></a></p>
+<p>See: <a class="reference download internal" download="" href="../_downloads/b8d215ebc3e21d5338a98e80a2eb3d77/test_html_output5.html"><code class="xref download docutils literal notranslate"><span class="pre">test_html_output5.html</span></code></a></p>
 </div>
 <div class="section" id="step-6">
 <h3>Step 6:<a class="headerlink" href="#step-6" title="Permalink to this headline">¶</a></h3>
@@ -447,7 +447,7 @@ So it can’t be used as a keyword argument.</p>
 </div>
 <p>You should be able to subclass from <code class="docutils literal notranslate"><span class="pre">Element</span></code>, and only override the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> — calling the <code class="docutils literal notranslate"><span class="pre">Element</span></code> <code class="docutils literal notranslate"><span class="pre">__init__</span></code> from the  <code class="docutils literal notranslate"><span class="pre">A</span></code> <code class="docutils literal notranslate"><span class="pre">__init__</span></code></p>
 <p>You can now add a link to your web page.</p>
-<p>See: <a class="reference download internal" href="../_downloads/test_html_output6.html" download=""><code class="xref download docutils literal notranslate"><span class="pre">test_html_output6.html</span></code></a></p>
+<p>See: <a class="reference download internal" download="" href="../_downloads/d0ff78f73808d5c73ed1d6dbb4992fcb/test_html_output6.html"><code class="xref download docutils literal notranslate"><span class="pre">test_html_output6.html</span></code></a></p>
 </div>
 <div class="section" id="step-7">
 <h3>Step 7:<a class="headerlink" href="#step-7" title="Permalink to this headline">¶</a></h3>
@@ -460,7 +460,7 @@ So it can’t be used as a keyword argument.</p>
 </div>
 <p>for an &lt;h2&gt; header.</p>
 <p>It can subclass from <code class="docutils literal notranslate"><span class="pre">OneLineTag</span></code> – overriding the <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, then calling the superclass <code class="docutils literal notranslate"><span class="pre">__init__</span></code></p>
-<p>See: <a class="reference download internal" href="../_downloads/test_html_output7.html" download=""><code class="xref download docutils literal notranslate"><span class="pre">test_html_output7.html</span></code></a></p>
+<p>See: <a class="reference download internal" download="" href="../_downloads/fb0f1e67e2cf41e335070e92d8ae5f63/test_html_output7.html"><code class="xref download docutils literal notranslate"><span class="pre">test_html_output7.html</span></code></a></p>
 </div>
 <div class="section" id="step-8">
 <h3>Step 8:<a class="headerlink" href="#step-8" title="Permalink to this headline">¶</a></h3>
@@ -470,7 +470,7 @@ So it can’t be used as a keyword argument.</p>
 <p>The doctype and encoding are HTML 5 and you can check this at:</p>
 <p><a class="reference external" href="http://validator.w3.org/#validate_by_input">http://validator.w3.org/#validate_by_input</a></p>
 <p>You now have a pretty full-featured html renderer – play with it, add some new tags, etc….</p>
-<p>See <a class="reference download internal" href="../_downloads/test_html_output8.html" download=""><code class="xref download docutils literal notranslate"><span class="pre">test_html_output8.html</span></code></a></p>
+<p>See <a class="reference download internal" download="" href="../_downloads/8fcc088c9b04e33a7e2b7d8416adcbf8/test_html_output8.html"><code class="xref download docutils literal notranslate"><span class="pre">test_html_output8.html</span></code></a></p>
 </div>
 <div class="section" id="step-9-adding-indentation">
 <h3>Step 9: Adding Indentation<a class="headerlink" href="#step-9-adding-indentation" title="Permalink to this headline">¶</a></h3>
@@ -540,7 +540,7 @@ So it can’t be used as a keyword argument.</p>
 <li>Be sure to test that the indentation of the result changes if you change the class attribute!</li>
 </ul>
 <p>You should have nice pretty indented html now!</p>
-<p>See <a class="reference download internal" href="../_downloads/test_html_output9.html" download=""><code class="xref download docutils literal notranslate"><span class="pre">test_html_output9.html</span></code></a></p>
+<p>See <a class="reference download internal" download="" href="../_downloads/7b78205893357afae71677ceb1f578f4/test_html_output9.html"><code class="xref download docutils literal notranslate"><span class="pre">test_html_output9.html</span></code></a></p>
 </div>
 </div>
 </div>
@@ -748,7 +748,7 @@ the element, and the end of the element is indicated by the same tag with a slas
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 3.0 license
 
     </p>
   </div>
@@ -767,21 +767,14 @@ the element, and the end of the element is indicated by the same tag with a slas
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'5.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 

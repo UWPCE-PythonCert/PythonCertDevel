@@ -335,7 +335,7 @@ namespace used by the object.”</div></blockquote>
 <div class="section" id="example-of-manipulating-instance-attributes">
 <h3>Example of Manipulating Instance Attributes<a class="headerlink" href="#example-of-manipulating-instance-attributes" title="Permalink to this headline">¶</a></h3>
 <p>Check out the code here:
-<a class="reference download internal" href="../_downloads/get_set_attr.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">get_set_attr.py</span></code></a></p>
+<a class="reference download internal" download="" href="../_downloads/300f059bd7092e1274cc11dfcccd2956/get_set_attr.py"><code class="xref download docutils literal notranslate"><span class="pre">get_set_attr.py</span></code></a></p>
 <p>It uses <code class="docutils literal notranslate"><span class="pre">vars()</span></code> in the str method to dynamically create a nice printable class.</p>
 <p>Then there is a simple function that lets the user manipulate that class, changing and adding attributes.</p>
 <p>Can you add code to let the user delete an attribute?</p>
@@ -544,7 +544,7 @@ from <a class="reference external" href="http://jfine-python-classes.readthedocs
 <p>They can be useful when creating an API or framework.</p>
 <p>Whenever you need to manage object creation for one or more classes.</p>
 <p>Examples may help, so take a look at:
-<a class="reference download internal" href="../_downloads/singleton.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">singleton.py</span></code></a></p>
+<a class="reference download internal" download="" href="../_downloads/3aabfbe8fdaf7c66f7178d77cea67564/singleton.py"><code class="xref download docutils literal notranslate"><span class="pre">singleton.py</span></code></a></p>
 <p>Or consider the Django ORM:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
@@ -644,7 +644,7 @@ go right.</p>
 <span class="n">foo</span> <span class="o">=</span> <span class="n">CoolClass</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><a class="reference download internal" href="../_downloads/cool_meta.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">cool_meta.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/cb12498dad8d11b2ca25272b3b71cf75/cool_meta.py"><code class="xref download docutils literal notranslate"><span class="pre">cool_meta.py</span></code></a></p>
 </div>
 <div class="section" id="metaclass-example">
 <h3>Metaclass example<a class="headerlink" href="#metaclass-example" title="Permalink to this headline">¶</a></h3>
@@ -682,11 +682,11 @@ provide uppercase and lower case attributes</p>
 </div>
 <div class="section" id="lab-working-with-namemangler">
 <h3>LAB: Working with NameMangler<a class="headerlink" href="#lab-working-with-namemangler" title="Permalink to this headline">¶</a></h3>
-<p>Download: <a class="reference download internal" href="../_downloads/mangler.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">mangler.py</span></code></a></p>
+<p>Download: <a class="reference download internal" download="" href="../_downloads/e05d13cdff1da1c674b60f911573fd7f/mangler.py"><code class="xref download docutils literal notranslate"><span class="pre">mangler.py</span></code></a></p>
 <p>Modify the NameMangler metaclass such that setting an attribute f.x also
 sets f.xx</p>
 <p>Now create a new metaclass, MangledSingleton, composed of the <code class="docutils literal notranslate"><span class="pre">NameMangler</span></code> class you just worked with, and the <code class="docutils literal notranslate"><span class="pre">Singleton</span></code> class here:
-<a class="reference download internal" href="../_downloads/singleton.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">singleton.py</span></code></a></p>
+<a class="reference download internal" download="" href="../_downloads/3aabfbe8fdaf7c66f7178d77cea67564/singleton.py"><code class="xref download docutils literal notranslate"><span class="pre">singleton.py</span></code></a></p>
 <p>Assign it to the <code class="docutils literal notranslate"><span class="pre">metaclass</span></code> keyword argument of a new class and verify that it works.</p>
 <p>Your code should look like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">MangledSingleton</span><span class="p">)</span> <span class="c1"># define this</span>
@@ -706,7 +706,7 @@ sets f.xx</p>
 <div>“The singleton pattern is a software design pattern that restricts the instantiation of a class to one object.”</div></blockquote>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Singleton_pattern">https://en.wikipedia.org/wiki/Singleton_pattern</a></p>
 <p>The above exercise provided an example of this
-(<a class="reference download internal" href="../_downloads/singleton.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">singleton.py</span></code></a>)</p>
+(<a class="reference download internal" download="" href="../_downloads/3aabfbe8fdaf7c66f7178d77cea67564/singleton.py"><code class="xref download docutils literal notranslate"><span class="pre">singleton.py</span></code></a>)</p>
 <p>However, metaclasses are not the only way to create a singleton. It really depends on what you are trying to do with your singleton.</p>
 <p><a class="reference external" href="http://python-3-patterns-idioms-test.readthedocs.io/en/latest/Singleton.html">http://python-3-patterns-idioms-test.readthedocs.io/en/latest/Singleton.html</a></p>
 <p><a class="reference external" href="http://stackoverflow.com/questions/6760685/creating-a-singleton-in-python">http://stackoverflow.com/questions/6760685/creating-a-singleton-in-python</a></p>
@@ -748,7 +748,7 @@ are a clearer solution to some problems?</p>
 <h3>NameMangler Decorator Edition<a class="headerlink" href="#namemangler-decorator-edition" title="Permalink to this headline">¶</a></h3>
 <p>For a simple example, let’s see how to make NameMangler with a decorator.</p>
 <p>Here is the code:
-<a class="reference download internal" href="../_downloads/mangler_dec.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">mangler_dec.py</span></code></a></p>
+<a class="reference download internal" download="" href="../_downloads/a95267023e8c5b96e32287cfd046a53a/mangler_dec.py"><code class="xref download docutils literal notranslate"><span class="pre">mangler_dec.py</span></code></a></p>
 <p>It is well commented, but a couple of key points to consider:</p>
 <ol class="arabic simple">
 <li>A class decorator takes a class object as an argument:</li>
@@ -772,7 +772,7 @@ attributes.</li>
 <div class="section" id="json-save">
 <h2>json_save<a class="headerlink" href="#json-save" title="Permalink to this headline">¶</a></h2>
 <p>For a more involved (and useful!) example, see the json_save package:</p>
-<p><a class="reference download internal" href="../_downloads/json_save.zip" download=""><code class="xref download docutils literal notranslate"><span class="pre">json_save.zip</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/597904f4455574edac9dfe2b82cfd79f/json_save.zip"><code class="xref download docutils literal notranslate"><span class="pre">json_save.zip</span></code></a></p>
 <p>It may also be in your class repo solutions dir:</p>
 <p><code class="docutils literal notranslate"><span class="pre">solutions/metaprogramming/json_save/</span></code></p>
 <p>It is a system for saving and re-loading objects.</p>
@@ -821,7 +821,7 @@ attributes.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 3.0 license.
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 3.0 license
 
     </p>
   </div>
@@ -840,21 +840,14 @@ attributes.</li>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'5.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 
