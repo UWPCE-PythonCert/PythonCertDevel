@@ -28,6 +28,8 @@ should be able to run the script directly like so:
 
 To make this work you, make sure you include the 'shebang' on the first line of your file.
 
+.. code-block:: bash
+
     #!/usr/bin/env python3
 
 
