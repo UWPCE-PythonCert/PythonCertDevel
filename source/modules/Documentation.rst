@@ -60,7 +60,7 @@ This is not useful:
         # apply soap to each sponge
         worker.apply_soap(sponge)
 
-Note: Nothing special about Python here -- basic good programing practice.  Note that you will need a lto fewer comments if you choose your names well!
+Note: Nothing special about Python here -- basic good programing practice.  Note that you will need a lot fewer comments if you choose your names well!
 
 Docstrings
 ----------
@@ -89,9 +89,9 @@ A Function Docstring Should:
 * Be a complete sentence in the form of a command describing what the function
   does.
 
-  * """Return a list of values based on blah blah""" is a good docstring
+  * ``"""Return a list of values based on blah blah"""`` is a good docstring
 
-  * """Returns a list of values based on blah blah""" is *not* as good..
+  * ``"""Returns a list of values based on blah blah"""`` is *not* as good..
 
 * Have a useful single line.
 
