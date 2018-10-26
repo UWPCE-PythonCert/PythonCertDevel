@@ -293,7 +293,7 @@
 </pre></div>
 </div>
 <p>In this case, the file will be properly closed regardless. And many other systems, like database managers, etc. can also be used with <code class="docutils literal notranslate"><span class="pre">with</span></code>.</p>
-<p>This is known as a “context manager”, and was added to Python specifically to handle the common cases that required finally clauses. But if your use case does not already have a context manager that handles the cleanup you may need.</p>
+<p>This is known as a “context manager”, and was added to Python specifically to handle the common cases that required <code class="docutils literal notranslate"><span class="pre">finally</span></code> clauses. But if your use case does not already have a context manager that handles the cleanup you may need.</p>
 </div>
 <div class="section" id="exceptions-else">
 <h2>Exceptions – <code class="docutils literal notranslate"><span class="pre">else</span></code><a class="headerlink" href="#exceptions-else" title="Permalink to this headline">¶</a></h2>
@@ -308,9 +308,9 @@
 </pre></div>
 </div>
 <p>So the <code class="docutils literal notranslate"><span class="pre">else</span></code> block only runs if there was no exception. That was also the case in the previous code, so what’s the difference?</p>
-<p><strong>Advantage of ``else``:</strong></p>
+<p><strong>Advantage of</strong> <code class="docutils literal notranslate"><span class="pre">else</span></code> <strong>:</strong></p>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">else</span></code> block lets you catch the exception as close to where it occurred as possible – always a good thing.</p>
-<p>Why? – because maybe the “process(f)” could raise an exception, too? Then you don’t know if the exception came from the <code class="docutils literal notranslate"><span class="pre">open()</span></code> call or in some code after that.</p>
+<p>Why? – because maybe the <code class="docutils literal notranslate"><span class="pre">process(f)</span></code> could raise an exception, too? Then you don’t know if the exception came from the <code class="docutils literal notranslate"><span class="pre">open()</span></code> call or in some code after that.</p>
 <p>This bears repeating:</p>
 <p><strong>Always catch exceptions as close to where they might occur as you can</strong>.</p>
 </div>
@@ -352,30 +352,27 @@
 </div>
 <p>You may want to do something different depending on which exception it is. And you can inspect the Exception object to find out more about it.  Each Exception has different information attached to it – you’ll need to read its docs to see.</p>
 <p>For an example – try running this code:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [34]: </span><span class="k">try</span><span class="p">:</span>
+<span class="go">    ...:     f = open(&quot;blah&quot;)</span>
+<span class="go">    ...: except IOError as err:</span>
+<span class="go">    ...:     print(err)</span>
+<span class="go">    ...:     print(dir(err))</span>
+<span class="go">    ...:     the_err = err</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>In [34]: try:</dt>
-<dd>…:     f = open(“blah”)
-…: except IOError as err:
-…:     print(err)
-…:     print(dir(err))
-…:     the_err = err</dd>
-</dl>
 <p>The <code class="docutils literal notranslate"><span class="pre">print(dir(err))</span></code> will print all the names (attributes) in the error object. A number of those are ordinary names that all objects have, but a few are specific to this error.</p>
-<p>the <code class="docutils literal notranslate"><span class="pre">the_err</span></code> = err line is there so that we can keep a name bound to the err after the code is run. <code class="docutils literal notranslate"><span class="pre">err</span></code> as bound by the except line only exists inside the following block.</p>
+<p>the <code class="docutils literal notranslate"><span class="pre">the_err</span> <span class="pre">=</span> <span class="pre">err</span></code> line is there so that we can keep a name bound to the <code class="docutils literal notranslate"><span class="pre">err</span></code> after the code is run. <code class="docutils literal notranslate"><span class="pre">err</span></code> as bound by the except line only exists inside the following block.</p>
 <p>Now that we have a name to access it, we can look at some of its attributes. The name of the file that was attempted to be opened:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [35]: </span><span class="n">the_err</span><span class="o">.</span><span class="n">filename</span>
 <span class="gh">Out[35]: </span><span class="go">&#39;blah&#39;</span>
 </pre></div>
 </div>
-<p>The message that will be pronted is usually in the “args” attribute:</p>
+<p>The message that will be printed is usually in the <code class="docutils literal notranslate"><span class="pre">.args</span></code> attribute:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [37]: </span><span class="n">the_err</span><span class="o">.</span><span class="n">args</span>
 <span class="gh">Out[37]: </span><span class="go">(2, &#39;No such file or directory&#39;)</span>
 </pre></div>
 </div>
-<p>the <code class="docutils literal notranslate"><span class="pre">.__traceback__</span></code> attribute hold the actual traceback object – all the information about the context the exception was raised in. That can inpsected to get all sorts of info. tHat is very advanced stuff, but you can investigate the <code class="docutils literal notranslate"><span class="pre">inspect</span></code> module if you want to know how.</p>
+<p>the <code class="docutils literal notranslate"><span class="pre">.__traceback__</span></code> attribute hold the actual traceback object – all the information about the context the exception was raised in. That can be inspected to get all sorts of info. That is very advanced stuff, but you can investigate the <code class="docutils literal notranslate"><span class="pre">inspect</span></code> module if you want to know how.</p>
 </div>
 <div class="section" id="multiple-exceptions">
 <h2>Multiple Exceptions<a class="headerlink" href="#multiple-exceptions" title="Permalink to this headline">¶</a></h2>

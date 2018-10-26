@@ -4,7 +4,7 @@
 The Collections Module
 ######################
 
-Python has a very complete set of built in standard types that support most programming tasks. These include strings and numbers, and also types that can be used to hold other objects -- or "collection" types"
+Python has a very complete set of built in standard types that support most programming tasks. These include strings and numbers, and also types that can be used to hold other objects -- or "collection" types.
 
 * tuples
 * lists
