@@ -347,7 +347,7 @@ Dec 15, 2017 &lt;<a class="reference external" href="https://mail.python.org/pip
 </pre></div>
 </div>
 <p>and <code class="docutils literal notranslate"><span class="pre">dict.popitem()</span></code> will remove the “last” item in the dict.</p>
-<p><strong>CAUTION</strong> This is new behavior in cPython 3.6 – older versions of Python (notably including Python 2) do not preserve order.  In older versions, there is a special version of a dict in the collections module: <code class="docutils literal notranslate"><span class="pre">Collections.OrderedDict</span></code> which preserves order in all versions of Python, and has a couple extra features.</p>
+<p><strong>CAUTION</strong> This is new behavior in cPython 3.6 – older versions of Python (notably including Python 2) do not preserve order.  In older versions, there is a special version of a dict in the collections module: <code class="docutils literal notranslate"><span class="pre">collections.OrderedDict</span></code> which preserves order in all versions of Python, and has a couple extra features.</p>
 </div>
 <div class="section" id="dictionary-iterating">
 <h3>Dictionary Iterating<a class="headerlink" href="#dictionary-iterating" title="Permalink to this headline">¶</a></h3>
@@ -525,8 +525,8 @@ Dec 15, 2017 &lt;<a class="reference external" href="https://mail.python.org/pip
 <span class="go"> &#39;something&#39;: &#39;a value&#39;,</span>
 <span class="go"> &#39;something else&#39;: &#39;another value&#39;}</span>
 
-<span class="go"> In [54]: item_copy</span>
-<span class="go"> Out[54]: {&#39;something&#39;: &#39;a value&#39;, &#39;something else&#39;: &#39;another value&#39;}</span>
+<span class="gp">In [54]: </span><span class="n">item_copy</span>
+<span class="gh">Out[54]: </span><span class="go">{&#39;something&#39;: &#39;a value&#39;, &#39;something else&#39;: &#39;another value&#39;}</span>
 </pre></div>
 </div>
 </div>

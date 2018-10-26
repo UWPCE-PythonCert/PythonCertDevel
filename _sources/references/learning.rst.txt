@@ -48,9 +48,9 @@ Complete Books / Series
 .......................
 
 * **Dive Into Python 3**
-  (http://www.diveintopython3.net/): The updated version
+  (https://www.apress.com/us/book/9781430224150): The updated version
   of a classic. This book offers an introduction to Python aimed at the student
-  who has experience programming in another language.
+  who has experience programming in another language.  It used to be available free online -- you can still find PDF copies on the web.
 
 * **Python for You and Me**
   (http://pymbook.readthedocs.org/en/latest/): Simple
@@ -72,7 +72,7 @@ Complete Books / Series
   print, with updated appendixes available for new language features.
 
 * **Python 101**
-  (http://www.blog.pythonlibrary.org/2014/06/03/python-101-book-published-today/)
+  (https://leanpub.com/python_101)
   Available as a reasonably priced ebook. This is a new one from a popular blogger
   about Python. Lots of practical examples. Also available as a Kindle book:
   http://www.amazon.com/Python-101-Michael-Driscoll-ebook/dp/B00KQTFHNK

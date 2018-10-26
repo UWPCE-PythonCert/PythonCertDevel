@@ -292,7 +292,9 @@ But it can not contain any statements: code that does not return a value, such a
 </pre></div>
 </div>
 <p>or, indeed, the same as passing a list comp to <code class="docutils literal notranslate"><span class="pre">set()</span></code>.</p>
-<p>new_set = set([expression_with_variable for variable in a_sequence])</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">expression_with_variable</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">])</span>
+</pre></div>
+</div>
 <p><strong>Example:</strong> Finding all the vowels in a string…</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [19]: </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;a not very long string&quot;</span>
 
@@ -304,7 +306,7 @@ But it can not contain any statements: code that does not return a value, such a
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Why did I use <code class="docutils literal notranslate"><span class="pre">set('aeiou')</span></code> rather than just <cite>aeiou</cite> ? … <code class="docutils literal notranslate"><span class="pre">in</span></code> works with strings as well, but is it efficient?</p>
+<p class="last">Why did I use <code class="docutils literal notranslate"><span class="pre">set('aeiou')</span></code> rather than just <code class="docutils literal notranslate"><span class="pre">'aeiou'</span></code> ? … <code class="docutils literal notranslate"><span class="pre">in</span></code> works with strings as well, but is it efficient?</p>
 </div>
 </div>
 <div class="section" id="dict-comprehensions">
@@ -394,7 +396,7 @@ But it can not contain any statements: code that does not return a value, such a
 </div>
 <div class="section" id="generator-expressions">
 <h2>Generator Expressions<a class="headerlink" href="#generator-expressions" title="Permalink to this headline">¶</a></h2>
-<p>There is yet another type of comprehension: generator comprehensions, technically known as “generator expressions”. They are very much like a list comprehension, except that they evaluate to an lazy-evaluated “iterable”, rather than a list. That is, they <em>generate</em> the items on the fly.</p>
+<p>There is yet another type of comprehension: generator comprehensions, technically known as “generator expressions”. They are very much like a list comprehension, except that they evaluate to a lazy-evaluated “iterable”, rather than a list. That is, they <em>generate</em> the items on the fly.</p>
 <p>This is useful, because we often create a comprehension simply to loop over it right away:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">]:</span>
     <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;The number is: {x}&quot;</span><span class="p">)</span>
@@ -453,7 +455,7 @@ If we use it in a list comp:</p>
 <span class="gh">Out[10]: </span><span class="go">[0, 1, 4]</span>
 </pre></div>
 </div>
-<p>We see that test gets called for all the values, and then a list is returned with all the results.
+<p>We see that <code class="docutils literal notranslate"><span class="pre">test()</span></code> gets called for all the values, and then a list is returned with all the results.
 But if we use it in a generator comprehension:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">test</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>

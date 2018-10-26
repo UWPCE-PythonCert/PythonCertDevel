@@ -166,7 +166,7 @@ This is really important if your code does anything before the exception occurre
 
 In this case, the file will be properly closed regardless. And many other systems, like database managers, etc. can also be used with ``with``.
 
-This is known as a "context manager", and was added to Python specifically to handle the common cases that required finally clauses. But if your use case does not already have a context manager that handles the cleanup you may need.
+This is known as a "context manager", and was added to Python specifically to handle the common cases that required ``finally`` clauses. But if your use case does not already have a context manager that handles the cleanup you may need.
 
 Exceptions -- ``else``
 ----------------------
@@ -185,11 +185,11 @@ Yet another flow control option:
 
 So the ``else`` block only runs if there was no exception. That was also the case in the previous code, so what's the difference?
 
-**Advantage of ``else``:**
+**Advantage of** ``else`` **:**
 
 Using the ``else`` block lets you catch the exception as close to where it occurred as possible -- always a good thing.
 
-Why? -- because maybe the "process(f)" could raise an exception, too? Then you don't know if the exception came from the ``open()`` call or in some code after that.
+Why? -- because maybe the ``process(f)`` could raise an exception, too? Then you don't know if the exception came from the ``open()`` call or in some code after that.
 
 This bears repeating:
 
@@ -250,16 +250,16 @@ For an example -- try running this code:
 
 .. code-block:: ipython
 
-In [34]: try:
-    ...:     f = open("blah")
-    ...: except IOError as err:
-    ...:     print(err)
-    ...:     print(dir(err))
-    ...:     the_err = err
+    In [34]: try:
+        ...:     f = open("blah")
+        ...: except IOError as err:
+        ...:     print(err)
+        ...:     print(dir(err))
+        ...:     the_err = err
 
 The ``print(dir(err))`` will print all the names (attributes) in the error object. A number of those are ordinary names that all objects have, but a few are specific to this error.
 
-the ``the_err`` = err line is there so that we can keep a name bound to the err after the code is run. ``err`` as bound by the except line only exists inside the following block.
+the ``the_err = err`` line is there so that we can keep a name bound to the ``err`` after the code is run. ``err`` as bound by the except line only exists inside the following block.
 
 Now that we have a name to access it, we can look at some of its attributes. The name of the file that was attempted to be opened:
 
@@ -268,14 +268,14 @@ Now that we have a name to access it, we can look at some of its attributes. The
     In [35]: the_err.filename
     Out[35]: 'blah'
 
-The message that will be pronted is usually in the "args" attribute:
+The message that will be printed is usually in the ``.args`` attribute:
 
 .. code-block:: ipython
 
     In [37]: the_err.args
     Out[37]: (2, 'No such file or directory')
 
-the ``.__traceback__`` attribute hold the actual traceback object -- all the information about the context the exception was raised in. That can inpsected to get all sorts of info. tHat is very advanced stuff, but you can investigate the ``inspect`` module if you want to know how.
+the ``.__traceback__`` attribute hold the actual traceback object -- all the information about the context the exception was raised in. That can be inspected to get all sorts of info. That is very advanced stuff, but you can investigate the ``inspect`` module if you want to know how.
 
 Multiple Exceptions
 -------------------

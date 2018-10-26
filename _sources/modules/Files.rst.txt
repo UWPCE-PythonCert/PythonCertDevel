@@ -62,7 +62,7 @@ Text File Notes
 
 Text is default:
 
-  * Newlines are translated: ``\r\n -> \n``
+  * Newlines are translated: ``\r\n`` -> ``\n``
   *   -- reading and writing!
   * Use \*nix-style in your code: ``\n``
 
@@ -212,8 +212,6 @@ Relative paths are relative to the current working directory, which is only rele
 
     os.getcwd()
     os.chdir(path)
-    os.path.abspath()
-    os.path.relpath()
 
 
 ``os.path`` module
@@ -226,6 +224,8 @@ Relative paths are relative to the current working directory, which is only rele
     os.path.basename()
     os.path.dirname()
     os.path.join()
+    os.path.abspath()
+    os.path.relpath()
 
 
 (all platform independent)

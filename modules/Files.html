@@ -222,7 +222,7 @@ in the Python docs. But these BSD docs make it pretty clear:</p>
 <p>Text is default:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Newlines are translated: <code class="docutils literal notranslate"><span class="pre">\r\n</span> <span class="pre">-&gt;</span> <span class="pre">\n</span></code></li>
+<li>Newlines are translated: <code class="docutils literal notranslate"><span class="pre">\r\n</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">\n</span></code></li>
 <li>– reading and writing!</li>
 <li>Use *nix-style in your code: <code class="docutils literal notranslate"><span class="pre">\n</span></code></li>
 </ul>
@@ -345,8 +345,6 @@ That is, it has all the methods of a file, and behaves the same way, but never w
 <h3><code class="docutils literal notranslate"><span class="pre">os</span></code> module<a class="headerlink" href="#os-module" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
 <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">()</span>
-<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -357,6 +355,8 @@ That is, it has all the methods of a file, and behaves the same way, but never w
 <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">()</span>
 <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">()</span>
 <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">()</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>(all platform independent)</p>

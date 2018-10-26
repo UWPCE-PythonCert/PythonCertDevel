@@ -164,7 +164,9 @@ This results in the same set as this for loop:
 
 or, indeed, the same as passing a list comp to ``set()``.
 
-new_set = set([expression_with_variable for variable in a_sequence])
+.. code-block:: python
+
+    new_set = set([expression_with_variable for variable in a_sequence])
 
 
 **Example:** Finding all the vowels in a string...
@@ -180,7 +182,7 @@ new_set = set([expression_with_variable for variable in a_sequence])
 
 .. note::
 
-  Why did I use ``set('aeiou')`` rather than just `aeiou` ? ... ``in`` works with strings as well, but is it efficient?
+  Why did I use ``set('aeiou')`` rather than just ``'aeiou'`` ? ... ``in`` works with strings as well, but is it efficient?
 
 
 Dict Comprehensions
@@ -297,7 +299,7 @@ dict comps are still nice if you need to filter the results, though:
 Generator Expressions
 ---------------------
 
-There is yet another type of comprehension: generator comprehensions, technically known as "generator expressions". They are very much like a list comprehension, except that they evaluate to an lazy-evaluated "iterable", rather than a list. That is, they *generate* the items on the fly.
+There is yet another type of comprehension: generator comprehensions, technically known as "generator expressions". They are very much like a list comprehension, except that they evaluate to a lazy-evaluated "iterable", rather than a list. That is, they *generate* the items on the fly.
 
 This is useful, because we often create a comprehension simply to loop over it right away:
 
@@ -372,7 +374,7 @@ If we use it in a list comp:
     test called with:  2
     Out[10]: [0, 1, 4]
 
-We see that test gets called for all the values, and then a list is returned with all the results.
+We see that ``test()`` gets called for all the values, and then a list is returned with all the results.
 But if we use it in a generator comprehension:
 
 .. code-block:: ipython

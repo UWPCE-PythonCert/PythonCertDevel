@@ -265,7 +265,7 @@
 <div class="section" id="packages">
 <h3>Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h3>
 <p>A package is a module with other modules in it.</p>
-<p>On a filesystem, this is represented as a directory that contains one or more``.py`` files, one of which <strong>must</strong> be called <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>.</p>
+<p>On a filesystem, this is represented as a directory that contains one or more <code class="docutils literal notranslate"><span class="pre">.py</span></code> files, one of which <strong>must</strong> be called <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>.</p>
 <p>When you have a package, you can import only the package, or any of the modules inside it. When a package is imported, the code in the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file is run, and any names defined in that file are available in the <em>package namespace</em>.</p>
 <p>Here we define about the simplest package possible:</p>
 <p>Create a directory (folder) for your package:</p>
@@ -285,7 +285,7 @@
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;a_function has been called&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>You now have about the simplest package you can have. If make sure your current working dir is the dir that <code class="docutils literal notranslate"><span class="pre">my_package</span></code> is in, and start python or iPython. Then try this code:</p>
+<p>You now have about the simplest package you can have. Make sure your current working dir is the dir that <code class="docutils literal notranslate"><span class="pre">my_package</span></code> is in, and start python or iPython. Then try this code:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">my_package</span>
 
 <span class="gp">In [2]: </span><span class="n">my_package</span><span class="o">.</span><span class="n">name1</span>
@@ -324,7 +324,7 @@
 <p>Note that you can also put a package inside a package. So you can create arbitrarily deeply nested hierarchy of packages. This can be helpful for a large, complex collection of related code, such as an entire Web Framework. But from the <em>Zen of Python</em>:</p>
 <blockquote>
 <div>“Flat is better than nested.”</div></blockquote>
-<p>So don’t overdue it – only go as deep as you really need to to keep the your code organized.</p>
+<p>So don’t overdo it – only go as deep as you really need to to keep your code organized.</p>
 </div>
 <div class="section" id="importing-modules">
 <h3>Importing modules<a class="headerlink" href="#importing-modules" title="Permalink to this headline">¶</a></h3>
