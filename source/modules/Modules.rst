@@ -126,7 +126,7 @@ Packages
 
 A package is a module with other modules in it.
 
-On a filesystem, this is represented as a directory that contains one or more``.py`` files, one of which **must** be called ``__init__.py``.
+On a filesystem, this is represented as a directory that contains one or more ``.py`` files, one of which **must** be called ``__init__.py``.
 
 When you have a package, you can import only the package, or any of the modules inside it. When a package is imported, the code in the ``__init__.py`` file is run, and any names defined in that file are available in the *package namespace*.
 
@@ -155,7 +155,7 @@ Save another file in your my_package dir called ``a_module.py``, and put this in
     def a_function():
         print("a_function has been called")
 
-You now have about the simplest package you can have. If make sure your current working dir is the dir that ``my_package`` is in, and start python or iPython. Then try this code:
+You now have about the simplest package you can have. Make sure your current working dir is the dir that ``my_package`` is in, and start python or iPython. Then try this code:
 
 .. code-block:: ipython
 
@@ -204,7 +204,7 @@ Note that you can also put a package inside a package. So you can create arbitra
 
    "Flat is better than nested."
 
-So don't overdue it -- only go as deep as you really need to to keep the your code organized.
+So don't overdo it -- only go as deep as you really need to to keep your code organized.
 
 Importing modules
 -----------------

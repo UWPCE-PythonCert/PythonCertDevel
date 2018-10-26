@@ -38,7 +38,7 @@ Building the docs for uploading to gh-pages
 
 The html docs are published by gitHub's gh-pages. This is accomplished by putting all the html in the ``gh-pages`` branch of the repo.
 
-YOu can do that by hand, by copying any new html to the branch, but if you want to do it more often, it's easier to automate it.
+You can do that by hand, by copying any new html to the branch, but if you want to do it more often, it's easier to automate it.
 
 There is a bash script that will do it for you: ``build_gh_pages.sh``.
 
@@ -54,7 +54,7 @@ It requires a bit of setup:
 
     git pull
 
-* Once this is setup, you can run the build_gh_pages script from the name repo, and it should:
+* Once this is setup, you can run the build_gh_pages script from the main repo, and it should:
 
   - build the html docs
   - copy that build docs over to the other clone

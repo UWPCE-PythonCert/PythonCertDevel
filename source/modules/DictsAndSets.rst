@@ -213,7 +213,7 @@ When new items are added to a dict, they go on the "end":
 
 and ``dict.popitem()`` will remove the "last" item in the dict.
 
-**CAUTION** This is new behavior in cPython 3.6 -- older versions of Python (notably including Python 2) do not preserve order.  In older versions, there is a special version of a dict in the collections module: ``Collections.OrderedDict`` which preserves order in all versions of Python, and has a couple extra features.
+**CAUTION** This is new behavior in cPython 3.6 -- older versions of Python (notably including Python 2) do not preserve order.  In older versions, there is a special version of a dict in the collections module: ``collections.OrderedDict`` which preserves order in all versions of Python, and has a couple extra features.
 
 
 Dictionary Iterating
@@ -442,8 +442,8 @@ If you want a copy, use the explicit copy method to get a copy:
    'something': 'a value',
    'something else': 'another value'}
 
-   In [54]: item_copy
-   Out[54]: {'something': 'a value', 'something else': 'another value'}
+  In [54]: item_copy
+  Out[54]: {'something': 'a value', 'something else': 'another value'}
 
 
 Sets
