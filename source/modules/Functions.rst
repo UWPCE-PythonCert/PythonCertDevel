@@ -233,6 +233,12 @@ B) If not, then it does a computation using the same function with another value
 
 It is critical that the first check is there, or the function will never terminate.
 
+Further Reading
+---------------
+
+Here's a nice blog post about writting better functions:
+
+https://jeffknupp.com/blog/2018/10/11/write-better-python-functions/
 
 
 
