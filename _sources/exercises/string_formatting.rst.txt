@@ -120,7 +120,7 @@ It will look like:
   def formatter(in_tuple):
       do_something_here_to_make_a_format_string
 
-      return form_string.format(in_tuple)
+      return form_string.format(*in_tuple)
 
 
 Task Four
