@@ -275,7 +275,7 @@ Create a ``OneLineTag`` subclass of ``Element``:
 
 * It should override the render method, to render everything on one line -- for the simple tags, like::
 
-    <title> PythonClass - Session 6 example </title>
+    <title> PythonClass - Lesson 6 example </title>
 
 Create a ``Title`` subclass of ``OneLineTag`` class for the title.
 

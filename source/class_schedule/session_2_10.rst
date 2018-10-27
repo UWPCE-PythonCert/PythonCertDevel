@@ -1,7 +1,7 @@
-.. _session_2_10:
+.. _lesson_2_10:
 
 ##########################################
-Session 10: Profiling & Performance
+Lesson 10: Profiling & Performance
 ##########################################
 
 * Timing

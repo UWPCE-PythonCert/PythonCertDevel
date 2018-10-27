@@ -1,7 +1,7 @@
-.. _session_2_09:
+.. _lesson_2_09:
 
 ##########################################
-Session 9: Concurrency & Async Programming
+Lesson 9: Concurrency & Async Programming
 ##########################################
 
 * Concurrency

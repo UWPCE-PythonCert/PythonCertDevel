@@ -1,7 +1,7 @@
-.. _session_1_02:
+.. _lesson_1_02:
 
 #####################################
-Session 2: Basic Python and Functions
+Lesson 2: Basic Python and Functions
 #####################################
 
 **Basic Python and Functions**
@@ -97,7 +97,7 @@ Post-class Activities
 
 Finish the Exercises
 
-Look at the next session for reading, etc:
+Look at the next lesson for reading, etc:
 
-:ref:`session_1_03`
+:ref:`lesson_1_03`
 

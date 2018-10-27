@@ -169,7 +169,7 @@ Debugging Support
 
 You'll probably want to wait on this until you start using a debugger, but it's a nifty feature when you get there.
 
-The final requirement for a reasonable IDE experience is to be able to follow a debugging session in the file where the code exists.
+The final requirement for a reasonable IDE experience is to be able to follow a debugging lesson in the file where the code exists.
 
 There is no plugin for Sublime Text that supports this. But there is a Python package you can install.
 

@@ -1,7 +1,7 @@
-.. _session_2_04:
+.. _lesson_2_04:
 
 ###########################
-Session 4: Advanced Testing
+Lesson 4: Advanced Testing
 ###########################
 
 * Linting

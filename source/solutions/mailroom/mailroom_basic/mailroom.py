@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Mailroom Exercise -- as of Session 3 -- no dictionaries or Exceptions
+Mailroom Exercise -- as of Lesson 3 -- no dictionaries or Exceptions
 """
 
 from textwrap import dedent  # nifty utility!

@@ -74,7 +74,7 @@ Once you have chosen/installed an editor, configure git to use it:
 
 **Notepad++ (Win):**
 
-``$ git config --global core.editor "'c:/program files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"``
+``$ git config --global core.editor "'c:/program files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nolesson -noPlugin"``
 
 **Atom:**
 

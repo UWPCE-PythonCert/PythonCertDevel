@@ -1,7 +1,7 @@
-.. _session_1_07:
+.. _lesson_1_07:
 
 #####################################
-Session 7: Object Oriented Programing
+Lesson 7: Object Oriented Programing
 #####################################
 
 Object Oriented Programing: classes, instance and class attributes, subclassing and inheritance.
@@ -84,7 +84,7 @@ Post-class Activities
 
 Finish the HTML render Exercise through step 3.
 
-Look at the next session for reading, etc:
+Look at the next lesson for reading, etc:
 
-:ref:`session_1_08`
+:ref:`lesson_1_08`
 

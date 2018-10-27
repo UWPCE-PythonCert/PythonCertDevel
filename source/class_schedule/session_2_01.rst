@@ -1,7 +1,7 @@
-.. _session_2_01:
+.. _lesson_2_01:
 
 ##############################################
-Session 1: Iterators and Generators, Packaging
+Lesson 1: Iterators and Generators, Packaging
 ##############################################
 
 

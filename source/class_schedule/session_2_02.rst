@@ -1,7 +1,7 @@
-.. _session_2_02:
+.. _lesson_2_02:
 
 ############################################
-Session 2: Closures, Currying and Decorators
+Lesson 2: Closures, Currying and Decorators
 ############################################
 
 * Closures

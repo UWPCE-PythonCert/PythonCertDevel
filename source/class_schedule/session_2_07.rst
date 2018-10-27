@@ -1,7 +1,7 @@
-.. _session_2_07:
+.. _lesson_2_07:
 
 ###############################
-Session 7: Relational Databases
+Lesson 7: Relational Databases
 ###############################
 
 * SQL

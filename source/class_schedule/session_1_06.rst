@@ -1,7 +1,7 @@
-.. _session_1_06:
+.. _lesson_1_06:
 
 ################################################
-Session 6: Testing and Advanced Argument Passing
+Lesson 6: Testing and Advanced Argument Passing
 ################################################
 
 Unit Testing and Advanced Argument Passing
@@ -68,9 +68,9 @@ Post-class Activities
 
 Finish the exercises
 
-Look at the next session for reading, etc:
+Look at the next lesson for reading, etc:
 
-:ref:`session_1_07`
+:ref:`lesson_1_07`
 
 NOTE: there is not a lot of new stuff this week, but this will give all of you a chance to catch up if you don't have mailroom and trigrams fully working yet.
 

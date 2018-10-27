@@ -1,7 +1,7 @@
-.. _session_1_08:
+.. _lesson_1_08:
 
 #######################################
-Session 8: Properties and Magic methods
+Lesson 8: Properties and Magic methods
 #######################################
 
 More OO: Properties and Magic methods.
@@ -54,6 +54,6 @@ Post-class Activities
 
 Finish the exercises
 
-Look at the next session for reading, etc:
+Look at the next lesson for reading, etc:
 
-:ref:`session_1_09`
+:ref:`lesson_1_09`

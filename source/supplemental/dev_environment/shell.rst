@@ -230,7 +230,7 @@ need to know when working on a daily basis:
 
 .. image:: /_static/virtualenv_prompt.png
     :width: 600px
-    :alt: A shell session showing the prompt with both virtualenv and git information
+    :alt: A shell lesson showing the prompt with both virtualenv and git information
 
 Wrap-Up
 =======

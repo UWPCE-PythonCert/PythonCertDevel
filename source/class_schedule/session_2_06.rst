@@ -1,7 +1,7 @@
-.. _session_2_06:
+.. _lesson_2_06:
 
 ##########################
-Session 6: Metaprogramming
+Lesson 6: Metaprogramming
 ##########################
 
 * Metprogramming tools

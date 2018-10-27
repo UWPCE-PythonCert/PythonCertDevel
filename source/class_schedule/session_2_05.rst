@@ -1,7 +1,7 @@
-.. _session_2_05:
+.. _lesson_2_05:
 
 ################################
-Session 5: Logging and Debugging
+Lesson 5: Logging and Debugging
 ################################
 
 * Logging module

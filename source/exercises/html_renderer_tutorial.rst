@@ -22,7 +22,7 @@ You should now be in a terminal with the current working directory set to where 
 .. code-block:: bash
 
     $ pytest
-    ============================= test session starts ==============================
+    ============================= test lesson starts ==============================
     platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
     rootdir: /Users/Chris/Junk/lesson07, inifile:
     collected 3 items
@@ -196,7 +196,7 @@ First let's add the contents, adding a newline in between to keep it readable.  
 And run the tests::
 
     $ pytest
-    ============================= test session starts ==============================
+    ============================= test lesson starts ==============================
     platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
     rootdir: /Users/Chris/Junk/lesson07, inifile:
     collected 3 items
@@ -271,7 +271,7 @@ So the method looks something like this:
 Now run the tests again::
 
     $ pytest
-    ============================= test session starts ==============================
+    ============================= test lesson starts ==============================
     platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
     rootdir: /Users/Chris/Junk/lesson07, inifile:
     collected 3 items
@@ -390,7 +390,7 @@ We have tested to see that we could initialize with one piece of content, and th
 This is what I got with my code::
 
     $ pytest
-    ============================= test session starts ==============================
+    ============================= test lesson starts ==============================
     platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
     rootdir: /Users/Chris/Junk/lesson07, inifile:
     collected 4 items
@@ -514,7 +514,7 @@ The ``<body>`` tag is for the entire contents of an html page, and the ``<p>`` t
 Before we do that -- let's do some test-driven development. Uncomment the next few tests in ``test_html_render.py``: ``test_html``, ``test_body``, and ``test_p``, and run the tests::
 
     $ pytest
-    ============================= test session starts ==============================
+    ============================= test lesson starts ==============================
     platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
     rootdir: /Users/Chris/Junk/lesson07, inifile:
     collected 7 items
@@ -576,7 +576,7 @@ The end result is that we now have a class that is exactly the same as the ``Ele
 Let's  run the tests and see if this worked::
 
     $ pytest
-    ============================= test session starts ==============================
+    ============================= test lesson starts ==============================
     platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
     rootdir: /Users/Chris/Junk/lesson07, inifile:
     collected 7 items
@@ -629,7 +629,7 @@ Let's take this bit by bit -- first with a test or two.
 Uncomment ``test_subelement`` in the test file, and run the tests::
 
     $ pytest
-    ============================= test session starts ==============================
+    ============================= test lesson starts ==============================
     platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
     rootdir: /Users/Chris/Junk/lesson07, inifile:
     collected 8 items
@@ -715,7 +715,7 @@ So let's update our render by replacing that ``out_file.write()`` call with a ca
 And let's see what happens when we run the tests::
 
     $ pytest
-    ============================= test session starts ==============================
+    ============================= test lesson starts ==============================
     platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
     rootdir: /Users/Chris/Junk/lesson07, inifile:
     collected 8 items
@@ -793,7 +793,7 @@ We tried to call the render() method of a piece of content, but got an ``Attribu
 And run the tests again::
 
     $ pytest
-    ============================= test session starts ==============================
+    ============================= test lesson starts ==============================
     platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
     rootdir: /Users/Chris/Junk/lesson07, inifile:
     collected 8 items
@@ -837,7 +837,7 @@ OK, that should have been straightforward.  Now this part:
 
   * It should override the render method, to render everything on one line -- for the simple tags, like::
 
-      <title> PythonClass - Session 6 example </title>
+      <title> PythonClass - Lesson 6 example </title>
 
 Some html elements don't tend to have a lot of content, such as the document title. So it makes sense to render them all on one line.  This is going to require a new render method.  Since there are multiple types of elements that should be rendered on one line, we want to create a base class for all one-line elements. It should subclass from ``Element``, and override the render method with a new one, which will be pretty much the same as the main ``Element`` method, but without the newlines.
 
@@ -903,7 +903,7 @@ You can run the tests now if you like -- it will fail due to there being no Titl
 The ``pass`` means "do nothing." But it is required to satisfy Python. There needs to be *something* in the class definition.  So in this case, we have a ``OneLineTag`` class that is exactly the same as the ``Element`` class,  and a ``Title`` class that is the same except for the tag. Time to test again::
 
     $ pytest
-    ============================= test session starts ==============================
+    ============================= test lesson starts ==============================
     platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
     rootdir: /Users/Chris/Junk/lesson07, inifile:
     collected 10 items
@@ -973,7 +973,7 @@ So how do we get this test to pass? We need a new render method for ``OneLineTag
 Notice that I left the newline in at the end of the closing tag -- we do want a newline there, so the next element won't get rendered on the same line.  And the tests::
 
     $ pytest
-    ============================= test session starts ==============================
+    ============================= test lesson starts ==============================
     platform darwin -- Python 3.7.0, pytest-3.7.1, py-1.5.4, pluggy-0.7.1
     rootdir: /Users/Chris/Junk/lesson07, inifile:
     collected 10 items

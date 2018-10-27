@@ -1,7 +1,7 @@
-.. _session_1_10:
+.. _lesson_1_10:
 
 ###########################################################################
-Session 10: Intro to Functional Programming: lambda and Map, Filter, Reduce
+Lesson 10: Intro to Functional Programming: lambda and Map, Filter, Reduce
 ###########################################################################
 
 Functional Programming

@@ -1,7 +1,7 @@
-.. _session_1_01:
+.. _lesson_1_01:
 
 ########################################
-Session 1: Intro to the class and Python
+Lesson 1: Intro to the class and Python
 ########################################
 
 **Intro to the class and Python**
@@ -58,5 +58,5 @@ Finish the Python Pushups exercises: :ref:`python_pushups`
 
 Finish getting your environment set up.
 
-Do the prep for next class: :ref:`session_1_02`
+Do the prep for next class: :ref:`lesson_1_02`
 

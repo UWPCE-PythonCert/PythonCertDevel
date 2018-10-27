@@ -1,7 +1,7 @@
-.. _session_1_09:
+.. _lesson_1_09:
 
 #########################################################
-Session 9: Static and class methods: multiple inheritance
+Lesson 9: Static and class methods: multiple inheritance
 #########################################################
 
 
@@ -55,9 +55,9 @@ Post-class Activities
 
 Finish the exercises
 
-Look at the next session for reading, etc:
+Look at the next lesson for reading, etc:
 
-:ref:`session_1_10`
+:ref:`lesson_1_10`
 
 
 

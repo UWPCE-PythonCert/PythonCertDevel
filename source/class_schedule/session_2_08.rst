@@ -1,7 +1,7 @@
-.. _session_2_08:
+.. _lesson_2_08:
 
 #########################################################
-Session 8: Object/Document, Key/Value and Graph Databases
+Lesson 8: Object/Document, Key/Value and Graph Databases
 #########################################################
 
 * Persistence and Serialization: pickle, json, csv, ...

@@ -182,7 +182,7 @@ Pre-existing Tests
 
 Let's take a look at some examples.
 
-in ``IntroPython-2017\Examples\Session06``
+in ``IntroPython-2017\Examples\Lesson06``
 
 .. code-block:: bash
 
@@ -207,10 +207,10 @@ What is Happening Here?
 
 You should have gotten results that look something like this::
 
-    MacBook-Pro:Session06 Chris$ pytest test_random_unitest.py
-    ============================= test session starts ==============================
+    MacBook-Pro:Lesson06 Chris$ pytest test_random_unitest.py
+    ============================= test lesson starts ==============================
     platform darwin -- Python 3.6.2, pytest-3.2.3, py-1.4.34, pluggy-0.4.0
-    rootdir: /Users/Chris/PythonStuff/UWPCE/IntroPython-2017/examples/Session06, inifile:
+    rootdir: /Users/Chris/PythonStuff/UWPCE/IntroPython-2017/examples/Lesson06, inifile:
     collected 3 items
 
     test_random_unitest.py ...

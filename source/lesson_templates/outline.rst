@@ -22,14 +22,14 @@ Development environment setup and configuration.
 Py 1: Intro to Python
 #####################
 
-Session 1-01
+Lesson 1-01
 ============
 
 1.  Python Overview: What is Python and what are its major features?
 2.  Python Language Primitives: data types, basic flow control.
 3.  Introduction to source control: Basic git.
 
-Session 1-02
+Lesson 1-02
 ============
 
 Organizing your Programs
@@ -40,7 +40,7 @@ Organizing your Programs
 4.  Functions
 5.  Modules and Namespaces
 
-Session 1-03
+Lesson 1-03
 ============
 
 Sequences, Slicing and Iteration
@@ -51,7 +51,7 @@ Sequences, Slicing and Iteration
 4.  String methods
 5.  String formatting
 
-Session 1-04
+Lesson 1-04
 ============
 
 Collections and I/O
@@ -60,7 +60,7 @@ Collections and I/O
 2. Sets
 3. Files (probably a good place to introduce context managers from a client perspective, but not a server perspective if you know what I mean)
 
-Session 1-05
+Lesson 1-05
 ============
 
 1.  Exceptions
@@ -68,7 +68,7 @@ Session 1-05
 3.  Advanced Argument Passing
 4.  Functions as first class language constructs: passing functions to functions
 
-Session 1-06
+Lesson 1-06
 ============
 
 Intro to Object Oriented Programming
@@ -79,7 +79,7 @@ Intro to Object Oriented Programming
 4.  Single Inheritance
 5.  Composition vs Sub-Classing
 
-Session 1-07
+Lesson 1-07
 ============
 
 Object Oriented Programming Continued
@@ -87,7 +87,7 @@ Object Oriented Programming Continued
 1.  Properties
 2.  Introduction to special methods, i.e., the Dunders.
 
-Session 1-08
+Lesson 1-08
 ============
 
 Advanced Object Oriented Programming
@@ -98,7 +98,7 @@ Advanced Object Oriented Programming
 4.  Protocols
 5.  Emulating standard types by overriding special methods
 
-Session 1-09
+Lesson 1-09
 ============
 
 Intro to Functional Programming
@@ -111,7 +111,7 @@ Intro to Functional Programming
 6.  Statements vs Expressions for flow control
 7.  Map/filter/reduce
 
-Session 1-10
+Lesson 1-10
 ============
 
 Functional Programming Continued
@@ -124,7 +124,7 @@ Functional Programming Continued
 PY 2: Advanced Python
 #####################
 
-Session 2-01
+Lesson 2-01
 ============
 
 Advanced Functional Programming
@@ -133,7 +133,7 @@ Advanced Functional Programming
 2.  Itertools
 3.  Generators
 
-Session 2-02
+Lesson 2-02
 ============
 
 Advanced Python Language Constructs (made easy-ish)
@@ -145,7 +145,7 @@ Advanced Python Language Constructs (made easy-ish)
 
 AT THIS POINT WE’RE FINALLY DONE WITH THE CORE OF THE LANGUAGE AND WE’RE MOVING ON TO HOW TO WORK EFFECTIVELY IN PYTHON’S ECOSYSTEM. THIS IS STUFF THAT WOULD FORMERLY HAVE GONE INTO “SYSTEMS DEVELOPMENT WITH PYTHON” AKA PY300. THIS IS A MUCH BETTER LAYOUT THAN INSERTING THE FORMER PY200/WEBDEV CLASS INTO THIS CONCEPTUAL STREAM.
 
-Session 2-03
+Lesson 2-03
 ============
 
 Debugging & Logging
@@ -155,7 +155,7 @@ Debugging & Logging
 3.  pdb/ipdb
 4.  PyCharm’s debugger
 
-Session 2-04
+Lesson 2-04
 ============
 
 Advanced Testing
@@ -166,7 +166,7 @@ Advanced Testing
 4.  Mocks
 5.  Hypothesis
 
-Session 2-05
+Lesson 2-05
 ============
 
 Relational Databases
@@ -178,7 +178,7 @@ Relational Databases
 5.  Sqlite
 6.  Postgresql
 
-Session 2-06
+Lesson 2-06
 ============
 
 Object/Document, Key/Value and Graph Databases
@@ -189,7 +189,7 @@ Object/Document, Key/Value and Graph Databases
 4.  Redis
 5.  Neo4j
 
-Session 2-07
+Lesson 2-07
 ============
 
 Profiling & Performance
@@ -199,7 +199,7 @@ Profiling & Performance
 3.  PyPy
 4.  Cython
 
-Session 2-08
+Lesson 2-08
 ============
 
 Concurrency & Async Programming
@@ -210,7 +210,7 @@ Concurrency & Async Programming
 4.  Async
 5.  Celery
 
-Sessions 2-09 & 2-10
+Lessons 2-09 & 2-10
 ====================
 
 Grabbag

@@ -1,7 +1,7 @@
-.. _session_2_03:
+.. _lesson_2_03:
 
 ####################################################
-Session 3: Context Managers, Itertools and functools
+Lesson 3: Context Managers, Itertools and functools
 ####################################################
 
 Reading

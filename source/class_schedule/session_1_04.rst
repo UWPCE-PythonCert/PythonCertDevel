@@ -1,7 +1,7 @@
-.. _session_1_04:
+.. _lesson_1_04:
 
 ################################################
-Session 4: Dictionaries, Sets, and File Handling
+Lesson 4: Dictionaries, Sets, and File Handling
 ################################################
 
 Dictionaries, Sets, and File Handling
@@ -30,7 +30,7 @@ http://www.diveintopython3.net/native-datatypes.html#dictionaries
 In-class Activities
 ===================
 
- * Review last sessions labs:
+ * Review last lessons labs:
    - slicing
    - string formatting
 
@@ -59,6 +59,6 @@ Post-class Activities
 
 Finish the exercises
 
-Look at the next session for reading, etc:
+Look at the next lesson for reading, etc:
 
-:ref:`session_1_05`
+:ref:`lesson_1_05`

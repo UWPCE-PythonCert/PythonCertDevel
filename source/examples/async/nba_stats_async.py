@@ -56,9 +56,9 @@ HEADERS = {
 #     params = {'leagueid': '00', 'season': '2016-17', 'isonlycurrentseason': '1'}
 #     url = base_url + endpoint
 #     print('Getting all players...')
-#     async with aiohttp.ClientSession() as session:
-#         print("got the session")
-#         async with session.get(url, headers=HEADERS, params=params) as resp:
+#     async with aiohttp.ClientSession() as lesson:
+#         print("got the lesson")
+#         async with lesson.get(url, headers=HEADERS, params=params) as resp:
 #             print("got the response")
 #             data = await resp.json()
 #     players.append([(item[0], item[2]) for item in data['resultSets'][0]['rowSet']])
@@ -91,9 +91,9 @@ async def get_player(player_id, player_name):
     params = {'playerid': player_id}
     url = base_url + endpoint
     print("Getting player", player_name)
-    async with aiohttp.ClientSession() as session:
-        print("session created")
-        async with session.get(url,
+    async with aiohttp.ClientSession() as lesson:
+        print("lesson created")
+        async with lesson.get(url,
                                skip_auto_headers=["User-Agent"],
                                headers=HEADERS,
                                params=params) as resp:

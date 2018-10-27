@@ -1,7 +1,7 @@
-.. _session_1_03:
+.. _lesson_1_03:
 
 ######################################################
-Session 3: Booleans, Sequences, Iteration, and Strings
+Lesson 3: Booleans, Sequences, Iteration, and Strings
 ######################################################
 
 **Booleans, Sequences, Iteration, and Strings**
@@ -78,6 +78,6 @@ Finish the mailroom project.
 
 And the other exercises
 
-Look at the next session for reading, etc:
+Look at the next lesson for reading, etc:
 
-:ref:`session_1_04`
+:ref:`lesson_1_04`

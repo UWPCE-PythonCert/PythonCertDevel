@@ -1,7 +1,7 @@
-.. _session_1_05:
+.. _lesson_1_05:
 
 ########################################
-Session 5: Exceptions and Comprehensions
+Lesson 5: Exceptions and Comprehensions
 ########################################
 
 Exceptions and Comprehensions
@@ -50,9 +50,9 @@ Finish the exercises
 
   - here's a good overview: https://pymotw.com/3/collections/
 
-Look at the next session for reading, etc:
+Look at the next lesson for reading, etc:
 
-:ref:`session_1_06`
+:ref:`lesson_1_06`
 
 
 
