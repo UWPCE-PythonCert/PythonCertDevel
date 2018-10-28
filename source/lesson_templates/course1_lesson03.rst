@@ -57,7 +57,7 @@ Mailroom Exercise
 
 You've now got the basics of the language down -- enough to write your first full "program":
 
-:ref:`exercise_mailroom`  (10 points)
+:ref:`exercise_mailroom_part1`  (10 points)
 
 Ungraded exercises
 ------------------

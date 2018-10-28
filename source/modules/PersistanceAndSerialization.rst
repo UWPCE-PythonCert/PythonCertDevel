@@ -315,7 +315,7 @@ The CSV module
 
 Reading ``CSV``  files:
 
-(uses: :download:`eggs.csv <../Examples/persistence/eggs.csv>`)
+(uses: :download:`eggs.csv <../examples/persistence/eggs.csv>`)
 
 .. code-block:: ipython
 
