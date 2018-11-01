@@ -43,7 +43,7 @@ Graded Assignments
 
  * :ref:`exercise_file_lab`
 
- * Update mailroom with dicts :ref:`exercise_mailroom_plus`
+ * Update mailroom with dicts :ref:`exercise_mailroom_part2_dict_files`
 
  * :ref:`exercise_trigrams`
 

@@ -150,4 +150,4 @@ what you want.
 
 Play around with some properties code:
 
-:download:`properties_example.py <../examples/Properties/properties_example.py>`
+:download:`properties_example.py <../examples/properties/properties_example.py>`
