@@ -182,7 +182,7 @@ Pre-existing Tests
 
 Let's take a look at some examples.
 
-in ``IntroPython-2017\Examples\Session06``
+in ``<class_repo_root>/examples/testing``
 
 .. code-block:: bash
 
