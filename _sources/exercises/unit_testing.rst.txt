@@ -4,6 +4,16 @@
 Introduction To Unit Testing
 ############################
 
+Preparation
+-----------
+
+In order to do unit testing, you need a framework in which to write and run your tests.
+Earlier in this class, you've been adding "asserts" to your modules -- perhaps in the ``__name__ == "__main__"`` block.  These are, in fact a kind of unit test.
+But as you build larger systems, you'll want a more structured way to write and run your tests.
+
+
+
+
 Test Driven Development
 -----------------------
 
@@ -19,7 +29,7 @@ and this test file:
 
 Put them in the same directory, and make that directory your working directory.
 
-Then then try running the test file with pytest:
+Then try running the test file with pytest:
 
 .. code-block:: bash
 
@@ -48,7 +58,7 @@ and:
 
 In your editor.
 
-Now edit ``cigar_party.py``, and each time you make a change, run teh tests again. Continue until all the tests pass.
+Now edit ``cigar_party.py``, and each time you make a change, run the tests again. Continue until all the tests pass.
 
 Doing your own:
 ---------------
@@ -62,11 +72,13 @@ Do a bit of test-driven development on it:
   * run something on the web site.
   * write a few tests using the examples from the site.
 
-These tests should be in a file names ``test_something.py`` -- I usually name the test file the same as the module it tests, with ``test_`` prepended.
+These tests should be in a file names ``test_something.py`` -- I usually name the test file the same as the module it tests,
+with ``test_`` prepended.
 
   * then write the function, and fix it 'till it passes the tests.
 
 Do at least two of these to get the hang of the process.
 
-Also -- once you have the tests passing, look at your solution -- is there a way it could be refactored to be cleaner? Give it a shot -- you'll know if it still works if the tests still pass!
+Also -- once you have the tests passing, look at your solution -- is there a way it could be refactored to be cleaner?
+Give it a shot -- you'll know if it still works if the tests still pass!
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Args and Kwargs LAB &mdash; PythonCert 5.0 documentation</title>
+  <title>args and kwargs LAB &mdash; PythonCert 5.0 documentation</title>
   
 
   
@@ -93,7 +93,7 @@
 <li class="toctree-l3"><a class="reference internal" href="index.html#lesson-5-exceptions-modules-and-comprehensions">Lesson 5: Exceptions, Modules, and Comprehensions</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html#lesson-6-unit-testing-and-advanced-argument-passing">Lesson 6: Unit Testing and Advanced Argument Passing</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="unit_testing.html">Introduction To Unit Testing</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Args and Kwargs LAB</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">args</span></code> and <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> LAB</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mailroom-part4.html">Mailroom Part 4</a></li>
 </ul>
 </li>
@@ -156,7 +156,7 @@
         
           <li><a href="index.html">Exercises</a> &raquo;</li>
         
-      <li>Args and Kwargs LAB</li>
+      <li><code class="docutils literal notranslate"><span class="pre">args</span></code> and <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> LAB</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -176,31 +176,31 @@
            <div itemprop="articleBody">
             
   <div class="section" id="args-and-kwargs-lab">
-<span id="exercise-args-kwargs-lab"></span><h1>Args and Kwargs LAB<a class="headerlink" href="#args-and-kwargs-lab" title="Permalink to this headline">¶</a></h1>
+<span id="exercise-args-kwargs-lab"></span><h1><code class="docutils literal notranslate"><span class="pre">args</span></code> and <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> LAB<a class="headerlink" href="#args-and-kwargs-lab" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="goal">
 <h2>Goal:<a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h2>
 <p>Develop an understanding of using advanced argument passing and parameter definitons.</p>
 <p>If this is all confusing – you may want to review this:</p>
 <p><a class="reference external" href="http://stupidpythonideas.blogspot.com/2013/08/arguments-and-parameters.html">http://stupidpythonideas.blogspot.com/2013/08/arguments-and-parameters.html</a></p>
-<p>Note:</p>
-<p>This is not all that clearly specified – the goal is for you to
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is not all that clearly specified – the goal is for you to
 experiment with various ways to define and call functions, so you
 can understand what’s possible, and what happens with each call.
 It is also entirely silly, since the function does not do anything
 at all, but it will teach you about using parameters effectively.</p>
 </div>
+</div>
 <div class="section" id="test-driven-development">
 <h2>Test Driven Development?<a class="headerlink" href="#test-driven-development" title="Permalink to this headline">¶</a></h2>
-<p>Since this code isn’t really going to do anything, it doesn’t make a lot of sense to test it.  However, you need to run the code somehow anyway. So this is a good chance to practice test-driven development anyway.</p>
-<p>So for each step of the exercise, write a test that calls your function in a particular way, and test that it returns what you expect. In this case, what you will be testing is not really the code – but rather your own expectations of what the results should be.</p>
+<p>Since this code isn’t really going to do anything, it doesn’t make a lot of sense to test it.  However, you need to run the code somehow. So this is a good chance to practice test-driven development – even if only as a way to run your code as you write it.</p>
+<p>For each step of the exercise, write a test that calls your function in a particular way, and test that it returns what you expect. In this case, what you will be testing is not really the code – but rather your own expectations of what the results should be.</p>
 <p>You will also be testing Python’s argument handling, which you can be pretty sure DOES work correctly.</p>
-<p>So while these won’t be useful tests in the usual sense, this is a chance to practice test driven development.</p>
+<p>So while these won’t be useful tests in the usual sense, this is a chance to get used to test driven development.</p>
 </div>
 <div class="section" id="procedure">
 <h2>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h2>
-<p>We are going to do this as test driven development. So your first task for
-each assignment below is to write a test that will ensure your code does what
-we are telling you it should do.</p>
+<p>We are going to do this as test driven development: Your first task for each step below is to write a test that will ensure your code does whatvwe are telling you it should do.</p>
 <p><strong>Keyword arguments:</strong></p>
 <ul class="simple">
 <li>Write a function that has four optional parameters (with defaults):<ul>
@@ -210,13 +210,13 @@ we are telling you it should do.</p>
 <li><cite>visited_color</cite></li>
 </ul>
 </li>
-<li>Have it return the colors (use strings for the colors)</li>
-<li>Call it with a couple different parameters set. IOW, write tests that verify that all of the following work as advertised:<ul>
-<li>using just positional arguments:<ul>
+<li>Have it return the colors (use strings for the colors, e.g. “blue”, “red”, etc.)</li>
+<li>Call it with a couple different parameters set. That is, write tests that verify that all of the following work as advertised:<ul>
+<li>Using just positional arguments:<ul>
 <li><code class="docutils literal notranslate"><span class="pre">func('red',</span> <span class="pre">'blue',</span> <span class="pre">'yellow',</span> <span class="pre">'chartreuse')</span></code></li>
 </ul>
 </li>
-<li>using just keyword arguments:<ul>
+<li>Using just keyword arguments:<ul>
 <li><code class="docutils literal notranslate"><span class="pre">func(link_color='red',</span> <span class="pre">back_color='blue')</span></code></li>
 </ul>
 </li>
@@ -239,9 +239,9 @@ we are telling you it should do.</p>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">*args</span></code> and <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code></p>
 <ul class="simple">
-<li>Have it return the colors (use strings for the colors)</li>
+<li>Have it return the colors (use strings for the colors again)</li>
 <li>Call it with the same various combinations of arguments used above.</li>
-<li>Also have it print <cite>args</cite> and <cite>kwargs</cite> directly, so you can be sure you understand what’s going on.</li>
+<li>Also have it print <code class="docutils literal notranslate"><span class="pre">args</span></code> and <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> directly, so you can be sure you understand what’s going on.</li>
 <li>Note that in general, you can’t know what will get passed into <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> So maybe adapt your function to be able to do something reasonable with any keywords.</li>
 </ul>
 </div>
