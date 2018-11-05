@@ -1,7 +1,7 @@
 .. _exercise_args_kwargs_lab:
 
-Args and Kwargs LAB
-===================
+``args`` and ``kwargs`` LAB
+===========================
 
 Goal:
 -----
@@ -12,33 +12,31 @@ If this is all confusing -- you may want to review this:
 
 http://stupidpythonideas.blogspot.com/2013/08/arguments-and-parameters.html
 
-Note:
+.. note::
 
-This is not all that clearly specified -- the goal is for you to
-experiment with various ways to define and call functions, so you
-can understand what's possible, and what happens with each call.
-It is also entirely silly, since the function does not do anything
-at all, but it will teach you about using parameters effectively.
+  This is not all that clearly specified -- the goal is for you to
+  experiment with various ways to define and call functions, so you
+  can understand what's possible, and what happens with each call.
+  It is also entirely silly, since the function does not do anything
+  at all, but it will teach you about using parameters effectively.
 
 
 Test Driven Development?
 ------------------------
 
-Since this code isn't really going to do anything, it doesn't make a lot of sense to test it.  However, you need to run the code somehow anyway. So this is a good chance to practice test-driven development anyway.
+Since this code isn't really going to do anything, it doesn't make a lot of sense to test it.  However, you need to run the code somehow. So this is a good chance to practice test-driven development -- even if only as a way to run your code as you write it.
 
-So for each step of the exercise, write a test that calls your function in a particular way, and test that it returns what you expect. In this case, what you will be testing is not really the code -- but rather your own expectations of what the results should be.
+For each step of the exercise, write a test that calls your function in a particular way, and test that it returns what you expect. In this case, what you will be testing is not really the code -- but rather your own expectations of what the results should be.
 
 You will also be testing Python's argument handling, which you can be pretty sure DOES work correctly.
 
-So while these won't be useful tests in the usual sense, this is a chance to practice test driven development.
+So while these won't be useful tests in the usual sense, this is a chance to get used to test driven development.
 
 
 Procedure
 ---------
 
-We are going to do this as test driven development. So your first task for
-each assignment below is to write a test that will ensure your code does what
-we are telling you it should do.
+We are going to do this as test driven development: Your first task for each step below is to write a test that will ensure your code does whatvwe are telling you it should do.
 
 **Keyword arguments:**
 
@@ -49,15 +47,15 @@ we are telling you it should do.
   - `link_color`
   - `visited_color`
 
-* Have it return the colors (use strings for the colors)
+* Have it return the colors (use strings for the colors, e.g. "blue", "red", etc.)
 
-* Call it with a couple different parameters set. IOW, write tests that verify that all of the following work as advertised:
+* Call it with a couple different parameters set. That is, write tests that verify that all of the following work as advertised:
 
-  - using just positional arguments:
+  - Using just positional arguments:
 
     - ``func('red', 'blue', 'yellow', 'chartreuse')``
 
-  - using just keyword arguments:
+  - Using just keyword arguments:
 
     -  ``func(link_color='red', back_color='blue')``
 
@@ -80,10 +78,11 @@ we are telling you it should do.
 
 ``*args`` and ``**kwargs``
 
-* Have it return the colors (use strings for the colors)
+* Have it return the colors (use strings for the colors again)
 
 * Call it with the same various combinations of arguments used above.
 
-*  Also have it print `args` and `kwargs` directly, so you can be sure you understand what's going on.
+* Also have it print ``args`` and ``kwargs`` directly, so you can be sure you understand what's going on.
 
 * Note that in general, you can't know what will get passed into ``**kwargs`` So maybe adapt your function to be able to do something reasonable with any keywords.
+
