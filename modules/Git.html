@@ -277,11 +277,12 @@ the UWPCE-PythonCert-ClassRepos GitHub account (it shows up twice, because there
 <p>Before you can do that, you need to create a GitHub account, if you don’t have one already.  Your gitHub id will be associated with this class’ public repo, so it is up to you if you want to use your real name for your gitHub account, or an alias to maintain your privacy.</p>
 <p>Once you are logged in to your gitHub account, go to the appropriate class repository here:</p>
 <p><a class="reference external" href="https://github.com/UWPCE-PythonCert-ClassRepos">https://github.com/UWPCE-PythonCert-ClassRepos</a></p>
+<p>Make sure you find the right repo for YOUR class!</p>
 <p>Once in the repo for your class, click on the “fork” button in the upper right of the page to create a fork in your gitHub account. You will now have a copy of the class repo, and can then set up your personal machine to connect to that copy.</p>
 <div class="figure">
 <a class="center reference internal image-reference" href="../_images/remotes_fork.png"><img alt="../_images/remotes_fork.png" class="center" src="../_images/remotes_fork.png" style="width: 50%;" /></a>
 </div>
-<p>Everyone should now have a copy of the class repository in their account on the GitHub website.</p>
+<p>Yoy should now have a copy of the class repository in your account on the GitHub website.</p>
 <p>The next step is to make a <em>clone</em> of your fork on your own computer, which means that <strong>your fork</strong> in GitHub is the <em>origin</em>:</p>
 <div class="figure">
 <a class="center reference internal image-reference" href="../_images/remotes_clone.png"><img alt="../_images/remotes_clone.png" class="center" src="../_images/remotes_clone.png" style="width: 50%;" /></a>
@@ -297,17 +298,20 @@ This can live anywhere on your file system but this outer directory should not b
 <div class="section" id="adding-a-remote">
 <h3>Adding a remote<a class="headerlink" href="#adding-a-remote" title="Permalink to this headline">¶</a></h3>
 <p>Since you are working on a repository that you do not own, you will need to make a git shortcut to the original repository, so that you can get changes made by other contributors (i.e. the instructors and other students) before you start working.</p>
-<p>You can add <em>remotes</em> at will, to connect your <em>local</em> repository to other
-copies of it in different remote locations.</p>
+<p>You can add <em>remotes</em> at will, to connect your <em>local</em> repository to other copies of it in different remote locations.</p>
 <p>This allows you to grab changes made to the repository in these other
 locations.</p>
 <p>For this class, you will add an <em>upstream</em> remote to our local copy that points to the original copy of the material in the
-<code class="docutils literal notranslate"><span class="pre">UWPCE-PythonCert-ClassRepos</span></code> account, and we will call it, appropriately, “upstream”. Change directories into your local version of the class
-repository and run (remembering to use the name of your class):</p>
-<p>(you can get that full url by going to GitHub, finding the repo, and copying the “clone” url)</p>
+<code class="docutils literal notranslate"><span class="pre">UWPCE-PythonCert-ClassRepos</span></code> account, and we will call it, appropriately, “upstream”.
+Change directories into your local version of the class repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> YourClassRepoNameHere
+</pre></div>
+</div>
+<p>and run (remembering to use the name of your class):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git remote add upstream https://github.com/UWPCE-PythonCert-ClassRepos/YourClassRepoNameHere
 </pre></div>
 </div>
+<p>You can get that full url by going to GitHub, finding the repo, and copying the “clone” url. then you can type the command, and simply paste the url.</p>
 <p>Your local setup should now look something like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git remote -v
 origin  https://github.com/your_github_id/YourClassRepoNameHere <span class="o">(</span>fetch<span class="o">)</span>
