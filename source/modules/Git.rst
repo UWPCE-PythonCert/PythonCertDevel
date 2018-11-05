@@ -151,13 +151,15 @@ Once you are logged in to your gitHub account, go to the appropriate class repos
 
 https://github.com/UWPCE-PythonCert-ClassRepos
 
+Make sure you find the right repo for YOUR class!
+
 Once in the repo for your class, click on the "fork" button in the upper right of the page to create a fork in your gitHub account. You will now have a copy of the class repo, and can then set up your personal machine to connect to that copy.
 
 .. figure:: /_static/remotes_fork.png
    :width: 50%
    :class: center
 
-Everyone should now have a copy of the class repository in their account on the GitHub website.
+Yoy should now have a copy of the class repository in your account on the GitHub website.
 
 The next step is to make a *clone* of your fork on your own computer, which means that **your fork** in GitHub is the *origin*:
 
@@ -183,21 +185,27 @@ Adding a remote
 
 Since you are working on a repository that you do not own, you will need to make a git shortcut to the original repository, so that you can get changes made by other contributors (i.e. the instructors and other students) before you start working.
 
-You can add *remotes* at will, to connect your *local* repository to other
-copies of it in different remote locations.
+You can add *remotes* at will, to connect your *local* repository to other copies of it in different remote locations.
 
 This allows you to grab changes made to the repository in these other
 locations.
 
 For this class, you will add an *upstream* remote to our local copy that points to the original copy of the material in the
-``UWPCE-PythonCert-ClassRepos`` account, and we will call it, appropriately, "upstream". Change directories into your local version of the class
-repository and run (remembering to use the name of your class):
+``UWPCE-PythonCert-ClassRepos`` account, and we will call it, appropriately, "upstream".
+Change directories into your local version of the class repository:
 
-(you can get that full url by going to GitHub, finding the repo, and copying the "clone" url)
+.. code-block:: bash
+
+    $ cd YourClassRepoNameHere
+
+and run (remembering to use the name of your class):
+
 
 .. code-block:: bash
 
     $ git remote add upstream https://github.com/UWPCE-PythonCert-ClassRepos/YourClassRepoNameHere
+
+You can get that full url by going to GitHub, finding the repo, and copying the "clone" url. then you can type the command, and simply paste the url.
 
 Your local setup should now look something like this:
 
