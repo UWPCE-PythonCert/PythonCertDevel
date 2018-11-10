@@ -202,7 +202,7 @@ of python files or other package directories:</p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> can be totally empty – or it can have arbitrary python code in it.
 The code will be run when the package is imported – just like a module,</p>
-<p>modules inside packages are <em>not</em> automatically imported. So, with the above sgructure:</p>
+<p>modules inside packages are <em>not</em> automatically imported. So, with the above structure:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">a_package</span>
 </pre></div>
 </div>
@@ -249,11 +249,9 @@ The code will be run when the package is imported – just like a module,</p>
 </div>
 <p>means: “import all the names in the module”</p>
 <p>You really don’t want to do that! It is an old pattern that is now an anti-pattern</p>
-<p>But if you do encounter it, it doesn’t actually import all the names –
-it imports the ones defined in the module’s <code class="docutils literal notranslate"><span class="pre">__all__</span></code> variable.</p>
-<p><code class="docutils literal notranslate"><span class="pre">__all__</span></code> is a list of names that you want import * to import – so
-the module author can control it, and not expect all sorts of build ins
-and other modules.</p>
+<p>But if you do encounter it, it doesn’t actually import all the names – it imports the ones defined in the module’s <code class="docutils literal notranslate"><span class="pre">__all__</span></code> variable.</p>
+<p><code class="docutils literal notranslate"><span class="pre">__all__</span></code> is a list of names that you want <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">*</span></code> to import.
+So the module author can control it, and not expect all sorts of builtins and other modules.</p>
 <p>But really – don’t use it!</p>
 </div>
 <div class="section" id="relative-imports">
@@ -264,7 +262,7 @@ and other modules.</p>
 <p><a class="reference external" href="https://www.python.org/dev/peps/pep-0328/#guido-s-decision">https://www.python.org/dev/peps/pep-0328/#guido-s-decision</a></p>
 <p>This gets confusing! There is a good discussion on Stack Overflow here:</p>
 <p><a class="reference external" href="http://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time">http://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time</a></p>
-<p>Relative imports allow you to refer to other modules relative to where the existing module is in the package hierarchy, rather than in the whole thing. For instance, with the following package structure:</p>
+<p>Relative imports allow you to refer to other modules relative to where the existing module is in the package hierarchy, rather than in the entire python module namespace. For instance, with the following package structure:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span><span class="o">/</span>
     <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
     <span class="n">subpackage1</span><span class="o">/</span>
@@ -336,7 +334,7 @@ and other modules.</p>
 <span class="go"> &#39;__builtins__&#39;]</span>
 </pre></div>
 </div>
-<p>you can access the module through the modules dict:</p>
+<p>you can access the module through the <code class="docutils literal notranslate"><span class="pre">sys.modules</span></code> dict:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;textwrap&#39;</span><span class="p">]</span><span class="o">.</span><span class="vm">__file__</span>
 <span class="gh">Out[12]: </span><span class="go">&#39;/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/textwrap.py&#39;</span>
 </pre></div>
@@ -377,8 +375,7 @@ module’s namespace.</li>
 <li>Importing a module again is cheap and fast.</li>
 <li>Every place your code imports a module it gets the <em>same</em> object
 - You can use this to share “global” state where you want to.</li>
-<li>If you change the code in a module while the program is running – the
-change will <strong>not</strong> show up, even if re-imported.<ul>
+<li>If you change the code in a module while the program is running – the change will <strong>not</strong> show up, even if re-imported.<ul>
 <li>That’s what <code class="docutils literal notranslate"><span class="pre">imp.reload()</span></code> is for.</li>
 </ul>
 </li>
@@ -386,15 +383,20 @@ change will <strong>not</strong> show up, even if re-imported.<ul>
 </div>
 <div class="section" id="the-module-search-path">
 <h3>The module search path<a class="headerlink" href="#the-module-search-path" title="Permalink to this headline">¶</a></h3>
-<p>The interpreter keeps a list of all the places that it looks for modules or packages when you do an import:</p>
+<p>The interpreter keeps a list (<code class="docutils literal notranslate"><span class="pre">sys.path</span></code>) of all the places that it looks for modules or packages when you do an import:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
     <span class="k">print</span> <span class="n">p</span>
 </pre></div>
 </div>
-<p>you can manipulate that list to add or remove paths to let python find modules on a new place.</p>
-<p>And every module has a <code class="docutils literal notranslate"><span class="pre">__file__</span></code> name that points to the path it lives in. This lets you add paths relative to where you are, etc.</p>
-<p><em>NOTE</em> it’s usually better to use setuptools’ “develop” mode instead – see below.</p>
+<p>you can manipulate that list to add or remove paths to let python find modules in a new place.</p>
+<p>Every module has a <code class="docutils literal notranslate"><span class="pre">__file__</span></code> name that points to the path it lives in. This lets you add paths relative to where you are, etc.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It’s usually better to use setuptools’ “develop” mode (or <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span></code>) instead – see below.</p>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="reloading">
 <h3>Reloading<a class="headerlink" href="#reloading" title="Permalink to this headline">¶</a></h3>
@@ -424,8 +426,8 @@ change will <strong>not</strong> show up, even if re-imported.<ul>
 <h2>Python Distributions<a class="headerlink" href="#python-distributions" title="Permalink to this headline">¶</a></h2>
 <p>So far in this class, we’ve used the Python from python.org. It works great, and supports a lots of packages via pip.</p>
 <p>But there are also a few “curated” distributions. These provide python and a package management system for hard-to-build packages.</p>
-<p>Widely used by the scipy community
-(lots of hard to build stuff that needs to work together…)</p>
+<p>Widely used by the scipy community:</p>
+<p>(lots of hard to build stuff that needs to work together…)</p>
 <blockquote>
 <div><ul class="simple">
 <li>Anaconda (<a class="reference external" href="https://store.continuum.io/cshop/anaconda/">https://store.continuum.io/cshop/anaconda/</a>)</li>
@@ -439,8 +441,8 @@ change will <strong>not</strong> show up, even if re-imported.<ul>
 </div>
 <div class="section" id="installing-packages">
 <h2>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this headline">¶</a></h2>
-<p>Every Python installation has its own stdlib and <code class="docutils literal notranslate"><span class="pre">site-packages</span></code> folder</p>
-<p><code class="docutils literal notranslate"><span class="pre">site-packages</span></code>  is the default place for third-party packages</p>
+<p>Every Python installation has its own stdlib and <code class="docutils literal notranslate"><span class="pre">site-packages</span></code> folder.</p>
+<p><code class="docutils literal notranslate"><span class="pre">site-packages</span></code>  is the default place for third-party packages.</p>
 <div class="section" id="from-source">
 <h3>From source<a class="headerlink" href="#from-source" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -558,7 +560,7 @@ change will <strong>not</strong> show up, even if re-imported.<ul>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li>often installable with pip (pip will install a wheel for you if it exists)</li>
+<li>Often installable with pip (pip will install a wheel for you if it exists)</li>
 <li>Usually for python.org builds</li>
 <li>Excellent source: <a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/">http://www.lfd.uci.edu/~gohlke/pythonlibs/</a></li>
 <li>Make sure you get 32 or 64 bit consistent</li>

@@ -39,7 +39,7 @@ of python files or other package directories::
 The ``__init__.py`` can be totally empty -- or it can have arbitrary python code in it.
 The code will be run when the package is imported -- just like a module,
 
-modules inside packages are *not* automatically imported. So, with the above sgructure::
+modules inside packages are *not* automatically imported. So, with the above structure::
 
   import a_package
 
@@ -95,12 +95,10 @@ means: "import all the names in the module"
 
 You really don't want to do that! It is an old pattern that is now an anti-pattern
 
-But if you do encounter it, it doesn't actually import all the names --
-it imports the ones defined in the module's ``__all__`` variable.
+But if you do encounter it, it doesn't actually import all the names -- it imports the ones defined in the module's ``__all__`` variable.
 
-``__all__`` is a list of names that you want import * to import -- so
-the module author can control it, and not expect all sorts of build ins
-and other modules.
+``__all__`` is a list of names that you want ``import *`` to import.
+So the module author can control it, and not expect all sorts of builtins and other modules.
 
 But really -- don't use it!
 
@@ -120,7 +118,7 @@ This gets confusing! There is a good discussion on Stack Overflow here:
 
 http://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time
 
-Relative imports allow you to refer to other modules relative to where the existing module is in the package hierarchy, rather than in the whole thing. For instance, with the following package structure::
+Relative imports allow you to refer to other modules relative to where the existing module is in the package hierarchy, rather than in the entire python module namespace. For instance, with the following package structure::
 
   package/
       __init__.py
@@ -207,7 +205,7 @@ sys.modules
    '__file__',
    '__builtins__']
 
-you can access the module through the modules dict:
+you can access the module through the ``sys.modules`` dict:
 
 .. code-block:: ipython
 
@@ -251,15 +249,14 @@ Implications of module import process:
 * Every place your code imports a module it gets the *same* object
   - You can use this to share "global" state where you want to.
 
-* If you change the code in a module while the program is running -- the
-  change will **not** show up, even if re-imported.
+* If you change the code in a module while the program is running -- the change will **not** show up, even if re-imported.
 
   - That's what ``imp.reload()`` is for.
 
 The module search path
 ----------------------
 
-The interpreter keeps a list of all the places that it looks for modules or packages when you do an import:
+The interpreter keeps a list (``sys.path``) of all the places that it looks for modules or packages when you do an import:
 
 .. code-block:: python
 
@@ -267,11 +264,11 @@ The interpreter keeps a list of all the places that it looks for modules or pack
     for p in sys.path:
         print p
 
-you can manipulate that list to add or remove paths to let python find modules on a new place.
+you can manipulate that list to add or remove paths to let python find modules in a new place.
 
-And every module has a ``__file__`` name that points to the path it lives in. This lets you add paths relative to where you are, etc.
+Every module has a ``__file__`` name that points to the path it lives in. This lets you add paths relative to where you are, etc.
 
-*NOTE* it's usually better to use setuptools' "develop" mode instead -- see below.
+ .. note:: It's usually better to use setuptools' "develop" mode (or ``pip install -e``) instead -- see below.
 
 Reloading
 ---------
@@ -311,7 +308,8 @@ So far in this class, we've used the Python from python.org. It works great, and
 
 But there are also a few "curated" distributions. These provide python and a package management system for hard-to-build packages.
 
-Widely used by the scipy community
+Widely used by the scipy community:
+
 (lots of hard to build stuff that needs to work together...)
 
   * Anaconda (https://store.continuum.io/cshop/anaconda/)
@@ -328,9 +326,9 @@ If you are doing data science or scientific development -- I recommend you take 
 Installing Packages
 ===================
 
-Every Python installation has its own stdlib and ``site-packages`` folder
+Every Python installation has its own stdlib and ``site-packages`` folder.
 
-``site-packages``  is the default place for third-party packages
+``site-packages``  is the default place for third-party packages.
 
 
 From source
@@ -453,7 +451,7 @@ Sometimes simpler:
 
 1) A lot of packages have Windows wheels now.
 
-  - often installable with pip (pip will install a wheel for you if it exists)
+  - Often installable with pip (pip will install a wheel for you if it exists)
   - Usually for python.org builds
   - Excellent source: http://www.lfd.uci.edu/~gohlke/pythonlibs/
   - Make sure you get 32 or 64 bit consistent
