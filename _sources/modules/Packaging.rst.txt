@@ -1047,7 +1047,7 @@ I personally like the simplest one with the least magic:
   setup(
       ...
       package_data={'pkg_name': ['data/datatfile1',
-                                  'data/datafile2']},
+                                 'data/datafile2']},
       ...
         )
 
@@ -1133,15 +1133,12 @@ LAB: A Small Example Package
 
   - ``at least one working test``
 
-* If you are ready -- it can be the start of your project package.
+* If you have some code of your own ready to go -- use that.
 
-Start with the silly code in:
+* If you don't have any code of your own to package, start with the silly code in:
 
 :download:`capitalize.zip <../examples/packaging/capitalize.zip>`
 
-Or go straight to making a package our of mailroom project.
-
-
-
+Or go straight to making a package our of your mailroom project.
 
 

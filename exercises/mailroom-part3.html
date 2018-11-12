@@ -195,7 +195,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="k">print</span><span class="p">(</span><span class="n">donor</span><span class="p">)</span> <span class="k">for</span> <span class="n">donor</span> <span class="ow">in</span> <span class="n">donors</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>That’s not the intended use of comprehensions. Because <code class="docutils literal notranslate"><span class="pre">print</span></code> function does not have a value, this code will allocate a space for an “empty” result list filled with None values:</p>
+<p>That’s not the intended use of comprehensions. Because <code class="docutils literal notranslate"><span class="pre">print</span></code> function does not return a value, this code will allocate a space for an “empty” result list filled with None values:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="nb">print</span><span class="p">(</span><span class="n">donor</span><span class="p">)</span> <span class="k">for</span> <span class="n">donor</span> <span class="ow">in</span> <span class="n">donors</span><span class="p">]</span>
 <span class="go">jane</span>
 <span class="go">wendy</span>
@@ -203,6 +203,9 @@
 <span class="go">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
+<p>List comprehensions are designed for a very specific use case:</p>
+<p><em>Processing a sequence of items to create another sequence.</em></p>
+<p>They are not designed to replace all for loops.</p>
 </div>
 </div>
 

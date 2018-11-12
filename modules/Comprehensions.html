@@ -185,7 +185,7 @@
 <h2>List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permalink to this headline">¶</a></h2>
 <p>The concept of “functional programming” is clearly defined in some contexts, but is also used in a less strict sense. Python is <strong>not</strong> a functional language in the strict sense, but it does support a number of functional paradigms.</p>
 <p>In general, code is considered “Pythonic” that uses functional paradigms where they are natural, but not when they have to be forced in.</p>
-<p>We will cover functional programming concepts more clearly later in the program, but for now, we’ll talk about the syntax for a common functional paradigm: applying an expression to all the members of a sequence to produce another sequence:</p>
+<p>We will cover functional programming concepts more clearly later in the program, but for now, we’ll talk about the syntax for a common functional paradigm: applying an expression to all the members of a sequence to produce another sequence.</p>
 <p>Consider this common <code class="docutils literal notranslate"><span class="pre">for</span></code> loop structure:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
@@ -193,12 +193,12 @@
 </pre></div>
 </div>
 <p>This is such a common pattern that python added syntax to directly support it. This syntax is known as “comprehensions”. The most common of which is a list comprehension, used to build up a new list. There are a couple others, which we will get too later, but they all share a similar structure.</p>
-<p>The above structure can be expressed with a single line using a “list comprehension” as so:</p>
+<p>The above structure can be expressed with a single line using a “list comprehension” like so:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">expression_with_variable</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Nice and clear and compact, and the use of the “list” brackets (<code class="docutils literal notranslate"><span class="pre">[...]</span></code>) makes it clear you are making a list.</p>
-<p>Recall what an expression is in Python: a bit of code (names and operators) that evaluates to a value. So in the beginning of a comprehension, you can put anything that evaluates to a value – and that value is what gets added to the list.
+<p>Recall what an expression is in Python: a bit of code (names and operators) that evaluates to a value. So in the beginning of a comprehension, you can put anything that evaluates to a value – and that value is what gets added to the new list.
 This can be a simple (or complex) math operation: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">3</span></code>, or a function or method call: <code class="docutils literal notranslate"><span class="pre">a_string.upper()</span></code>, <code class="docutils literal notranslate"><span class="pre">int(x)</span></code>, etc.
 But it can not contain any statements: code that does not return a value, such as assignment (<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">5</span></code>), or <code class="docutils literal notranslate"><span class="pre">for</span></code> loops, or <code class="docutils literal notranslate"><span class="pre">if</span></code> blocks.</p>
 <div class="section" id="nested-loops">
@@ -311,17 +311,17 @@ But it can not contain any statements: code that does not return a value, such a
 </div>
 <div class="section" id="dict-comprehensions">
 <h2>Dict Comprehensions<a class="headerlink" href="#dict-comprehensions" title="Permalink to this headline">¶</a></h2>
-<p>Also with dictionaries</p>
+<p>You can also build up a dictionary with a comprehension:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>Same as this for loop:</p>
+<p>Which is the same as this for loop:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_dict</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
     <span class="n">new_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
 </pre></div>
 </div>
-<p>A dict comprehension also uses curly brackets – Python knows it’s a dict comprehension due to the <code class="docutils literal notranslate"><span class="pre">key:</span> <span class="pre">value</span></code> construct.</p>
+<p>A dict comprehension also uses curly brackets like the set comprehension – Python knows it’s a dict comprehension due to the <code class="docutils literal notranslate"><span class="pre">key:</span> <span class="pre">value</span></code> construct.</p>
 <p><strong>Example:</strong></p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [22]: </span><span class="p">{</span> <span class="n">i</span><span class="p">:</span> <span class="s2">&quot;this_</span><span class="si">%i</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">i</span> for i in range(5) }
 <span class="gh">Out[22]: </span><span class="go">{0: &#39;this_0&#39;, 1: &#39;this_1&#39;, 2: &#39;this_2&#39;,</span>
@@ -374,9 +374,10 @@ But it can not contain any statements: code that does not return a value, such a
 <span class="go">Type:           type</span>
 </pre></div>
 </div>
-<p>So the first one is an empty dict – simple enough</p>
-<p>The second makes a dict from the contents of another dict (or similar object)</p>
-<p>The third one is of interest here – it makes a dict from an iterable of key, value pairs – exactly what <code class="docutils literal notranslate"><span class="pre">zip()</span></code> gives you.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dict()</span></code> can take different types of arguments, and will do something different with each one.</p>
+<p>The first option (no argument) is an empty dict – simple enough.</p>
+<p>The option makes a dict from the contents of another dict or similar object (called a “mapping”).</p>
+<p>The options is of interest here – it makes a dict from an iterable of key, value pairs – exactly what <code class="docutils literal notranslate"><span class="pre">zip()</span></code> gives you.</p>
 <p>So we can create a dict from data like so:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">names</span><span class="p">))</span>
 
@@ -394,15 +395,15 @@ But it can not contain any statements: code that does not return a value, such a
 </div>
 </div>
 </div>
-<div class="section" id="generator-expressions">
-<h2>Generator Expressions<a class="headerlink" href="#generator-expressions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="generator-comprehensions">
+<h2>Generator Comprehensions<a class="headerlink" href="#generator-comprehensions" title="Permalink to this headline">¶</a></h2>
 <p>There is yet another type of comprehension: generator comprehensions, technically known as “generator expressions”. They are very much like a list comprehension, except that they evaluate to a lazy-evaluated “iterable”, rather than a list. That is, they <em>generate</em> the items on the fly.</p>
 <p>This is useful, because we often create a comprehension simply to loop over it right away:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">a_sequence</span><span class="p">]:</span>
     <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;The number is: {x}&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In this case, the comprehension: <code class="docutils literal notranslate"><span class="pre">[y**2</span> <span class="pre">for</span> <span class="pre">y</span> <span class="pre">in</span> <span class="pre">a_sequence]</span></code> iterates over <code class="docutils literal notranslate"><span class="pre">a_sequence</span></code>, computes the square of each item, and creates a whole new list with the new values.
+<p>In this case, the list comprehension: <code class="docutils literal notranslate"><span class="pre">[y**2</span> <span class="pre">for</span> <span class="pre">y</span> <span class="pre">in</span> <span class="pre">a_sequence]</span></code> iterates over <code class="docutils literal notranslate"><span class="pre">a_sequence</span></code>, computes the square of each item, and creates a whole new list with the new values.
 All this, just so it can be iterated over again right away. If the original sequence is large (or is itself a lazy-evaluated iterable), then the step of creating the extra list can be expensive and unnecessary.</p>
 <p>Generator comprehensions, on the other hand, create an iterable that evaluates the items as they are iterated over, rather than all at once ahead of time – so the entire collection is never stored.</p>
 <p>The syntax for a generator comprehension is the same as a list comp, except it uses regular parentheses:</p>
@@ -439,15 +440,20 @@ All this, just so it can be iterated over again right away. If the original sequ
 <span class="go">9</span>
 </pre></div>
 </div>
-<p>You will learn more about generators, and other ways to make them, in future lessons.</p>
+<p>You will learn more about generators and other ways to make them in future lessons.</p>
 <p>Let’s use a little function to make this clear:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <span class="gp">   ...: </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;test called with: &quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 <span class="gp">   ...: </span>    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<p>It simply returns the square of the passed-in value, but prints it as it does so, so we can see when it is called.
-If we use it in a list comp:</p>
+<p>It simply returns the square of the passed-in value, but prints it as it does so, so we can see when it is called.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Having a “print” in a function is a example of a “side effect” – something that is an effect of the function being called that is not reflected in the return value of that function.
+As a rule, it’s not a good idea to use functions with side effects in comprehensions. We’re only doing it here as a debugging aid – so we can clearly see when the function is being called.</p>
+</div>
+<p>If we use it in a list comp:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="p">[</span><span class="n">test</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
 <span class="go">test called with:  0</span>
 <span class="go">test called with:  1</span>
@@ -486,7 +492,7 @@ But if we use it in a generator comprehension:</p>
 </pre></div>
 </div>
 <div class="section" id="when-to-use-what">
-<h3>When to use What<a class="headerlink" href="#when-to-use-what" title="Permalink to this headline">¶</a></h3>
+<h3>When to Use What<a class="headerlink" href="#when-to-use-what" title="Permalink to this headline">¶</a></h3>
 <p>It’s pretty simple:</p>
 <p>If you need a list (or a set or dict) for further work, then use a list comp.</p>
 <p>If you are going to immediately loop through the items created by the comprehension, use a generator comprehension.</p>

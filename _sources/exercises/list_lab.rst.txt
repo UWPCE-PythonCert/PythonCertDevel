@@ -14,7 +14,7 @@ Goal:
 
 Learn the basic ins and outs of Python lists.
 
-hint
+Hint
 ----
 
 to query the user for info at the command line, you use:
@@ -114,6 +114,6 @@ Series 4
 
 Once more, using the list from series 1:
 
-- Make a copy of the list and reverse the letters in each fruit in the copy.
-- Delete the last item of the original list. Display the original list and the
-  copy.
+- Make a new list with the contents of the original, but with all the letters in each item reversed.
+
+- Delete the last item of the original list. Display the original list and the copy.
