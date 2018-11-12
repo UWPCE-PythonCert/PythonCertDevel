@@ -31,10 +31,17 @@ with
     [print(donor) for donor in donors]
 
 
-That's not the intended use of comprehensions. Because ``print`` function does not have a value, this code will allocate a space for an "empty" result list filled with None values:
+That's not the intended use of comprehensions. Because ``print`` function does not return a value, this code will allocate a space for an "empty" result list filled with None values:
 
     >>> [print(donor) for donor in donors]
     jane
     wendy
     [None, None]
     >>>
+
+List comprehensions are designed for a very specific use case:
+
+*Processing a sequence of items to create another sequence.*
+
+They are not designed to replace all for loops.
+

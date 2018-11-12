@@ -14,7 +14,7 @@ The concept of "functional programming" is clearly defined in some contexts, but
 
 In general, code is considered "Pythonic" that uses functional paradigms where they are natural, but not when they have to be forced in.
 
-We will cover functional programming concepts more clearly later in the program, but for now, we'll talk about the syntax for a common functional paradigm: applying an expression to all the members of a sequence to produce another sequence:
+We will cover functional programming concepts more clearly later in the program, but for now, we'll talk about the syntax for a common functional paradigm: applying an expression to all the members of a sequence to produce another sequence.
 
 Consider this common ``for`` loop structure:
 
@@ -26,7 +26,7 @@ Consider this common ``for`` loop structure:
 
 This is such a common pattern that python added syntax to directly support it. This syntax is known as "comprehensions". The most common of which is a list comprehension, used to build up a new list. There are a couple others, which we will get too later, but they all share a similar structure.
 
-The above structure can be expressed with a single line using a "list comprehension" as so:
+The above structure can be expressed with a single line using a "list comprehension" like so:
 
 .. code-block:: python
 
@@ -34,7 +34,7 @@ The above structure can be expressed with a single line using a "list comprehens
 
 Nice and clear and compact, and the use of the "list" brackets (``[...]``) makes it clear you are making a list.
 
-Recall what an expression is in Python: a bit of code (names and operators) that evaluates to a value. So in the beginning of a comprehension, you can put anything that evaluates to a value -- and that value is what gets added to the list.
+Recall what an expression is in Python: a bit of code (names and operators) that evaluates to a value. So in the beginning of a comprehension, you can put anything that evaluates to a value -- and that value is what gets added to the new list.
 This can be a simple (or complex) math operation: ``x * 3``, or a function or method call: ``a_string.upper()``, ``int(x)``, etc.
 But it can not contain any statements: code that does not return a value, such as assignment (``x = 5``), or ``for`` loops, or ``if`` blocks.
 
@@ -188,14 +188,14 @@ or, indeed, the same as passing a list comp to ``set()``.
 Dict Comprehensions
 -------------------
 
-Also with dictionaries
+You can also build up a dictionary with a comprehension:
 
 .. code-block:: python
 
     new_dict = {key: value for variable in a_sequence}
 
 
-Same as this for loop:
+Which is the same as this for loop:
 
 .. code-block:: python
 
@@ -203,7 +203,7 @@ Same as this for loop:
     for key in a_list:
         new_dict[key] = value
 
-A dict comprehension also uses curly brackets -- Python knows it's a dict comprehension due to the ``key: value`` construct.
+A dict comprehension also uses curly brackets like the set comprehension -- Python knows it's a dict comprehension due to the ``key: value`` construct.
 
 **Example:**
 
@@ -269,11 +269,13 @@ But there is also a ``dict()`` constructor (actually the type object for dict):
         in the keyword argument list.  For example:  dict(one=1, two=2)
     Type:           type
 
-So the first one is an empty dict -- simple enough
+``dict()`` can take different types of arguments, and will do something different with each one.
 
-The second makes a dict from the contents of another dict (or similar object)
+The first option (no argument) is an empty dict -- simple enough.
 
-The third one is of interest here -- it makes a dict from an iterable of key, value pairs -- exactly what ``zip()`` gives you.
+The option makes a dict from the contents of another dict or similar object (called a "mapping").
+
+The options is of interest here -- it makes a dict from an iterable of key, value pairs -- exactly what ``zip()`` gives you.
 
 So we can create a dict from data like so:
 
@@ -296,8 +298,8 @@ dict comps are still nice if you need to filter the results, though:
     Out[17]: {1: 'fred', 2: 'john'}
 
 
-Generator Expressions
----------------------
+Generator Comprehensions
+------------------------
 
 There is yet another type of comprehension: generator comprehensions, technically known as "generator expressions". They are very much like a list comprehension, except that they evaluate to a lazy-evaluated "iterable", rather than a list. That is, they *generate* the items on the fly.
 
@@ -308,7 +310,7 @@ This is useful, because we often create a comprehension simply to loop over it r
     for x in [y**2 for y in a_sequence]:
         outfile.write(f"The number is: {x}")
 
-In this case, the comprehension: ``[y**2 for y in a_sequence]`` iterates over ``a_sequence``, computes the square of each item, and creates a whole new list with the new values.
+In this case, the list comprehension: ``[y**2 for y in a_sequence]`` iterates over ``a_sequence``, computes the square of each item, and creates a whole new list with the new values.
 All this, just so it can be iterated over again right away. If the original sequence is large (or is itself a lazy-evaluated iterable), then the step of creating the extra list can be expensive and unnecessary.
 
 Generator comprehensions, on the other hand, create an iterable that evaluates the items as they are iterated over, rather than all at once ahead of time -- so the entire collection is never stored.
@@ -353,7 +355,7 @@ A generator is an object that can be iterated over with a for loop, and it will 
     4
     9
 
-You will learn more about generators, and other ways to make them, in future lessons.
+You will learn more about generators and other ways to make them in future lessons.
 
 Let's use a little function to make this clear:
 
@@ -364,6 +366,11 @@ Let's use a little function to make this clear:
        ...:     return x ** 2
 
 It simply returns the square of the passed-in value, but prints it as it does so, so we can see when it is called.
+
+.. note::
+  Having a "print" in a function is a example of a "side effect" -- something that is an effect of the function being called that is not reflected in the return value of that function.
+  As a rule, it's not a good idea to use functions with side effects in comprehensions. We're only doing it here as a debugging aid -- so we can clearly see when the function is being called.
+
 If we use it in a list comp:
 
 .. code-block:: ipython
@@ -411,7 +418,7 @@ You usually don't assign a generator expression to a variable, but rather, loop 
     test called with:  2
     4
 
-When to use What
+When to Use What
 ................
 
 It's pretty simple:
