@@ -252,7 +252,7 @@ In this case, the "html" part is stored in a class attribute. So how would you m
 
   "<{}>".format(self.tag)
 
-and
+and::
 
   "</{}>".format(self.tag)
 
@@ -1258,7 +1258,13 @@ Step 5:
 
 Create a ``SelfClosingTag`` subclass of Element, to render tags like::
 
-   <hr /> and <br /> (horizontal rule and line break)."
+    <hr />
+
+and::
+
+    <br />
+
+(horizontal rule and line break)
 
 Including with attributes::
 
