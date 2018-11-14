@@ -386,9 +386,10 @@ Some more content.
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;&lt;</span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>and</p>
-<blockquote>
-<div>“&lt;/{}&gt;”.format(self.tag)</div></blockquote>
+<p>and:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;&lt;/</span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>So the method looks something like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_file</span><span class="p">):</span>
     <span class="c1"># loop through the list of contents:</span>
@@ -1256,9 +1257,14 @@ Fortunately, pytest has a utility to do just that. Make sure there is an <code c
 <div class="section" id="step-5">
 <h2>Step 5:<a class="headerlink" href="#step-5" title="Permalink to this headline">¶</a></h2>
 <p>Create a <code class="docutils literal notranslate"><span class="pre">SelfClosingTag</span></code> subclass of Element, to render tags like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">hr</span> <span class="o">/&gt;</span> <span class="ow">and</span> <span class="o">&lt;</span><span class="n">br</span> <span class="o">/&gt;</span> <span class="p">(</span><span class="n">horizontal</span> <span class="n">rule</span> <span class="ow">and</span> <span class="n">line</span> <span class="k">break</span><span class="p">)</span><span class="o">.</span><span class="s2">&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">hr</span> <span class="o">/&gt;</span>
 </pre></div>
 </div>
+<p>and:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">br</span> <span class="o">/&gt;</span>
+</pre></div>
+</div>
+<p>(horizontal rule and line break)</p>
 <p>Including with attributes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">hr</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;400&quot;</span> <span class="o">/&gt;</span>
 </pre></div>
