@@ -561,7 +561,7 @@ html_render.py:23: TypeError
 </pre></div>
 </div>
 <p>It failed when we tried to write to the file. We’re trying to write a piece of content, and we got a <code class="docutils literal notranslate"><span class="pre">NoneType</span></code>.  How in the world did a <code class="docutils literal notranslate"><span class="pre">NoneType</span></code> (which is the type of None) get in there?</p>
-<p>Where does the <code class="docutils literal notranslate"><span class="pre">self.contents</span></code> list get created? In the <code class="docutils literal notranslate"><span class="pre">__init__</span></code>. Let’s do a little print debugging here. Add a print to the __init__:</p>
+<p>Where does the <code class="docutils literal notranslate"><span class="pre">self.contents</span></code> list get created? In the <code class="docutils literal notranslate"><span class="pre">__init__</span></code>. Let’s do a little print debugging here. Add a print to the <code class="docutils literal notranslate"><span class="pre">__init__</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">contents</span> <span class="o">=</span> <span class="p">[</span><span class="n">content</span><span class="p">]</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;contents is:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">contents</span><span class="p">)</span>
@@ -577,13 +577,11 @@ html_render.py:23: TypeError
 <span class="o">======================</span> <span class="mi">1</span> <span class="n">failed</span><span class="p">,</span> <span class="mi">3</span> <span class="n">passed</span> <span class="ow">in</span> <span class="mf">0.06</span> <span class="n">seconds</span> <span class="o">======================</span>
 </pre></div>
 </div>
-<p>Same failure – but pytest does a nice job of showing you what was printed (stdout) when a test fails. So in this case, at the end of the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method, the contents list looks like <code class="docutils literal notranslate"><span class="pre">[None]</span></code> – a list with a single None object in it. No wonder it failed later when we tried to write that None to a file!</p>
+<p>Same failure – but pytest does a nice job of showing you what was printed (stdout) when a test fails. So in this case, at the end of the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method, the contents list looks like <code class="docutils literal notranslate"><span class="pre">[None]</span></code> – a list with a single None object in it. No wonder it failed later when we tried to write that <code class="docutils literal notranslate"><span class="pre">None</span></code> to a file!</p>
 <p>But why? Well, looking at the <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, it looks like content gets set to None by default:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">python</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 </pre></div>
 </div>
-<blockquote>
-<div>def __init__(self, content=None):</div></blockquote>
 <p>Then we put that <code class="docutils literal notranslate"><span class="pre">None</span></code> in the <code class="docutils literal notranslate"><span class="pre">self.contents</span></code> list.  What do we want when content is <code class="docutils literal notranslate"><span class="pre">None</span></code>?
 An empty list, so that we can add to it later, not a list with a <code class="docutils literal notranslate"><span class="pre">None</span></code> object in it.  So you need some code that checks for <code class="docutils literal notranslate"><span class="pre">None</span></code> (hint: use <code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">None</span></code> or <code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">not</span> <span class="pre">None</span></code> to check for <code class="docutils literal notranslate"><span class="pre">None</span></code>), and only adds content to the list if it is <em>not</em> <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <p>I’ll leave it as an exercise for the reader to figure out how to do that, but make sure all tests are passing before you move on! And once the tests pass, you may want to remove that <code class="docutils literal notranslate"><span class="pre">print()</span></code> line.</p>
@@ -657,10 +655,14 @@ Yes, this is pedantic, and there is no real reason to run tests you know are goi
 </div>
 <p>(and similarly for <code class="docutils literal notranslate"><span class="pre">Html</span></code> and <code class="docutils literal notranslate"><span class="pre">P</span></code>)</p>
 <p>That’s it!  But what does that mean?  This line:</p>
-<p><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Body(Element):</span></code></p>
-<p>means: make a new subclass of the <code class="docutils literal notranslate"><span class="pre">Element</span></code> tag called “Body”.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Body</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>means: make a new subclass of the <code class="docutils literal notranslate"><span class="pre">Element</span></code> tag called <code class="docutils literal notranslate"><span class="pre">Body</span></code>.</p>
 <p>and this line:</p>
-<p>``    tag = ‘body’``</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;body&#39;</span>
+</pre></div>
+</div>
 <p>means:  set the <code class="docutils literal notranslate"><span class="pre">tag</span></code> class attribute to <code class="docutils literal notranslate"><span class="pre">'body'</span></code>. Since this class attribute was set on the <code class="docutils literal notranslate"><span class="pre">Element</span></code> class already, this is called “overriding” the tag attribute.</p>
 <p>The end result is that we now have a class that is exactly the same as the <code class="docutils literal notranslate"><span class="pre">Element</span></code> class, except with a different tag. Where is that attribute used? It is used in the <code class="docutils literal notranslate"><span class="pre">render()</span></code> method.</p>
 <p>Let’s  run the tests and see if this worked:</p>
@@ -675,7 +677,7 @@ test_html_render.py .......                                              [100%]
 =========================== 7 passed in 0.02 seconds ===========================
 </pre></div>
 </div>
-<p>Success!. We now have three different tags.</p>
+<p>Success! We now have three different tags.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Why the <code class="docutils literal notranslate"><span class="pre">Html</span></code> element? Doesn’t the <code class="docutils literal notranslate"><span class="pre">Element</span></code> class already use the “html” tag?
@@ -761,11 +763,9 @@ html_render.py:26: TypeError
 So we need a way to write an element to a file. How might we do that? Inside the element’s render method, we need to render an element…</p>
 <p>Well, elements already know how to render themselves. This is what is meant by a recursive approach. In the <code class="docutils literal notranslate"><span class="pre">render</span></code> method, we want to make use of the <code class="docutils literal notranslate"><span class="pre">render</span></code> method itself.</p>
 <p>Looking at the signature of the render method:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">python</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_file</span><span class="p">):</span>
 </pre></div>
 </div>
-<blockquote>
-<div>def render(self, out_file):</div></blockquote>
 <p>it becomes clear – we render an element by passing the output file to the element’s render method. Here is what mine looks like now:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_file</span><span class="p">):</span>
     <span class="c1"># loop through the list of contents:</span>
@@ -1184,11 +1184,9 @@ Fortunately, pytest has a utility to do just that. Make sure there is an <code c
 </pre></div>
 </div>
 <p>OK, the rest of the tests are still passing for me; I haven’t broken anything else. Now to add code to render the attributes. You’ll need to write some sort of loop to loop through each attribute, probably looping through the keys and the values:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">python</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attributes</span><span class="p">:</span>
 </pre></div>
 </div>
-<blockquote>
-<div>for key, value in self.attributes:</div></blockquote>
 <p>Then you can render them in html form inside that loop.</p>
 <p>Once you’ve done that, run the tests again. When I do that, mine passes the asserts checking the attributes, but fails on the <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">False</span></code>, so I can see how it’s rendering:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span>       <span class="k">assert</span> <span class="kc">False</span>
