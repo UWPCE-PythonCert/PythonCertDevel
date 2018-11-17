@@ -497,7 +497,7 @@ In Python 2, instead of the keyword argument, a special class attribute:
 
 Otherwise it's the same.
 
-The __metaclass__ attribute is part of determining that function. If __metaclass__ is a key in the body dictionary then the value of that key is used. This value could be anything, although if not callable an exception will be raised. 
+The __metaclass__ attribute is part of determining that function. If __metaclass__ is a key in the body dictionary then the value of that key is used. This value could be anything, although if not callable an exception will be raised.
 from http://jfine-python-classes.readthedocs.io/en/latest/decorators-versus-metaclass.html
 
 Why use metaclasses?
@@ -764,7 +764,7 @@ This also happens at compile time, rather than run time, just like metaclasses.
 class decorators were actually introduced AFTER metaclasses -- maybe they
 are a clearer solution to some problems?
 
-As an example, in Python 3.7 (which is in beta release as of this writing), there is a new feature in the standard library: ``Data Classes``, introduced in
+As an example, in Python 3.7, there is a new feature in the standard library: ``Data Classes``, introduced in
 `PEP 557 <https://www.python.org/dev/peps/pep-0557/>`_
 
 They are a quick way to make a simple class whose prime purpose is to store a set of fields -- kind of like a database record. What the new tool provides is auto-generation of all the boilerplate code for the ``__init__``, etc. They could have been implemented with a metaclass, but it was decided to use a class decorator instead. From the PEP:
@@ -784,6 +784,11 @@ Here is a bit of discussion of metaclasses vs decorators:
 And another one:
 
 `A Study of Python's More Advanced Features Part III: Classes and Metaclasses <http://sahandsaba.com/python-classes-metaclasses.html>`_
+
+And this is a argument for class decorators by the author or the patch that enabled them (in Python 2.6):
+
+`Jack Diederich: Class Decorators: Radically Simple  <https://www.youtube.com/watch?v=cAGliEJV9_o>`_
+
 
 NameMangler Decorator Edition
 -----------------------------

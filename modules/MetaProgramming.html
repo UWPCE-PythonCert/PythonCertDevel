@@ -731,7 +731,7 @@ changed version replaces the one in the definition.</p>
 <p>This also happens at compile time, rather than run time, just like metaclasses.</p>
 <p>class decorators were actually introduced AFTER metaclasses – maybe they
 are a clearer solution to some problems?</p>
-<p>As an example, in Python 3.7 (which is in beta release as of this writing), there is a new feature in the standard library: <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Classes</span></code>, introduced in
+<p>As an example, in Python 3.7, there is a new feature in the standard library: <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Classes</span></code>, introduced in
 <a class="reference external" href="https://www.python.org/dev/peps/pep-0557/">PEP 557</a></p>
 <p>They are a quick way to make a simple class whose prime purpose is to store a set of fields – kind of like a database record. What the new tool provides is auto-generation of all the boilerplate code for the <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, etc. They could have been implemented with a metaclass, but it was decided to use a class decorator instead. From the PEP:</p>
 <blockquote>
@@ -743,6 +743,8 @@ are a clearer solution to some problems?</p>
 <p><a class="reference external" href="http://jfine-python-classes.readthedocs.io/en/latest/decorators-versus-metaclass.html">Decorators versus __metaclass__</a></p>
 <p>And another one:</p>
 <p><a class="reference external" href="http://sahandsaba.com/python-classes-metaclasses.html">A Study of Python’s More Advanced Features Part III: Classes and Metaclasses</a></p>
+<p>And this is a argument for class decorators by the author or the patch that enabled them (in Python 2.6):</p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=cAGliEJV9_o">Jack Diederich: Class Decorators: Radically Simple</a></p>
 </div>
 <div class="section" id="namemangler-decorator-edition">
 <h3>NameMangler Decorator Edition<a class="headerlink" href="#namemangler-decorator-edition" title="Permalink to this headline">¶</a></h3>
@@ -821,7 +823,7 @@ attributes.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy MilesRick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 3.0 license
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy Miles, Rick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 3.0 license
 
     </p>
   </div>
