@@ -252,7 +252,7 @@ In this case, the "html" part is stored in a class attribute. So how would you m
 
   "<{}>".format(self.tag)
 
-and
+and::
 
   "</{}>".format(self.tag)
 
@@ -441,7 +441,7 @@ Darn! Something is wrong here. And this time it errored out before it even got r
 
 It failed when we tried to write to the file. We're trying to write a piece of content, and we got a ``NoneType``.  How in the world did a ``NoneType`` (which is the type of None) get in there?
 
-Where does the ``self.contents`` list get created? In the ``__init__``. Let's do a little print debugging here. Add a print to the __init__:
+Where does the ``self.contents`` list get created? In the ``__init__``. Let's do a little print debugging here. Add a print to the ``__init__``:
 
 .. code-block:: python
 
@@ -460,9 +460,9 @@ And run the tests again::
     ====================== 1 failed, 3 passed in 0.06 seconds ======================
 
 
-Same failure -- but pytest does a nice job of showing you what was printed (stdout) when a test fails. So in this case, at the end of the ``__init__`` method, the contents list looks like ``[None]`` -- a list with a single None object in it. No wonder it failed later when we tried to write that None to a file!
+Same failure -- but pytest does a nice job of showing you what was printed (stdout) when a test fails. So in this case, at the end of the ``__init__`` method, the contents list looks like ``[None]`` -- a list with a single None object in it. No wonder it failed later when we tried to write that ``None`` to a file!
 
-But why? Well, looking at the ``__init__``, it looks like content gets set to None by default::
+But why? Well, looking at the ``__init__``, it looks like content gets set to None by default:
 
 .. code-block:: python
 
@@ -561,13 +561,17 @@ OK, did you do something as simple as this?
 
 That's it!  But what does that mean?  This line:
 
-``class Body(Element):``
+.. code-block:: python
 
-means: make a new subclass of the ``Element`` tag called "Body".
+    class Body(Element):
+
+means: make a new subclass of the ``Element`` tag called ``Body``.
 
 and this line:
 
-``    tag = 'body'``
+.. code-block:: python
+
+        tag = 'body'
 
 means:  set the ``tag`` class attribute to ``'body'``. Since this class attribute was set on the ``Element`` class already, this is called "overriding" the tag attribute.
 
@@ -585,7 +589,7 @@ Let's  run the tests and see if this worked::
 
     =========================== 7 passed in 0.02 seconds ===========================
 
-Success!. We now have three different tags.
+Success! We now have three different tags.
 
 .. note::
   Why the ``Html`` element? Doesn't the ``Element`` class already use the "html" tag?
@@ -681,7 +685,7 @@ So we need a way to write an element to a file. How might we do that? Inside the
 
 Well, elements already know how to render themselves. This is what is meant by a recursive approach. In the ``render`` method, we want to make use of the ``render`` method itself.
 
-Looking at the signature of the render method::
+Looking at the signature of the render method:
 
 .. code-block:: python
 
@@ -1169,7 +1173,7 @@ So we need to render the ``<``, then the ``p``, then a bunch of attribute name=v
         out_file.write("".join(open_tag))
         ...
 
-OK, the rest of the tests are still passing for me; I haven't broken anything else. Now to add code to render the attributes. You'll need to write some sort of loop to loop through each attribute, probably looping through the keys and the values::
+OK, the rest of the tests are still passing for me; I haven't broken anything else. Now to add code to render the attributes. You'll need to write some sort of loop to loop through each attribute, probably looping through the keys and the values:
 
 .. code-block:: python
 
@@ -1254,7 +1258,13 @@ Step 5:
 
 Create a ``SelfClosingTag`` subclass of Element, to render tags like::
 
-   <hr /> and <br /> (horizontal rule and line break)."
+    <hr />
+
+and::
+
+    <br />
+
+(horizontal rule and line break)
 
 Including with attributes::
 
