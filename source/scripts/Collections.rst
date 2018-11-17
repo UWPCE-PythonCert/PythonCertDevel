@@ -2,7 +2,7 @@
 
 .. _script_collections:
 
-Collecitons Video
+Collections Video
 =================
 
 With Rick Riehle

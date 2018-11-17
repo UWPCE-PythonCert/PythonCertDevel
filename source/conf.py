@@ -63,7 +63,7 @@ author_list = ["Natasha Aleksandrova",
                "Christy Heaton",
                "Jon Jacky",
                "Maria McKinley",
-               "Andy Miles"
+               "Andy Miles",
                "Rick Riehle",
                "Joseph Schilz",
                "Joseph Sheedy",

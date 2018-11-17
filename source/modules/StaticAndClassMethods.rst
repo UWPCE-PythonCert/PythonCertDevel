@@ -139,9 +139,9 @@ implements an alternate constructor that *can*.
             self[key] = value
         return self
 
-(This is actually from the OrderedDict implementation in ``collections.py``).
+(This is actually from the ``OrderedDict`` implementation in ``collections.py``).
 
-See also datetime.datetime.now(), etc....
+See also ``datetime.datetime.now()``, etc....
 
 
 Properties, Static Methods and Class Methods are powerful features of Python's
@@ -157,4 +157,9 @@ well.
 .. _Here is a low level look: https://docs.python.org/2/howto/descriptor.html
 
 
-For the Circle Lab: use a class method to make an alternate constructor that takes the diameter instead.
+For the Circle Excercise: use a class method to make an alternate constructor that takes the diameter instead.
+
+Ultimately, make a subclass of ``Circle``, called ``Sphere``. Check and see if the ``.from_diameter`` alternate consructor sill works!
+
+
+
