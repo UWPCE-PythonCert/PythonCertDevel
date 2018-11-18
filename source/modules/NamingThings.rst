@@ -54,7 +54,7 @@ Naming Guidelines
 -----------------
 
 Whenever possible, use strong, unambiguous names that relate to a concept in the business area applicable for your program.
-For example, ``cargo_weight`` is probably better than ``item_weight``, ``current_fund_price`` is better than ``value``.
+For example, ``cargo_weight`` is probably better than ``item_weight``, ``current_fund_price`` is better than ``value``. But all of those are better than ``item``, or ``x``, or ...
 
 Only use single-letter names for things with limited scope: indexes and the like:
 
