@@ -118,7 +118,8 @@ This may be a good approach for a "pure" OO language, but with Python it tends t
 
 So my recommendation is to think in terms of what makes sense for your project:
 
- -- there is no single paradigm for software design.
+.. centered:: **There is no single best paradigm for software design**
+
 
 
 Python's roots
