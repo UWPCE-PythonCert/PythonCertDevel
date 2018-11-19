@@ -93,4 +93,4 @@ And then singular for a single item in that collection:
 
 Here's a nice talk about naming:
 
-`Jack Diederich: Name things Once <http://pyvideo.org/video/3792/name-things-once-0>`_
+`Jack Diederich: Name things Once <https://www.youtube.com/watch?v=hZ7hgYKKnF0>`_
