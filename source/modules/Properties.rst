@@ -64,15 +64,14 @@ Properties
 
 .. code-block:: ipython
 
-    class C:
-        _x = None
-        @property
-        def x(self):
-            return self._x
-        @x.setter
-        def x(self, value):
-            self._x = value
-
+    In [27]: class C:
+       ....:     _x = None
+       ....:     @property
+       ....:     def x(self):
+       ....:         return self._x
+       ....:     @x.setter
+       ....:     def x(self, value):
+       ....:         self._x = value
     In [28]: c = C()
     In [30]: c.x = 5
     In [31]: print(c.x)
