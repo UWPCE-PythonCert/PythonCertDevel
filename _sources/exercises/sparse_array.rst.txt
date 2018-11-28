@@ -48,7 +48,7 @@ Some ideas of how to do that:
 
     len(my_array)
 
-  This will give its "virtual" length --  with the zeros
+This will give its "virtual" length --  with the zeros
 
 
 * It should support getting and setting particular elements via indexing:

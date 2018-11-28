@@ -129,9 +129,9 @@ with the diameter:
 .. code-block:: python
 
     >> c = Circle.from_diameter(8)
-    >> print c.diameter
+    >> print(c.diameter)
     8
-    >> print c.radius
+    >> print(c.radius)
     4
 
 Step 6:
@@ -139,7 +139,7 @@ Step 6:
 
 Every class should have a nice way to print it out...
 
-Add __str__ and __repr__ methods to your Circle class.
+Add ``__str__`` and ``__repr__`` methods to your Circle class.
 
 Now you can print it:
 
@@ -147,7 +147,7 @@ Now you can print it:
 
     In [2]: c = Circle(4)
 
-    In [3]: print c
+    In [3]: print(c)
     Circle with radius: 4.000000
 
     In [4]: repr(c)
@@ -213,9 +213,6 @@ Once the comparing is done,  you should be able to sort a list of circles:
 
     In [18]: print circles
     [Circle(6), Circle(7), Circle(8), Circle(4), Circle(0), Circle(2), Circle(3), Circle(5), Circle(9), Circle(1)]
-
-    In [19]: circl
-    circle      circle.py   circle.pyc  circles
 
     In [19]: circles.sort()
 

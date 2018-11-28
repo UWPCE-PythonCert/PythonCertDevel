@@ -275,9 +275,9 @@ and the user can query the circle for either its radius or diameter.</p>
 <p>Add an “alternate constructor” that lets the user create a Circle directly
 with the diameter:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Circle</span><span class="o">.</span><span class="n">from_diameter</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-<span class="o">&gt;&gt;</span> <span class="k">print</span> <span class="n">c</span><span class="o">.</span><span class="n">diameter</span>
+<span class="o">&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">diameter</span><span class="p">)</span>
 <span class="mi">8</span>
-<span class="o">&gt;&gt;</span> <span class="k">print</span> <span class="n">c</span><span class="o">.</span><span class="n">radius</span>
+<span class="o">&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span>
 <span class="mi">4</span>
 </pre></div>
 </div>
@@ -285,11 +285,11 @@ with the diameter:</p>
 <div class="section" id="step-6">
 <h3>Step 6:<a class="headerlink" href="#step-6" title="Permalink to this headline">¶</a></h3>
 <p>Every class should have a nice way to print it out…</p>
-<p>Add __str__ and __repr__ methods to your Circle class.</p>
+<p>Add <code class="docutils literal notranslate"><span class="pre">__str__</span></code> and <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> methods to your Circle class.</p>
 <p>Now you can print it:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="n">c</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 
-<span class="gp">In [3]: </span><span class="k">print</span> <span class="n">c</span>
+<span class="gp">In [3]: </span><span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 <span class="go">Circle with radius: 4.000000</span>
 
 <span class="gp">In [4]: </span><span class="nb">repr</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
@@ -342,9 +342,6 @@ with the diameter:</p>
 <p>Once the comparing is done,  you should be able to sort a list of circles:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="k">print</span> <span class="n">circles</span>
 <span class="go">[Circle(6), Circle(7), Circle(8), Circle(4), Circle(0), Circle(2), Circle(3), Circle(5), Circle(9), Circle(1)]</span>
-
-<span class="gp">In [19]: </span><span class="n">circl</span>
-<span class="go">circle      circle.py   circle.pyc  circles</span>
 
 <span class="gp">In [19]: </span><span class="n">circles</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 
