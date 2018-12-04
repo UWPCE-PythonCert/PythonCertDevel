@@ -159,7 +159,7 @@ well.
 
 For the Circle Excercise: use a class method to make an alternate constructor that takes the diameter instead.
 
-Ultimately, make a subclass of ``Circle``, called ``Sphere``. Check and see if the ``.from_diameter`` alternate consructor sill works!
+Ultimately, make a subclass of ``Circle``, called ``Sphere``. Check and see if the ``.from_diameter`` alternate consructor still works!
 
 
 
