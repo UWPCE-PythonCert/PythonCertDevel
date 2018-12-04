@@ -42,17 +42,15 @@ class Element:
         #       it no longer holds strings -- so a test will fail
         #       but that test was testing internal API --
         #       it's probably better remove it
-        # if isinstance(content, Element):
         if hasattr(content, 'render'):
             self.content.append(content)
         else:
             self.content.append(TextWrapper(str(content)))
-        # self.content.append(content)
 
     def make_tags(self):
         """
         create the tags
-        -- in a separate method so different subclass's render methods can use it
+        -- in a separate method so different subclass' render methods can use it
         """
         attrs = " ".join(['{}="{}"'.format(key, val) for key, val in self.attributes.items()])
         if attrs.strip():
@@ -64,7 +62,6 @@ class Element:
         return open_tag, close_tag
 
     def render(self, out_file, cur_ind=""):
-        print("in render, type of self", type(self))
         open_tag, close_tag = self.make_tags()
         out_file.write(cur_ind + open_tag + "\n")
         for stuff in self.content:
@@ -96,6 +93,7 @@ class Body(Element):
 
 class P(Element):
     tag = "p"
+
 
 class Head(Element):
     tag = "head"
