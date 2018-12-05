@@ -15,7 +15,7 @@ But this time, we want to use an OO approach to better structure the code to mak
 
 It was quite reasonable to build the simple mailroom program using a
 single module, a simple data structure, and functions that manipulate
-that data structure.
+that data structure. In fact, you've already done that :-)
 
 But if one were to expand the program with additional functionality, it
 would start to get a bit unwieldy and hard to maintain. So it's a pretty good candidate for an object-oriented approach.
@@ -23,7 +23,7 @@ would start to get a bit unwieldy and hard to maintain. So it's a pretty good ca
 As you design appropriate classes, keep in mind these three guidelines for good code structure:
 
 
-1) Encapsulation: You have a data structure that holds your data, and functions that manipulate that data; you want data and methods "bundled up" in a neat package so that they that work on that data are within one unit. The rest of the code doesn't need to know about the data structure you are using.
+1) Encapsulation: You have a data structure that holds your data, and functions that manipulate that data; you want data and methods "bundled up" in a neat package so that everyting that works with that data structure are within one unit. The rest of the code doesn't need to know about the data structure you are using.
 
 2) Separation of Concerns: The user-interaction code should be cleanly separated from the data handling code.
 
