@@ -4,7 +4,7 @@ Exercise Solutions
 
 A complete set of solutions is available in the PythonCertDevel Repo.
 
-I've found that students really like to see clean, nicely written solutions to the exercises -- when I started teaching, I would go over the students' code in class, and correct and critique it. But I got a lot of requests for how **I** would have written the code. So I ended up developing a full set of solutions to share with the class.
+I've found that students really like to see clean, nicely written solutions to the exercises -- when I started teaching, I would go over the students' code in class, and correct and critique it. But I got a lot of requests for how *I* would have written the code. So I ended up developing a full set of solutions to share with the class.
 
 When / How to Share Solutions
 =============================
