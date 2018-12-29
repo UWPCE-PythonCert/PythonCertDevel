@@ -187,11 +187,11 @@ that data structure. In fact, you’ve already done that :-)</p>
 would start to get a bit unwieldy and hard to maintain. So it’s a pretty good candidate for an object-oriented approach.</p>
 <p>As you design appropriate classes, keep in mind these three guidelines for good code structure:</p>
 <ol class="arabic">
-<li><p class="first">Encapsulation: You have a data structure that holds your data, and functions that manipulate that data; you want data and methods “bundled up” in a neat package so that everyting that works with that data structure are within one unit. The rest of the code doesn’t need to know about the data structure you are using.</p>
+<li><p class="first">Encapsulation: You have a data structure that holds your data, and functions that manipulate that data; you want data and methods “bundled up” in a neat package so that everything that works with that data structure are within one unit. The rest of the code doesn’t need to know about the data structure you are using.</p>
 </li>
 <li><p class="first">Separation of Concerns: The user-interaction code should be cleanly separated from the data handling code.</p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Separation_of_concerns">https://en.wikipedia.org/wiki/Separation_of_concerns</a></p>
-<p>There should be no <code class="docutils literal notranslate"><span class="pre">input</span></code> functions in the classes that hold the data!</p>
+<p>There should be no use of the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function in the classes that hold the data!  Nor any use of <code class="docutils literal notranslate"><span class="pre">print()</span></code> – these are for user interaction, and you want the data handling code to be potentially usable with totally different user interaction – such as a desktop GUI or Web interface.</p>
 </li>
 <li><p class="first">As always: <strong>DRY</strong> (Don’t Repeat Yourself): Anywhere you see repeated code; refactor it!</p>
 </li>
@@ -203,19 +203,18 @@ would start to get a bit unwieldy and hard to maintain. So it’s a pretty good 
 <h3>Suggestions<a class="headerlink" href="#suggestions" title="Permalink to this headline">¶</a></h3>
 <p>One of the hardest parts of OO design (particularly in Python) is to know how “low” to go with the classes and data structures. In particular, you might have a bit of data collected together (say, a donor’s name and donation history). This can be a simple tuple with a few items in it; a dict with those same data available as <code class="docutils literal notranslate"><span class="pre">key:value</span></code> pairs; or a class, with class attributes (and, possibly, methods).</p>
 <p>There are no hard and fast rules, but here are some guidelines:</p>
-<p>For this assignment it’s OK to go with simple tuples. However, in order for the code to be more flexible in the future, for example, if new “fields” were added to the donor object, it’s probably better to use a more structured data type, so you don’t have to worry about changing the order or number of fields.</p>
-<p>So now you have to think about using a dict or class. Again for flexibility, I think a dict is a bit easier; you can add fields to it very easily. However, with a class, you can build some functionality in there, too. This is where encapsulation comes in. For instance, one thing you might want to do is get the total of all donations a donor has made in the past. If you add a method to compute that (or a property!), then the rest of the code doesn’t need to know how the donations are stored.</p>
-<p>Consider <code class="docutils literal notranslate"><span class="pre">data[0]</span></code> vs <code class="docutils literal notranslate"><span class="pre">data[&quot;first_name&quot;]</span></code> vs <code class="docutils literal notranslate"><span class="pre">data.first_name</span></code>. Which one is more readable? Keep in mind that another benefit of using OO for data encapsulation is ability of modern IDE to provide auto-completion, which reduces number of bugs and helps to produce code faster.</p>
+<p>For this simple problem, simple tuples could work fine. However, in order for the code to be more flexible in the future: for example, if new “fields” were added to the donor object, it’s probably better to use a more structured data type, so you don’t have to worry about changing the order or number of fields.</p>
+<p>So now you have to think about using a dict or class. Again for flexibility, a dict is a bit easier; you can add fields to it very easily. However, with a class, you can build some functionality in there, too. This is where encapsulation comes in. For instance, one thing you might want to do is get the total of all donations a donor has made in the past. If you add a method to compute that (or a property!), then the rest of the code doesn’t need to know how the donations are stored.</p>
+<p>Consider <code class="docutils literal notranslate"><span class="pre">data[0]</span></code> vs <code class="docutils literal notranslate"><span class="pre">data[&quot;name&quot;]</span></code> vs <code class="docutils literal notranslate"><span class="pre">data.name</span></code>. Which one is more readable? Keep in mind that another benefit of using OO for data encapsulation is ability of modern IDEs to provide auto-completion, which reduces the number of bugs and helps to produce code faster.</p>
 <p>Below are more detailed suggestions on breaking down your existing code into multiple modules that will be part of a single mailroom program.</p>
-<div class="section" id="modules-vs-classes">
-<h4>Modules vs. Classes<a class="headerlink" href="#modules-vs-classes" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="modules-and-classes">
+<h4>Modules and Classes<a class="headerlink" href="#modules-and-classes" title="Permalink to this headline">¶</a></h4>
 <p>You may organize your code to your preference and keep it simple by having all of the code in a single file.</p>
 <p>Optionally, you could organize your code into modules, which helps to keep code organized and re-usable.</p>
-<p>What is a module? A module is a python file that can be imported in other files.
-Modules can contain functions, classes, and even variables (constants).</p>
+<p>What is a module? A module is a python file with a collection of code that can be imported into other python files.</p>
+<p>Modules can contain functions, classes, and even variables (constants).</p>
 <p>Here is an example file structure for <code class="docutils literal notranslate"><span class="pre">mailroom_oo</span></code> package that contains 3 modules:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>└── mailroom_oo
-   ├── __init__.py
    ├── cli_main.py
    ├── donor_models.py
    └── test_mailroom_oo.py
@@ -223,35 +222,38 @@ Modules can contain functions, classes, and even variables (constants).</p>
 </div>
 <p>The module <code class="docutils literal notranslate"><span class="pre">donor_models.py</span></code> can contain the <code class="docutils literal notranslate"><span class="pre">Donor</span></code> and <code class="docutils literal notranslate"><span class="pre">DonorCollection</span></code> classes.</p>
 <p>The module <code class="docutils literal notranslate"><span class="pre">cli_main.py</span></code> would include all of your user interaction functions and main program flow.</p>
-<p>Note that <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> is an empty file that tells Python that this directory should be treated as a package so that you can import modules.</p>
 </div>
 <div class="section" id="donor-class">
-<h4>Donor Class<a class="headerlink" href="#donor-class" title="Permalink to this headline">¶</a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">Donor</span></code> Class<a class="headerlink" href="#donor-class" title="Permalink to this headline">¶</a></h4>
 <p><strong>Class responsible for donor data encapsulation</strong></p>
-<p>This class will hold all the information about a single donor, and have attributes, properties, and methods to provide access to the donor-specific information that is needed.
-Remember, if you are writing code that only accesses information about a single donor, then it should most likely live in this class.</p>
+<p>This class will hold all the information about a <em>single</em> donor, and have attributes, properties, and methods to provide access to the donor-specific information that is needed.
+Any code that only accesses information about a single donor should be part of this class.</p>
 </div>
 <div class="section" id="donorcollection-class">
-<h4>DonorCollection Class<a class="headerlink" href="#donorcollection-class" title="Permalink to this headline">¶</a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">DonorCollection</span></code> Class<a class="headerlink" href="#donorcollection-class" title="Permalink to this headline">¶</a></h4>
 <p><strong>Class responsible for donor collection data encapsulation</strong></p>
 <p>This class will hold all of the donor objects, as well as methods to add a new donor, search for a given donor, etc. If you want a way to save and re-load your data, this class would hold that method, too.</p>
 <p>Your class for the collection of donors will also hold the code that generates reports about multiple donors.</p>
+<p>In short: if the functionality involves more than one donor – it belongs in this class.</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">DonorCollection</span></code> class should be holding, and working with, <code class="docutils literal notranslate"><span class="pre">Donor</span></code> objects – it should NOT work directly with a list of donations, etc.</p>
+<p><strong>Examples:</strong></p>
+<p>Generating a thank you letter to a donor only requires knowledge of that one donor – so that code belongs in the <code class="docutils literal notranslate"><span class="pre">Donor</span></code> class.</p>
+<p>Generating a report about all the donors requires knowledge of all the donors, so that code belongs in the <code class="docutils literal notranslate"><span class="pre">DonorCollection</span></code> class.</p>
 </div>
 <div class="section" id="command-line-interface">
 <h4>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h4>
 <p><strong>Module responsible for main program flow (CLI - Command Line Interface)</strong></p>
-<p>Let’s call this module <code class="docutils literal notranslate"><span class="pre">cli_main.py</span></code> to represent the entry point for the mailroom program. This module will be using the classes we defined: <code class="docutils literal notranslate"><span class="pre">Donor</span></code> and <code class="docutils literal notranslate"><span class="pre">DonorCollection</span></code>. It will also handle interaction with the user via the <code class="docutils literal notranslate"><span class="pre">input</span></code> function calls that gather user input and to provide the output to the console.</p>
+<p>Let’s call this module <code class="docutils literal notranslate"><span class="pre">cli_main.py</span></code> to represent the entry point for the mailroom program.
+This module will be using the classes we defined: <code class="docutils literal notranslate"><span class="pre">Donor</span></code> and <code class="docutils literal notranslate"><span class="pre">DonorCollection</span></code>.
+It will also handle interaction with the user via the <code class="docutils literal notranslate"><span class="pre">input</span></code> function calls that gather user input and to provide the output to the console.</p>
 <p>What should go into this module?</p>
-<ul class="simple">
-<li>main “switch dictionary” to map user selection to the program features; in general, you will have a method for each of the mailroom functions.</li>
-<li><code class="docutils literal notranslate"><span class="pre">input</span></code> function calls to gather user input</li>
-<li><code class="docutils literal notranslate"><span class="pre">print</span></code> statements to print to console</li>
-</ul>
+<p>A set of user-interaction menu functions – to handle each of the modes of the program.</p>
+<p>These will include <code class="docutils literal notranslate"><span class="pre">input()</span></code> function calls to gather user input, and <code class="docutils literal notranslate"><span class="pre">print()</span></code> functions to print results to console.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Technically, console print statements don’t belong in your data classes. However, for some features of this program, such as “send letters,” we are simply printing instead of “sending,” so it is ok for this feature to reside in the data class. But do keep integration of console print statements with data classes to a minimum. Ideally, the data class methods return a string, and the UI code does the printing.</p>
+<p class="last">Console print statements don’t belong in your data classes. So for features such as “send letters,” in which we are simply printing instead of “sending”, the data class methods should return a string, and let the UI code do the printing. This will mean there may be very simple functions in the UI code that simply call a method and print the results – but that does keep flexibility for other ways of handling user interaction.</p>
 </div>
-<p>Why is this separation of data and method so important?</p>
+<p class="rubric">Why is this separation of data and method so important?</p>
 <p>The idea here is that we should be able to fairly easy replace this CLI program with a different type of interface,
 such as a GUI (Graphical User Interface), without having to make any changes to our data classes.
 If that was the case, then you would implement the GUI elements and use your data classes the same way as they are used in CLI.</p>
@@ -260,8 +262,14 @@ If that was the case, then you would implement the GUI elements and use your dat
 <div class="section" id="test-driven-development">
 <h3>Test-Driven Development<a class="headerlink" href="#test-driven-development" title="Permalink to this headline">¶</a></h3>
 <p>At this point we have done a great job refactoring the more complex code out of data-holding classes and we are left with simple classes that are more straightforward to unit test. As you build your classes, update the tests you already have to the logic code to the new API. Ideally, update the tests first, then the code.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">Donor</span></code> and <code class="docutils literal notranslate"><span class="pre">DonorCollection</span></code> classes should now have close to 100 percent code coverage.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Donor</span></code> and <code class="docutils literal notranslate"><span class="pre">DonorCollection</span></code> classes should now have 100 percent code coverage, which means that every line of code in your <code class="docutils literal notranslate"><span class="pre">donor_models.py</span></code> file will be run at least once when your tests are run.</p>
 <p>For the moment, don’t worry about testing most of the command line interface code. That requires simulating user input, which is an advanced testing topic. But you can (hopefully) see some of the benefits of separating the user-interaction code from the logic code; your logic code is much easier to test with no user-interaction involved.</p>
+<p class="rubric">refactoring non-OO code</p>
+<p>In this case, you already have working code without an OO structure. You should be able to re-use a fair bit of your existing code.
+However, you should still start with the OO structure/design.
+That is, rather than take a non-OO function and try to make it a method of a class, decide what method you need, and what it’s API should be, and then see if you have code you can use to fill in that function.</p>
+<p>You should expect to re-use a lot of the command line interface code, while refactoring most of the logic code.</p>
+<p>If you are not sure at the start what functionality you data classes will need, you can start with the CLI code, and as you find the need for a function, add it to your data classes (after writing a test first, of course).</p>
 </div>
 </div>
 <div class="section" id="exercise-guidelines">
@@ -277,15 +285,13 @@ If that was the case, then you would implement the GUI elements and use your dat
 <li>User inputting a non-number as a donation</li>
 <li>Trying to make a negative donation</li>
 <li>User getting capitalization or spacing or ??? wrong with a name.<ul>
-<li>maybe add logic where you tell them that the name is not in the DB, and do they want to create it, rather than simply creating a new record for a typo in a donor name.</li>
+<li>Maybe add logic where you tell them that the name is not in the DB, and do they want to create it, rather than simply creating a new record for a typo in a donor name.</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="code-structure">
-<h3>Code structure:<a class="headerlink" href="#code-structure" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Code structure</p>
 <ul class="simple">
 <li>Classes should have clear purpose and encapsulation: only the code within a class should know exactly how the data are stored, for instance.</li>
 <li>Anything that only needs to know about one donor should be in the <code class="docutils literal notranslate"><span class="pre">Donor</span></code> class</li>
@@ -297,7 +303,7 @@ If that was the case, then you would implement the GUI elements and use your dat
 </ul>
 </li>
 </ul>
-<p>Testing:</p>
+<p class="rubric">Testing</p>
 <ul class="simple">
 <li>All logic code should be tested.</li>
 <li>Tests should be isolated to test one thing each</li>
@@ -308,21 +314,23 @@ If that was the case, then you would implement the GUI elements and use your dat
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="now-the-soft-stuff">
-<h3>Now the “soft” stuff:<a class="headerlink" href="#now-the-soft-stuff" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Style: conform to PEP8! (or another consistent style)<ul>
+<p class="rubric">The “soft” stuff:</p>
+<dl class="docutils">
+<dt>Style:</dt>
+<dd><ul class="first last simple">
+<li>conform to PEP8! (or another consistent style)</li>
 <li>You can use 95 or some other reasonable number for line length</li>
 </ul>
-</li>
-<li>docstrings: functions and classes should all have good docstrings. They can very very short if the function does something simple.</li>
-<li>Naming: all classes, functions, methods, attributes, variables should have appropriate names: meaningful, but not too detailed.</li>
-</ul>
+</dd>
+<dt>Docstrings:</dt>
+<dd>Functions and classes should all have good docstrings. They can be very short if the function does something simple.</dd>
+<dt>Naming:</dt>
+<dd>All classes, functions, methods, attributes, variables should have appropriate names: meaningful, but not too detailed.</dd>
+</dl>
 </div>
 <div class="section" id="extra-ideas">
-<h3>Extra ideas:<a class="headerlink" href="#extra-ideas" title="Permalink to this headline">¶</a></h3>
-<p>In case, you are bored – what features can you add?</p>
+<h3>Extra Ideas:<a class="headerlink" href="#extra-ideas" title="Permalink to this headline">¶</a></h3>
+<p>In case you are bored – what features can you add?</p>
 <ul class="simple">
 <li>How about an html report using your html_render code?</li>
 <li>Fancier reporting</li>
