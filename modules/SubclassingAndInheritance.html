@@ -188,36 +188,71 @@ from pre-existing classes called base classes or super classes.</p>
 <p>(<a class="reference external" href="http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29">http://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29</a>)</p>
 <div class="section" id="subclassing">
 <h3>Subclassing<a class="headerlink" href="#subclassing" title="Permalink to this headline">¶</a></h3>
-<p>A subclass “inherits” all the attributes (methods, etc) of the parent class.</p>
-<p>You can then change (“override”) some or all of the attributes to change the behavior.</p>
-<p>You can also add new attributes to extend the behavior.  You create a subclass by passing the superclass to the class statement.</p>
+<p>A subclass “inherits” all the attributes (methods, etc) of the parent class. This means that a subclass will have everything that its “parents” have.</p>
+<p>You can then change (“override”) some or all of the attributes to change the behavior.  You can also add new attributes to extend the behavior.</p>
+<p>You create a subclass by passing the superclass to the <code class="docutils literal notranslate"><span class="pre">class</span></code> statement.</p>
 <p>The simplest subclass in Python:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">A_subclass</span><span class="p">(</span><span class="n">The_superclass</span><span class="p">):</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">A_subclass</span></code>  now has exactly the same behavior as <code class="docutils literal notranslate"><span class="pre">The_superclass</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">A_subclass</span></code>  now has exactly the same behavior as <code class="docutils literal notranslate"><span class="pre">The_superclass</span></code> – all the same attributes and methods.</p>
 </div>
 <div class="section" id="overriding-attributes">
 <h3>Overriding attributes<a class="headerlink" href="#overriding-attributes" title="Permalink to this headline">¶</a></h3>
 <p>Overriding is as simple as creating a new attribute with the same name:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
-    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span>
-
-<span class="o">...</span>
-
-<span class="k">class</span> <span class="nc">NewCircle</span><span class="p">(</span><span class="n">Circle</span><span class="p">):</span>
-    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">NewCircle</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">nc</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
-<span class="n">blue</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span>    <span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
+<span class="gp">   ...: </span>        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span>
+<span class="gp">   ...:</span>
 </pre></div>
 </div>
-<p>all the <code class="docutils literal notranslate"><span class="pre">self</span></code>  instances will have the new attribute.</p>
+<p>We now have a class with a class attribute, <code class="docutils literal notranslate"><span class="pre">color</span></code>, with the value: “red”. All instances of <code class="docutils literal notranslate"><span class="pre">Circle</span></code> will be red:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="n">c</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">()</span>
+
+<span class="gp">In [3]: </span><span class="n">c</span><span class="o">.</span><span class="n">color</span>
+<span class="gh">Out[3]: </span><span class="go">&#39;red&#39;</span>
+</pre></div>
+</div>
+<p>If we create a subclass of Circle, and set that same class attribute:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span>    <span class="k">class</span> <span class="nc">NewCircle</span><span class="p">(</span><span class="n">Circle</span><span class="p">):</span>
+<span class="gp">   ...: </span>        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span>
+<span class="gp">   ...:</span>
+
+<span class="gp">In [5]: </span><span class="n">nc</span> <span class="o">=</span> <span class="n">NewCircle</span><span class="p">()</span>
+
+<span class="gp">In [6]: </span><span class="n">nc</span><span class="o">.</span><span class="n">color</span>
+<span class="gh">Out[6]: </span><span class="go">&#39;blue&#39;</span>
+</pre></div>
+</div>
+<p>We now have a class that is all the same, except that its instances have the color blue.</p>
+<p>Note that any methods that refer to that attribute, will get the new value, even if the methods themselves have not changed:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
+<span class="go">    ...:     color = &quot;red&quot;</span>
+<span class="go">    ...:</span>
+<span class="go">    ...:     def describe(self):</span>
+<span class="go">    ...:         return f&quot;I am a {self.color} circle&quot;</span>
+<span class="go">    ...:</span>
+
+<span class="gp">In [11]: </span><span class="k">class</span> <span class="nc">NewCircle</span><span class="p">(</span><span class="n">Circle</span><span class="p">):</span>
+<span class="go">    ...:     color = &quot;blue&quot;</span>
+<span class="go">    ...:</span>
+
+<span class="gp">In [12]: </span><span class="n">c</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">()</span>
+
+<span class="gp">In [13]: </span><span class="n">c</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="gh">Out[13]: </span><span class="go">&#39;I am a red circle&#39;</span>
+
+<span class="gp">In [14]: </span><span class="n">nc</span> <span class="o">=</span> <span class="n">NewCircle</span><span class="p">()</span>
+
+<span class="gp">In [15]: </span><span class="n">nc</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="gh">Out[15]: </span><span class="go">&#39;I am a blue circle&#39;</span>
+</pre></div>
+</div>
+<p>Note that this is <em>why</em> self is passed in to every method – when you write the method, you don’t know exactly what class <code class="docutils literal notranslate"><span class="pre">self</span></code> will be – it is an instance of the class at the time the method is called.</p>
 </div>
 <div class="section" id="overriding-methods">
 <h3>Overriding methods<a class="headerlink" href="#overriding-methods" title="Permalink to this headline">¶</a></h3>
-<p>Same thing, but with methods (remember, a method <em>is</em> an attribute in Python)</p>
+<p>Overriding methods is exactly the same thing, but with methods (remember, a method <em>is</em> an attribute in Python – one that happens to be a function)</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
 <span class="o">...</span>
     <span class="k">def</span> <span class="nf">grow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
@@ -232,17 +267,18 @@ from pre-existing classes called base classes or super classes.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>all the instances will have the new method.</p>
+<p>all the instances of the new class will have the new method – similar, but different, behavior.  Note that both these methods are requiring that the class instance has a <code class="docutils literal notranslate"><span class="pre">diameter</span></code> attribute.</p>
 <p><strong>Here’s a program design suggestion:</strong></p>
 <blockquote>
 <div><p>Whenever you override a method, the interface of the new method should be the same as the old.  It should take the same parameters, return the same type, and obey the same preconditions and postconditions.</p>
 <p>If you obey this rule, you will find that any function designed to work with an instance of a superclass, like a Deck, will also work with instances of subclasses like a Hand or PokerHand.  If you violate this rule, your code will collapse like (sorry) a house of cards.</p>
 </div></blockquote>
+<p>– from <em>Think Python</em></p>
 </div>
 <div class="section" id="overriding-init">
 <h3>Overriding <code class="docutils literal notranslate"><span class="pre">__init__</span></code><a class="headerlink" href="#overriding-init" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">__init__</span></code> is a common method to override.</p>
-<p>You often need to call the super class <code class="docutils literal notranslate"><span class="pre">__init__</span></code>  as well.</p>
+<p>You often need to call the super class <code class="docutils literal notranslate"><span class="pre">__init__</span></code>  as well, so that any initialization required is performed:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
     <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diameter</span><span class="p">):</span>
@@ -255,10 +291,28 @@ from pre-existing classes called base classes or super classes.</p>
 </pre></div>
 </div>
 <p>Exception to: “don’t change the method signature” rule.</p>
+<p>Often when you override <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, the new class may take an extra parameter or two.  In this case, you will want to keep the signature as similar as possible, and cleanly define what is part of the subclass. A common idiom in this case is this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">A_Subclass</span><span class="p">(</span><span class="n">A_Superclass</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param1</span> <span class="o">=</span> <span class="n">param1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_something</span><span class="p">(</span><span class="n">param2</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="using-the-superclasses-methods">
-<h3>Using the superclasses’ methods<a class="headerlink" href="#using-the-superclasses-methods" title="Permalink to this headline">¶</a></h3>
-<p>You can also call the superclass’ other methods:</p>
+<p>That is:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Put the extra parameters in the beginning of the list – usually as required positional parameters.</li>
+<li>Accept <code class="docutils literal notranslate"><span class="pre">*args</span></code> and <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code></li>
+<li>Pass everything else on to the superclass’ __init__</li>
+</ul>
+</div></blockquote>
+<p>Using <code class="docutils literal notranslate"><span class="pre">*args</span></code> and <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> is a way to make it clear that the rest is simply the signature of the superclass.  It is also flexible if the superclass (or others up in the hierarchy) changes – it could completely change its signature, and this subclass would still work.</p>
+</div>
+<div class="section" id="using-the-superclass-methods">
+<h3>Using the superclass’ methods<a class="headerlink" href="#using-the-superclass-methods" title="Permalink to this headline">¶</a></h3>
+<p>In a subclass, you can access everything in the superclass: all attributes and other methods:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
 <span class="o">...</span>
     <span class="k">def</span> <span class="nf">get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diameter</span><span class="p">):</span>
@@ -271,11 +325,11 @@ from pre-existing classes called base classes or super classes.</p>
         <span class="k">return</span> <span class="n">Circle</span><span class="o">.</span><span class="n">get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Note that there is nothing special about <code class="docutils literal notranslate"><span class="pre">__init__</span></code>  except that it gets called automatically when you instantiate an instance. Otherwise, it is the same as any other method – it gets <code class="docutils literal notranslate"><span class="pre">self</span></code> as the first argument, it can or can not call the superclasses methods, etc.</p>
+<p>Note that there is nothing special about <code class="docutils literal notranslate"><span class="pre">__init__</span></code>  except that it gets called automatically when you instantiate an instance. Otherwise, it is the same as any other method – it gets <code class="docutils literal notranslate"><span class="pre">self</span></code> as the first argument, it can or can not call the superclass’ methods, etc.</p>
 </div>
 <div class="section" id="favor-object-composition-over-class-inheritance">
 <h3>“Favor Object Composition Over Class Inheritance”<a class="headerlink" href="#favor-object-composition-over-class-inheritance" title="Permalink to this headline">¶</a></h3>
-<p>That is a quotation from the “Design Patterns” book – kind of one of the gospels of OO programming.</p>
+<p>That is a quotation from the “Design Patterns” book – one of the gospels of OO programming.</p>
 <p>But what does it mean?</p>
 <p>There are essentially two ways to add multiple functionalities to a class:</p>
 <p>Subclassing</p>
@@ -298,6 +352,7 @@ from pre-existing classes called base classes or super classes.</p>
 </div>
 <div class="section" id="attribute-resolution-order">
 <h3>Attribute Resolution Order<a class="headerlink" href="#attribute-resolution-order" title="Permalink to this headline">¶</a></h3>
+<p>Once there is a potentially large hierarchy of subclasses, how do you know which one will be used?</p>
 <p>When you access an attribute:</p>
 <p><code class="docutils literal notranslate"><span class="pre">an_instance.something</span></code></p>
 <p>Python looks for it in this order:</p>
@@ -311,6 +366,7 @@ from pre-existing classes called base classes or super classes.</p>
 </ul>
 </div></blockquote>
 <p>It can get more complicated, particularly when there are multiple superclasses (multiple inheritance), but when there is a simple inheritance structure (the usual case) – it’s fairly straightforward.</p>
+<p>This is often referred to as “method resolution order” (MRO), because it’s more complicated with methods, and in some languages, methods and attributes are more distinct than in Python. In Python, it can be thought of as “name resolution” – everything in Python is about names and namespaces.</p>
 <p>If you want to know more of the gory details – here’s some reading:</p>
 <p><a class="reference external" href="https://www.python.org/download/releases/2.3/mro/">https://www.python.org/download/releases/2.3/mro/</a></p>
 <p><a class="reference external" href="http://python-history.blogspot.com/2010/06/method-resolution-order.html">http://python-history.blogspot.com/2010/06/method-resolution-order.html</a></p>
@@ -336,21 +392,21 @@ from pre-existing classes called base classes or super classes.</p>
 </div>
 <div class="section" id="type-based-dispatch">
 <h3>Type-Based Dispatch<a class="headerlink" href="#type-based-dispatch" title="Permalink to this headline">¶</a></h3>
-<p>You’ll see code that looks like this:</p>
+<p>Occasionally you’ll see code that looks like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">A_Class</span><span class="p">):</span>
     <span class="n">Do_something_with_other</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">Do_something_else</span>
 </pre></div>
 </div>
-<p>When it’s called for, Python provides these utilties:</p>
+<p>When it’s called for, Python provides these utilities:</p>
 <blockquote>
 <div><ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">isinstance()</span></code></li>
 <li><code class="docutils literal notranslate"><span class="pre">issubclass()</span></code></li>
 </ul>
 </div></blockquote>
-<p>But it is very rarely called for! Between Duck typing, polymorphism, and EAFP, you rarely need to check for type directly.</p>
+<p>But it is <em>very</em> rarely called for! Between Duck Typing, polymorphism, and EAFP, you rarely need to check for type directly.</p>
 </div>
 <div class="section" id="wrap-up">
 <h3>Wrap Up<a class="headerlink" href="#wrap-up" title="Permalink to this headline">¶</a></h3>
@@ -364,6 +420,7 @@ from pre-existing classes called base classes or super classes.</p>
 </ul>
 <p>OO can be a very powerful approach, but don’t be a slave to what OO is <em>supposed</em> to look like.</p>
 <p>Let OO work for you, not <em>create</em> work for you.</p>
+<p>And the biggest way to do that is to support code re-use.</p>
 </div>
 </div>
 </div>
