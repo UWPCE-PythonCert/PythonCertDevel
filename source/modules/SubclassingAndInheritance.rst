@@ -22,11 +22,11 @@ The resulting classes are known as derived classes or subclasses.
 Subclassing
 -----------
 
-A subclass "inherits" all the attributes (methods, etc) of the parent class.
+A subclass "inherits" all the attributes (methods, etc) of the parent class. This means that a subclass will have everything that its "parents" have.
 
-You can then change ("override") some or all of the attributes to change the behavior.
+You can then change ("override") some or all of the attributes to change the behavior.  You can also add new attributes to extend the behavior.
 
-You can also add new attributes to extend the behavior.  You create a subclass by passing the superclass to the class statement.
+You create a subclass by passing the superclass to the ``class`` statement.
 
 The simplest subclass in Python:
 
@@ -35,33 +35,74 @@ The simplest subclass in Python:
     class A_subclass(The_superclass):
         pass
 
-``A_subclass``  now has exactly the same behavior as ``The_superclass``
+``A_subclass``  now has exactly the same behavior as ``The_superclass`` -- all the same attributes and methods.
 
 Overriding attributes
 ---------------------
 
 Overriding is as simple as creating a new attribute with the same name:
 
-.. code-block:: python
+.. code-block:: ipython
 
-    class Circle:
-        color = "red"
+  In [1]:     class Circle:
+     ...:         color = "red"
+     ...:
 
-    ...
+We now have a class with a class attribute, ``color``, with the value: "red". All instances of ``Circle`` will be red:
 
-    class NewCircle(Circle):
-        color = "blue"
-    >>> nc = NewCircle
-    >>> print(nc.color)
-    blue
+.. code-block:: ipython
 
+  In [2]: c = Circle()
 
-all the ``self``  instances will have the new attribute.
+  In [3]: c.color
+  Out[3]: 'red'
+
+If we create a subclass of Circle, and set that same class attribute:
+
+.. code-block:: ipython
+
+  In [4]:     class NewCircle(Circle):
+     ...:         color = "blue"
+     ...:
+
+  In [5]: nc = NewCircle()
+
+  In [6]: nc.color
+  Out[6]: 'blue'
+
+We now have a class that is all the same, except that its instances have the color blue.
+
+Note that any methods that refer to that attribute, will get the new value, even if the methods themselves have not changed:
+
+.. code-block:: ipython
+
+    In [10]: class Circle:
+        ...:     color = "red"
+        ...:
+        ...:     def describe(self):
+        ...:         return f"I am a {self.color} circle"
+        ...:
+
+    In [11]: class NewCircle(Circle):
+        ...:     color = "blue"
+        ...:
+
+    In [12]: c = Circle()
+
+    In [13]: c.describe()
+    Out[13]: 'I am a red circle'
+
+    In [14]: nc = NewCircle()
+
+    In [15]: nc.describe()
+    Out[15]: 'I am a blue circle'
+
+Note that this is *why* self is passed in to every method -- when you write the method, you don't know exactly what class ``self`` will be -- it is an instance of the class at the time the method is called.
 
 Overriding methods
 ------------------
 
-Same thing, but with methods (remember, a method *is* an attribute in Python)
+Overriding methods is exactly the same thing, but with methods (remember, a method *is* an attribute in Python -- one that happens to be a function)
 
 .. code-block:: python
 
@@ -79,7 +120,7 @@ Same thing, but with methods (remember, a method *is* an attribute in Python)
             self.diameter = self.diameter * math.sqrt(2)
 
 
-all the instances will have the new method.
+all the instances of the new class will have the new method -- similar, but different, behavior.  Note that both these methods are requiring that the class instance has a ``diameter`` attribute.
 
 
 **Here's a program design suggestion:**
@@ -88,12 +129,15 @@ all the instances will have the new method.
 
   If you obey this rule, you will find that any function designed to work with an instance of a superclass, like a Deck, will also work with instances of subclasses like a Hand or PokerHand.  If you violate this rule, your code will collapse like (sorry) a house of cards.
 
+-- from *Think Python*
+
+
 Overriding ``__init__``
 -----------------------
 
 ``__init__`` is a common method to override.
 
-You often need to call the super class ``__init__``  as well.
+You often need to call the super class ``__init__``  as well, so that any initialization required is performed:
 
 .. code-block:: python
 
@@ -110,11 +154,32 @@ You often need to call the super class ``__init__``  as well.
 
 Exception to: "don't change the method signature" rule.
 
+Often when you override ``__init__``, the new class may take an extra parameter or two.  In this case, you will want to keep the signature as similar as possible, and cleanly define what is part of the subclass. A common idiom in this case is this:
 
-Using the superclasses' methods
+.. code-block:: python
+
+    class A_Subclass(A_Superclass):
+
+        def __init__(self, param1, param2, *args, **kwargs):
+            self.param1 = param1
+            self.init_something(param2)
+            super().__init__(*args, **kwargs)
+
+That is:
+
+ * Put the extra parameters in the beginning of the list -- usually as required positional parameters.
+
+ * Accept ``*args`` and ``**kwargs``
+
+ * Pass everything else on to the superclass' __init__
+
+Using ``*args`` and ``**kwargs`` is a way to make it clear that the rest is simply the signature of the superclass.  It is also flexible if the superclass (or others up in the hierarchy) changes -- it could completely change its signature, and this subclass would still work.
+
+
+Using the superclass' methods
 -------------------------------
 
-You can also call the superclass' other methods:
+In a subclass, you can access everything in the superclass: all attributes and other methods:
 
 .. code-block:: python
 
@@ -130,13 +195,13 @@ You can also call the superclass' other methods:
             return Circle.get_area(self, self.radius*2)
 
 
-Note that there is nothing special about ``__init__``  except that it gets called automatically when you instantiate an instance. Otherwise, it is the same as any other method -- it gets ``self`` as the first argument, it can or can not call the superclasses methods, etc.
+Note that there is nothing special about ``__init__``  except that it gets called automatically when you instantiate an instance. Otherwise, it is the same as any other method -- it gets ``self`` as the first argument, it can or can not call the superclass' methods, etc.
 
 
 "Favor Object Composition Over Class Inheritance"
 -------------------------------------------------
 
-That is a quotation from the "Design Patterns" book -- kind of one of the gospels of OO programming.
+That is a quotation from the "Design Patterns" book -- one of the gospels of OO programming.
 
 But what does it mean?
 
@@ -178,6 +243,8 @@ You only want to subclass list if your class could be used anywhere a list can b
 Attribute Resolution Order
 --------------------------
 
+Once there is a potentially large hierarchy of subclasses, how do you know which one will be used?
+
 When you access an attribute:
 
 ``an_instance.something``
@@ -191,6 +258,8 @@ Python looks for it in this order:
   * ...
 
 It can get more complicated, particularly when there are multiple superclasses (multiple inheritance), but when there is a simple inheritance structure (the usual case) -- it's fairly straightforward.
+
+This is often referred to as "method resolution order" (MRO), because it's more complicated with methods, and in some languages, methods and attributes are more distinct than in Python. In Python, it can be thought of as "name resolution" -- everything in Python is about names and namespaces.
 
 If you want to know more of the gory details -- here's some reading:
 
@@ -222,7 +291,7 @@ That's about it -- really!
 Type-Based Dispatch
 -------------------
 
-You'll see code that looks like this:
+Occasionally you'll see code that looks like this:
 
 .. code-block:: python
 
@@ -231,12 +300,12 @@ You'll see code that looks like this:
       else:
           Do_something_else
 
-When it's called for, Python provides these utilties:
+When it's called for, Python provides these utilities:
 
     * ``isinstance()``
     * ``issubclass()``
 
-But it is very rarely called for! Between Duck typing, polymorphism, and EAFP, you rarely need to check for type directly.
+But it is *very* rarely called for! Between Duck Typing, polymorphism, and EAFP, you rarely need to check for type directly.
 
 Wrap Up
 -------
@@ -253,4 +322,6 @@ Think about what makes sense for your code:
 OO can be a very powerful approach, but don't be a slave to what OO is *supposed* to look like.
 
 Let OO work for you, not *create* work for you.
+
+And the biggest way to do that is to support code re-use.
 
