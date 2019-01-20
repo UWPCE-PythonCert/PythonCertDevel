@@ -301,10 +301,10 @@
 <span class="go">this is in inner</span>
 </pre></div>
 </div>
-<p>Look carefully to see where each of those names came from. All the print statements are in the inner function, so its local scope is searched first, and then the outer function’s scope, and then the global scope. name1 is only defined in the global scope, so that one is found.</p>
+<p>Look carefully to see where each of those names came from. All the print statements are in the inner function, so its local scope is searched first, and then the outer function’s scope, and then the global scope. <code class="docutils literal notranslate"><span class="pre">name1</span></code> is only defined in the global scope, so that one is found.</p>
 </div>
 <div class="section" id="the-global-keyword">
-<h3>The global keyword<a class="headerlink" href="#the-global-keyword" title="Permalink to this headline">¶</a></h3>
+<h3>The <code class="docutils literal notranslate"><span class="pre">global</span></code> keyword<a class="headerlink" href="#the-global-keyword" title="Permalink to this headline">¶</a></h3>
 <p>global names can be accessed from within functions, but not if that same name is created in the local scope. So you can’t change an immutable object that is outside the local scope:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [37]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 
@@ -327,7 +327,7 @@
 </pre></div>
 </div>
 <p>The problem here is that <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+=</span> <span class="pre">5</span></code> is the same as <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">5</span></code>, so it is creating a local name, but it can’t be incremented, because it hasn’t had a value set yet.</p>
-<p>The global keyword tells python that you want to use the global name, rather than create a new, local name:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">global</span></code> keyword tells python that you want to use the global name, rather than create a new, local name:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [40]: </span><span class="k">def</span> <span class="nf">increment_x</span><span class="p">():</span>
 <span class="go">    ...:     global x</span>
 <span class="go">    ...:     x += 5</span>
@@ -340,10 +340,10 @@
 <span class="gh">Out[42]: </span><span class="go">10</span>
 </pre></div>
 </div>
-<p><strong>NOTE:</strong> the use of global is frowned upon – having global variables manipulated in arbitrary other scopes makes for buggy, hard to maintain code!</p>
+<p><strong>NOTE:</strong> The use of <code class="docutils literal notranslate"><span class="pre">global</span></code> is frowned upon – having global variables manipulated in arbitrary other scopes makes for buggy, hard to maintain code!</p>
 </div>
 <div class="section" id="nonlocal-keyword">
-<h3>nonlocal keyword<a class="headerlink" href="#nonlocal-keyword" title="Permalink to this headline">¶</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">nonlocal</span></code> keyword<a class="headerlink" href="#nonlocal-keyword" title="Permalink to this headline">¶</a></h3>
 <p>The other limitation with <code class="docutils literal notranslate"><span class="pre">global</span></code> is that there is only one global namespace, so what if you are in a nested scope, and want to get at the value outside the current scope, but not all the way up at the global scope:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 
@@ -357,7 +357,7 @@
 </div>
 <p>That’s not going to work as the inner x hasn’t been initialized:</p>
 <p><code class="docutils literal notranslate"><span class="pre">UnboundLocalError:</span> <span class="pre">local</span> <span class="pre">variable</span> <span class="pre">'x'</span> <span class="pre">referenced</span> <span class="pre">before</span> <span class="pre">assignment</span></code></p>
-<p>But if we use <code class="docutils literal notranslate"><span class="pre">global</span></code>, we’ll get the global x:</p>
+<p>But if we use <code class="docutils literal notranslate"><span class="pre">global</span></code>, we’ll get the global <code class="docutils literal notranslate"><span class="pre">x</span></code>:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="k">def</span> <span class="nf">outer</span><span class="p">():</span>
 <span class="gp">   ...: </span>    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="gp">   ...: </span>    <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span>
@@ -383,7 +383,7 @@
 <span class="gh">Out[9]: </span><span class="go">15</span>
 </pre></div>
 </div>
-<p>so the global x is getting changed, but not the one in the outer scope.</p>
+<p>so the global <code class="docutils literal notranslate"><span class="pre">x</span></code> is getting changed, but not the one in the <code class="docutils literal notranslate"><span class="pre">outer</span></code> scope.</p>
 <p>This is enough of a limitation that Python 3 added a new keyword: <code class="docutils literal notranslate"><span class="pre">nonlocal</span></code>. What it means is that the name should be looked for outside the local scope, but only as far as you need to go to find it:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="k">def</span> <span class="nf">outer</span><span class="p">():</span>
 <span class="go">    ...:     x = 10</span>
@@ -398,8 +398,8 @@
 <span class="go">x in outer is: 15</span>
 </pre></div>
 </div>
-<p>So the x in the outer function scope is the one being changed.</p>
-<p>While using <code class="docutils literal notranslate"><span class="pre">global</span></code> is discouraged, <code class="docutils literal notranslate"><span class="pre">nonlocal</span></code> is safer – as long as it is referring to a name in a scope that is closely defined like the above example. In fact, nonlocal will not go all the way up to the global scope to find a name:</p>
+<p>So the <code class="docutils literal notranslate"><span class="pre">x</span></code> in the <code class="docutils literal notranslate"><span class="pre">outer</span></code> function scope is the one being changed.</p>
+<p>While using <code class="docutils literal notranslate"><span class="pre">global</span></code> is discouraged, <code class="docutils literal notranslate"><span class="pre">nonlocal</span></code> is safer – as long as it is referring to a name in a scope that is closely defined like the above example. In fact, <code class="docutils literal notranslate"><span class="pre">nonlocal</span></code> will not go all the way up to the global scope to find a name:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="k">def</span> <span class="nf">outer</span><span class="p">():</span>
 <span class="go">    ...:     def inner():</span>
 <span class="go">    ...:         nonlocal x</span>
@@ -483,8 +483,8 @@
 <span class="gh">Out[44]: </span><span class="go">11</span>
 </pre></div>
 </div>
-<p>So each time <code class="docutils literal notranslate"><span class="pre">counter()</span></code> is called, a new <code class="docutils literal notranslate"><span class="pre">incr</span></code> function is created. But also, a new namespace is created, that holds the count name. So the new <code class="docutils literal notranslate"><span class="pre">incr</span></code> function is holding a reference to that new count name.</p>
-<p>This is what makes in a “closure” – it carries with it the scope in which it was created.</p>
+<p>So each time <code class="docutils literal notranslate"><span class="pre">counter()</span></code> is called, a new <code class="docutils literal notranslate"><span class="pre">incr</span></code> function is created. But also, a new namespace is created, that holds the <code class="docutils literal notranslate"><span class="pre">count</span></code> name. So the new <code class="docutils literal notranslate"><span class="pre">incr</span></code> function is holding a reference to that new <code class="docutils literal notranslate"><span class="pre">count</span></code> name.</p>
+<p>This is what makes it a “closure” – it carries with it the scope in which it was created.</p>
 <p>The returned <code class="docutils literal notranslate"><span class="pre">incr</span></code> function is a “curried” function – a function with some parameters pre-specified.</p>
 <p>Let’s experiment a bit more with these ideas:</p>
 <p><a class="reference download internal" href="../_downloads/play_with_scope.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">play_with_scope.py</span></code></a></p>
@@ -512,7 +512,7 @@
     <span class="k">return</span> <span class="mf">0.5</span> <span class="o">**</span> <span class="p">(</span><span class="n">time</span> <span class="o">/</span> <span class="p">(</span><span class="n">half_life</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>But this is a bit klunky – I need to keep passing that half_life around, even though it isn’t changing. And there are places, like <code class="docutils literal notranslate"><span class="pre">map</span></code> that require a function that takes only one argument!</p>
+<p>But this is a bit klunky – I need to keep passing that <code class="docutils literal notranslate"><span class="pre">half_life</span></code> around, even though it isn’t changing. And there are places, like <code class="docutils literal notranslate"><span class="pre">map</span></code> that require a function that takes only one argument!</p>
 <p>What if I could create a function, on the fly, that had a particular half-life “baked in”?</p>
 <p><em>Enter Currying</em> – Currying is a technique where you reduce the number of parameters that function takes, creating a specialized function with one or more of the original parameters set to a particular value. Here is that technique, applied to the half-life decay problem:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_scale_fun</span><span class="p">(</span><span class="n">half_life</span><span class="p">):</span>
@@ -570,7 +570,7 @@
 <p>The <code class="docutils literal notranslate"><span class="pre">functools</span></code> module in the standard library provides utilities for working with functions:</p>
 <p><a class="reference external" href="https://docs.python.org/3.5/library/functools.html">https://docs.python.org/3.5/library/functools.html</a></p>
 <p>Creating a curried function turns out to be common enough that the <code class="docutils literal notranslate"><span class="pre">functools.partial</span></code> function provides an optimized way to do it:</p>
-<p>What functools.partial does is:</p>
+<p>What <code class="docutils literal notranslate"><span class="pre">functools.partial</span></code> does is:</p>
 <blockquote>
 <div><ul class="simple">
 <li>Makes a new version of a function with one or more arguments already filled in.</li>
