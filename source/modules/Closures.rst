@@ -162,9 +162,9 @@ So there are multiple scopes in play at any point -- the local scope, and all th
     this is in outer
     this is in inner
 
-Look carefully to see where each of those names came from. All the print statements are in the inner function, so its local scope is searched first, and then the outer function's scope, and then the global scope. name1 is only defined in the global scope, so that one is found.
+Look carefully to see where each of those names came from. All the print statements are in the inner function, so its local scope is searched first, and then the outer function's scope, and then the global scope. ``name1`` is only defined in the global scope, so that one is found.
 
-The global keyword
+The ``global`` keyword
 ------------------
 
 global names can be accessed from within functions, but not if that same name is created in the local scope. So you can't change an immutable object that is outside the local scope:
@@ -192,7 +192,7 @@ global names can be accessed from within functions, but not if that same name is
 
 The problem here is that ``x += 5`` is the same as ``x = x + 5``, so it is creating a local name, but it can't be incremented, because it hasn't had a value set yet.
 
-The global keyword tells python that you want to use the global name, rather than create a new, local name:
+The ``global`` keyword tells python that you want to use the global name, rather than create a new, local name:
 
 .. code-block:: ipython
 
@@ -207,9 +207,9 @@ The global keyword tells python that you want to use the global name, rather tha
     In [42]: x
     Out[42]: 10
 
-**NOTE:** the use of global is frowned upon -- having global variables manipulated in arbitrary other scopes makes for buggy, hard to maintain code!
+**NOTE:** The use of ``global`` is frowned upon -- having global variables manipulated in arbitrary other scopes makes for buggy, hard to maintain code!
 
-nonlocal keyword
+``nonlocal`` keyword
 ----------------
 
 The other limitation with ``global`` is that there is only one global namespace, so what if you are in a nested scope, and want to get at the value outside the current scope, but not all the way up at the global scope:
@@ -229,7 +229,7 @@ That's not going to work as the inner x hasn't been initialized:
 
 ``UnboundLocalError: local variable 'x' referenced before assignment``
 
-But if we use ``global``, we'll get the global x:
+But if we use ``global``, we'll get the global ``x``:
 
 .. code-block:: ipython
 
@@ -257,7 +257,7 @@ But if we use ``global``, we'll get the global x:
     In [9]: x
     Out[9]: 15
 
-so the global x is getting changed, but not the one in the outer scope.
+so the global ``x`` is getting changed, but not the one in the ``outer`` scope.
 
 This is enough of a limitation that Python 3 added a new keyword: ``nonlocal``. What it means is that the name should be looked for outside the local scope, but only as far as you need to go to find it:
 
@@ -275,9 +275,9 @@ This is enough of a limitation that Python 3 added a new keyword: ``nonlocal``. 
     In [11]: outer()
     x in outer is: 15
 
-So the x in the outer function scope is the one being changed.
+So the ``x`` in the ``outer`` function scope is the one being changed.
 
-While using ``global`` is discouraged, ``nonlocal`` is safer -- as long as it is referring to a name in a scope that is closely defined like the above example. In fact, nonlocal will not go all the way up to the global scope to find a name:
+While using ``global`` is discouraged, ``nonlocal`` is safer -- as long as it is referring to a name in a scope that is closely defined like the above example. In fact, ``nonlocal`` will not go all the way up to the global scope to find a name:
 
 .. code-block:: ipython
 
@@ -404,9 +404,9 @@ But what happens if we call ``counter()`` multiple times?
     In [44]: c2()
     Out[44]: 11
 
-So each time ``counter()`` is called, a new ``incr`` function is created. But also, a new namespace is created, that holds the count name. So the new ``incr`` function is holding a reference to that new count name.
+So each time ``counter()`` is called, a new ``incr`` function is created. But also, a new namespace is created, that holds the ``count`` name. So the new ``incr`` function is holding a reference to that new ``count`` name.
 
-This is what makes in a "closure" -- it carries with it the scope in which it was created.
+This is what makes it a "closure" -- it carries with it the scope in which it was created.
 
 The returned ``incr`` function is a "curried" function -- a function with some parameters pre-specified.
 
@@ -451,7 +451,7 @@ So to compute the scale, I could pass that half-life in each time I called the f
     def scale(time, half_life):
         return 0.5 ** (time / (half_life))
 
-But this is a bit klunky -- I need to keep passing that half_life around, even though it isn't changing. And there are places, like ``map`` that require a function that takes only one argument!
+But this is a bit klunky -- I need to keep passing that ``half_life`` around, even though it isn't changing. And there are places, like ``map`` that require a function that takes only one argument!
 
 What if I could create a function, on the fly, that had a particular half-life "baked in"?
 
@@ -527,7 +527,7 @@ https://docs.python.org/3.5/library/functools.html
 
 Creating a curried function turns out to be common enough that the ``functools.partial`` function provides an optimized way to do it:
 
-What functools.partial does is:
+What ``functools.partial`` does is:
 
  * Makes a new version of a function with one or more arguments already filled in.
  * The new version of a function documents itself.
