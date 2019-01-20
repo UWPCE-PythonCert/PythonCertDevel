@@ -255,7 +255,7 @@ not all sequences are iterators. To make a sequence an iterator, you can call it
 </div>
 <div class="section" id="iterables">
 <h2>Iterables<a class="headerlink" href="#iterables" title="Permalink to this headline">¶</a></h2>
-<p>To make an object iterable, you simply have to implement the __getitem__ method.</p>
+<p>To make an object iterable, you simply have to implement the <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">T</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">position</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
@@ -267,8 +267,8 @@ not all sequences are iterators. To make a sequence an iterator, you can call it
 <div class="section" id="iter">
 <h2><code class="docutils literal notranslate"><span class="pre">iter()</span></code><a class="headerlink" href="#iter" title="Permalink to this headline">¶</a></h2>
 <p>How do you get the iterator object from an “iterable”?</p>
-<p>The iter function will make any iterable an iterator. It first looks for the __iter__
-method, and if none is found, uses get_item to create the iterator.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">iter</span></code> function will make any iterable an iterator. It first looks for the <code class="docutils literal notranslate"><span class="pre">__iter__</span></code>
+method, and if none is found, uses <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> to create the iterator.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">iter()</span></code> function:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="nb">iter</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
 <span class="gh">Out[20]: </span><span class="go">&lt;listiterator at 0x101e01350&gt;</span>
@@ -321,7 +321,7 @@ the following word.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">triple</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">words</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">words</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">words</span><span class="p">[</span><span class="mi">2</span><span class="p">:]):</span>
 </pre></div>
 </div>
-<p>zip() returns an iterable – it does not build up the whole list.
+<p><code class="docutils literal notranslate"><span class="pre">zip()</span></code> returns an iterable – it does not build up the whole list.
 So this is quite efficient.</p>
 <p>but we are still slicing: ([1:]), which produces a copy – so we are creating three copies of
 the list – not so good if memory is tight. Note that they are shallow copies, so not <strong>that</strong> bad.</p>
@@ -418,7 +418,7 @@ method that returns an iterator and/or has a <code class="docutils literal notra
 <li>Has a <code class="docutils literal notranslate"><span class="pre">__next__()</span></code> method that returns objects.</li>
 <li>Raises <code class="docutils literal notranslate"><span class="pre">StopIteration</span></code> when their are no more objects to be returned.</li>
 <li>Has a <code class="docutils literal notranslate"><span class="pre">__iter__()</span></code> method that returns an iterator – usually itself.
-- sometimes the __iter__() method re-sets the iteration…</li>
+- sometimes the <code class="docutils literal notranslate"><span class="pre">__iter__()</span></code> method re-sets the iteration…</li>
 </ul>
 </div></blockquote>
 <p><a class="reference external" href="https://docs.python.org/3/glossary.html#term-iterator">https://docs.python.org/3/glossary.html#term-iterator</a></p>
@@ -504,7 +504,7 @@ function – it preserves the state so it can pick up where it left off.</p>
 <p>To master yield, you must understand that when you call the function,
 the code you have written in the function body does not run. The function
 only returns the generator object. The actual code in the function is run
-when next() is called on the generator itself.</p>
+when <code class="docutils literal notranslate"><span class="pre">next()</span></code> is called on the generator itself.</p>
 <p>And note that each time you call the “generator function” you get a new
 instance of a generator object that saves state separately from other instances.</p>
 <p>An example: like <code class="docutils literal notranslate"><span class="pre">range()</span></code></p>
@@ -533,7 +533,7 @@ instance of a generator object that saves state separately from other instances.
 <p>Note: A generator function can also be a method in a class</p>
 <p>In fact, this is a nice way to provide different ways to iterate over
 the data in a class in multiple ways.</p>
-<p>This is done by the dict protocol with dict.keys() and dict.values().</p>
+<p>This is done by the dict protocol with <code class="docutils literal notranslate"><span class="pre">dict.keys()</span></code> and <code class="docutils literal notranslate"><span class="pre">dict.values()</span></code>.</p>
 <p>More about iterators and generators:</p>
 <p>Chapter 14 in Fluent Python by Luciano Ramalho</p>
 <p><a class="reference external" href="http://www.learningpython.com/2009/02/23/iterators-iterables-and-generators-oh-my/">http://www.learningpython.com/2009/02/23/iterators-iterables-and-generators-oh-my/</a></p>
@@ -558,9 +558,9 @@ the data in a class in multiple ways.</p>
 </div>
 <div class="section" id="other-uses-for-yield">
 <h2>Other uses for <code class="docutils literal notranslate"><span class="pre">yield</span></code><a class="headerlink" href="#other-uses-for-yield" title="Permalink to this headline">¶</a></h2>
-<p>The yield keyword and generator functions were designed with classic “generators” in mind.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">yield</span></code> keyword and generator functions were designed with classic “generators” in mind.</p>
 <p>That is – objects that generate values on the fly.</p>
-<p>But, as we alluded to earlier, yield can be used for other things as well.</p>
+<p>But, as we alluded to earlier, <code class="docutils literal notranslate"><span class="pre">yield</span></code> can be used for other things as well.</p>
 <p>Anytime you want to return a value, and then hold state until later,
 <code class="docutils literal notranslate"><span class="pre">yield</span></code> can be used.</p>
 <p><strong>Example:</strong> pytest fixtures:</p>
@@ -573,7 +573,7 @@ the data in a class in multiple ways.</p>
     <span class="n">something_with</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In this case, the yield isn’t in any sort of loop or anything.
+<p>In this case, the <code class="docutils literal notranslate"><span class="pre">yield</span></code> isn’t in any sort of loop or anything.
 It will only get run once. But the generator will maintain state,
 so the value can be used after the yield to do the teardown.</p>
 <p>How would this be done without yield? You’d need to store the value in a class:</p>

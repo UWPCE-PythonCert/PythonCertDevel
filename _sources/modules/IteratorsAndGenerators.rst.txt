@@ -115,7 +115,7 @@ https://docs.python.org/3/library/stdtypes.html#iterator-types
 Iterables
 ---------
 
-To make an object iterable, you simply have to implement the __getitem__ method.
+To make an object iterable, you simply have to implement the ``__getitem__`` method.
 
 .. code-block:: python
 
@@ -131,8 +131,8 @@ To make an object iterable, you simply have to implement the __getitem__ method.
 
 How do you get the iterator object from an "iterable"?
 
-The iter function will make any iterable an iterator. It first looks for the __iter__
-method, and if none is found, uses get_item to create the iterator.
+The ``iter`` function will make any iterable an iterator. It first looks for the ``__iter__``
+method, and if none is found, uses ``__getitem__`` to create the iterator.
 
 The ``iter()`` function:
 
@@ -199,7 +199,7 @@ It works, and is fairly efficient, but what about:
     for triple in zip(words[:-2], words[1:-1], words[2:]):
 
 
-zip() returns an iterable -- it does not build up the whole list.
+``zip()`` returns an iterable -- it does not build up the whole list.
 So this is quite efficient.
 
 but we are still slicing: ([1:]), which produces a copy -- so we are creating three copies of
@@ -323,7 +323,7 @@ An "iterator" is anything that conforms to the "iterator protocol":
  - Has a ``__next__()`` method that returns objects.
  - Raises ``StopIteration`` when their are no more objects to be returned.
  - Has a ``__iter__()`` method that returns an iterator -- usually itself.
-   - sometimes the __iter__() method re-sets the iteration...
+   - sometimes the ``__iter__()`` method re-sets the iteration...
 
 https://docs.python.org/3/glossary.html#term-iterator
 
@@ -430,7 +430,7 @@ Really just a shorthand for an iterator class that does the book keeping for you
 To master yield, you must understand that when you call the function,
 the code you have written in the function body does not run. The function
 only returns the generator object. The actual code in the function is run
-when next() is called on the generator itself.
+when ``next()`` is called on the generator itself.
 
 And note that each time you call the "generator function" you get a new
 instance of a generator object that saves state separately from other instances.
@@ -473,7 +473,7 @@ Note: A generator function can also be a method in a class
 In fact, this is a nice way to provide different ways to iterate over
 the data in a class in multiple ways.
 
-This is done by the dict protocol with dict.keys() and dict.values().
+This is done by the dict protocol with ``dict.keys()`` and ``dict.values()``.
 
 More about iterators and generators:
 
@@ -509,11 +509,11 @@ Keep in mind -- if all you need to do with the results is loop over it
 Other uses for ``yield``
 ------------------------
 
-The yield keyword and generator functions were designed with classic "generators" in mind.
+The ``yield`` keyword and generator functions were designed with classic "generators" in mind.
 
 That is -- objects that generate values on the fly.
 
-But, as we alluded to earlier, yield can be used for other things as well.
+But, as we alluded to earlier, ``yield`` can be used for other things as well.
 
 Anytime you want to return a value, and then hold state until later,
 ``yield`` can be used.
@@ -530,7 +530,7 @@ Anytime you want to return a value, and then hold state until later,
         # do the teardown
         something_with(value)
 
-In this case, the yield isn't in any sort of loop or anything.
+In this case, the ``yield`` isn't in any sort of loop or anything.
 It will only get run once. But the generator will maintain state,
 so the value can be used after the yield to do the teardown.
 
