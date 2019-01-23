@@ -22,7 +22,7 @@ run all the code inside the context:
        ...:
     This code took 0.206805 seconds
 
-NOTE: the time module has what you need:
+NOTE: the ``time`` module has what you need:
 
 .. code-block:: python
 
@@ -30,7 +30,7 @@ NOTE: the time module has what you need:
 
     start = time.clock()
     # some code here
-    elapsed = time.clock() = start
+    elapsed = time.clock() - start
 
 ``time.clock()`` returns the number of seconds that this process has been running.  You can also use ``time.time()``, which gives the "wall time", rather than the process time. ``time()`` will vary more depending on how busy the system is. But you may want to use it if you want to measure how long it takes to download something, for instance.
 
@@ -38,13 +38,13 @@ Extra Credit
 ------------
 
 Allow the ``Timer`` context manager to take a file-like
-object as an argument (the default should be sys.stdout). The results of the
+object as an argument (the default should be ``sys.stdout``). The results of the
 timing should be printed to the file-like object. You could also pass in a name for this particular context, so the message in the file-like object is labeled -- kind of a poor man's logging system.
 
 Extra Extra Credit
 ------------------
 
-Implement this a a generator, wrapped by the:
+Implement this as a generator, wrapped by the:
 
 ``contextlib.contextmanager``
 
@@ -101,7 +101,7 @@ tests fail when an assert fails:
 
     assert some_expression, "a message"
 
-you get a failure when some_expression evaluates as false.
+you get a failure when ``some_expression`` evaluates as false.
 
 This is more-or-less the same as this code:
 
@@ -110,7 +110,7 @@ This is more-or-less the same as this code:
     if some_expression:
         raise AssertionError("a message")
 
-The reason it exists is not so much to save a bit of typing (though that's nice), but that assertions are designed for tests, ans thus can be turned of for an entire python process -- and, indeed are turned off when you turn on optimization.
+The reason it exists is not so much to save a bit of typing (though that's nice), but that assertions are designed for tests, and thus can be turned off for an entire python process -- and, indeed are turned off when you turn on optimization.
 
 So in your context manager, you can raise an AssertionError, or force one with an assert:
 
