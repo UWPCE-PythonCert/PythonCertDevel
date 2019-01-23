@@ -104,9 +104,9 @@ If the resource in questions has a ``.close()`` method, then you can simply use 
     # and here, it will be closed automatically
 
 But what if the thing doesn't have a ``close()`` method, or you're creating
-the thing and it shouldn't have a close() method?
+the thing and it shouldn't have a ``close()`` method?
 
-(full confession: urlib.request was not a context manager in py2 -- but it is in py3 -- but the issue still comes up with third-party packages and your own code!)
+(full confession: ``urlib.request`` was not a context manager in py2 -- but it is in py3 -- but the issue still comes up with third-party packages and your own code!)
 
 Do It Yourself
 --------------
@@ -158,12 +158,10 @@ clarify the order in which things happen:
 
 .. code-block:: ipython
 
-    In [2]: %paste
-        In [46]: with Context(True) as foo:
-           ....:     print('This is in the context')
-           ....:     raise RuntimeError('this is the error message')
-
-    ## -- End pasted text --
+    In [46]: with Context(True) as foo:
+        ....:     print('This is in the context')
+        ....:     raise RuntimeError('this is the error message')
+        ....:
     __init__(True)
     __enter__()
     This is in the context

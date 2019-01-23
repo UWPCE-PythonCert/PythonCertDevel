@@ -250,8 +250,8 @@ context managers.</li>
 </pre></div>
 </div>
 <p>But what if the thing doesn’t have a <code class="docutils literal notranslate"><span class="pre">close()</span></code> method, or you’re creating
-the thing and it shouldn’t have a close() method?</p>
-<p>(full confession: urlib.request was not a context manager in py2 – but it is in py3 – but the issue still comes up with third-party packages and your own code!)</p>
+the thing and it shouldn’t have a <code class="docutils literal notranslate"><span class="pre">close()</span></code> method?</p>
+<p>(full confession: <code class="docutils literal notranslate"><span class="pre">urlib.request</span></code> was not a context manager in py2 – but it is in py3 – but the issue still comes up with third-party packages and your own code!)</p>
 </div>
 <div class="section" id="do-it-yourself">
 <h3>Do It Yourself<a class="headerlink" href="#do-it-yourself" title="Permalink to this headline">¶</a></h3>
@@ -291,12 +291,10 @@ more of the nifty python <em>special methods</em></p>
 <p><a class="reference download internal" href="../_downloads/context_manager.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">context_manager.py</span></code></a></p>
 <p>This class doesn’t do much of anything, but playing with it can help
 clarify the order in which things happen:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [2]: </span><span class="o">%</span><span class="k">paste</span>
-<span class="go">    In [46]: with Context(True) as foo:</span>
-<span class="go">       ....:     print(&#39;This is in the context&#39;)</span>
-<span class="go">       ....:     raise RuntimeError(&#39;this is the error message&#39;)</span>
-
-<span class="go">## -- End pasted text --</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [46]: </span><span class="k">with</span> <span class="n">Context</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">foo</span><span class="p">:</span>
+<span class="go">    ....:     print(&#39;This is in the context&#39;)</span>
+<span class="go">    ....:     raise RuntimeError(&#39;this is the error message&#39;)</span>
+<span class="go">    ....:</span>
 <span class="go">__init__(True)</span>
 <span class="go">__enter__()</span>
 <span class="go">This is in the context</span>
