@@ -202,24 +202,24 @@ run all the code inside the context:</p>
 <span class="go">This code took 0.206805 seconds</span>
 </pre></div>
 </div>
-<p>NOTE: the time module has what you need:</p>
+<p>NOTE: the <code class="docutils literal notranslate"><span class="pre">time</span></code> module has what you need:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 
 <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
 <span class="c1"># some code here</span>
-<span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span> <span class="o">=</span> <span class="n">start</span>
+<span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">time.clock()</span></code> returns the number of seconds that this process has been running.  You can also use <code class="docutils literal notranslate"><span class="pre">time.time()</span></code>, which gives the “wall time”, rather than the process time. <code class="docutils literal notranslate"><span class="pre">time()</span></code> will vary more depending on how busy the system is. But you may want to use it if you want to measure how long it takes to download something, for instance.</p>
 <div class="section" id="extra-credit">
 <h3>Extra Credit<a class="headerlink" href="#extra-credit" title="Permalink to this headline">¶</a></h3>
 <p>Allow the <code class="docutils literal notranslate"><span class="pre">Timer</span></code> context manager to take a file-like
-object as an argument (the default should be sys.stdout). The results of the
+object as an argument (the default should be <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code>). The results of the
 timing should be printed to the file-like object. You could also pass in a name for this particular context, so the message in the file-like object is labeled – kind of a poor man’s logging system.</p>
 </div>
 <div class="section" id="extra-extra-credit">
 <h3>Extra Extra Credit<a class="headerlink" href="#extra-extra-credit" title="Permalink to this headline">¶</a></h3>
-<p>Implement this a a generator, wrapped by the:</p>
+<p>Implement this as a generator, wrapped by the:</p>
 <p><code class="docutils literal notranslate"><span class="pre">contextlib.contextmanager</span></code></p>
 <p>decorator.</p>
 </div>
@@ -257,13 +257,13 @@ timing should be printed to the file-like object. You could also pass in a name 
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">some_expression</span><span class="p">,</span> <span class="s2">&quot;a message&quot;</span>
 </pre></div>
 </div>
-<p>you get a failure when some_expression evaluates as false.</p>
+<p>you get a failure when <code class="docutils literal notranslate"><span class="pre">some_expression</span></code> evaluates as false.</p>
 <p>This is more-or-less the same as this code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">some_expression</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;a message&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The reason it exists is not so much to save a bit of typing (though that’s nice), but that assertions are designed for tests, ans thus can be turned of for an entire python process – and, indeed are turned off when you turn on optimization.</p>
+<p>The reason it exists is not so much to save a bit of typing (though that’s nice), but that assertions are designed for tests, and thus can be turned off for an entire python process – and, indeed are turned off when you turn on optimization.</p>
 <p>So in your context manager, you can raise an AssertionError, or force one with an assert:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;a message&quot;</span>
 </pre></div>
