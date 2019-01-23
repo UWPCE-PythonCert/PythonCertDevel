@@ -314,7 +314,7 @@ but both have the identical result, and can be used interchangeably.</p>
 <span class="gh">Out[6]: </span><span class="go">&lt;function __main__.my_decorator.&lt;locals&gt;.inner&gt;</span>
 </pre></div>
 </div>
-<p>Notice that other_func is now the “inner” function, which lives in the “my_decorator” namespace…</p>
+<p>Notice that <code class="docutils literal notranslate"><span class="pre">other_func</span></code> is now the “inner” function, which lives in the “my_decorator” namespace…</p>
 <p>And this is the same with the decoration syntax:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="nd">@my_decorator</span>
    <span class="o">...</span><span class="p">:</span> <span class="k">def</span> <span class="nf">other_func</span><span class="p">():</span>
@@ -328,7 +328,7 @@ but both have the identical result, and can be used interchangeably.</p>
 <span class="n">Out</span><span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">function</span> <span class="n">__main__</span><span class="o">.</span><span class="n">my_decorator</span><span class="o">.&lt;</span><span class="nb">locals</span><span class="o">&gt;.</span><span class="n">inner</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>Notice that other_func is the “inner” function here as well.</p>
+<p>Notice that <code class="docutils literal notranslate"><span class="pre">other_func</span></code> is the “inner” function here as well.</p>
 <p>Decorators have the power to replace the decorated function with a different one!</p>
 <p>And they do it with compact, declarative syntax that has the decoration right at the top where the function is defined.</p>
 </div>
@@ -489,7 +489,7 @@ rebinds it.</p>
 </div>
 <div class="section" id="property">
 <h2>property()<a class="headerlink" href="#property" title="Permalink to this headline">¶</a></h2>
-<p>Remember the property() built in?</p>
+<p>Remember the <code class="docutils literal notranslate"><span class="pre">property()</span></code> builtin?</p>
 <p>Perhaps most commonly, you’ll see the <code class="docutils literal notranslate"><span class="pre">property()</span></code> builtin used this way.</p>
 <p>Previously, we saw this code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
@@ -557,8 +557,8 @@ object. So you could actually do this:</p>
 
 
 <span class="nd">@p_decorate</span>
-    <span class="k">def</span> <span class="nf">get_fullname</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">f</span><span class="s2">&quot;{first_name} {last_name}&quot;</span>
+<span class="k">def</span> <span class="nf">get_fullname</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">f</span><span class="s2">&quot;{first_name} {last_name}&quot;</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">124</span><span class="p">]:</span> <span class="n">get_fullname</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="s1">&#39;Barker&#39;</span><span class="p">)</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">124</span><span class="p">]:</span> <span class="s1">&#39;&lt;p&gt;Chris Barker&lt;/p&gt;&#39;</span>
@@ -583,8 +583,8 @@ object. So you could actually do this:</p>
 <p>A little excercise. See the “p_decorate” decorator defined above – it wrapped an html &lt;p&gt; tag (paragraph) around the results of any function that returned a string.</p>
 <p>Can you make a version that will wrap any other tag – specified as a parameter of the decorator itself? For example:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go">@add_tag(&#39;p&#39;)</span>
-<span class="go">    def get_fullname(first_name, last_name):</span>
-<span class="go">        return f&quot;{first_name} {last_name}&quot;</span>
+<span class="go">def get_fullname(first_name, last_name):</span>
+<span class="go">    return f&quot;{first_name} {last_name}&quot;</span>
 
 <span class="gp">In [124]: </span><span class="n">get_fullname</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="s1">&#39;Barker&#39;</span><span class="p">)</span>
 <span class="gh">Out[124]: </span><span class="go">&#39;&lt;p&gt;Chris Barker&lt;/p&gt;&#39;</span>
@@ -593,20 +593,20 @@ object. So you could actually do this:</p>
 <p>Just like the <code class="docutils literal notranslate"><span class="pre">p_decorate</span></code> one above.</p>
 <p>But:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="go">@add_tag(&#39;div&#39;)</span>
-<span class="go">    def get_fullname(first_name, last_name):</span>
-<span class="go">        return f&quot;{first_name} {last_name}&quot;</span>
+<span class="go">def get_fullname(first_name, last_name):</span>
+<span class="go">    return f&quot;{first_name} {last_name}&quot;</span>
 
 <span class="gp">In [124]: </span><span class="n">get_fullname</span><span class="p">(</span><span class="s1">&#39;Chris&#39;</span><span class="p">,</span> <span class="s1">&#39;Barker&#39;</span><span class="p">)</span>
 <span class="gh">Out[124]: </span><span class="go">&#39;&lt;div&gt;Chris Barker&lt;/div&gt;&#39;</span>
 </pre></div>
 </div>
 <p>and you could pass any tag in.</p>
-<p>This can be ackomplished either with a closure –nesting antoher level of functions in the decorator, or with a callable class, like the memoize example. Maybe try both, and decide which you like better.</p>
+<p>This can be accomplished either with a closure –nesting another level of functions in the decorator, or with a callable class, like the memoize example. Maybe try both, and decide which you like better.</p>
 </div>
 </div>
 <div class="section" id="further-reading">
 <h2>Further Reading:<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
-<p><em>Fluent Python</em> by Luciano Ramalho, chapter 7.</p>
+<p><em>Fluent Python</em> by Luciano Ramalho, Chapter 7.</p>
 <p>Another good overview:</p>
 <p><a class="reference external" href="https://dbader.org/blog/python-decorators">https://dbader.org/blog/python-decorators</a></p>
 </div>
