@@ -186,7 +186,7 @@ And we can apply it with the regular calling and rebinding syntax:
     In [6]: other_func
     Out[6]: <function __main__.my_decorator.<locals>.inner>
 
-Notice that other_func is now the "inner" function, which lives in the "my_decorator" namespace...
+Notice that ``other_func`` is now the "inner" function, which lives in the "my_decorator" namespace...
 
 And this is the same with the decoration syntax:
 
@@ -203,7 +203,7 @@ And this is the same with the decoration syntax:
     In [9]: other_func
     Out[9]: <function __main__.my_decorator.<locals>.inner>
 
-Notice that other_func is the "inner" function here as well.
+Notice that ``other_func`` is the "inner" function here as well.
 
 Decorators have the power to replace the decorated function with a different one!
 
@@ -411,7 +411,7 @@ The ``classmethod()`` builtin can do the same thing:
 property()
 -----------
 
-Remember the property() built in?
+Remember the ``property()`` builtin?
 
 Perhaps most commonly, you'll see the ``property()`` builtin used this way.
 
@@ -502,8 +502,8 @@ A decorator that wraps an html `<p>` tag around the output of any decorated func
 
 
     @p_decorate
-        def get_fullname(first_name, last_name):
-            return f"{first_name} {last_name}"
+    def get_fullname(first_name, last_name):
+        return f"{first_name} {last_name}"
 
     In [124]: get_fullname('Chris', 'Barker')
     Out[124]: '<p>Chris Barker</p>'
@@ -532,8 +532,8 @@ Can you make a version that will wrap any other tag -- specified as a parameter 
 .. code-block:: ipython
 
     @add_tag('p')
-        def get_fullname(first_name, last_name):
-            return f"{first_name} {last_name}"
+    def get_fullname(first_name, last_name):
+        return f"{first_name} {last_name}"
 
     In [124]: get_fullname('Chris', 'Barker')
     Out[124]: '<p>Chris Barker</p>'
@@ -545,21 +545,21 @@ But:
 .. code-block:: ipython
 
     @add_tag('div')
-        def get_fullname(first_name, last_name):
-            return f"{first_name} {last_name}"
+    def get_fullname(first_name, last_name):
+        return f"{first_name} {last_name}"
 
     In [124]: get_fullname('Chris', 'Barker')
     Out[124]: '<div>Chris Barker</div>'
 
 and you could pass any tag in.
 
-This can be ackomplished either with a closure --nesting antoher level of functions in the decorator, or with a callable class, like the memoize example. Maybe try both, and decide which you like better.
+This can be accomplished either with a closure --nesting another level of functions in the decorator, or with a callable class, like the memoize example. Maybe try both, and decide which you like better.
 
 
 Further Reading:
 ----------------
 
-*Fluent Python* by Luciano Ramalho, chapter 7.
+*Fluent Python* by Luciano Ramalho, Chapter 7.
 
 Another good overview:
 
