@@ -222,7 +222,7 @@ https://pyformat.info/
 
 A nice "Cookbook":
 
-https://mkaz.tech/python-string-format.html
+https://mkaz.blog/code/python-string-format-cookbook/
 
 
 Submitting Your Work
