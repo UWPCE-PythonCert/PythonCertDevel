@@ -14,14 +14,16 @@ In order to get a handle on all this, it's important to understand variable scop
 
 "Scope" is the word for where the names in your code are accessible. Another word for a scope is namespace.
 
-global
-------
+Global Scope
+------------
 
-The simplest is the global scope. This is where all the names defined right in your code file are (or in the interpreter).
+The simplest is the global scope. This is where all the names defined right in your code file (module) are. When running in an interactavive interpreter,  it is in the global namespace as well.
 
 You can get the global namespace with the ``globals()`` function, but ...
 
-The Python interpreter defines a handful of names when it starts up, and iPython defines a whole bunch more.  Most of those start with an underscore, so you can filter them out for a more reasonable result:
+The Python interpreter defines a handful of names when it starts up, and iPython defines a whole bunch more.
+Recall that a convention in Python is that names that start with an underscore are "special" in some way -- double underscore names have a special meaning to Python, and single underscore names are considered "private".
+Most of the extra names defined by the Python interpreter or iPython that are designed for internal use start with an underscore. These can really "clutter up" the namespace, but they can be filtered out for a more reasonable result:
 
 .. code-block:: python
 
@@ -31,7 +33,7 @@ The Python interpreter defines a handful of names when it starts up, and iPython
             if not (name.startswith("_") or name in ipy_names):
                 print(name)
 
-And run that in a raw interpreter:
+Try running that in a newly started interpreter:
 
 .. code-block:: ipython
 
@@ -47,6 +49,8 @@ And run that in a raw interpreter:
 
 The only name left is "print_globals" itself -- created when we defined the function.
 
+.. note:: Try running ``globals()`` by itself to see all the cruft iPython adds. Also note that ``globals`` returns not just the names, but a dictionary, where the keys are the names, and the items are the values bound to those names.
+
 If we add a name or two, they show up in the global scope:
 
 .. code-block:: ipython
@@ -60,7 +64,7 @@ If we add a name or two, they show up in the global scope:
     x
     this
 
-names are created by assignment, and by ``def`` and ``class`` statements. we already saw a ``def``.
+names are created by assignment, and by ``def`` and ``class`` statements. We already saw a ``def``, here is a ``class`` definition.
 
 .. code-block:: ipython
 
@@ -75,14 +79,14 @@ names are created by assignment, and by ``def`` and ``class`` statements. we alr
     test
     TestClass
 
-local
------
+Local Scope
+-----------
 
 So that's the global scope -- what creates a new scope?
 
 A new, "local" scope is created by a function or class definition:
 
-And there is a built-in function to get the names in the local scope, too, so we can use it to show us the names in a function's local namespace. There isn't a lot of cruft in the local namespace, so we don't need a special function to print it.
+There is a built-in function to get the names in the local scope, too, so we can use it to show us the names in a function's local namespace. There isn't a lot of cruft in the local namespace, so we don't need a special function to print it.
 
 Note that ``locals()`` and ``globals()`` returns a dict of the names and the objects they are bound to, so we can print the keys to get the names:
 
@@ -136,10 +140,32 @@ Turns out that this holds true for functions defined within functions also:
     outer scope: dict_keys(['inner', 'y', 'x'])
     inner scope: dict_keys(['z', 'w'])
 
+Function Parameters
+-------------------
+
+The other way you can define names in a function's local namespace is with function parameters:
+
+
+.. code-block:: ipython
+
+    In [14]: def fun_with_parameters(a, b=0):
+        ...:     print("local names are:", locals().keys())
+        ...:
+        ...:
+
+    In [15]: fun_with_parameters(4)
+    local names are: dict_keys(['a', 'b'])
+
+Notice that no other names have been defined in the function, but both of the parameters (positional and keyword) are local names.
+
+
 Finding Names
 -------------
 
-So there are multiple scopes in play at any point -- the local scope, and all the surrounding scopes. When you use a name, python checks in the local scope first, then moves out one by one until it finds the name. So if you define a new name inside a function, it "overrides" the name in any of the outer scopes. But the outer one will be found.
+At any point, there are multiple scopes in play: the local scope, and all the surrounding scopes.
+When you use a name, python checks in the local scope first, then moves out one by one until it finds the name.
+If you define a new name inside a function, it "overrides" the name in any of the outer scopes.
+But any names not defined in an inner scope will be found by looking in the enclosing scopes.
 
 .. code-block:: ipython
 
@@ -165,9 +191,9 @@ So there are multiple scopes in play at any point -- the local scope, and all th
 Look carefully to see where each of those names came from. All the print statements are in the inner function, so its local scope is searched first, and then the outer function's scope, and then the global scope. ``name1`` is only defined in the global scope, so that one is found.
 
 The ``global`` keyword
-------------------
+----------------------
 
-global names can be accessed from within functions, but not if that same name is created in the local scope. So you can't change an immutable object that is outside the local scope:
+Global names can be accessed from within functions, but not if that same name is created in the local scope. So you can't change an immutable object that is outside the local scope:
 
 .. code-block:: ipython
 
@@ -210,7 +236,7 @@ The ``global`` keyword tells python that you want to use the global name, rather
 **NOTE:** The use of ``global`` is frowned upon -- having global variables manipulated in arbitrary other scopes makes for buggy, hard to maintain code!
 
 ``nonlocal`` keyword
-----------------
+--------------------
 
 The other limitation with ``global`` is that there is only one global namespace, so what if you are in a nested scope, and want to get at the value outside the current scope, but not all the way up at the global scope:
 
@@ -257,7 +283,7 @@ But if we use ``global``, we'll get the global ``x``:
     In [9]: x
     Out[9]: 15
 
-so the global ``x`` is getting changed, but not the one in the ``outer`` scope.
+This indicates that the global ``x`` is getting changed, but not the one in the ``outer`` scope.
 
 This is enough of a limitation that Python 3 added a new keyword: ``nonlocal``. What it means is that the name should be looked for outside the local scope, but only as far as you need to go to find it:
 
@@ -295,7 +321,7 @@ While using ``global`` is discouraged, ``nonlocal`` is safer -- as long as it is
 
 But it will go up multiple levels in nested scopes:
 
-.. code-block: ipython
+.. code-block:: ipython
 
     In [16]: def outer():
         ...:     x = 10
@@ -310,20 +336,6 @@ But it will go up multiple levels in nested scopes:
 
     In [17]: outer()
     x in outer is: 20
-
-function parameters
--------------------
-
-A side note: function parameters are in a function's local scope, just as though they were created there:
-
-.. code-block:: ipython
-
-    In [28]: def fun(x, y, z):
-        ...:     print(locals().keys())
-        ...:
-
-    In [29]: fun(1,2,3)
-    dict_keys(['z', 'y', 'x'])
 
 Closures
 ========
@@ -354,7 +366,7 @@ So after we define a function within a function, we can actually return that fun
             return count
         return incr
 
-So this looks a lot like the previous examples, but we are returning the function that was defined inside the function.
+This looks a lot like the previous examples, but we are returning the function that was defined inside the function. Which means is can be used elsewhere.
 
 What's going on here?
 .....................
@@ -404,17 +416,15 @@ But what happens if we call ``counter()`` multiple times?
     In [44]: c2()
     Out[44]: 11
 
-So each time ``counter()`` is called, a new ``incr`` function is created. But also, a new namespace is created, that holds the ``count`` name. So the new ``incr`` function is holding a reference to that new ``count`` name.
+So each time ``counter()`` is called, a new ``incr`` function is created. Along with the new function, a new namespace is created that holds the ``count`` name. So the new ``incr`` function is holding a reference to that new ``count`` name.
 
-This is what makes it a "closure" -- it carries with it the scope in which it was created.
+This is what makes it a "closure" -- it carries with it the scope in which it was created (or enclosed - I guess that's where the word closure comes from).
 
 The returned ``incr`` function is a "curried" function -- a function with some parameters pre-specified.
 
 Let's experiment a bit more with these ideas:
 
 :download:`play_with_scope.py <../examples/closures_currying/play_with_scope.py>`
-
-.. :download:`capitalize.zip <../examples/packaging/capitalize.zip>`
 
 Currying
 ========
@@ -423,7 +433,7 @@ Currying
 
 `Currying on Wikipedia <https://en.wikipedia.org/wiki/Currying>`_
 
-The idea behind currying is that you may have a function with a number of parameters, and you want to make a specialized version of that function with a couple parameters pre-set.
+The idea behind currying is that you may have a function with a number of parameters, and you want to make a specialized version of that function with a couple of parameters pre-set.
 
 
 Real world Example
@@ -442,7 +452,9 @@ So I wanted a function that would compute how much the concentration would reduc
 
 The trick is, how much the concentration would be reduced depends on both time and the half life. And for a given material, and given flow conditions in the river, that half life is pre-determined.  Once you know the half-life, the scale is given by:
 
-scale = 0.5 ** (time / (half_life))
+.. code-block:: python
+
+  scale = 0.5 ** (time / (half_life))
 
 So to compute the scale, I could pass that half-life in each time I called the function:
 

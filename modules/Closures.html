@@ -17,34 +17,46 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'5.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Decorators" href="Decorators.html" />
     <link rel="prev" title="Iterators and Generators" href="IteratorsAndGenerators.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -180,11 +192,13 @@
 <h2>Scope<a class="headerlink" href="#scope" title="Permalink to this headline">¶</a></h2>
 <p>In order to get a handle on all this, it’s important to understand variable scoping rules in Python.</p>
 <p>“Scope” is the word for where the names in your code are accessible. Another word for a scope is namespace.</p>
-<div class="section" id="global">
-<h3>global<a class="headerlink" href="#global" title="Permalink to this headline">¶</a></h3>
-<p>The simplest is the global scope. This is where all the names defined right in your code file are (or in the interpreter).</p>
+<div class="section" id="global-scope">
+<h3>Global Scope<a class="headerlink" href="#global-scope" title="Permalink to this headline">¶</a></h3>
+<p>The simplest is the global scope. This is where all the names defined right in your code file (module) are. When running in an interactavive interpreter,  it is in the global namespace as well.</p>
 <p>You can get the global namespace with the <code class="docutils literal notranslate"><span class="pre">globals()</span></code> function, but …</p>
-<p>The Python interpreter defines a handful of names when it starts up, and iPython defines a whole bunch more.  Most of those start with an underscore, so you can filter them out for a more reasonable result:</p>
+<p>The Python interpreter defines a handful of names when it starts up, and iPython defines a whole bunch more.
+Recall that a convention in Python is that names that start with an underscore are “special” in some way – double underscore names have a special meaning to Python, and single underscore names are considered “private”.
+Most of the extra names defined by the Python interpreter or iPython that are designed for internal use start with an underscore. These can really “clutter up” the namespace, but they can be filtered out for a more reasonable result:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_globals</span><span class="p">():</span>
     <span class="n">ipy_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;In&#39;</span><span class="p">,</span> <span class="s1">&#39;Out&#39;</span><span class="p">,</span> <span class="s1">&#39;get_ipython&#39;</span><span class="p">,</span> <span class="s1">&#39;exit&#39;</span><span class="p">,</span> <span class="s1">&#39;quit&#39;</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
@@ -192,7 +206,7 @@
             <span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>And run that in a raw interpreter:</p>
+<p>Try running that in a newly started interpreter:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span>    <span class="k">def</span> <span class="nf">print_globals</span><span class="p">():</span>
 <span class="gp">   ...: </span>        <span class="n">ipy_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;In&#39;</span><span class="p">,</span> <span class="s1">&#39;Out&#39;</span><span class="p">,</span> <span class="s1">&#39;get_ipython&#39;</span><span class="p">,</span> <span class="s1">&#39;exit&#39;</span><span class="p">,</span> <span class="s1">&#39;quit&#39;</span><span class="p">]</span>
 <span class="gp">   ...: </span>        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
@@ -205,6 +219,10 @@
 </pre></div>
 </div>
 <p>The only name left is “print_globals” itself – created when we defined the function.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Try running <code class="docutils literal notranslate"><span class="pre">globals()</span></code> by itself to see all the cruft iPython adds. Also note that <code class="docutils literal notranslate"><span class="pre">globals</span></code> returns not just the names, but a dictionary, where the keys are the names, and the items are the values bound to those names.</p>
+</div>
 <p>If we add a name or two, they show up in the global scope:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 
@@ -216,7 +234,7 @@
 <span class="go">this</span>
 </pre></div>
 </div>
-<p>names are created by assignment, and by <code class="docutils literal notranslate"><span class="pre">def</span></code> and <code class="docutils literal notranslate"><span class="pre">class</span></code> statements. we already saw a <code class="docutils literal notranslate"><span class="pre">def</span></code>.</p>
+<p>names are created by assignment, and by <code class="docutils literal notranslate"><span class="pre">def</span></code> and <code class="docutils literal notranslate"><span class="pre">class</span></code> statements. We already saw a <code class="docutils literal notranslate"><span class="pre">def</span></code>, here is a <code class="docutils literal notranslate"><span class="pre">class</span></code> definition.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [11]: </span><span class="k">class</span> <span class="nc">TestClass</span><span class="p">:</span>
 <span class="go">    ...:     pass</span>
 <span class="go">    ...:</span>
@@ -230,11 +248,11 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="local">
-<h3>local<a class="headerlink" href="#local" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="local-scope">
+<h3>Local Scope<a class="headerlink" href="#local-scope" title="Permalink to this headline">¶</a></h3>
 <p>So that’s the global scope – what creates a new scope?</p>
 <p>A new, “local” scope is created by a function or class definition:</p>
-<p>And there is a built-in function to get the names in the local scope, too, so we can use it to show us the names in a function’s local namespace. There isn’t a lot of cruft in the local namespace, so we don’t need a special function to print it.</p>
+<p>There is a built-in function to get the names in the local scope, too, so we can use it to show us the names in a function’s local namespace. There isn’t a lot of cruft in the local namespace, so we don’t need a special function to print it.</p>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">locals()</span></code> and <code class="docutils literal notranslate"><span class="pre">globals()</span></code> returns a dict of the names and the objects they are bound to, so we can print the keys to get the names:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
 <span class="go">...:     x = 5</span>
@@ -278,9 +296,26 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="function-parameters">
+<h3>Function Parameters<a class="headerlink" href="#function-parameters" title="Permalink to this headline">¶</a></h3>
+<p>The other way you can define names in a function’s local namespace is with function parameters:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="k">def</span> <span class="nf">fun_with_parameters</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="go">    ...:     print(&quot;local names are:&quot;, locals().keys())</span>
+<span class="go">    ...:</span>
+<span class="go">    ...:</span>
+
+<span class="gp">In [15]: </span><span class="n">fun_with_parameters</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">local names are: dict_keys([&#39;a&#39;, &#39;b&#39;])</span>
+</pre></div>
+</div>
+<p>Notice that no other names have been defined in the function, but both of the parameters (positional and keyword) are local names.</p>
+</div>
 <div class="section" id="finding-names">
 <h3>Finding Names<a class="headerlink" href="#finding-names" title="Permalink to this headline">¶</a></h3>
-<p>So there are multiple scopes in play at any point – the local scope, and all the surrounding scopes. When you use a name, python checks in the local scope first, then moves out one by one until it finds the name. So if you define a new name inside a function, it “overrides” the name in any of the outer scopes. But the outer one will be found.</p>
+<p>At any point, there are multiple scopes in play: the local scope, and all the surrounding scopes.
+When you use a name, python checks in the local scope first, then moves out one by one until it finds the name.
+If you define a new name inside a function, it “overrides” the name in any of the outer scopes.
+But any names not defined in an inner scope will be found by looking in the enclosing scopes.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [33]: </span><span class="n">name1</span> <span class="o">=</span> <span class="s2">&quot;this is global&quot;</span>
 
 <span class="gp">In [34]: </span><span class="n">name2</span> <span class="o">=</span> <span class="s2">&quot;this is global&quot;</span>
@@ -305,7 +340,7 @@
 </div>
 <div class="section" id="the-global-keyword">
 <h3>The <code class="docutils literal notranslate"><span class="pre">global</span></code> keyword<a class="headerlink" href="#the-global-keyword" title="Permalink to this headline">¶</a></h3>
-<p>global names can be accessed from within functions, but not if that same name is created in the local scope. So you can’t change an immutable object that is outside the local scope:</p>
+<p>Global names can be accessed from within functions, but not if that same name is created in the local scope. So you can’t change an immutable object that is outside the local scope:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [37]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 
 <span class="gp">In [38]: </span><span class="k">def</span> <span class="nf">increment_x</span><span class="p">():</span>
@@ -383,7 +418,7 @@
 <span class="gh">Out[9]: </span><span class="go">15</span>
 </pre></div>
 </div>
-<p>so the global <code class="docutils literal notranslate"><span class="pre">x</span></code> is getting changed, but not the one in the <code class="docutils literal notranslate"><span class="pre">outer</span></code> scope.</p>
+<p>This indicates that the global <code class="docutils literal notranslate"><span class="pre">x</span></code> is getting changed, but not the one in the <code class="docutils literal notranslate"><span class="pre">outer</span></code> scope.</p>
 <p>This is enough of a limitation that Python 3 added a new keyword: <code class="docutils literal notranslate"><span class="pre">nonlocal</span></code>. What it means is that the name should be looked for outside the local scope, but only as far as you need to go to find it:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="k">def</span> <span class="nf">outer</span><span class="p">():</span>
 <span class="go">    ...:     x = 10</span>
@@ -414,16 +449,19 @@
 </pre></div>
 </div>
 <p>But it will go up multiple levels in nested scopes:</p>
-</div>
-<div class="section" id="function-parameters">
-<h3>function parameters<a class="headerlink" href="#function-parameters" title="Permalink to this headline">¶</a></h3>
-<p>A side note: function parameters are in a function’s local scope, just as though they were created there:</p>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [28]: </span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
-<span class="go">    ...:     print(locals().keys())</span>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="k">def</span> <span class="nf">outer</span><span class="p">():</span>
+<span class="go">    ...:     x = 10</span>
+<span class="go">    ...:     def inner():</span>
+<span class="go">    ...:         def inner2():</span>
+<span class="go">    ...:             nonlocal x</span>
+<span class="go">    ...:             x += 10</span>
+<span class="go">    ...:         inner2()</span>
+<span class="go">    ...:     inner()</span>
+<span class="go">    ...:     print(&quot;x in outer is:&quot;, x)</span>
 <span class="go">    ...:</span>
 
-<span class="gp">In [29]: </span><span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">dict_keys([&#39;z&#39;, &#39;y&#39;, &#39;x&#39;])</span>
+<span class="gp">In [17]: </span><span class="n">outer</span><span class="p">()</span>
+<span class="go">x in outer is: 20</span>
 </pre></div>
 </div>
 </div>
@@ -447,7 +485,7 @@
     <span class="k">return</span> <span class="n">incr</span>
 </pre></div>
 </div>
-<p>So this looks a lot like the previous examples, but we are returning the function that was defined inside the function.</p>
+<p>This looks a lot like the previous examples, but we are returning the function that was defined inside the function. Which means is can be used elsewhere.</p>
 <div class="section" id="what-s-going-on-here">
 <h4>What’s going on here?<a class="headerlink" href="#what-s-going-on-here" title="Permalink to this headline">¶</a></h4>
 <p>We have passed the <code class="docutils literal notranslate"><span class="pre">start_at</span></code> value into the <code class="docutils literal notranslate"><span class="pre">counter</span></code> function.</p>
@@ -483,8 +521,8 @@
 <span class="gh">Out[44]: </span><span class="go">11</span>
 </pre></div>
 </div>
-<p>So each time <code class="docutils literal notranslate"><span class="pre">counter()</span></code> is called, a new <code class="docutils literal notranslate"><span class="pre">incr</span></code> function is created. But also, a new namespace is created, that holds the <code class="docutils literal notranslate"><span class="pre">count</span></code> name. So the new <code class="docutils literal notranslate"><span class="pre">incr</span></code> function is holding a reference to that new <code class="docutils literal notranslate"><span class="pre">count</span></code> name.</p>
-<p>This is what makes it a “closure” – it carries with it the scope in which it was created.</p>
+<p>So each time <code class="docutils literal notranslate"><span class="pre">counter()</span></code> is called, a new <code class="docutils literal notranslate"><span class="pre">incr</span></code> function is created. Along with the new function, a new namespace is created that holds the <code class="docutils literal notranslate"><span class="pre">count</span></code> name. So the new <code class="docutils literal notranslate"><span class="pre">incr</span></code> function is holding a reference to that new <code class="docutils literal notranslate"><span class="pre">count</span></code> name.</p>
+<p>This is what makes it a “closure” – it carries with it the scope in which it was created (or enclosed - I guess that’s where the word closure comes from).</p>
 <p>The returned <code class="docutils literal notranslate"><span class="pre">incr</span></code> function is a “curried” function – a function with some parameters pre-specified.</p>
 <p>Let’s experiment a bit more with these ideas:</p>
 <p><a class="reference download internal" href="../_downloads/play_with_scope.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">play_with_scope.py</span></code></a></p>
@@ -495,7 +533,7 @@
 <h2>Currying<a class="headerlink" href="#currying" title="Permalink to this headline">¶</a></h2>
 <p>“Currying” is a special case of closures:</p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Currying">Currying on Wikipedia</a></p>
-<p>The idea behind currying is that you may have a function with a number of parameters, and you want to make a specialized version of that function with a couple parameters pre-set.</p>
+<p>The idea behind currying is that you may have a function with a number of parameters, and you want to make a specialized version of that function with a couple of parameters pre-set.</p>
 <div class="section" id="real-world-example">
 <h3>Real world Example<a class="headerlink" href="#real-world-example" title="Permalink to this headline">¶</a></h3>
 <p>I was writing some code to compute the concentration of a contaminant in a river, as it was reduced by exponential decay, defined by a half-life:</p>
@@ -506,7 +544,9 @@
 </pre></div>
 </div>
 <p>The trick is, how much the concentration would be reduced depends on both time and the half life. And for a given material, and given flow conditions in the river, that half life is pre-determined.  Once you know the half-life, the scale is given by:</p>
-<p>scale = 0.5 ** (time / (half_life))</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">**</span> <span class="p">(</span><span class="n">time</span> <span class="o">/</span> <span class="p">(</span><span class="n">half_life</span><span class="p">))</span>
+</pre></div>
+</div>
 <p>So to compute the scale, I could pass that half-life in each time I called the function:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">half_life</span><span class="p">):</span>
     <span class="k">return</span> <span class="mf">0.5</span> <span class="o">**</span> <span class="p">(</span><span class="n">time</span> <span class="o">/</span> <span class="p">(</span><span class="n">half_life</span><span class="p">))</span>
@@ -604,7 +644,7 @@
         <a href="Decorators.html" class="btn btn-neutral float-right" title="Decorators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="IteratorsAndGenerators.html" class="btn btn-neutral" title="Iterators and Generators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="IteratorsAndGenerators.html" class="btn btn-neutral float-left" title="Iterators and Generators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -630,36 +670,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'5.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
