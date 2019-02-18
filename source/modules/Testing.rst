@@ -138,21 +138,23 @@ Other Options
 
 There are several other options for running tests in Python.
 
-* `Nose`: https://nose.readthedocs.org/
+* **Nose2**: https://github.com/nose-devs/nose2
 
-* `pytest`: http://pytest.org/latest/
+* **pytest**: http://pytest.org/latest/
 
 * ... (many frameworks supply their own test runners: e.g. django)
 
-Nose was the most common test runner when I first started learning testing, but it has been in maintaince mode for a while.
+Nose was the most common test runner when I first started learning testing, but it has been in maintenance mode for a while. Even the nose2 site recommends that you consider pytest.
 
 pytest has become the defacto standard test runner for those that want a more "pythonic" test framework.
 
-It is very capable and widely used.
+pytest is very capable and widely used.
 
 For a great description of the strengths of pytest, see:
 
 `The Cleaning Hand of Pytest <https://blog.daftcode.pl/the-cleaning-hand-of-pytest-28f434f4b684>`_
+
+So we will use pytest for the rest of this class.
 
 Installing ``pytest``
 ---------------------
@@ -170,7 +172,7 @@ at the command line:
 
     $ pytest
 
-If you have any tests in your repository, that will find and run them.
+If you have any tests in your repository, that command will find and run them (If you have followed the proper naming conventions).
 
     **Do you?**
 
@@ -179,11 +181,17 @@ Pre-existing Tests
 
 Let's take a look at some examples.
 
-in ``<class_repo_root>/examples/testing``
+Create a directory to try this out, and download:
+
+:download:`test_random_unitest.py <../examples/testing/test_random_unitest.py>`
+
+In the directory you created for that file, run:
 
 .. code-block:: bash
 
   $ pytest
+
+It should find that test file and run it.
 
 You can also run pytest on a particular test file:
 
@@ -202,17 +210,20 @@ Take a few minutes to look these files over.
 What is Happening Here?
 -----------------------
 
-You should have gotten results that look something like this::
+You should have gotten results that look something like this:
 
-    MacBook-Pro:Session06 Chris$ pytest test_random_unitest.py
+.. code-block:: bash
+
+    $ pytest
     ============================= test session starts ==============================
-    platform darwin -- Python 3.6.2, pytest-3.2.3, py-1.4.34, pluggy-0.4.0
-    rootdir: /Users/Chris/PythonStuff/UWPCE/IntroPython-2017/examples/Session06, inifile:
+    platform darwin -- Python 3.7.0, pytest-3.10.1, py-1.5.4, pluggy-0.7.1
+    rootdir: /Users/Chris/temp/test_temp, inifile:
+    plugins: cov-2.6.0
     collected 3 items
 
-    test_random_unitest.py ...
+    test_random_unitest.py ...                                               [100%]
 
-    =========================== 3 passed in 0.02 seconds ===========================
+    =========================== 3 passed in 0.06 seconds ===========================
 
 
 When you run the ``pytest`` command, ``pytest`` starts in your current
@@ -243,60 +254,109 @@ It will run ``unittest`` tests for you, so can be used as a test runner.
 
 But in addition to finding and running tests, it makes writing tests simple, and provides a bunch of nifty utilities to support more complex testing.
 
+Now download this file:
+
+:download:`test_random_pytest.py <../examples/testing/test_random_pytest.py>`
+
+And run pytest again:
+
+.. code-block:: bash
+
+    $ pytest
+    ============================= test session starts ==============================
+    platform darwin -- Python 3.7.0, pytest-3.10.1, py-1.5.4, pluggy-0.7.1
+    rootdir: /Users/Chris/temp/test_temp, inifile:
+    plugins: cov-2.6.0
+    collected 8 items
+
+    test_random_pytest.py .....                                              [ 62%]
+    test_random_unitest.py ...                                               [100%]
+
+    =========================== 8 passed in 0.07 seconds ===========================
+
+Note that it ran the tests in both the test files.
+
+Take a look at ``test_random_pytest.py`` -- It is essentially the same tests -- but written in native pytest style -- simple test functions.
+
+pytest tests
+------------
+
+The beauty of pytest is that it takes advantage of Python's dynamic nature -- you don't need to use any particular structure to write tests.
+
+Any function named appropriately is a test.
+
+If the function doesn't raise an error or an assertion, the test passes. It's that simple.
+
+Let's take a look at ``test_random_pytest.py`` to see how this works.
+
+.. code-block:: python
+
+    import random
+    import pytest
+
+The ``random module is imported becasue that's what we are testing``.
+``pytest`` only needs to be imported if you are using its utilities -- more on this in a moment.
+
+.. code-block:: python
+
+    seq = list(range(10))
+
+Here we create a simple little sequence to use for testing. We put it in the global namespace so other functions can access it.
+
+Now the first test -- simply by naming it ``test_something``, pytest will run it as a test:
+
+.. code-block:: python
+
+    def test_shuffle():
+        """
+        Make sure the shuffled sequence does not lose any elements
+        """
+        seq2 = seq[:]  # make a copy so the main one won't get changed
+        seq2.sort()
+        random.shuffle(seq2)
+        seq2.sort()  # If you comment this out, it will fail, so you can see output
+        print("seq2:", seq2)  # only see output if it fails
+        assert seq2 == list(range(10))
+
+This test is designed to make sure that random.shuffle only re-arranges the items, but doesn't add or lose any.
+First a copy of the global sequence is made -- you want to make sure that tests don't change the status of anything global.
+
+
+
+
+    def test_shuffle_immutable():
+        with pytest.raises(TypeError):
+            random.shuffle((1, 2, 3))
+
+
+    def test_choice():
+        element = random.choice(seq)
+        assert (element in seq)
+
+
+    def test_sample():
+        for element in random.sample(seq, 5):
+            assert element in seq
+
+
+    def test_sample_too_large():
+        with pytest.raises(ValueError):
+            random.sample(seq, 20)
+
+
+
+
+
+
+
 
 Test Driven Development
 -----------------------
 
-Download these files, and save them in your own students directory in the class repo:
+Test Driven Development or "TDD", is a development process where you write tests to assure that your code works, *before* you write the actual code.
 
-:download:`test_walnut_party.py <../examples/testing/test_walnut_party.py>`
-and:
-:download:`walnut_party.py <../examples/testing/walnut_party.py>`
+This is a very powerful approach, as it forces you to think carefully about exactly what your code should do before you start to write it. It also means that you know when you code is working, and you can refactor it in the future will assurance that you haven't broken it.
 
-then, in dir where you put the files, run::
+Give this exercise a try to get the idea:
 
-  $ pytest test_walnut_party.py
-
-You will get a LOT of test failures!
-
-What we've just done here is the first step in what is called:
-
-  **Test Driven Development**.
-
-The idea is that you write the tests first, and then write the code that passes the tests. In this case, the writing the tests part has been done for you:
-
-A bunch of tests exist, but the code to make them pass does not yet exist.
-
-The red you see in the terminal when we run the tests is a goad to you to write the code that fixes these tests.
-
-The tests all failed  because ``walnut_party()`` looks like:
-
-.. code-block:: python
-
-  def walnut_party(walnuts, is_weekend):
-      pass
-
-A totally do nothing function!
-
-Put real code in  ``walnut_party.py`` until all the tests pass.
-
-When the tests pass -- you are done! That's the beauty of test-driven development.
-
-Trying it yourself
-------------------
-
-Try it a bit more, writing the tests yourself:
-
-Pick an example from codingbat:
-
-  `codingbat <http://codingbat.com>`_
-
-Do a bit of test-driven development on it:
-
-   * run something on the web site.
-   * write a few tests using the examples from the site.
-   * then write the function, and fix it 'till it passes the tests.
-
-Do at least two of these...
-
-
+:ref:`exercise_unit_testing`

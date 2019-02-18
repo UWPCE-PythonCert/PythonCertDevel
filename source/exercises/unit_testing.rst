@@ -11,7 +11,29 @@ In order to do unit testing, you need a framework in which to write and run your
 Earlier in this class, you've been adding "asserts" to your modules -- perhaps in the ``__name__ == "__main__"`` block.  These are, in fact a kind of unit test.
 But as you build larger systems, you'll want a more structured way to write and run your tests.
 
+We will use the pytest testing system for this class.
 
+If you have not already done so -- install pytest like so:
+
+.. code-block:: bash
+
+    $ python3 -m pip install pytest
+
+Once this is complete, you should have a ``pytest`` command you can run
+at the command line:
+
+.. code-block:: bash
+
+    $ pytest
+    ============================= test session starts ==============================
+    platform darwin -- Python 3.7.0, pytest-3.10.1, py-1.5.4, pluggy-0.7.1
+    rootdir: /Users/Chris/temp/DrMartins, inifile:
+    plugins: cov-2.6.0
+    collected 0 items
+
+    ========================= no tests ran in 0.01 seconds =========================
+
+If you already HAVE some tests -- you may see somethign different!
 
 
 Test Driven Development
@@ -33,7 +55,7 @@ Then try running the test file with pytest:
 
 .. code-block:: bash
 
-  $ pytest test_walnut_party
+  $ pytest test_walnut_party.py
 
 What you've done here is the first step in what is called:
 
@@ -43,7 +65,7 @@ A bunch of tests exist, but the code to make them pass does not yet exist.
 
 The red you see in the terminal when we run our tests is a goad to us to write the code that fixes these tests.
 
-Let's do that next!
+Do that next!
 
 Test Driven development
 -----------------------
