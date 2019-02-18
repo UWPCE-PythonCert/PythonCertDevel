@@ -19,13 +19,13 @@ Test Driven Development
 
 Download this module:
 
-:download:`cigar_party.py </examples/testing/cigar_party.py>`
+:download:`walnut_party.py </examples/testing/walnut_party.py>`
 
-(This is the `"cigar party" <http://codingbat.com/prob/p195669>`_ problem from the codingbat site)
+(This is the adapted from the codingbat site: http://codingbat.com/prob/p195669)
 
 and this test file:
 
-:download:`test_cigar_party.py </examples/testing/test_cigar_party.py>`
+:download:`test_walnut_party.py </examples/testing/test_walnut_party.py>`
 
 Put them in the same directory, and make that directory your working directory.
 
@@ -33,7 +33,7 @@ Then try running the test file with pytest:
 
 .. code-block:: bash
 
-  $ pytest test_cigar_party
+  $ pytest test_walnut_party
 
 What you've done here is the first step in what is called:
 
@@ -50,15 +50,16 @@ Test Driven development
 
 Open:
 
-``test_cigar_party.py``
+``test_walnut_party.py``
 
 and:
 
-``cigar_party.py``
+``walnut_party.py``
 
 In your editor.
 
-Now edit ``cigar_party.py``, and each time you make a change, run the tests again. Continue until all the tests pass.
+Now edit ``walnut_party.py``, and each time you make a change, run the tests again. Continue until all the tests pass.
+
 
 Doing your own:
 ---------------
@@ -69,16 +70,23 @@ Pick another example from codingbat:
 
 Do a bit of test-driven development on it:
 
-  * run something on the web site.
-  * write a few tests using the examples from the site.
+* run something on the web site.
+* write a few tests using the examples from the site.
+* then write the function, and fix it 'till it passes the tests.
 
-These tests should be in a file names ``test_something.py`` -- I usually name the test file the same as the module it tests,
+These tests should be in a file named ``test_something.py`` -- I usually name the test file the same as the module it tests,
 with ``test_`` prepended.
 
-  * then write the function, and fix it 'till it passes the tests.
+.. note::
+  Technically, you can name your test files anything you want. But there are two reasons to use standard naming conventions.
+  One is that it is clear to anyone looking at the code what is and isn't a test module. The other is that pytest, and other testing systems, use `naming conventions <https://docs.pytest.org/en/latest/goodpractices.html#test-discovery>`_ to find your test files.
+  If you name your test files: ``test_something.py`` then pytest will find them for you. And if you use the name of the module being tested:
+  ``test_name_of_tested_module.py`` then it will be clear which test files belong to which modules.
+
 
 Do at least two of these to get the hang of the process.
 
 Also -- once you have the tests passing, look at your solution -- is there a way it could be refactored to be cleaner?
+
 Give it a shot -- you'll know if it still works if the tests still pass!
 

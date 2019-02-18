@@ -38,11 +38,9 @@ The original testing system in Python.
 
 ``import unittest``
 
-More or less a port of ``JUnit`` from Java
+More or less a port of `JUnit <https://junit.org>`_ from Java
 
-A bit verbose: you have to write classes & methods
-
-(And we haven't covered that yet!)
+A bit verbose: you have to write classes & methods (And we haven't covered that yet!)
 
 But here's a bit of an introduction, as you will see this in others' code.
 
@@ -108,32 +106,31 @@ in ``test_my_mod.py``:
 Advantages of ``unittest``
 --------------------------
 
+The ``unittest`` module is pretty full featured
 
-    The ``unittest`` module is pretty full featured
+It comes with the standard Python distribution, no installation required.
 
-    It comes with the standard Python distribution, no installation required.
+It provides a wide variety of assertions for testing all sorts of situations.
 
-    It provides a wide variety of assertions for testing all sorts of situations.
+It allows for a setup and tear down workflow both before and after all tests and before and after each test.
 
-    It allows for a setup and tear down workflow both before and after all tests and before and after each test.
-
-    It's well known and well understood.
+It's well known and well understood.
 
 
 Disadvantages of ``unittest``
 -----------------------------
 
-    It's Object Oriented, and quite "heavyweight".
+It's Object Oriented, and quite "heavyweight".
 
-      - modeled after Java's ``JUnit`` and it shows...
+  - modeled after Java's ``JUnit`` and it shows...
 
-    It uses the framework design pattern, so knowing how to use the features means learning what to override.
+It uses the framework design pattern, so knowing how to use the features means learning what to override.
 
-    Needing to override means you have to be cautious.
+Needing to override means you have to be cautious.
 
-    Test discovery is both inflexible and brittle.
+Test discovery is both inflexible and brittle.
 
-    And there is no built-in parameterized testing.
+And there is no built-in parameterized testing.
 
 
 Other Options
@@ -252,13 +249,13 @@ Test Driven Development
 
 Download these files, and save them in your own students directory in the class repo:
 
-:download:`test_cigar_party.py <../examples/testing/test_cigar_party.py>`
+:download:`test_walnut_party.py <../examples/testing/test_walnut_party.py>`
 and:
-:download:`cigar_party.py <../examples/testing/cigar_party.py>`
+:download:`walnut_party.py <../examples/testing/walnut_party.py>`
 
 then, in dir where you put the files, run::
 
-  $ pytest test_cigar_party.py
+  $ pytest test_walnut_party.py
 
 You will get a LOT of test failures!
 
@@ -272,16 +269,16 @@ A bunch of tests exist, but the code to make them pass does not yet exist.
 
 The red you see in the terminal when we run the tests is a goad to you to write the code that fixes these tests.
 
-The tests all failed  because ``cigar_party()`` looks like:
+The tests all failed  because ``walnut_party()`` looks like:
 
 .. code-block:: python
 
-  def cigar_party(cigars, is_weekend):
+  def walnut_party(walnuts, is_weekend):
       pass
 
 A totally do nothing function!
 
-Put real code in  ``cigar_party.py`` until all the tests pass.
+Put real code in  ``walnut_party.py`` until all the tests pass.
 
 When the tests pass -- you are done! That's the beauty of test-driven development.
 
