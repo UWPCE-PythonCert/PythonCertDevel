@@ -26,9 +26,9 @@ block.
 * You can't do anything else when the file is executed without running tests.
 
 
-    This is not optimal.
+This is not optimal.
 
-    Python provides testing systems to help.
+Python provides testing systems to help.
 
 
 Standard Library: ``unittest``
@@ -294,7 +294,7 @@ Let's take a look at ``test_random_pytest.py`` to see how this works.
     import random
     import pytest
 
-The ``random module is imported becasue that's what we are testing``.
+The ``random`` module is imported becasue that's what we are testing.
 ``pytest`` only needs to be imported if you are using its utilities -- more on this in a moment.
 
 .. code-block:: python
@@ -303,51 +303,146 @@ The ``random module is imported becasue that's what we are testing``.
 
 Here we create a simple little sequence to use for testing. We put it in the global namespace so other functions can access it.
 
-Now the first test -- simply by naming it ``test_something``, pytest will run it as a test:
+Now the first tests -- simply by naming it ``test_something``, pytest will run it as a test:
+
+.. code-block:: python
+
+    def test_choice():
+        """
+        A choice selected should be in the sequence
+        """
+        element = random.choice(example_seq)
+        assert (element in example_seq)
+
+This is pretty straightforward. We make a random choice from the sequence,
+and then assert that the selected element is, indeed, in the original sequence.
+
+.. code-block:: python
+
+    def test_sample():
+        """
+        All the items in a sample should be in the sequence
+        """
+        for element in random.sample(example_seq, 5):
+            assert element in example_seq
+
+And this is pretty much the same thing, except that it loops to make sure that every item returned by ``.sample`` is in the original sequence.
+
+Note that this will result in 5 separate assertions -- that is fine, you can have as many assertions as you like in one test function. But the test will fail on the first failed assertion -- so you only want to have closely related assertions in each test function.
 
 .. code-block:: python
 
     def test_shuffle():
         """
-        Make sure the shuffled sequence does not lose any elements
+        Make sure a shuffled sequence does not lose any elements
         """
-        seq2 = seq[:]  # make a copy so the main one won't get changed
-        seq2.sort()
-        random.shuffle(seq2)
-        seq2.sort()  # If you comment this out, it will fail, so you can see output
-        print("seq2:", seq2)  # only see output if it fails
-        assert seq2 == list(range(10))
+        seq = list(range(10))
+        random.shuffle(seq)
+        seq.sort()  # If you comment this out, it will fail, so you can see output
+        print("seq:", seq)  # only see output if it fails
+        assert seq == list(range(10))
 
-This test is designed to make sure that random.shuffle only re-arranges the items, but doesn't add or lose any.
-First a copy of the global sequence is made -- you want to make sure that tests don't change the status of anything global.
+This test is designed to make sure that ``random.shuffle`` only re-arranges the items, but doesn't add or lose any.
 
+In this case, the global ``example_seq`` isn't used, because ``shuffle()`` will change the sequence -- tests should never rely on or alter global state. So a new sequence is created for the test.  This also allows the test to know exactly what the results should be at the end.
 
+Then the "real work" -- calling ``random.shuffle`` on the sequence -- this should re-arrange the elements without adding or losing any.
 
+Calling ``.sort()`` again should put the elements back in the order they started
+
+So we can then test that after shuffling and re-sorting, we have the same sequence back:
+
+.. code-block:: python
+
+    assert seq == list(range(10))
+
+If that assertion passes, the test will pass.
+
+``print()`` and test failures
+.............................
+
+Try commenting out the sort line:
+
+.. code-block:: python
+
+    # seq.sort()  # If you comment this out, it will fail, so you can see output
+
+And run again to see what happens. This is what I got:
+
+.. code-block:: bash
+
+    $ pytest test_random_pytest.py
+    ============================= test session starts ==============================
+    platform darwin -- Python 3.7.0, pytest-3.10.1, py-1.5.4, pluggy-0.7.1
+    rootdir: /Users/Chris/PythonStuff/UWPCE/PythonCertDevel/source/examples/testing, inifile:
+    plugins: cov-2.6.0
+    collected 5 items
+
+    test_random_pytest.py F....                                              [100%]
+
+    =================================== FAILURES ===================================
+    _________________________________ test_shuffle _________________________________
+
+        def test_shuffle():
+            """
+            Make sure a shuffled sequence does not lose any elements
+            """
+            seq = list(range(10))
+            random.shuffle(seq)
+            # seq.sort()  # If you comment this out, it will fail, so you can see output
+            print("seq:", seq)  # only see output if it fails
+    >       assert seq == list(range(10))
+    E       assert [4, 8, 9, 3, 2, 0, ...] == [0, 1, 2, 3, 4, 5, ...]
+    E         At index 0 diff: 4 != 0
+    E         Use -v to get the full diff
+
+    test_random_pytest.py:22: AssertionError
+    ----------------------------- Captured stdout call -----------------------------
+    seq: [4, 8, 9, 3, 2, 0, 7, 5, 6, 1]
+    ====================== 1 failed, 4 passed in 0.40 seconds ======================
+
+You get a lot of information when test fails.  It's usually enough to tell you what went wrong.
+
+Note that pytest didn't print out the results of the print statement when the test passed, but when it failed, it printed it (under "Captured stdout call"). This means you can put diagnostic print calls in your tests, and they will not clutter up the output when they are not needed.
+
+Testing for Exceptions
+......................
+
+One of the things you might want to test about your code is that it raises an exception when it should -- and that the exception it raises is the correct one.
+
+In this example, if you try to call ``random.shuffle`` with an immutable sequence, such as a tuple, it should raise a ``TypeError``. Since raising an exception will generally stop the code (and cause a test to fail), we can't use an assertion to test for this.
+
+pytest provides a "context manager", ``pytest.raises``, that can be used to test for exceptions.  The test will pass if and only if the specified Exception is raised by the enclosed code. You use it like so:
+
+.. code-block:: python
 
     def test_shuffle_immutable():
+        """
+        Trying to shuffle an immutable sequence raises an Exception
+        """
         with pytest.raises(TypeError):
             random.shuffle((1, 2, 3))
 
+The ``with`` block is how you use a context manager -- it will run the code enclosed, and perform various actions at the end of the code, or when an exception is raised.
+This is the same ``with`` as used to open files. In that case, it is used to assure that the file is properly closed when you are done with it.  In this case, the ``pytest.raises`` context manager captures any exceptions, and raises an ``AssertionError`` if no exception is raised, or if the wrong exception is raised.
 
-    def test_choice():
-        element = random.choice(seq)
-        assert (element in seq)
+In this case, the test will only pass if a ``TypeError`` is raised by the call to ``random.shuffle`` with a tuple as an argument.
 
+The next test:
 
-    def test_sample():
-        for element in random.sample(seq, 5):
-            assert element in seq
-
+.. code-block:: python
 
     def test_sample_too_large():
+        """
+        Trying to sample more than exist should raise an error
+        """
         with pytest.raises(ValueError):
-            random.sample(seq, 20)
+            random.sample(example_seq, 20)
 
+is very similar, except that this time, a ValueError has to be raised for the test to pass.
 
-
-
-
-
+pytest provides a number of other features for fixtures, parameterized tests, test classes, configuration, shared resources, etc.
+But simple test functions like this will get you very far.
 
 
 Test Driven Development
@@ -355,7 +450,7 @@ Test Driven Development
 
 Test Driven Development or "TDD", is a development process where you write tests to assure that your code works, *before* you write the actual code.
 
-This is a very powerful approach, as it forces you to think carefully about exactly what your code should do before you start to write it. It also means that you know when you code is working, and you can refactor it in the future will assurance that you haven't broken it.
+This is a very powerful approach, as it forces you to think carefully about exactly what your code should do before you start to write it. It also means that you know when you code is working, and you can refactor it in the future with assurance that you haven't broken it.
 
 Give this exercise a try to get the idea:
 

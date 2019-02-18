@@ -8,7 +8,7 @@ Preparation
 -----------
 
 In order to do unit testing, you need a framework in which to write and run your tests.
-Earlier in this class, you've been adding "asserts" to your modules -- perhaps in the ``__name__ == "__main__"`` block.  These are, in fact a kind of unit test.
+Earlier in this class, you've been adding "asserts" to your modules -- perhaps in the ``__name__ == "__main__"`` block.  These are, in fact, a kind of unit test.
 But as you build larger systems, you'll want a more structured way to write and run your tests.
 
 We will use the pytest testing system for this class.
@@ -33,42 +33,50 @@ at the command line:
 
     ========================= no tests ran in 0.01 seconds =========================
 
-If you already HAVE some tests -- you may see somethign different!
+If you already HAVE some tests -- you may see something different!
 
 
 Test Driven Development
 -----------------------
 
-Download this module:
+Download these files, and save them in your own students directory in the class repo:
 
-:download:`walnut_party.py </examples/testing/walnut_party.py>`
+:download:`test_walnut_party.py <../examples/testing/test_walnut_party.py>`
+
+and:
+
+:download:`walnut_party.py <../examples/testing/walnut_party.py>`
 
 (This is the adapted from the codingbat site: http://codingbat.com/prob/p195669)
 
-and this test file:
-
-:download:`test_walnut_party.py </examples/testing/test_walnut_party.py>`
-
-Put them in the same directory, and make that directory your working directory.
-
-Then try running the test file with pytest:
+In the directory where you put the files, run:
 
 .. code-block:: bash
 
   $ pytest test_walnut_party.py
 
+You will get a LOT of test failures!
+
 What you've done here is the first step in what is called:
 
-  **Test Driven Development**.
+  **Test Driven Development**
 
 A bunch of tests exist, but the code to make them pass does not yet exist.
 
 The red you see in the terminal when we run our tests is a goad to us to write the code that fixes these tests.
 
-Do that next!
+The tests all failed  because currently ``walnut_party()`` looks like:
 
-Test Driven development
------------------------
+.. code-block:: python
+
+  def walnut_party(walnuts, is_weekend):
+      pass
+
+A totally do nothing function.
+
+
+Making tests pass
+-----------------
 
 Open:
 
@@ -80,8 +88,9 @@ and:
 
 In your editor.
 
-Now edit ``walnut_party.py``, and each time you make a change, run the tests again. Continue until all the tests pass.
+Now edit the function in ``walnut_party.py``, and each time you make a change, run the tests again. Continue until all the tests pass.
 
+When the tests pass -- you are done! That's the beauty of test-driven development.
 
 Doing your own:
 ---------------
@@ -92,9 +101,9 @@ Pick another example from codingbat:
 
 Do a bit of test-driven development on it:
 
-* run something on the web site.
-* write a few tests using the examples from the site.
-* then write the function, and fix it 'till it passes the tests.
+* Run something on the web site.
+* Write a few tests using the examples from the site.
+* Then write the function, and fix it 'till it passes the tests.
 
 These tests should be in a file named ``test_something.py`` -- I usually name the test file the same as the module it tests,
 with ``test_`` prepended.
