@@ -26,9 +26,9 @@ block.
 * You can't do anything else when the file is executed without running tests.
 
 
-    This is not optimal.
+This is not optimal.
 
-    Python provides testing systems to help.
+Python provides testing systems to help.
 
 
 Standard Library: ``unittest``
@@ -38,11 +38,9 @@ The original testing system in Python.
 
 ``import unittest``
 
-More or less a port of ``JUnit`` from Java
+More or less a port of `JUnit <https://junit.org>`_ from Java
 
-A bit verbose: you have to write classes & methods
-
-(And we haven't covered that yet!)
+A bit verbose: you have to write classes & methods (And we haven't covered that yet!)
 
 But here's a bit of an introduction, as you will see this in others' code.
 
@@ -108,32 +106,31 @@ in ``test_my_mod.py``:
 Advantages of ``unittest``
 --------------------------
 
+The ``unittest`` module is pretty full featured
 
-    The ``unittest`` module is pretty full featured
+It comes with the standard Python distribution, no installation required.
 
-    It comes with the standard Python distribution, no installation required.
+It provides a wide variety of assertions for testing all sorts of situations.
 
-    It provides a wide variety of assertions for testing all sorts of situations.
+It allows for a setup and tear down workflow both before and after all tests and before and after each test.
 
-    It allows for a setup and tear down workflow both before and after all tests and before and after each test.
-
-    It's well known and well understood.
+It's well known and well understood.
 
 
 Disadvantages of ``unittest``
 -----------------------------
 
-    It's Object Oriented, and quite "heavyweight".
+It's Object Oriented, and quite "heavyweight".
 
-      - modeled after Java's ``JUnit`` and it shows...
+  - modeled after Java's ``JUnit`` and it shows...
 
-    It uses the framework design pattern, so knowing how to use the features means learning what to override.
+It uses the framework design pattern, so knowing how to use the features means learning what to override.
 
-    Needing to override means you have to be cautious.
+Needing to override means you have to be cautious.
 
-    Test discovery is both inflexible and brittle.
+Test discovery is both inflexible and brittle.
 
-    And there is no built-in parameterized testing.
+And there is no built-in parameterized testing.
 
 
 Other Options
@@ -141,21 +138,23 @@ Other Options
 
 There are several other options for running tests in Python.
 
-* `Nose`: https://nose.readthedocs.org/
+* **Nose2**: https://github.com/nose-devs/nose2
 
-* `pytest`: http://pytest.org/latest/
+* **pytest**: http://pytest.org/latest/
 
 * ... (many frameworks supply their own test runners: e.g. django)
 
-Nose was the most common test runner when I first started learning testing, but it has been in maintaince mode for a while.
+Nose was the most common test runner when I first started learning testing, but it has been in maintenance mode for a while. Even the nose2 site recommends that you consider pytest.
 
 pytest has become the defacto standard test runner for those that want a more "pythonic" test framework.
 
-It is very capable and widely used.
+pytest is very capable and widely used.
 
 For a great description of the strengths of pytest, see:
 
 `The Cleaning Hand of Pytest <https://blog.daftcode.pl/the-cleaning-hand-of-pytest-28f434f4b684>`_
+
+So we will use pytest for the rest of this class.
 
 Installing ``pytest``
 ---------------------
@@ -173,7 +172,7 @@ at the command line:
 
     $ pytest
 
-If you have any tests in your repository, that will find and run them.
+If you have any tests in your repository, that command will find and run them (If you have followed the proper naming conventions).
 
     **Do you?**
 
@@ -182,11 +181,17 @@ Pre-existing Tests
 
 Let's take a look at some examples.
 
-in ``<class_repo_root>/examples/testing``
+Create a directory to try this out, and download:
+
+:download:`test_random_unitest.py <../examples/testing/test_random_unitest.py>`
+
+In the directory you created for that file, run:
 
 .. code-block:: bash
 
   $ pytest
+
+It should find that test file and run it.
 
 You can also run pytest on a particular test file:
 
@@ -205,17 +210,20 @@ Take a few minutes to look these files over.
 What is Happening Here?
 -----------------------
 
-You should have gotten results that look something like this::
+You should have gotten results that look something like this:
 
-    MacBook-Pro:Session06 Chris$ pytest test_random_unitest.py
+.. code-block:: bash
+
+    $ pytest
     ============================= test session starts ==============================
-    platform darwin -- Python 3.6.2, pytest-3.2.3, py-1.4.34, pluggy-0.4.0
-    rootdir: /Users/Chris/PythonStuff/UWPCE/IntroPython-2017/examples/Session06, inifile:
+    platform darwin -- Python 3.7.0, pytest-3.10.1, py-1.5.4, pluggy-0.7.1
+    rootdir: /Users/Chris/temp/test_temp, inifile:
+    plugins: cov-2.6.0
     collected 3 items
 
-    test_random_unitest.py ...
+    test_random_unitest.py ...                                               [100%]
 
-    =========================== 3 passed in 0.02 seconds ===========================
+    =========================== 3 passed in 0.06 seconds ===========================
 
 
 When you run the ``pytest`` command, ``pytest`` starts in your current
@@ -246,60 +254,204 @@ It will run ``unittest`` tests for you, so can be used as a test runner.
 
 But in addition to finding and running tests, it makes writing tests simple, and provides a bunch of nifty utilities to support more complex testing.
 
+Now download this file:
+
+:download:`test_random_pytest.py <../examples/testing/test_random_pytest.py>`
+
+And run pytest again:
+
+.. code-block:: bash
+
+    $ pytest
+    ============================= test session starts ==============================
+    platform darwin -- Python 3.7.0, pytest-3.10.1, py-1.5.4, pluggy-0.7.1
+    rootdir: /Users/Chris/temp/test_temp, inifile:
+    plugins: cov-2.6.0
+    collected 8 items
+
+    test_random_pytest.py .....                                              [ 62%]
+    test_random_unitest.py ...                                               [100%]
+
+    =========================== 8 passed in 0.07 seconds ===========================
+
+Note that it ran the tests in both the test files.
+
+Take a look at ``test_random_pytest.py`` -- It is essentially the same tests -- but written in native pytest style -- simple test functions.
+
+pytest tests
+------------
+
+The beauty of pytest is that it takes advantage of Python's dynamic nature -- you don't need to use any particular structure to write tests.
+
+Any function named appropriately is a test.
+
+If the function doesn't raise an error or an assertion, the test passes. It's that simple.
+
+Let's take a look at ``test_random_pytest.py`` to see how this works.
+
+.. code-block:: python
+
+    import random
+    import pytest
+
+The ``random`` module is imported becasue that's what we are testing.
+``pytest`` only needs to be imported if you are using its utilities -- more on this in a moment.
+
+.. code-block:: python
+
+    seq = list(range(10))
+
+Here we create a simple little sequence to use for testing. We put it in the global namespace so other functions can access it.
+
+Now the first tests -- simply by naming it ``test_something``, pytest will run it as a test:
+
+.. code-block:: python
+
+    def test_choice():
+        """
+        A choice selected should be in the sequence
+        """
+        element = random.choice(example_seq)
+        assert (element in example_seq)
+
+This is pretty straightforward. We make a random choice from the sequence,
+and then assert that the selected element is, indeed, in the original sequence.
+
+.. code-block:: python
+
+    def test_sample():
+        """
+        All the items in a sample should be in the sequence
+        """
+        for element in random.sample(example_seq, 5):
+            assert element in example_seq
+
+And this is pretty much the same thing, except that it loops to make sure that every item returned by ``.sample`` is in the original sequence.
+
+Note that this will result in 5 separate assertions -- that is fine, you can have as many assertions as you like in one test function. But the test will fail on the first failed assertion -- so you only want to have closely related assertions in each test function.
+
+.. code-block:: python
+
+    def test_shuffle():
+        """
+        Make sure a shuffled sequence does not lose any elements
+        """
+        seq = list(range(10))
+        random.shuffle(seq)
+        seq.sort()  # If you comment this out, it will fail, so you can see output
+        print("seq:", seq)  # only see output if it fails
+        assert seq == list(range(10))
+
+This test is designed to make sure that ``random.shuffle`` only re-arranges the items, but doesn't add or lose any.
+
+In this case, the global ``example_seq`` isn't used, because ``shuffle()`` will change the sequence -- tests should never rely on or alter global state. So a new sequence is created for the test.  This also allows the test to know exactly what the results should be at the end.
+
+Then the "real work" -- calling ``random.shuffle`` on the sequence -- this should re-arrange the elements without adding or losing any.
+
+Calling ``.sort()`` again should put the elements back in the order they started
+
+So we can then test that after shuffling and re-sorting, we have the same sequence back:
+
+.. code-block:: python
+
+    assert seq == list(range(10))
+
+If that assertion passes, the test will pass.
+
+``print()`` and test failures
+.............................
+
+Try commenting out the sort line:
+
+.. code-block:: python
+
+    # seq.sort()  # If you comment this out, it will fail, so you can see output
+
+And run again to see what happens. This is what I got:
+
+.. code-block:: bash
+
+    $ pytest test_random_pytest.py
+    ============================= test session starts ==============================
+    platform darwin -- Python 3.7.0, pytest-3.10.1, py-1.5.4, pluggy-0.7.1
+    rootdir: /Users/Chris/PythonStuff/UWPCE/PythonCertDevel/source/examples/testing, inifile:
+    plugins: cov-2.6.0
+    collected 5 items
+
+    test_random_pytest.py F....                                              [100%]
+
+    =================================== FAILURES ===================================
+    _________________________________ test_shuffle _________________________________
+
+        def test_shuffle():
+            """
+            Make sure a shuffled sequence does not lose any elements
+            """
+            seq = list(range(10))
+            random.shuffle(seq)
+            # seq.sort()  # If you comment this out, it will fail, so you can see output
+            print("seq:", seq)  # only see output if it fails
+    >       assert seq == list(range(10))
+    E       assert [4, 8, 9, 3, 2, 0, ...] == [0, 1, 2, 3, 4, 5, ...]
+    E         At index 0 diff: 4 != 0
+    E         Use -v to get the full diff
+
+    test_random_pytest.py:22: AssertionError
+    ----------------------------- Captured stdout call -----------------------------
+    seq: [4, 8, 9, 3, 2, 0, 7, 5, 6, 1]
+    ====================== 1 failed, 4 passed in 0.40 seconds ======================
+
+You get a lot of information when test fails.  It's usually enough to tell you what went wrong.
+
+Note that pytest didn't print out the results of the print statement when the test passed, but when it failed, it printed it (under "Captured stdout call"). This means you can put diagnostic print calls in your tests, and they will not clutter up the output when they are not needed.
+
+Testing for Exceptions
+......................
+
+One of the things you might want to test about your code is that it raises an exception when it should -- and that the exception it raises is the correct one.
+
+In this example, if you try to call ``random.shuffle`` with an immutable sequence, such as a tuple, it should raise a ``TypeError``. Since raising an exception will generally stop the code (and cause a test to fail), we can't use an assertion to test for this.
+
+pytest provides a "context manager", ``pytest.raises``, that can be used to test for exceptions.  The test will pass if and only if the specified Exception is raised by the enclosed code. You use it like so:
+
+.. code-block:: python
+
+    def test_shuffle_immutable():
+        """
+        Trying to shuffle an immutable sequence raises an Exception
+        """
+        with pytest.raises(TypeError):
+            random.shuffle((1, 2, 3))
+
+The ``with`` block is how you use a context manager -- it will run the code enclosed, and perform various actions at the end of the code, or when an exception is raised.
+This is the same ``with`` as used to open files. In that case, it is used to assure that the file is properly closed when you are done with it.  In this case, the ``pytest.raises`` context manager captures any exceptions, and raises an ``AssertionError`` if no exception is raised, or if the wrong exception is raised.
+
+In this case, the test will only pass if a ``TypeError`` is raised by the call to ``random.shuffle`` with a tuple as an argument.
+
+The next test:
+
+.. code-block:: python
+
+    def test_sample_too_large():
+        """
+        Trying to sample more than exist should raise an error
+        """
+        with pytest.raises(ValueError):
+            random.sample(example_seq, 20)
+
+is very similar, except that this time, a ValueError has to be raised for the test to pass.
+
+pytest provides a number of other features for fixtures, parameterized tests, test classes, configuration, shared resources, etc.
+But simple test functions like this will get you very far.
+
 
 Test Driven Development
 -----------------------
 
-Download these files, and save them in your own students directory in the class repo:
+Test Driven Development or "TDD", is a development process where you write tests to assure that your code works, *before* you write the actual code.
 
-:download:`test_cigar_party.py <../examples/testing/test_cigar_party.py>`
-and:
-:download:`cigar_party.py <../examples/testing/cigar_party.py>`
+This is a very powerful approach, as it forces you to think carefully about exactly what your code should do before you start to write it. It also means that you know when you code is working, and you can refactor it in the future with assurance that you haven't broken it.
 
-then, in dir where you put the files, run::
+Give this exercise a try to get the idea:
 
-  $ pytest test_cigar_party.py
-
-You will get a LOT of test failures!
-
-What we've just done here is the first step in what is called:
-
-  **Test Driven Development**.
-
-The idea is that you write the tests first, and then write the code that passes the tests. In this case, the writing the tests part has been done for you:
-
-A bunch of tests exist, but the code to make them pass does not yet exist.
-
-The red you see in the terminal when we run the tests is a goad to you to write the code that fixes these tests.
-
-The tests all failed  because ``cigar_party()`` looks like:
-
-.. code-block:: python
-
-  def cigar_party(cigars, is_weekend):
-      pass
-
-A totally do nothing function!
-
-Put real code in  ``cigar_party.py`` until all the tests pass.
-
-When the tests pass -- you are done! That's the beauty of test-driven development.
-
-Trying it yourself
-------------------
-
-Try it a bit more, writing the tests yourself:
-
-Pick an example from codingbat:
-
-  `codingbat <http://codingbat.com>`_
-
-Do a bit of test-driven development on it:
-
-   * run something on the web site.
-   * write a few tests using the examples from the site.
-   * then write the function, and fix it 'till it passes the tests.
-
-Do at least two of these...
-
-
+:ref:`exercise_unit_testing`
