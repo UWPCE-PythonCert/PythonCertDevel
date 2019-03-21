@@ -128,7 +128,7 @@ One of the points of writing functions is so you can write code that does simila
 
 Write a function ``print_grid(n)`` that takes one integer argument and prints a grid just like before, *BUT* the size of the grid is given by the argument.
 
-For example, ``print_grid(11)`` prints the grid at the top of this page.
+For example, ``print_grid(9)`` prints the grid at the top of this page.
 
 ``print_grid(3)`` would print a smaller grid::
 
