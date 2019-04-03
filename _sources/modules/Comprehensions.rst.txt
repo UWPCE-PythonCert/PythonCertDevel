@@ -473,4 +473,8 @@ This is a nice intro to comprehensions from Trey Hunner:
 
 https://treyhunner.com/2015/12/python-list-comprehensions-now-in-color/
 
+Once you've got the hang of it, you may want to read this so you don't overdo it :-)
+
+https://treyhunner.com/2019/03/abusing-and-overusing-list-comprehensions-in-python/
+
 Trey writes a lot of good stuff -- I recommned browsing his site.
