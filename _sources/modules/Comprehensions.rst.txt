@@ -88,7 +88,40 @@ Comprehensions and map()
 
 Comprehensions are another way of expressing the "map" pattern from functional programming.
 
-Python does have a ``map()`` function, which pre-dates comprehensions. But it does much of the same things -- and most folks think comprehensions are the more "Pythonic" way to do it.
+Python does have a ``map()`` function, which pre-dates comprehensions. But it does much of the same things -- and most folks think comprehensions are the more "Pythonic" way to do it. And there is nothing that can be expressed with ``map()`` that cannot be done with a comprehension. IF youare not familiar with ``map()``, you can saftly skip this, but if you are:
+
+.. code-block:: python
+
+    map(a_function, an_iterable)
+
+is the same as:
+
+.. code-block:: python
+
+    [a_function(item), for item in an_iterable]
+
+In this case, the comprehension is a tad wordier than ``map()``.  BUt comprehensions really shine when you do'nt already have a handy function to pass to map:
+
+.. code-block:: python
+
+    [x**2 for x in an_iterable]
+
+To use ``map()``, you need a function:
+
+.. code-block:: python
+
+    def square(x):
+        return x**2
+
+    map(square, an_iterable)
+
+There are shortcuts of course, including ``lambda`` (stay tuned for more about that):
+
+.. code-block:: python
+
+    map(lambda x: x**2, an_iterable)
+
+But is that easier to read or write?
 
 
 What about filter?
@@ -129,6 +162,8 @@ This is expressing the "filter" pattern and the "map" pattern at the same time -
 
 
 Get creative....
+
+How do I see all the built in Exceptions?
 
 .. code-block:: python
 
@@ -431,3 +466,11 @@ If you are going to immediately loop through the items created by the comprehens
 
   The "official" term is "generator expression" -- that is what you will see in the Python docs, and a lot of online discussions. I've used the term "generator comprehension" here to better make clear the association with list comprehensions.
 
+References
+----------
+
+This is a nice intro to comprehensions from Trey Hunner:
+
+https://treyhunner.com/2015/12/python-list-comprehensions-now-in-color/
+
+Trey writes a lot of good stuff -- I recommned browsing his site.
