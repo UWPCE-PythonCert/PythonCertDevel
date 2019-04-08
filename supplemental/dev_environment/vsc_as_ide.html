@@ -1,0 +1,248 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using Visual Studio Code as a lightweight Python IDE &mdash; PythonCert 5.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'5.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> PythonCert
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/index.html">Topic Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../exercises/index.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Supplemental Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/index.html">Resources for Specific Python Topics</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PythonCert</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Using Visual Studio Code as a lightweight Python IDE</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/supplemental/dev_environment/vsc_as_ide.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-visual-studio-code-as-a-lightweight-python-ide">
+<span id="vsc-as-ide"></span><h1>Using Visual Studio Code as a lightweight Python IDE<a class="headerlink" href="#using-visual-studio-code-as-a-lightweight-python-ide" title="Permalink to this headline">¶</a></h1>
+<p>Visual Studio Code is an extensible and customizable text editor from Microsoft that provides a very minimal layout with additional tooling such as an excellent built-in terminal.</p>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>Any IDE should ease your development experience by providing the following:</p>
+<ul class="simple">
+<li>It should provide excellent, configurable syntax colorization.</li>
+<li>It should allow for robust tab completion.</li>
+<li>It should offer the ability to jump to the definition of symbols in other files.</li>
+<li>It should perform automatic code linting to help avoid silly mistakes.</li>
+<li>It should be able to interact with a Python interpreter such that when debugging, the editor will follow along with the debugger.</li>
+</ul>
+<p>Visual Studio Code requires that you perform some setup out of the box (see below for details).</p>
+</div>
+<div class="section" id="which-version">
+<h2>Which Version?<a class="headerlink" href="#which-version" title="Permalink to this headline">¶</a></h2>
+<p>There’s just the latest version available to download.</p>
+<p>This ensures that all recent bug fixes and updates have been made.</p>
+<p>Visual Studio Code runs on Macs, Windows, and Linux flavors like Ubuntu, Debian, Red Hat, etc.</p>
+<p>Also, Visual Studio Code performs updates on itself, so there’s no need to download newer versions of the app… you should already have it.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Check out this solid <a class="reference external" href="https://www.youtube.com/watch?v=TILIcrrVABg/">video</a> that will walk you through the process of setting up Visual Studio Code for Python in detail.</p>
+<p>Go to the Visual Studio Code <a class="reference external" href="https://code.visualstudio.com/">website</a>.</p>
+<p>Scroll down to the bottom of the page and you’ll see links for installers to all the major OS platforms.</p>
+<p>Download your flavor and run the installer.</p>
+</div>
+<div class="section" id="basic-settings">
+<h2>Basic Settings<a class="headerlink" href="#basic-settings" title="Permalink to this headline">¶</a></h2>
+<p>Visual Studio Code can be used out of the box with no setup as a text editor. It automatically
+recognizes file types and helpfully highlights text accordingly. To use in this manner,
+write your Python files in Visual Studio Code, then run them in your Python command prompt
+or Visual Studio Code’s own built in terminal (Ctrl + `)</p>
+</div>
+<div class="section" id="extending-the-editor">
+<h2>Extending the Editor<a class="headerlink" href="#extending-the-editor" title="Permalink to this headline">¶</a></h2>
+<p>After you’ve install Visual Studio Code, there are many ways to extend it for working with Python.</p>
+<p>The video linked above goes into this much deeper.</p>
+<p>There is also a great tutorial for setting up Python <a class="reference external" href="https://code.visualstudio.com/docs/python/python-tutorial">here</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, University of Washington, Natasha Aleksandrova, Christopher Barker, Brian Dorsey, Cris Ewing, Christy Heaton, Jon Jacky, Maria McKinley, Andy Miles, Rick Riehle, Joseph Schilz, Joseph Sheedy, Hosung Song. Creative Commons Attribution-ShareAlike 3.0 license
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
