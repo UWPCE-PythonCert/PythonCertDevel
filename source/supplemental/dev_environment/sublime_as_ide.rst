@@ -34,6 +34,7 @@ And some more advanced features that you may want later:
 
 Which Version?
 ==============
+
 Use version 3 -- it is updated now and again, so make sure to get the latest.
 
 *Use Sublime Version 3*
@@ -42,7 +43,9 @@ Use version 3 -- it is updated now and again, so make sure to get the latest.
 Basic Settings
 ==============
 
-All configuration in Sublime Text is done via `JSON <http://www.json.org>`_. It's simple to learn. go and read that link then return here. [Note that JSON is very similar to Python dict and list literals]
+All configuration in Sublime Text is done via `JSON <http://www.json.org>`_. It's simple to learn. Go and read that link then return here.
+
+.. note:: JSON is very similar to Python dict and list literals. Though it has its root in Javascript, it is also used in a wide variety of applications,  and is well supported by Python. But a key difference is that it does not allow trailing commas after items in lists -- so be careful.
 
 There are a number of `different levels of configuration <http://www.sublimetext.com/docs/3/settings.html>`_ in Sublime Text. You will most often work on settings at the user level.
 
@@ -86,7 +89,7 @@ Here's a reasonable set of preliminary settings (theme, color scheme and font ar
 
 **NOTE:** Especially important is the setting ``translate_tabs_to_spaces``, which ensures that any time you hit a tab key, the single <tab> character is replaced by four <space> characters.  In Python this is **vital**!
 
-If you do nothing else, add this for your config!
+If you do nothing else, add ``translate_tabs_to_spaces`` to your config!
 
 Extending the Editor
 ====================
@@ -125,7 +128,7 @@ Anaconda
 
 There are a bunch of Python-related plugins available. However, Anaconda is a nice package that provides most of the features you want, so plan on using just that one.
 
-Not to be confused with the Scientific Python distribution -- the Anaconda sublime plugin is a full featured package to turn Sublime into a pretty full IDE:
+Not to be confused with the scientific Python distribution -- the Anaconda sublime plugin is a full featured package to turn Sublime into a pretty full IDE:
 
 http://damnwidget.github.io/anaconda/
 
@@ -144,7 +147,9 @@ A few settings you'll want to change
 
 There are a few setting you may want to change:
 
-* max line length for the linter: default is 72, which is pretty short these day. I use 95
+* max line length for the linter: default is 72, which is pretty short these day. I use 95::
+
+        "pep8_max_line_length": 95,
 
 
 White Space Management
@@ -171,13 +176,7 @@ You'll probably want to wait on this until you start using a debugger, but it's 
 
 The final requirement for a reasonable IDE experience is to be able to follow a debugging session in the file where the code exists.
 
-There is no plugin for Sublime Text that supports this. But there is a Python package you can install.
 
-The package is called `PDBSublimeTextSupport <https://pypi.python.org/pypi/PdbSublimeTextSupport>`_ and its simple to install with ``pip``:
+This: https://packagecontrol.io/packages/Python%20Debugger
 
-.. code-block:: bash
-
-    $ python -m  pip install PDBSublimeTextSupport
-
-With that package installed in the Python that is used for your project, any breakpoint you set will automatically pop to the surface in Sublime Text.  And as you step through the code, you will see the current line in your Sublime Text file move along with you.
-
+Looks promising as a debugger plugin for sublime.

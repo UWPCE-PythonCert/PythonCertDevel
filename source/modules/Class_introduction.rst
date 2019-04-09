@@ -9,7 +9,7 @@ In which you are introduced to this class, your instructors, your environment an
 
 .. image:: /_static/python.png
     :align: center
-    :width: 38%
+    :width: 80%
 
 
 `xkcd.com/353`_
@@ -74,9 +74,9 @@ Interrupt us with questions -- please!
 Homework:
 ---------
 
-* Homework will primarily be reading, a handful of videos, and links to optional external materials -- videos, blog posts, etc.
+* Homework will be reading: a handful of videos, and links to optional external materials -- videos, blog posts, etc.
 
-* Exercises will be started in class -- but you can finish them at home.
+* Exercises will be started in class -- but you can finish them at home (and you will need time to do that!)
 
 * You are adults -- it's up to you to do the homework. But if you don't code, you won't learn to code. And we can't give you a certificate if you haven't demonstrated that you've done the work.
 
@@ -87,11 +87,11 @@ There is a video about that, and we will show you in the first class as well.
 Communication
 -------------
 
-**MS Teams:**
+**Mailing List**
 
-There has been an MS Team channel set up for this class. You should have been invited to join -- if not, let your instructors know.
+There should have been a Mailing List set up for this class. You should have been invited to join -- if not, let your instructors know. Also let them know if you would prefer a different email address.
 
-Anything Python related is fair game. Keep general discussion about the class or Python in the main channel, and maybe set up separate channels for particular assignments.
+Anything Python related is fair game.  Questions and discussion about the assignments are encouraged.
 
 We highly encourage you to work together. You will learn at a much deeper level if you work together, and it gets you ready to collaborate with colleagues.
 

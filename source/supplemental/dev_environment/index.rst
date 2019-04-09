@@ -278,12 +278,15 @@ http://www.sublimetext.com/
 
 :ref:`sublime_as_ide`
 
-
 "Atom" is another good open source option.
 
 https://atom.io/
 
 :ref:`atom_as_ide`
+
+"Visual Studio Code" is a relatively new cross platfrom offering from Microsoft -- a lot of folks seem to like it:
+
+:ref:`vsc_as_ide`
 
 And, of course, vim or Emacs on Linux, if you are familiar with those.
 
@@ -377,7 +380,7 @@ You should be able to run git on the command line:
 .. code-block:: bash
 
     $ git --version
-    git version 2.11.0 (Apple Git-81)
+    git version 2.20.1 (Apple Git-117)
 
 It should be version >= 2
 
@@ -404,6 +407,7 @@ Specific Documentation
 
     sublime_as_ide
     atom_as_ide
+    vsc_as_ide
     command_line
     shell
     ipython

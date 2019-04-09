@@ -1,8 +1,8 @@
 .. _vsc_as_ide:
 
-##########################################
+####################################################
 Using Visual Studio Code as a lightweight Python IDE
-##########################################
+####################################################
 
 Visual Studio Code is an extensible and customizable text editor from Microsoft that provides a very minimal layout with additional tooling such as an excellent built-in terminal.
 
@@ -53,8 +53,8 @@ Basic Settings
 
 Visual Studio Code can be used out of the box with no setup as a text editor. It automatically
 recognizes file types and helpfully highlights text accordingly. To use in this manner,
-write your Python files in Visual Studio Code, then run them in your Python command prompt 
-or Visual Studio Code's own built in terminal (Ctrl + \`)
+write your Python files in Visual Studio Code, then run them in your Python command prompt
+or Visual Studio Code's own built in terminal: Ctrl + \` (control-backtick)
 
 
 Extending the Editor
