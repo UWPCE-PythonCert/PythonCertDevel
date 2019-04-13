@@ -9,7 +9,7 @@ This is a little exercise that shows you how to handle exceptions in a way that 
 Procedure
 =========
 
-Here are two files that you should put in your ``session05`` directory in the class repo.
+Here are two files that you should put in your ``lesson05`` directory in the class repo.
 
 :download:`except_exercise.py`
 

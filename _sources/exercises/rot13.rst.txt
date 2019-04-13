@@ -22,7 +22,7 @@ circle, so it wraps around).
 The task
 --------
 
-Add a python module named ``rot13.py`` to the session03 dir in your student dir. This module should provide at least one function called ``rot13`` that takes any amount of text and returns that same text encrypted by ROT13.
+Add a python module named ``rot13.py`` to the lesson03 dir in your student dir. This module should provide at least one function called ``rot13`` that takes any amount of text and returns that same text encrypted by ROT13.
 
 This function should preserve whitespace, punctuation and capitalization.
 

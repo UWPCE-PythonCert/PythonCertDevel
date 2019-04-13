@@ -25,7 +25,7 @@ We will write a function that computes this series -- then generalize it.
 Step 1
 ------
 
-* Create a new module ``series.py`` in the ``session02`` folder in your student folder.
+* Create a new module ``series.py`` in the ``lesson02`` folder in your student folder.
 
   - In it, add a function called ``fibonacci``.
 
