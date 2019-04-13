@@ -40,7 +40,7 @@ Terminal
 
 If you are confident in your use of the "DOS Box" or "powershell", command lines, feel free to use one of those. However, your life may be easier if you install "Git Bash", as then you can follow unix-style terminal instructions exactly, and do not have to translate. Also, your instructors are more experienced with Bash.
 
-From now on, if you hear the terms "bash", "shell" or "terminal", or "commandline" know that this is the application that is being referred to. We will use those terms interchangably to mean ANY command line.
+From now on, if you hear the terms "bash", "shell" or "terminal", or "command line" know that this is the application that is being referred to. We will use those terms interchangeably to mean ANY command line.
 
 When you install Git Bash, you are installing git (and a git gui) as well, thus killing two birds with one stone!
 
@@ -51,7 +51,7 @@ You can go through the rest of the prompts using default values. Once you are do
 
 You can use this git with the DOS box or Powershell as well.
 
-This is also a good bet for running Python -- If you use the Git Bash shell, you can use the same commands as Linux and OS-X users. Regardless of which shell you choose, you will need to add Python to your environment. It is possible that this was done during the installation of Python. If you type 'which python' into your terminal, and get back the answer '/c/python34/python', then you are good to go, otherwise (which shouldn't happen if you checked the "Add Python 3.7 to PATH" checkbox when you installed Python above), follow the instructions here:
+This is also a good bet for running Python -- If you use the Git Bash shell, you can use the same commands as Linux and OS-X users. Regardless of which shell you choose, you will need to add Python to your environment. It is possible that this was done during the installation of Python. If you type 'which python' into your terminal, and get back the answer '/c/python37/python', then you are good to go, otherwise (which shouldn't happen if you checked the "Add Python 3.7 to PATH" checkbox when you installed Python above), follow the instructions here:
 
 http://www.computerhope.com/issues/ch000549.htm
 
@@ -101,7 +101,7 @@ Note: if you have trouble running ``python`` command in your gitbash (it hangs),
 
 ::
 
-  $ echo "alias python='winpty python'" >> ~/.bashrc
+  $ echo "alias python='winpty python'" >> ~/.bash_profile
 
 You will need to close the current bash window and restart a new one to get this alias. Then from now on, you can just type ``python`` and it should work on git bash (no more hanging) as well.
 
@@ -128,7 +128,7 @@ It should download and install the latest ``pip``.
 
 You can now use pip to install other packages.
 
- The first thing you may want to do is update pip itself:
+The first thing you may want to do is update pip itself:
 
 .. code-block:: bash
 
@@ -171,7 +171,7 @@ You should now be able to run ``iPython`` from the git bash shell or "DOS Box" o
     IPython 6.1.0 -- An enhanced Interactive Python. Type '?' for help.
     (or from the DOS box or PowerShell prompt)
 
-We will use this as our default Python interpreter.
+We will use this in class as our default Python interpreter.
 
 
 Testing it out
@@ -187,7 +187,7 @@ All available from the command line.
 
 To try it out, you should be able to run all of these commands, and get something like the following results:
 
-(recall that you can get out of the python or iPython command lines with ``ctrl+Z``)
+(recall that you can get out of the python or iPython command lines with ``ctrl+Z`` (ifthat doesn't work, try ``ctrl+D`` -- the *nix version))
 
 For Python:
 
@@ -209,7 +209,7 @@ For iPython:
   Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:59:51) [MSC v.1914 64 bit (AMD64)]
   Type 'copyright', 'credits' or 'license' for more information
   IPython 6.5.0 -- An enhanced Interactive Python. Type '?' for help.
-  
+
   In [1]:
   Do you really want to exit ([y]/n)? y
 
