@@ -68,3 +68,11 @@ There is also a great tutorial for setting up Python here_.
 
 .. _here: https://code.visualstudio.com/docs/python/python-tutorial
 
+If you're on a Mac, be sure to set up your path_ for easy integration with the terminal.
+
+.. _path: https://code.visualstudio.com/docs/setup/mac
+
+I also recommend setting up Visual Studio Code as your default_ Git editor.
+
+.. _default: https://stackoverflow.com/questions/30024353/how-to-use-visual-studio-code-as-default-editor-for-git
+
