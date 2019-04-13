@@ -11,8 +11,8 @@ Task 1: Explore Errors
 
 * Create a new directory in your working dir for the class::
 
-  $ mkdir session01
-  $ cd session01
+  $ mkdir lesson01
+  $ cd lesson01
 
 * Add a new file to it called ``break_me.py``
 
@@ -37,4 +37,9 @@ exercises at "Coding Bat": http://codingbat.com/python
 
 There are 8 sets of puzzles. Do as many as you can, but try to get to at least
 the "Warmups".
+
+While the codingbat site has a great interface for submitting your solution and see if it works, we suggest you write your code in your regular text editor and get it to run on your machine first.
+
+Put at least one solution in the ``lesson1`` folder you created in git and submit it via pull request.
+
 

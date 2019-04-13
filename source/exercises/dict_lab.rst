@@ -15,7 +15,7 @@ Learn the basic ins and outs of Python dictionaries and sets.
 Procedure
 ---------
 
-In your student dir in the class repo, create a ``session04`` dir and put in a new ``dict_lab.py`` file.
+In your student dir in the class repo, create a ``lesson04`` dir and put in a new ``dict_lab.py`` file.
 
 The file should be an executable Python script. That is to say that one
 should be able to run the script directly like so:
