@@ -37,24 +37,24 @@ of python files or other package directories::
        module_b.py
 
 The ``__init__.py`` can be totally empty -- or it can have arbitrary python code in it.
-The code will be run when the package is imported -- just like a module,
+The code will be run when the package is imported -- just like a module.
 
-modules inside packages are *not* automatically imported. So, with the above structure::
+Modules inside packages are *not* automatically imported. So, with the above structure::
 
   import a_package
 
-will run the code in ``a_package/__init__.py``. Any names defined in the
-``__init__.py`` will be available in::
+will run the code in ``a_package/__init__.py``. Any names defined in the ``__init__.py`` will be available in::
 
   a_package.a_name
 
-but::
+But::
 
  a_package.module_a
 
-will not exist. To get submodules, you need to explicitly import them:
+will not exist. To get submodules, you need to explicitly import them like so:
 
   import a_package.module_a
+
 
 More on Importing
 -----------------
@@ -77,11 +77,11 @@ or a few names from a package::
                          x,
                          y)
 
-And you can rename stuff as you import it::
+You also can optionally rename stuff as you import it::
 
   import numpy as np
 
-This is a common pattern for using large packages and not having to type a lot...
+This is a common pattern for using large packages (maybe with long names) and not having to type a lot.
 
 
 ``import *``
@@ -91,16 +91,16 @@ This is a common pattern for using large packages and not having to type a lot..
 
   from something import *
 
-means: "import all the names in the module"
+Means: "import all the names in the module, "something".
 
-You really don't want to do that! It is an old pattern that is now an anti-pattern
+You really don't want to do that! It is an old pattern that is now an anti-pattern.
 
 But if you do encounter it, it doesn't actually import all the names -- it imports the ones defined in the module's ``__all__`` variable.
 
 ``__all__`` is a list of names that you want ``import *`` to import.
-So the module author can control it, and not expect all sorts of builtins and other modules.
+So the module author can control it, and not accidentally override builtins or bring a lot of extraneous names into your namespace.
 
-But really -- don't use it!
+But really -- **don't use ``import *``**
 
 
 Relative imports
@@ -149,7 +149,7 @@ Similarly to \*nix shells:
 
 ".." means "the package above this one"
 
-Note that you have to use the "from" form when using relative imports.
+Note that you have to use the ``from`` form of import when using relative imports.
 
 **Caveats:**
 
@@ -185,7 +185,12 @@ There is debate about which is the "one way to do it" -- a bit unpythonic, but y
 sys.modules
 -----------
 
+``sys.modules`` is simply a dictionary that stores all teh already imported modules.
+The keys are the module names, and the values are the module objects themselves:
+
 .. code-block:: ipython
+
+  In [3]: import sys
 
   In [4]: type(sys.modules)
   Out[4]: dict
@@ -231,8 +236,7 @@ So, more or less, when you import a module, the interpreter:
 
 * Looks to see if the module is already in ``sys.modules``.
 
-* If it is, it binds a name to the existing module in the current
-  module's namespace.
+* If it is, it binds a name to the existing module in the current module's namespace.
 
 * If it isn't:
 
