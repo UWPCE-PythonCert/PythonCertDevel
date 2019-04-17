@@ -213,21 +213,20 @@ of python files or other package directories:</p>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> can be totally empty – or it can have arbitrary python code in it.
-The code will be run when the package is imported – just like a module,</p>
-<p>modules inside packages are <em>not</em> automatically imported. So, with the above structure:</p>
+The code will be run when the package is imported – just like a module.</p>
+<p>Modules inside packages are <em>not</em> automatically imported. So, with the above structure:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">a_package</span>
 </pre></div>
 </div>
-<p>will run the code in <code class="docutils literal notranslate"><span class="pre">a_package/__init__.py</span></code>. Any names defined in the
-<code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> will be available in:</p>
+<p>will run the code in <code class="docutils literal notranslate"><span class="pre">a_package/__init__.py</span></code>. Any names defined in the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> will be available in:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a_package</span><span class="o">.</span><span class="n">a_name</span>
 </pre></div>
 </div>
-<p>but:</p>
+<p>But:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a_package</span><span class="o">.</span><span class="n">module_a</span>
 </pre></div>
 </div>
-<p>will not exist. To get submodules, you need to explicitly import them:</p>
+<p>will not exist. To get submodules, you need to explicitly import them like so:</p>
 <blockquote>
 <div>import a_package.module_a</div></blockquote>
 <div class="section" id="more-on-importing">
@@ -248,23 +247,23 @@ The code will be run when the package is imported – just like a module,</p>
                        <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>And you can rename stuff as you import it:</p>
+<p>You also can optionally rename stuff as you import it:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
-<p>This is a common pattern for using large packages and not having to type a lot…</p>
+<p>This is a common pattern for using large packages (maybe with long names) and not having to type a lot.</p>
 </div>
 <div class="section" id="import">
 <h3><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">*</span></code><a class="headerlink" href="#import" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">something</span> <span class="k">import</span> <span class="o">*</span>
 </pre></div>
 </div>
-<p>means: “import all the names in the module”</p>
-<p>You really don’t want to do that! It is an old pattern that is now an anti-pattern</p>
+<p>Means: “import all the names in the module, “something”.</p>
+<p>You really don’t want to do that! It is an old pattern that is now an anti-pattern.</p>
 <p>But if you do encounter it, it doesn’t actually import all the names – it imports the ones defined in the module’s <code class="docutils literal notranslate"><span class="pre">__all__</span></code> variable.</p>
 <p><code class="docutils literal notranslate"><span class="pre">__all__</span></code> is a list of names that you want <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">*</span></code> to import.
-So the module author can control it, and not expect all sorts of builtins and other modules.</p>
-<p>But really – don’t use it!</p>
+So the module author can control it, and not accidentally override builtins or bring a lot of extraneous names into your namespace.</p>
+<p>But really – <strong>don’t use ``import *``</strong></p>
 </div>
 <div class="section" id="relative-imports">
 <h3>Relative imports<a class="headerlink" href="#relative-imports" title="Permalink to this headline">¶</a></h3>
@@ -300,7 +299,7 @@ So the module author can control it, and not expect all sorts of builtins and ot
 <p>Similarly to *nix shells:</p>
 <p>“.” means “the current package”</p>
 <p>“..” means “the package above this one”</p>
-<p>Note that you have to use the “from” form when using relative imports.</p>
+<p>Note that you have to use the <code class="docutils literal notranslate"><span class="pre">from</span></code> form of import when using relative imports.</p>
 <p><strong>Caveats:</strong></p>
 <ul class="simple">
 <li>you can only use relative imports from within a package</li>
@@ -327,7 +326,11 @@ So the module author can control it, and not expect all sorts of builtins and ot
 </div>
 <div class="section" id="sys-modules">
 <h3>sys.modules<a class="headerlink" href="#sys-modules" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="nb">type</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">)</span>
+<p><code class="docutils literal notranslate"><span class="pre">sys.modules</span></code> is simply a dictionary that stores all teh already imported modules.
+The keys are the module names, and the values are the module objects themselves:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="gp">In [4]: </span><span class="nb">type</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">)</span>
 <span class="gh">Out[4]: </span><span class="go">dict</span>
 
 <span class="gp">In [6]: </span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;textwrap&#39;</span><span class="p">]</span>
@@ -367,8 +370,7 @@ So the module author can control it, and not expect all sorts of builtins and ot
 <p>So, more or less, when you import a module, the interpreter:</p>
 <ul class="simple">
 <li>Looks to see if the module is already in <code class="docutils literal notranslate"><span class="pre">sys.modules</span></code>.</li>
-<li>If it is, it binds a name to the existing module in the current
-module’s namespace.</li>
+<li>If it is, it binds a name to the existing module in the current module’s namespace.</li>
 <li>If it isn’t:</li>
 </ul>
 <blockquote>

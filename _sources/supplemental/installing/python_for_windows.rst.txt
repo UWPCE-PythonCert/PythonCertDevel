@@ -187,7 +187,7 @@ All available from the command line.
 
 To try it out, you should be able to run all of these commands, and get something like the following results:
 
-(recall that you can get out of the python or iPython command lines with ``ctrl+Z`` (ifthat doesn't work, try ``ctrl+D`` -- the *nix version))
+(recall that you can get out of the python or iPython command lines with ``ctrl+Z`` (if that doesn't work, try ``ctrl+D`` -- the \*nix version))
 
 For Python:
 
