@@ -4,7 +4,6 @@
 a template for the series assignment
 """
 
-
 def fibonacci(n):
     """ compute the nth Fibonacci number """
     a, b = 0, 1
@@ -17,7 +16,12 @@ def fibonacci(n):
 
 def lucas(n):
     """ compute the nth Lucas number """
-    pass
+    a, b = 2, 1  # notice that all I had to change from fib were these values?
+    if n == 0:
+        return a
+    for _ in range(n - 1):
+        a, b = b, a + b
+    return b
 
 
 def sum_series(n, n0=0, n1=1):
@@ -37,7 +41,13 @@ def sum_series(n, n0=0, n1=1):
     The defaults are set to 0, 1, so if you don't pass in any values, you'll
     get the fibonacci sercies
     """
-    pass
+    a, b = n0, n1  # notice that all I had to change from fib were these values?
+    if n == 0:
+        return a
+    for _ in range(n - 1):
+        a, b = b, a + b
+    return b
+
 
 if __name__ == "__main__":
     # run some tests
