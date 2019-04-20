@@ -7,7 +7,12 @@ a template for the series assignment
 
 def fibonacci(n):
     """ compute the nth Fibonacci number """
-    pass
+    a, b = 0, 1
+    if n == 0:
+        return a
+    for _ in range(n - 1):
+        a, b = b, a + b
+    return b
 
 
 def lucas(n):
