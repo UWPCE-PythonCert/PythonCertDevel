@@ -14,6 +14,9 @@ Note also that there is more than one way to skin a cat --
 def print_grid_trivial():
     """
     Did anyone come up with the most trivial possible solution?
+
+    Note that this may the the wy to go, oif this all you need to do:
+      print something specific once. Why write fancy code for that?
     """
     print("""
 + - - - - + - - - - +
