@@ -204,11 +204,11 @@ binary data that the computer stores to letters.</li>
 </li>
 <li>But each vendor used the top half of 8bit bytes (127-255) for different things.<ul>
 <li>MacRoman, Windows 1252, etc…</li>
-<li>There is now “latin-1”, but still a lot of old files around.</li>
+<li>There is now “latin-1”, a 1-byte encoding suitable for European languages – but still a lot of old files around that use the old ones.</li>
 </ul>
 </li>
 <li>Non-Western European languages required totally incompatible 1-byte encodings</li>
-<li>No way to mix languages with different alphabets.</li>
+<li>This means there was no way to mix languages with different alphabets in the same document (web page, etc.)</li>
 </ul>
 </div>
 <div class="section" id="enter-unicode">
@@ -222,14 +222,15 @@ binary data that the computer stores to letters.</li>
 <dt>But how do you express that in bytes?</dt>
 <dd><ul class="first last simple">
 <li>Early days: we can fit all the code points in a two byte integer (65536 characters)</li>
-<li>Turns out that didn’t work – now need 32 bit integer to hold all of unicode “raw” (UTC-4)</li>
+<li>Turns out that didn’t work – 65536 is not enough for all languages. So we now need 32 bit integer to hold all of Unicode “raw” (UTC-4).</li>
+<li>But it’s a waste of space to use 4 full bytes for each character, when so many don’t require that much space.</li>
 </ul>
 </dd>
 <dt>Enter “encodings”:</dt>
 <dd><ul class="first last simple">
 <li>An encoding is a way to map specific bytes to a code point.</li>
 <li>Each code point can be represented by one or more bytes.</li>
-<li>Each encoding is different – if you don’t know the encoding, you don’t know how to interpret the bytes! (though maybe you can guess…)</li>
+<li>Each encoding is different – if you don’t know the encoding, you don’t know how to interpret the bytes! (though maybe you can guess)</li>
 </ul>
 </dd>
 </dl>
@@ -245,7 +246,7 @@ Positively Must Know About Unicode and Character Sets (No Excuses!)</p>
 <li>If it’s on disk or on a network, it’s bytes</li>
 <li>Python provides some abstractions to make it easier to deal with bytes</li>
 </ul>
-<p><strong>Unicode is a biggie</strong></p>
+<p><strong>Unicode is a Biggie</strong></p>
 <p>Actually, dealing with numbers rather than bytes is big</p>
 <p>– but we take that for granted</p>
 </div>
@@ -254,10 +255,10 @@ Positively Must Know About Unicode and Character Sets (No Excuses!)</p>
 <h2>Mechanics<a class="headerlink" href="#mechanics" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="what-are-strings">
 <h3>What are strings?<a class="headerlink" href="#what-are-strings" title="Permalink to this headline">¶</a></h3>
-<p>Py2 strings were simply sequences of bytes.  When text was one per charater that worked fine.</p>
-<p>Py3 strings (or Unicode strings in py2) are sequences of platonic characters.</p>
+<p>Py2 strings were simply sequences of bytes.  When text was one per character that worked fine.</p>
+<p>Py3 strings (or Unicode strings in py2) are sequences of “platonic characters”.</p>
 <p>It’s almost one code point per character – there are complications
-with combined characters: accents, etc – but we can mostly ignore those.</p>
+with combined characters: accents, etc – but we can mostly ignore those – you will get far thiking of a code point as a character.</p>
 <p>Platonic characters cannot be written to disk or network!</p>
 <p>(ANSI: one character == one byte – so easy!)</p>
 </div>
@@ -296,11 +297,11 @@ with combined characters: accents, etc – but we can mostly ignore those.</p>
 <p><strong>“decoding”</strong> is converting from bytes to a string object</p>
 <p>(sometimes this feels backwards…)</p>
 <p>And can get even more confusing with py2 strings being <em>both</em> text and bytes!</p>
-<p>This is actually one of teh biggest differences between Python 2 and Python 3. As an ordinary user (particulary one that used English…), you may not notice – text is text, and things generally “just work”, but under the hood it is very different, and folks writting libraries for things like internet protocols struggle with the differences.</p>
+<p>This is actually one of the biggest differences between Python 2 and Python 3. As an ordinary user (particularly one that used English…), you may not notice – text is text, and things generally “just work”, but under the hood it is very different, and folks writing libraries for things like Internet protocols struggle with the differences.</p>
 </div>
 <div class="section" id="using-unicode-in-py2">
-<h3>Using unicode in Py2<a class="headerlink" href="#using-unicode-in-py2" title="Permalink to this headline">¶</a></h3>
-<p>IF you do need to write Python2 code, you really should use Unicode.</p>
+<h3>Using Unicode in Py2<a class="headerlink" href="#using-unicode-in-py2" title="Permalink to this headline">¶</a></h3>
+<p>If you do need to write Python2 code, you really should use Unicode.</p>
 <p>Here are the basics:</p>
 <div class="section" id="built-in-functions">
 <h4>Built in functions<a class="headerlink" href="#built-in-functions" title="Permalink to this headline">¶</a></h4>
@@ -347,23 +348,21 @@ with combined characters: accents, etc – but we can mostly ignore those.</p>
 <div class="section" id="unicode-literals">
 <h3>Unicode Literals<a class="headerlink" href="#unicode-literals" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Use unicode in your source files:</li>
+<li>Use Unicode in your source files:</li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 </pre></div>
 </div>
+<p>(This is only required on Py2 – the UTF-8 encoding is default for Python 3)</p>
 <ol class="arabic simple" start="2">
-<li>Escape the unicode characters:</li>
+<li>Escape the Unicode characters:</li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="sa">u</span><span class="s2">&quot;The integral sign: </span><span class="se">\u222B</span><span class="s2">&quot;</span>
 <span class="k">print</span> <span class="sa">u</span><span class="s2">&quot;The integral sign: </span><span class="se">\N{integral}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
-<p>Lots of tables of code points online:</p>
-<dl class="docutils">
-<dt>One example:</dt>
-<dd><a class="reference external" href="http://inamidst.com/stuff/unidata/">http://inamidst.com/stuff/unidata/</a></dd>
-</dl>
+<p>Lots of tables of code points are available online:</p>
+<p>One example:  <a class="reference external" href="http://inamidst.com/stuff/unidata/">http://inamidst.com/stuff/unidata/</a></p>
 <p><a class="reference download internal" href="../_downloads/hello_unicode.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">hello_unicode.py</span></code></a>.</p>
 </div>
 <div class="section" id="using-unicode">
@@ -381,8 +380,8 @@ with combined characters: accents, etc – but we can mostly ignore those.</p>
 <p>The default encoding will get used in unexpected places!</p>
 </div>
 <div class="section" id="using-unicode-everywhere">
-<h3>Using Unicode everywhere<a class="headerlink" href="#using-unicode-everywhere" title="Permalink to this headline">¶</a></h3>
-<p>Python 2.6 and above have a nice feature to make it easier to use unicode everywhere</p>
+<h3>Using Unicode Everywhere<a class="headerlink" href="#using-unicode-everywhere" title="Permalink to this headline">¶</a></h3>
+<p>Python 2.6 and above have a nice feature to make it easier to use Unicode everywhere</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
 </pre></div>
 </div>
@@ -397,8 +396,8 @@ with combined characters: accents, etc – but we can mostly ignore those.</p>
 <span class="gh">Out[5]: </span><span class="go">unicode</span>
 </pre></div>
 </div>
-<p>NOTE: You can still get py2 strings from other sources!</p>
-<p>This is a really good idea if you want to write code compatible with Python2 and 3</p>
+<p>NOTE: You can still get py2 strings from other sources! So you still need to think about <code class="docutils literal notranslate"><span class="pre">str</span></code> vs <code class="docutils literal notranslate"><span class="pre">unicdode</span></code></p>
+<p>This is a really good idea if you want to write code compatible with Python2 and 3.</p>
 </div>
 <div class="section" id="encodings">
 <h3>Encodings<a class="headerlink" href="#encodings" title="Permalink to this headline">¶</a></h3>
@@ -421,9 +420,9 @@ with combined characters: accents, etc – but we can mostly ignore those.</p>
 <p>Probably the one you’ll use most – most common in Internet protocols (xml, JSON, etc.)</p>
 <p>Nice properties:</p>
 <ul class="simple">
-<li>ASCII compatible: First 127 characters are the same</li>
+<li>ASCII compatible: First 127 characters are the same as ASCII</li>
 <li>Any ascii string is a utf-8 string</li>
-<li>Compact for mostly-english text.</li>
+<li>Compact for mostly-English text.</li>
 </ul>
 <p>Gotchas:</p>
 <ul class="simple">
@@ -434,7 +433,7 @@ with combined characters: accents, etc – but we can mostly ignore those.</p>
 <div class="section" id="utf-16">
 <h3>UTF-16<a class="headerlink" href="#utf-16" title="Permalink to this headline">¶</a></h3>
 <p>Kind of like UTF-8, except it uses at least 16bits (2 bytes) for each character: NOT ASCII compatible.</p>
-<p>But is still needs more than two bytes for some code points, so you still can’t process it as one per character.</p>
+<p>But is still needs more than two bytes for some code points, so you still can’t process it as two bytes per character.</p>
 <p>In C/C++ held in a “wide char” or “wide string”.</p>
 <p>MS Windows uses UTF-16, as does (I think) Java.</p>
 </div>
@@ -445,7 +444,7 @@ with combined characters: accents, etc – but we can mostly ignore those.</p>
 <li>You can’t assume every character is the same number of bytes</li>
 <li>It takes up more memory than UTF-8</li>
 </ul>
-<p><a class="reference external" href="http://programmers.stackexchange.com/questions/102205/should-utf-16-be-considered-harmful">UTF Considered Harmful</a></p>
+<p><a class="reference external" href="http://programmers.stackexchange.com/questions/102205/should-utf-16-be-considered-harmful">UTF-16 Considered Harmful</a></p>
 <p>But to be fair:</p>
 <p>Early versions of Unicode: everything fit into two bytes (65536 code points). MS and Java were fairly early adopters, and it seemed simple enough to just use 2 bytes per character.</p>
 <p>When it turned out that 4 bytes were really needed, they were kind of stuck in the middle.</p>
@@ -513,16 +512,39 @@ with combined characters: accents, etc – but we can mostly ignore those.</p>
 </div>
 <div class="section" id="unicode-in-python-3">
 <h3>Unicode in Python 3<a class="headerlink" href="#unicode-in-python-3" title="Permalink to this headline">¶</a></h3>
-<p>The “string” object is unicode.</p>
+<p>The “string” object <strong>is</strong> Unicode (always).</p>
 <p>Py3 has two distinct concepts:</p>
 <ul class="simple">
-<li>“text” – uses the str object (which is always unicode!)</li>
+<li>“text” – uses the str object (which is always Unicode!)</li>
 <li>“binary data” – uses bytes or bytearray</li>
 </ul>
-<p>Everything that’s about text is unicode.</p>
+<p>Everything that’s about text is Unicode.</p>
 <p>Everything that requires binary data uses bytes.</p>
 <p>It’s all much cleaner.</p>
 <p>(by the way, the recent implementations are very efficient…)</p>
+<p>So you can pretty much ignore encodings and all that for most basic text processing.
+If you do find yourself needing to deal with binary data, you ay need to encode/decode stuff yourself.  IN which case, Python provides an <code class="docutils literal notranslate"><span class="pre">.encode()</span></code> method on strings that encode the string to a bytes object with the encoding you select:</p>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [3]: </span><span class="n">this_in_utf16</span> <span class="o">=</span> <span class="s2">&quot;this&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-16&#39;</span><span class="p">)</span>
+
+<span class="gp">In [4]: </span><span class="n">this_in_utf16</span>
+<span class="gh">Out[4]: </span><span class="go">b&#39;\xff\xfet\x00h\x00i\x00s\x00&#39;</span>
+</pre></div>
+</div>
+<p>And bytes objects have a <code class="docutils literal notranslate"><span class="pre">.decode</span></code> method that decodes the bytes and makes a string object:</p>
+<blockquote>
+<div>In [5]: this_in_utf16.decode(‘utf-16’)
+Out[5]: ‘this’</div></blockquote>
+<p>It’s all quite simple an robust.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>During the long and painful transition from Python2 to Python3, the Unicode-always string type was a major source of complaints.  There are many rants and <a class="reference external" href="http://lucumr.pocoo.org/2014/1/5/unicode-in-2-and-3/">well thought out posts</a> about it still available on the internet. It was enough to think that Python had made a huge mistake.</p>
+<p>But there are a couple key points to remember:</p>
+<ul class="simple">
+<li>The primary people struggling were those that wrote (or wored with) libraries that had to deal with protocols that used both binary and text data in the same data stream.</li>
+<li>As of Python 3.4 or so, the python string object had grown the features it needed to support even those ugly binary+text use cases.</li>
+</ul>
+<p class="last">For a typical user, the Python3 text model is MUCH easier to deal with and less error prone.</p>
+</div>
 </div>
 </div>
 <div class="section" id="exercises">
