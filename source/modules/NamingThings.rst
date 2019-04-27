@@ -91,6 +91,49 @@ And then singular for a single item in that collection:
     line = line.replace(",", " ")
     ....
 
+What about Hungarian Notation?
+------------------------------
+
+`Hungarian Notation <https://en.wikipedia.org/wiki/Hungarian_notation>`_
+is a naming system where the data type is part of the name:
+
+.. code-block:: python
+
+  strFirstName = "Chris"
+
+  listDonations = [400.0, 125.0, 1000.0]
+
+  int_num_days = 30
+
+This method is not recommended nor widely used in the Python community.
+
+One reason is Python's dynamic typing -- it really isn't important what type a value is, but rather, what it means.
+And you may end up refactoring the code to use a different type, and then do you want to have to rename everything?
+Or worse, the type in the name no longer matches the actual type in the code -- and that's really bad.  I have seen code like this:
+
+.. code-block:: python
+
+  strNumber = input("How many would you like?")
+  strNumber = int(strNumber)
+
+  for i in range(strNumber):
+      ...
+
+So you have a name used for a string, then it gets converted to an integer, and the data type no longer matches the name.  Wouldn't you be better off if that had never been named with the type in the first place?
+
+While widely used in some circles, it is generally considered bad style in the Python community -- so:
+
+ **Do not use Hungarian Notation**
+
+More About Naming Things
+------------------------
+
 Here's a nice talk about naming:
 
 `Jack Diederich: Name things Once <https://www.youtube.com/watch?v=hZ7hgYKKnF0>`_
+
+One note about that talk -- Jack is mostly encouraging people to not use names that are too long and unnecessarily specific.
+However, with beginners, it's often tempting to use names that are too *short* and *non-specific*, like "x" and "item" -- so you need to strike a balance.
+
+
+
