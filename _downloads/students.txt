@@ -23,8 +23,8 @@ Mitchell, Joni: php, mysql, python
 Ramone, John: Johnny, rex, db
 King, Carol: r
 Waters, Muddy: perl, python
-Star, Richard: Ringo, Tom, shell, python, vb
-Smith, Patricia: Patti, Gene, python
+Star, Richard: Ringo, shell, python, vb
+Smith, Patricia: Patti, python
 Morrison, Jim: fortran, perl, sql, python
 Marley, Robert: Bob, c, c++, lisp
 Simon, Paul: bash, python, sql

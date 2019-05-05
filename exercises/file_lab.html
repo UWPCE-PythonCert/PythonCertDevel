@@ -199,16 +199,16 @@
 <h2>Paths and File Processing<a class="headerlink" href="#paths-and-file-processing" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Write a program which prints the full path for all files in the current
-directory, one per line</li>
+directory, one per line. Use either the <code class="docutils literal notranslate"><span class="pre">os</span></code> module or <code class="docutils literal notranslate"><span class="pre">pathlib</span></code>.</li>
 <li>Write a program which copies a file from a source, to a destination
-(without using shutil, or the OS copy command).<ul>
-<li>Advanced: make it work for any size file: i.e. don’t read the entire
-contents of the file into memory at once.</li>
+(without using shutil, or the OS copy command (you are essentially writing a simple version of the OS copy command)).<ul>
 <li>This should work for any kind of file, so you need to open
 the files in binary mode: <code class="docutils literal notranslate"><span class="pre">open(filename,</span> <span class="pre">'rb')</span></code> (or <code class="docutils literal notranslate"><span class="pre">'wb'</span></code> for
 writing). Note that for binary files, you can’t use <code class="docutils literal notranslate"><span class="pre">readline()</span></code> –
 lines don’t have any meaning for binary files.</li>
 <li>Test it with both text and binary files (maybe a jpeg or something of your choosing).</li>
+<li>Advanced: make it work for any size file: i.e. don’t read the entire
+contents of the file into memory at once.</li>
 <li>This should only be a few lines of code :-)</li>
 </ul>
 </li>
@@ -219,8 +219,8 @@ lines don’t have any meaning for binary files.</li>
 <p>Download this text file:</p>
 <p><a class="reference download internal" href="../_downloads/students.txt" download=""><code class="xref download docutils literal notranslate"><span class="pre">students.txt</span></code></a></p>
 <p>In it, you will find a list of names and what programming languages they have used in the past. This may be similar to a list generated at the beginning of this class.</p>
-<p>Write a little script that reads that file, and generates a list of all the languages that have been used.</p>
-<p>What might be the best data structure to use to keep track of bunch of values without duplication?</p>
+<p>Write a little script that reads that file and generates a list of all the languages that have been used.</p>
+<p>What might be the best data structure to use to keep track of bunch of values (the languages) without duplication?</p>
 <div class="section" id="the-file-format">
 <h3>The file format:<a class="headerlink" href="#the-file-format" title="Permalink to this headline">¶</a></h3>
 <p>The first line of the file is:</p>
@@ -229,6 +229,7 @@ lines don’t have any meaning for binary files.</li>
 <p><code class="docutils literal notranslate"><span class="pre">Jagger,</span> <span class="pre">Michael:</span> <span class="pre">Mick,</span> <span class="pre">shell,</span> <span class="pre">python</span></code></p>
 <p>So a colon after the name, then the nickname, and then one or more languages.</p>
 <p>However, like real data files, the file is NOT well-formed. Only some lines have nicknames, and other small differences, so you will need to write some code to make sure you get it all correct.</p>
+<p>How can you tell the difference between a nickname and a language?</p>
 <p>Extra challenge: keep track of how many students specified each language.</p>
 </div>
 </div>
