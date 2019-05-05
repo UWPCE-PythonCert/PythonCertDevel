@@ -29,7 +29,9 @@ Paths and File Processing
     writing). Note that for binary files, you can't use ``readline()`` --
     lines don't have any meaning for binary files.
 
-  - Test it with both text and binary files (maybe jpeg or something of your choosing).
+  - Test it with both text and binary files (maybe a jpeg or something of your choosing).
+
+  - This should only be a few lines of code :-)
 
 
 File reading and parsing
