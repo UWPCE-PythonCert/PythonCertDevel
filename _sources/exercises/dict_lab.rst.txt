@@ -102,5 +102,5 @@ Sets 2
 
 * Create a frozenset with the letters in 'marathon'.
 
-* display the union and intersection of the two sets.
+* Display the union and intersection of the two sets.
 
