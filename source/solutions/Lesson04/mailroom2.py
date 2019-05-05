@@ -2,8 +2,11 @@
 """
 mailroom assignment
 
-This version uses a dict for the main db, and exception handling to
-check input
+This version uses a dict for the main db, and a dict to"switch" on the user's
+input choices.
+
+it also write the thank you letters to files.
+
 """
 
 import sys
@@ -20,6 +23,7 @@ from textwrap import dedent
 # This makes it easier to have a 'normalized' key.
 #  you could get a bit fancier by having each "record" be a dict, with
 #   "name" and "donations" as keys.
+
 def get_donor_db():
     return {'william gates iii': ("William Gates III", [653772.32, 12.17]),
             'jeff bezos': ("Jeff Bezos", [877.33]),
@@ -65,20 +69,7 @@ def add_donor(name):
     return donor
 
 
-def main_menu_selection():
-    """
-    Print out the main application menu and then read the user input.
-    """
-    action = input(dedent('''
-      Choose an action:
 
-      1 - Send a Thank You
-      2 - Create a Report
-      3 - Send letters to everyone
-      4 - Quit
-
-      > '''))
-    return action.strip()
 
 
 def gen_letter(donor):
@@ -195,7 +186,7 @@ def save_letters_to_disk():
         letter = gen_letter(donor)
         # I don't like spaces in filenames...
         filename = donor[0].replace(" ", "_") + ".txt"
-        print("writting letter to:", donor[0])
+        print("writing letter to:", donor[0])
         open(filename, 'w').write(letter)
 
 
@@ -213,18 +204,48 @@ def quit():
     sys.exit(0)
 
 
-if __name__ == "__main__":
+def main_menu():
+    """
+    Run the main menu for mailroom
+    """
+    prompt = dedent('''
+                    Choose an action:
 
-    donor_db = get_donor_db()
+                    1 - Send a Thank You
+                    2 - Create a Report
+                    3 - Send letters to everyone
+                    4 - Quit
+
+                    > ''')
 
     selection_dict = {"1": send_thank_you,
                       "2": print_donor_report,
                       "3": save_letters_to_disk,
                       "4": quit}
 
+    run_menu(prompt, selection_dict)
+
+
+def run_menu(prompt, selection_dict):
+    """
+    run an interactive menu
+
+    :param prompt: What you want to ask the user
+
+    :param selection_dict: Dict of possible user impots mapped to
+                           the actions to take.
+    """
     while True:
-        selection = main_menu_selection()
+
+        selection = input(prompt).strip()
         try:
+            # This calls teh function in the selection_dict
             selection_dict[selection]()
         except KeyError:
             print("error: menu selection is invalid!")
+
+if __name__ == "__main__":
+
+    donor_db = get_donor_db()
+
+    main_menu()
