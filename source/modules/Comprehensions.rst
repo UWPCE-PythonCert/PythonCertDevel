@@ -88,7 +88,7 @@ Comprehensions and map()
 
 Comprehensions are another way of expressing the "map" pattern from functional programming.
 
-Python does have a ``map()`` function, which pre-dates comprehensions. But it does much of the same things -- and most folks think comprehensions are the more "Pythonic" way to do it. And there is nothing that can be expressed with ``map()`` that cannot be done with a comprehension. IF youare not familiar with ``map()``, you can saftly skip this, but if you are:
+Python does have a ``map()`` function, which pre-dates comprehensions. But it does much of the same things -- and most folks think comprehensions are the more "Pythonic" way to do it. And there is nothing that can be expressed with ``map()`` that cannot be done with a comprehension. If you are not familiar with ``map()``, you can safely skip this, but if you are:
 
 .. code-block:: python
 
@@ -100,7 +100,7 @@ is the same as:
 
     [a_function(item), for item in an_iterable]
 
-In this case, the comprehension is a tad wordier than ``map()``.  BUt comprehensions really shine when you do'nt already have a handy function to pass to map:
+In this case, the comprehension is a tad wordier than ``map()``.  But comprehensions really shine when you don't already have a handy function to pass to map:
 
 .. code-block:: python
 
@@ -144,7 +144,7 @@ This kind of "filtering" loop can be achieved by adding a conditional to the com
 
     new_list = [expr for var in a_list if something_is_true]
 
-This is expressing the "filter" pattern and the "map" pattern at the same time -- one reason I like the comprehension sytax so much.
+This is expressing the "filter" pattern and the "map" pattern at the same time -- one reason I like the comprehension syntax so much.
 
 
 .. rubric:: Examples:
@@ -477,4 +477,4 @@ Once you've got the hang of it, you may want to read this so you don't overdo it
 
 https://treyhunner.com/2019/03/abusing-and-overusing-list-comprehensions-in-python/
 
-Trey writes a lot of good stuff -- I recommned browsing his site.
+Trey writes a lot of good stuff -- I recommend browsing his site.
