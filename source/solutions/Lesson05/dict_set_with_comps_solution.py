@@ -22,7 +22,7 @@ print("{name} is from Seattle, and he likes {cake} cake, {fruit} fruit,"
 # 2. Using a list comprehension, build a dictionary of numbers from zero
 # to fifteen and the hexadecimal equivalent (string is fine).
 
-print(dict([(i, hex(i)) for i in range(16)]))
+print(dict(((i, hex(i)) for i in range(16))))
 
 # 3. Do the previous entirely with a dict comprehension -- should be a one-liner
 
