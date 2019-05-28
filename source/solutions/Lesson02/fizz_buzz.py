@@ -18,15 +18,31 @@ def fizzbuzz1(n):
             print(i)
 
 
+def fizzbuzz1b(n):
+    """
+    Save one computation -- if it's a multiple of 3 and 5, it's a
+    multiple of 15
+    """
+    for i in range(1, n + 1):
+        if i % 15 == 0:
+            print("FizzBuzz")
+        elif i % 3 == 0:
+            print("Fizz")
+        elif i % 5 == 0:
+            print("Buzz")
+        else:
+            print(i)
+
+
 def fizzbuzz2(n):
     """
     Why evaluate i%3 and i%5 twice?
     """
     for i in range(1, n + 1):
         msg = ''
-        if i % 3 == 0:
+        if not i % 3:
             msg += "Fizz"
-        if i % 5 == 0:
+        if not i % 5:
             msg += "Buzz"
         if msg:
             print(msg)

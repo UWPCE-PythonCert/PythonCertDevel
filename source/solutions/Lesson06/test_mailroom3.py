@@ -5,7 +5,7 @@ unit tests for the mailroom program
 """
 import os
 
-import mailroom2 as mailroom
+import mailroom3 as mailroom
 
 # so that it's there for the tests
 mailroom.donor_db = mailroom.get_donor_db()
@@ -50,6 +50,11 @@ def test_gen_letter():
 
 
 def test_add_donor():
+    """
+    adds a new donor
+
+    then tests that the donor is added, and that a donation is properly recorded.
+    """
     name = "Fred Flintstone  "
 
     donor = mailroom.add_donor(name)

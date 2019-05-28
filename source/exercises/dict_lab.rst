@@ -76,11 +76,18 @@ Dictionaries 2
 * Using the dictionary from item 1: Make a dictionary using the same keys but
   with the number of 't's in each value as the value (consider upper and lower case?).
 
+  The result should look something like::
+
+      {"name": 0
+       "city": 2
+       "cake": 2
+      }
+
 Sets
 ----
 
 * Create sets s2, s3 and s4 that contain numbers from zero through twenty,
-  divisible by 2, 3 and 4.
+  divisible by 2, 3 and 4 (figure out a way to compute those -- don't just type them in).
 
 * Display the sets.
 
@@ -95,5 +102,5 @@ Sets 2
 
 * Create a frozenset with the letters in 'marathon'.
 
-* display the union and intersection of the two sets.
+* Display the union and intersection of the two sets.
 
