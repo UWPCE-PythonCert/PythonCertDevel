@@ -831,7 +831,7 @@ Now we are getting a little more interesting.
 
 This is easy; you know how to do that, yes?
 
-But the training wheels are off -- you are going to need to write your own tests now.  So before you create the ``Head`` element class, write a test for it. You should be able to copy and paste one of the previous tests, and just change the name of the class and the tag value. Remember to give yo test a new name, or it will simply replace the previous test.
+But the training wheels are off -- you are going to need to write your own tests now.  So before you create the ``Head`` element class, write a test for it. You should be able to copy and paste one of the previous tests, and just change the name of the class and the tag value. Remember to give your test a new name, or it will simply replace the previous test.
 
 I like to run the tests as soon as I make a new one. If nothing else, I can make sure I have one more test.
 

@@ -105,7 +105,7 @@ Perhaps a little silly for only two options,
 but I hope you get the idea.
 
 And if you establish a protocol for what those functions return,
-you can use the return value -- perhaps as simple as a True or FAlse to indicate success.
+you can use the return value -- perhaps as simple as a True or False to indicate success.
 
 Or a sentinel value to indicate it's time to break out of a loop.
 

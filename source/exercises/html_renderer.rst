@@ -30,7 +30,7 @@ If you don't know html -- just look at the example and copy that. And you can re
 
 The exercise is broken down into a number of steps -- each requiring a few more OO concepts in Python.
 
-The goal of the code is render html. The goal of the *exercise* is to build up a simple object hierarchy with:
+The goal of the code is to render html. The goal of the *exercise* is to build up a simple object hierarchy with:
 
 * classes
 * class attributes
@@ -219,7 +219,7 @@ Part B:
 
 Now it gets fun!
 
-Now that you have multipel types of elements, it's worth looking a bit at how html works. A given element can hold text, but it can *also* hold other elements. So we need to update our ``Element`` classes to support that.
+Now that you have multiple types of elements, it's worth looking a bit at how html works. A given element can hold text, but it can *also* hold other elements. So we need to update our ``Element`` classes to support that.
 
 Extend the ``Element.render()`` method so that it can render other elements inside the tag in addition to strings. A recursion-like approach should do it. i.e. it can call the ``render()`` method of the elements it contains.
 
