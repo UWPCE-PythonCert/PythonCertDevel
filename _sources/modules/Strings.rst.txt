@@ -196,8 +196,8 @@ Common Escape Sequences::
     \t  ASCII Horizontal Tab (TAB)
     \ooo  Character with octal value ooo
     \xhh  Character with hex value hh
-    \uxxxx Charactor with Unicode code point value xxxx
-    \N{char-name} Charactor with Unicdoe name char_name
+    \uxxxx Character with Unicode code point value xxxx
+    \N{char-name} Character with Unicdoe name char_name
 
 For example -- for tab-separated values:
 
@@ -215,7 +215,7 @@ https://docs.python.org/3/library/stdtypes.html#string-methods
 Raw Strings
 ------------
 
-There are times when you want a literal backslash in your string: Windows file paths, regular expressions.  Tomake this easy, Pyhton support "raw" strings -- string literals where the backslash does not have special meaning:
+There are times when you want a literal backslash in your string: Windows file paths, regular expressions.  To make this easy, Python support "raw" strings -- string literals where the backslash does not have special meaning:
 
 Add an ``r`` in front of the string literal:
 

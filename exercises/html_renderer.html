@@ -202,7 +202,7 @@
 <p>Take a look at it by opening it in your text editor. And also in a browser to see how it’s rendered.</p>
 <p>If you don’t know html – just look at the example and copy that. And you can read the: <a class="reference internal" href="#html-primer"><span class="std std-ref">HTML Primer</span></a> at the end of this page for enough to do this exercise. And anyone working with computers these days would benefit from at least a passing familiarity with html.</p>
 <p>The exercise is broken down into a number of steps – each requiring a few more OO concepts in Python.</p>
-<p>The goal of the code is render html. The goal of the <em>exercise</em> is to build up a simple object hierarchy with:</p>
+<p>The goal of the code is to render html. The goal of the <em>exercise</em> is to build up a simple object hierarchy with:</p>
 <ul class="simple">
 <li>classes</li>
 <li>class attributes</li>
@@ -334,7 +334,7 @@ Some more content.
 <div class="section" id="part-b">
 <h4>Part B:<a class="headerlink" href="#part-b" title="Permalink to this headline">¶</a></h4>
 <p>Now it gets fun!</p>
-<p>Now that you have multipel types of elements, it’s worth looking a bit at how html works. A given element can hold text, but it can <em>also</em> hold other elements. So we need to update our <code class="docutils literal notranslate"><span class="pre">Element</span></code> classes to support that.</p>
+<p>Now that you have multiple types of elements, it’s worth looking a bit at how html works. A given element can hold text, but it can <em>also</em> hold other elements. So we need to update our <code class="docutils literal notranslate"><span class="pre">Element</span></code> classes to support that.</p>
 <p>Extend the <code class="docutils literal notranslate"><span class="pre">Element.render()</span></code> method so that it can render other elements inside the tag in addition to strings. A recursion-like approach should do it. i.e. it can call the <code class="docutils literal notranslate"><span class="pre">render()</span></code> method of the elements it contains.</p>
 <p>You should be able to <code class="docutils literal notranslate"><span class="pre">append</span></code> an element to another element – not just text.</p>
 <p>If this recursion-like idea doesn’t make sense to you, take a look at this blog post, which talks about recursive algorithms:</p>
