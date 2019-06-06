@@ -32,8 +32,7 @@ You will use:
 
   - properties.
   - a bunch of "magic methods".
-  - a classmethod (after you've learned about them...).
-
+  - a classmethod.
 
 General Instructions:
 ---------------------
@@ -121,8 +120,6 @@ The user should not be able to set the area:
 Step 5:
 -------
 
-**NOTE:** wait on this one 'till we learn about class methods..
-
 Add an "alternate constructor" that lets the user create a Circle directly
 with the diameter:
 
@@ -133,6 +130,8 @@ with the diameter:
     8
     >> print(c.radius)
     4
+
+Hint: This is a good use case for a ``classmethod``
 
 Step 6:
 -------
