@@ -39,7 +39,7 @@ There are a number of ways to run python code:
 - At the interpreter, often referred to as a REPL (Read, Evaluate, Print Loop)
 - At an enhanced interpreter such as iPython
 - In a browser-based interactive system such as the Jupyter Notebook
-- From and IDE, such as IDLE or PyCharm
+- From an IDE, such as IDLE or PyCharm
 - Calling python from the command line to run a file.
 
 While working with an interactive interpreter can be an excellent way to explore Python (and I highly recommend it), For this tutorial, to get you used to "real" production development, you will write, edit, and save your code in a programmer's text editor, and run it from the command line.
@@ -47,7 +47,8 @@ While working with an interactive interpreter can be an excellent way to explore
 A Programmer's Text Editor
 --------------------------
 
-A bit here about an editor, and recommendations on selecting one, with pointers to documentation about editor configuration.
+See These notes for getting set up with an editor and Python itself: :ref:`setting_up_dev_environment`
+
 
 The Python Interpreter
 ----------------------
@@ -66,19 +67,19 @@ These each have their own special uses for interaction the the Java VM or CLR, o
 
 [link to setting up your environment here]
 
-For this tutorial, you will need cPython version 3.6, installed and running so that when you type "python" at your command line, it starts up:
+For this tutorial, you will need cPython version 3.7, installed and running so that when you type "python" at your command line, it starts up:
 
 .. code-block:: bash
 
   MacBook-Pro:~ Chris$ python
-  Python 3.6.2 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06)
+  Python 3.7.4 (v3.6.2:5fd33b5926, Jul 16 2017, 20:11:06)
   [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
   Type "help", "copyright", "credits" or "license" for more information.
   >>>
 
-Your result may be slightly different, but it should say Python 3.6. *something* there at the top, and give you the command prompt (``>>>``) at the end.
+Your result may be slightly different, but it should say Python 3.7. *something* there at the top, and give you the command prompt (``>>>``) at the end.
 
-You can get out of it by typing ctrl+D (on OS_X and Linux) or ctrl+Z (On Windows), or typing ``exit()`` and hitting <return>.
+You can get out of it by typing ctrl+D (on OS-X and Linux) or ctrl+Z (On Windows), or typing ``exit()`` and then <return>.
 
 Your first "program"
 --------------------
@@ -120,7 +121,7 @@ In this case, python ran the one line of code you put in that file, which told i
 The print function
 ------------------
 
-you can display jsut about anything in Python with the ``print()`` function. Simply type::
+you can display just about anything in Python with the ``print()`` function. Simply type::
 
   print(what you want to print)
 
@@ -129,20 +130,20 @@ examples:
   print(45)
   print("this is a bit of text")
 
-you can print more than one thing by separating them with parentheses::
+you can print more than one thing by separating them with commas, inside the parenthesis::
 
-  print("the value of pi is:", 3.1459, "to two decimal places")
+  print("the value of pi is:", 3.1459, "to four decimal places")
 
 Text in Python
 --------------
 
-Text in python is supported by the "str" datatype, which is short for "string". The text datatype is often referred to called "strings" in computer science because it is strings of characters.
+Text in python is supported by the "str" datatype, which is short for "string". The text datatype is often referred to as "strings" in computer science because it is a series, or string of characters.
 
-In Python3, strings can be any length, and contain any character (even in virtually any language). This is because they support "Unicode" which is a system for representing all the characters of virtually all the languages used on earth.
+In Python3, strings can be any length, and contain any character (in virtually any language). This is because they support "Unicode" which is a system for representing all the characters of virtually all the languages used on earth.
 
 There are many complications to full support of Unicode, but for the most part, in Python it "just works". Any text you can put in your text editor should work fine.
 
-To create a str, you simply type what you want surrounded by either double or, single quotes (the apostrophe).
+To create a str, you simply type what you want surrounded by either double or single quotes (the apostrophe).
 
 Type this in a new file, called ``strings.py``:
 
@@ -161,13 +162,13 @@ run the file, and you should get something like this::
   MacBook-Pro:tutorial Chris$ python strings.py
   This is a basic string
   This is exactly the same string
-  you want to use double quotes if there's an apostrophe, like this: ' in the string
-  and you can use single quotes if you want to "quote" a word
+  You want to use double quotes if there's an apostrophe, like this: ' in the string
+  You can use single quotes if you want to "quote" a word
 
 Numbers in Python
 -----------------
 
-Python support two types of numbers in Python: integers (int) -- or whole numbers:
+Python supports two types of numbers: integers (int) -- or "whole numbers", with no fractional part:
 
 .. code-block:: python
 
@@ -180,18 +181,18 @@ integers can be negative or positive and as large as you want:
 >>> print(12345678987654321234567890987654321234567898765)
 12345678987654321234567890987654321234567898765
 
-"real numbers" are called "floating point" (float) numbers. They are internally stored as binary, but you wirte them as regular decimal numbers:
+"real numbers" are called "floating point" (float) numbers. They are internally stored as binary, but you write them as regular decimal (base 10) numbers:
 
 .. code-block:: python
 
     2.3, 3.0, 3.2459, -23.21
 
-For the most part, Python will convert from integer to floating point numbers for you.
+Note tht while the integer`3` and the float `3.0` have the same value, they are different types of numbers. But for the most part, Python will convert from integer to floating point numbers for you, so this distiction is rarely important.
 
 Math
 ----
 
-Being a computer language, python, of course supports the regular math functions. type the following into a file named math.py and run it:
+Being a computer language, Python, of course, supports the regular math functions. Type the following into a file named math.py and run it:
 
 .. code-block:: python
 
@@ -204,12 +205,12 @@ Being a computer language, python, of course supports the regular math functions
   print("twelve divided by 5 is:")
   print(12 // 5)
 
-What is the difference between ``12 / 5`` and ``12 // 5`` ?
+What is the difference between ``12 / 5`` and ``12 // 5`` ? Run your this code and find out.
 
-Order of operations
+Order of Operations
 -------------------
 
-Python follows the standard rules of operator precedence -- which operations are performed first when there are a bunch in a row:
+Python follows the standard rules of "operator precedence" from algebra -- which operations are performed first when there are a bunch in a row:
 
 https://en.wikipedia.org/wiki/Order_of_operations
 
@@ -237,7 +238,7 @@ Variables
 
 Directly printing things is not all that useful -- though Python does make a good calculator!
 
-Do do anything more complicated, you need to store values to be used later. We do this by "assigning" them to a variable. SAve the follwing in a variables.py file:
+To do anything more complicated, you need to store values to be used later. We do this by "assigning" them to a "variable", essentially givng them a name. Save the follwing in a ``variables.py`` file:
 
 .. code-block:: python
 
@@ -249,7 +250,7 @@ Do do anything more complicated, you need to store values to be used later. We d
 
 The equals sign: ``=`` is the "assignment operator". It assigns a value to a name, and then when you use the name in the future, Python will replace it with the value it is assigned to when it is used.
 
-names can (and generally should) be long and descriptive, and can contain letters, numbers (but not at the beginning) and some symbols, like the underscore character:
+Names can (and generally should) be long and descriptive, and can contain letters, numbers (but not at the beginning) and only a few symbols, like the underscore character:
 
 .. code-block:: python
 
@@ -289,7 +290,14 @@ And this?
     print ("that")  # I think we need this line too
     print("the other")
 
-comments can come after running code on a line.
+comments can come after running code on a line as well. USing the hash to "comment out" parts of code is used in two ways:
+
+1) To add a little extra description to some code, to explain what it doing.
+
+2) To temporarily disable some code
+
+
+
 
 
 
