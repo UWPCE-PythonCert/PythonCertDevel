@@ -192,13 +192,13 @@ simply add paretheses to <code class="docutils literal notranslate"><span class=
 <li>At the interpreter, often referred to as a REPL (Read, Evaluate, Print Loop)</li>
 <li>At an enhanced interpreter such as iPython</li>
 <li>In a browser-based interactive system such as the Jupyter Notebook</li>
-<li>From and IDE, such as IDLE or PyCharm</li>
+<li>From an IDE, such as IDLE or PyCharm</li>
 <li>Calling python from the command line to run a file.</li>
 </ul>
 <p>While working with an interactive interpreter can be an excellent way to explore Python (and I highly recommend it), For this tutorial, to get you used to “real” production development, you will write, edit, and save your code in a programmer’s text editor, and run it from the command line.</p>
 <div class="section" id="a-programmer-s-text-editor">
 <h3>A Programmer’s Text Editor<a class="headerlink" href="#a-programmer-s-text-editor" title="Permalink to this headline">¶</a></h3>
-<p>A bit here about an editor, and recommendations on selecting one, with pointers to documentation about editor configuration.</p>
+<p>See These notes for getting set up with an editor and Python itself: <a class="reference internal" href="../supplemental/dev_environment/index.html#setting-up-dev-environment"><span class="std std-ref">Setting Up A Development Environment For Python</span></a></p>
 </div>
 <div class="section" id="the-python-interpreter">
 <h3>The Python Interpreter<a class="headerlink" href="#the-python-interpreter" title="Permalink to this headline">¶</a></h3>
@@ -213,16 +213,16 @@ simply add paretheses to <code class="docutils literal notranslate"><span class=
 </ul>
 <p>These each have their own special uses for interaction the the Java VM or CLR, or running on micro controllers. But most production Python is run with the cPython interpreter, and most people mean cPython when they say “Python”.</p>
 <p>[link to setting up your environment here]</p>
-<p>For this tutorial, you will need cPython version 3.6, installed and running so that when you type “python” at your command line, it starts up:</p>
+<p>For this tutorial, you will need cPython version 3.7, installed and running so that when you type “python” at your command line, it starts up:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>MacBook-Pro:~ Chris$ python
-Python <span class="m">3</span>.6.2 <span class="o">(</span>v3.6.2:5fd33b5926, Jul <span class="m">16</span> <span class="m">2017</span>, <span class="m">20</span>:11:06<span class="o">)</span>
+Python <span class="m">3</span>.7.4 <span class="o">(</span>v3.6.2:5fd33b5926, Jul <span class="m">16</span> <span class="m">2017</span>, <span class="m">20</span>:11:06<span class="o">)</span>
 <span class="o">[</span>GCC <span class="m">4</span>.2.1 <span class="o">(</span>Apple Inc. build <span class="m">5666</span><span class="o">)</span> <span class="o">(</span>dot <span class="m">3</span><span class="o">)]</span> on darwin
 Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&quot;</span>, <span class="s2">&quot;credits&quot;</span> or <span class="s2">&quot;license&quot;</span> <span class="k">for</span> more information.
 &gt;&gt;&gt;
 </pre></div>
 </div>
-<p>Your result may be slightly different, but it should say Python 3.6. <em>something</em> there at the top, and give you the command prompt (<code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code>) at the end.</p>
-<p>You can get out of it by typing ctrl+D (on OS_X and Linux) or ctrl+Z (On Windows), or typing <code class="docutils literal notranslate"><span class="pre">exit()</span></code> and hitting &lt;return&gt;.</p>
+<p>Your result may be slightly different, but it should say Python 3.7. <em>something</em> there at the top, and give you the command prompt (<code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code>) at the end.</p>
+<p>You can get out of it by typing ctrl+D (on OS-X and Linux) or ctrl+Z (On Windows), or typing <code class="docutils literal notranslate"><span class="pre">exit()</span></code> and then &lt;return&gt;.</p>
 </div>
 <div class="section" id="your-first-program">
 <h3>Your first “program”<a class="headerlink" href="#your-first-program" title="Permalink to this headline">¶</a></h3>
@@ -259,7 +259,7 @@ MacBook-Pro:tutorial Chris$
 </div>
 <div class="section" id="the-print-function">
 <h3>The print function<a class="headerlink" href="#the-print-function" title="Permalink to this headline">¶</a></h3>
-<p>you can display jsut about anything in Python with the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function. Simply type:</p>
+<p>you can display just about anything in Python with the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function. Simply type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">what</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="nb">print</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -267,17 +267,17 @@ MacBook-Pro:tutorial Chris$
 <blockquote>
 <div>print(45)
 print(“this is a bit of text”)</div></blockquote>
-<p>you can print more than one thing by separating them with parentheses:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the value of pi is:&quot;</span><span class="p">,</span> <span class="mf">3.1459</span><span class="p">,</span> <span class="s2">&quot;to two decimal places&quot;</span><span class="p">)</span>
+<p>you can print more than one thing by separating them with commas, inside the parenthesis:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the value of pi is:&quot;</span><span class="p">,</span> <span class="mf">3.1459</span><span class="p">,</span> <span class="s2">&quot;to four decimal places&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="text-in-python">
 <h3>Text in Python<a class="headerlink" href="#text-in-python" title="Permalink to this headline">¶</a></h3>
-<p>Text in python is supported by the “str” datatype, which is short for “string”. The text datatype is often referred to called “strings” in computer science because it is strings of characters.</p>
-<p>In Python3, strings can be any length, and contain any character (even in virtually any language). This is because they support “Unicode” which is a system for representing all the characters of virtually all the languages used on earth.</p>
+<p>Text in python is supported by the “str” datatype, which is short for “string”. The text datatype is often referred to as “strings” in computer science because it is a series, or string of characters.</p>
+<p>In Python3, strings can be any length, and contain any character (in virtually any language). This is because they support “Unicode” which is a system for representing all the characters of virtually all the languages used on earth.</p>
 <p>There are many complications to full support of Unicode, but for the most part, in Python it “just works”. Any text you can put in your text editor should work fine.</p>
-<p>To create a str, you simply type what you want surrounded by either double or, single quotes (the apostrophe).</p>
+<p>To create a str, you simply type what you want surrounded by either double or single quotes (the apostrophe).</p>
 <p>Type this in a new file, called <code class="docutils literal notranslate"><span class="pre">strings.py</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;This is a basic string&quot;</span><span class="p">)</span>
 
@@ -292,14 +292,14 @@ print(“this is a bit of text”)</div></blockquote>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MacBook-Pro:tutorial Chris$ python strings.py
 This is a basic string
 This is exactly the same string
-you want to use double quotes if there&#39;s an apostrophe, like this: &#39; in the string
-and you can use single quotes if you want to &quot;quote&quot; a word
+You want to use double quotes if there&#39;s an apostrophe, like this: &#39; in the string
+You can use single quotes if you want to &quot;quote&quot; a word
 </pre></div>
 </div>
 </div>
 <div class="section" id="numbers-in-python">
 <h3>Numbers in Python<a class="headerlink" href="#numbers-in-python" title="Permalink to this headline">¶</a></h3>
-<p>Python support two types of numbers in Python: integers (int) – or whole numbers:</p>
+<p>Python supports two types of numbers: integers (int) – or “whole numbers”, with no fractional part:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="p">,</span> <span class="mi">123</span><span class="p">,</span> <span class="o">-</span><span class="mi">345</span><span class="p">,</span> <span class="mi">23473948</span>
 </pre></div>
 </div>
@@ -311,15 +311,15 @@ and you can use single quotes if you want to &quot;quote&quot; a word
 <span class="go">12345678987654321234567890987654321234567898765</span>
 </pre></div>
 </div>
-<p>“real numbers” are called “floating point” (float) numbers. They are internally stored as binary, but you wirte them as regular decimal numbers:</p>
+<p>“real numbers” are called “floating point” (float) numbers. They are internally stored as binary, but you write them as regular decimal (base 10) numbers:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">2.3</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.2459</span><span class="p">,</span> <span class="o">-</span><span class="mf">23.21</span>
 </pre></div>
 </div>
-<p>For the most part, Python will convert from integer to floating point numbers for you.</p>
+<p>Note tht while the integer`3` and the float <cite>3.0</cite> have the same value, they are different types of numbers. But for the most part, Python will convert from integer to floating point numbers for you, so this distiction is rarely important.</p>
 </div>
 <div class="section" id="math">
 <h3>Math<a class="headerlink" href="#math" title="Permalink to this headline">¶</a></h3>
-<p>Being a computer language, python, of course supports the regular math functions. type the following into a file named math.py and run it:</p>
+<p>Being a computer language, Python, of course, supports the regular math functions. Type the following into a file named math.py and run it:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
@@ -330,11 +330,11 @@ and you can use single quotes if you want to &quot;quote&quot; a word
 <span class="k">print</span><span class="p">(</span><span class="mi">12</span> <span class="o">//</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>What is the difference between <code class="docutils literal notranslate"><span class="pre">12</span> <span class="pre">/</span> <span class="pre">5</span></code> and <code class="docutils literal notranslate"><span class="pre">12</span> <span class="pre">//</span> <span class="pre">5</span></code> ?</p>
+<p>What is the difference between <code class="docutils literal notranslate"><span class="pre">12</span> <span class="pre">/</span> <span class="pre">5</span></code> and <code class="docutils literal notranslate"><span class="pre">12</span> <span class="pre">//</span> <span class="pre">5</span></code> ? Run your this code and find out.</p>
 </div>
 <div class="section" id="order-of-operations">
-<h3>Order of operations<a class="headerlink" href="#order-of-operations" title="Permalink to this headline">¶</a></h3>
-<p>Python follows the standard rules of operator precedence – which operations are performed first when there are a bunch in a row:</p>
+<h3>Order of Operations<a class="headerlink" href="#order-of-operations" title="Permalink to this headline">¶</a></h3>
+<p>Python follows the standard rules of “operator precedence” from algebra – which operations are performed first when there are a bunch in a row:</p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Order_of_operations">https://en.wikipedia.org/wiki/Order_of_operations</a></p>
 <p>Add this to the <code class="docutils literal notranslate"><span class="pre">math.py</span></code> file:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
@@ -352,7 +352,7 @@ and you can use single quotes if you want to &quot;quote&quot; a word
 <div class="section" id="variables">
 <h3>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h3>
 <p>Directly printing things is not all that useful – though Python does make a good calculator!</p>
-<p>Do do anything more complicated, you need to store values to be used later. We do this by “assigning” them to a variable. SAve the follwing in a variables.py file:</p>
+<p>To do anything more complicated, you need to store values to be used later. We do this by “assigning” them to a “variable”, essentially givng them a name. Save the follwing in a <code class="docutils literal notranslate"><span class="pre">variables.py</span></code> file:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
@@ -361,7 +361,7 @@ and you can use single quotes if you want to &quot;quote&quot; a word
 </pre></div>
 </div>
 <p>The equals sign: <code class="docutils literal notranslate"><span class="pre">=</span></code> is the “assignment operator”. It assigns a value to a name, and then when you use the name in the future, Python will replace it with the value it is assigned to when it is used.</p>
-<p>names can (and generally should) be long and descriptive, and can contain letters, numbers (but not at the beginning) and some symbols, like the underscore character:</p>
+<p>Names can (and generally should) be long and descriptive, and can contain letters, numbers (but not at the beginning) and only a few symbols, like the underscore character:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rectangle_width</span> <span class="o">=</span> <span class="mi">200</span>
 <span class="n">rectangle_height</span> <span class="o">=</span> <span class="mi">23</span>
 <span class="n">rectangle_area</span> <span class="o">=</span> <span class="n">rectangle_width</span> <span class="o">*</span> <span class="n">rectangle_height</span>
@@ -391,7 +391,11 @@ and you can use single quotes if you want to &quot;quote&quot; a word
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;the other&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>comments can come after running code on a line.</p>
+<p>comments can come after running code on a line as well. USing the hash to “comment out” parts of code is used in two ways:</p>
+<ol class="arabic simple">
+<li>To add a little extra description to some code, to explain what it doing.</li>
+<li>To temporarily disable some code</li>
+</ol>
 </div>
 </div>
 </div>
